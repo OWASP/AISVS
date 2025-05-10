@@ -16,6 +16,7 @@ This section provides requirements to ensure training data is ethical, secure, a
 | **Data Poisoning Detection** | Detect and filter malicious or corrupted data in training datasets using anomaly detection or statistical analysis to prevent model corruption. |
 | **User Data Deletion & Consent Enforcement** | Implement mechanisms to honor user deletion requests and consent withdrawals in training datasets and backups, compliant with privacy law. |
 | **Regulatory Compliance Management** | Align training data practices with privacy laws and AI regulations by documenting consent, purpose, and retention policies. |
+| **Model Data Labeling** | To prevent data poisoning, ensure label integrity, protect sensitive information, maintain accountability, defend against inference attacks, and comply with regulatory standards. |
 
 ---
 
@@ -43,6 +44,7 @@ This section provides requirements to manage model development, fine-tuning, and
 | **Model testing & validation** | Conduct performance, robustness, and security tests before deployment to verify model reliability and compliance. |
 | **Model change documentation** | Maintain changelogs and model cards to document updates, configurations, and dependencies for compliance and auditing. |
 | **Formal decommissioning process** | Define steps for archiving, sanitizing, and revoking retired models to prevent unauthorized reuse or data leakage. |
+| **Model Provenance Tracking** | Capturing, recording, and storing information about a model's origin, how it was created, and its history of modifications. |
 
 ---
 
@@ -87,6 +89,7 @@ This section provides requirements to secure upstream artifacts (pretrained mode
 | **Third-party dataset risk assessment** | Evaluate external datasets for bias, legal issues, or poisoning risks, ensuring alignment with ethical and regulatory standards. |
 | **Supply chain attack monitoring** | Monitor for compromised repositories or malicious updates. |
 | **Licensing compliance** | Validate compliance with model and dataset licenses to mitigate legal and ethical risks. |
+| **SBOM (Software Bill of Materials) for model artifacts**| Detailed inventory of all components, dependencies, and metadata used in building and deploying machine learning models to enhance transparency, traceability, and security. |
 
 ---
 
