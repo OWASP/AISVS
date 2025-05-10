@@ -15,7 +15,6 @@ This section provides requirements to ensure training data is ethical, secure, a
 | **Training Data Quality Assurance** | Validate training data for accuracy, completeness, and consistency to ensure reliable model training. |
 | **Data Poisoning Detection** | Detect and filter malicious or corrupted data in training datasets using anomaly detection or statistical analysis to prevent model corruption. |
 | **User Data Deletion & Consent Enforcement** | Implement mechanisms to honor user deletion requests and consent withdrawals in training datasets and backups, compliant with privacy law. |
-| **Regulatory Compliance Management** | Align training data practices with privacy laws and AI regulations by documenting consent, purpose, and retention policies. |
 
 ---
 
@@ -76,7 +75,7 @@ This section provides requirements to enforce context-aware, least-privilege acc
 ---
 
 ## 6. Supply Chain Security for Models, Frameworks & Data
-This section provides requirements to secure upstream artifacts (pretrained models, ML frameworks, libraries, and datasets) against tampering, vulnerabilities, and licensing risks to ensure integrity and trustworthiness.
+This section provides requirements to secure upstream artifacts (pretrained models, ML frameworks, libraries, and datasets) against tampering and vulnerabilities to ensure integrity and trustworthiness.
 
 | Focus area | Purpose |
 | --- | --- |
@@ -84,9 +83,8 @@ This section provides requirements to secure upstream artifacts (pretrained mode
 | **Framework & library scanning** | Continuously assess dependencies for CVEs. |
 | **Dependency pinning & verification** | Enforce SBOMs, hermetic builds, and cryptographic attestations to prevent unauthorized or tampered dependencies. |
 | **Trusted source enforcement** | Restrict artifact downloads to signed registries or private repositories, blocking unverified mirrors or public sources. |
-| **Third-party dataset risk assessment** | Evaluate external datasets for bias, legal issues, or poisoning risks, ensuring alignment with ethical and regulatory standards. |
+| **Third-party dataset risk assessment** | Evaluate external datasets for bias or poisoning risks. |
 | **Supply chain attack monitoring** | Monitor for compromised repositories or malicious updates. |
-| **Licensing compliance** | Validate compliance with model and dataset licenses to mitigate legal and ethical risks. |
 
 ---
 
