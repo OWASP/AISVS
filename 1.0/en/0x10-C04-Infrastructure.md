@@ -171,10 +171,9 @@ Secure distributed AI deployments including edge computing, federated learning, 
 | # | Description | Level | Role |
 |:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
 | **4.12.1** | **Verify that** edge AI devices authenticate to central infrastructure using mutual TLS with device certificates rotated according to organizational certificate management policy. | 2 | D/V |
-| **4.12.2** | **Verify that** federated learning infrastructure encrypts model updates in transit using AES-256-GCM and validates participant identity before aggregation. | 2 | D/V |
-| **4.12.3** | **Verify that** edge devices implement secure boot with verified signatures and rollback protection preventing firmware downgrade attacks. | 2 | D/V |
-| **4.12.4** | **Verify that** distributed AI coordination uses Byzantine fault-tolerant consensus algorithms with participant validation and malicious node detection. | 3 | D/V |
-| **4.12.5** | **Verify that** edge-to-cloud communication includes bandwidth throttling, data compression, and offline operation capabilities with secure local storage. | 3 | D/V |
+| **4.12.2** | **Verify that** edge devices implement secure boot with verified signatures and rollback protection preventing firmware downgrade attacks. | 2 | D/V |
+| **4.12.3** | **Verify that** distributed AI coordination uses Byzantine fault-tolerant consensus algorithms with participant validation and malicious node detection. | 3 | D/V |
+| **4.12.4** | **Verify that** edge-to-cloud communication includes bandwidth throttling, data compression, and offline operation capabilities with secure local storage. | 3 | D/V |
 
 ---
 
@@ -230,7 +229,8 @@ Protect AI workloads and model weights using hardware-based trusted execution en
 | **4.16.2** | **Verify that** confidential containers (Kata Containers, gVisor with confidential computing) isolate AI workloads with hardware-enforced memory encryption. | 3 | D/V |
 | **4.16.3** | **Verify that** remote attestation validates enclave integrity before loading AI models with cryptographic proof of execution environment authenticity. | 3 | D/V |
 | **4.16.4** | **Verify that** confidential AI inference services prevent model extraction through encrypted computation with sealed model weights and protected execution. | 3 | D/V |
-| **4.16.5** | **Verify that** secure multi-party computation (SMPC) enables collaborative AI training without exposing individual datasets or model parameters. | 3 | D/V |
+| **4.16.5** | **Verify that** trusted execution environment orchestration manages secure enclave lifecycle with remote attestation and encrypted communication channels. | 3 | D/V |
+| **4.16.6** | **Verify that** secure multi-party computation (SMPC) enables collaborative AI training without exposing individual datasets or model parameters. | 3 | D/V |
 
 ---
 
@@ -283,15 +283,10 @@ Implement infrastructure controls for privacy-preserving computation to protect 
 | # | Description | Level | Role |
 |:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
 | **4.20.1** | **Verify that** homomorphic encryption infrastructure enables encrypted computation on sensitive AI workloads with cryptographic integrity verification and performance monitoring. | 3 | D/V |
-| **4.20.2** | **Verify that** secure aggregation protocols protect individual contributions in federated learning with cryptographic verification preventing data leakage during aggregation. | 3 | D/V |
-| **4.20.3** | **Verify that** differential privacy infrastructure implements calibrated noise mechanisms with privacy budget tracking and automated privacy loss accounting. | 3 | D/V |
-| **4.20.4** | **Verify that** private information retrieval systems enable database queries without revealing query patterns with cryptographic protection of access patterns. | 3 | D/V |
-| **4.20.5** | **Verify that** trusted execution environment orchestration manages secure enclave lifecycle with remote attestation and encrypted communication channels. | 3 | D/V |
-| **4.20.6** | **Verify that** privacy-preserving analytics infrastructure implements local differential privacy with utility-privacy trade-off optimization and configurable privacy parameters. | 3 | D/V |
-| **4.20.7** | **Verify that** secure multi-party computation protocols enable privacy-preserving AI inference without exposing individual inputs or intermediate computations. | 3 | D/V |
-| **4.20.8** | **Verify that** privacy-preserving key management includes distributed key generation, threshold cryptography, and secure key rotation with hardware-backed protection. | 3 | D/V |
-| **4.20.9** | **Verify that** privacy budget management systems track cumulative privacy expenditure across multiple operations with automated alerts for budget depletion. | 3 | D/V |
-| **4.20.10** | **Verify that** privacy-preserving compute performance is optimized through batching, caching, and hardware acceleration while maintaining cryptographic security guarantees. | 3 | D/V |
+| **4.20.2** | **Verify that** private information retrieval systems enable database queries without revealing query patterns with cryptographic protection of access patterns. | 3 | D/V |
+| **4.20.3** | **Verify that** secure multi-party computation protocols enable privacy-preserving AI inference without exposing individual inputs or intermediate computations. | 3 | D/V |
+| **4.20.4** | **Verify that** privacy-preserving key management includes distributed key generation, threshold cryptography, and secure key rotation with hardware-backed protection. | 3 | D/V |
+| **4.20.5** | **Verify that** privacy-preserving compute performance is optimized through batching, caching, and hardware acceleration while maintaining cryptographic security guarantees. | 3 | D/V |
 
 ---
 
