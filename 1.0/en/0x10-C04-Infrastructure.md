@@ -72,7 +72,7 @@ Isolate untrusted AI models in secure sandboxes with comprehensive behavioral an
 
 | # | Description | Level | Role |
 |:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
-| **4.5.1** | **Verify that** external AI models execute in gVisor, Firecracker microVMs, or Docker containers with --security-opt=no-new-privileges and --read-only flags. | 1 | D/V |
+| **4.5.1** | **Verify that** external AI models execute in gVisor, microVMs (such as Firecracker, CrossVM), or Docker containers with --security-opt=no-new-privileges and --read-only flags. | 1 | D/V |
 | **4.5.2** | **Verify that** sandbox environments have no network connectivity (--network=none) or only localhost access with all external requests blocked by iptables rules. | 1 | D/V |
 | **4.5.3** | **Verify that** AI model validation includes automated red-team testing with 1000+ adversarial inputs and behavioral analysis for backdoor detection. | 2 | D/V |
 | **4.5.4** | **Verify that** sandbox results are cryptographically signed by authorized security personnel and stored in immutable audit logs before production promotion. | 2 | D/V |
