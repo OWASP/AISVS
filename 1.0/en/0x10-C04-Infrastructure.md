@@ -276,6 +276,25 @@ Secure emerging AI hardware architectures including neuromorphic chips, FPGAs, c
 
 ---
 
+## C4.20 Privacy-Preserving Compute Infrastructure
+
+Implement infrastructure controls for privacy-preserving computation to protect sensitive data during AI processing and analysis.
+
+| # | Description | Level | Role |
+|:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
+| **4.20.1** | **Verify that** homomorphic encryption infrastructure enables encrypted computation on sensitive AI workloads with cryptographic integrity verification and performance monitoring. | 3 | D/V |
+| **4.20.2** | **Verify that** secure aggregation protocols protect individual contributions in federated learning with cryptographic verification preventing data leakage during aggregation. | 3 | D/V |
+| **4.20.3** | **Verify that** differential privacy infrastructure implements calibrated noise mechanisms with privacy budget tracking and automated privacy loss accounting. | 3 | D/V |
+| **4.20.4** | **Verify that** private information retrieval systems enable database queries without revealing query patterns with cryptographic protection of access patterns. | 3 | D/V |
+| **4.20.5** | **Verify that** trusted execution environment orchestration manages secure enclave lifecycle with remote attestation and encrypted communication channels. | 3 | D/V |
+| **4.20.6** | **Verify that** privacy-preserving analytics infrastructure implements local differential privacy with utility-privacy trade-off optimization and configurable privacy parameters. | 3 | D/V |
+| **4.20.7** | **Verify that** secure multi-party computation protocols enable privacy-preserving AI inference without exposing individual inputs or intermediate computations. | 3 | D/V |
+| **4.20.8** | **Verify that** privacy-preserving key management includes distributed key generation, threshold cryptography, and secure key rotation with hardware-backed protection. | 3 | D/V |
+| **4.20.9** | **Verify that** privacy budget management systems track cumulative privacy expenditure across multiple operations with automated alerts for budget depletion. | 3 | D/V |
+| **4.20.10** | **Verify that** privacy-preserving compute performance is optimized through batching, caching, and hardware acceleration while maintaining cryptographic security guarantees. | 3 | D/V |
+
+---
+
 ## References
 
 * [NIST Cybersecurity Framework 2.0](https://www.nist.gov/cyberframework)
@@ -303,3 +322,9 @@ Secure emerging AI hardware architectures including neuromorphic chips, FPGAs, c
 * [Side-Channel Attack Countermeasures](https://link.springer.com/book/10.1007/978-3-319-75268-6)
 * [Neuromorphic Computing Security Challenges](https://ieeexplore.ieee.org/document/9458103)
 * [FPGA Security: Fundamentals, Evaluation, and Countermeasures](https://link.springer.com/book/10.1007/978-3-319-90385-9)
+* [Microsoft SEAL: Homomorphic Encryption Library](https://github.com/Microsoft/SEAL)
+* [HElib: Homomorphic Encryption Library](https://github.com/homenc/HElib)
+* [PALISADE Lattice Cryptography Library](https://palisade-crypto.org/)
+* [Differential Privacy: A Survey of Results](https://link.springer.com/chapter/10.1007/978-3-540-79228-4_1)
+* [Secure Aggregation for Federated Learning](https://eprint.iacr.org/2017/281.pdf)
+* [Private Information Retrieval: Concepts and Constructions](https://link.springer.com/book/10.1007/978-3-030-16234-8)
