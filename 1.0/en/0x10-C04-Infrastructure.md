@@ -206,6 +206,76 @@ Secure infrastructure automation pipelines and GitOps workflows for AI infrastru
 
 ---
 
+## C4.15 Quantum-Resistant Infrastructure Security
+
+Prepare AI infrastructure for quantum computing threats through post-quantum cryptography and quantum-safe protocols.
+
+| # | Description | Level | Role |
+|:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
+| **4.15.1** | **Verify that** AI infrastructure implements NIST-approved post-quantum cryptographic algorithms (CRYSTALS-Kyber, CRYSTALS-Dilithium, SPHINCS+) for key exchange and digital signatures. | 3 | D/V |
+| **4.15.2** | **Verify that** quantum key distribution (QKD) systems are implemented for high-security AI communications with quantum-safe key management protocols. | 3 | D/V |
+| **4.15.3** | **Verify that** cryptographic agility frameworks enable rapid migration to new post-quantum algorithms with automated certificate and key rotation. | 3 | D/V |
+| **4.15.4** | **Verify that** quantum threat modeling assesses AI infrastructure vulnerability to quantum attacks with documented migration timelines and risk assessments. | 3 | V |
+| **4.15.5** | **Verify that** hybrid classical-quantum cryptographic systems provide defense-in-depth during the quantum transition period with performance monitoring. | 3 | D/V |
+
+---
+
+## C4.16 Confidential Computing & Secure Enclaves
+
+Protect AI workloads and model weights using hardware-based trusted execution environments and confidential computing technologies.
+
+| # | Description | Level | Role |
+|:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
+| **4.16.1** | **Verify that** sensitive AI models execute within Intel SGX enclaves, AMD SEV-SNP, or ARM TrustZone with encrypted memory and attestation verification. | 3 | D/V |
+| **4.16.2** | **Verify that** confidential containers (Kata Containers, gVisor with confidential computing) isolate AI workloads with hardware-enforced memory encryption. | 3 | D/V |
+| **4.16.3** | **Verify that** remote attestation validates enclave integrity before loading AI models with cryptographic proof of execution environment authenticity. | 3 | D/V |
+| **4.16.4** | **Verify that** confidential AI inference services prevent model extraction through encrypted computation with sealed model weights and protected execution. | 3 | D/V |
+| **4.16.5** | **Verify that** secure multi-party computation (SMPC) enables collaborative AI training without exposing individual datasets or model parameters. | 3 | D/V |
+
+---
+
+## C4.17 Zero-Knowledge Infrastructure
+
+Implement zero-knowledge proof systems for privacy-preserving AI verification and authentication without revealing sensitive information.
+
+| # | Description | Level | Role |
+|:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
+| **4.17.1** | **Verify that** zero-knowledge proofs (ZK-SNARKs, ZK-STARKs) verify AI model integrity and training provenance without exposing model weights or training data. | 3 | D/V |
+| **4.17.2** | **Verify that** ZK-based authentication systems enable privacy-preserving user verification for AI services without revealing identity information. | 3 | D/V |
+| **4.17.3** | **Verify that** private set intersection (PSI) protocols enable secure data matching for federated AI without exposing individual datasets. | 3 | D/V |
+| **4.17.4** | **Verify that** zero-knowledge machine learning (ZKML) systems enable verifiable AI inference with cryptographic proof of correct computation. | 3 | D/V |
+| **4.17.5** | **Verify that** ZK-rollups provide scalable, privacy-preserving AI transaction processing with batch verification and reduced computational overhead. | 3 | D/V |
+
+---
+
+## C4.18 Side-Channel Attack Prevention
+
+Protect AI infrastructure from timing, power, electromagnetic, and cache-based side-channel attacks that could leak sensitive information.
+
+| # | Description | Level | Role |
+|:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
+| **4.18.1** | **Verify that** AI inference timing is normalized using constant-time algorithms and padding to prevent timing-based model extraction attacks. | 3 | D/V |
+| **4.18.2** | **Verify that** power analysis protection includes noise injection, power line filtering, and randomized execution patterns for AI hardware. | 3 | D/V |
+| **4.18.3** | **Verify that** cache-based side-channel mitigation uses cache partitioning, randomization, and flush instructions to prevent information leakage. | 3 | D/V |
+| **4.18.4** | **Verify that** electromagnetic emanation protection includes shielding, signal filtering, and randomized processing to prevent TEMPEST-style attacks. | 3 | D/V |
+| **4.18.5** | **Verify that** microarchitectural side-channel defenses include speculative execution controls and memory access pattern obfuscation. | 3 | D/V |
+
+---
+
+## C4.19 Neuromorphic & Specialized AI Hardware Security
+
+Secure emerging AI hardware architectures including neuromorphic chips, FPGAs, custom ASICs, and optical computing systems.
+
+| # | Description | Level | Role |
+|:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
+| **4.19.1** | **Verify that** neuromorphic chip security includes spike pattern encryption, synaptic weight protection, and hardware-based learning rule validation. | 3 | D/V |
+| **4.19.2** | **Verify that** FPGA-based AI accelerators implement bitstream encryption, anti-tamper mechanisms, and secure configuration loading with authenticated updates. | 3 | D/V |
+| **4.19.3** | **Verify that** custom ASIC security includes on-chip security processors, hardware root of trust, and secure key storage with tamper detection. | 3 | D/V |
+| **4.19.4** | **Verify that** optical computing systems implement quantum-safe optical encryption, secure photonic switching, and protected optical signal processing. | 3 | D/V |
+| **4.19.5** | **Verify that** hybrid analog-digital AI chips include secure analog computation, protected weight storage, and authenticated analog-to-digital conversion. | 3 | D/V |
+
+---
+
 ## References
 
 * [NIST Cybersecurity Framework 2.0](https://www.nist.gov/cyberframework)
@@ -224,3 +294,12 @@ Secure infrastructure automation pipelines and GitOps workflows for AI infrastru
 * [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/publications/detail/sp/800-207/final)
 * [IEEE 2857: Privacy Engineering for AI Systems](https://standards.ieee.org/ieee/2857/7273/)
 * [NIST SP 800-161: Cybersecurity Supply Chain Risk Management](https://csrc.nist.gov/publications/detail/sp/800-161/rev-1/final)
+* [NIST Post-Quantum Cryptography Standards](https://csrc.nist.gov/Projects/post-quantum-cryptography)
+* [Intel SGX Developer Guide](https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/overview.html)
+* [AMD SEV-SNP White Paper](https://www.amd.com/system/files/TechDocs/SEV-SNP-strengthening-vm-isolation-with-integrity-protection-and-more.pdf)
+* [ARM TrustZone Technology](https://developer.arm.com/ip-products/security-ip/trustzone)
+* [ZK-SNARKs: A Gentle Introduction](https://blog.ethereum.org/2016/12/05/zksnarks-in-a-nutshell/)
+* [NIST SP 800-57: Cryptographic Key Management](https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final)
+* [Side-Channel Attack Countermeasures](https://link.springer.com/book/10.1007/978-3-319-75268-6)
+* [Neuromorphic Computing Security Challenges](https://ieeexplore.ieee.org/document/9458103)
+* [FPGA Security: Fundamentals, Evaluation, and Countermeasures](https://link.springer.com/book/10.1007/978-3-319-90385-9)
