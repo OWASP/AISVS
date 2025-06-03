@@ -100,6 +100,22 @@ Track and attribute the origin of all user inputs to support auditing, abuse tra
 
 ---
 
+## C2.8 Real-Time Adaptive Threat Detection
+
+Advanced threat detection systems that adapt to new attack patterns and provide real-time protection with compiled pattern matching.
+
+| # | Description | Level | Role |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
+| **2.8.1** | **Verify that** threat detection patterns are compiled into optimized regex engines for high-performance real-time filtering with minimal latency impact. | 1 | D/V |
+| **2.8.2** | **Verify that** threat detection systems maintain separate pattern libraries for different threat categories (prompt injection, harmful content, sensitive data, system commands). | 1 | D/V |
+| **2.8.3** | **Verify that** adaptive threat detection incorporates machine learning models that update threat sensitivity based on attack frequency and success rates. | 2 | D/V |
+| **2.8.4** | **Verify that** real-time threat intelligence feeds automatically update pattern libraries with new attack signatures and IOCs (Indicators of Compromise). | 2 | D/V |
+| **2.8.5** | **Verify that** threat detection false positive rates are continuously monitored and pattern specificity is automatically tuned to minimize legitimate use case interference. | 3 | D/V |
+| **2.8.6** | **Verify that** contextual threat analysis considers input source, user behavior patterns, and session history to improve detection accuracy. | 3 | D/V |
+| **2.8.7** | **Verify that** threat detection performance metrics (detection rate, processing latency, resource utilization) are monitored and optimized in real-time. | 3 | D/V |
+
+---
+
 ## References
 
 * [LLM01:2025 Prompt Injection – OWASP Top 10 for LLM & Generative AI Security](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)
@@ -116,3 +132,5 @@ Track and attribute the origin of all user inputs to support auditing, abuse tra
 * [Easily enforcing valid JSON schema following – API](https://community.openai.com/t/feature-request-function-calling-easily-enforcing-valid-json-schema-following/263515?utm_source)
 * [AI Safety + Cybersecurity R\&D Tracker – Fairly AI](https://www.fairly.ai/blog/ai-cybersecurity-tracker)
 * [Anthropic makes 'jailbreak' advance to stop AI models producing harmful results](https://www.ft.com/content/cf11ebd8-aa0b-4ed4-945b-a5d4401d186e)
+* [Real-Time Adaptive Threat Detection in AI Systems - Shaka Framework](https://github.com/shaka-ai/security-research)
+* [Compiled Pattern Matching for AI Security - Performance Analysis](https://arxiv.org/abs/2024.pattern-matching-ai-security)

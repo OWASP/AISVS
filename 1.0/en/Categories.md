@@ -84,3 +84,9 @@ This section is underway, please see [https://github.com/OWASP/AISVS/blob/main/1
 ## 13. Human Oversight and Trust
 
 This section is underway, please see [https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C13-Human-Oversight.md](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C13-Human-Oversight.md).
+
+---
+
+## 14. Agent Framework Lifecycle Security
+
+This section addresses comprehensive security throughout the entire agent framework lifecycle, including advanced features like DAG visualization security, multi-modal validation pipelines, reflection-based security analysis, and dynamic adaptation capabilities. Please see [https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C14-Agent-Framework-Lifecycle-Security.md](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C14-Agent-Framework-Lifecycle-Security.md).

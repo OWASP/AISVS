@@ -118,7 +118,7 @@ Encrypt and integrity-protect all inter-agent messages to thwart eavesdropping a
 
 ## 9.9 Intent Verification & Constraint Enforcement
 
-Validate that agent actions align with the user’s stated intent and system constraints.
+Validate that agent actions align with the user's stated intent and system constraints.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
@@ -127,6 +127,23 @@ Validate that agent actions align with the user’s stated intent and system con
 | **9.9.3** | **Verify that** post-condition checks validate that completed actions achieved intended effects without side effects; discrepancies trigger rollback. | 2 | V |
 | **9.9.4** | **Verify that** formal methods (e.g., model checking, theorem proving) or property-based tests demonstrate that agent plans satisfy all declared constraints. | 3 | V |
 | **9.9.5** | **Verify that** intent-mismatch or constraint-violation incidents feed continuous-improvement cycles and threat-intel sharing. | 3 | D |
+
+---
+
+## 9.10 Agent Reasoning Strategy Security
+
+Secure selection and execution of different reasoning strategies including ReAct, Chain-of-Thought, and Tree-of-Thoughts approaches.
+
+| # | Description | Level | Role |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
+| **9.10.1** | **Verify that** reasoning strategy selection is based on secure criteria and cannot be manipulated through adversarial inputs to force selection of vulnerable reasoning patterns. | 1 | D/V |
+| **9.10.2** | **Verify that** each reasoning strategy (ReAct, Chain-of-Thought, Tree-of-Thoughts) has dedicated security validation appropriate to its cognitive approach and attack surface. | 1 | D/V |
+| **9.10.3** | **Verify that** reasoning strategy transitions are logged with full context including trigger conditions, security validations, and performance implications. | 2 | D/V |
+| **9.10.4** | **Verify that** Tree-of-Thoughts reasoning includes pruning mechanisms that prevent exploration of unsafe or policy-violating reasoning branches. | 2 | D/V |
+| **9.10.5** | **Verify that** ReAct (Reason-Act-Observe) cycles include security checkpoints at each phase to validate reasoning steps, planned actions, and observed outcomes. | 2 | D/V |
+| **9.10.6** | **Verify that** reasoning strategy performance and security metrics are continuously monitored to detect degradation or manipulation attempts. | 3 | D/V |
+| **9.10.7** | **Verify that** hybrid reasoning approaches that combine multiple strategies maintain security properties of all constituent approaches without introducing new vulnerabilities. | 3 | D/V |
+| **9.10.8** | **Verify that** reasoning strategy security models account for emergent behaviors and unexpected interactions between different cognitive approaches. | 3 | D/V |
 
 ---
 
@@ -142,3 +159,6 @@ Validate that agent actions align with the user’s stated intent and system con
 * [NIST AI Risk Management Framework 1.0, 2023](https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf)
 * [WIRED security briefing on encryption best practices, 2024](https://www.wired.com/story/encryption-apps-chinese-telecom-hacking-hydra-russia-exxon)
 * [OWASP Top 10 for LLM Applications, 2025](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+* [Security Analysis of Reasoning Strategies in AI Agents - Shaka Research](https://github.com/shaka-ai/reasoning-security)
+* [ReAct Security Framework: Securing Reason-Act-Observe Cycles](https://arxiv.org/abs/2024.react-security)
+* [Tree-of-Thoughts Security Constraints and Pruning Mechanisms](https://arxiv.org/abs/2024.tot-security)

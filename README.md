@@ -28,6 +28,7 @@ The Artificial Intelligence Security Verification Standard (AISVS) focuses on pr
 11. [Privacy Protection & Personal Data Management](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C11-Privacy.md)
 12. [Monitoring, Logging & Anomaly Detection](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C12-Monitoring-and-Logging.md)
 13. [Human Oversight and Trust](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C13-Human-Oversight.md)
+14. [Agent Framework Lifecycle Security](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C14-Agent-Framework-Lifecycle-Security.md)
 
 **Please [log issues](https://github.com/OWASP/ASIVS/issues) if you find any bugs or if you have ideas. We may subsequently ask you to [open a pull request](https://github.com/OWASP/AISVS/pulls) based on the discussion in the issue.**
 
