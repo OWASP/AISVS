@@ -159,6 +159,8 @@ Secure selection and execution of different reasoning strategies including ReAct
 * [NIST AI Risk Management Framework 1.0, 2023](https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf)
 * [WIRED security briefing on encryption best practices, 2024](https://www.wired.com/story/encryption-apps-chinese-telecom-hacking-hydra-russia-exxon)
 * [OWASP Top 10 for LLM Applications, 2025](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-* [Security Analysis of Reasoning Strategies in AI Agents - Shaka Research](https://github.com/shaka-ai/reasoning-security)
-* [ReAct Security Framework: Securing Reason-Act-Observe Cycles](https://arxiv.org/abs/2024.react-security)
-* [Tree-of-Thoughts Security Constraints and Pruning Mechanisms](https://arxiv.org/abs/2024.tot-security)
+* [Comprehensive Vulnerability Analysis is Necessary for Trustworthy LLM-MAS](https://arxiv.org/html/2506.01245v1)
+* [How Is LLM Reasoning Distracted by Irrelevant Context?
+An Analysis Using a Controlled Benchmark](https://www.arxiv.org/pdf/2505.18761)
+* [Large Language Model Sentinel: LLM Agent for Adversarial Purification](https://arxiv.org/pdf/2405.20770)
+* [Securing Agentic AI: A Comprehensive Threat Model and Mitigation Framework for Generative AI Agents](https://arxiv.org/html/2504.19956v2)

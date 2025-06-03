@@ -132,5 +132,5 @@ Advanced threat detection systems that adapt to new attack patterns and provide 
 * [Easily enforcing valid JSON schema following – API](https://community.openai.com/t/feature-request-function-calling-easily-enforcing-valid-json-schema-following/263515?utm_source)
 * [AI Safety + Cybersecurity R\&D Tracker – Fairly AI](https://www.fairly.ai/blog/ai-cybersecurity-tracker)
 * [Anthropic makes 'jailbreak' advance to stop AI models producing harmful results](https://www.ft.com/content/cf11ebd8-aa0b-4ed4-945b-a5d4401d186e)
-* [Real-Time Adaptive Threat Detection in AI Systems - Shaka Framework](https://github.com/shaka-ai/security-research)
-* [Compiled Pattern Matching for AI Security - Performance Analysis](https://arxiv.org/abs/2024.pattern-matching-ai-security)
+* [Pattern matching filter rules - IBM](https://www.ibm.com/docs/ssw_aix_71/security/intrusion_pattern_matching_filter_rules.html)
+* [Real-time Threat Detection](https://www.darktrace.com/cyber-ai-glossary/real-time-threat-detection)
