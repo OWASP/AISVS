@@ -4,7 +4,7 @@ This Category list is intended to help the AISVS team plan the structure of the 
 
 ## Next steps for reviewers
 
-1. **Documentation and GRC** - Are there any documentation, process or GRC subjects than can be moved to [0x92-Appendix-C_Governance_and_Documentation.md](../../1.0/en/0x92-Appendix-C_Governance_and_Documentation.md)
+1. **Documentation and GRC** - Are there any documentation, process or GRC subjects than can be moved to [0x92-Appendix-C_Governance_and_Documentation.md](../../1.0/en/0x92-Appendix-C_Governance_and_Documentation.md).
 2. **Testability** - Are these categories testable? We want to make sure we have categories and sub-categories that are strictly testable by a seecurity tester or code reviewer.
 
 ---
