@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-Embeddings and vector stores act as the "live memory" of contemporary AI systems, continuously accepting user-supplied data and surfacing it back into model contexts via Retrieval-Augmented Generation (RAG). If left ungoverned, this memory can leak PII, violate consent, or be inverted to reconstruct the original text. The objective of this control family is to harden memory pipelines and vector databases so that access is least-privilege, embeddings are privacy-preserving, stored vectors expire or can be revoked on demand, and per-user memory never contaminates another user’s prompts or completions.
+Embeddings and vector stores act as the "live memory" of contemporary AI systems, continuously accepting user-supplied data and surfacing it back into model contexts via Retrieval-Augmented Generation (RAG). If left ungoverned, this memory can leak PII, violate consent, or be inverted to reconstruct the original text. The objective of this control family is to harden memory pipelines and vector databases so that access is least-privilege, embeddings are privacy-preserving, stored vectors expire or can be revoked on demand, and per-user memory never contaminates another user's prompts or completions.
 
 ---
 
@@ -62,15 +62,29 @@ Recent defences—noise superposition, projection networks, privacy-neuron pertu
 
 ## C8.5 Scope Enforcement for User-Specific Memory
 
-Cross-tenant leakage remains a top RAG risk: improperly filtered similarity queries can surface another customer’s private docs.
+Cross-tenant leakage remains a top RAG risk: improperly filtered similarity queries can surface another customer's private docs.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **8.5.1** | **Verify that** every retrieval query is post-filtered by tenant/user ID before being passed to the LLM prompt. | 1 | D/V |
 | **8.5.2** | **Verify that** collection names or namespaced IDs are salted per user or tenant so vectors cannot collide across scopes. | 1 | D |
-| **8.5.3** | **Verify that** similarity results above a configurable distance threshold but outside the caller’s scope are discarded and trigger security alerts. | 2 | D/V |
+| **8.5.3** | **Verify that** similarity results above a configurable distance threshold but outside the caller's scope are discarded and trigger security alerts. | 2 | D/V |
 | **8.5.4** | **Verify that** multi-tenant stress tests simulate adversarial queries attempting to retrieve out-of-scope documents and demonstrate zero leakage. | 2 | V |
 | **8.5.5** | **Verify that** encryption keys are segregated per tenant, ensuring cryptographic isolation even if physical storage is shared. | 3 | D/V |
+
+---
+
+## C8.6 Advanced Memory System Security
+
+Comprehensive security for sophisticated memory architectures including episodic, semantic, and working memory.
+
+| # | Description | Level | Role |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
+| **8.6.1** | **Verify that** different memory types (episodic, semantic, working) have isolated security contexts with appropriate access controls. | 1 | D/V |
+| **8.6.2** | **Verify that** memory consolidation processes include security validation to prevent injection of malicious memories. | 2 | D/V |
+| **8.6.3** | **Verify that** memory retrieval queries are validated and sanitized to prevent extraction of unauthorized information. | 2 | D/V |
+| **8.6.4** | **Verify that** memory forgetting mechanisms securely delete sensitive information with cryptographic erasure guarantees. | 3 | D/V |
+| **8.6.5** | **Verify that** memory system integrity is continuously monitored for unauthorized modifications or corruption. | 3 | D/V |
 
 ---
 

@@ -147,6 +147,34 @@ Secure selection and execution of different reasoning strategies including ReAct
 
 ---
 
+## 9.11 Agent Lifecycle State Management & Security
+
+Secure agent initialization, state transitions, and termination with comprehensive audit trails.
+
+| # | Description | Level | Role |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
+| **9.11.1** | **Verify that** agent initialization includes cryptographic identity establishment with hardware-backed credentials and immutable startup audit logs. | 1 | D/V |
+| **9.11.2** | **Verify that** agent state transitions are cryptographically signed, timestamped, and logged with full context including triggering events and security validations. | 2 | D/V |
+| **9.11.3** | **Verify that** agent shutdown procedures include secure memory wiping, credential revocation, and generation of tamper-evident termination certificates. | 2 | D/V |
+| **9.11.4** | **Verify that** agent recovery mechanisms validate state integrity using cryptographic checksums and rollback to known-good states when corruption is detected. | 3 | D/V |
+| **9.11.5** | **Verify that** agent persistence mechanisms encrypt sensitive state data with per-agent keys and implement secure key rotation. | 3 | D/V |
+
+---
+
+## 9.12 Tool Integration Security Framework
+
+Comprehensive security for dynamic tool loading, execution, and result validation.
+
+| # | Description | Level | Role |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
+| **9.12.1** | **Verify that** tool descriptors include security metadata specifying required privileges, risk levels, and validation requirements. | 1 | D/V |
+| **9.12.2** | **Verify that** tool execution results are validated against expected schemas and security policies before integration. | 1 | D/V |
+| **9.12.3** | **Verify that** tool interaction logs include comprehensive security context including privilege usage and data access patterns. | 2 | D/V |
+| **9.12.4** | **Verify that** dynamic tool loading mechanisms validate digital signatures and implement secure loading protocols. | 2 | D/V |
+| **9.12.5** | **Verify that** tool security assessments are automatically triggered for new versions with mandatory approval gates. | 3 | D/V |
+
+---
+
 ### References
 
 * [MITRE ATLAS tactics ML09](https://atlas.mitre.org/)

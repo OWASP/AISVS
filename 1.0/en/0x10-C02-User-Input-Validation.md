@@ -116,6 +116,20 @@ Advanced threat detection systems that adapt to new attack patterns and provide 
 
 ---
 
+## C2.9 Multi-Modal Security Validation Pipeline
+
+Comprehensive security validation for text, image, audio, and other input modalities.
+
+| # | Description | Level | Role |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
+| **2.9.1** | **Verify that** each input modality has dedicated security validators with modality-specific threat detection patterns. | 1 | D/V |
+| **2.9.2** | **Verify that** multi-modal inputs are processed in isolated sandboxes with modality-appropriate resource constraints. | 2 | D/V |
+| **2.9.3** | **Verify that** cross-modal attack detection identifies coordinated attacks spanning multiple input types (e.g., steganographic payloads in images combined with prompt injection in text). | 2 | D/V |
+| **2.9.4** | **Verify that** multi-modal validation failures trigger comprehensive logging including all input modalities and correlation analysis. | 3 | D/V |
+| **2.9.5** | **Verify that** modality-specific content classifiers are regularly updated with new threat patterns and adversarial examples. | 3 | D/V |
+
+---
+
 ## References
 
 * [LLM01:2025 Prompt Injection – OWASP Top 10 for LLM & Generative AI Security](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)
