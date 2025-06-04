@@ -136,42 +136,42 @@ Secure selection and execution of different reasoning strategies including ReAct
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **9.10.1** | **Verify that** reasoning strategy selection is based on secure criteria and cannot be manipulated through adversarial inputs to force selection of vulnerable reasoning patterns. | 1 | D/V |
-| **9.10.2** | **Verify that** each reasoning strategy (ReAct, Chain-of-Thought, Tree-of-Thoughts) has dedicated security validation appropriate to its cognitive approach and attack surface. | 1 | D/V |
-| **9.10.3** | **Verify that** reasoning strategy transitions are logged with full context including trigger conditions, security validations, and performance implications. | 2 | D/V |
-| **9.10.4** | **Verify that** Tree-of-Thoughts reasoning includes pruning mechanisms that prevent exploration of unsafe or policy-violating reasoning branches. | 2 | D/V |
-| **9.10.5** | **Verify that** ReAct (Reason-Act-Observe) cycles include security checkpoints at each phase to validate reasoning steps, planned actions, and observed outcomes. | 2 | D/V |
-| **9.10.6** | **Verify that** reasoning strategy performance and security metrics are continuously monitored to detect degradation or manipulation attempts. | 3 | D/V |
-| **9.10.7** | **Verify that** hybrid reasoning approaches that combine multiple strategies maintain security properties of all constituent approaches without introducing new vulnerabilities. | 3 | D/V |
-| **9.10.8** | **Verify that** reasoning strategy security models account for emergent behaviors and unexpected interactions between different cognitive approaches. | 3 | D/V |
+| **9.10.1** | **Verify that** reasoning strategy selection uses deterministic criteria (input complexity, task type, security context) and identical inputs produce identical strategy selections within the same security context. | 1 | D/V |
+| **9.10.2** | **Verify that** each reasoning strategy (ReAct, Chain-of-Thought, Tree-of-Thoughts) has dedicated input validation, output sanitization, and execution time limits specific to its cognitive approach. | 1 | D/V |
+| **9.10.3** | **Verify that** reasoning strategy transitions are logged with complete context including input characteristics, selection criteria values, and execution metadata for audit trail reconstruction. | 2 | D/V |
+| **9.10.4** | **Verify that** Tree-of-Thoughts reasoning includes branch pruning mechanisms that terminate exploration when policy violations, resource limits, or safety boundaries are detected. | 2 | D/V |
+| **9.10.5** | **Verify that** ReAct (Reason-Act-Observe) cycles include validation checkpoints at each phase: reasoning step verification, action authorization, and observation sanitization before proceeding. | 2 | D/V |
+| **9.10.6** | **Verify that** reasoning strategy performance metrics (execution time, resource usage, output quality) are monitored with automated alerts when metrics deviate beyond configured thresholds. | 3 | D/V |
+| **9.10.7** | **Verify that** hybrid reasoning approaches that combine multiple strategies maintain input validation and output constraints of all constituent strategies without bypassing any security controls. | 3 | D/V |
+| **9.10.8** | **Verify that** reasoning strategy security testing includes fuzzing with malformed inputs, adversarial prompts designed to force strategy switching, and boundary condition testing for each cognitive approach. | 3 | D/V |
 
 ---
 
 ## 9.11 Agent Lifecycle State Management & Security
 
-Secure agent initialization, state transitions, and termination with comprehensive audit trails.
+Secure agent initialization, state transitions, and termination with cryptographic audit trails and defined recovery procedures.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **9.11.1** | **Verify that** agent initialization includes cryptographic identity establishment with hardware-backed credentials and immutable startup audit logs. | 1 | D/V |
-| **9.11.2** | **Verify that** agent state transitions are cryptographically signed, timestamped, and logged with full context including triggering events and security validations. | 2 | D/V |
-| **9.11.3** | **Verify that** agent shutdown procedures include secure memory wiping, credential revocation, and generation of tamper-evident termination certificates. | 2 | D/V |
-| **9.11.4** | **Verify that** agent recovery mechanisms validate state integrity using cryptographic checksums and rollback to known-good states when corruption is detected. | 3 | D/V |
-| **9.11.5** | **Verify that** agent persistence mechanisms encrypt sensitive state data with per-agent keys and implement secure key rotation. | 3 | D/V |
+| **9.11.1** | **Verify that** agent initialization includes cryptographic identity establishment with hardware-backed credentials and immutable startup audit logs containing agent ID, timestamp, configuration hash, and initialization parameters. | 1 | D/V |
+| **9.11.2** | **Verify that** agent state transitions are cryptographically signed, timestamped, and logged with complete context including triggering events, previous state hash, new state hash, and security validations performed. | 2 | D/V |
+| **9.11.3** | **Verify that** agent shutdown procedures include secure memory wiping using cryptographic erasure or multi-pass overwriting, credential revocation with certificate authority notification, and generation of tamper-evident termination certificates. | 2 | D/V |
+| **9.11.4** | **Verify that** agent recovery mechanisms validate state integrity using cryptographic checksums (SHA-256 minimum) and rollback to known-good states when corruption is detected with automated alerts and manual approval requirements. | 3 | D/V |
+| **9.11.5** | **Verify that** agent persistence mechanisms encrypt sensitive state data with per-agent AES-256 keys and implement secure key rotation on configurable schedules (maximum 90 days) with zero-downtime deployment. | 3 | D/V |
 
 ---
 
 ## 9.12 Tool Integration Security Framework
 
-Comprehensive security for dynamic tool loading, execution, and result validation.
+Security controls for dynamic tool loading, execution, and result validation with defined risk assessment and approval processes.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **9.12.1** | **Verify that** tool descriptors include security metadata specifying required privileges, risk levels, and validation requirements. | 1 | D/V |
-| **9.12.2** | **Verify that** tool execution results are validated against expected schemas and security policies before integration. | 1 | D/V |
-| **9.12.3** | **Verify that** tool interaction logs include comprehensive security context including privilege usage and data access patterns. | 2 | D/V |
-| **9.12.4** | **Verify that** dynamic tool loading mechanisms validate digital signatures and implement secure loading protocols. | 2 | D/V |
-| **9.12.5** | **Verify that** tool security assessments are automatically triggered for new versions with mandatory approval gates. | 3 | D/V |
+| **9.12.1** | **Verify that** tool descriptors include security metadata specifying required privileges (read/write/execute), risk levels (low/medium/high), resource limits (CPU, memory, network), and validation requirements documented in tool manifests. | 1 | D/V |
+| **9.12.2** | **Verify that** tool execution results are validated against expected schemas (JSON Schema, XML Schema) and security policies (output sanitization, data classification) before integration with timeout limits and error handling procedures. | 1 | D/V |
+| **9.12.3** | **Verify that** tool interaction logs include detailed security context including privilege usage, data access patterns, execution time, resource consumption, and return codes with structured logging for SIEM integration. | 2 | D/V |
+| **9.12.4** | **Verify that** dynamic tool loading mechanisms validate digital signatures using PKI infrastructure and implement secure loading protocols with sandbox isolation and permission verification before execution. | 2 | D/V |
+| **9.12.5** | **Verify that** tool security assessments are automatically triggered for new versions with mandatory approval gates including static analysis, dynamic testing, and security team review with documented approval criteria and SLA requirements. | 3 | D/V |
 
 ---
 

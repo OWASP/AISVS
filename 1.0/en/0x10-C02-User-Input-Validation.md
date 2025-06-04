@@ -118,15 +118,15 @@ Advanced threat detection systems that adapt to new attack patterns and provide 
 
 ## C2.9 Multi-Modal Security Validation Pipeline
 
-Comprehensive security validation for text, image, audio, and other input modalities.
+Security validation for text, image, audio, and other input modalities with specific threat detection and resource isolation.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.9.1** | **Verify that** each input modality has dedicated security validators with modality-specific threat detection patterns. | 1 | D/V |
-| **2.9.2** | **Verify that** multi-modal inputs are processed in isolated sandboxes with modality-appropriate resource constraints. | 2 | D/V |
-| **2.9.3** | **Verify that** cross-modal attack detection identifies coordinated attacks spanning multiple input types (e.g., steganographic payloads in images combined with prompt injection in text). | 2 | D/V |
-| **2.9.4** | **Verify that** multi-modal validation failures trigger comprehensive logging including all input modalities and correlation analysis. | 3 | D/V |
-| **2.9.5** | **Verify that** modality-specific content classifiers are regularly updated with new threat patterns and adversarial examples. | 3 | D/V |
+| **2.9.1** | **Verify that** each input modality has dedicated security validators with documented threat patterns (text: prompt injection, images: steganography, audio: spectrogram attacks) and detection thresholds. | 1 | D/V |
+| **2.9.2** | **Verify that** multi-modal inputs are processed in isolated sandboxes with defined resource limits (memory, CPU, processing time) specific to each modality type and documented in security policies. | 2 | D/V |
+| **2.9.3** | **Verify that** cross-modal attack detection identifies coordinated attacks spanning multiple input types (e.g., steganographic payloads in images combined with prompt injection in text) with correlation rules and alert generation. | 2 | D/V |
+| **2.9.4** | **Verify that** multi-modal validation failures trigger detailed logging including all input modalities, validation results, threat scores, and correlation analysis with structured log formats for SIEM integration. | 3 | D/V |
+| **2.9.5** | **Verify that** modality-specific content classifiers are updated according to documented schedules (minimum quarterly) with new threat patterns, adversarial examples, and performance benchmarks maintained above baseline thresholds. | 3 | D/V |
 
 ---
 

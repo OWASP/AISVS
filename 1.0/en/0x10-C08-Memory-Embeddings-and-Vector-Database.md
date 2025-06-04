@@ -76,15 +76,15 @@ Cross-tenant leakage remains a top RAG risk: improperly filtered similarity quer
 
 ## C8.6 Advanced Memory System Security
 
-Comprehensive security for sophisticated memory architectures including episodic, semantic, and working memory.
+Security controls for sophisticated memory architectures including episodic, semantic, and working memory with specific isolation and validation requirements.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **8.6.1** | **Verify that** different memory types (episodic, semantic, working) have isolated security contexts with appropriate access controls. | 1 | D/V |
-| **8.6.2** | **Verify that** memory consolidation processes include security validation to prevent injection of malicious memories. | 2 | D/V |
-| **8.6.3** | **Verify that** memory retrieval queries are validated and sanitized to prevent extraction of unauthorized information. | 2 | D/V |
-| **8.6.4** | **Verify that** memory forgetting mechanisms securely delete sensitive information with cryptographic erasure guarantees. | 3 | D/V |
-| **8.6.5** | **Verify that** memory system integrity is continuously monitored for unauthorized modifications or corruption. | 3 | D/V |
+| **8.6.1** | **Verify that** different memory types (episodic, semantic, working) have isolated security contexts with role-based access controls, separate encryption keys, and documented access patterns for each memory type. | 1 | D/V |
+| **8.6.2** | **Verify that** memory consolidation processes include security validation to prevent injection of malicious memories through content sanitization, source verification, and integrity checks before storage. | 2 | D/V |
+| **8.6.3** | **Verify that** memory retrieval queries are validated and sanitized to prevent extraction of unauthorized information through query pattern analysis, access control enforcement, and result filtering. | 2 | D/V |
+| **8.6.4** | **Verify that** memory forgetting mechanisms securely delete sensitive information with cryptographic erasure guarantees using key deletion, multi-pass overwriting, or hardware-based secure deletion with verification certificates. | 3 | D/V |
+| **8.6.5** | **Verify that** memory system integrity is continuously monitored for unauthorized modifications or corruption through checksums, audit logs, and automated alerts when memory content changes outside normal operations. | 3 | D/V |
 
 ---
 
