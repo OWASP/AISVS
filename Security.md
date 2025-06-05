@@ -14,4 +14,4 @@ Email jim@owasp.org with the following information:
 4. Current public knowledge of this vulnerability (e.g. related CVE, security advisory, etc.)
 
 ## Our security acknowledgments page
-Acknowledgments: https://github.com/OWASP/AISVS/blob/master/hall_of_fame.md
+Acknowledgments: https://github.com/OWASP/AISVS/blob/main/hall_of_fame.md
