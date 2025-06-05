@@ -1,0 +1,41 @@
+name: Build Documents
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  filters:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4.1.1
+    - uses: dorny/paths-filter@v3.0.0
+      id: filter
+      with:
+        filters: |
+          docker:
+            - 'docker/**/*'
+          v1:
+            - '5.0/**/*'
+    outputs:
+      docker: ${{ steps.filter.outputs.docker }}
+      v1: ${{ steps.filter.outputs.v1 }}
+
+  build-image:
+    if: needs.filters.outputs.docker == 'true'
+    needs: filters
+    uses: owasp/aisvs/.github/workflows/build-and-publish-docker-image.yml@main
+    
+  build-v1:
+    if: ${{ always() && needs.filters.outputs.v1 == 'true' }}
+    needs: 
+      - build-image
+      - filters
+    uses: owasp/aisvs/.github/workflows/create-1.0-outputs.yml@main

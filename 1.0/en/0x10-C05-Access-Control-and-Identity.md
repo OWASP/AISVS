@@ -109,7 +109,7 @@ Control permissions for AI agents and autonomous systems through scoped capabili
 
 * [NIST SP 800-63-3: Digital Identity Guidelines](https://pages.nist.gov/800-63-3/)
 * [Zero Trust Architecture – NIST SP 800-207](https://nvlpubs.nist.gov/nistpubs/specialpublications/NIST.SP.800-207.pdf)
-* [OWASP Application Security Verification Standard (ASVS)](https://owasp.org/www-project-application-security-verification-standard/)
+* [OWASP Application Security Verification Standard (AISVS)](https://owasp.org/www-project-application-security-verification-standard/)
 
 ### Implementation Guides
 

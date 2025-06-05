@@ -5,7 +5,7 @@ on:
   pull_request: {}
   # Scan mainline branches and report all findings: 
   push:
-    branches: ["master", "main"]
+    branches: ["main"]
 
 jobs:
   markdown-lint-check:

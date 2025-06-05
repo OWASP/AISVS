@@ -4,13 +4,13 @@
 
 ### What is [OWASP](https://owasp.org/)?
 
-The Open Worldwide Application Security Project (OWASP) is a nonprofit organization that works to improve the security of software. It has many programs to work towards this goal. One of those programs is the ASVS.
+The Open Worldwide Application Security Project (OWASP) is a nonprofit organization that works to improve the security of software. It has many programs to work towards this goal. One of those programs is the AISVS.
 
 ### What is the [AISVS](https://github.com/OWASP/www-project-artificial-intelligence-security-verification-standard-aisvs-docs)?
 
-The OWASP Aritifical Intelligence Security Verification Standard (AISVS) focuses on providing developers, architects, and security professionals with a structured framework to evaluate and verify the security and ethical considerations of AI-driven applications. Modeled after existing OWASP standards (such as the ASVS for web applications), AISVS will define categories of requirements for areas including:
+The OWASP Artifical Intelligence Security Verification Standard (AISVS) focuses on providing developers, architects, and security professionals with a structured framework to evaluate and verify the security and ethical considerations of AI-driven applications. Modeled after existing OWASP standards (such as the AISVS for web applications), AISVS will define categories of requirements for areas including:
 
-### What is the Current Status of ASVS development?
+### What is the Current Status of AISVS development?
 
 🎉🎉🎉 **We are just getting started deciding categories for AISVS v1.0** 🎉🎉🎉
 
