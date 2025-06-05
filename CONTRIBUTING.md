@@ -8,7 +8,7 @@ The Open Worldwide Application Security Project (OWASP) is a nonprofit organizat
 
 ### What is the [AISVS](https://github.com/OWASP/www-project-artificial-intelligence-security-verification-standard-aisvs-docs)?
 
-The OWASP Artifical Intelligence Security Verification Standard (AISVS) focuses on providing developers, architects, and security professionals with a structured framework to evaluate and verify the security and ethical considerations of AI-driven applications. Modeled after existing OWASP standards (such as the AISVS for web applications), AISVS will define categories of requirements for areas including:
+The OWASP Artificial Intelligence Security Verification Standard (AISVS) focuses on providing developers, architects, and security professionals with a structured framework to evaluate and verify the security and ethical considerations of AI-driven applications. Modeled after existing OWASP standards (such as the AISVS for web applications), AISVS will define categories of requirements for areas including:
 
 ### What is the Current Status of AISVS development?
 
@@ -16,7 +16,7 @@ The OWASP Artifical Intelligence Security Verification Standard (AISVS) focuses 
 
 ## How can I help?
 
-Reading through the caegories and helping us solifify them would be a great help.
+Reading through the categories and helping us solidify them would be a great help.
 
 A few questions to ask yourself as you review the document:
 
