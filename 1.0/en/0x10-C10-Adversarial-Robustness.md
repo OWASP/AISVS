@@ -63,7 +63,7 @@ Detect and deter unauthorized cloning. Watermarking and query-pattern analysis a
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **10.5.1** | **Verify that** inference gateways enforce global and per-API-key rate limits tuned to the model’s memorization threshold. | 1 | D |
+| **10.5.1** | **Verify that** inference gateways enforce global and per-API-key rate limits tuned to the model's memorization threshold. | 1 | D |
 | **10.5.2** | **Verify that** query-entropy and input-plurality statistics feed an automated extraction detector. | 2 | D/V |
 | **10.5.3** | **Verify that** fragile or probabilistic watermarks can be proved with p < 0.01 in ≤ 1 000 queries against a suspected clone. | 2 | V |
 | **10.5.4** | **Verify that** watermark keys and trigger sets are stored in a hardware-security-module and rotated yearly. | 3 | D |
@@ -82,6 +82,48 @@ Identify and neutralize backdoored or poisoned inputs.
 | **10.6.3** | **Verify that** inputs flagged as poisoned trigger soft-blocking and human review workflows. | 2 | D |
 | **10.6.4** | **Verify that** detectors are stress-tested with adaptive, triggerless backdoor attacks. | 2 | V |
 | **10.6.5** | **Verify that** detection efficacy metrics are logged and periodically re-evaluated with fresh threat intel. | 3 | D |
+
+---
+
+## 10.7 Dynamic Security Policy Adaptation
+
+Real-time security policy updates based on threat intelligence and behavioral analysis.
+
+| # | Description | Level | Role |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
+| **10.7.1** | **Verify that** security policies can be updated dynamically without agent restart while maintaining policy version integrity. | 1 | D/V |
+| **10.7.2** | **Verify that** policy updates are cryptographically signed by authorized security personnel and validated before application. | 2 | D/V |
+| **10.7.3** | **Verify that** dynamic policy changes are logged with full audit trails including justification, approval chains, and rollback procedures. | 2 | D/V |
+| **10.7.4** | **Verify that** adaptive security mechanisms adjust threat detection sensitivity based on risk context and behavioral patterns. | 3 | D/V |
+| **10.7.5** | **Verify that** policy adaptation decisions are explainable and include evidence trails for security team review. | 3 | D/V |
+
+---
+
+## 10.8 Reflection-Based Security Analysis
+
+Security validation through agent self-reflection and meta-cognitive analysis.
+
+| # | Description | Level | Role |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
+| **10.8.1** | **Verify that** agent reflection mechanisms include security-focused self-assessment of decisions and actions. | 1 | D/V |
+| **10.8.2** | **Verify that** reflection outputs are validated to prevent manipulation of self-assessment mechanisms by adversarial inputs. | 2 | D/V |
+| **10.8.3** | **Verify that** meta-cognitive security analysis identifies potential bias, manipulation, or compromise in agent reasoning processes. | 2 | D/V |
+| **10.8.4** | **Verify that** reflection-based security warnings trigger enhanced monitoring and potential human intervention workflows. | 3 | D/V |
+| **10.8.5** | **Verify that** continuous learning from security reflections improves threat detection without degrading legitimate functionality. | 3 | D/V |
+
+---
+
+## 10.9 Evolution & Self-Improvement Security
+
+Security controls for agent systems capable of self-modification and evolution.
+
+| # | Description | Level | Role |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
+| **10.9.1** | **Verify that** self-modification capabilities are restricted to designated safe areas with formal verification boundaries. | 1 | D/V |
+| **10.9.2** | **Verify that** evolution proposals undergo security impact assessment before implementation. | 2 | D/V |
+| **10.9.3** | **Verify that** self-improvement mechanisms include rollback capabilities with integrity verification. | 2 | D/V |
+| **10.9.4** | **Verify that** meta-learning security prevents adversarial manipulation of improvement algorithms. | 3 | D/V |
+| **10.9.5** | **Verify that** recursive self-improvement is bounded by formal safety constraints with mathematical proofs of convergence. | 3 | D/V |
 
 ---
 
