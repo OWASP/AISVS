@@ -290,6 +290,20 @@ Implement infrastructure controls for privacy-preserving computation to protect 
 
 ---
 
+## C4.15 Agent Framework Cloud Integration Security & Hybrid Deployment
+
+Security controls for cloud-integrated agent frameworks with hybrid on-premises/cloud architectures.
+
+| # | Description | Level | Role |
+|:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
+| **4.15.1** | **Verify that** cloud storage integration uses end-to-end encryption with agent-controlled key management. | 1 | D/V |
+| **4.15.2** | **Verify that** hybrid deployment security boundaries are clearly defined with encrypted communication channels. | 2 | D/V |
+| **4.15.3** | **Verify that** cloud resource access includes zero-trust verification with continuous authentication. | 2 | D/V |
+| **4.15.4** | **Verify that** data residency requirements are enforced with cryptographic attestation of storage locations. | 3 | D/V |
+| **4.15.5** | **Verify that** cloud provider security assessments include agent-specific threat modeling and risk evaluation. | 3 | D/V |
+
+---
+
 ## References
 
 * [NIST Cybersecurity Framework 2.0](https://www.nist.gov/cyberframework)
