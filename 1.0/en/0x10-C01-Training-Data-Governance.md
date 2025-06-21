@@ -14,7 +14,7 @@ Maintain a verifiable inventory of all datasets, accept only trusted sources, an
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **1.1.1** | **Verify that** an up-to-date inventory of every training-data source (origin, steward/owner, licence, collection method, intended use constraints, and processing history) is maintained. | 1 | D/V |
 | **1.1.2** | **Verify that** only datasets vetted for quality, representativeness, ethical sourcing, and licence compliance are allowed, reducing risks of poisoning, embedded bias, and intellectual property infringement. | 1 | D/V |
-| **1.1.3** | **Verify that** data minimisation is enforced so unnecessary or sensitive attributes are excluded. | 1 | D/V |
+| **1.1.3** | **Verify that** data minimization is enforced so unnecessary or sensitive attributes are excluded. | 1 | D/V |
 | **1.1.4** | **Verify that** all dataset changes are subject to a logged approval workflow. | 2 | D/V |
 | **1.1.5** | **Verify that** labelling/annotation quality is ensured via reviewer cross-checks or consensus. | 2 | D/V |
 | **1.1.6** | **Verify that** "data cards" or "datasheets for datasets" are maintained for significant training datasets, detailing characteristics, motivations, composition, collection processes, preprocessing, and recommended/discouraged uses. | 2 | D/V |
@@ -23,7 +23,7 @@ Maintain a verifiable inventory of all datasets, accept only trusted sources, an
 
 ## C1.2 Training Data Security & Integrity
 
-Restrict access, encrypt at rest and in transit, and validate integrity to block tampering or theft.)
+Restrict access, encrypt at rest and in transit, and validate integrity to block tampering or theft.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
@@ -50,12 +50,12 @@ Detect demographic skews and apply mitigation so the model's error rates are equ
 
 ## C1.4 Training Data Labeling Quality, Integrity, and Security
 
-Cryptographically protect labels and require dual review for critical classes.
+Protect labels with encryption and require dual review for critical classes.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **1.4.1** | **Verify that** labeling/annotation quality is ensured via clear guidelines, reviewer cross-checks, consensus mechanisms (e.g., monitoring inter-annotator agreement), and defined processes for resolving discrepancies.| 2 | D/V |
-| **1.4.2** | **Verify that** cryptographic hashes or digital signatures are applied to label artefacts to ensure their integrity and authenticity. | 2 | D/V |
+| **1.4.2** | **Verify that** cryptographic hashes or digital signatures are applied to label artifacts to ensure their integrity and authenticity. | 2 | D/V |
 | **1.4.3** | **Verify that** labeling interfaces and platforms enforce strong access controls, maintain tamper-evident audit logs of all labeling activities, and protect against unauthorized modifications. | 2 | D/V |
 | **1.4.4** | **Verify that** labels critical to safety, security, or fairness (e.g., identifying toxic content, critical medical findings) receive mandatory independent dual review or equivalent robust verification.| 3 | D/V |
 | **1.4.5** | **Verify that** sensitive information (including PII) inadvertently captured or necessarily present in labels is redacted, pseudonymized, anonymized, or encrypted at rest and in transit, according to data minimization principles.| 2 | D/V |
@@ -96,7 +96,7 @@ Apply statistical anomaly detection and quarantine workflows to stop adversarial
 
 ## C1.7 User Data Deletion & Consent Enforcement
 
-Honor deletion and consent-withdrawal requests across datasets, backups, and derived artefacts.
+Honor deletion and consent-withdrawal requests across datasets, backups, and derived artifacts.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
@@ -121,7 +121,7 @@ Vet external data providers and verify integrity over authenticated, encrypted c
 
 ## C1.9 Adversarial Sample Detection
 
-Implement measures during the training phase, such as adversarial training, to enhance model resilience against adversarial examples.t.
+Implement measures during the training phase, such as adversarial training, to enhance model resilience against adversarial examples.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
