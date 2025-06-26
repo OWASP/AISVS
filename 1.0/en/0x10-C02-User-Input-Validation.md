@@ -50,7 +50,7 @@ AI attacks featuring malformed or oversized inputs can cause parsing errors, pro
 
 ## C2.4 Content & Policy Screening
 
-Developers should be able to detect syntactically valid prompts that request disallowed content (such as illicit instructions, hate speech, and copyrighted text) then prevent them from propagating. 
+Developers should be able to detect syntactically valid prompts that request disallowed content (such as illicit instructions, hate speech, and copyrighted text) then prevent them from propagating.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
