@@ -2,31 +2,31 @@
 
 ## Control Objective
 
-Robust user-input validation is a first-line defense against many of the most damaging attacks on AI systems.  Prompt-injection "jailbreaks" can override system instructions, leak sensitive data, or steer the model toward disallowed behavior.  Research shows that multi-shot jailbreaks exploiting very long context windows remain effective unless dedicated filters and instruction-hierarchies are in place.  Meanwhile, imperceptible adversarial perturbations—such as homoglyph swaps or leetspeak—can silently change a model's decisions.
+Robust validation of user input is a first-line defense against some of the most damaging attacks on AI systems. Prompt injection attacks can override system instructions, leak sensitive data, or steer the model toward behavior that is not allowed. Unless dedicated filters and instruction hierarchies are in place, research shows that "multi-shot" jailbreaks that exploit very long context windows will be effective. Also, subtle adversarial perturbation attacks--such as homoglyph swaps or leetspeak—-can silently change a model's decisions.
 
 ---
 
-## C2.1 Prompt-Injection Defense
+## C2.1 Prompt Injection Defense
 
-Prompt-injection is one of the top risks for AI systems. Defenses combine static pattern filters, dynamic classifiers and instruction-hierarchy enforcement.
+Prompt injection is one of the top risks for AI systems. Defenses against this tactic employ a combination of static pattern filters, dynamic classifiers and instruction hierarchy enforcement.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.1.1** | **Verify that** user inputs are screened against a continuously-updated library of known prompt-injection patterns (jailbreak keywords, "ignore previous", role-play chains, indirect HTML/URL attacks). | 1 |  D/V |
+| **2.1.1** | **Verify that** user inputs are screened against a continuously updated library of known prompt injection patterns (jailbreak keywords, "ignore previous", role-play chains, indirect HTML/URL attacks). | 1 |  D/V |
 | **2.1.2** | **Verify that** the system enforces an instruction hierarchy in which system or developer messages override user instructions, even after context window expansion. | 1 |  D/V |
-| **2.1.3** | **Verify that** adversarial evaluation tests (e.g., red-team "many-shot" prompts) are run before every model or prompt-template release, with success-rate thresholds and automated blockers for regressions. | 2 |  D/V |
-| **2.1.4** | **Verify that** prompts originating from third-party content (web pages, PDFs, e-mails) are sanitized in an isolated parsing context before being concatenated into the main prompt. | 2 | D |
+| **2.1.3** | **Verify that** adversarial evaluation tests (e.g., Red Team "many-shot" prompts) are run before every model or prompt-template release, with success-rate thresholds and automated blockers for regressions. | 2 |  D/V |
+| **2.1.4** | **Verify that** prompts originating from third-party content (web pages, PDFs, emails) are sanitized in an isolated parsing context before being concatenated into the main prompt. | 2 | D |
 | **2.1.5** | **Verify that** all prompt-filter rule updates, classifier model versions and block-list changes are version-controlled and auditable. | 3 |  D/V |
 
 ---
 
 ## C2.2 Adversarial-Example Resistance
 
-Natural Language Processing (NLP) models remain vulnerable to subtle character or word-level perturbations that humans miss but models misclassify.
+Natural Language Processing (NLP) models are still vulnerable to subtle character or word-level perturbations that humans often miss but models tend to misclassify.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.2.1** | **Verify that** basic input-normalization steps (Unicode NFC, homoglyph mapping, whitespace trimming) run before tokenization. | 1 | D |
+| **2.2.1** | **Verify that** basic input normalization steps (Unicode NFC, homoglyph mapping, whitespace trimming) run before tokenization. | 1 | D |
 | **2.2.2** | **Verify that** statistical anomaly detection flags inputs with unusually high edit distance to language norms, excessive repeated tokens, or abnormal embedding distances. | 2 |  D/V |
 | **2.2.3** | **Verify that** the inference pipeline supports optional adversarial-training–hardened model variants or defense layers (e.g., randomization, defensive distillation) for high-risk endpoints. | 2 | D |
 | **2.2.4** | **Verify that** suspected adversarial inputs are quarantined, logged with full payloads (after PII redaction).  | 2 | V |
@@ -36,27 +36,27 @@ Natural Language Processing (NLP) models remain vulnerable to subtle character o
 
 ## C2.3 Schema, Type & Length Validation
 
-Malformed or oversized inputs cause parsing errors, prompt spillage across fields and resource exhaustion.  Strict schema enforcement is also a prerequisite for deterministic tool-calling.
+AI attacks featuring malformed or oversized inputs can cause parsing errors, prompt spillage across fields, and resource exhaustion.  Strict schema enforcement is also a prerequisite when performing deterministic tool calls.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.3.1** | **Verify that** every API or function-call endpoint defines an explicit input schema (JSON Schema, Protobuf or multimodal equivalent) and that inputs are validated before prompt assembly. | 1 | D |
+| **2.3.1** | **Verify that** every API or function call endpoint defines an explicit input schema (JSON Schema, Protobuf or multimodal equivalent) and that inputs are validated before prompt assembly. | 1 | D |
 | **2.3.2** | **Verify that** inputs exceeding maximum token or byte limits are rejected with a safe error and never silently truncated. | 1 |  D/V |
 | **2.3.3** | **Verify that** type checks (e.g., numeric ranges, enum values, MIME types for images/audio) are enforced server-side, not only in client code. | 2 |  D/V |
-| **2.3.4** | **Verify that** semantic validators (e.g., JSON Schema) run in constant-time to prevent algorithmic DoS. | 2 | D |
+| **2.3.4** | **Verify that** semantic validators (e.g., JSON Schema) run in constant time to prevent algorithmic DoS. | 2 | D |
 | **2.3.5** | **Verify that** validation failures are logged with redacted payload snippets and unambiguous error codes to aid security triage. | 3 | V |
 
 ---
 
 ## C2.4 Content & Policy Screening
 
-Even syntactically valid prompts may request disallowed content (illicit instructions, hate speech, copyrighted text).
+Developers should be able to detect syntactically valid prompts that request disallowed content (such as illicit instructions, hate speech, and copyrighted text) then prevent them from propagating. 
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.4.1** | **Verify that** a content-classifier (zero-shot or fine-tuned) scores every input for violence, self-harm, hate, sexual content and illegal requests, with configurable thresholds. | 1 | D |
-| **2.4.2** | **Verify that** policy-violating inputs receive standardized refusals or safe-completions and do not propagate to downstream LLM calls. | 1 |  D/V |
-| **2.4.3** | **Verify that** the screening model or rule-set is re-trained/updated at least quarterly, incorporating newly observed jailbreak or policy-bypass patterns.  | 2 | D |
+| **2.4.1** | **Verify that** a content classifier (zero shot or fine tuned) scores every input for violence, self-harm, hate, sexual content and illegal requests, with configurable thresholds. | 1 | D |
+| **2.4.2** | **Verify that** inputs which violate policies will receive standardized refusals or safe completions so they will not propagate to downstream LLM calls. | 1 |  D/V |
+| **2.4.3** | **Verify that** the screening model or rule set is retrained/updated at least quarterly, incorporating newly observed jailbreak or policy bypass patterns.  | 2 | D |
 | **2.4.4** | **Verify that** screening respects user-specific policies (age, regional legal constraints) via attribute-based rules resolved at request time.  | 2 | D |
 | **2.4.5** | **Verify that** screening logs include classifier confidence scores and policy category tags for SOC correlation and future red-team replay. | 3 | V |
 
@@ -64,12 +64,12 @@ Even syntactically valid prompts may request disallowed content (illicit instruc
 
 ## C2.5 Input Rate Limiting & Abuse Prevention
 
-Prevent abuse, resource exhaustion, and automated attacks by limiting input rates and detecting anomalous usage patterns.
+Developers should prevent abuse, resource exhaustion, and automated attacks against AI systems by limiting input rates and detecting anomalous usage patterns.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **2.5.1** | **Verify that** per-user, per-IP, and per-API-key rate limits are enforced for all input endpoints. | 1 | D/V |
-| **2.5.2** | **Verify that** burst and sustained rate limits are tuned to prevent DoS and brute-force attacks. | 2 | D/V |
+| **2.5.2** | **Verify that** burst and sustained rate limits are tuned to prevent DoS and brute force attacks. | 2 | D/V |
 | **2.5.3** | **Verify that** anomalous usage patterns (e.g., rapid-fire requests, input flooding) trigger automated blocks or escalations. | 2 | D/V |
 | **2.5.4** | **Verify that** abuse prevention logs are retained and reviewed for emerging attack patterns. | 3 | V |
 
@@ -77,7 +77,7 @@ Prevent abuse, resource exhaustion, and automated attacks by limiting input rate
 
 ## C2.6 Multi-Modal Input Validation
 
-Ensure robust validation for non-textual inputs (images, audio, files) to prevent injection, evasion, or resource abuse.
+AI systems should include robust validation for non-textual inputs (images, audio, files) to prevent injection, evasion, or resource abuse.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
@@ -90,7 +90,7 @@ Ensure robust validation for non-textual inputs (images, audio, files) to preven
 
 ## C2.7 Input Provenance & Attribution
 
-Track and attribute the origin of all user inputs to support auditing, abuse tracking, and compliance.
+AI systems should support auditing, abuse tracking, and compliance by monitoring and tagging the origins of all user inputs.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
@@ -102,11 +102,11 @@ Track and attribute the origin of all user inputs to support auditing, abuse tra
 
 ## C2.8 Real-Time Adaptive Threat Detection
 
-Advanced threat detection systems that adapt to new attack patterns and provide real-time protection with compiled pattern matching.
+Developers should employ advanced threat detection systems for AI that adapt to new attack patterns and provide real-time protection with compiled pattern matching.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.8.1** | **Verify that** threat detection patterns are compiled into optimized regex engines for high-performance real-time filtering with minimal latency impact. | 1 | D/V |
+| **2.8.1** | **Verify that** threat detection patterns are compiled into optimized regex engines for high performance real-time filtering with minimal latency impact. | 1 | D/V |
 | **2.8.2** | **Verify that** threat detection systems maintain separate pattern libraries for different threat categories (prompt injection, harmful content, sensitive data, system commands). | 1 | D/V |
 | **2.8.3** | **Verify that** adaptive threat detection incorporates machine learning models that update threat sensitivity based on attack frequency and success rates. | 2 | D/V |
 | **2.8.4** | **Verify that** real-time threat intelligence feeds automatically update pattern libraries with new attack signatures and IOCs (Indicators of Compromise). | 2 | D/V |
@@ -118,7 +118,7 @@ Advanced threat detection systems that adapt to new attack patterns and provide 
 
 ## C2.9 Multi-Modal Security Validation Pipeline
 
-Security validation for text, image, audio, and other input modalities with specific threat detection and resource isolation.
+Developers should provide security validation for text, image, audio, and other AI input modalities with specific types of threat detection and resource isolation.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
