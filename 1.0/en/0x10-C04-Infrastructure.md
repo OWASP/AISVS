@@ -31,8 +31,8 @@ Ensure cryptographic integrity and supply chain security through reproducible bu
 | **4.2.1** | **Verify that** infrastructure-as-code is scanned with tools (tfsec, Checkov, or Terrascan) on every commit, blocking merges with CRITICAL or HIGH severity findings. | 1 | D/V |
 | **4.2.2** | **Verify that** container builds are reproducible with identical SHA256 hashes across builds and generate SLSA Level 3 provenance attestations signed with Sigstore. | 1 | D/V |
 | **4.2.3** | **Verify that** container images embed CycloneDX or SPDX SBOMs and are signed with Cosign before registry push, with unsigned images rejected at deployment. | 2 | D/V |
-| **4.2.4** | **Verify that** CI/CD pipelines use OIDC tokens with lifetimes not exceeding organizational security policy limits from HashiCorp Vault, AWS IAM Roles, or Azure Managed Identity. | 2 | D/V |
-| **4.2.5** | **Verify that** deployment processes validate Cosign signatures and SLSA provenance before container execution, failing deployment on verification errors. | 2 | D/V |
+| **4.2.4** | **Verify that** CI/CD pipelines use OIDC tokens from HashiCorp Vault, AWS IAM Roles, or Azure Managed Identity with lifetimes not exceeding organizational security policy limits. | 2 | D/V |
+| **4.2.5** | **Verify that** that Cosign signatures and SLSA provenance are validated during the deployment process before container execution and that verification errors cause the deployment to fail. | 2 | D/V |
 | **4.2.6** | **Verify that** build environments run in ephemeral containers or VMs with no persistent storage and network isolation from production VPCs. | 2 | D/V |
 
 ---
@@ -43,11 +43,11 @@ Implement zero-trust networking with default-deny policies and encrypted communi
 
 | # | Description | Level | Role |
 |:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
-| **4.3.1** | **Verify that** Kubernetes NetworkPolicies or equivalent implement default-deny ingress/egress with explicit allow rules for required ports (443, 8080, etc.). | 1 | D/V |
+| **4.3.1** | **Verify that** Kubernetes NetworkPolicies or any equivalent implements default-deny ingress/egress with explicit allow rules for required ports (443, 8080, etc.). | 1 | D/V |
 | **4.3.2** | **Verify that** SSH (port 22), RDP (port 3389), and cloud metadata endpoints (169.254.169.254) are blocked or require certificate-based authentication. | 1 | D/V |
 | **4.3.3** | **Verify that** egress traffic is filtered through HTTP/HTTPS proxies (Squid, Istio, or cloud NAT gateways) with domain allowlists and blocked requests logged. | 2 | D/V |
 | **4.3.4** | **Verify that** inter-service communication uses mutual TLS with certificates rotated according to organizational policy and certificate validation enforced (no skip-verify flags). | 2 | D/V |
-| **4.3.5** | **Verify that** AI infrastructure runs in dedicated VPCs/VNets with no direct internet access and communication through NAT gateways or bastion hosts only. | 2 | D/V |
+| **4.3.5** | **Verify that** AI infrastructure runs in dedicated VPCs/VNets with no direct internet access and communicates through NAT gateways or bastion hosts only. | 2 | D/V |
 
 ---
 
@@ -61,8 +61,8 @@ Protect credentials through hardware-backed storage and automated rotation with 
 | **4.4.2** | **Verify that** cryptographic keys are generated in FIPS 140-2 Level 2 HSMs (AWS CloudHSM, Azure Dedicated HSM) with key rotation according to organizational cryptographic policy. | 1 | D/V |
 | **4.4.3** | **Verify that** secrets rotation is automated with zero-downtime deployment and immediate rotation triggered by personnel changes or security incidents. | 2 | D/V |
 | **4.4.4** | **Verify that** container images are scanned with tools (GitLeaks, TruffleHog, or detect-secrets) blocking builds containing API keys, passwords, or certificates. | 2 | D/V |
-| **4.4.5** | **Verify that** production secret access requires MFA with hardware tokens (YubiKey, FIDO2) and generates immutable audit logs with user identity and timestamp. | 2 | D/V |
-| **4.4.6** | **Verify that** secrets are injected via Kubernetes secrets, mounted volumes, or init containers with secrets never embedded in environment variables or images. | 2 | D/V |
+| **4.4.5** | **Verify that** production secret access requires MFA with hardware tokens (YubiKey, FIDO2) and is recorded by immutable audit logs with user identities and timestamps. | 2 | D/V |
+| **4.4.6** | **Verify that** secrets are injected via Kubernetes secrets, mounted volumes, or init containers and ensure that secrets are never embedded in environment variables or images. | 2 | D/V |
 
 ---
 
@@ -75,7 +75,7 @@ Isolate untrusted AI models in secure sandboxes with comprehensive behavioral an
 | **4.5.1** | **Verify that** external AI models execute in gVisor, microVMs (such as Firecracker, CrossVM), or Docker containers with --security-opt=no-new-privileges and --read-only flags. | 1 | D/V |
 | **4.5.2** | **Verify that** sandbox environments have no network connectivity (--network=none) or only localhost access with all external requests blocked by iptables rules. | 1 | D/V |
 | **4.5.3** | **Verify that** AI model validation includes automated red-team testing with organizationally defined test coverage and behavioral analysis for backdoor detection. | 2 | D/V |
-| **4.5.4** | **Verify that** sandbox results are cryptographically signed by authorized security personnel and stored in immutable audit logs before production promotion. | 2 | D/V |
+| **4.5.4** | **Verify that** before an AI model is promoted to production, its sandbox results are cryptographically signed by authorized security personnel and stored in immutable audit logs. | 2 | D/V |
 | **4.5.5** | **Verify that** sandbox environments are destroyed and recreated from golden images between evaluations with complete filesystem and memory cleanup. | 2 | D/V |
 
 ---
@@ -91,7 +91,7 @@ Continuously scan and monitor infrastructure with automated remediation and real
 | **4.6.3** | **Verify that** HIGH severity vulnerabilities are patched according to organizational risk management timelines with emergency procedures for actively exploited CVEs. | 2 | D/V |
 | **4.6.4** | **Verify that** security alerts integrate with SIEM platforms (Splunk, Elastic, or Sentinel) using CEF or STIX/TAXII formats with automated enrichment. | 2 | V |
 | **4.6.5** | **Verify that** infrastructure metrics are exported to monitoring systems (Prometheus, DataDog) with SLA dashboards and executive reporting. | 3 | V |
-| **4.6.6** | **Verify that** configuration drift is detected according to organizational monitoring requirements using tools (Chef InSpec, AWS Config) with automatic rollback for unauthorized changes. | 2 | D/V |
+| **4.6.6** | **Verify that** configuration drift is detected using tools (Chef InSpec, AWS Config) according to organizational monitoring requirements with automatic rollback for unauthorized changes. | 2 | D/V |
 
 ---
 
@@ -106,7 +106,7 @@ Prevent resource exhaustion attacks and ensure fair resource allocation through 
 | **4.7.3** | **Verify that** Kubernetes ResourceQuotas or equivalent limit individual workloads according to organizational resource allocation policies with hard limits enforced. | 2 | D/V |
 | **4.7.4** | **Verify that** cost monitoring tracks spending per workload/tenant with alerts based on organizational budget thresholds and automated controls for budget overruns. | 2 | V |
 | **4.7.5** | **Verify that** capacity planning uses historical data with organizationally defined forecasting periods and automated resource provisioning based on demand patterns. | 3 | V |
-| **4.7.6** | **Verify that** resource exhaustion triggers circuit breakers according to organizational response requirements, rate limiting based on capacity policies, and workload isolation. | 2 | D/V |
+| **4.7.6** | **Verify that** resource exhaustion triggers circuit breakers according to organizational response requirements, including rate limiting based on capacity policies and workload isolation. | 2 | D/V |
 
 ---
 
@@ -133,7 +133,7 @@ Ensure infrastructure resilience through automated backups, tested recovery proc
 |:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
 | **4.9.1** | **Verify that** infrastructure configurations are backed up according to organizational backup schedules to geographically separate regions with 3-2-1 backup strategy implementation. | 1 | D/V |
 | **4.9.2** | **Verify that** backup systems run in isolated networks with separate credentials and air-gapped storage for ransomware protection. | 2 | D/V |
-| **4.9.3** | **Verify that** recovery procedures are tested according to organizational schedules with RTO and RPO targets meeting organizational requirements validated through automated testing. | 2 | V |
+| **4.9.3** | **Verify that** recovery procedures are tested and validated through automated testing according to organizational schedules with RTO and RPO targets meeting organizational requirements. | 2 | V |
 | **4.9.4** | **Verify that** disaster recovery includes AI-specific runbooks with model weight restoration, GPU cluster rebuilding, and service dependency mapping. | 3 | V |
 
 ---
@@ -157,9 +157,9 @@ Secure AI-specific hardware components including GPUs, TPUs, and specialized AI 
 | # | Description | Level | Role |
 |:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
 | **4.11.1** | **Verify that** AI accelerator firmware (GPU BIOS, TPU firmware) is verified with cryptographic signatures and updated according to organizational patch management timelines. | 2 | D/V |
-| **4.11.2** | **Verify that** hardware attestation validates AI accelerator integrity using TPM 2.0, Intel TXT, or AMD SVM before workload execution. | 2 | D/V |
+| **4.11.2** | **Verify that** before workload execution, AI accelerator integrity is validated by hardware attestation using TPM 2.0, Intel TXT, or AMD SVM. | 2 | D/V |
 | **4.11.3** | **Verify that** GPU memory is isolated between workloads using SR-IOV, MIG (Multi-Instance GPU), or equivalent hardware partitioning with memory sanitization between jobs. | 2 | D/V |
-| **4.11.4** | **Verify that** AI hardware supply chain includes provenance verification with manufacturer certificates and tamper-evident packaging validation. | 3 | V |
+| **4.11.4** | **Verify that** the AI hardware supply chain includes provenance verification with manufacturer certificates and tamper-evident packaging validation. | 3 | V |
 | **4.11.5** | **Verify that** hardware security modules (HSMs) protect AI model weights and cryptographic keys with FIPS 140-2 Level 3 or Common Criteria EAL4+ certification. | 3 | D/V |
 
 ---
@@ -185,9 +185,9 @@ Secure AI workloads across multiple cloud providers and hybrid cloud-on-premises
 |:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
 | **4.13.1** | **Verify that** multi-cloud AI deployments use cloud-agnostic identity federation (OIDC, SAML) with centralized policy management across providers. | 2 | D/V |
 | **4.13.2** | **Verify that** cross-cloud data transfer uses end-to-end encryption with customer-managed keys and data residency controls enforced per jurisdiction. | 2 | D/V |
-| **4.13.3** | **Verify that** hybrid cloud AI workloads implement consistent security policies across on-premises and cloud environments with unified monitoring and alerting. | 2 | D/V |
+| **4.13.3** | **Verify that** hybrid cloud AI workloads implement consistent security policies across on-premise and cloud environments with unified monitoring and alerting. | 2 | D/V |
 | **4.13.4** | **Verify that** cloud vendor lock-in prevention includes portable infrastructure-as-code, standardized APIs, and data export capabilities with format conversion tools. | 3 | V |
-| **4.13.5** | **Verify that** multi-cloud cost optimization includes security controls preventing resource sprawl and unauthorized cross-cloud data transfer charges. | 3 | V |
+| **4.13.5** | **Verify that** multi-cloud cost optimization includes security controls preventing resource sprawl as well as unauthorized cross-cloud data transfer charges. | 3 | V |
 
 ---
 
@@ -227,7 +227,7 @@ Protect AI workloads and model weights using hardware-based trusted execution en
 |:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
 | **4.16.1** | **Verify that** sensitive AI models execute within Intel SGX enclaves, AMD SEV-SNP, or ARM TrustZone with encrypted memory and attestation verification. | 3 | D/V |
 | **4.16.2** | **Verify that** confidential containers (Kata Containers, gVisor with confidential computing) isolate AI workloads with hardware-enforced memory encryption. | 3 | D/V |
-| **4.16.3** | **Verify that** remote attestation validates enclave integrity before loading AI models with cryptographic proof of execution environment authenticity. | 3 | D/V |
+| **4.16.3** | **Verify that** remote attestation validates enclave integrity before loading AI models with cryptographic proof of an execution environment's authenticity. | 3 | D/V |
 | **4.16.4** | **Verify that** confidential AI inference services prevent model extraction through encrypted computation with sealed model weights and protected execution. | 3 | D/V |
 | **4.16.5** | **Verify that** trusted execution environment orchestration manages secure enclave lifecycle with remote attestation and encrypted communication channels. | 3 | D/V |
 | **4.16.6** | **Verify that** secure multi-party computation (SMPC) enables collaborative AI training without exposing individual datasets or model parameters. | 3 | D/V |
@@ -241,9 +241,9 @@ Implement zero-knowledge proof systems for privacy-preserving AI verification an
 | # | Description | Level | Role |
 |:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
 | **4.17.1** | **Verify that** zero-knowledge proofs (ZK-SNARKs, ZK-STARKs) verify AI model integrity and training provenance without exposing model weights or training data. | 3 | D/V |
-| **4.17.2** | **Verify that** ZK-based authentication systems enable privacy-preserving user verification for AI services without revealing identity information. | 3 | D/V |
+| **4.17.2** | **Verify that** ZK-based authentication systems enable privacy-preserving user verification for AI services without revealing identity-related information. | 3 | D/V |
 | **4.17.3** | **Verify that** private set intersection (PSI) protocols enable secure data matching for federated AI without exposing individual datasets. | 3 | D/V |
-| **4.17.4** | **Verify that** zero-knowledge machine learning (ZKML) systems enable verifiable AI inference with cryptographic proof of correct computation. | 3 | D/V |
+| **4.17.4** | **Verify that** zero-knowledge machine learning (ZKML) systems enable verifiable AI inferences with cryptographic proof of correct computation. | 3 | D/V |
 | **4.17.5** | **Verify that** ZK-rollups provide scalable, privacy-preserving AI transaction processing with batch verification and reduced computational overhead. | 3 | D/V |
 
 ---
@@ -299,7 +299,7 @@ Security controls for cloud-integrated agent frameworks with hybrid on-premises/
 | **4.15.1** | **Verify that** cloud storage integration uses end-to-end encryption with agent-controlled key management. | 1 | D/V |
 | **4.15.2** | **Verify that** hybrid deployment security boundaries are clearly defined with encrypted communication channels. | 2 | D/V |
 | **4.15.3** | **Verify that** cloud resource access includes zero-trust verification with continuous authentication. | 2 | D/V |
-| **4.15.4** | **Verify that** data residency requirements are enforced with cryptographic attestation of storage locations. | 3 | D/V |
+| **4.15.4** | **Verify that** data residency requirements are enforced by cryptographic attestation of storage locations. | 3 | D/V |
 | **4.15.5** | **Verify that** cloud provider security assessments include agent-specific threat modeling and risk evaluation. | 3 | D/V |
 
 ---

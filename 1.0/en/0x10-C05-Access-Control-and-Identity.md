@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-Effective access control for AI systems requires robust identity management, context-aware authorization, and runtime enforcement following zero-trust principles. These controls ensure that humans, services, and autonomous agents interact with models, data, and computational resources only within explicitly granted scopes, with continuous verification and audit capabilities.
+Effective access control for AI systems requires robust identity management, context-aware authorization, and runtime enforcement following zero-trust principles. These controls ensure that humans, services, and autonomous agents only interact with models, data, and computational resources within explicitly granted scopes, with continuous verification and audit capabilities.
 
 ---
 
@@ -14,9 +14,9 @@ Establish cryptographically-backed identities for all entities with multi-factor
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **5.1.1** | **Verify that** all human users and service principals authenticate through a centralized enterprise identity provider (IdP) using OIDC/SAML protocols with unique identity-to-token mappings (no shared accounts or credentials). | 1 | D/V |
 | **5.1.2** | **Verify that** high-risk operations (model deployment, weight export, training data access, production configuration changes) require multi-factor authentication or step-up authentication with session re-validation. | 1 | D/V |
-| **5.1.3** | **Verify that** new principals undergo identity proofing aligned with NIST 800-63-3 IAL-2 or equivalent standards before receiving production system access. | 2 | D |
+| **5.1.3** | **Verify that** new principals undergo identity-proofing that is aligned with NIST 800-63-3 IAL-2 or equivalent standards before receiving production system access. | 2 | D |
 | **5.1.4** | **Verify that** access reviews are conducted quarterly with automated detection of dormant accounts, credential rotation enforcement, and de-provisioning workflows. | 2 | V |
-| **5.1.5** | **Verify that** federated AI agents authenticate via signed JWT assertions with maximum lifetime of 24 hours and include cryptographic proof of origin. | 3 | D/V |
+| **5.1.5** | **Verify that** federated AI agents authenticate via signed JWT assertions that have a maximum lifetime of 24 hours and include cryptographic proof of origin. | 3 | D/V |
 
 ---
 
@@ -27,10 +27,10 @@ Implement fine-grained access controls for all AI resources with explicit permis
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **5.2.1** | **Verify that** every AI resource (datasets, models, endpoints, vector collections, embedding indices, compute instances) enforces role-based access controls with explicit allow-lists and default-deny policies. | 1 | D/V |
-| **5.2.2** | **Verify that** least-privilege principles are enforced by default with service accounts starting at read-only permissions and requiring documented business justification for write access elevation. | 1 | D/V |
-| **5.2.3** | **Verify that** all access control modifications are linked to approved change requests and logged immutably with timestamp, actor identity, resource identifier, and permission delta. | 1 | V |
+| **5.2.2** | **Verify that** least-privilege principles are enforced by default with service accounts starting at read-only permissions and documented business justification required for write access. | 1 | D/V |
+| **5.2.3** | **Verify that** all access control modifications are linked to approved change requests and logged immutably with timestamps, actor identities, resource identifiers, and permission deltas. | 1 | V |
 | **5.2.4** | **Verify that** data classification labels (PII, PHI, export-controlled, proprietary) automatically propagate to derived resources (embeddings, prompt caches, model outputs) with consistent policy enforcement. | 2 | D |
-| **5.2.5** | **Verify that** unauthorized access attempts and privilege escalation events trigger real-time alerts to SIEM systems within 5 minutes with contextual metadata. | 2 | D/V |
+| **5.2.5** | **Verify that** unauthorized access attempts and privilege escalation events trigger real-time alerts with contextual metadata to SIEM systems within 5 minutes. | 2 | D/V |
 
 ---
 
@@ -41,9 +41,9 @@ Deploy attribute-based access control (ABAC) engines for context-aware authoriza
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **5.3.1** | **Verify that** authorization decisions are externalized to a dedicated policy engine (OPA, Cedar, or equivalent) accessible via authenticated APIs with cryptographic integrity protection. | 1 | D/V |
-| **5.3.2** | **Verify that** policies evaluate dynamic attributes including user clearance level, resource sensitivity classification, request context, tenant isolation, and temporal constraints at runtime. | 1 | D/V |
+| **5.3.2** | **Verify that** policies evaluate dynamic attributes at runtime including user clearance level, resource sensitivity classification, request context, tenant isolation, and temporal constraints. | 1 | D/V |
 | **5.3.3** | **Verify that** policy definitions are version-controlled, peer-reviewed, and validated through automated testing in CI/CD pipelines before production deployment. | 2 | D |
-| **5.3.4** | **Verify that** policy evaluation results include structured decision rationale and are transmitted to SIEM systems for correlation analysis and compliance reporting. | 2 | V |
+| **5.3.4** | **Verify that** policy evaluation results include structured decision rationales and are transmitted to SIEM systems for correlation analysis and compliance reporting. | 2 | V |
 | **5.3.5** | **Verify that** policy cache time-to-live (TTL) values do not exceed 5 minutes for high-sensitivity resources and 1 hour for standard resources with cache invalidation capabilities. | 3 | D/V |
 
 ---
@@ -55,8 +55,8 @@ Implement database-layer security controls with mandatory filtering and row-leve
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **5.4.1** | **Verify that** all vector database and SQL queries include mandatory security filters (tenant ID, sensitivity labels, user scope) enforced at the database engine level, not application code. | 1 | D/V |
-| **5.4.2** | **Verify that** row-level security (RLS) policies and field-level masking are enabled for all vector databases, search indices, and training datasets with policy inheritance. | 1 | D/V |
-| **5.4.3** | **Verify that** failed authorization evaluations immediately abort queries and return explicit authorization error codes rather than empty result sets to prevent confused deputy attacks. | 2 | D |
+| **5.4.2** | **Verify that** row-level security (RLS) policies and field-level masking are enabled with policy inheritance for all vector databases, search indices, and training datasets. | 1 | D/V |
+| **5.4.3** | **Verify that** failed authorization evaluations will prevent "confused deputy attacks" by immediately aborting queries and returning explicit authorization error codes rather than returning empty result sets. | 2 | D |
 | **5.4.4** | **Verify that** policy evaluation latency is continuously monitored with automated alerts for timeout conditions that could enable authorization bypass. | 2 | V |
 | **5.4.5** | **Verify that** query retry mechanisms re-evaluate authorization policies to account for dynamic permission changes within active user sessions. | 3 | D/V |
 
@@ -68,11 +68,11 @@ Deploy post-processing controls to prevent unauthorized data exposure in AI-gene
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **5.5.1** | **Verify that** post-inference filtering mechanisms scan and redact unauthorized PII, classified information, or proprietary data before content delivery to requestors. | 1 | D/V |
+| **5.5.1** | **Verify that** post-inference filtering mechanisms scan and redact unauthorized PII, classified information, and proprietary data before delivering content to requestors. | 1 | D/V |
 | **5.5.2** | **Verify that** citations, references, and source attributions in model outputs are validated against caller entitlements and removed if unauthorized access is detected. | 1 | D/V |
-| **5.5.3** | **Verify that** output format restrictions (sanitized PDFs, metadata-stripped images, approved file types) are enforced based on user permission levels and data classification. | 2 | D |
+| **5.5.3** | **Verify that** output format restrictions (sanitized PDFs, metadata-stripped images, approved file types) are enforced based on user permission levels and data classifications. | 2 | D |
 | **5.5.4** | **Verify that** redaction algorithms are deterministic, version-controlled, and maintain audit logs to support compliance investigations and forensic analysis. | 2 | V |
-| **5.5.5** | **Verify that** high-risk redaction events generate adaptive logs with cryptographic hashes of original content for forensic retrieval without data exposure. | 3 | V |
+| **5.5.5** | **Verify that** high-risk redaction events generate adaptive logs that include cryptographic hashes of original content for forensic retrieval without data exposure. | 3 | V |
 
 ---
 
@@ -96,8 +96,8 @@ Control permissions for AI agents and autonomous systems through scoped capabili
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **5.7.1** | **Verify that** autonomous agents receive scoped capability tokens that explicitly enumerate permitted actions, accessible resources, time boundaries, and operational constraints. | 1 | D/V |
-| **5.7.2** | **Verify that** high-risk capabilities (file system access, code execution, external API calls, financial transactions) are disabled by default and require explicit authorization with business justification. | 1 | D/V |
-| **5.7.3** | **Verify that** capability tokens are bound to user sessions, include cryptographic integrity protection, and cannot be persisted or reused in offline scenarios. | 2 | D |
+| **5.7.2** | **Verify that** high-risk capabilities (file system access, code execution, external API calls, financial transactions) are disabled by default and require explicit authorizations for activation with business justifications. | 1 | D/V |
+| **5.7.3** | **Verify that** capability tokens are bound to user sessions, include cryptographic integrity protection, and ensure that they cannot be persisted or reused in offline scenarios. | 2 | D |
 | **5.7.4** | **Verify that** agent-initiated actions undergo secondary authorization through the ABAC policy engine with full context evaluation and audit logging. | 2 | V |
 | **5.7.5** | **Verify that** agent error conditions and exception handling include capability scope information to support incident analysis and forensic investigation. | 3 | V |
 
