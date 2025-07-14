@@ -91,6 +91,8 @@ Apply statistical anomaly detection and quarantine workflows to stop adversarial
 | **1.6.4** | **Verify that** detection logic is refreshed with new threat intel. | 3 | D/V |
 | **1.6.5** | **Verify that** online-learning pipelines monitor distribution drift. | 3 | D/V |
 | **1.6.6** | **Verify that** specific defenses against known data poisoning attack types (e.g., label flipping, backdoor trigger insertion, influential instance attacks) are considered and implemented based on the system's risk profile and data sources. | 3 | D/V |
+| **1.6.7** | **Verify that** LLM training and fine-tuning pipelines implement controls to detect and mitigate adversarial free-text prompt contamination risks (such as embedded jailbreak instructions, role-switching commands, universal triggers), using a combination of automated detection techniques and manual review. | 3 | D/V |
+
 
 ---
 
