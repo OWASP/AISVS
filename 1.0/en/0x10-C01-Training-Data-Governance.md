@@ -23,7 +23,7 @@ Maintain a verifiable inventory of all datasets, accept only trusted sources, an
 
 ## C1.2 Training Data Security & Integrity
 
-Restrict access, encrypt at rest and in transit, and validate integrity to block tampering or theft.
+Restrict access, encrypt at rest and in transit, and validate integrity to block tampering or theft of training data.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
@@ -37,7 +37,7 @@ Restrict access, encrypt at rest and in transit, and validate integrity to block
 
 ## C1.3 Representation Completeness & Fairness
 
-Detect demographic skews and apply mitigation so the model's error rates are equitable across groups.
+Detect demographic biases and apply mitigation so the model's error rates are fair across groups.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
@@ -50,7 +50,7 @@ Detect demographic skews and apply mitigation so the model's error rates are equ
 
 ## C1.4 Training Data Labeling Quality, Integrity, and Security
 
-Protect labels with encryption and require dual review for critical classes.
+Protect labels and require technical review for critical data.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
