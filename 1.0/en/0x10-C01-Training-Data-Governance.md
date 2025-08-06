@@ -26,7 +26,6 @@ Restrict access to training data, encrypt it at rest and in transit, and validat
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **1.2.1** | **Verify that** access controls protect training data storage and pipelines. | 1 | D/V |
-
 | **1.2.2** | **Verify that** all access to training data is logged, including user, time, and action. | 2 | D/V |
 | **1.2.3** | **Verify that** training datasets are encrypted in transit and at rest, using industry-standard cryptographic algorithms and key management practices. | 2 | D/V |
 | **1.2.4** | **Verify that** cryptographic hashes or digital signatures are used to ensure data integrity during training data storage and transfer. | 2 | D/V |
