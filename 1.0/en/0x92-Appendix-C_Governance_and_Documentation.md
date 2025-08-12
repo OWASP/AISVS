@@ -152,7 +152,6 @@ Maintain awareness of and compliance with evolving AI regulations.
 
 ## C2.9 Multi-Modal Security Validation Pipeline
 
-
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **2.9.5** | **Verify that** modality-specific content classifiers are updated according to documented schedules (minimum quarterly) with new threat patterns, adversarial examples, and performance benchmarks maintained above baseline thresholds. | 3 | D/V |
