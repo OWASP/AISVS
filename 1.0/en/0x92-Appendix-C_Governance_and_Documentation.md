@@ -64,6 +64,8 @@ Maintain awareness of and compliance with evolving AI regulations.
 | **AC.5.2** | **Verify that** compliance with all regulatory requirements is assessed. | 2 | D |
 | **AC.5.3** | **Verify that** regulatory changes trigger timely reviews and updates to AI systems. | 3 | D/V |
 
+---
+
 ## AC.6 Training Data Governance, Documentation and Process
 
 | # | Description | Level | Role |
@@ -117,6 +119,22 @@ Maintain awareness of and compliance with evolving AI regulations.
 | **1.18.2** | **Verify that** all annotation personnel sign confidentiality and non-disclosure agreements. | 2 | D/V |
 | **1.18.3** | **Verify that** annotation platforms enforce access controls and monitor for insider threats. | 2 | D/V |
 
+---
+
+## AC.7 Model Lifecycle Governance & Documentation
+
+Establish governance processes for model lifecycle documentation, approval workflows, and audit trail requirements.
+
+| # | Description | Level | Role |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
+| **AC.7.1** | **Verify that** all model artifacts use semantic versioning (MAJOR.MINOR.PATCH) with documented criteria specifying when each version component increments. | 2 | D/V |
+| **AC.7.2** | **Verify that** emergency deployments require documented security risk assessment and approval from a pre-designated security authority within pre-agreed timeframes. | 2 | D/V |
+| **AC.7.3** | **Verify that** rollback artifacts (previous model versions, configurations, dependencies) are retained according to organizational policies. | 2 | V |
+| **AC.7.4** | **Verify that** audit log access requires appropriate authorization and all access attempts are logged with user identity and a timestamp. | 2 | D/V |
+| **AC.7.5** | **Verify that** retired model artifacts are retained according to data retention policies. | 1 | D/V |
+
+---
+
 ## C2.1 Prompt Injection Defense
 
 | # | Description | Level | Role |
@@ -124,11 +142,15 @@ Maintain awareness of and compliance with evolving AI regulations.
 | **2.1.3** | **Verify that** adversarial evaluation tests (e.g., Red Team "many-shot" prompts) are run before every model or prompt-template release, with success-rate thresholds and automated blockers for regressions. | 2 |  D/V |
 | **2.1.5** | **Verify that** all prompt-filter rule updates, classifier model versions and block-list changes are version-controlled and auditable. | 3 |  D/V |
 
+---
+
 ## C2.2 Adversarial-Example Resistance
 
 | # | Description | Level | Role |
 | :--------: | ------------------------------------------------------------------------------------ | :---: | :--: |
 | **2.2.5** | **Verify that** robustness metrics (success rate of known attack suites) are tracked over time via automation and regressions trigger an alert.  | 3 |  D/V |
+
+---
 
 ## C2.4 Content & Policy Screening
 
@@ -136,11 +158,15 @@ Maintain awareness of and compliance with evolving AI regulations.
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **2.4.3** | **Verify that** the screening model or rule set is retrained/updated at least quarterly, incorporating newly observed jailbreak or policy bypass patterns.  | 2 | D |
 
+---
+
 ## C2.5 Input Rate Limiting & Abuse Prevention
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **2.5.4** | **Verify that** abuse prevention logs are retained and reviewed for emerging attack patterns. | 3 | V |
+
+---
 
 ## C2.7 Input Provenance & Attribution
 
@@ -149,6 +175,8 @@ Maintain awareness of and compliance with evolving AI regulations.
 | **2.7.1** | **Verify that** all user inputs are tagged with metadata (user ID, session, source, timestamp, IP address) at ingestion. | 1 | D/V |
 | **2.7.2** | **Verify that** provenance metadata is retained and auditable for all processed inputs. | 2 | D/V |
 | **2.7.3** | **Verify that** anomalous or untrusted input sources are flagged and subject to enhanced scrutiny or blocking. | 2 | D/V |
+
+---
 
 ## C2.9 Multi-Modal Security Validation Pipeline
 
