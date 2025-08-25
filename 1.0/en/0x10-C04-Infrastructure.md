@@ -77,7 +77,7 @@ Isolate untrusted AI models in secure sandboxes with comprehensive behavioral an
 | **4.5.3** | **Verify that** AI model validation includes automated red-team testing with organizationally defined test coverage and behavioral analysis for backdoor detection. | 2 | D/V |
 | **4.5.4** | **Verify that** before an AI model is promoted to production, its sandbox results are cryptographically signed by authorized security personnel and stored in immutable audit logs. | 2 | D/V |
 | **4.5.5** | **Verify that** sandbox environments are destroyed and recreated from golden images between evaluations with complete filesystem and memory cleanup. | 2 | D/V |
-
+| **4.5.6** | **Verify that** multi-modal inputs are processed in isolated sandboxes with defined resource limits (memory, CPU, processing time) specific to each modality type and documented in security policies. | 2 | D/V |
 ---
 
 ## C4.6 Infrastructure Security Monitoring
@@ -290,17 +290,17 @@ Implement infrastructure controls for privacy-preserving computation to protect 
 
 ---
 
-## C4.15 Agent Framework Cloud Integration Security & Hybrid Deployment
+## C4.21 Agent Framework Cloud Integration Security & Hybrid Deployment
 
 Security controls for cloud-integrated agent frameworks with hybrid on-premises/cloud architectures.
 
 | # | Description | Level | Role |
 |:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
-| **4.15.1** | **Verify that** cloud storage integration uses end-to-end encryption with agent-controlled key management. | 1 | D/V |
-| **4.15.2** | **Verify that** hybrid deployment security boundaries are clearly defined with encrypted communication channels. | 2 | D/V |
-| **4.15.3** | **Verify that** cloud resource access includes zero-trust verification with continuous authentication. | 2 | D/V |
-| **4.15.4** | **Verify that** data residency requirements are enforced by cryptographic attestation of storage locations. | 3 | D/V |
-| **4.15.5** | **Verify that** cloud provider security assessments include agent-specific threat modeling and risk evaluation. | 3 | D/V |
+| **4.21.1** | **Verify that** cloud storage integration uses end-to-end encryption with agent-controlled key management. | 1 | D/V |
+| **4.21.2** | **Verify that** hybrid deployment security boundaries are clearly defined with encrypted communication channels. | 2 | D/V |
+| **4.21.3** | **Verify that** cloud resource access includes zero-trust verification with continuous authentication. | 2 | D/V |
+| **4.21.4** | **Verify that** data residency requirements are enforced by cryptographic attestation of storage locations. | 3 | D/V |
+| **4.21.5** | **Verify that** cloud provider security assessments include agent-specific threat modeling and risk evaluation. | 3 | D/V |
 
 ---
 
