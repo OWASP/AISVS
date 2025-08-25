@@ -30,7 +30,6 @@ Models must pass defined security and safety validations before deployment.
 | **3.2.2** | **Verify that** all model changes (deployment, configuration, retirement) generate immutable audit records including a timestamp, an authenticated actor identity, a change type, and before/after states. | 1 | V |
 | **3.2.3** | **Verify that** validation failures automatically block model deployment after explicit override approval from pre-designated authorized personnel with documented business justifications. | 2 | D/V |
 
-
 ---
 
 ## C3.3 Controlled Deployment & Rollback
@@ -43,7 +42,6 @@ Model deployments must be controlled, monitored, and reversible.
 | **3.3.2** | **Verify that** production deployments implement gradual rollout mechanisms (canary deployments, blue-green deployments) with automated rollback triggers based on pre-agreed error rates, latency thresholds, or security alert criteria. | 1 | D |
 | **3.3.3** | **Verify that** rollback capabilities restore the complete model state (weights, configurations, dependencies) atomically. | 2 | D/V |
 | **3.3.4** | **Verify that** emergency model shutdown capabilities can disable model endpoints within pre-defined response. | 3 | D/V |
-
 
 ---
 
@@ -68,7 +66,6 @@ Models must be securely retired when they are no longer needed or when security 
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **3.5.1** | **Verify that** retired model artifacts are securely wiped using secure cryptographic erasure. | 1 | D/V |
 | **3.5.2** | **Verify that** model retirement events are logged with timestamp and actor identity, and model signatures are revoked to prevent reuse. | 2 | V |
-
 
 ---
 
