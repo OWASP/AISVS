@@ -26,7 +26,7 @@ Natural Language Processing (NLP) models are still vulnerable to subtle characte
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **2.2.1** | **Verify that** basic input normalization steps (Unicode NFC, homoglyph mapping, whitespace trimming) run before tokenization. | 1 | D |
 | **2.2.2** | **Verify that** statistical anomaly detection flags inputs with unusually high edit distance to language norms or abnormal embedding distances. | 2 |  D/V |
-| **2.2.3** | **Verify that** the inference pipeline supports adversarial-training–hardened model variants or defense layers (e.g., randomization, defensive distillation) for high-risk endpoints. | 2 | D |
+| **2.2.3** | **Verify that** the inference pipeline supports adversarial-training–hardened model variants or defense layers (e.g., randomization, defensive distillation, alignment checks) for high-risk endpoints. | 2 | D |
 | **2.2.4** | **Verify that** suspected adversarial inputs are quarantined, and logged with full payloads.  | 2 | V |
 
 ---
@@ -81,9 +81,8 @@ AI systems should include robust validation for non-textual inputs (images, audi
 | **2.6.2** | **Verify that** files are scanned for malware and steganographic payloads before ingestion. | 2 | D/V |
 | **2.6.3** | **Verify that** image/audio inputs are checked for adversarial perturbations or known attack patterns. | 2 | D/V |
 | **2.6.4** | **Verify that** multi-modal input validation failures are logged and trigger alerts for investigation. | 3 | V |
-| **2.6.5** | **Verify that** multi-modal inputs are processed in isolated sandboxes with defined resource limits (memory, CPU, processing time) specific to each modality type and documented in security policies. | 2 | D/V |
-| **2.6.6** | **Verify that** cross-modal attack detection identifies coordinated attacks spanning multiple input types (e.g., steganographic payloads in images combined with prompt injection in text) with correlation rules and alert generation. | 2 | D/V |
-| **2.6.7** | **Verify that** multi-modal validation failures trigger detailed logging including all input modalities, validation results and threat scores. | 3 | D/V |
+| **2.6.5** | **Verify that** cross-modal attack detection identifies coordinated attacks spanning multiple input types (e.g., steganographic payloads in images combined with prompt injection in text) with correlation rules and alert generation. | 2 | D/V |
+| **2.6.6** | **Verify that** multi-modal validation failures trigger detailed logging including all input modalities, validation results and threat scores. | 3 | D/V |
 ---
 
 ## C2.7 Real-Time Adaptive Threat Detection
@@ -94,7 +93,7 @@ Developers should employ advanced threat detection systems for AI that adapt to 
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **2.7.1** | **Verify that** pattern matching (e.g., compiled regex) runs on all inputs with minimal latency impact. | 1 | D/V |
 | **2.8.3** | **Verify that** adaptive detection models adjust sensitivity based on recent attack activity and are updated with new patterns in real time. | 2 | D/V |
-| **2.8.4** | **Verify that** detection accuracy is improved via contextual analysis of user history, source, and session behavior. | 2 | D/V |
+| **2.8.4** | **Verify that** detection accuracy is improved via contextual analysis of user history, source, and session behavior. | 3 | D/V |
 | **2.8.5** | **Verify that** detection performance metrics (detection rate, false positive rate, processing latency) are continuously monitored and optimized. | 3 | D/V |
 
 ---
