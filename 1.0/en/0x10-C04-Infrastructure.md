@@ -77,7 +77,7 @@ Isolate untrusted AI models in secure sandboxes with comprehensive behavioral an
 | **4.5.3** | **Verify that** AI model validation includes automated red-team testing with organizationally defined test coverage and behavioral analysis for backdoor detection. | 2 | D/V |
 | **4.5.4** | **Verify that** before an AI model is promoted to production, its sandbox results are cryptographically signed by authorized security personnel and stored in immutable audit logs. | 2 | D/V |
 | **4.5.5** | **Verify that** sandbox environments are destroyed and recreated from golden images between evaluations with complete filesystem and memory cleanup. | 2 | D/V |
-
+| **4.5.6** | **Verify that** multi-modal inputs are processed in isolated sandboxes with defined resource limits (memory, CPU, processing time) specific to each modality type and documented in security policies. | 2 | D/V |
 ---
 
 ## C4.6 Infrastructure Security Monitoring
