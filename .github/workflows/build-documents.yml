@@ -19,8 +19,10 @@ jobs:
       # STEP 0: Define LANG, MT_X, owasp_pdf parameters
       - name: Read owasp_pdf parameters
         if: ${{ startsWith(github.event.issue.title, 'Document Build Request') }}
+        env:
+          EVENT_COMMENT_BODY: ${{ github.event.comment.body }}
         run: |
-          IFS=',' read -ra PARAMS <<< '${{ github.event.comment.body }}'
+          IFS=',' read -ra PARAMS <<< $EVENT_COMMENT_BODY
           if echo ${PARAMS[0]}; then
             echo "LANG=${PARAMS[0]}" | tr -d " " >> $GITHUB_ENV
           else
@@ -47,9 +49,11 @@ jobs:
         if: ${{ env.LANG != '' && env.MT_X != '' && !contains(fromJSON('["mt", "x"]'), env.MT_X) }}
         run: echo "LANG=" >> $GITHUB_ENV
       - name: Invalid Command
+        env:
+          EVENT_COMMENT_BODY: ${{ github.event.comment.body }}
         run: |
           if ${{ env.LANG == '' }}; then
-            echo "The command '${{ github.event.comment.body }}' is invalid."
+            echo "The command '$EVENT_COMMENT_BODY' is invalid."
             exit 1
           fi
 
