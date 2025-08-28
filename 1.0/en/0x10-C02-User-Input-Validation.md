@@ -28,6 +28,7 @@ Natural Language Processing (NLP) models are still vulnerable to subtle characte
 | **2.2.2** | **Verify that** statistical anomaly detection flags inputs with unusually high edit distance to language norms or abnormal embedding distances. | 2 |  D/V |
 | **2.2.3** | **Verify that** the inference pipeline supports adversarial-training–hardened model variants or defense layers (e.g., randomization, defensive distillation, alignment checks) for high-risk endpoints. | 2 | D |
 | **2.2.4** | **Verify that** suspected adversarial inputs are quarantined, and logged with full payloads.  | 2 | V |
+| **2.2.5** | **Verify that** that encoding and representation smuggling in both inputs and outputs (e.g., invisible Unicode/control characters, homoglyph swaps, or mixed-direction text) are detected and mitigated. Approved mitigations include canonicalization, strict schema validation, policy-based rejection, or explicit marking. | 3 | D/V |
 
 ---
 
