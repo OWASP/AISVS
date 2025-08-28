@@ -10,8 +10,8 @@ on:
       - '1.0/en/*.md'
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: write # needed to push commit the generated PDF
+  pull-requests: write # needed to PR the generated PDF
 
 jobs:
   build_pdf:
@@ -55,9 +55,22 @@ jobs:
       - name: Invalid Command
         env:
           EVENT_COMMENT_BODY: ${{ github.event.comment.body }}
+          TRANSLATE_ACCESS_KEY: ${{ secrets.TRANSLATE_ACCESS_KEY }}
         run: |
           if ${{ env.LANG == '' }}; then
             echo "The command '$EVENT_COMMENT_BODY' is invalid."
+            exit 1
+          fi
+          if ${{ env.TRANSLATE_ACCESS_KEY == '' }}; then
+            echo "MT is disabled. Pls consult with the repo maintener."
+            exit 1
+          fi
+          if ${{ env.MT_X == 'mt' && (
+            github.event.comment.author_association != 'OWNER' &&
+            github.event.comment.author_association != 'COLLABORATOR' &&
+            github.event.comment.author_association != 'MEMBER')
+          }}; then
+            echo "MT is not allowed. Pls consult with the repo maintener."
             exit 1
           fi
 
