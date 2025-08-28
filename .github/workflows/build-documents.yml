@@ -9,6 +9,10 @@ on:
     paths:
       - '1.0/en/*.md'
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   build_pdf:
     name: Build PDF
@@ -127,8 +131,6 @@ jobs:
 
       # STEP 5: Build
       - name: Call ./owasp_pdf with ${{ env.LANG }}
-        env:
-          TRANSLATE_ACCESS_KEY: ${{ secrets.TRANSLATE_ACCESS_KEY }}
         if: ${{ env.LANG != '' && env.BRANCH_EXISTS == 'no' && ! env.LANG=='' && env.MT_X == '' }}
         run: |
           cd ${{ github.workspace }}/1.0/blddoc
@@ -141,8 +143,6 @@ jobs:
           cd ${{ github.workspace }}/1.0/blddoc
           ./owasp_pdf -s --mt gpt-4.1-mini -y -l ASV_${{ env.LANG }} --hdr '${{ github.sha }} MACHINE TRANSLATED'
       - name: Call ./owasp_pdf with ${{ env.LANG }} and 'x'
-        env:
-          TRANSLATE_ACCESS_KEY: ${{ secrets.TRANSLATE_ACCESS_KEY }}
         if: ${{ env.LANG != '' && env.BRANCH_EXISTS == 'no' && ! env.LANG=='' && env.MT_X == 'x' }}
         run: |
           cd ${{ github.workspace }}/1.0/blddoc
