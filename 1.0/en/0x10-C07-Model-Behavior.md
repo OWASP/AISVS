@@ -105,7 +105,6 @@ Ensure that AI systems do not generate illegal, harmful, or unauthorized media c
 * [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
 * [ISO/IEC 42001:2023 – AI Management System](https://www.iso.org/obp/ui/en/)
 * [OWASP Top-10 for Large Language Model Applications (2025)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-* [Improper Output Handling – OWASP LLM05:2025](https://genai.owasp.org/llmrisk/llm052025-improper-output-handling/)
 * [Practical Techniques to Constrain LLM Output](https://mychen76.medium.com/practical-techniques-to-constraint-llm-output-in-json-format-e3e72396c670)
 * [Dataiku – Structured Text Generation Guide](https://blog.dataiku.com/your-guide-to-structured-text-generation)
 * [VL-Uncertainty: Detecting Hallucinations](https://arxiv.org/abs/2411.11919)

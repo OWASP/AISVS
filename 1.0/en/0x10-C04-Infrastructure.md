@@ -328,7 +328,6 @@ Security controls for cloud-integrated agent frameworks with hybrid on-premises/
 * [ARM TrustZone Technology](https://developer.arm.com/ip-products/security-ip/trustzone)
 * [ZK-SNARKs: A Gentle Introduction](https://blog.ethereum.org/2016/12/05/zksnarks-in-a-nutshell/)
 * [NIST SP 800-57: Cryptographic Key Management](https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final)
-* [Side-Channel Attack Countermeasures](https://link.springer.com/book/10.1007/978-3-319-75268-6)
 * [Neuromorphic Computing Security Challenges](https://ieeexplore.ieee.org/document/9458103)
 * [FPGA Security: Fundamentals, Evaluation, and Countermeasures](https://link.springer.com/book/10.1007/978-3-319-90385-9)
 * [Microsoft SEAL: Homomorphic Encryption Library](https://github.com/Microsoft/SEAL)
