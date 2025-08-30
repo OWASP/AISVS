@@ -50,7 +50,7 @@ jobs:
             echo "LANG=" >> $GITHUB_ENV
           fi
       - name: Adjust MT_X
-        if: ${{ env.LANG != '' && env.MT_X != '' && !contains(fromJSON('["mt", "x"]'), env.MT_X) }}
+        if: ${{ env.LANG != '' && env.MT_X != '' && !contains(fromJSON('["mt", "x", "b"]'), env.MT_X) }}
         run: echo "LANG=" >> $GITHUB_ENV
       - name: Invalid Command
         env:
@@ -71,6 +71,14 @@ jobs:
             github.event.comment.author_association != 'MEMBER')
           }}; then
             echo "MT is not allowed. Pls consult with the repo maintener."
+            exit 1
+          fi
+          if ${{ env.MT_X == 'b' && (
+            github.event.comment.author_association != 'OWNER' &&
+            github.event.comment.author_association != 'COLLABORATOR' &&
+            github.event.comment.author_association != 'MEMBER')
+          }}; then
+            echo "B is not allowed. Pls consult with the repo maintener."
             exit 1
           fi
 
@@ -160,6 +168,13 @@ jobs:
         run: |
           cd ${{ github.workspace }}/1.0/blddoc
           ./owasp_pdf -s -x -y -l ASV_${{ env.LANG }} --hdr '${{ github.sha }} MACHINE TRANSLATED'
+      - name: Call ./owasp_pdf with ${{ env.LANG }} and 'b'
+        env:
+          WATERMARK_SECRET_KEY: ${{ secrets.WATERMARK_SECRET_KEY }}
+        if: ${{ env.LANG != '' && env.BRANCH_EXISTS == 'no' && ! env.LANG=='' && env.MT_X == 'b' }}
+        run: |
+          cd ${{ github.workspace }}/1.0/blddoc
+          ./owasp_pdf -s -y -l ASV_${{ env.LANG }} --hdr '${{ github.sha }}'
    
       # STEP 6: Delete used files
       - name: Delete used files
