@@ -169,7 +169,7 @@ jobs:
         if: ${{ env.LANG != '' && env.BRANCH_EXISTS == 'no' && ! env.LANG=='' && env.MT_X == 'b' }}
         run: |
           cd ${{ github.workspace }}/1.0/blddoc
-          ./owasp_pdf -s -y -l ASV_${{ env.LANG }} --hdr '${{ github.sha }}'
+          ./owasp_pdf -s -y -l ASV_${{ env.LANG }}
    
       # STEP 6: Delete used files
       - name: Delete used files
