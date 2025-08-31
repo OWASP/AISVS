@@ -41,7 +41,7 @@ jobs:
         if: ${{ github.event_name == 'push' }}
         run: |
           echo "LANG=en-US" >> $GITHUB_ENV
-          echo "MT_X=skip" >> $GITHUB_ENV
+          echo "MT_X=" >> $GITHUB_ENV
       - name: Adjust LANG (default en-US)
         run: |
           if [[ ${{ env.LANG }} =~ ^[a-z]{2}-[A-Z]{2}$ ]]; then
@@ -88,13 +88,8 @@ jobs:
         uses: actions/checkout@v4
 
       # STEP 2: Define target branch name
-      - name: Define target branch name for push event
-        if: ${{ env.LANG != '' && env.MT_X == 'skip' }}
-        run: |
-          MAIN_SHA="PDF_en_${{ github.sha }}"
-          echo "TARGET_BRANCH_NAME=$MAIN_SHA" >> $GITHUB_ENV
       - name: Define target branch name with MT_X
-        if: ${{ env.LANG != '' && env.MT_X != '' && env.MT_X != 'skip' }}
+        if: ${{ env.LANG != '' && env.MT_X != '' }}
         run: |
           MAIN_SHA="PDF_${{ env.LANG }}_${{ env.MT_X }}_${{ github.sha }}"
           echo "TARGET_BRANCH_NAME=$MAIN_SHA" >> $GITHUB_ENV
