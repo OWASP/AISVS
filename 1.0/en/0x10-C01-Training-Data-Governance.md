@@ -73,6 +73,21 @@ Track the full journey of each data point from source to model input for auditab
 
 ---
 
+
+## C1.6 Training Data Documentation (Data Cards)
+
+**Control Objective**  
+Ensure that every training dataset is accompanied by structured, standardized documentation (“data cards”) that capture provenance, intended use, known limitations, biases, and risks. This improves transparency, accountability, and alignment with regulatory and ethical frameworks.
+
+| # | Description | Level | Role |
+|:---:|-----------------------------------------------------------------------------------------------------------------------------|:---:|:---:|
+| **1.6.1** | **Verify that** each dataset is accompanied by a structured data card (e.g., Datasheet for Datasets, Data Statement) that includes origin, collection context, licensing, intended use, and known limitations. | 1 | D/V |
+| **1.6.2** | **Verify that** data cards document bias risks, demographic skews, and ethical considerations relevant to the dataset. | 2 | D/V |
+| **1.6.3** | **Verify that** data cards are versioned alongside datasets and updated whenever the dataset is modified. | 2 | D/V |
+| **1.6.4** | **Verify that** data cards are reviewed and approved by both technical and non-technical stakeholders (e.g., compliance, ethics, domain experts). | 3 | D/V |
+
+---
+
 ## References
 
 * [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
