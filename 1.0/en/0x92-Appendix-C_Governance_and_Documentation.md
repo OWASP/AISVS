@@ -184,6 +184,46 @@ Establish governance processes for model lifecycle documentation, approval workf
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **2.9.5** | **Verify that** modality-specific content classifiers are updated according to documented schedules (minimum quarterly) with new threat patterns, adversarial examples, and performance benchmarks maintained above baseline thresholds. | 3 | D/V |
 
+
+| **4.4.4** | **Verify that** container images are scanned to block hardcoded secrets (e.g., API keys, credentials, certificates). | 2 | D/V |
+| **4.2.1** | **Verify that** infrastructure-as-code is scanned on every commit, and merges are blocked on critical or high-severity findings. | 1 | D/V |
+| **4.2.4** | **Verify that** CI/CD pipelines use short-lived, scoped identities for access to secrets and infrastructure. | 2 | D/V |
+| **4.2.6** | **Verify that** build environments are isolated from production networks and data. | 2 | D/V |
+| **4.5.4** | **Verify that** before an AI model is promoted to production, its sandbox results are cryptographically signed by authorized security personnel and stored in immutable audit logs. | 2 | D/V |
+| **4.5.5** | **Verify that** sandbox environments are destroyed and recreated from golden images between evaluations with complete filesystem and memory cleanup. | 2 | D/V |
+| **4.5.6** | **Verify that** multi-modal inputs are processed in isolated sandboxes with defined resource limits (memory, CPU, processing time) specific to each modality type and documented in security policies. | 2 | D/V |
+| **4.6.1** | **Verify that** container images are scanned according to organizational schedules with CRITICAL vulnerabilities blocking deployment based on organizational risk thresholds. | 1 | D/V |
+| **4.6.2** | **Verify that** infrastructure passes CIS Benchmarks or NIST 800-53 controls with organizationally defined compliance thresholds and automated remediation for failed checks. | 1 | D/V |
+| **4.6.3** | **Verify that** security alerts integrate with SIEM platforms (Splunk, Elastic, or Sentinel) using CEF or STIX/TAXII formats with automated enrichment. | 2 | V |
+
+| **4.6.3** | **Verify that** HIGH severity vulnerabilities are patched according to organizational risk management timelines with emergency procedures for actively exploited CVEs. | 2 | D/V |
+| **4.6.5** | **Verify that** infrastructure metrics are exported to monitoring systems (Prometheus, DataDog) with SLA dashboards and executive reporting. | 3 | V |
+| **4.6.6** | **Verify that** configuration drift is detected using tools (Chef InSpec, AWS Config) according to organizational monitoring requirements with automatic rollback for unauthorized changes. | 2 | D/V |
+| **4.7.1** | **Verify that** production environments block SSH access, disable debug endpoints, and require change requests with organizational advance notice requirements except emergencies. | 2 | D/V |
+| **4.7.2** | **Verify that** promotion gates include automated security tests (SAST, DAST, container scanning) with zero CRITICAL findings required for approval. | 2 | D/V |
+| **4.7.1** | **Verify that** GPU/TPU utilization is monitored with alerts triggered at organizationally defined thresholds and automatic scaling or load balancing activated based on capacity management policies. | 1 | D/V |
+| **4.7.2** | **Verify that** AI workload metrics (inference latency, throughput, error rates) are collected according to organizational monitoring requirements and correlated with infrastructure utilization. | 1 | D/V |
+| **4.7.4** | **Verify that** cost monitoring tracks spending per workload/tenant with alerts based on organizational budget thresholds and automated controls for budget overruns. | 2 | V |
+| **4.7.5** | **Verify that** capacity planning uses historical data with organizationally defined forecasting periods and automated resource provisioning based on demand patterns. | 3 | V |
+| **4.8.2** | **Verify that** environment promotion requires approval from organizationally defined authorized personnel with cryptographic signatures and immutable audit trails. | 1 | D/V |
+| **4.8.4** | **Verify that** infrastructure-as-code changes require peer review with automated testing and security scanning before merge to main branch. | 2 | D/V |
+| **4.8.5** | **Verify that** non-production data is anonymized according to organizational privacy requirements, synthetic data generation, or complete data masking with PII removal verified. | 2 | D/V |
+| **4.9.1** | **Verify that** infrastructure configurations are backed up according to organizational backup schedules to geographically separate regions with 3-2-1 backup strategy implementation. | 1 | D/V |
+| **4.9.3** | **Verify that** recovery procedures are tested and validated through automated testing according to organizational schedules with RTO and RPO targets meeting organizational requirements. | 2 | V |
+| **4.9.4** | **Verify that** disaster recovery includes AI-specific runbooks with model weight restoration, GPU cluster rebuilding, and service dependency mapping. | 3 | V |
+| **4.10.1** | **Verify that** infrastructure compliance is assessed according to organizational schedules against SOC 2, ISO 27001, or FedRAMP controls with automated evidence collection. | 2 | D/V |
+| **4.10.2** | **Verify that** infrastructure documentation includes network diagrams, data flow maps, and threat models updated according to organizational change management requirements. | 2 | V |
+| **4.10.3** | **Verify that** infrastructure changes undergo automated compliance impact assessment with regulatory approval workflows for high-risk modifications. | 3 | D/V |
+| **4.11.1** | **Verify that** AI accelerator firmware (GPU BIOS, TPU firmware) is verified with cryptographic signatures and updated according to organizational patch management timelines. | 2 | D/V |
+| **4.11.4** | **Verify that** the AI hardware supply chain includes provenance verification with manufacturer certificates and tamper-evident packaging validation. | 3 | V |
+| **4.13.4** | **Verify that** cloud vendor lock-in prevention includes portable infrastructure-as-code, standardized APIs, and data export capabilities with format conversion tools. | 3 | V |
+| **4.13.5** | **Verify that** multi-cloud cost optimization includes security controls preventing resource sprawl as well as unauthorized cross-cloud data transfer charges. | 3 | V |
+| **4.14.1** | **Verify that** GitOps repositories require signed commits with GPG keys and branch protection rules preventing direct pushes to main branches. | 2 | D/V |
+| **4.14.5** | **Verify that** self-healing infrastructure includes security event correlation with automated incident response and stakeholder notification workflows. | 3 | V |
+| **4.16.5** | **Verify that** cloud provider security assessments include agent-specific threat modeling and risk evaluation. | 3 | D/V |
+
+
+
 ### References
 
 * [NIST AI Risk Management Framework 1.0](https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf)
