@@ -12,7 +12,6 @@ AI infrastructure must be hardened against privilege escalation, supply chain ta
 
 Prevent container escapes and privilege escalation through OS-level isolation primitives.
 
-
 | # | Description | Level | Role |
 |:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
 | **4.1.1** | **Verify that** all AI containers drop all Linux capabilities and add only explicitly justified capabilities. | 1 | D/V |

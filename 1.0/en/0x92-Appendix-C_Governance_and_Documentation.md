@@ -183,8 +183,6 @@ Establish governance processes for model lifecycle documentation, approval workf
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **2.9.5** | **Verify that** modality-specific content classifiers are updated according to documented schedules (minimum quarterly) with new threat patterns, adversarial examples, and performance benchmarks maintained above baseline thresholds. | 3 | D/V |
-
-
 | **4.4.4** | **Verify that** container images are scanned to block hardcoded secrets (e.g., API keys, credentials, certificates). | 2 | D/V |
 | **4.2.1** | **Verify that** infrastructure-as-code is scanned on every commit, and merges are blocked on critical or high-severity findings. | 1 | D/V |
 | **4.2.4** | **Verify that** CI/CD pipelines use short-lived, scoped identities for access to secrets and infrastructure. | 2 | D/V |
@@ -221,8 +219,10 @@ Establish governance processes for model lifecycle documentation, approval workf
 | **4.14.1** | **Verify that** GitOps repositories require signed commits with GPG keys and branch protection rules preventing direct pushes to main branches. | 2 | D/V |
 | **4.14.5** | **Verify that** self-healing infrastructure includes security event correlation with automated incident response and stakeholder notification workflows. | 3 | V |
 | **4.16.5** | **Verify that** cloud provider security assessments include agent-specific threat modeling and risk evaluation. | 3 | D/V |
-
-
+| **4.9.4** | **Verify that** automated infrastructure provisioning includes security policy validation with deployment blocking for non-compliant configurations. | 2 | D/V |
+| **4.9.4** | **Verify that** automated infrastructure provisioning validates security policies during CI/CD, with non-compliant configurations blocked from deployment. | 2 | D/V |
+| **4.9.3** | **Verify that** cloud resource access includes zero-trust verification with continuous authentication. | 2 | D/V |
+| **4.9.4** | **Verify that** data residency requirements are enforced by cryptographic attestation of storage locations. | 3 | D/V |
 
 ### References
 
