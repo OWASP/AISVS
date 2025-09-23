@@ -24,6 +24,10 @@
 
 * **Circuit Breakers**: Mechanisms that automatically halt AI system operations when specific risk thresholds are exceeded.
 
+* **Confidential Inference Service**: An inference service that runs AI models inside a trusted execution environment (TEE) or equivalent confidential computing mechanism, ensuring model weights and inference data remain encrypted, sealed, and protected from unauthorized access or tampering.
+
+* **Confidential Workload**: An AI workload (e.g., training, inference, preprocessing) executed inside a trusted execution environment (TEE) with hardware-enforced isolation, memory encryption, and remote attestation to protect code, data, and models from host or co-tenant access.
+
 * **Data Leakage**: Unintended exposure of sensitive information through AI model outputs or behavior.
 
 * **Data Poisoning**: The deliberate corruption of training data to compromise model integrity, often to install backdoors or degrade performance.
@@ -37,6 +41,8 @@
 * **Explainable AI (XAI)**: AI systems designed to provide human-understandable explanations for their decisions and behaviors through various techniques and frameworks.
 
 * **Federated Learning**: A machine learning approach where models are trained across multiple decentralized devices holding local data samples, without exchanging the data itself.
+
+* **Formulation**: The recipe or method used to produce an artifact or dataset, such as hyperparameters, training configuration, preprocessing steps, or build scripts.
 
 * **Guardrails**: Constraints implemented to prevent AI systems from producing harmful, biased, or otherwise undesirable outputs.
 
@@ -72,6 +78,8 @@
 
 * **OPA (Open Policy Agent)**: An open-source policy engine that enables unified policy enforcement across the stack.
 
+* **Provenance**: The pedigree and chain of custody of an artifact or dataset, including its origin, handlers, transfer path, and integrity evidence (e.g., checksums, signatures).
+
 * **Privacy-Preserving Machine Learning (PPML)**: Techniques and methods to train and deploy ML models while protecting the privacy of the training data.
 
 * **Prompt Injection**: An attack where malicious instructions are embedded in inputs to override a model's intended behavior.
@@ -80,9 +88,13 @@
 
 * **Red-Teaming**: The practice of actively testing AI systems by simulating adversarial attacks to identify vulnerabilities.
 
+* **SLSA Provenance**: Metadata defined by the SLSA framework that records where, when, and how an artifact was produced (e.g., source repository, commit hash, build system, and parameters).
+
 * **SBOM (Software Bill of Materials)**: A formal record containing the details and supply chain relationships of various components used in building software or AI models.
 
 * **SHAP (SHapley Additive exPlanations)**: A game theoretic approach to explain the output of any machine learning model by computing the contribution of each feature to the prediction.
+
+* **Strong Authentication**: Authentication that resists credential theft and replay by requiring at least two factors (knowledge, possession, inherence) and phishing-resistant mechanisms such as FIDO2/WebAuthn, certificate-based service auth, or short-lived tokens.
 
 * **Supply Chain Attack**: Compromising a system by targeting less-secure elements in its supply chain, such as third-party libraries, datasets, or pre-trained models.
 
