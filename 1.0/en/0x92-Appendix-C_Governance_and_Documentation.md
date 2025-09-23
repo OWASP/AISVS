@@ -72,7 +72,10 @@ Maintain awareness of and compliance with evolving AI regulations.
 | :--------: | ------------------------------------------------------------------------------------ | :---: | :--: |
 | **1.1.2** | **Verify that** only datasets vetted for quality, representativeness, ethical sourcing, and licence compliance are allowed, reducing risks of poisoning, embedded bias, and intellectual property infringement. | 1 | D/V |
 | **1.1.5** | **Verify that** labelling/annotation quality is ensured via reviewer cross-checks or consensus. | 2 | D/V |
-| **1.1.6** | **Verify that** "data cards" or "datasheets for datasets" are maintained for significant training datasets, detailing characteristics, motivations, composition, collection processes, preprocessing, and recommended/discouraged uses. | 2 | D/V |
+| **1.1.6** | **Verify that** "data cards" or "datasheets for datasets" are maintained for significant training datasets, detailing characteristics, motivations, composition, collection processes, preprocessing, licenses, and recommended/discouraged uses. | 2 | D/V |
+| **1.1.7** | **Verify that** data cards document bias risks, demographic skews, and ethical considerations relevant to the dataset. | 2 | D/V |
+| **1.1.8** | **Verify that** data cards are versioned alongside datasets and updated whenever the dataset is modified. | 2 | D/V |
+| **1.1.9** | **Verify that** data cards are reviewed and approved by both technical and non-technical stakeholders (e.g., compliance, ethics, domain experts). | 2 | D/V |	
 | **1.3.2** | **Verify that** that identified biases are mitigated via documented strategies such as re-balancing, targeted data augmentation, algorithmic adjustments (e.g., pre-processing, in-processing, post-processing techniques), or re-weighting, and the impact of mitigation on both fairness and overall model performance is assessed. | 2 | D/V |
 | **1.3.3** | **Verify that** post-training fairness metrics are evaluated and documented. | 2 | D/V |
 | **1.3.4** | **Verify that** a lifecycle bias-management policy assigns owners and review cadence. | 3 | D/V |
