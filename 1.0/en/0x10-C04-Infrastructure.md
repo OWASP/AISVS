@@ -14,8 +14,8 @@ Prevent container escapes and privilege escalation through OS-level isolation pr
 
 | # | Description | Level | Role |
 |:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
-| **4.1.1** | **Verify that** all AI containers drop all Linux capabilities and add only explicitly justified capabilities. | 1 | D/V |
-| **4.1.2** | **Verify that** containers run with a least-privilege seccomp profile where unlisted syscalls are denied and violations terminate the process. | 1 | D/V |
+| **4.1.1** | **Verify that** all AI workloads run with minimal permissions needed on the operating system, by e.g. dropping unnecessary Linux capabilities in case of a container. | 1 | D/V |
+| **4.1.2** | **Verify that** workloads are protected by technologies limiting exploitation such as sandboxing, seccomp profiles, AppArmor, SELinux or similar, and that the configuration is appropriate. | 1 | D/V |
 | **4.1.3** | **Verify that** workloads run with a read-only root filesystem, and that any writable mounts are explicitly defined and hardened with restrictive options (e.g., noexec, nosuid, nodev). | 2 | D/V |
 | **4.1.4** | **Verify that** runtime monitoring detects privilege-escalation and container-escape behaviors and automatically terminates offending processes. | 2 | D/V |
 | **4.1.5** | **Verify that** high-risk AI workloads run in hardware-isolated environments (e.g., TEEs, trusted hypervisors, or bare-metal nodes) only after successful remote attestation. | 3 | D/V |
@@ -29,9 +29,9 @@ Ensure cryptographic integrity and supply chain security through reproducible bu
 | # | Description | Level | Role |
 |:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
 
-| **4.2.1** | **Verify that** container builds are reproducible and produce signed provenance metadata that can be independently verified. | 1 | D/V |
-| **4.2.2** | **Verify that** container images include a software bill of materials (SBOM) and are signed before being accepted for deployment. | 2 | D/V |
-| **4.2.3** | **Verify that** container signatures and provenance metadata are validated at deployment, and unverified artifacts are rejected. | 2 | D/V |
+| **4.2.1** | **Verify that** builds are reproducible and produce signed provenance metadata as appropriate for the build artifacts that can be independently verified. | 1 | D/V |
+| **4.2.2** | **Verify that** builds produce a software bill of materials (SBOM) and are signed before being accepted for deployment. | 2 | D/V |
+| **4.2.3** | **Verify that** build artifact (e.g., container images) signatures and provenance metadata are validated at deployment, and unverified artifacts are rejected. | 2 | D/V |
 
 ---
 
@@ -83,9 +83,9 @@ Prevent resource exhaustion attacks and ensure fair resource allocation through 
 
 | # | Description | Level | Role |
 |:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
-| **4.6.1** | **Verify that** Kubernetes ResourceQuotas or equivalent enforce hard limits on individual workloads. | 2 | D/V |
+| **4.6.1** | **Verify that** workload's resource consumption is limited appropriately with e.g. Kubernetes ResourceQuotas or similar to mitigate Denial of Service attacks. | 2 | D/V |
 | **4.6.2** | **Verify that** resource exhaustion triggers automated protections (e.g., rate limiting or workload isolation) once defined CPU, memory, or request thresholds are exceeded. | 2 | D/V |
-| **4.6.3** | **Verify that** backup systems run in isolated networks with separate credentials and air-gapped storage for ransomware protection. | 2 | D/V |
+| **4.6.3** | **Verify that** backup systems run in isolated networks with separate credentials, and the storage system is either run in an air-gapped network or implements WORM (write-once-read-many) protection against unauthorized modification. | 2 | D/V |
 
 ---
 
