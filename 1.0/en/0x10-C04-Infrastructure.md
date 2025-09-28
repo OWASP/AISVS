@@ -104,7 +104,6 @@ Secure AI-specific hardware components including GPUs, TPUs, and specialized AI 
 | **4.7.7** | **Verify that** accelerator interconnects (NVLink/PCIe/InfiniBand/RDMA/NCCL) are restricted to approved topologies and authenticated endpoints; plaintext cross-tenant links are disallowed. | 3 | D/V |
 | **4.7.8** | **Verify that** accelerator telemetry (power, temps, ECC, perf counters) is exported to SIEM/OTel and alerts on anomalies indicative of side-channels or covert channels. | 3 | D |
 
-
 ---
 
 ## C4.8 Edge & Distributed AI Security
