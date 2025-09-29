@@ -336,3 +336,18 @@ This appendix provides foundational requirements for establishing organizational
 | **AC.9.18.3** | **Verify that** automated infrastructure provisioning validates security policies during CI/CD, with non-compliant configurations blocked from deployment. |   2   |  D/V |
 | **AC.9.18.4** | **Verify that** data residency requirements are enforced by cryptographic attestation of storage locations.                                                |   3   |  D/V |
 | **AC.9.18.5** | **Verify that** cloud provider security assessments include agent-specific threat modeling and risk evaluation.                                            |   3   |  D/V |
+
+### AC.9.19 Access Control & Identity
+
+|       #       | Description                                                                                                                                                | Level | Role |
+| :-----------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :---: | :--: |
+| **5.1.3** | **Verify that** new principals undergo identity-proofing that is aligned with NIST 800-63-3 IAL-2 or equivalent standards before receiving production system access. | 2 | D |
+| **5.1.4** | **Verify that** access reviews are conducted quarterly with automated detection of dormant accounts, credential rotation enforcement, and de-provisioning workflows. | 2 | V |
+| **5.2.2** | **Verify that** least-privilege principles are enforced by default with service accounts starting at read-only permissions and documented business justification required for write access. | 1 | D/V |
+| **5.3.3** | **Verify that** policy definitions are version-controlled, peer-reviewed, and validated through automated testing in CI/CD pipelines before production deployment. | 2 | D |
+| **5.3.4** | **Verify that** policy evaluation results include decision rationales and are transmitted to SIEM systems for correlation analysis and compliance reporting. | 2 | V |
+| **5.4.4** | **Verify that** policy evaluation latency is continuously monitored with automated alerts for timeout conditions that could enable authorization bypass. | 2 | V |
+| **5.5.4** | **Verify that** redaction algorithms are deterministic, version-controlled, and maintain audit logs to support compliance investigations and forensic analysis. | 2 | V |
+| **5.5.5** | **Verify that** high-risk redaction events generate adaptive logs that include cryptographic hashes of original content for forensic retrieval without data exposure. | 3 | V |
+| **5.7.5** | **Verify that** agent error conditions and exception handling include capability scope information to support incident analysis and forensic investigation. | 3 | V |
+| **5.4.2** | **Verify that** citations, references, and source attributions in model outputs are validated against caller entitlements and removed if unauthorized access is detected. | 1 | D/V |
