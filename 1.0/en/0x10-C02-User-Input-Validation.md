@@ -12,7 +12,7 @@ Prompt injection is one of the top risks for AI systems. Defenses against this t
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.1.1** | **Verify that** user inputs are screened against a continuously updated library of known prompt injection patterns. These include jailbreak keywords, "ignore previous" and role-play chains. | 1 |  D/V |
+| **2.1.1** | **Verify that** user inputs are screened against a continuously updated library or service of known prompt injection patterns. These include jailbreak keywords, "ignore previous" and role-play chains. | 1 |  D/V |
 | **2.1.2** | **Verify that** the system enforces an instruction hierarchy in which system messages override user instructions, even after processing user instructions. | 1 |  D/V |
 | **2.1.4** | **Verify that** prompts originating from third-party content (web pages, PDFs, emails) are sanitized in isolation before being concatenated into the main prompt. | 2 | D |
 
