@@ -71,7 +71,6 @@ Track the full journey of each data point from source to model input for auditab
 | **1.5.2** | **Verify that** lineage records are immutable, securely stored, and accessible for audits. | 2 | D/V |
 | **1.5.3** | **Verify that** lineage tracking covers synthetic data generated via privacy-preserving or generative techniques and that all synthetic data is clearly labeled and distinguishable from real data throughout the pipeline. | 2 | D/V |
 
-
 ---
 
 ## References
