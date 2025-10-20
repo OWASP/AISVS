@@ -78,8 +78,6 @@
 
 * **OPA (Open Policy Agent)**: An open-source policy engine that enables unified policy enforcement across the stack.
 
-* **Provenance**: The pedigree and chain of custody of an artifact or dataset, including its origin, handlers, transfer path, and integrity evidence (e.g., checksums, signatures).
-
 * **Privacy-Preserving Machine Learning (PPML)**: Techniques and methods to train and deploy ML models while protecting the privacy of the training data.
 
 * **Prompt Injection**: An attack where malicious instructions are embedded in inputs to override a model's intended behavior.
@@ -87,8 +85,6 @@
 * **RAG (Retrieval-Augmented Generation)**: A technique that enhances large language models by retrieving relevant information from external knowledge sources before generating a response.
 
 * **Red-Teaming**: The practice of actively testing AI systems by simulating adversarial attacks to identify vulnerabilities.
-
-* **SLSA Provenance**: Metadata defined by the SLSA framework that records where, when, and how an artifact was produced (e.g., source repository, commit hash, build system, and parameters).
 
 * **SBOM (Software Bill of Materials)**: A formal record containing the details and supply chain relationships of various components used in building software or AI models.
 

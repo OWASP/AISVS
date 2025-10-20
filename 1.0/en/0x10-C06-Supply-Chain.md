@@ -2,17 +2,17 @@
 
 ## Control Objective
 
-AI supply‑chain attacks exploit third‑party models, frameworks, or datasets to embed backdoors, bias, or exploitable code. These controls provide end‑to‑end provenance, vulnerability management, and monitoring to protect the entire model lifecycle.
+AI supply‑chain attacks exploit third‑party models, frameworks, or datasets to embed backdoors, bias, or exploitable code. These controls provide end‑to‑end traceability, vulnerability management, and monitoring to protect the entire model lifecycle.
 
 ---
 
-## C6.1 Pretrained Model Vetting & Provenance
+## C6.1 Pretrained Model Vetting & Origin Integrity
 
 Assess and authenticate third‑party model origins, licenses, and hidden behaviors before any fine‑tuning or deployment.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **6.1.1** | **Verify that** every third‑party model artifact includes a signed provenance record identifying source repository and commit hash. | 1 | D/V |
+| **6.1.1** | **Verify that** every third‑party model artifact includes a signed origin record identifying source repository and commit hash. | 1 | D/V |
 | **6.1.2** | **Verify that** models are scanned for malicious layers or Trojan triggers using automated tools before import. | 1 | D/V |
 | **6.1.3** | **Verify that** transfer‑learning fine‑tunes pass adversarial evaluation to detect hidden behaviors. | 2 | D |
 | **6.1.4** | **Verify that** model licenses, export‑control tags, and data‑origin statements are recorded in a ML‑BOM entry. | 2 | V |
@@ -70,7 +70,7 @@ Evaluate external datasets for poisoning, bias, and legal compliance, and monito
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **6.5.1** | **Verify that** external datasets undergo poisoning risk scoring (e.g., data fingerprinting, outlier detection). | 1 | D/V |
 | **6.5.2** | **Verify that** bias metrics (demographic parity, equal opportunity) are calculated before dataset approval. | 1 | D |
-| **6.5.3** | **Verify that** provenance and license terms for datasets are captured in ML‑BOM entries. | 2 | V |
+| **6.5.3** | **Verify that** origin, lineage, and license terms for datasets are captured in ML‑BOM entries. | 2 | V |
 | **6.5.4** | **Verify that** periodic monitoring detects drift or corruption in hosted datasets. | 2 | V |
 | **6.5.5** | **Verify that** disallowed content (copyright, PII) is removed via automated scrubbing prior to training. | 3 | D |
 
