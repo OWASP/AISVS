@@ -97,41 +97,6 @@ Developers should employ advanced threat detection systems for AI that adapt to 
 | **2.8.4** | **Verify that** detection accuracy is improved via contextual analysis of user history, source, and session behavior. | 3 | D/V |
 | **2.8.5** | **Verify that** detection performance metrics (detection rate, false positive rate, processing latency) are continuously monitored and optimized. | 3 | D/V |
 
----
-
-## C2.9 Prompt Character Set
-
-### Control Objective
-
-Restricting the character set of user inputs to only allow characters that are necessary for business requirements can help prevent various types of attacks, including prompt injection and adversarial examples. This control objective aims to ensure that only authorized characters are allowed in user inputs, reducing the attack surface of AI systems.
-
-### Description
-
-Implement a character set limitation for user inputs, allowing only characters that are explicitly required for business purposes. It is recommended to use an allow list approach, where only specific characters are permitted, rather than a block list approach, which may not cover all possible malicious characters.
-
-### Requirements
-
-| # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.9.1** | **Verify that** the system implements a character set limitation for user inputs, allowing only characters that are explicitly required for business purposes. | 1 | D |
-| **2.9.2** | **Verify that** an allow list approach is used to define the permitted character set, rather than a block list approach. | 1 | D |
-| **2.9.3** | **Verify that** the allowed character set is regularly reviewed and updated to ensure it remains aligned with business requirements. | 2 | D/V |
-| **2.9.4** | **Verify that** inputs containing characters outside of the allowed set are rejected and logged, with clear error messages provided to users. | 1 | D/V |
-
-### Guidance
-
-* Identify the specific character set required for business purposes, such as alphanumeric characters, punctuation, or special characters.
-* Implement a character set limitation using techniques such as regular expressions, character encoding, or input validation libraries.
-* Regularly review and update the allowed character set to ensure it remains aligned with changing business requirements.
-* Consider implementing additional controls, such as input normalization or sanitization, to further reduce the risk of attacks.
-
-### Examples
-
-* Allow list example: Only permit alphanumeric characters (a-z, A-Z, 0-9), punctuation marks (!, @, #, $, .), and special characters (~, _, -, ;, ', ") in user inputs.
-* Block list example: Attempt to block specific malicious characters, such as SQL injection characters (`;`, `--`, `%`). However, this approach may not cover all possible malicious characters and is not recommended.
-
-By implementing a character set limitation and using an allow list approach, organizations can reduce the risk of attacks and improve the overall security of their AI systems.
-
 ## References
 
 * [Generative AI's Biggest Security Flaw Is Not Easy to Fix](https://www.wired.com/story/generative-ai-prompt-injection-hacking)
