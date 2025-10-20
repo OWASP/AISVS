@@ -54,9 +54,9 @@ Protect secrets and cryptographic keys with secure storage, automated rotation, 
 |:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
 | **4.4.1** | **Verify that** secrets are stored in a dedicated secrets management system with encryption at rest and isolated from application workloads. | 1 | D/V |
 | **4.4.2** | **Verify that** cryptographic keys are generated and stored in hardware-backed modules (e.g., HSMs, cloud KMS). | 1 | D/V |
-| **4.4.3** | **Verify that** secrets rotation is automated. | 2 | D/V |
-| **4.4.4** | **Verify that** access to production secrets requires strong authentication. |
-| **4.4.5** | **Verify that** secrets are deployed to applications at runtime through a secrets management solution. Secrets must never be embedded in source code, configuration files, build artifacts, container images, or environment variables. | 2 | D/V |
+| **4.4.3** | **Verify that** access to production secrets requires strong authentication. | 1 | D/V |
+| **4.4.4** | **Verify that** secrets are deployed to applications at runtime through a dedicated secrets management system. Secrets must never be embedded in source code, configuration files, build artifacts, container images, or environment variables. | 1 | D/V |
+| **4.4.5** | **Verify that** secrets rotation is automated. | 2 | D/V |
 
 ---
 
