@@ -24,7 +24,7 @@ Natural Language Processing (NLP) models are still vulnerable to subtle characte
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.2.1** | **Verify that** basic input normalization steps (Unicode NFC, homoglyph mapping, whitespace trimming) run before tokenization. | 1 | D |
+| **2.2.1** | **Verify that** basic input normalization steps (Unicode NFC, homoglyph mapping, whitespace trimming) are run before tokenization. | 1 | D |
 | **2.2.2** | **Verify that** statistical anomaly detection flags inputs with unusually high edit distance to language norms or abnormal embedding distances. | 2 |  D/V |
 | **2.2.3** | **Verify that** the inference pipeline supports adversarial-training–hardened model variants or defense layers (e.g., randomization, defensive distillation, alignment checks) for high-risk endpoints. | 2 | D |
 | **2.2.4** | **Verify that** suspected adversarial inputs are quarantined, and logged with full payloads.  | 2 | V |
@@ -32,67 +32,79 @@ Natural Language Processing (NLP) models are still vulnerable to subtle characte
 
 ---
 
-## C2.3 Schema, Type & Length Validation
+## C2.3 Prompt Character Set
+
+Restricting the character set of user inputs to only allow characters that are necessary for business requirements can help prevent various types of attacks.
+
+| # | Description | Level | Role |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
+| **2.3.1** | **Verify that** the system implements a character set limitation for user inputs, allowing only characters that are explicitly required for business purposes. | 1 | D |
+| **2.3.2** | **Verify that** an allow-list approach is used to define the permitted character set. | 1 | D |
+| **2.3.3** | **Verify that** inputs containing characters outside of the allowed set are rejected and logged. | 1 | D/V |
+
+---
+
+## C2.4 Schema, Type & Length Validation
 
 AI attacks featuring malformed or oversized inputs can cause parsing errors, prompt spillage across fields, and resource exhaustion.  Strict schema enforcement is also a prerequisite when performing deterministic tool calls.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.3.1** | **Verify that** every API or function call endpoint defines an explicit input schema (JSON Schema, Protobuf or multimodal equivalent) and that inputs are validated before prompt assembly. | 1 | D |
-| **2.3.2** | **Verify that** inputs exceeding maximum token or byte limits are rejected with a safe error and never silently truncated. | 1 |  D/V |
-| **2.3.3** | **Verify that** type checks (e.g., numeric ranges, enum values, MIME types for images/audio) are enforced server-side. | 2 |  D/V |
-| **2.3.4** | **Verify that** semantic validators, that understand NLP input, run in constant time to prevent algorithmic DoS. | 2 | D |
-| **2.3.5** | **Verify that** validation failures are logged with redacted payload snippets and unambiguous error codes to aid security triage. | 3 | V |
+| **2.4.1** | **Verify that** every API or function call endpoint defines an explicit input schema (JSON Schema, Protobuf or multimodal equivalent) and that inputs are validated before prompt assembly. | 1 | D |
+| **2.4.2** | **Verify that** inputs exceeding maximum token or byte limits are rejected with a safe error and never silently truncated. | 1 |  D/V |
+| **2.4.3** | **Verify that** type checks (e.g., numeric ranges, enum values, MIME types for images/audio) are enforced server-side. | 2 |  D/V |
+| **2.4.4** | **Verify that** semantic validators, that understand NLP input, run in constant time to prevent algorithmic DoS. | 2 | D |
+| **2.4.5** | **Verify that** validation failures are logged with redacted payload snippets and unambiguous error codes to aid security triage. | 3 | V |
 
 ---
 
-## C2.4 Content & Policy Screening
+## C2.5 Content & Policy Screening
 
 Developers should be able to detect syntactically valid prompts that request disallowed content (such as illicit instructions, hate speech, and/or copyrighted text) then prevent them from propagating.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.4.1** | **Verify that** a content classifier (zero shot or fine tuned) scores every input for violence, self-harm, hate, sexual content and illegal requests, with configurable thresholds. | 1 | D |
-| **2.4.2** | **Verify that** inputs which violate policies will be rejected so they will not propagate to downstream LLM calls. | 1 |  D/V |
-| **2.4.3** | **Verify that** screening respects user-specific policies (age, regional legal constraints) via attribute-based rules resolved at request time.  | 2 | D |
-| **2.4.4** | **Verify that** screening logs include classifier confidence scores and policy category tags for SOC correlation and future red-team replay. | 3 | V |
+| **2.5.1** | **Verify that** a content classifier (zero shot or fine tuned) scores every input for violence, self-harm, hate, sexual content and illegal requests, with configurable thresholds. | 1 | D |
+| **2.5.2** | **Verify that** inputs which violate policies will be rejected so they will not propagate to downstream LLM calls. | 1 |  D/V |
+| **2.5.3** | **Verify that** screening respects user-specific policies (age, regional legal constraints) via attribute-based rules resolved at request time.  | 2 | D |
+| **2.5.4** | **Verify that** screening logs include classifier confidence scores and policy category tags for SOC correlation and future red-team replay. | 3 | V |
 
 ---
 
-## C2.5 Input Rate Limiting & Abuse Prevention
+## C2.6 Input Rate Limiting & Abuse Prevention
 
 Developers should prevent abuse, resource exhaustion, and automated attacks against AI systems by limiting input rates and detecting anomalous usage patterns.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.5.1** | **Verify that** per-user, per-IP, and per-API-key rate limits are enforced for all input endpoints. | 1 | D/V |
-| **2.5.2** | **Verify that** burst and sustained rate limits are tuned to prevent DoS and brute force attacks. | 2 | D/V |
-| **2.5.3** | **Verify that** anomalous usage patterns (e.g., rapid-fire requests, input flooding) trigger automated blocks or escalations. | 2 | D/V |
-| **2.5.4** | **Verify that** abuse prevention logs are retained and reviewed for emerging attack patterns. | 3 | V |
+| **2.6.1** | **Verify that** per-user, per-IP, and per-API-key rate limits are enforced for all input endpoints. | 1 | D/V |
+| **2.6.2** | **Verify that** burst and sustained rate limits are tuned to prevent DoS and brute force attacks. | 2 | D/V |
+| **2.6.3** | **Verify that** anomalous usage patterns (e.g., rapid-fire requests, input flooding) trigger automated blocks or escalations. | 2 | D/V |
+| **2.6.4** | **Verify that** abuse prevention logs are retained and reviewed for emerging attack patterns. | 3 | V |
 
 ---
 
-## C2.6 Multi-Modal Input Validation
+## C2.7 Multi-Modal Input Validation
 
 AI systems should include robust validation for non-textual inputs (images, audio, files) to prevent injection, evasion, or resource abuse.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.6.1** | **Verify that** all non-text inputs (images, audio, files) are validated for type, size, and format before processing. | 1 | D |
-| **2.6.2** | **Verify that** files are scanned for malware and steganographic payloads before ingestion. | 2 | D/V |
-| **2.6.3** | **Verify that** image/audio inputs are checked for adversarial perturbations or known attack patterns. | 2 | D/V |
-| **2.6.4** | **Verify that** multi-modal input validation failures are logged and trigger alerts for investigation. | 3 | V |
-| **2.6.5** | **Verify that** cross-modal attack detection identifies coordinated attacks spanning multiple input types (e.g., steganographic payloads in images combined with prompt injection in text) with correlation rules and alert generation. | 2 | D/V |
-| **2.6.6** | **Verify that** multi-modal validation failures trigger detailed logging including all input modalities, validation results and threat scores. | 3 | D/V |
+| **2.7.1** | **Verify that** all non-text inputs (images, audio, files) are validated for type, size, and format before processing. | 1 | D |
+| **2.7.2** | **Verify that** files are scanned for malware and steganographic payloads before ingestion. | 2 | D/V |
+| **2.7.3** | **Verify that** image/audio inputs are checked for adversarial perturbations or known attack patterns. | 2 | D/V |
+| **2.7.4** | **Verify that** multi-modal input validation failures are logged and trigger alerts for investigation. | 3 | V |
+| **2.7.5** | **Verify that** cross-modal attack detection identifies coordinated attacks spanning multiple input types (e.g., steganographic payloads in images combined with prompt injection in text) with correlation rules and alert generation. | 2 | D/V |
+| **2.7.6** | **Verify that** multi-modal validation failures trigger detailed logging including all input modalities, validation results and threat scores. | 3 | D/V |
 ---
 
-## C2.7 Real-Time Adaptive Threat Detection
+## C2.8 Real-Time Adaptive Threat Detection
 
 Developers should employ advanced threat detection systems for AI that adapt to new attack patterns and provide real-time protection with compiled pattern matching.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.7.1** | **Verify that** pattern matching (e.g., compiled regex) runs on all inputs with minimal latency impact. | 1 | D/V |
+| **2.8.1** | **Verify that** pattern matching (e.g., compiled regex) runs on all inputs with minimal latency impact. | 1 | D/V |
 | **2.8.3** | **Verify that** adaptive detection models adjust sensitivity based on recent attack activity and are updated with new patterns in real time. | 2 | D/V |
 | **2.8.4** | **Verify that** detection accuracy is improved via contextual analysis of user history, source, and session behavior. | 3 | D/V |
 | **2.8.5** | **Verify that** detection performance metrics (detection rate, false positive rate, processing latency) are continuously monitored and optimized. | 3 | D/V |
