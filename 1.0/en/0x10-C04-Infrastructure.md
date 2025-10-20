@@ -122,9 +122,7 @@ Secure distributed AI deployments including edge computing, federated learning, 
 
 * [NIST Cybersecurity Framework 2.0](https://www.nist.gov/cyberframework)
 * [CIS Controls v8](https://www.cisecurity.org/controls/v8)
-* [OWASP Container Security Verification Standard](https://github.com/OWASP/Container-Security-Verification-Standard)
 * [Kubernetes Security Best Practices](https://kubernetes.io/docs/concepts/security/)
-* [SLSA Supply Chain Security Framework](https://slsa.dev/)
 * [Cloud Security Alliance: Cloud Controls Matrix](https://cloudsecurityalliance.org/research/cloud-controls-matrix/)
 * [ENISA: Secure Infrastructure Design](https://www.enisa.europa.eu/topics/critical-information-infrastructures-and-services)
 * [ISO 27001:2022 Information Security Management](https://www.iso.org/standard/27001)
