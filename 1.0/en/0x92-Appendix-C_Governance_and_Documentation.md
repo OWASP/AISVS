@@ -351,3 +351,10 @@ This appendix provides foundational requirements for establishing organizational
 | **5.5.5** | **Verify that** high-risk redaction events generate adaptive logs that include cryptographic hashes of original content for forensic retrieval without data exposure. | 3 | V |
 | **5.7.5** | **Verify that** agent error conditions and exception handling include capability scope information to support incident analysis and forensic investigation. | 3 | V |
 | **5.4.2** | **Verify that** citations, references, and source attributions in model outputs are validated against caller entitlements and removed if unauthorized access is detected. | 1 | D/V |
+
+### New Items to be Integrated Above
+
+
+|       #       | Description                                                                                                                                                | Level | Role |
+| :-----------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :---: | :--: |
+| **2.3.3** | **Verify that** the allowed character set is regularly reviewed and updated to ensure it remains aligned with business requirements. | 2 | D/V |
