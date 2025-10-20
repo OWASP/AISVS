@@ -354,7 +354,6 @@ This appendix provides foundational requirements for establishing organizational
 
 ### New Items to be Integrated Above
 
-
 |       #       | Description                                                                                                                                                | Level | Role |
 | :-----------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :---: | :--: |
 | **2.3.3** | **Verify that** the allowed character set is regularly reviewed and updated to ensure it remains aligned with business requirements. | 2 | D/V |
