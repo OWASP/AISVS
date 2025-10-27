@@ -115,6 +115,11 @@ Secure distributed AI deployments including edge computing, federated learning, 
 | **4.8.2** | **Verify that** edge devices implement secure boot with verified signatures and rollback protection to prevent firmware downgrade attacks. | 2 | D/V |
 | **4.8.3** | **Verify that** distributed AI coordination uses Byzantine fault-tolerant consensus mechanisms with participant validation and malicious node detection. | 3 | D/V |
 | **4.8.4** | **Verify that** edge-to-cloud communication supports bandwidth throttling, data compression, and secure offline operation with encrypted local storage. | 3 | D/V |
+| **4.8.5** | **Verify that** models packaged within client or edge applications (e.g., mobile, IoT, embedded) are encrypted or obfuscated at rest, and decrypted only within a trusted runtime environment. | 2 | D/V |
+| **4.8.6** | **Verify that** mobile or edge applications implement anti-tampering mechanisms (e.g., code signing, integrity verification, runtime self-checks) that detect and block modified binaries or instrumentation frameworks. | 2 | D/V |
+| **4.8.7** | **Verify that** model integrity is validated using cryptographic checksums or signatures before loading or inference, and that unverified or altered models are rejected. | 2 | D/V |
+| **4.8.8** | **Verify that** local inference runtimes enforce memory and file access controls to prevent model dumping, debugging, or extraction of intermediate embeddings. | 3 | D/V |
+| **4.8.9** | **Verify that** sensitive model parameters or proprietary weights are stored using secure enclaves, on-device key stores, or hardware-backed encryption (e.g., Android Keystore, iOS Secure Enclave, TPM). | 3 | D/V |
 
 ---
 
