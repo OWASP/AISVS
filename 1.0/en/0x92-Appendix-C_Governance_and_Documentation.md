@@ -1,9 +1,18 @@
-# Appendix C: Governance, Risk, and Compliance (GRC)
+---
+## 📘 Governance, Risk, and Compliance (GRC) — Navigation Summary
 
-> **Navigation Summary:**  
-> 1. [Governance](#governance)  
-> 2. [Compliance](#compliance)  
-> 3. [Documentation](#documentation)
+- [1. Governance Overview](#1-governance-overview)
+- [2. Compliance and Risk Management](#2-compliance-and-risk-management)
+- [3. Documentation Practices](#3-documentation-practices)
+- [4. Continuous Improvement and Review](#4-continuous-improvement-and-review)
+- [5. References and Resources](#5-references-and-resources)
+
+---
+
+> **Purpose:**  
+> This section outlines the governance, compliance, and documentation practices necessary to ensure the integrity, accountability, and continual improvement of AI systems within the AISVS framework.
+
+## Appendix C: Governance, Risk, and Compliance (GRC)
 
 ---
 
