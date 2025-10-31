@@ -12,9 +12,9 @@ Prompt injection is one of the top risks for AI systems. Defenses against this t
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.1.1** | **Verify that** user inputs are screened against a continuously updated library or service of known prompt injection patterns. These include jailbreak keywords, "ignore previous" and role-play chains. | 1 |  D/V |
-| **2.1.2** | **Verify that** the system enforces an instruction hierarchy in which system messages override user instructions, even after processing user instructions. | 1 |  D/V |
-| **2.1.4** | **Verify that** prompts originating from third-party content (web pages, PDFs, emails) are sanitized in isolation before being concatenated into the main prompt. | 2 | D |
+| **2.1.1** | **Verify that** any external or derived input that may steer behavior, including user prompts, RAG results, plugin or MCP outputs, agent to agent messages, API or webhook responses, configuration or policy files, memory reads and memory writes, is treated as untrusted, made inert by quoting or tagging and active content removal, and screened by a maintained prompt injection detection ruleset or service before concatenation into prompts or execution of actions. | 1 |  D/V |
+| **2.1.2** | **Verify that** the system enforces an instruction hierarchy in which system and developer messages override user instructions and other untrusted inputs, even after processing user instructions. | 1 |  D/V |
+| **2.1.4** | **Verify that** prompts originating from third-party content (web pages, PDFs, emails) are sanitized in isolation (for example, stripping instruction-like directives and neutralizing HTML, Markdown, and script content) before being concatenated into the main prompt. | 2 | D |
 
 ---
 
@@ -24,11 +24,11 @@ Natural Language Processing (NLP) models are still vulnerable to subtle characte
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.2.1** | **Verify that** basic input normalization steps (Unicode NFC, homoglyph mapping, whitespace trimming) are run before tokenization. | 1 | D |
-| **2.2.2** | **Verify that** statistical anomaly detection flags inputs with unusually high edit distance to language norms or abnormal embedding distances. | 2 |  D/V |
+| **2.2.1** | **Verify that** basic input normalization steps (Unicode NFC, homoglyph mapping, whitespace trimming, removal of control and invisible Unicode characters) are run before tokenization or embedding and before parsing into tool or MCP arguments. | 1 | D |
+| **2.2.2** | **Verify that** statistical anomaly detection flags inputs with unusually high edit distance to language norms or abnormal embedding distances and that flagged inputs are gated before concatenation into prompts or execution of actions. | 2 |  D/V |
 | **2.2.3** | **Verify that** the inference pipeline supports adversarial-training–hardened model variants or defense layers (e.g., randomization, defensive distillation, alignment checks) for high-risk endpoints. | 2 | D |
-| **2.2.4** | **Verify that** suspected adversarial inputs are quarantined, and logged with full payloads.  | 2 | V |
-| **2.2.5** | **Verify that** that encoding and representation smuggling in both inputs and outputs (e.g., invisible Unicode/control characters, homoglyph swaps, or mixed-direction text) are detected and mitigated. Approved mitigations include canonicalization, strict schema validation, policy-based rejection, or explicit marking. | 2 | D/V |
+| **2.2.4** | **Verify that** suspected adversarial inputs are quarantined, and logged with full payloads and trace metadata (source, tool or MCP server, agent ID, session).  | 2 | V |
+| **2.2.5** | **Verify that** encoding and representation smuggling in both inputs and outputs (e.g., invisible Unicode/control characters, homoglyph swaps, or mixed-direction text) are detected and mitigated. Approved mitigations include canonicalization, strict schema validation, policy-based rejection, or explicit marking. | 2 | D/V |
 
 ---
 
@@ -40,7 +40,7 @@ Restricting the character set of user inputs to only allow characters that are n
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **2.3.1** | **Verify that** the system implements a character set limitation for user inputs, allowing only characters that are explicitly required for business purposes. | 1 | D |
 | **2.3.2** | **Verify that** an allow-list approach is used to define the permitted character set. | 1 | D |
-| **2.3.3** | **Verify that** inputs containing characters outside of the allowed set are rejected and logged. | 1 | D/V |
+| **2.3.3** | **Verify that** inputs containing characters outside of the allowed set are rejected and logged with trace metadata (source, tool or MCP server, agent ID, session). | 1 | D/V |
 
 ---
 
@@ -50,11 +50,11 @@ AI attacks featuring malformed or oversized inputs can cause parsing errors, pro
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.4.1** | **Verify that** every API or function call endpoint defines an explicit input schema (JSON Schema, Protobuf or multimodal equivalent) and that inputs are validated before prompt assembly. | 1 | D |
+| **2.4.1** | **Verify that** every API, tool or MCP endpoint defines an explicit input schema (JSON Schema, Protobuf or multimodal equivalent) rejects extra or unknown fields and implicit type coercion, and validates inputs server-side before prompt assembly or tool execution. | 1 | D |
 | **2.4.2** | **Verify that** inputs exceeding maximum token or byte limits are rejected with a safe error and never silently truncated. | 1 |  D/V |
-| **2.4.3** | **Verify that** type checks (e.g., numeric ranges, enum values, MIME types for images/audio) are enforced server-side. | 2 |  D/V |
-| **2.4.4** | **Verify that** semantic validators, that understand NLP input, run in constant time to prevent algorithmic DoS. | 2 | D |
-| **2.4.5** | **Verify that** validation failures are logged with redacted payload snippets and unambiguous error codes to aid security triage. | 3 | V |
+| **2.4.3** | **Verify that** type checks (e.g., numeric ranges, enum values, MIME types for images/audio) are enforced server-side including for tool or MCP arguments. | 2 |  D/V |
+| **2.4.4** | **Verify that** semantic validators, that understand NLP input, run in constant time and avoid external network calls to prevent algorithmic DoS. | 2 | D |
+| **2.4.5** | **Verify that** validation failures are logged with redacted payload snippets and unambiguous error codes and include trace metadata (source, tool or MCP server, agent ID, session) to aid security triage. | 3 | V |
 
 ---
 
@@ -64,10 +64,10 @@ Developers should be able to detect syntactically valid prompts that request dis
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.5.1** | **Verify that** a content classifier (zero shot or fine tuned) scores every input for violence, self-harm, hate, sexual content and illegal requests, with configurable thresholds. | 1 | D |
-| **2.5.2** | **Verify that** inputs which violate policies will be rejected so they will not propagate to downstream LLM calls. | 1 |  D/V |
-| **2.5.3** | **Verify that** screening respects user-specific policies (age, regional legal constraints) via attribute-based rules resolved at request time.  | 2 | D |
-| **2.5.4** | **Verify that** screening logs include classifier confidence scores and policy category tags for SOC correlation and future red-team replay. | 3 | V |
+| **2.5.1** | **Verify that** a content classifier (zero shot or fine tuned) scores every input and output for violence, self-harm, hate, sexual content and illegal requests, with configurable thresholds. | 1 | D |
+| **2.5.2** | **Verify that** inputs which violate policies will be rejected so they will not propagate to downstream LLM or tool/MCP calls. | 1 |  D/V |
+| **2.5.3** | **Verify that** screening respects user-specific policies (age, regional legal constraints) via attribute-based rules resolved at request time, including agent-role attributes.  | 2 | D |
+| **2.5.4** | **Verify that** screening logs include classifier confidence scores and policy category tags with applied stage (pre-prompt or post-response) and trace metadata (source, tool or MCP server, agent ID, session) for SOC correlation and future red-team replay. | 3 | V |
 
 ---
 
@@ -77,10 +77,10 @@ Developers should prevent abuse, resource exhaustion, and automated attacks agai
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.6.1** | **Verify that** per-user, per-IP, and per-API-key rate limits are enforced for all input endpoints. | 1 | D/V |
-| **2.6.2** | **Verify that** burst and sustained rate limits are tuned to prevent DoS and brute force attacks. | 2 | D/V |
-| **2.6.3** | **Verify that** anomalous usage patterns (e.g., rapid-fire requests, input flooding) trigger automated blocks or escalations. | 2 | D/V |
-| **2.6.4** | **Verify that** abuse prevention logs are retained and reviewed for emerging attack patterns. | 3 | V |
+| **2.6.1** | **Verify that** per-user, per-IP, per-API-key, and per-agent and per-session/task rate limits are enforced for all input and tool/MCP endpoints. | 1 | D/V |
+| **2.6.2** | **Verify that** burst and sustained rate limits are tuned to prevent DoS and brute force attacks, and that per-task budgets (for example tokens, tool/MCP calls, and cost) are enforced for agent planning loops. | 2 | D/V |
+| **2.6.3** | **Verify that** anomalous usage patterns (e.g., rapid-fire requests, input flooding, repetitive failing tool/MCP calls or recursive agent loops) trigger automated blocks or escalations. | 2 | D/V |
+| **2.6.4** | **Verify that** abuse prevention logs are retained and reviewed for emerging attack patterns, with trace metadata (source, tool or MCP server, agent ID, session). | 3 | V |
 
 ---
 
@@ -90,12 +90,12 @@ AI systems should include robust validation for non-textual inputs (images, audi
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.7.1** | **Verify that** all non-text inputs (images, audio, files) are validated for type, size, and format before processing. | 1 | D |
-| **2.7.2** | **Verify that** files are scanned for malware and steganographic payloads before ingestion. | 2 | D/V |
-| **2.7.3** | **Verify that** image/audio inputs are checked for adversarial perturbations or known attack patterns. | 2 | D/V |
-| **2.7.4** | **Verify that** multi-modal input validation failures are logged and trigger alerts for investigation. | 3 | V |
-| **2.7.5** | **Verify that** cross-modal attack detection identifies coordinated attacks spanning multiple input types (e.g., steganographic payloads in images combined with prompt injection in text) with correlation rules and alert generation. | 2 | D/V |
-| **2.7.6** | **Verify that** multi-modal validation failures trigger detailed logging including all input modalities, validation results and threat scores. | 3 | D/V |
+| **2.7.1** | **Verify that** all non-text inputs (images, audio, files) are validated for type, size, and format before processing, and that any extracted text (image-to-text or speech-to-text) and any hidden or embedded instructions (metadata, layers, alt text, comments) are treated as untrusted per 2.1.1. | 1 | D |
+| **2.7.2** | **Verify that** files are scanned for malware and steganographic payloads before ingestion, and that any active content (like scripts or macros) is removed or the file is quarantined. | 2 | D/V |
+| **2.7.3** | **Verify that** image/audio inputs are checked for adversarial perturbations or known attack patterns, and detections trigger gating (block or degrade capabilities) before model use. | 2 | D/V |
+| **2.7.4** | **Verify that** multi-modal input validation failures are logged and trigger alerts for investigation, with trace metadata (source, tool or MCP server, agent ID, session). | 3 | V |
+| **2.7.5** | **Verify that** cross-modal attack detection identifies coordinated attacks spanning multiple input types (e.g., steganographic payloads in images combined with prompt injection in text) with correlation rules and alert generation, and that confirmed detections are blocked or require HITL (human-in-the-loop) approval. | 2 | D/V |
+| **2.7.6** | **Verify that** multi-modal validation failures trigger detailed logging including all input modalities, validation results and threat scores, and trace metadata (source, tool or MCP server, agent ID, session). | 3 | D/V |
 ---
 
 ## C2.8 Real-Time Adaptive Threat Detection
@@ -104,10 +104,10 @@ Developers should employ advanced threat detection systems for AI that adapt to 
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.8.1** | **Verify that** pattern matching (e.g., compiled regex) runs on all inputs with minimal latency impact. | 1 | D/V |
-| **2.8.3** | **Verify that** adaptive detection models adjust sensitivity based on recent attack activity and are updated with new patterns in real time. | 2 | D/V |
-| **2.8.4** | **Verify that** detection accuracy is improved via contextual analysis of user history, source, and session behavior. | 3 | D/V |
-| **2.8.5** | **Verify that** detection performance metrics (detection rate, false positive rate, processing latency) are continuously monitored and optimized. | 3 | D/V |
+| **2.8.1** | **Verify that** pattern matching (e.g., compiled regex) runs on all inputs and outputs (including tool/MCP surfaces) with minimal latency impact. | 1 | D/V |
+| **2.8.3** | **Verify that** adaptive detection models adjust sensitivity based on recent attack activity and are updated with new patterns in real time, and trigger risk-adaptive responses (for example disable tools, shrink context, or require HITL approval). | 2 | D/V |
+| **2.8.4** | **Verify that** detection accuracy is improved via contextual analysis of user history, source, and session behavior, including trace metadata (source, tool or MCP server, agent ID, session). | 3 | D/V |
+| **2.8.5** | **Verify that** detection performance metrics (detection rate, false positive rate, processing latency) are continuously monitored and optimized, including time-to-block and stage (pre-prompt/post-response). | 3 | D/V |
 
 ## References
 
