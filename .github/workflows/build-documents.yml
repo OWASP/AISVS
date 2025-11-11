@@ -112,7 +112,7 @@ jobs:
           fi
 
       # STEP 1: Check out the repository code; we'll commit bld result/PR to it
-      # We'll download the owasp_pdf_5 tool on to it.
+      # We'll download the Tenzing tool on to it.
       - name: Check out repository code
         if: ${{ env.LANG != '' }}
         uses: actions/checkout@v4
@@ -167,7 +167,7 @@ jobs:
         if: ${{ env.LANG != '' && env.BRANCH_EXISTS == 'no' }}
         run: |
           # test bed
-          curl -L -o main.zip "https://github.com/tetsuoseto/owasp_pdf_5/archive/refs/heads/main.zip"
+          curl -L -o main.zip "https://github.com/tetsuoseto/Tenzing/archive/refs/heads/main.zip"
           # production
           # curl -L -o main.zip "https://github.com/OWASP/pdf5/archive/refs/heads/main.zip"
       - name: Unzip the tool zip file
@@ -182,7 +182,7 @@ jobs:
         if: ${{ env.LANG != '' && env.BRANCH_EXISTS == 'no' }}
         run: |
           # test bed
-          cd UNZIPPED/owasp_pdf_5-main/
+          cd UNZIPPED/Tenzing-main/
           # production
           # cd UNZIPPED/pdf5-main/
           unzip linux.zip -d BldEnv20241124
