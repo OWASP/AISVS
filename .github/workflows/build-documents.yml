@@ -1,41 +1,278 @@
 name: Build Documents
 
+# BSD 3-Clause License
+
+# Copyright (c) 2025, Tetsuo Seto
+
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+
+# 1. Redistributions of source code must retain the above copyright notice, this
+#    list of conditions and the following disclaimer.
+
+# 2. Redistributions in binary form must reproduce the above copyright notice,
+#    this list of conditions and the following disclaimer in the documentation
+#    and/or other materials provided with the distribution.
+
+# 3. Neither the name of the copyright holder nor the names of its
+#    contributors may be used to endorse or promote products derived from
+#    this software without specific prior written permission.
+
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 on:
-  workflow_dispatch:
-  pull_request:
+  issue_comment:
+    types: [created, edited]
   push:
     branches:
       - main
+    paths:
+      - '1.0/en/*.md'
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+permissions:
+  contents: write # needed to push commit the generated PDF
+  pull-requests: write # needed to PR the generated PDF
 
 jobs:
-  filters:
-    runs-on: ubuntu-latest
+  build_pdf:
+    name: Build PDF
+    if: ${{ startsWith(github.event.issue.title, 'Document Build Request') || github.event_name == 'push' }}
+    runs-on: ubuntu-24.04
     steps:
-    - uses: actions/checkout@v4.1.1
-    - uses: dorny/paths-filter@v3.0.0
-      id: filter
-      with:
-        filters: |
-          docker:
-            - 'docker/**/*'
-          v1:
-            - '5.0/**/*'
-    outputs:
-      docker: ${{ steps.filter.outputs.docker }}
-      v1: ${{ steps.filter.outputs.v1 }}
 
-  build-image:
-    if: needs.filters.outputs.docker == 'true'
-    needs: filters
-    uses: owasp/aisvs/.github/workflows/build-and-publish-docker-image.yml@main
-    
-  build-v1:
-    if: ${{ always() && needs.filters.outputs.v1 == 'true' }}
-    needs: 
-      - build-image
-      - filters
-    uses: owasp/aisvs/.github/workflows/create-1.0-outputs.yml@main
+      # STEP 0: Define LANG, MT_X, owasp_pdf parameters
+      - name: Read owasp_pdf parameters
+        if: ${{ startsWith(github.event.issue.title, 'Document Build Request') }}
+        env:
+          EVENT_COMMENT_BODY: ${{ github.event.comment.body }}
+        run: |
+          IFS=',' read -ra PARAMS <<< $EVENT_COMMENT_BODY
+          if echo ${PARAMS[0]}; then
+            echo "LANG=${PARAMS[0]}" | tr -d " " >> $GITHUB_ENV
+          else
+            echo "LANG=" >> $GITHUB_ENV;
+          fi
+          if echo ${PARAMS[1]}; then
+            echo "MT_X=${PARAMS[1]}" | tr -d " " >> $GITHUB_ENV
+          else
+            echo "MT_X=" >> $GITHUB_ENV;
+          fi
+      - name: Define LANG for 'push' event
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          echo "LANG=en-US" >> $GITHUB_ENV
+          echo "MT_X=" >> $GITHUB_ENV
+      - name: Adjust LANG (default en-US)
+        run: |
+          if [[ ${{ env.LANG }} =~ ^[a-z]{2}-[A-Z]{2}$ ]]; then
+            :
+          else
+            echo "LANG=" >> $GITHUB_ENV
+          fi
+      - name: Adjust MT_X
+        if: ${{ env.LANG != '' && env.MT_X != '' && !contains(fromJSON('["mt", "x", "b"]'), env.MT_X) }}
+        run: echo "LANG=" >> $GITHUB_ENV
+      - name: Invalid Command
+        env:
+          EVENT_COMMENT_BODY: ${{ github.event.comment.body }}
+          TRANSLATE_ACCESS_KEY: ${{ secrets.TRANSLATE_ACCESS_KEY }}
+        run: |
+          if ${{ env.LANG == '' }}; then
+            echo "The command '$EVENT_COMMENT_BODY' is invalid."
+            exit 1
+          fi
+          if ${{ env.TRANSLATE_ACCESS_KEY == '' }}; then
+            echo "MT is disabled. Pls consult with the repo maintener."
+            exit 1
+          fi
+          if ${{ env.MT_X == 'mt' && (
+            github.event.comment.author_association != 'OWNER' &&
+            github.event.comment.author_association != 'COLLABORATOR' &&
+            github.event.comment.author_association != 'MEMBER')
+          }}; then
+            echo "MT is not allowed. Pls consult with the repo maintener."
+            exit 1
+          fi
+          if ${{ env.MT_X == 'b' && (
+            github.event.comment.author_association != 'OWNER' &&
+            github.event.comment.author_association != 'COLLABORATOR' &&
+            github.event.comment.author_association != 'MEMBER')
+          }}; then
+            echo "B is not allowed. Pls consult with the repo maintener."
+            exit 1
+          fi
+
+      # STEP 1: Check out the repository code; we'll commit bld result/PR to it
+      # We'll download the owasp_pdf_5 tool on to it.
+      - name: Check out repository code
+        if: ${{ env.LANG != '' }}
+        uses: actions/checkout@v4
+        with:
+          # test bed
+          repository: tetsuoseto/AISVS
+          # production
+          # repository: OWASP/AISVS
+          ref: main
+      - name: Check if owasp_pdf executable exists
+        if: ${{ env.LANG != '' }}
+        run: |
+          if [ -f ${{ github.workspace }}/1.0/blddoc/owasp_pdf ]; then
+            echo "EXECUTABLE_EXISTS=yes" >> $GITHUB_ENV;
+            mkdir ${{ github.workspace }}/SAVED;
+            cp ${{ github.workspace }}/1.0/blddoc/owasp_pdf ${{ github.workspace }}/SAVED;
+            cp -r ${{ github.workspace }}/1.0/blddoc/owasp_pdf_data_ASV ${{ github.workspace }}/SAVED;
+            cp ${{ github.workspace }}/1.0/blddoc/owasp_pdf_register_ASV_plugin.py ${{ github.workspace }}/SAVED;
+            cp -r ${{ github.workspace }}/1.0/blddoc/owasp_pdf_data_ZZZ ${{ github.workspace }}/SAVED;
+            cp ${{ github.workspace }}/1.0/blddoc/owasp_pdf_register_ZZZ_plugin.py ${{ github.workspace }}/SAVED;
+          else
+            echo "EXECUTABLE_EXISTS=no" >> $GITHUB_ENV;
+          fi
+
+      # STEP 2: Define target branch name
+      - name: Define target branch name with MT_X
+        if: ${{ env.LANG != '' && env.MT_X != '' }}
+        run: |
+          MAIN_SHA="PDF_${{ env.LANG }}_${{ env.MT_X }}_${{ github.sha }}"
+          echo "TARGET_BRANCH_NAME=$MAIN_SHA" >> $GITHUB_ENV
+      - name: Define target branch name without MT_X
+        if: ${{ env.LANG != '' && env.MT_X == '' }}
+        run: |
+          MAIN_SHA="PDF_${{ env.LANG }}_${{ github.sha }}"
+          echo "TARGET_BRANCH_NAME=$MAIN_SHA" >> $GITHUB_ENV
+
+      # STEP 3: Check if the target branch exists
+      - name: Check if the target branch exists
+        if: ${{ env.LANG != '' }}
+        run: |
+          BRANCH_NAME=${{ env.TARGET_BRANCH_NAME }}
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --heads origin | grep "${BRANCH_NAME}"; then
+            echo "BRANCH_EXISTS=yes" >> $GITHUB_ENV;
+          else
+            echo "BRANCH_EXISTS=no" >> $GITHUB_ENV;
+          fi
+
+      # STEP 4: Prep for build
+      - name: Download the tool as a zip file
+        if: ${{ env.LANG != '' && env.BRANCH_EXISTS == 'no' }}
+        run: |
+          # test bed
+          curl -L -o main.zip "https://github.com/tetsuoseto/owasp_pdf_5/archive/refs/heads/main.zip"
+          # production
+          # curl -L -o main.zip "https://github.com/OWASP/pdf5/archive/refs/heads/main.zip"
+      - name: Unzip the tool zip file
+        if: ${{ env.LANG != '' && env.BRANCH_EXISTS == 'no' }}
+        run: |
+          unzip main.zip -d UNZIPPED
+      - name: List the tool files checked out to the build workspace
+        if: ${{ env.LANG != '' && env.BRANCH_EXISTS == 'no' }}
+        run: |
+          ls -la ${{ github.workspace }}
+      - name: Copy owasp_pdf and plug-in module
+        if: ${{ env.LANG != '' && env.BRANCH_EXISTS == 'no' }}
+        run: |
+          # test bed
+          cd UNZIPPED/owasp_pdf_5-main/
+          # production
+          # cd UNZIPPED/pdf5-main/
+          unzip linux.zip -d BldEnv20241124
+          cd BldEnv20241124/linux
+          cp owasp_pdf ${{ github.workspace }}/1.0/blddoc/owasp_pdf
+          cd ..
+          cp -rf owasp_pdf_data_ASV ${{ github.workspace }}/1.0/blddoc
+          cp -f owasp_pdf_register_ASV_plugin.py ${{ github.workspace }}/1.0/blddoc
+          cp -rf owasp_pdf_data_ZZZ ${{ github.workspace }}/1.0/blddoc
+          cp -f owasp_pdf_register_ZZZ_plugin.py ${{ github.workspace }}/1.0/blddoc
+
+      - name: List files under 1.0/blddoc
+        if: ${{ env.LANG != '' && env.BRANCH_EXISTS == 'no' }}
+        run: |
+          cd ${{ github.workspace }}/1.0/blddoc
+          ls -la
+      - name: List files under 1.0/blddoc/asv
+        if: ${{ env.LANG != '' && env.BRANCH_EXISTS == 'no' }}
+        run: |
+          cd ${{ github.workspace }}/1.0/blddoc/asv
+          ls -la
+
+      # STEP 5: Build
+      - name: Call ./owasp_pdf with ${{ env.LANG }}
+        if: ${{ env.LANG != '' && env.BRANCH_EXISTS == 'no' && env.MT_X == '' }}
+        run: |
+          cd ${{ github.workspace }}/1.0/blddoc
+          ./owasp_pdf -s -y -l ASV_${{ env.LANG }} --hdr '${{ github.sha }}'
+      - name: Call ./owasp_pdf with ${{ env.LANG }} and 'mt'
+        env:
+          TRANSLATE_ACCESS_KEY: ${{ secrets.TRANSLATE_ACCESS_KEY }}
+        if: ${{ env.LANG != '' && env.BRANCH_EXISTS == 'no' && env.MT_X == 'mt' }}
+        run: |
+          cd ${{ github.workspace }}/1.0/blddoc
+          ./owasp_pdf -s --mt gpt-4.1-mini -y -l ASV_${{ env.LANG }} --hdr '${{ github.sha }} MACHINE TRANSLATED'
+      - name: Call ./owasp_pdf with ${{ env.LANG }} and 'x'
+        if: ${{ env.LANG != '' && env.BRANCH_EXISTS == 'no' && env.MT_X == 'x' }}
+        run: |
+          cd ${{ github.workspace }}/1.0/blddoc
+          ./owasp_pdf -s -x -y -l ASV_${{ env.LANG }} --hdr '${{ github.sha }} MACHINE TRANSLATED'
+      - name: Call ./owasp_pdf with ${{ env.LANG }} and 'b'
+        env:
+          WATERMARK_SECRET_KEY: ${{ secrets.WATERMARK_SECRET_KEY }}
+        if: ${{ env.LANG != '' && env.BRANCH_EXISTS == 'no' && env.MT_X == 'b' }}
+        run: |
+          cd ${{ github.workspace }}/1.0/blddoc
+          ./owasp_pdf -s -y -l ASV_${{ env.LANG }}
+
+      # STEP 6: Delete used files
+      - name: Delete used files
+        if: ${{ always() && env.LANG != '' && env.BRANCH_EXISTS == 'no' }}
+        run: |
+          rm -f ${{ github.workspace }}/1.0/blddoc/owasp_pdf
+          rm -rf ${{ github.workspace }}/1.0/blddoc/owasp_pdf_data_ASV
+          rm -f ${{ github.workspace }}/1.0/blddoc/owasp_pdf_register_ASV_plugin.py
+          rm -rf ${{ github.workspace }}/1.0/blddoc/owasp_pdf_data_ZZZ
+          rm -f ${{ github.workspace }}/1.0/blddoc/owasp_pdf_register_ZZZ_plugin.py
+      - name: Recover the original owasp_pdf
+        if: ${{ always() && env.LANG != '' && env.BRANCH_EXISTS == 'no' && env.EXECUTABLE_EXISTS == 'yes' }}
+        run: |
+          cp ${{ github.workspace }}/SAVED/owasp_pdf ${{ github.workspace }}/1.0/blddoc;
+          cp -r ${{ github.workspace }}/SAVED/owasp_pdf_data_ASV ${{ github.workspace }}/1.0/blddoc;
+          cp ${{ github.workspace }}/SAVED/owasp_pdf_register_ASV_plugin.py ${{ github.workspace }}/1.0/blddoc;
+          cp -r ${{ github.workspace }}/SAVED/owasp_pdf_data_ZZZ ${{ github.workspace }}/1.0/blddoc;
+          cp ${{ github.workspace }}/SAVED/owasp_pdf_register_ZZZ_plugin.py ${{ github.workspace }}/1.0/blddoc;
+          rm -rf ${{ github.workspace }}/SAVED
+
+      # STEP 7: Clean up
+      - name: Clean up
+        if: ${{ always() && env.LANG != '' && env.BRANCH_EXISTS == 'no' }}
+        run: |
+          rm -rf ${{ github.workspace }}/1.0/blddoc/asv/en-ZZ
+          rm -rf UNZIPPED
+          rm -f main.zip
+
+      # STEP 8: Commit and PR
+      - name: Commit the changes
+        if: ${{ env.LANG != '' && env.BRANCH_EXISTS == 'no' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run:  |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b '${{ env.TARGET_BRANCH_NAME }}'
+          git add .
+          git commit -m "PDF created for ${{ env.LANG }} with the commit ${{ github.sha }}"
+          git push --set-upstream origin '${{ env.TARGET_BRANCH_NAME }}'
+      - name: Create Pull Request with the generated PDF
+        if: ${{ env.LANG != '' && env.BRANCH_EXISTS == 'no' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run:  |
+          gh pr create --base 'main' --head '${{ env.TARGET_BRANCH_NAME }}' --title 'Automated PR with ${{ env.TARGET_BRANCH_NAME }}' --body 'PDF generated for ${{ env.LANG }} with the commit ${{ github.sha }}'
