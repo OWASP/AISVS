@@ -32,11 +32,11 @@ name: Build Documents
 on:
   issue_comment:
     types: [created, edited]
-  push:
-    branches:
-      - main
-    paths:
-      - '1.0/en/*.md'
+  # push:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - '1.0/en/*.md'
 
 permissions:
   contents: write # needed to push commit the generated PDF
