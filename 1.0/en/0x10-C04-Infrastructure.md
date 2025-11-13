@@ -4,8 +4,6 @@
 
 AI infrastructure must be hardened against privilege escalation, supply chain tampering, and lateral movement through secure configuration, runtime isolation, trusted deployment pipelines, and comprehensive monitoring. Only validated and authorized infrastructure components reach production through controlled processes that ensure security, integrity, and auditability.
 
-**Core Security Goal:** Only cryptographically signed, vulnerability-scanned infrastructure components reach production through automated validation pipelines that enforce security policies and maintain immutable audit trails.
-
 ---
 
 ## C4.1 Runtime Environment Isolation
@@ -130,5 +128,4 @@ Secure distributed AI deployments including edge computing, federated learning, 
 * [Kubernetes Security Best Practices](https://kubernetes.io/docs/concepts/security/)
 * [Cloud Security Alliance: Cloud Controls Matrix](https://cloudsecurityalliance.org/research/cloud-controls-matrix/)
 * [ENISA: Secure Infrastructure Design](https://www.enisa.europa.eu/topics/critical-information-infrastructures-and-services)
-* [ISO 27001:2022 Information Security Management](https://www.iso.org/standard/27001)
 * [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
