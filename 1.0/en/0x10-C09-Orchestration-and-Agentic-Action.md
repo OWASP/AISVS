@@ -175,6 +175,34 @@ Security controls for dynamic tool loading, execution, and result validation wit
 
 ---
 
+## C9.13 Model Context Protocol (MCP) Security
+
+Ensure secure discovery, authentication, authorization, transport, and use of MCP-based tool and resource integrations to prevent context confusion, unauthorized tool invocation, or cross-tenant data exposure.
+
+| # | Description | Level | Role |
+|:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
+| **9.13.1** | **Verify that** MCP server, client, and tool implementations are manually reviewed or automatically analyzed to identify insecure function exposure, unsafe defaults, missing authentication, or missing input validation. | 1 | D/V |
+| **9.13.2** | **Verify that** external or open-source MCP servers or packages undergo automated vulnerability and supply-chain scanning (e.g., SCA) before integration, and that components with known critical vulnerabilities are not used. | 1 | D/V |
+| **9.13.3** | **Verify that** MCP server and client components are obtained only from trusted sources and verified using signatures, checksums, or secure package metadata, rejecting tampered or unsigned builds. | 1 | D/V |
+| **9.13.4** | **Verify that** MCP clients and servers mutually authenticate using strong, non-user credentials (e.g., mTLS, signed tokens, or platform-issued identities), and that unauthenticated MCP endpoints are rejected. | 2 | D/V |
+| **9.13.5** | **Verify that** MCP servers are registered through a controlled technical onboarding mechanism requiring explicit owner, environment, and resource definitions; unregistered or undiscoverable servers must not be callable in production. | 2 | D/V |
+| **9.13.6** | **Verify that** each MCP tool or resource defines explicit authorization scopes (e.g., read-only, restricted queries, side-effect levels), and that agents cannot invoke MCP functions outside their assigned scope. | 2 | D/V |
+| **9.13.7** | **Verify that** authenticated, encrypted streamable-HTTP is used as the primary MCP transport in production environments; alternate transports (stdio, SSE) are restricted to local or tightly controlled environments with explicit justification. | 2 | D/V |
+| **9.13.8** | **Verify that** streamable-HTTP MCP transports use authenticated, encrypted channels (TLS 1.3 or later) with certificate validation and forward secrecy to ensure confidentiality and integrity of streamed MCP messages. | 2 | D/V |
+| **9.13.9** | **Verify that** SSE-based MCP transports are used only within private, authenticated internal channels and enforce TLS, authentication, schema validation, payload size limits, and rate limiting; SSE endpoints must not be exposed to the public internet. | 2 | D/V |
+| **9.13.10** | **Verify that** MCP servers validate the `Origin` and `Host` headers on all HTTP-based transports (including SSE and streamable-HTTP) to prevent DNS rebinding attacks, and reject requests from untrusted, mismatched, or missing origins. | 2 | D/V |
+| **9.13.11** | **Verify that** MCP tool and resource schemas (e.g., JSON schemas or capability descriptors) are validated for authenticity and integrity using signatures, checksums, or server attestation to prevent schema tampering or malicious parameter modification. | 2 | D/V |
+| **9.13.12** | **Verify that** all MCP transports enforce message-framing integrity, strict schema validation, maximum payload sizes, and rejection of malformed, truncated, or interleaved frames to prevent desynchronization or injection attacks. | 2 | D/V |
+| **9.13.13** | **Verify that** MCP servers perform strict input validation for all function calls, including type checking, boundary checking, enumeration enforcement, and rejection of unrecognized or oversized parameters. | 2 | D/V |
+| **9.13.14** | **Verify that** MCP servers may only initiate outbound requests to approved internal or external destinations following least-privilege egress policies, and cannot access arbitrary network targets or internal cloud metadata services. | 2 | D/V |
+| **9.13.15** | **Verify that** outbound MCP actions implement execution limits (timeouts, recursion limits, concurrency caps, circuit breakers) to prevent unbounded agent-driven tool invocation or chained side effects. | 2 | D/V |
+| **9.13.16** | **Verify that** MCP request and response metadata (server ID, resource name, tool name, session identifier, tenant, environment) is logged with integrity protection and correlated to agent activity for forensic analysis. | 2 | D/V |
+| **9.13.17** | **Verify that** stdio-based MCP transports are limited to co-located, single-process development scenarios, isolated from shell execution, terminal injection, and process-spawning capabilities; stdio must never cross network or multi-tenant boundaries. | 3 | D/V |
+| **9.13.18** | **Verify that** MCP servers expose only allow-listed functions and resources, and prohibit dynamic dispatch, reflective invocation, or execution of function names influenced by user or model-provided input. | 3 | D/V |
+| **9.13.19** | **Verify that** tenant boundaries, environment boundaries (dev/test/prod), and data domain boundaries are enforced at the MCP layer, preventing cross-tenant or cross-environment server or resource discovery. | 3 | D/V |
+
+---
+
 ### References
 
 * [MITRE ATLAS tactics ML09](https://atlas.mitre.org/)
@@ -192,3 +220,10 @@ Security controls for dynamic tool loading, execution, and result validation wit
 An Analysis Using a Controlled Benchmark](https://www.arxiv.org/pdf/2505.18761)
 * [Large Language Model Sentinel: LLM Agent for Adversarial Purification](https://arxiv.org/pdf/2405.20770)
 * [Securing Agentic AI: A Comprehensive Threat Model and Mitigation Framework for Generative AI Agents](https://arxiv.org/html/2504.19956v2)
+* [Model Context Protocol Specification](https://modelcontextprotocol.io)
+* [Model Context Protocol Tools & Resources Specification](https://modelcontextprotocol.io/specification/2025-06-18/basic)
+* [Model Context Protocol Transport Documentation](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports)
+* [OWASP GenAI Security Project — “A Practical Guide for Securely Using Third-Party MCP Servers 1.0”](https://genai.owasp.org/resource/cheatsheet-a-practical-guide-for-securely-using-third-party-mcp-servers-1-0/)
+* [Cloud Security Alliance – Model Context Protocol Security Working Group](https://modelcontextprotocol-security.io)
+* [CSA MCP Security: Top 10 Risks](https://modelcontextprotocol-security.io/top10/)
+* [CSA MCP Security: TTPs & Hardening Guidance](https://modelcontextprotocol-security.io/ttps/)

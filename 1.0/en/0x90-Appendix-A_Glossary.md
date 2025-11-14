@@ -58,6 +58,8 @@
 
 * **LIME (Local Interpretable Model-agnostic Explanations)**: A technique to explain the predictions of any machine learning classifier by approximating it locally with an interpretable model.
 
+* **MCP (Model Context Protocol)**: A protocol that enables AI models and agents to access external tools, data sources, and resources by exchanging structured, typed requests and responses over a defined transport.
+
 * **Membership Inference Attack**: An attack that aims to determine whether a specific data point was used to train a machine learning model.
 
 * **MITRE ATLAS**: Adversarial Threat Landscape for Artificial-Intelligence Systems; a knowledge base of adversarial tactics and techniques against AI systems.
