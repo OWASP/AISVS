@@ -180,6 +180,7 @@ Security controls for dynamic tool loading, execution, and result validation wit
 Ensure secure discovery, authentication, authorization, transport, and use of MCP-based tool and resource integrations to prevent context confusion, unauthorized tool invocation, or cross-tenant data exposure.
 
 ### Component Integrity & Supply Chain Hygiene
+
 | # | Description | Level | Role |
 |:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
 | **9.13.1** | **Verify that** MCP server, client, and tool implementations are manually reviewed or automatically analyzed to identify insecure function exposure, unsafe defaults, missing authentication, or missing input validation. | 1 | D/V |
@@ -187,6 +188,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **9.13.3** | **Verify that** MCP server and client components are obtained only from trusted sources and verified using signatures, checksums, or secure package metadata, rejecting tampered or unsigned builds. | 1 | D/V |
 
 ### Authentication & Authorization
+
 | # | Description | Level | Role |
 |:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
 | **9.13.4** | **Verify that** MCP clients and servers mutually authenticate using strong, non-user credentials (e.g., mTLS, signed tokens, or platform-issued identities), and that unauthenticated MCP endpoints are rejected. | 2 | D/V |
@@ -194,6 +196,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **9.13.6** | **Verify that** each MCP tool or resource defines explicit authorization scopes (e.g., read-only, restricted queries, side-effect levels), and that agents cannot invoke MCP functions outside their assigned scope. | 2 | D/V |
 
 ### Secure Transport & Network Boundary Protection
+
 | # | Description | Level | Role |
 |:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
 | **9.13.7** | **Verify that** authenticated, encrypted streamable-HTTP is used as the primary MCP transport in production environments; alternate transports (stdio, SSE) are restricted to local or tightly controlled environments with explicit justification. | 2 | D/V |
@@ -202,6 +205,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **9.13.10** | **Verify that** MCP servers validate the `Origin` and `Host` headers on all HTTP-based transports (including SSE and streamable-HTTP) to prevent DNS rebinding attacks, and reject requests from untrusted, mismatched, or missing origins. | 2 | D/V |
 
 ### Schema, Message, and Input Validation
+
 | # | Description | Level | Role |
 |:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
 | **9.13.11** | **Verify that** MCP tool and resource schemas (e.g., JSON schemas or capability descriptors) are validated for authenticity and integrity using signatures, checksums, or server attestation to prevent schema tampering or malicious parameter modification. | 2 | D/V |
@@ -209,6 +213,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **9.13.13** | **Verify that** MCP servers perform strict input validation for all function calls, including type checking, boundary checking, enumeration enforcement, and rejection of unrecognized or oversized parameters. | 2 | D/V |
 
 ### Outbound Access & Agent Execution Safety
+
 | # | Description | Level | Role |
 |:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
 | **9.13.14** | **Verify that** MCP servers may only initiate outbound requests to approved internal or external destinations following least-privilege egress policies, and cannot access arbitrary network targets or internal cloud metadata services. | 2 | D/V |
@@ -216,6 +221,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **9.13.16** | **Verify that** MCP request and response metadata (server ID, resource name, tool name, session identifier, tenant, environment) is logged with integrity protection and correlated to agent activity for forensic analysis. | 2 | D/V |
 
 ### Transport Restrictions & High-Risk Boundary Controls
+
 | # | Description | Level | Role |
 |:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
 | **9.13.17** | **Verify that** stdio-based MCP transports are limited to co-located, single-process development scenarios, isolated from shell execution, terminal injection, and process-spawning capabilities; stdio must never cross network or multi-tenant boundaries. | 3 | D/V |
