@@ -37,3 +37,4 @@ jobs:
           folder-path: '1.0'
           use-quiet-mode: yes
           use-verbose-mode: ${{ steps.options.outputs.use-verbose-mode }}
+          base-branch: 'main'
