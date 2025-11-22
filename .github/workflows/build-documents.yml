@@ -118,9 +118,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           # test bed
-          repository: tetsuoseto/AISVS
+          # repository: tetsuoseto/AISVS
           # production
-          # repository: OWASP/AISVS
+          repository: OWASP/AISVS
           ref: main
       - name: Check if owasp_pdf executable exists
         if: ${{ env.LANG != '' }}
