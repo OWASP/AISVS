@@ -1,0 +1,62 @@
+{
+  "//comment": "https://github.com/DavidAnson/markdownlint/blob/main/.markdownlint.json",
+  "blanks-around-fences": false,
+  "blanks-around-headings": false,
+  "blanks-around-lists": false,
+  "code-block-style": {
+    "style": "fenced"
+  },
+  "code-fence-style": {
+    "style": "backtick"
+  },
+  "commands-show-output": false,
+  "emphasis-style": {
+    "style": "asterisk"
+  },
+  "extended-ascii": {
+    "ascii-only": true
+  },
+  "fenced-code-language": false,
+  "first-line-heading": false,
+  "heading-increment": false,
+  "heading-style": false,
+  "hr-style": {
+    "style": "---"
+  },
+  "line-length": false,
+  "link-image-style": {
+    "collapsed": false,
+    "shortcut": false,
+    "url_inline": false
+  },
+  "no-bare-urls": false,
+  "no-duplicate-heading": {
+    "siblings_only": true
+  },
+  "no-multiple-blanks": false,
+  "no-trailing-punctuation": false,
+  "ol-prefix": {
+    "style": "ordered"
+  },
+  "proper-names": {
+    "code_blocks": false,
+    "names": [
+      "Cake.Markdownlint",
+      "CommonMark",
+      "JavaScript",
+      "Markdown",
+      "markdown-it",
+      "markdownlint",
+      "Node.js"
+    ]
+  },
+  "reference-links-images": {
+    "shortcut_syntax": true
+  },
+  "single-title": false,
+  "single-trailing-newline": false,
+  "strong-style": {
+    "style": "asterisk"
+  },
+  "ul-style": false
+}
