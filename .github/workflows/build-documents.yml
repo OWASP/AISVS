@@ -90,7 +90,7 @@ jobs:
             echo "The command '$EVENT_COMMENT_BODY' is invalid."
             exit 1
           fi
-          if ${{ env.TRANSLATE_ACCESS_KEY == '' }}; then
+          if ${{ env.MT_X == 'mt' && env.TRANSLATE_ACCESS_KEY == '' }}; then
             echo "MT is disabled. Pls consult with the repo maintener."
             exit 1
           fi
