@@ -5,14 +5,14 @@ on:
     branches:
       - main
     paths:
-      - '**/*.md'
-      - '**/*.markdown'
+      - '**/en/*.md'
+      - '**/en/*.markdown'
   pull_request:
     branches:
       - main
     paths:
-      - '**/*.md'
-      - '**/*.markdown'
+      - '**/en/*.md'
+      - '**/en/*.markdown'
   workflow_dispatch:
 
 jobs:
