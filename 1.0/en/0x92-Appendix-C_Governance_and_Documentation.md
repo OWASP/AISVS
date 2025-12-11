@@ -357,3 +357,9 @@ This appendix provides foundational requirements for establishing organizational
 |       #       | Description                                                                                                                                                | Level | Role |
 | :-----------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :---: | :--: |
 | **2.3.3** | **Verify that** the allowed character set is regularly reviewed and updated to ensure it remains aligned with business requirements. | 2 | D/V |
+| **7.2.4** | **Verify that** thresholds and detectors are re-calibrated after major model or knowledge-base updates. | 3 | D/V |
+| **7.2.5** | **Verify that** dashboard visualisations track hallucination rates. | 3 | V |
+| **7.5.4** | **Verify that** explainability artefacts are version-controlled alongside model releases for auditability. | 3 | V |
+| **7.6.5** | **Verify that** monitoring pipelines are penetration-tested and access-controlled to avoid leakage of sensitive logs. | 3 | V |
+| **7.6.4** | **Verify that** monitoring data feeds back into retraining, fine-tuning, or rule updates within a documented MLOps workflow. | 2 | D/V |
+
