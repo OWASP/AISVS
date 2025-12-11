@@ -67,7 +67,6 @@ Ensure the user knows why a decision was made.
 | **7.5.2** | **Verify that** explanations provided to the user are sanitized to remove system prompts or backend data. | 2 | D/V |
 | **7.5.3** | **Verify that** technical evidence of the model's decision (like attention maps or log-probs) are logged.| 3 | D |
 
-
 ---
 
 ## C7.6 Monitoring Integration

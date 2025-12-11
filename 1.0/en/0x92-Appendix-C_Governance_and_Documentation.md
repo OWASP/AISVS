@@ -362,4 +362,3 @@ This appendix provides foundational requirements for establishing organizational
 | **7.5.4** | **Verify that** explainability artefacts are version-controlled alongside model releases for auditability. | 3 | V |
 | **7.6.5** | **Verify that** monitoring pipelines are penetration-tested and access-controlled to avoid leakage of sensitive logs. | 3 | V |
 | **7.6.4** | **Verify that** monitoring data feeds back into retraining, fine-tuning, or rule updates within a documented MLOps workflow. | 2 | D/V |
-
