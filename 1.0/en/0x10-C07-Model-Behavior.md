@@ -95,6 +95,4 @@ Prevent the creation of illegal or fake media.
 
 ## References
 
-* [NIST AI Risk Management Framework (AI RMF)](https://www.nist.gov/itl/ai-risk-management-framework)
-* [ISO/IEC 42001 AI Management System Standard](https://www.iso.org/standard/42001)
 * [OWASP Top 10 for LLMs: LLM07: Insecure Output Handling](https://owasp.org/www-project-top-10-for-large-language-model-applications/#llm07-insecure-output-handling)
