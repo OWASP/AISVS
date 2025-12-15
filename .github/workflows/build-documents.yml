@@ -91,7 +91,7 @@ jobs:
             exit 1
           fi
           if ${{ env.MT_X == 'mt' && env.TRANSLATE_ACCESS_KEY == '' }}; then
-            echo "MT is disabled. Pls consult with the repo maintener."
+            echo "MT is not supported in this repository."
             exit 1
           fi
           if ${{ env.MT_X == 'mt' && (
@@ -255,6 +255,7 @@ jobs:
         if: ${{ always() && env.LANG != '' && env.BRANCH_EXISTS == 'no' }}
         run: |
           rm -rf ${{ github.workspace }}/1.0/blddoc/asv/en-ZZ
+          rm -rf ${{ github.workspace }}/1.0/blddoc/asv/${{ env.LANG }}/baseline/ASVAll_${{ env.LANG }}.md
           rm -rf UNZIPPED
           rm -f main.zip
 
