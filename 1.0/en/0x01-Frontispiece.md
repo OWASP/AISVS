@@ -10,7 +10,7 @@ Version 0.1 (First Public Draft - Work In Progress), 2025
 
 ![license](../images/license.png)
 
-Copyright © 2025 The AISVS Project.  
+Copyright © 2025-2026 The AISVS Project.  
 
 Released under the [Creative Commons Attribution‑ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).  
 For any reuse or distribution, you must clearly communicate the license terms of this work to others.
