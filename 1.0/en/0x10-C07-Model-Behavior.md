@@ -77,7 +77,7 @@ Ensure the application sends the right signals for security teams to watch.
 | :-------: | -------------------------------------------------------------------------------------------------------------------------------------------- | :---: | :--: |
 | **7.6.1** | **Verify that** the system logs real-time metrics for safety violations (e.g., "Hallucination Detected", "PII Blocked").| 1 | D |
 | **7.6.2** | **Verify that** the system triggers an alert if safety violation rates exceed a defined threshold within a specific time window. | 1 | V |
-| **7.6.3** | **Verify that** logs include the specific model version and data source ID to allow tracing errors back to a specific release. | 2 | V |
+| **7.6.3** | **Verify that** logs include the specific model version and other details necessary to investigate potential abuse. | 2 | V |
 
 ---
 
