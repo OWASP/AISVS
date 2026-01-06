@@ -62,7 +62,7 @@ This appendix provides foundational requirements for establishing organizational
 
 |       #      | Description                                                                                                                                                                                                                                                                   | Level | Role |
 | :----------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---: | :--: |
-| **AC.6.1.1** | **Verify that** only datasets vetted for quality, representativeness, ethical sourcing, and licence compliance are allowed, reducing risks of poisoning, embedded bias, and intellectual property infringement.                                                               |   1   |  D/V |
+| **AC.6.1.1** | **Verify that** only datasets vetted for quality, representativeness, ethical sourcing, and license compliance are allowed, reducing risks of poisoning, embedded bias, and intellectual property infringement.                                                               |   1   |  D/V |
 | **AC.6.1.2** | **Verify that** third-party data suppliers, including providers of pre-trained models and external datasets, undergo security, privacy, ethical sourcing, and data quality due diligence before their data or models are integrated.                                          |   2   |  D/V |
 | **AC.6.1.3** | **Verify that** external transfers use TLS/auth and integrity checks.                                                                                                                                                                                                         |   1   |   D  |
 | **AC.6.1.4** | **Verify that** high-risk data sources (e.g., open-source datasets with unknown provenance, unvetted suppliers) receive enhanced scrutiny, such as sandboxed analysis, extensive quality/bias checks, and targeted poisoning detection, before use in sensitive applications. |   2   |  D/V |
@@ -357,3 +357,8 @@ This appendix provides foundational requirements for establishing organizational
 |       #       | Description                                                                                                                                                | Level | Role |
 | :-----------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :---: | :--: |
 | **2.3.3** | **Verify that** the allowed character set is regularly reviewed and updated to ensure it remains aligned with business requirements. | 2 | D/V |
+| **7.2.4** | **Verify that** thresholds and detectors are re-calibrated after major model or knowledge-base updates. | 3 | D/V |
+| **7.2.5** | **Verify that** dashboard visualizations track hallucination rates. | 3 | V |
+| **7.5.4** | **Verify that** explainability artifacts are version-controlled alongside model releases for auditability. | 3 | V |
+| **7.6.5** | **Verify that** monitoring pipelines are penetration-tested and access-controlled to avoid leakage of sensitive logs. | 3 | V |
+| **7.6.4** | **Verify that** monitoring data feeds back into retraining, fine-tuning, or rule updates within a documented MLOps workflow. | 2 | D/V |
