@@ -1,7 +1,0 @@
-docker/cert
-*/build/*
-*.db
-.DS_Store
-.vscode/settings.json
-*/dist/*
-*/__pycache__/*
