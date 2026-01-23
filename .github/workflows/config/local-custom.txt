@@ -62,5 +62,6 @@ SDLC
 sandboxing
 backdoors
 pseudonymize
+Hapley
 SHapley Additive exPlanations
 Anonymization
