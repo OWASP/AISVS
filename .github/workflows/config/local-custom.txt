@@ -55,3 +55,9 @@ seccomp
 noexec
 nosuid
 nodev
+CISA
+FIPS
+SIEM
+SDLC
+sandboxing
+backdoors

@@ -22,11 +22,11 @@ Enforce fine-grained access controls on every vector collection.
 
 ## C8.2 Embedding Sanitization & Validation
 
-Pre-screen text for PII, redact or pseudonymise before vectorisation, and optionally post-process embeddings to strip residual signals.
+Pre-screen text for PII, redact or pseudonymize before vectorization, and optionally post-process embeddings to strip residual signals.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **8.2.1** | **Verify that** PII and regulated data are detected via automated classifiers and masked, tokenised, or dropped pre-embedding. | 1 | D/V |
+| **8.2.1** | **Verify that** PII and regulated data are detected via automated classifiers and masked, tokenized, or dropped pre-embedding. | 1 | D/V |
 | **8.2.2** | **Verify that** embedding pipelines reject or quarantine inputs containing executable code or non-UTF-8 artifacts that could poison the index. | 1 | D |
 | **8.2.3** | **Verify that** local or metric differential-privacy sanitization is applied to sentence embeddings whose distance to any known PII token falls below a configurable threshold. | 2 | D/V |
 | **8.2.4** | **Verify that** sanitization efficacy (e.g., recall of PII redaction, semantic drift) is validated at least semi-annually against benchmark corpora. | 2 | V |
@@ -43,19 +43,19 @@ GDPR "right to be forgotten" and similar laws require timely erasure; vector sto
 | **8.3.1** | **Verify that** every vector and metadata record carries a TTL or explicit retention label honoured by automated cleanup jobs. | 1 | D/V |
 | **8.3.2** | **Verify that** user-initiated deletion requests purge vectors, metadata, cache copies, and derivative indices within 30 days. | 1 | D/V |
 | **8.3.3** | **Verify that** logical deletes are followed by cryptographic shredding of storage blocks if hardware supports it, or by key-vault key destruction. | 2 | D |
-| **8.3.4** | **Verify that** expired vectors are excluded from nearest-neighbour search results in < 500 ms after expiration. | 3 | D/V |
+| **8.3.4** | **Verify that** expired vectors are excluded from nearest-neighbor search results in < 500 ms after expiration. | 3 | D/V |
 
 ---
 
 ## C8.4 Prevent Embedding Inversion & Leakage
 
-Recent defences—noise superposition, projection networks, privacy-neuron perturbation, and application-layer encryption—can cut token-level inversion rates below 5%.
+Recent defenses—noise superposition, projection networks, privacy-neuron perturbation, and application-layer encryption—can cut token-level inversion rates below 5%.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **8.4.1** | **Verify that** a formal threat model covering inversion, membership and attribute-inference attacks exists and is reviewed yearly. | 1 | V |
 | **8.4.2** | **Verify that** application-layer encryption or searchable encryption shields vectors from direct reads by infrastructure admins or cloud staff. | 2 | D/V |
-| **8.4.3** | **Verify that** defence parameters (ε for DP, noise σ, projection rank k) balance privacy ≥ 99 % token protection and utility ≤ 3 % accuracy loss. | 3 | V |
+| **8.4.3** | **Verify that** defense parameters (ε for DP, noise σ, projection rank k) balance privacy ≥ 99 % token protection and utility ≤ 3 % accuracy loss. | 3 | V |
 | **8.4.4** | **Verify that** inversion-resilience metrics are part of release gates for model updates, with regression budgets defined. | 3 | D/V |
 
 ---
@@ -89,6 +89,3 @@ Security controls for sophisticated memory architectures including episodic, sem
 ---
 
 ## References
-
-* [Vector database security: Pinecone – IronCore Labs](https://ironcorelabs.com/vectordbs/pinecone-security/)
-* [Securing the Backbone of AI: Safeguarding Vector Databases and Embeddings – Privacera](https://privacera.com/blog/securing-the-backbone-of-ai-safeguarding-vector-databases-and-embeddings/)

@@ -12,7 +12,7 @@ Maintain a verifiable inventory of all datasets, accept only trusted sources, an
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **1.1.1** | **Verify that** an up-to-date inventory of every training-data source (origin, steward/owner, licence, collection method, intended use constraints, and processing history) is maintained. | 1 | D/V |
+| **1.1.1** | **Verify that** an up-to-date inventory of every training-data source (origin, steward/owner, license, collection method, intended use constraints, and processing history) is maintained. | 1 | D/V |
 | **1.1.2** | **Verify that** training data processes exclude unnecessary features, attributes, or fields (e.g., unused metadata, sensitive PII, leaked test data). | 1 | D/V |
 | **1.1.3** | **Verify that** all dataset changes are subject to a logged approval workflow. | 2 | D/V |
 | **1.1.4** | **Verify that** datasets or subsets are watermarked or fingerprinted where feasible. | 3 | D/V |
