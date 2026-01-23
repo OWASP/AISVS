@@ -14,11 +14,8 @@ Sigstore
 ICML
 IJLIT
 agentic
-Agentic
 explainability
-Explainability
 multimodal
-Multimodal
 hyperparameters
 steganographic
 backdoored
@@ -30,11 +27,9 @@ crowdsourced
 sandboxed
 lockfiles
 pretrained
-Pretrained
 homomorphic
 microarchitectural
 neuromorphic
-Neuromorphic
 bitstream
 rollups
 HITL
@@ -59,3 +54,4 @@ Dilithium
 seccomp
 noexec
 nosuid
+nodev
