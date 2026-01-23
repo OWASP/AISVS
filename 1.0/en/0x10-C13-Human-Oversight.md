@@ -45,8 +45,6 @@ Log operator actions and model decisions.
 
 ## C13.4 Explainable-AI Techniques
 
-Surface feature importance, counter-factuals, and local explanations.
-
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **13.4.1** | **Verify that** AI systems provide basic explanations for their decisions in human-readable format. | 1 | D/V |

@@ -39,7 +39,7 @@ Limit the ability to decide whether a record was in training data. Differential 
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **10.3.1** | **Verify that** per-query entropy regularisation or temperature-scaling reduces overconfident predictions. | 1 | D |
+| **10.3.1** | **Verify that** per-query entropy regularization or temperature-scaling reduces overconfident predictions. | 1 | D |
 | **10.3.2** | **Verify that** training employs ε-bounded differentially-private optimization for sensitive datasets. | 2 | D |
 | **10.3.3** | **Verify that** attack simulations (shadow-model or black-box) show attack AUC ≤ 0.60 on held-out data. | 2 | V |
 
