@@ -89,5 +89,3 @@ Security controls for sophisticated memory architectures including episodic, sem
 ---
 
 ## References
-
-# Breaking markdown on purpose
