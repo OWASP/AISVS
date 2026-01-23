@@ -1,1 +1,0 @@
-../../en/0x10-C07-Model-Behavior.md
