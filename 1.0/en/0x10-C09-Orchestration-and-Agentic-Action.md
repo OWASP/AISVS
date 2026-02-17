@@ -1,233 +1,168 @@
-# 9 Autonomous Orchestration & Agentic Action Security
+# C9 Autonomous Orchestration & Agentic Action Security
 
 ## Control Objective
 
-Ensure that autonomous or multi-agent AI systems can **only** execute actions that are explicitly intended, authenticated, auditable, and within bounded cost and risk thresholds. This protects against threats such as Autonomous-System Compromise, Tool Misuse, Agent Loop Detection, Communication Hijacking, Identity Spoofing, Swarm Manipulation, and Intent Manipulation.
+Autonomous and multi-agent systems must execute only **authorized, intended, and bounded** actions. This control family reduces risk from tool misuse, privilege escalation, uncontrolled recursion/cost growth, protocol manipulation, and cross-agent or cross-tenant interference by enforcing: explicit authorization, sandboxed execution, cryptographic identity and tamper-evident audit, message security, and intent/constraint gates.
 
 ---
 
-## 9.1 Agent Task-Planning & Recursion Budgets
+## C9.1 Execution Budgets, Loop Control, and Circuit Breakers
 
-Throttle recursive plans and force human checkpoints for privileged actions.
+Bound runtime expansion (recursion, concurrency, cost) and halt safely on runaway behavior.
 
 | # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **9.1.1** | **Verify that** maximum recursion depth, breadth, wall-clock time, tokens, and monetary cost per agent execution are centrally configured and version-controlled. | 1 | D/V |
-| **9.1.2** | **Verify that** privileged or irreversible actions (e.g., code commits, financial transfers) require explicit human approval via an auditable channel before execution. | 1 | D/V |
-| **9.1.3** | **Verify that** real-time resource monitors trigger circuit-breaker interruption when any budget threshold is exceeded, halting further task expansion. | 2 | D |
-| **9.1.4** | **Verify that** circuit-breaker events are logged with agent ID, triggering condition, and captured plan state for forensic review. | 2 | D/V |
-| **9.1.5** | **Verify that** security tests cover budget-exhaustion and runaway-plan scenarios, confirming safe halting without data loss. | 3 | V |
-| **9.1.6** | **Verify that** budget policies are expressed as policy-as-code and enforced in CI/CD to block configuration drift. | 3 | D |
+| :--: | --- | :---: | :--: |
+| **9.1.1** | **Verify that** per-execution budgets (max recursion depth, max fan-out/concurrency, wall-clock time, tokens, and monetary spend) are centrally configured, version-controlled, and enforced by the orchestration runtime. | 1 | D/V |
+| **9.1.2** | **Verify that** cumulative resource/spend counters are tracked per request chain and hard-stop the chain when thresholds are exceeded. | 2 | D/V |
+| **9.1.3** | **Verify that** circuit breakers terminate execution on budget violations. | 2 | D/V |
+| **9.1.4** | **Verify that** security testing covers runaway loops, budget exhaustion, and partial-failure scenarios, confirming safe termination and consistent state. | 3 | V |
+| **9.1.5** | **Verify that** budget and circuit-breaker policies are expressed as policy-as-code and are validated in CI/CD to prevent drift and unsafe configuration changes. | 3 | D/V |
 
 ---
 
-## 9.2 Tool Plugin Sandboxing
+## C9.2 High-Impact Action Approval and Irreversibility Controls
 
-Isolate tool interactions to prevent unauthorized system access or code execution.
+Require explicit checkpoints for privileged or irreversible outcomes.
 
 | # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **9.2.1** | **Verify that** every tool/plugin executes inside an OS, container, or WASM-level sandbox with least-privilege file-system, network, and system-call policies. | 1 | D/V |
-| **9.2.2** | **Verify that** sandbox resource quotas (CPU, memory, disk, network egress) and execution timeouts are enforced and logged. | 1 | D/V |
-| **9.2.3** | **Verify that** tool binaries or descriptors are digitally signed; signatures are validated before loading. | 2 | D/V |
-| **9.2.4** | **Verify that** sandbox telemetry streams to a SIEM; anomalies (e.g., attempted outbound connections) raise alerts. | 2 | V |
-| **9.2.5** | **Verify that** high-risk plugins undergo security review and penetration testing before production deployment. | 3 | V |
-| **9.2.6** | **Verify that** sandbox escape attempts are automatically blocked and the offending plugin is quarantined pending investigation. | 3 | D/V |
+| :--: | --- | :---: | :--: |
+| **9.2.1** | **Verify that** privileged or irreversible actions (e.g., code merges/deploys, financial transfers, user access changes, destructive deletes, external notifications) require explicit approval through an auditable channel before execution. | 1 | D/V |
+| **9.2.2** | **Verify that** approval requests present the exact action parameters (diff/command/recipient/amount/scope) and bind approvals to those parameters to prevent “approve one thing, execute another.” | 2 | D/V |
+| **9.2.3** | **Verify that** where rollback is feasible, compensating actions are defined and tested (transactional semantics), and failures trigger rollback or safe containment. | 3 | V |
 
 ---
 
-## 9.3 Autonomous Loop & Cost Bounding
+## C9.3 Tool and Plugin Isolation and Safe Integration
 
-Detect and stop uncontrolled agent-to-agent recursion and cost explosions.
+Constrain tool execution, loading, and outputs to prevent unauthorized system access and unsafe side effects.
 
 | # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **9.3.1** | **Verify that** inter-agent calls include a hop-limit or TTL that the runtime decrements and enforces. | 1 | D/V |
-| **9.3.2** | **Verify that** agents maintain a unique invocation-graph ID to spot self-invocation or cyclical patterns. | 2 | D |
-| **9.3.3** | **Verify that** cumulative compute-unit and spend counters are tracked per request chain; breaching the limit aborts the chain. | 2 | D/V |
-| **9.3.4** | **Verify that** formal analysis or model checking demonstrates absence of unbounded recursion in agent protocols. | 3 | V |
-| **9.3.5** | **Verify that** loop-abort events generate alerts and feed continuous-improvement metrics. | 3 | D |
+| :--: | --- | :---: | :--: |
+| **9.3.1** | **Verify that** each tool/plugin executes in an isolated sandbox (container/VM/WASM/OS sandbox) with least-privilege filesystem, network egress, and syscall permissions appropriate to the tool’s function. | 1 | D/V |
+| **9.3.2** | **Verify that** per-tool quotas and timeouts (CPU, memory, disk, egress, execution time) are enforced and logged, and that quota breaches fail closed. | 1 | D/V |
+| **9.3.3** | **Verify that** tool manifests declare required privileges, side-effect level, resource limits, and output validation requirements, and that the runtime enforces these declarations. | 2 | D/V |
+| **9.3.4** | **Verify that** tool outputs are validated against strict schemas and security policies before being incorporated into downstream reasoning or follow-on actions. | 2 | D/V |
+| **9.3.5** | **Verify that** tool binaries are integrity-protected and validated prior to loading. | 2 | D/V |
+| **9.3.6** | **Verify that** sandbox escape indicators or policy violations trigger automated containment (tool disabled/quarantined). | 3 | D/V |
 
 ---
 
-## 9.4 Protocol-Level Misuse Protection
+## C9.4 Agent and Orchestrator Identity, Signing, and Tamper-Evident Audit
 
-Secure communication channels between agents and external systems to prevent hijacking or manipulation.
+Make every action attributable and every mutation detectable.
 
 | # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **9.4.1** | **Verify that** all agent-to-tool and agent-to-agent messages are authenticated (e.g., mutual TLS or JWT) and end-to-end encrypted. | 1 | D/V |
-| **9.4.2** | **Verify that** schemas are strictly validated; unknown fields or malformed messages are rejected. | 1 | D |
-| **9.4.3** | **Verify that** integrity checks (MACs or digital signatures) cover the entire message payload including tool parameters. | 2 | D/V |
-| **9.4.4** | **Verify that** replay-protection (nonces or timestamp windows) is enforced at the protocol layer. | 2 | D |
-| **9.4.5** | **Verify that** protocol implementations undergo fuzzing and static analysis for injection or deserialization flaws. | 3 | V |
+| :--: | --- | :---: | :--: |
+| **9.4.1** | **Verify that** each agent instance (and orchestrator/runtime) has a unique cryptographic identity and authenticates as a first-class principal to downstream systems (no reuse of end-user credentials). | 1 | D/V |
+| **9.4.2** | **Verify that** agent-initiated actions are cryptographically bound to the execution chain (chain ID) and are signed and timestamped for non-repudiation and traceability. | 2 | D/V |
+| **9.4.3** | **Verify that** audit logs are tamper-evident (append-only/WORM/immutable log store) and include sufficient context to reconstruct who/what acted, initiating user identifier, delegation scope, authorization decision (policy/version), tool parameters, approvals (where applicable), and outcomes. | 2 | D/V |
+| **9.4.4** | **Verify that** agent identity credentials (keys/certs/tokens) rotate on a defined schedule and on compromise indicators, with rapid revocation and quarantine on suspected compromise or spoofing attempts. | 3 | D/V |
 
 ---
 
-## 9.5 Agent Identity & Tamper-Evidence
+## C9.5 Secure Messaging and Protocol Hardening
 
-Ensure actions are attributable and modifications detectable.
+Protect agent-to-agent and agent-to-tool communications from hijacking, injection, replay, and desynchronization.
 
 | # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **9.5.1** | **Verify that** each agent instance possesses a unique cryptographic identity (key-pair or hardware-rooted credential). | 1 | D/V |
-| **9.5.2** | **Verify that** all agent actions are signed and timestamped; logs include the signature for non-repudiation. | 2 | D/V |
-| **9.5.3** | **Verify that** tamper-evident logs are stored in an append-only or write-once medium. | 2 | V |
-| **9.5.4** | **Verify that** identity keys rotate on a defined schedule and on compromise indicators. | 3 | D |
-| **9.5.5** | **Verify that** spoofing or key-conflict attempts trigger immediate quarantine of the affected agent. | 3 | D/V |
+| :--: | --- | :---: | :--: |
+| **9.5.1** | **Verify that** agent-to-agent and agent-to-tool channels enforce mutual authentication and encryption with modern protocols (e.g., TLS 1.3) and strong certificate/token validation. | 1 | D/V |
+| **9.5.2** | **Verify that** all messages are strictly schema-validated; unknown fields, malformed payloads, and oversized frames are rejected. | 1 | D/V |
+| **9.5.3** | **Verify that** message integrity covers the full payload including tool parameters, and that replay protections (nonces/sequence numbers/timestamp windows) are enforced. | 2 | D/V |
 
 ---
 
-## 9.6 Multi-Agent Swarm Risk Reduction
+## C9.6 Authorization, Delegation, and Continuous Enforcement
 
-Mitigate collective-behavior hazards through isolation and formal safety modeling.
+Ensure every action is authorized at execution time and constrained by scope.
 
 | # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **9.6.1** | **Verify that** agents operating in different security domains execute in isolated runtime sandboxes or network segments. | 1 | D/V |
-| **9.6.2** | **Verify that** swarm behaviors are modeled and formally verified for liveness and safety before deployment. | 3 | V |
-| **9.6.3** | **Verify that** runtime monitors detect emergent unsafe patterns (e.g., oscillations, deadlocks) and initiate corrective action. | 3 | D |
+| :--: | --- | :---: | :--: |
+| **9.6.1** | **Verify that** agent actions are authorized against fine-grained policies that restrict which tools an agent may invoke and which parameters it may supply (allow-list plus parameter constraints), enforced by the runtime. | 2 | D/V |
+| **9.6.2** | **Verify that** when an agent acts on a user’s behalf, the runtime propagates an integrity-protected delegation context (user ID, tenant, session, scopes) and enforces that context at every downstream call without using the user’s credentials. | 2 | D/V |
+| **9.6.3** | **Verify that** authorization is re-evaluated on every call (continuous authorization) using current context (tenant, environment, data classification, time, risk), and that delegated scopes are time-bound and automatically expire. | 3 | D/V |
 
 ---
 
-## 9.7 User & Tool Authentication / Authorization
+## C9.7 Intent Verification and Constraint Gates
 
-Implement robust access controls for every agent-triggered action.
+Prevent “technically authorized but unintended” actions by binding execution to user intent and hard constraints.
 
 | # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **9.7.1** | **Verify that** agents authenticate as first-class principals to downstream systems, never reusing end-user credentials. | 1 | D/V |
-| **9.7.2** | **Verify that** fine-grained authorization policies restrict which tools an agent may invoke and which parameters it may supply. | 2 | D |
-| **9.7.3** | **Verify that** privilege checks are re-evaluated on every call (continuous authorization), not only at session start. | 2 | V |
-| **9.7.4** | **Verify that** delegated privileges expire automatically and require re-consent after timeout or scope change. | 3 | D |
+| :--: | --- | :---: | :--: |
+| **9.7.1** | **Verify that** pre-execution gates evaluate proposed actions and parameters against hard policy constraints (deny rules, data handling constraints, allow-lists, side-effect budgets) and block execution on any violation. | 1 | D/V |
+| **9.7.2** | **Verify that** high-impact actions require explicit user intent confirmation that is integrity-protected and bound to the exact action parameters (and expires quickly) to prevent stale or substituted approvals. | 2 | D/V |
+| **9.7.3** | **Verify that** post-condition checks confirm the intended outcome and detect unintended side effects; any mismatch triggers containment (and compensating actions where supported). | 2 | V |
 
 ---
 
-## 9.8 Agent-to-Agent Communication Security
+## C9.8 Multi-Agent Domain Isolation and Swarm Risk Controls
 
-Encrypt and integrity-protect all inter-agent messages to thwart eavesdropping and tampering.
+Reduce cross-domain interference and emergent unsafe collective behavior.
 
 | # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **9.8.1** | **Verify that** mutual authentication and perfect-forward-secret encryption (e.g. TLS 1.3) are mandatory for agent channels. | 1 | D/V |
-| **9.8.2** | **Verify that** message integrity and origin are validated before processing; failures raise alerts and drop the message. | 1 | D |
-| **9.8.3** | **Verify that** communication metadata (timestamps, sequence numbers) is logged to support forensic reconstruction. | 2 | D/V |
-| **9.8.4** | **Verify that** formal verification or model checking confirms that protocol state machines cannot be driven into unsafe states. | 3 | V |
+| :--: | --- | :---: | :--: |
+| **9.8.1** | **Verify that** agents in different tenants, security domains, or environments (dev/test/prod) run in isolated runtimes and network segments, with default-deny controls that prevent cross-domain discovery and calls. | 1 | D/V |
+| **9.8.2** | **Verify that** runtime monitoring detects unsafe emergent behavior (oscillation, deadlocks, uncontrolled broadcast, abnormal call graphs) and automatically applies corrective actions (throttle, isolate, terminate). | 3 | D/V |
 
 ---
 
-## 9.9 Intent Verification & Constraint Enforcement
-
-Validate that agent actions align with the user's stated intent and system constraints.
-
-| # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **9.9.1** | **Verify that** pre-execution constraint solvers check proposed actions against hard-coded safety and policy rules. | 1 | D |
-| **9.9.2** | **Verify that** high-impact actions (financial, destructive, privacy-sensitive) require explicit intent confirmation from the initiating user. | 2 | D/V |
-| **9.9.3** | **Verify that** post-condition checks validate that completed actions achieved intended effects without side effects; discrepancies trigger rollback. | 2 | V |
-| **9.9.4** | **Verify that** formal methods (e.g., model checking, theorem proving) or property-based tests demonstrate that agent plans satisfy all declared constraints. | 3 | V |
-| **9.9.5** | **Verify that** intent-mismatch or constraint-violation incidents feed continuous-improvement cycles and threat-intel sharing. | 3 | D |
-
----
-
-## 9.10 Agent Reasoning Strategy Security
-
-Secure selection and execution of different reasoning strategies including ReAct, Chain-of-Thought, and Tree-of-Thoughts approaches.
-
-| # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **9.10.1** | **Verify that** reasoning strategy selection uses deterministic criteria (input complexity, task type, security context) and identical inputs produce identical strategy selections within the same security context. | 1 | D/V |
-| **9.10.2** | **Verify that** each reasoning strategy (ReAct, Chain-of-Thought, Tree-of-Thoughts) has dedicated input validation, output sanitization, and execution time limits specific to its cognitive approach. | 1 | D/V |
-| **9.10.3** | **Verify that** reasoning strategy transitions are logged with complete context including input characteristics, selection criteria values, and execution metadata for audit trail reconstruction. | 2 | D/V |
-| **9.10.4** | **Verify that** Tree-of-Thoughts reasoning includes branch pruning mechanisms that terminate exploration when policy violations, resource limits, or safety boundaries are detected. | 2 | D/V |
-| **9.10.5** | **Verify that** ReAct (Reason-Act-Observe) cycles include validation checkpoints at each phase: reasoning step verification, action authorization, and observation sanitization before proceeding. | 2 | D/V |
-| **9.10.6** | **Verify that** reasoning strategy performance metrics (execution time, resource usage, output quality) are monitored with automated alerts when metrics deviate beyond configured thresholds. | 3 | D/V |
-| **9.10.7** | **Verify that** hybrid reasoning approaches that combine multiple strategies maintain input validation and output constraints of all constituent strategies without bypassing any security controls. | 3 | D/V |
-| **9.10.8** | **Verify that** reasoning strategy security testing includes fuzzing with malformed inputs, adversarial prompts designed to force strategy switching, and boundary condition testing for each cognitive approach. | 3 | D/V |
-
----
-
-## 9.11 Agent Lifecycle State Management & Security
-
-Secure agent initialization, state transitions, and termination with cryptographic audit trails and defined recovery procedures.
-
-| # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **9.11.1** | **Verify that** agent initialization includes cryptographic identity establishment with hardware-backed credentials and immutable startup audit logs containing agent ID, timestamp, configuration hash, and initialization parameters. | 1 | D/V |
-| **9.11.2** | **Verify that** agent state transitions are cryptographically signed, timestamped, and logged with complete context including triggering events, previous state hash, new state hash, and security validations performed. | 2 | D/V |
-| **9.11.3** | **Verify that** agent shutdown procedures include secure memory wiping using cryptographic erasure or multi-pass overwriting, credential revocation with certificate authority notification, and generation of tamper-evident termination certificates. | 2 | D/V |
-| **9.11.4** | **Verify that** agent recovery mechanisms validate state integrity using cryptographic checksums (SHA-256 minimum) and rollback to known-good states when corruption is detected with automated alerts and manual approval requirements. | 3 | D/V |
-| **9.11.5** | **Verify that** agent persistence mechanisms encrypt sensitive state data with per-agent AES-256 keys and implement secure key rotation on configurable schedules (maximum 90 days) with zero-downtime deployment. | 3 | D/V |
-
----
-
-## 9.12 Tool Integration Security Framework
-
-Security controls for dynamic tool loading, execution, and result validation with defined risk assessment and approval processes.
-
-| # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **9.12.1** | **Verify that** tool descriptors include security metadata specifying required privileges (read/write/execute), risk levels (low/medium/high), resource limits (CPU, memory, network), and validation requirements documented in tool manifests. | 1 | D/V |
-| **9.12.2** | **Verify that** tool execution results are validated against expected schemas (JSON Schema, XML Schema) and security policies (output sanitization, data classification) before integration with timeout limits and error handling procedures. | 1 | D/V |
-| **9.12.3** | **Verify that** tool interaction logs include detailed security context including privilege usage, data access patterns, execution time, resource consumption, and return codes with structured logging for SIEM integration. | 2 | D/V |
-| **9.12.4** | **Verify that** dynamic tool loading mechanisms validate digital signatures using PKI infrastructure and implement secure loading protocols with sandbox isolation and permission verification before execution. | 2 | D/V |
-| **9.12.5** | **Verify that** tool security assessments are automatically triggered for new versions with mandatory approval gates including static analysis, dynamic testing, and security team review with documented approval criteria and SLA requirements. | 3 | D/V |
-
----
-
-## C9.13 Model Context Protocol (MCP) Security
+## C9.9 Model Context Protocol (MCP) Security
 
 Ensure secure discovery, authentication, authorization, transport, and use of MCP-based tool and resource integrations to prevent context confusion, unauthorized tool invocation, or cross-tenant data exposure.
 
 ### Component Integrity & Supply Chain Hygiene
 
 | # | Description | Level | Role |
-|:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
-| **9.13.1** | **Verify that** MCP server, client, and tool implementations are manually reviewed or automatically analyzed to identify insecure function exposure, unsafe defaults, missing authentication, or missing input validation. | 1 | D/V |
-| **9.13.2** | **Verify that** external or open-source MCP servers or packages undergo automated vulnerability and supply-chain scanning (e.g., SCA) before integration, and that components with known critical vulnerabilities are not used. | 1 | D/V |
-| **9.13.3** | **Verify that** MCP server and client components are obtained only from trusted sources and verified using signatures, checksums, or secure package metadata, rejecting tampered or unsigned builds. | 1 | D/V |
+| :--: | --- | :---: | :--: |
+| **9.9.1** | **Verify that** MCP server, client, and tool implementations are manually reviewed or automatically analyzed to identify insecure function exposure, unsafe defaults, missing authentication, or missing input validation. | 1 | D/V |
+| **9.9.2** | **Verify that** external or open-source MCP servers or packages undergo automated vulnerability and supply-chain scanning (e.g., SCA) before integration, and that components with known critical vulnerabilities are not used. | 1 | D/V |
+| **9.9.3** | **Verify that** MCP server and client components are obtained only from trusted sources and verified using signatures, checksums, or secure package metadata, rejecting tampered or unsigned builds. | 1 | D/V |
 
 ### Authentication & Authorization
 
 | # | Description | Level | Role |
-|:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
-| **9.13.4** | **Verify that** MCP clients and servers mutually authenticate using strong, non-user credentials (e.g., mTLS, signed tokens, or platform-issued identities), and that unauthenticated MCP endpoints are rejected. | 2 | D/V |
-| **9.13.5** | **Verify that** MCP servers are registered through a controlled technical onboarding mechanism requiring explicit owner, environment, and resource definitions; unregistered or undiscoverable servers must not be callable in production. | 2 | D/V |
-| **9.13.6** | **Verify that** each MCP tool or resource defines explicit authorization scopes (e.g., read-only, restricted queries, side-effect levels), and that agents cannot invoke MCP functions outside their assigned scope. | 2 | D/V |
+| :--: | --- | :---: | :--: |
+| **9.9.4** | **Verify that** MCP clients and servers mutually authenticate using strong, non-user credentials (e.g., mTLS, signed tokens, or platform-issued identities), and that unauthenticated MCP endpoints are rejected. | 2 | D/V |
+| **9.9.5** | **Verify that** MCP servers are registered through a controlled technical onboarding mechanism requiring explicit owner, environment, and resource definitions; unregistered or undiscoverable servers must not be callable in production. | 2 | D/V |
+| **9.9.6** | **Verify that** each MCP tool or resource defines explicit authorization scopes (e.g., read-only, restricted queries, side-effect levels), and that agents cannot invoke MCP functions outside their assigned scope. | 2 | D/V |
 
 ### Secure Transport & Network Boundary Protection
 
 | # | Description | Level | Role |
-|:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
-| **9.13.7** | **Verify that** authenticated, encrypted streamable-HTTP is used as the primary MCP transport in production environments; alternate transports (stdio, SSE) are restricted to local or tightly controlled environments with explicit justification. | 2 | D/V |
-| **9.13.8** | **Verify that** streamable-HTTP MCP transports use authenticated, encrypted channels (TLS 1.3 or later) with certificate validation and forward secrecy to ensure confidentiality and integrity of streamed MCP messages. | 2 | D/V |
-| **9.13.9** | **Verify that** SSE-based MCP transports are used only within private, authenticated internal channels and enforce TLS, authentication, schema validation, payload size limits, and rate limiting; SSE endpoints must not be exposed to the public internet. | 2 | D/V |
-| **9.13.10** | **Verify that** MCP servers validate the `Origin` and `Host` headers on all HTTP-based transports (including SSE and streamable-HTTP) to prevent DNS rebinding attacks, and reject requests from untrusted, mismatched, or missing origins. | 2 | D/V |
+| :--: | --- | :---: | :--: |
+| **9.9.7** | **Verify that** authenticated, encrypted streamable-HTTP is used as the primary MCP transport in production environments; alternate transports (stdio, SSE) are restricted to local or tightly controlled environments with explicit justification. | 2 | D/V |
+| **9.9.8** | **Verify that** streamable-HTTP MCP transports use authenticated, encrypted channels (TLS 1.3 or later) with certificate validation and forward secrecy to ensure confidentiality and integrity of streamed MCP messages. | 2 | D/V |
+| **9.9.9** | **Verify that** SSE-based MCP transports are used only within private, authenticated internal channels and enforce TLS, authentication, schema validation, payload size limits, and rate limiting; SSE endpoints must not be exposed to the public internet. | 2 | D/V |
+| **9.9.10** | **Verify that** MCP servers validate the `Origin` and `Host` headers on all HTTP-based transports (including SSE and streamable-HTTP) to prevent DNS rebinding attacks, and reject requests from untrusted, mismatched, or missing origins. | 2 | D/V |
 
 ### Schema, Message, and Input Validation
 
 | # | Description | Level | Role |
-|:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
-| **9.13.11** | **Verify that** MCP tool and resource schemas (e.g., JSON schemas or capability descriptors) are validated for authenticity and integrity using signatures, checksums, or server attestation to prevent schema tampering or malicious parameter modification. | 2 | D/V |
-| **9.13.12** | **Verify that** all MCP transports enforce message-framing integrity, strict schema validation, maximum payload sizes, and rejection of malformed, truncated, or interleaved frames to prevent desynchronization or injection attacks. | 2 | D/V |
-| **9.13.13** | **Verify that** MCP servers perform strict input validation for all function calls, including type checking, boundary checking, enumeration enforcement, and rejection of unrecognized or oversized parameters. | 2 | D/V |
+| :--: | --- | :---: | :--: |
+| **9.9.11** | **Verify that** MCP tool and resource schemas (e.g., JSON schemas or capability descriptors) are validated for authenticity and integrity using signatures, checksums, or server attestation to prevent schema tampering or malicious parameter modification. | 2 | D/V |
+| **9.9.12** | **Verify that** all MCP transports enforce message-framing integrity, strict schema validation, maximum payload sizes, and rejection of malformed, truncated, or interleaved frames to prevent desynchronization or injection attacks. | 2 | D/V |
+| **9.9.13** | **Verify that** MCP servers perform strict input validation for all function calls, including type checking, boundary checking, enumeration enforcement, and rejection of unrecognized or oversized parameters. | 2 | D/V |
 
 ### Outbound Access & Agent Execution Safety
 
 | # | Description | Level | Role |
-|:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
-| **9.13.14** | **Verify that** MCP servers may only initiate outbound requests to approved internal or external destinations following least-privilege egress policies, and cannot access arbitrary network targets or internal cloud metadata services. | 2 | D/V |
-| **9.13.15** | **Verify that** outbound MCP actions implement execution limits (timeouts, recursion limits, concurrency caps, circuit breakers) to prevent unbounded agent-driven tool invocation or chained side effects. | 2 | D/V |
-| **9.13.16** | **Verify that** MCP request and response metadata (server ID, resource name, tool name, session identifier, tenant, environment) is logged with integrity protection and correlated to agent activity for forensic analysis. | 2 | D/V |
+| :--: | --- | :---: | :--: |
+| **9.9.14** | **Verify that** MCP servers may only initiate outbound requests to approved internal or external destinations following least-privilege egress policies, and cannot access arbitrary network targets or internal cloud metadata services. | 2 | D/V |
+| **9.9.15** | **Verify that** outbound MCP actions implement execution limits (timeouts, recursion limits, concurrency caps, circuit breakers) to prevent unbounded agent-driven tool invocation or chained side effects. | 2 | D/V |
+| **9.9.16** | **Verify that** MCP request and response metadata (server ID, resource name, tool name, session identifier, tenant, environment) is logged with integrity protection and correlated to agent activity for forensic analysis. | 2 | D/V |
 
 ### Transport Restrictions & High-Risk Boundary Controls
 
 | # | Description | Level | Role |
-|:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
-| **9.13.17** | **Verify that** stdio-based MCP transports are limited to co-located, single-process development scenarios, isolated from shell execution, terminal injection, and process-spawning capabilities; stdio must never cross network or multi-tenant boundaries. | 3 | D/V |
-| **9.13.18** | **Verify that** MCP servers expose only allow-listed functions and resources, and prohibit dynamic dispatch, reflective invocation, or execution of function names influenced by user or model-provided input. | 3 | D/V |
-| **9.13.19** | **Verify that** tenant boundaries, environment boundaries (dev/test/prod), and data domain boundaries are enforced at the MCP layer, preventing cross-tenant or cross-environment server or resource discovery. | 3 | D/V |
+| :--: | --- | :---: | :--: |
+| **9.9.17** | **Verify that** stdio-based MCP transports are limited to co-located, single-process development scenarios, isolated from shell execution, terminal injection, and process-spawning capabilities; stdio must never cross network or multi-tenant boundaries. | 3 | D/V |
+| **9.9.18** | **Verify that** MCP servers expose only allow-listed functions and resources, and prohibit dynamic dispatch, reflective invocation, or execution of function names influenced by user or model-provided input. | 3 | D/V |
+| **9.9.19** | **Verify that** tenant boundaries, environment boundaries (dev/test/prod), and data domain boundaries are enforced at the MCP layer, preventing cross-tenant or cross-environment server or resource discovery. | 3 | D/V |
 
 ---
 
-### References
+## References
+
+* [Model Context Protocol (MCP) Specification](https://modelcontextprotocol.io/)
+* [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/publications/detail/sp/800-207/final)
