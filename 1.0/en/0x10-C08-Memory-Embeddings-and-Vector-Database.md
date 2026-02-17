@@ -4,7 +4,6 @@
 
 Embeddings and vector stores act as semi-persistent amd persistent "memory" for AI systems via Retrieval-Augmented Generation (RAG). This memory can become a high-risk data sink and data exfiltration path. This control family hardens memory pipelines and vector databases so that access is least-privilege, data is sanitized before vectorization, retention is explicit, and systems are resilient to embedding inversion, membership inference, and cross-tenant leakage.
 
-
 ## C8.1 Access Controls on Memory & RAG Indices
 
 Enforce fine-grained access controls and query-time scope enforcement for every vector collection.
