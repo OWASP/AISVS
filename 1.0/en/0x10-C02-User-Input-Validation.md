@@ -38,9 +38,8 @@ Restricting the character set of user inputs to only allow characters that are n
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **2.3.1** | **Verify that** the system implements a character set limitation for user inputs, allowing only characters that are explicitly required for business purposes. | 1 | D |
-| **2.3.2** | **Verify that** an allow-list approach is used to define the permitted character set. | 1 | D |
-| **2.3.3** | **Verify that** inputs containing characters outside of the allowed set are rejected and logged with trace metadata (source, tool or MCP server, agent ID, session). | 1 | D/V |
+| **2.3.1** | **Verify that** the system implements a character set limitation for user inputs, allowing only characters that are explicitly required for business purposes unsing an allow-list approach. | 1 | D |
+| **2.3.2** | **Verify that** inputs containing characters outside of the allowed set are rejected and logged with trace metadata (source, tool or MCP server, agent ID, session). | 1 | D/V |
 
 ---
 
