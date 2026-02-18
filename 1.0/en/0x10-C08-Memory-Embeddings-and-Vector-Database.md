@@ -21,7 +21,7 @@ Pre-screen content before vectorization; treat memory writes as untrusted inputs
 | # | Description | Level | Role |
 | :--: | --- | :---: | :--: |
 | **8.2.1** | **Verify that** regulated data and sensitive fields are detected prior to embedding and are masked, tokenized, transformed, or dropped based on policy. | 1 | D/V |
-| **8.2.2** | **Verify that** embedding ingestion rejects or quarantines inputs that violate required content constraints (e.g., non-UTF-8, malformed encodings, oversized payloads, or policy-disallowed executable content intended to poison retrieval). | 1 | D/V |
+| **8.2.2** | **Verify that** embedding ingestion rejects or quarantines inputs that violate required content constraints (e.g., non-UTF-8, malformed encodings, oversized payloads, invisible ASCII characters, or executable content intended to poison retrieval). | 1 | D/V |
 
 ## C8.3 Memory Expiry, Revocation & Deletion
 
