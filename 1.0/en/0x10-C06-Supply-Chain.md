@@ -72,7 +72,7 @@ Evaluate external datasets for poisoning, bias, and legal compliance, and monito
 | **6.5.2** | **Verify that** bias metrics (demographic parity, equal opportunity) are calculated before dataset approval. | 1 | D |
 | **6.5.3** | **Verify that** origin, lineage, and license terms for datasets are captured in ML‑BOM entries. | 2 | V |
 | **6.5.4** | **Verify that** periodic monitoring detects drift or corruption in hosted datasets. | 2 | V |
-| **6.5.5** | **Verify that** disallowed content (copyright, PII) is removed via automated scrubbing prior to training. | 3 | D |
+| **6.5.5** | **Verify that** disallowed content (copyright and PII) is removed via automated scrubbing prior to training. | 3 | D |
 
 ---
 
@@ -96,7 +96,7 @@ Generate and sign detailed ML‑specific SBOMs (ML‑BOMs) so downstream consume
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **6.7.1** | **Verify that** every model artifact publishes a ML‑BOM that lists datasets, weights, hyperparameters, and licenses. | 1 | D/V |
 | **6.7.2** | **Verify that** ML‑BOM generation and Cosign signing are automated in CI and required for merge. | 1 | D/V |
-| **6.7.3** | **Verify that** ML‑BOM completeness checks fail the build if any component metadata (hash, license) is missing. | 2 | D |
+| **6.7.3** | **Verify that** ML‑BOM completeness checks fail the build if any component metadata (hash and license) is missing. | 2 | D |
 | **6.7.4** | **Verify that** downstream consumers can query ML-BOMs via API to validate imported models at deploy time. | 2 | V |
 | **6.7.5** | **Verify that** ML‑BOMs are version‑controlled and diffed to detect unauthorized modifications. | 3 | V |
 

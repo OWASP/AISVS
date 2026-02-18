@@ -65,7 +65,7 @@ Developers should be able to detect syntactically valid prompts that request dis
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **2.5.1** | **Verify that** a content classifier (zero shot or fine tuned) scores every input and output for violence, self-harm, hate, sexual content and illegal requests, with configurable thresholds. | 1 | D |
 | **2.5.2** | **Verify that** inputs which violate policies will be rejected so they will not propagate to downstream LLM or tool/MCP calls. | 1 |  D/V |
-| **2.5.3** | **Verify that** screening respects user-specific policies (age, regional legal constraints) via attribute-based rules resolved at request time, including agent-role attributes.  | 2 | D |
+| **2.5.3** | **Verify that** screening respects user-specific policies (age and regional legal constraints) via attribute-based rules resolved at request time, including agent-role attributes.  | 2 | D |
 | **2.5.4** | **Verify that** screening logs include classifier confidence scores and policy category tags with applied stage (pre-prompt or post-response) and trace metadata (source, tool or MCP server, agent ID, session) for SOC correlation and future red-team replay. | 3 | V |
 
 ---
