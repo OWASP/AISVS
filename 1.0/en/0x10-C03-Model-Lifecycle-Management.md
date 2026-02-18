@@ -65,7 +65,7 @@ Models must be securely retired when they are no longer needed or when security 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **3.5.1** | **Verify that** retired model artifacts (including adapters and safety/policy models) are securely wiped using secure cryptographic erasure. | 1 | D/V |
-| **3.5.2** | **Verify that** model retirement events are logged with timestamp and actor identity, model identifier (version/digest/signature), and trace metadata (environment and consuming services/agents); model signatures are revoked, and registry/serving deny-lists plus loader cache invalidation prevent agents from loading retired artifacts. | 2 | V |
+| **3.5.2** | **Verify that** model retirement events are logged with timestamp and actor identity, model identifier (version/digest/signature), and trace metadata (environment and consuming services/agents). Model signatures are revoked, registry/serving deny-lists are updated, and model loader cache are invalidation to prevent agents from loading retired artifacts. | 2 | V |
 
 ---
 
