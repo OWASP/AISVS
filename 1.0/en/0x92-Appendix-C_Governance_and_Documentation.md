@@ -362,3 +362,6 @@ This appendix provides foundational requirements for establishing organizational
 | **7.5.4** | **Verify that** explainability artifacts are version-controlled alongside model releases for auditability. | 3 | V |
 | **7.6.5** | **Verify that** monitoring pipelines are penetration-tested and access-controlled to avoid leakage of sensitive logs. | 3 | V |
 | **7.6.4** | **Verify that** monitoring data feeds back into retraining, fine-tuning, or rule updates within a documented MLOps workflow. | 2 | D/V |
+| **9.5.4** | **Verify that** protocol implementations undergo fuzzing and static analysis targeting deserialization, injection, request smuggling/desync, and state-machine edge cases. | 3 | V |
+| **9.7.4** | **Verify that** when the system detects an intent mismatch or a policy/constraint violation, it records the incident, alerts the right team, and uses the incident to improve defenses (add/update tests, tighten policies, and update detection rules) so the same failure is less likely to happen again. | 3 | D/V |
+| **9.8.3** | **Verify that** CI/CD includes property-based tests or equivalent analysis for multi-agent protocols to prove bounded behavior and key safety invariants (e.g., no cross-domain messaging, no unbounded fan-out). | 3 | V |
