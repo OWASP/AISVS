@@ -29,7 +29,7 @@ Retention must be explicit and enforceable; deletions must propagate to derived 
 
 | # | Description | Level | Role |
 | :--: | --- | :---: | :--: |
-| **8.3.1** | **Verify that** every stored vector and its metadata carry an explicit retention label or TTL. | 1 | D/V |
+| **8.3.1** | **Verify that** retention times are applied to every stored vector and related metadata across memory storage. | 1 | D/V |
 | **8.3.2** | **Verify that** deletion requests purge vectors, metadata, cache copies, and derivative indices within an organization-defined maximum time. | 1 | D/V |
 | **8.3.3** | **Verify that** deleted or expired vectors are unrecoverable by normal application paths, and that storage-layer deletion is enforced via cryptographic erasure (key destruction) or equivalent secure deletion controls. | 2 | D |
 | **8.3.4** | **Verify that** expired vectors are excluded from retrieval results within a measured and monitored propagation windows. | 3 | D/V |
