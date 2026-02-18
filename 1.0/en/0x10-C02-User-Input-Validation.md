@@ -52,7 +52,7 @@ AI attacks featuring malformed or oversized inputs can cause parsing errors, pro
 | **2.4.1** | **Verify that** every API, tool or MCP endpoint defines an explicit input schema (JSON Schema, Protobuf or multimodal equivalent) rejects extra or unknown fields and implicit type coercion, and validates inputs server-side before prompt assembly or tool execution. | 1 | D |
 | **2.4.2** | **Verify that** inputs exceeding maximum token or byte limits are rejected with a safe error and never silently truncated. | 1 |  D/V |
 | **2.4.3** | **Verify that** type checks (e.g., numeric ranges, enum values, MIME types for images/audio) are enforced server-side including for tool or MCP arguments. | 2 |  D/V |
-| **2.4.4** | **Verify that** semantic validators, that understand NLP input, run in constant time and avoid external network calls to prevent algorithmic DoS. | 2 | D |
+| **2.4.4** | **Verify that** semantic validators run in constant time and avoid external network calls to prevent algorithmic DoS. | 2 | D |
 | **2.4.5** | **Verify that** validation failures are logged with redacted payload snippets and unambiguous error codes and include trace metadata (source, tool or MCP server, agent ID, session) to aid security triage. | 3 | V |
 
 ---
