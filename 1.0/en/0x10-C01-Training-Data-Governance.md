@@ -29,7 +29,7 @@ Restrict access to training data, encrypt it at rest and in transit, and validat
 | **1.2.2** | **Verify that** all access to training data is logged, including user, time, and action. | 2 | D/V |
 | **1.2.3** | **Verify that** training datasets are encrypted in transit and at rest, using industry-standard cryptographic algorithms and key management practices. | 2 | D/V |
 | **1.2.4** | **Verify that** cryptographic hashes or digital signatures are used to ensure data integrity during training data storage and transfer. | 2 | D/V |
-| **1.2.5** | **Verify that** that automated detection techniques are applied to guard against unauthorized modifications or corruption of training data. | 2 | D/V |
+| **1.2.5** | **Verify that** automated detection techniques are applied to guard against unauthorized modifications or corruption of training data. | 2 | D/V |
 | **1.2.6** | **Verify that** obsolete training data is securely purged or anonymized. | 2 | D/V |
 | **1.2.7** | **Verify that** all training dataset versions are uniquely identified, stored immutably, and auditable to support rollback and forensic analysis. | 3 | D/V |
 
