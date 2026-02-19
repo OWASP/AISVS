@@ -2,90 +2,59 @@
 
 ## Control Objective
 
-Embeddings and vector stores act as the "live memory" of contemporary AI systems, continuously accepting user-supplied data and surfacing it back into model contexts via Retrieval-Augmented Generation (RAG). If left ungoverned, this memory can leak PII, violate consent, or be inverted to reconstruct the original text. The objective of this control family is to harden memory pipelines and vector databases so that access is least-privilege, embeddings are privacy-preserving, stored vectors expire or can be revoked on demand, and per-user memory never contaminates another user's prompts or completions.
-
----
+Embeddings and vector stores act as semi-persistent amd persistent "memory" for AI systems via Retrieval-Augmented Generation (RAG). This memory can become a high-risk data sink and data exfiltration path. This control family hardens memory pipelines and vector databases so that access is least-privilege, data is sanitized before vectorization, retention is explicit, and systems are resilient to embedding inversion, membership inference, and cross-tenant leakage.
 
 ## C8.1 Access Controls on Memory & RAG Indices
 
-Enforce fine-grained access controls on every vector collection.
+Enforce fine-grained access controls and query-time scope enforcement for every vector collection.
 
 | # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **8.1.1** | **Verify that** row/namespace-level access control rules restrict insert, delete, and query operations per tenant, collection, or document tag. | 1 | D/V |
-| **8.1.2** | **Verify that** API keys or JWTs carry scoped claims (e.g., collection IDs, action verbs) and are rotated at least quarterly. | 1 | D/V |
-| **8.1.3** | **Verify that** privilege-escalation attempts (e.g., cross-namespace similarity queries) are detected and logged to a SIEM within 5 minutes. | 2 | D/V |
-| **8.1.4** | **Verify that** vector DB audits log subject-identifier, operation, vector ID/namespace, similarity threshold, and result count. | 2 | D/V |
-| **8.1.5** | **Verify that** access decisions are tested for bypass flaws whenever engines are upgraded or index-sharding rules change. | 3 | V |
-
----
+| :--: | --- | :---: | :--: |
+| **8.1.1** | **Verify that** vector insert, update, delete, and query operations are enforced with namespace/collection/document-tag scope controls (e.g., tenant ID, user ID, data classification labels) with default-deny. | 1 | D/V |
+| **8.1.2** | **Verify that** API credentials used for vector operations carry **scoped claims** (e.g., permitted collections, allowed verbs, tenant binding). | 1 | D/V |
+| **8.1.3** | **Verify that** cross-scope access attempts (e.g., cross-tenant similarity queries, namespace traversal, tag bypass) are detected and rejected. | 2 | D/V |
 
 ## C8.2 Embedding Sanitization & Validation
 
-Pre-screen text for PII, redact or pseudonymize before vectorization, and optionally post-process embeddings to strip residual signals.
+Pre-screen content before vectorization; treat memory writes as untrusted inputs; prevent ingestion of unsafe payloads.
 
 | # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **8.2.1** | **Verify that** PII and regulated data are detected via automated classifiers and masked, tokenized, or dropped pre-embedding. | 1 | D/V |
-| **8.2.2** | **Verify that** embedding pipelines reject or quarantine inputs containing executable code or non-UTF-8 artifacts that could poison the index. | 1 | D |
-| **8.2.3** | **Verify that** local or metric differential-privacy sanitization is applied to sentence embeddings whose distance to any known PII token falls below a configurable threshold. | 2 | D/V |
-| **8.2.4** | **Verify that** sanitization efficacy (e.g., recall of PII redaction, semantic drift) is validated at least semi-annually against benchmark corpora. | 2 | V |
-| **8.2.5** | **Verify that** sanitization configs are version-controlled and changes undergo peer review. | 3 | D/V |
-
----
+| :--: | --- | :---: | :--: |
+| **8.2.1** | **Verify that** regulated data and sensitive fields are detected prior to embedding and are masked, tokenized, transformed, or dropped based on policy. | 1 | D/V |
+| **8.2.2** | **Verify that** embedding ingestion rejects or quarantines inputs that violate required content constraints (e.g., non-UTF-8, malformed encodings, oversized payloads, invisible ASCII characters, or executable content intended to poison retrieval). | 1 | D/V |
 
 ## C8.3 Memory Expiry, Revocation & Deletion
 
-GDPR "right to be forgotten" and similar laws require timely erasure; vector stores must therefore support TTLs, hard deletes, and tomb-stoning so that revoked vectors cannot be recovered or re-indexed.
+Retention must be explicit and enforceable; deletions must propagate to derived indices and caches.
 
 | # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **8.3.1** | **Verify that** every vector and metadata record carries a TTL or explicit retention label honoured by automated cleanup jobs. | 1 | D/V |
-| **8.3.2** | **Verify that** user-initiated deletion requests purge vectors, metadata, cache copies, and derivative indices within 30 days. | 1 | D/V |
-| **8.3.3** | **Verify that** logical deletes are followed by cryptographic shredding of storage blocks if hardware supports it, or by key-vault key destruction. | 2 | D |
-| **8.3.4** | **Verify that** expired vectors are excluded from nearest-neighbor search results in < 500 ms after expiration. | 3 | D/V |
-
----
+| :--: | --- | :---: | :--: |
+| **8.3.1** | **Verify that** retention times are applied to every stored vector and related metadata across memory storage. | 1 | D/V |
+| **8.3.2** | **Verify that** deletion requests purge vectors, metadata, cache copies, and derivative indices within an organization-defined maximum time. | 1 | D/V |
+| **8.3.3** | **Verify that** deleted or expired vectors are removed reliably and are unrecoverable. | 2 | D |
+| **8.3.4** | **Verify that** expired vectors are excluded from retrieval results within a measured and monitored propagation windows. | 3 | D/V |
 
 ## C8.4 Prevent Embedding Inversion & Leakage
 
-Recent defenses—noise superposition, projection networks, privacy-neuron perturbation, and application-layer encryption—can cut token-level inversion rates below 5%.
+Address inversion, membership inference, and attribute inference with explicit threat modeling, mitigations, and regression testing gates.
 
 | # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **8.4.1** | **Verify that** a formal threat model covering inversion, membership and attribute-inference attacks exists and is reviewed yearly. | 1 | V |
-| **8.4.2** | **Verify that** application-layer encryption or searchable encryption shields vectors from direct reads by infrastructure admins or cloud staff. | 2 | D/V |
-| **8.4.3** | **Verify that** defense parameters (ε for DP, noise σ, projection rank k) balance privacy ≥ 99 % token protection and utility ≤ 3 % accuracy loss. | 3 | V |
-| **8.4.4** | **Verify that** inversion-resilience metrics are part of release gates for model updates, with regression budgets defined. | 3 | D/V |
-
----
+| :--: | --- | :---: | :--: |
+| **8.4.1** | **Verify that** sensitive vector collections are protected against direct read access by infrastructure administrators via technical controls such as application-layer encryption, envelope encryption with strict KMS policies, or equivalent compensating controls. | 2 | D/V |
+| **8.4.2** | **Verify that** privacy/utility targets for embedding leakage resistance are **defined and measured**, and that changes to embedding models, tokenizers, retrieval settings, or privacy transforms are gated by regression tests against those targets. | 3 | D/V |
 
 ## C8.5 Scope Enforcement for User-Specific Memory
 
-Cross-tenant leakage remains a top RAG risk: improperly filtered similarity queries can surface another customer's private docs.
+Prevent cross-tenant and cross-user leakage in retrieval and prompt assembly.
 
 | # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **8.5.1** | **Verify that** every retrieval query is post-filtered by tenant/user ID before being passed to the LLM prompt. | 1 | D/V |
-| **8.5.2** | **Verify that** collection names or namespaced IDs are salted per user or tenant so vectors cannot collide across scopes. | 1 | D |
-| **8.5.3** | **Verify that** similarity results above a configurable distance threshold but outside the caller's scope are discarded and trigger security alerts. | 2 | D/V |
-| **8.5.4** | **Verify that** multi-tenant stress tests simulate adversarial queries attempting to retrieve out-of-scope documents and demonstrate zero leakage. | 2 | V |
-| **8.5.5** | **Verify that** encryption keys are segregated per tenant, ensuring cryptographic isolation even if physical storage is shared. | 3 | D/V |
+| :--: | --- | :---: | :--: |
+| **8.5.1** | **Verify that** every retrieval operation enforces scope constraints (tenant/user/classification) **in the vector engine query** and verifies them again **before prompt assembly** (post-filter). | 1 | D/V |
+| **8.5.2** | **Verify that** vector identifiers, namespaces, and metadata indexing prevent cross-scope collisions and enforce uniqueness per tenant. | 1 | D |
+| **8.5.3** | **Verify that** retrieval results that match similarity criteria but fail scope checks are discarded. | 2 | D/V |
+| **8.5.4** | **Verify that** multi-tenant tests simulate adversarial retrieval attempts (prompt-based and query-based) and demonstrate zero out-of-scope document inclusion in prompts and outputs. | 2 | V |
+| **8.5.5** | **Verify that** encryption keys and access policies are segregated per tenant for memory/vector storage, providing cryptographic isolation in shared infrastructure. | 3 | D/V |
 
----
+## References (recommended additions)
 
-## C8.6 Advanced Memory System Security
-
-Security controls for sophisticated memory architectures including episodic, semantic, and working memory with specific isolation and validation requirements.
-
-| # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **8.6.1** | **Verify that** different memory types (episodic, semantic, working) have isolated security contexts with role-based access controls, separate encryption keys, and documented access patterns for each memory type. | 1 | D/V |
-| **8.6.2** | **Verify that** memory consolidation processes include security validation to prevent injection of malicious memories through content sanitization, source verification, and integrity checks before storage. | 2 | D/V |
-| **8.6.3** | **Verify that** memory retrieval queries are validated and sanitized to prevent extraction of unauthorized information through query pattern analysis, access control enforcement, and result filtering. | 2 | D/V |
-| **8.6.4** | **Verify that** memory forgetting mechanisms securely delete sensitive information with cryptographic erasure guarantees using key deletion, multi-pass overwriting, or hardware-based secure deletion with verification certificates. | 3 | D/V |
-| **8.6.5** | **Verify that** memory system integrity is continuously monitored for unauthorized modifications or corruption through checksums, audit logs, and automated alerts when memory content changes outside normal operations. | 3 | D/V |
-
----
-
-## References
+* OWASP Foundation. **OWASP Top 10 for Large Language Model Applications (LLM) 2025**. https://owasp.org/www-project-top-10-for-large-language-model-applications/assets/PDF/OWASP-Top-10-for-LLMs-v2025.pdf
