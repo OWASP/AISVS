@@ -1,1 +1,0 @@
-../../en/0x10-C06-Supply-Chain.md

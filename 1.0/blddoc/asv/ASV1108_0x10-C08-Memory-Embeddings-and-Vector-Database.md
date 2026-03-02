@@ -1,1 +1,0 @@
-../../en/0x10-C08-Memory-Embeddings-and-Vector-Database.md
