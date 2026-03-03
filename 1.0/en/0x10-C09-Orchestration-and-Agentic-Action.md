@@ -12,7 +12,7 @@ Bound runtime expansion (recursion, concurrency, cost) and halt safely on runawa
 
 | # | Description | Level | Role |
 | :--: | --- | :---: | :--: |
-| **9.1.1** | **Verify that** per-execution budgets (max recursion depth, max fan-out/concurrency, wall-clock time, tokens, and monetary spend) are centrally configured, version-controlled, and enforced by the orchestration runtime. | 1 | D/V |
+| **9.1.1** | **Verify that** per-execution budgets (max recursion depth, max fan-out/concurrency, wall-clock time, tokens, and monetary spend) are configured and enforced by the orchestration runtime. | 1 | D/V |
 | **9.1.2** | **Verify that** cumulative resource/spend counters are tracked per request chain and hard-stop the chain when thresholds are exceeded. | 2 | D/V |
 | **9.1.3** | **Verify that** circuit breakers terminate execution on budget violations. | 2 | D/V |
 | **9.1.4** | **Verify that** security testing covers runaway loops, budget exhaustion, and partial-failure scenarios, confirming safe termination and consistent state. | 3 | V |
@@ -26,7 +26,7 @@ Require explicit checkpoints for privileged or irreversible outcomes.
 
 | # | Description | Level | Role |
 | :--: | --- | :---: | :--: |
-| **9.2.1** | **Verify that** privileged or irreversible actions (e.g., code merges/deploys, financial transfers, user access changes, destructive deletes, external notifications) require explicit approval through an auditable channel before execution. | 1 | D/V |
+| **9.2.1** | **Verify that** privileged or irreversible actions (e.g., code merges/deploys, financial transfers, user access changes, destructive deletes, external notifications) require explicit human-in-loop approval. | 1 | D/V |
 | **9.2.2** | **Verify that** approval requests present the exact action parameters (diff/command/recipient/amount/scope) and bind approvals to those parameters to prevent “approve one thing, execute another.” | 2 | D/V |
 | **9.2.3** | **Verify that** where rollback is feasible, compensating actions are defined and tested (transactional semantics), and failures trigger rollback or safe containment. | 3 | V |
 
