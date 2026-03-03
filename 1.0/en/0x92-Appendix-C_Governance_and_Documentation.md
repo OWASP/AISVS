@@ -362,3 +362,19 @@ This appendix provides foundational requirements for establishing organizational
 | **7.5.4** | **Verify that** explainability artifacts are version-controlled alongside model releases for auditability. | 3 | V |
 | **7.6.5** | **Verify that** monitoring pipelines are penetration-tested and access-controlled to avoid leakage of sensitive logs. | 3 | V |
 | **7.6.4** | **Verify that** monitoring data feeds back into retraining, fine-tuning, or rule updates within a documented MLOps workflow. | 2 | D/V |
+
+### C8 Memory, Embeddings & Vector Database Security
+
+|       #       | Description                                                                                                                                                | Level | Role |
+| :-----------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :---: | :--: |
+| **8.1.4** | **Verify that** vector DB audit logs record: authenticated principal, tenant/user scope, operation type, collection/namespace, query filters, similarity threshold/top-k, and result count. | 2 | D/V |
+| **8.1.4** | **Verify that** automated tests validate authorization and scope enforcement (including negative tests) whenever the vector engine, index settings, or sharding/partition rules change. | 3 | V |
+| **8.2.3** | **Verify that** when privacy-enhancing transforms are used for embeddings (e.g., differential privacy, projection, or noise mechanisms), the chosen mechanism and parameters are **documented, version-controlled, and empirically evaluated** for privacy/utility tradeoffs using a defined test harness. | 2 | D/V |
+| **8.2.4** | **Verify that** sanitization efficacy is measured using benchmark corpora and internal samples, tracking at minimum: PII detection/redaction recall, false positives, and semantic drift/utility impact. | 2 | V |
+| **8.4.1** | **Verify that** a threat model for embedding leakage (inversion, membership inference, attribute inference) exists for each memory/RAG deployment and is reviewed on a defined cadence (e.g., annually) and after major architecture changes. | 1 | V |
+| **8.4.4** | **Verify that** embedding leakage tests (e.g., inversion attempts or membership inference probes appropriate to the system) are part of release gates for high-sensitivity deployments, with documented pass/fail criteria and trend tracking over time. | 3 | D/V |
+| **8.6.1** | **Verify that** each memory type (episodic, semantic, working) has an explicitly defined security context: distinct scopes, distinct access policies, and distinct encryption keys (or equivalent isolation controls). | 1 | D/V |
+| **8.6.2** | **Verify that** memory consolidation pipelines (summarization, merging, distillation) validate and sanitize content before storage, including prompt-injection style directives and tool-generated artifacts. | 2 | D/V |
+| **8.6.3** | **Verify that** memory retrieval queries are validated to prevent extraction patterns (e.g., iterative top-k scraping, similarity probing) and are gated by rate limits and anomaly detection. | 2 | D/V |
+| **8.6.4** | **Verify that** “forgetting” operations (delete/revoke) are enforced consistently across all memory types, derived indices, caches, and backups, with verifiable completion evidence. | 3 | D/V |
+| **8.6.5** | **Verify that** integrity monitoring detects unauthorized modifications to memory content and indexing structures (checksums, audit logs, alerting on unexpected write sources). | 3 | D/V |
