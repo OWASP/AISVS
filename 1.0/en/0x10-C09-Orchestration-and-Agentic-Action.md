@@ -149,7 +149,6 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **9.9.12** | **Verify that** MCP servers may only initiate outbound requests to approved internal or external destinations following least-privilege egress policies, and cannot access arbitrary network targets or internal cloud metadata services. | 2 | D/V |
 | **9.9.15** | **Verify that** outbound MCP actions implement execution limits (timeouts, recursion limits, concurrency caps, circuit breakers) to prevent unbounded agent-driven tool invocation or chained side effects. | 2 | D/V |
 
-
 ### Transport Restrictions & High-Risk Boundary Controls
 
 | # | Description | Level | Role |
