@@ -45,7 +45,6 @@ Implement zero-trust networking with default-deny policies and encrypted communi
 | **4.3.4** | **Verify that** inter-service communication uses mutual TLS with certificate validation and regular automated rotation. | 2 | D/V |
 | **4.3.5** | **Verify that** egress traffic is restricted to approved destinations and all requests are logged. | 3 | D/V |
 
-
 ## C4.4 Secrets & Cryptographic Key Management
 
 Protect secrets and cryptographic keys with secure storage, automated rotation, and strong access controls.
