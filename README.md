@@ -34,7 +34,7 @@ The Artificial Intelligence Security Verification Standard (AISVS) focuses on pr
 
 ## Project Leaders
 
-The project is led by the two project leaders [Jim Manico](https://github.com/jmanico) and [Russ Memisyazici](https://github.com/vtknightmare).
+This project was founded by [Jim Manico](https://github.com/jmanico). Current project leadership includes [Jim Manico](https://github.com/jmanico), [Otto Sulin](https://github.com/ottosulin), and [Russ Memisyazici](https://github.com/vtknightmare).
 
 ## License
 
