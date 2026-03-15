@@ -11,6 +11,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | # | Description | Level | Role |
 | :--: | --- | :---: | :--: |
 | **10.1.1** | **Verify that** MCP server and client components are obtained only from trusted sources and verified using signatures, checksums, or secure package metadata, rejecting tampered or unsigned builds. | 1 | D/V |
+| **10.1.2** | **Verify that** MCP client and server configurations do not contain plaintext secrets (API keys, tokens, client secrets) and that credentials are injected or resolved at runtime rather than stored in configuration files, environment variables, or source code. | 1 | D/V |
 
 ---
 
@@ -25,6 +26,11 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **10.2.5** | **Verify that** MCP servers act as OAuth 2.1 resource servers only by validating tokens issued by external authorization servers and by not storing tokens or user credentials. | 2 | D/V |
 | **10.2.6** | **Verify that** MCP `tools/list` and resource discovery responses are filtered based on the end-user's authorized scopes so that agents receive only the tool and resource definitions the user is permitted to invoke. | 2 | D/V |
 | **10.2.7** | **Verify that** MCP servers enforce access control on every tool invocation, validating that the user's access token authorizes both the requested tool and the specific argument values supplied. | 2 | D/V |
+| **10.2.8** | **Verify that** MCP session identifiers are treated as state, not identity: generated using cryptographically secure random values, bound to the authenticated user, and never relied on for authentication or authorization decisions. | 1 | D/V |
+| **10.2.9** | **Verify that** MCP servers do not pass through access tokens received from clients to downstream APIs and instead obtain a separate token scoped to the server's own identity (e.g., via on-behalf-of or client credentials flow). | 2 | D/V |
+| **10.2.10** | **Verify that** MCP servers acting as OAuth proxies to third-party APIs enforce per-client consent before forwarding authorization requests, preventing cached approvals from being reused across dynamically registered clients. | 2 | D/V |
+| **10.2.11** | **Verify that** MCP clients request only the minimum scopes needed for the current operation, elevate progressively via step-up authorization, and that servers reject wildcard or overly broad scopes. | 2 | D/V |
+| **10.2.12** | **Verify that** MCP servers enforce deterministic session teardown, destroying cached tokens, in-memory state, temporary storage, and file handles when a session terminates, disconnects, or times out. | 2 | D/V |
 
 ---
 
@@ -47,6 +53,8 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **10.4.2** | **Verify that** MCP tool and resource schemas (e.g., JSON schemas or capability descriptors) are validated for authenticity and integrity using signatures to prevent schema tampering or malicious parameter modification. | 2 | D/V |
 | **10.4.3** | **Verify that** all MCP transports enforce message-framing integrity, strict schema validation, maximum payload sizes, and rejection of malformed, truncated, or interleaved frames to prevent desynchronization or injection attacks. | 2 | D/V |
 | **10.4.4** | **Verify that** MCP servers perform strict input validation for all function calls, including type checking, boundary validation, enumeration enforcement, and rejection of unrecognized or oversized parameters. | 2 | D/V |
+| **10.4.5** | **Verify that** MCP clients maintain a hash or versioned snapshot of tool definitions and that any change to a tool definition (via `notifications/tools/list_changed` or between sessions) triggers re-approval before the modified tool can be invoked. | 2 | D/V |
+| **10.4.6** | **Verify that** MCP server error and exception responses do not expose stack traces, internal file paths, tokens, or tool implementation details to the client or model context. | 1 | D/V |
 
 ---
 
@@ -56,6 +64,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | :--: | --- | :---: | :--: |
 | **10.5.1** | **Verify that** MCP servers may only initiate outbound requests to approved internal or external destinations following least-privilege egress policies and cannot access arbitrary network targets or internal cloud metadata services. | 2 | D/V |
 | **10.5.2** | **Verify that** outbound MCP actions implement execution limits (e.g., timeouts, recursion limits, concurrency caps, or circuit breakers) to prevent unbounded agent-driven tool invocation or chained side effects. | 2 | D/V |
+| **10.5.3** | **Verify that** MCP tool invocations classified as high-risk or destructive (e.g., data deletion, financial transactions, system configuration changes) require explicit user confirmation before execution. | 2 | D/V |
 
 ---
 
