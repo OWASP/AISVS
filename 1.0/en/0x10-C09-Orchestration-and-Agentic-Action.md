@@ -110,4 +110,4 @@ Reduce cross-domain interference and emergent unsafe collective behavior.
 
 ## References
 
-* [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/publications/detail/sp/800-207/final)
+* [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/pubs/detail/sp/800-207/final)

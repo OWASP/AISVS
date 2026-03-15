@@ -72,4 +72,4 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 ## References
 
 * [Model Context Protocol (MCP) Specification](https://modelcontextprotocol.io/)
-* [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/publications/detail/sp/800-207/final)
+* [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/pubs/detail/sp/800-207/final)
