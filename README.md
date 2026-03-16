@@ -13,7 +13,7 @@ This work is licensed under a
 
 ## What is AISVS?
 
-The **Artificial Intelligence Security Verification Standard (AISVS)** is a community-driven catalogue of testable security requirements for AI-enabled systems. It gives developers, architects, security engineers, and auditors a structured framework to design, build, test, and verify the security of AI applications throughout their lifecycle -- from data collection and model training to deployment, monitoring, and retirement.
+The **Artificial Intelligence Security Verification Standard (AISVS)** is a community-driven catalogue of testable security requirements for AI-enabled systems. It gives developers, architects, security engineers, and auditors a structured framework to design, build, test, and verify the security of AI applications throughout their lifecycle, from data collection and model training to deployment, monitoring, and retirement.
 
 AISVS is modeled after the [OWASP Application Security Verification Standard (ASVS)](https://owasp.org/www-project-application-security-verification-standard/) and follows the same philosophy: every requirement should be **verifiable, testable, and implementable**.
 
@@ -46,10 +46,10 @@ Organizations should select a target level based on the risk profile of their AI
 
 ## How to use AISVS
 
-- **During design** -- Use requirements as a security checklist when architecting AI systems.
-- **During development** -- Integrate requirements into CI/CD pipelines, code reviews, and testing.
-- **During security assessments** -- Use as a verification framework for penetration testing and audits.
-- **For procurement** -- Reference specific requirements when evaluating AI vendors and third-party models.
+- **During design.** Use requirements as a security checklist when architecting AI systems.
+- **During development.** Integrate requirements into CI/CD pipelines, code reviews, and testing.
+- **During security assessments.** Use as a verification framework for penetration testing and audits.
+- **For procurement.** Reference specific requirements when evaluating AI vendors and third-party models.
 
 ## Requirement Chapters
 
