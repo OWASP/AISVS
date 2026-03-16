@@ -97,7 +97,6 @@ AI systems should include robust validation for non-textual inputs (images, audi
 | **2.7.6** | **Verify that** file type validation uses content-based detection (magic bytes/file headers) in addition to declared MIME types and file extensions, so that type-spoofed files (e.g., a script disguised as an image) cannot bypass modality-specific AI safety filters and reach the model pipeline unvalidated, and that mismatches between declared and detected type are rejected as potential type spoofing. | 1 | D/V |
 | **2.7.7** | **Verify that** filenames submitted to AI processing pipelines are sanitized against null byte injection, path traversal sequences, and double extension attacks (e.g., "input.jpg.exe") that could manipulate how the pipeline routes, stores, or interprets uploaded files before model ingestion. | 1 | D/V |
 
-
 ---
 
 ## C2.8 Real-Time Adaptive Threat Detection
