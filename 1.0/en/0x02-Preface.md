@@ -4,7 +4,7 @@ Welcome to the **Artificial Intelligence Security Verification Standard (AISVS) 
 
 ## Why AISVS Exists
 
-AI systems introduce security risks that traditional application security standards were not designed to address. Training data can be poisoned. Models can be extracted, inverted, or manipulated through adversarial inputs. Autonomous agents can take actions with real world consequences. Retrieval pipelines can be exploited to leak sensitive information. And the supply chain for models, datasets, and frameworks presents novel integrity challenges that existing software composition analysis alone cannot solve.
+AI systems introduce security risks that traditional application security standards were not designed to address. Prompt injection allows attackers to override model instructions through crafted inputs, turning a language model into a tool for data exfiltration, unauthorized actions, or safety bypass. Training data can be poisoned to install backdoors or degrade model behavior. Models can be extracted, inverted, or manipulated through adversarial inputs. Autonomous agents can take actions with real world consequences based on prompt injected instructions they cannot distinguish from legitimate ones. Retrieval pipelines can be exploited to leak sensitive information or to inject malicious content into model context. And the supply chain for models, datasets, and frameworks presents novel integrity challenges that existing software composition analysis alone cannot solve.
 
 AISVS was created to give organizations a structured, testable set of security controls purpose built for these risks. It does not replace existing standards; it fills the gap that none of them cover.
 
