@@ -12,6 +12,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | :--: | --- | :---: | :--: |
 | **10.1.1** | **Verify that** MCP server and client components are obtained only from trusted sources and verified using signatures, checksums, or secure package metadata, rejecting tampered or unsigned builds. | 1 | D/V |
 | **10.1.2** | **Verify that** MCP client and server configurations do not contain plaintext secrets (API keys, tokens, client secrets) and that credentials are injected or resolved at runtime rather than stored in configuration files, environment variables, or source code. | 1 | D/V |
+| **10.1.3** | **Verify that** MCP resource descriptions and tool schemas are integrity-verified and cannot be modified by untrusted parties to influence model behavior during discovery. | 2 | D/V |
 
 ---
 
@@ -55,6 +56,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **10.4.4** | **Verify that** MCP servers perform strict input validation for all function calls, including type checking, boundary validation, enumeration enforcement, and rejection of unrecognized or oversized parameters. | 2 | D/V |
 | **10.4.5** | **Verify that** MCP clients maintain a hash or versioned snapshot of tool definitions and that any change to a tool definition (via `notifications/tools/list_changed` or between sessions) triggers re-approval before the modified tool can be invoked. | 2 | D/V |
 | **10.4.6** | **Verify that** MCP server error and exception responses do not expose stack traces, internal file paths, tokens, or tool implementation details to the client or model context. | 1 | D/V |
+| **10.4.7** | **Verify that** tool responses returned via MCP are validated for prompt injection payloads before being incorporated into downstream reasoning or follow-on actions. | 2 | D/V |
 
 ---
 
@@ -65,6 +67,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **10.5.1** | **Verify that** MCP servers may only initiate outbound requests to approved internal or external destinations following least-privilege egress policies and cannot access arbitrary network targets or internal cloud metadata services. | 2 | D/V |
 | **10.5.2** | **Verify that** outbound MCP actions implement execution limits (e.g., timeouts, recursion limits, concurrency caps, or circuit breakers) to prevent unbounded agent-driven tool invocation or chained side effects. | 2 | D/V |
 | **10.5.3** | **Verify that** MCP tool invocations classified as high-risk or destructive (e.g., data deletion, financial transactions, system configuration changes) require explicit user confirmation before execution. | 2 | D/V |
+| **10.5.4** | **Verify that** data from one tool invocation cannot leak into subsequent tool calls within the same session through shared context or unsanitized state. | 2 | D/V |
 
 ---
 
