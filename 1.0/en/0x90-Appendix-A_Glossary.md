@@ -154,7 +154,7 @@ This comprehensive glossary provides definitions of key AI, ML, and security ter
 
 * **OIDC (OpenID Connect)** – An identity layer built on OAuth 2.0 that enables clients to verify user identity based on authentication performed by an authorization server.
 
-* **OPA (Open Policy Agent)** – An open-source policy engine that enables unified policy enforcement across the stack.
+* **OPA (Open Policy Agent)** – An open-source, general-purpose policy engine that evaluates authorization and admission control policies written in Rego, enabling unified policy enforcement across applications, APIs, and infrastructure.
 
 * **PII (Personally Identifiable Information)** – Any information that can be used to identify, contact, or locate a specific individual, either alone or combined with other data.
 

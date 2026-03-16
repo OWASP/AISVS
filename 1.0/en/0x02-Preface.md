@@ -4,9 +4,9 @@ Welcome to the **Artificial Intelligence Security Verification Standard (AISVS) 
 
 ## Why AISVS Exists
 
-AI systems introduce security risks that traditional application security standards were not designed to address. Prompt injection allows attackers to override model instructions through crafted inputs, turning a language model into a tool for data exfiltration, unauthorized actions, or safety bypass. Training data can be poisoned to install backdoors or degrade model behavior. Models can be extracted, inverted, or manipulated through adversarial inputs. Autonomous agents can take actions with real world consequences based on prompt injected instructions they cannot distinguish from legitimate ones. Retrieval pipelines can be exploited to leak sensitive information or to inject malicious content into model context. And the supply chain for models, datasets, and frameworks presents novel integrity challenges that existing software composition analysis alone cannot solve.
+AI systems introduce security risks that traditional application security standards were not designed to address. Prompt injection allows attackers to override model instructions through crafted inputs, turning a language model into a tool for data exfiltration, unauthorized actions, or safety bypass. Training data can be poisoned to install backdoors or degrade model behavior. Models can be extracted, inverted, or manipulated through adversarial inputs. Autonomous agents can take actions with real-world consequences based on prompt-injected instructions they cannot distinguish from legitimate ones. Retrieval pipelines can be exploited to leak sensitive information or to inject malicious content into model context. And the supply chain for models, datasets, and frameworks presents novel integrity challenges that existing software composition analysis alone cannot solve.
 
-AISVS was created to give organizations a structured, testable set of security controls purpose built for these risks. It does not replace existing standards; it fills the gap that none of them cover.
+AISVS was created to give organizations a structured, testable set of security controls purpose-built for these risks. It does not replace existing standards; it fills the gap that none of them cover.
 
 ## Design Principles
 
@@ -41,7 +41,7 @@ Four appendices support the core requirements:
 * **Appendix A (Glossary)** defines key terms and acronyms used throughout the standard.
 * **Appendix B (References)** lists external standards, research, and frameworks referenced by AISVS requirements.
 * **Appendix C (AI-Assisted Secure Coding)** provides controls for the safe use of AI coding tools during software development.
-* **Appendix D (AI Security Controls Inventory)** is a cross reference of every defense technique in AISVS, organized by security control category (authentication, authorization, encryption, input validation, and so on) with mappings back to specific requirement identifiers.
+* **Appendix D (AI Security Controls Inventory)** is a cross-reference of every defense technique in AISVS, organized by security control category (authentication, authorization, encryption, input validation, and so on) with mappings back to specific requirement identifiers.
 
 ## Scope Boundaries
 
@@ -49,7 +49,7 @@ AISVS focuses on security controls that are specific to AI and ML systems. It in
 
 * **General application security.** Requirements covered by the [OWASP ASVS](https://owasp.org/www-project-application-security-verification-standard/) (such as session management, CSRF protection, or SQL injection prevention) are not repeated here. Organizations should apply ASVS alongside AISVS.
 * **AI governance and risk management.** Organizational governance, risk assessment methodology, and compliance processes are better addressed by frameworks such as the NIST AI RMF and ISO/IEC 42001.
-* **Vendor specific guidance.** AISVS is vendor neutral. It specifies what to verify, not which product to use.
+* **Vendor-specific guidance.** AISVS is vendor-neutral. It specifies what to verify, not which product to use.
 
 ## Acknowledgments
 
