@@ -40,9 +40,10 @@ Technical controls to detect and scrub bad content before it is shown to the use
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **7.3.1** | **Verify that** automated classifiers scan every response and block content that matches hate, harassment, or sexual violence categories. | 1 | D/V |
 | **7.3.2** | **Verify that** the system scans every response for PII (like credit cards or emails) and automatically redacts it before display. | 1 | D/V |
-| **7.3.3** | **Verify that** data labeled as "confidential" in the system remains blocked or redacted. | 2 | D |
-| **7.3.4** | **Verify that** safety filters can be configured differently based on the user's role or location (e.g., stricter filters for minors) as appropriate. | 2 | D/V |
-| **7.3.5** | **Verify that** the system requires a human approval step or re-authentication if the model generates high-risk content. | 3 | D/V |
+| **7.3.3** | **Verify that** PII detection and redaction events are logged without including the redacted PII values themselves, to maintain an audit trail without creating secondary PII exposure. | 1 | D/V |
+| **7.3.4** | **Verify that** data labeled as "confidential" in the system remains blocked or redacted. | 2 | D |
+| **7.3.5** | **Verify that** safety filters can be configured differently based on the user's role or location (e.g., stricter filters for minors) as appropriate. | 2 | D/V |
+| **7.3.6** | **Verify that** the system requires a human approval step or re-authentication if the model generates high-risk content. | 3 | D/V |
 
 ---
 
