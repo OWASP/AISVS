@@ -2,7 +2,7 @@
 
 ## Objective
 
-This appendix provides a concise inventory of every security control and defense technique referenced across the AISVS core requirements (C01--C14). Implementers can use this as a cross-reference to understand which defenses are needed and where they appear in the standard. Controls are grouped by security domain.
+This appendix provides a concise inventory of every security control and defense technique referenced across the AISVS requirements. Implementers can use this as a cross-reference to understand which defenses are needed and where they appear in the standard. Controls are grouped by security domain.
 
 ---
 
