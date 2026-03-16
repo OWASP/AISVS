@@ -94,8 +94,9 @@ AI systems should include robust validation for non-textual inputs (images, audi
 | **2.7.3** | **Verify that** image/audio inputs are checked for adversarial perturbations or known attack patterns, and detections trigger gating (block or degrade capabilities) before model use. | 2 | D/V |
 | **2.7.4** | **Verify that** multi-modal input validation failures trigger detailed logging including all input modalities, validation results, threat scores, and trace metadata (source, tool or MCP server, agent ID, session as applicable), and generate alerts for investigation. | 3 | D/V |
 | **2.7.5** | **Verify that** cross-modal attack detection identifies coordinated attacks spanning multiple input types (e.g., steganographic payloads in images combined with prompt injection in text) with correlation rules and alert generation, and that confirmed detections are blocked or require HITL (human-in-the-loop) approval. | 3 | D/V |
-| **2.7.6** | **Verify that** file type validation uses content based detection (magic bytes/file headers) in addition to declared MIME types and file extensions, and that mismatches between declared and detected type are rejected as potential type spoofing. | 1 | D/V |
-| **2.7.7** | **Verify that** filename sanitization prevents null byte injection, path traversal sequences, and double extension attacks (e.g., "image.jpg.exe") before any file processing occurs. | 1 | D/V |
+| **2.7.6** | **Verify that** file type validation uses content-based detection (magic bytes/file headers) in addition to declared MIME types and file extensions, so that type-spoofed files (e.g., a script disguised as an image) cannot bypass modality-specific AI safety filters and reach the model pipeline unvalidated, and that mismatches between declared and detected type are rejected as potential type spoofing. | 1 | D/V |
+| **2.7.7** | **Verify that** filenames submitted to AI processing pipelines are sanitized against null byte injection, path traversal sequences, and double extension attacks (e.g., "input.jpg.exe") that could manipulate how the pipeline routes, stores, or interprets uploaded files before model ingestion. | 1 | D/V |
+
 
 ---
 
