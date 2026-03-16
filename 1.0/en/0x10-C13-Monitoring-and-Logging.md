@@ -201,11 +201,11 @@ Monitor the security and privacy properties of federated learning systems during
 
 ## References
 
-- [OWASP Top 10 for LLM Applications 2025](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-- [MITRE ATLAS - Adversarial Threat Landscape for AI Systems](https://atlas.mitre.org/)
-- [NIST AI Risk Management Framework (AI RMF 1.0)](https://www.nist.gov/system/files/documents/2023/01/26/AI%20RMF%201.0.pdf)
-- [EU Artificial Intelligence Act - Articles 9, 12, 72](https://artificialintelligenceact.eu/)
-- [OpenTelemetry GenAI Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/)
-- [Coalition for Secure AI (CoSAI) - Model Signing](https://secureai.org/)
-- [ISACA - Agentic AI Audit Considerations](https://www.isaca.org/)
-- [NIST AI 100-1 - Artificial Intelligence Risk Management Framework](https://doi.org/10.6028/NIST.AI.100-1)
+* [OWASP Top 10 for LLM Applications 2025](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+* [MITRE ATLAS - Adversarial Threat Landscape for AI Systems](https://atlas.mitre.org/)
+* [NIST AI Risk Management Framework (AI RMF 1.0)](https://www.nist.gov/system/files/documents/2023/01/26/AI%20RMF%201.0.pdf)
+* [EU Artificial Intelligence Act - Articles 9, 12, 72](https://artificialintelligenceact.eu/)
+* [OpenTelemetry GenAI Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/)
+* [Coalition for Secure AI (CoSAI) - Model Signing](https://secureai.org/)
+* [ISACA - Agentic AI Audit Considerations](https://www.isaca.org/)
+* [NIST AI 100-1 - Artificial Intelligence Risk Management Framework](https://doi.org/10.6028/NIST.AI.100-1)
