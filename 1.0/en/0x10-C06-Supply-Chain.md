@@ -31,6 +31,7 @@ Continuously scan AI frameworks and libraries for vulnerabilities and malicious 
 | **6.2.3** | **Verify that** static code analysis runs on forked or vendored AI libraries. | 2 | D |
 | **6.2.4** | **Verify that** framework upgrade proposals include a security impact assessment referencing public vulnerability feeds. | 2 | V |
 | **6.2.5** | **Verify that** runtime sensors alert on unexpected dynamic library loads that deviate from the signed SBOM. | 3 | V |
+| **6.2.6** | **Verify that** safety-critical AI components evaluate and document the necessity of each third-party dependency, with preference for minimal or zero external dependencies in security enforcement paths to reduce supply chain attack surface. | 2 | D/V |
 
 ---
 
