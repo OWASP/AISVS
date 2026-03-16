@@ -1,4 +1,4 @@
-# Appendix B: Strategic Controls
+# Appendix E: Strategic Controls
 
 ## C4.15 Quantum-Resistant Infrastructure Security
 
