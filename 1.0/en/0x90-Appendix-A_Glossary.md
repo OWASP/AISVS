@@ -196,7 +196,7 @@ This comprehensive glossary provides definitions of key AI, ML, and security ter
 
 * **SIEM (Security Information and Event Management)** – A platform that aggregates, correlates, and analyzes security event data from multiple sources to detect threats, support incident response, and satisfy compliance requirements.
 
-* **SPDX (Software Package Data Exchange)** – An open standard for communicating software and AI component bill of materials information, including provenance, licensing, and security references.
+* **SPDX (Software Package Data Exchange)** – An open standard for communicating software and AI component bill of materials information, including component origin, licensing, and security references.
 
 * **SSE (Server-Sent Events)** – A web technology that enables a server to push real-time updates to a client over an HTTP connection, used as a transport mechanism in MCP.
 

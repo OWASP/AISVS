@@ -125,9 +125,9 @@ Verify authenticity and detect tampering of models, artifacts, messages, logs, a
 |---|---|
 | Cryptographic hashes for training data integrity | 1.2.4, 1.3.2 |
 | Cryptographic model signing with verification at deployment and load | 3.1.2 |
-| Signed build artifacts with provenance metadata | 4.2.2 |
+| Signed build artifacts with build-origin metadata | 4.2.2 |
 | Build signature validation at deployment | 4.2.3 |
-| Third-party model provenance verification (signed records) | 6.1.1 |
+| Third-party model origin and integrity verification (signed records) | 6.1.1 |
 | Cryptographic signature validation for packages and publishers | 6.4.2 |
 | Model watermarking and fingerprinting | 7.7.5, 11.5.4 |
 | Execution chain cryptographic signing with non-repudiation timestamps | 9.4.2 |
@@ -271,13 +271,13 @@ Control network boundaries, traffic flow, and outbound access for AI workloads.
 
 ## AD.12 Supply Chain & Artifact Integrity
 
-Verify provenance, scan dependencies, and enforce integrity of models, frameworks, datasets, and build artifacts.
+Verify origin and authenticity, scan dependencies, and enforce integrity of models, frameworks, datasets, and build artifacts.
 
 | Control / Technique | Requirement IDs |
 |---|---|
 | Model registry with AI BOM (SPDX, CycloneDX) | 3.1.1, 6.7.1 |
 | Model dependency graph tracking (services, agents, environments) | 3.1.3 |
-| Model provenance records (origin, training data checksums, authorship) | 3.1.4, 6.1.1 |
+| Model origin records (source, training data checksums, authorship) | 3.1.4, 6.1.1 |
 | Automated reproducible builds with SBOM | 4.2.1 |
 | Reproducible build hash comparison | 6.3.5 |
 | CI pipeline dependency scanning (AI frameworks, critical libraries) | 6.2.1 |
