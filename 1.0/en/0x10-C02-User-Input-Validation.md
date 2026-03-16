@@ -15,6 +15,7 @@ Prompt injection is one of the top risks for AI systems. Defenses against this t
 | **2.1.1** | **Verify that** any external or derived input that may steer behavior, including user prompts, RAG results, tool integration or MCP outputs, agent to agent messages, API or webhook responses, configuration or policy files, memory reads and memory writes, is treated as untrusted, made inert by quoting or tagging and active content removal, and screened by a maintained prompt injection detection ruleset or service before concatenation into prompts or execution of actions. | 1 |  D/V |
 | **2.1.2** | **Verify that** the system enforces an instruction hierarchy in which system and developer messages override user instructions and other untrusted inputs, even after processing user instructions. | 1 |  D/V |
 | **2.1.3** | **Verify that** prompts originating from third-party content (web pages, PDFs, emails) are sanitized in isolation (for example, stripping instruction-like directives and neutralizing HTML, Markdown, and script content) before being concatenated into the main prompt. | 2 | D |
+| **2.1.4** | **Verify that** safety-critical input and output filtering includes at least one deterministic enforcement layer (e.g., compiled regex pattern matching, cryptographic hash verification, or explicit allow/block lists) that cannot be bypassed through adversarial ML techniques, ensuring a hard security floor independent of any ML-based classifiers. | 1 | D/V |
 
 ---
 
