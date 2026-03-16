@@ -19,9 +19,9 @@ AISVS is modeled after the [OWASP Application Security Verification Standard (AS
 
 ### What AISVS is NOT
 
-- **Not a governance framework.** Governance is well-covered by [NIST AI RMF](https://www.nist.gov/artificial-intelligence/risk-management-framework), [ISO/IEC 42001](https://www.iso.org/standard/81230.html), and EU AI Act compliance guides.
-- **Not a risk management framework.** AISVS provides the technical controls that risk frameworks point to, but does not define risk assessment methodology.
-- **Not a tool recommendation list.** AISVS is vendor-neutral and does not endorse specific products or frameworks.
+* **Not a governance framework.** Governance is well-covered by [NIST AI RMF](https://www.nist.gov/artificial-intelligence/risk-management-framework), [ISO/IEC 42001](https://www.iso.org/standard/81230.html), and EU AI Act compliance guides.
+* **Not a risk management framework.** AISVS provides the technical controls that risk frameworks point to, but does not define risk assessment methodology.
+* **Not a tool recommendation list.** AISVS is vendor-neutral and does not endorse specific products or frameworks.
 
 ### How AISVS complements other standards
 
@@ -46,10 +46,10 @@ Organizations should select a target level based on the risk profile of their AI
 
 ## How to use AISVS
 
-- **During design.** Use requirements as a security checklist when architecting AI systems.
-- **During development.** Integrate requirements into CI/CD pipelines, code reviews, and testing.
-- **During security assessments.** Use as a verification framework for penetration testing and audits.
-- **For procurement.** Reference specific requirements when evaluating AI vendors and third-party models.
+* **During design.** Use requirements as a security checklist when architecting AI systems.
+* **During development.** Integrate requirements into CI/CD pipelines, code reviews, and testing.
+* **During security assessments.** Use as a verification framework for penetration testing and audits.
+* **For procurement.** Reference specific requirements when evaluating AI vendors and third-party models.
 
 ## Requirement Chapters
 
@@ -70,10 +70,10 @@ Organizations should select a target level based on the risk profile of their AI
 
 ## Appendices
 
-- [Appendix A: Glossary](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x90-Appendix-A_Glossary.md)
-- [Appendix B: References](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x91-Appendix-B_References.md)
-- [Appendix C: AI-Assisted Secure Coding](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x92-Appendix-C_AI_for_Code_Generation.md)
-- [Appendix D: AI Security Controls Inventory](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x93-Appendix-D_AI_Security_Controls_Inventory.md)
+* [Appendix A: Glossary](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x90-Appendix-A_Glossary.md)
+* [Appendix B: References](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x91-Appendix-B_References.md)
+* [Appendix C: AI-Assisted Secure Coding](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x92-Appendix-C_AI_for_Code_Generation.md)
+* [Appendix D: AI Security Controls Inventory](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x93-Appendix-D_AI_Security_Controls_Inventory.md)
 
 ## Contributing
 
