@@ -121,6 +121,7 @@ Security controls for systems where the AI can modify its own configuration, pro
 | **11.9.2** | **Verify that** proposed self-modifications undergo security impact assessment or policy validation before taking effect. | 2 | D/V |
 | **11.9.3** | **Verify that** all self-modifications are logged, reversible, and subject to integrity verification, enabling rollback to a known-good state. | 2 | D/V |
 | **11.9.4** | **Verify that** self-modification scope is bounded (e.g., maximum change magnitude, rate limits on updates, prohibited modification targets) to prevent runaway or adversarially induced changes. | 3 | D/V |
+| **11.9.5** | **Verify that** when safety violation data (blocked inputs, filtered outputs, flagged hallucinations) is used as training signal for model improvement, the feedback pipeline includes integrity verification, poisoning detection, and human review gates to prevent adversarial manipulation of the improvement mechanism. | 3 | D/V |
 
 ---
 
