@@ -4,6 +4,8 @@
 
 Embeddings and vector stores act as semi-persistent and persistent "memory" for AI systems via Retrieval-Augmented Generation (RAG). This memory can become a high-risk data sink and data exfiltration path. This control family hardens memory pipelines and vector databases so that access is least-privilege, data is sanitized before vectorization, retention is explicit, and systems are resilient to embedding inversion, membership inference, and cross-tenant leakage.
 
+---
+
 ## C8.1 Access Controls on Memory & RAG Indices
 
 Enforce fine-grained access controls and query-time scope enforcement for every vector collection.
@@ -17,6 +19,8 @@ Enforce fine-grained access controls and query-time scope enforcement for every 
 | **8.1.5** | **Verify that** RAG pipeline retrieval events log the query issued, the documents or chunks retrieved, similarity scores, the knowledge source, and whether retrieved content passed prompt injection scanning before being incorporated into model context. | 2 | D/V |
 | **8.1.6** | **Verify that** retrieval anomaly detection identifies embedding density outliers, repeated dominance of specific documents in similarity results, and sudden shifts in retrieval bias distribution that may indicate vector database poisoning. | 3 | D/V |
 
+---
+
 ## C8.2 Embedding Sanitization & Validation
 
 Pre-screen content before vectorization; treat memory writes as untrusted inputs; prevent ingestion of unsafe payloads.
@@ -28,6 +32,8 @@ Pre-screen content before vectorization; treat memory writes as untrusted inputs
 | **8.2.3** | **Verify that** vectors that fall outside normal clustering patterns are flagged and quarantined before entering production indices. | 2 | D/V |
 | **8.2.4** | **Verify that** an agent's own outputs are not automatically written back into its trusted memory without explicit validation (such as content-origin checks or write-authorization controls that verify the content's source before committing writes). | 2 | D/V |
 | **8.2.5** | **Verify that** new content written to memory is checked for contradictions with what is already stored and that conflicts trigger alerts. | 3 | D/V |
+
+---
 
 ## C8.3 Memory Expiry, Revocation & Deletion
 
@@ -42,6 +48,8 @@ Retention must be explicit and enforceable; deletions must propagate to derived 
 | **8.3.5** | **Verify that** expired vectors are excluded from retrieval results within a measured and monitored propagation window. | 2 | D/V |
 | **8.3.6** | **Verify that** memory can be reset for security reasons (quarantine, selective purge, full reset) separately from retention deletion, and that quarantined content is kept for investigation but excluded from retrieval. | 2 | D/V |
 
+---
+
 ## C8.4 Prevent Embedding Inversion & Leakage
 
 Address inversion, membership inference, and attribute inference with explicit threat modeling, mitigations, and regression testing gates.
@@ -50,6 +58,8 @@ Address inversion, membership inference, and attribute inference with explicit t
 | :--: | --- | :---: | :--: |
 | **8.4.1** | **Verify that** sensitive vector collections are protected against direct read access by infrastructure administrators via technical controls such as application-layer encryption, envelope encryption with strict KMS policies, or equivalent compensating controls. | 2 | D/V |
 | **8.4.2** | **Verify that** privacy/utility targets for embedding leakage resistance are **defined and measured**, and that changes to embedding models, tokenizers, retrieval settings, or privacy transforms are gated by regression tests against those targets. | 3 | D/V |
+
+---
 
 ## C8.5 Scope Enforcement for User-Specific Memory
 
@@ -64,12 +74,14 @@ Prevent cross-tenant and cross-user leakage in retrieval and prompt assembly.
 | **8.5.5** | **Verify that** in multi-agent systems, each agent's memory namespace is isolated and enforced through access control, not just organizational naming conventions. | 2 | D/V |
 | **8.5.6** | **Verify that** encryption keys and access policies are segregated per tenant for memory/vector storage, providing cryptographic isolation in shared infrastructure. | 3 | D/V |
 
+---
+
 ## References
 
 * [OWASP LLM08:2025 Vector and Embedding Weaknesses](https://genai.owasp.org/llmrisk/llm082025-vector-and-embedding-weaknesses/)
 * [OWASP LLM04:2025 Data and Model Poisoning](https://genai.owasp.org/llmrisk/llm042025-data-and-model-poisoning/)
 * [OWASP LLM02:2025 Sensitive Information Disclosure](https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/)
-* [MITRE ATLAS : RAG Poisoning](https://atlas.mitre.org/techniques/AML.T0070)
-* [MITRE ATLAS : False RAG Entry Injection](https://atlas.mitre.org/techniques/AML.T0071)
-* [MITRE ATLAS : Infer Training Data Membership](https://atlas.mitre.org/techniques/AML.T0024.000)
-* [MITRE ATLAS : Invert AI Model](https://atlas.mitre.org/techniques/AML.T0024.001)
+* [MITRE ATLAS: RAG Poisoning](https://atlas.mitre.org/techniques/AML.T0070)
+* [MITRE ATLAS: False RAG Entry Injection](https://atlas.mitre.org/techniques/AML.T0071)
+* [MITRE ATLAS: Infer Training Data Membership](https://atlas.mitre.org/techniques/AML.T0024.000)
+* [MITRE ATLAS: Invert AI Model](https://atlas.mitre.org/techniques/AML.T0024.001)

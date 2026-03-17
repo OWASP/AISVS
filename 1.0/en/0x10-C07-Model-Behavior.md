@@ -8,7 +8,7 @@ This control category ensures that model outputs are technically constrained, va
 
 ## C7.1 Output Format Enforcement
 
-Ensure the model outputs data in a way that helps prevents injection.
+Ensure the model outputs data in a way that helps prevent injection.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
@@ -94,6 +94,8 @@ Prevent the creation of illegal or fake media.
 | **7.7.3** | **Verify that** the system checks generated content for copyright violations before releasing it. | 2 | V |
 | **7.7.4** | **Verify that** attempts to bypass filters are detected and logged as security events. | 2 | D/V |
 | **7.7.5** | **Verify that** all generated media includes an invisible watermark or cryptographic signature to prove it was AI-generated. | 3 | D/V  |
+
+---
 
 ## References
 

@@ -77,4 +77,4 @@ Models must be securely retired when they are no longer needed or when security 
 * [MITRE ATLAS](https://atlas.mitre.org/)
 * [MLOps Principles](https://ml-ops.org/content/mlops-principles)
 * [Reinforcement fine-tuning](https://platform.openai.com/docs/guides/reinforcement-fine-tuning)
-* [What is AI adversarial robustness? – IBM Research](https://research.ibm.com/blog/securing-ai-workflows-with-adversarial-robustness)
+* [What is AI adversarial robustness?: IBM Research](https://research.ibm.com/blog/securing-ai-workflows-with-adversarial-robustness)
