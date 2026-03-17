@@ -74,6 +74,20 @@ Track the full journey of each dataset from source to model input for auditabili
 
 ---
 
+## C1.6 Bias Detection & Fairness Assurance
+
+Measure, bound, and remediate bias in training data before it is used for model development.
+
+| # | Description | Level | Role |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
+| **1.6.1** | **Verify that** bias metrics (e.g., demographic parity, equalized odds, disparate impact ratio) are measured across protected attribute groups before a dataset is accepted for training, and that results are recorded as part of the dataset's approval record. | 1 | D/V |
+| **1.6.2** | **Verify that** datasets that exceed defined bias thresholds are blocked from use in training unless remediation has been applied, re-evaluated, and documented by an authorized approver. | 2 | D/V |
+| **1.6.3** | **Verify that** when bias thresholds are exceeded, debiasing or rebalancing techniques (e.g., re-sampling, re-weighting, or augmentation) are applied, their effect on bias metrics is measured, and the outcome is logged before the dataset proceeds to training. | 2 | D |
+| **1.6.4** | **Verify that** bias evaluations cover intersectional combinations of protected attributes (e.g., race × gender, age × disability status) and that intersectional bias rates are tracked and reported separately from single-attribute metrics. | 3 | V |
+| **1.6.5** | **Verify that** bias metrics are re-evaluated after any significant dataset change (new source, merge, augmentation, or label correction), and that regressions beyond the defined threshold trigger a remediation workflow before training proceeds. | 3 | D/V |
+
+---
+
 ## References
 
 * [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
