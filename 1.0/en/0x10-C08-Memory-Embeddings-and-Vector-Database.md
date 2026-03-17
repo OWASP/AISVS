@@ -14,6 +14,8 @@ Enforce fine-grained access controls and query-time scope enforcement for every 
 | **8.1.2** | **Verify that** API credentials used for vector operations carry **scoped claims** (e.g., permitted collections, allowed verbs, tenant binding). | 1 | D/V |
 | **8.1.3** | **Verify that** cross-scope access attempts (e.g., cross-tenant similarity queries, namespace traversal, tag bypass) are detected and rejected. | 2 | D/V |
 | **8.1.4** | **Verify that** every ingested document is tagged at write time with source, writer identity (authenticated user or system principal), timestamp, batch ID, and embedding model version, and that these tags are immutable after initial write. | 2 | D/V |
+| **8.1.5** | **Verify that** RAG pipeline retrieval events log the query issued, the documents or chunks retrieved, similarity scores, the knowledge source, and whether retrieved content passed prompt injection scanning before being incorporated into model context. | 2 | D/V |
+| **8.1.6** | **Verify that** retrieval anomaly detection identifies embedding density outliers, repeated dominance of specific documents in similarity results, and sudden shifts in retrieval bias distribution that may indicate vector database poisoning. | 3 | D/V |
 
 ## C8.2 Embedding Sanitization & Validation
 

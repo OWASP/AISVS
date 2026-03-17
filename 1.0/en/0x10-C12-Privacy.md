@@ -32,9 +32,10 @@ Maintain rigorous privacy assurances across the entire AI lifecycle—collection
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **12.3.1** | **Verify that** privacy-loss accounting dashboards alert when cumulative ε exceeds policy thresholds. | 2 | D/V |
+| **12.3.1** | **Verify that** differential privacy budget consumption is tracked per training round (both ε and δ values) and that cumulative budget dashboards alert when ε exceeds policy thresholds. | 2 | D/V |
 | **12.3.2** | **Verify that** black-box privacy audits estimate ε̂ within 10% of declared value. | 2 | V |
 | **12.3.3** | **Verify that** formal proofs cover all post-training fine-tunes and embeddings. | 3 | V |
+| **12.3.4** | **Verify that** federated learning systems implement canary-based privacy auditing to empirically bound privacy leakage, with audit results logged and reviewed per training cycle. | 3 | V |
 
 ---
 
