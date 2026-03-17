@@ -70,6 +70,10 @@ Models must be securely retired when they are no longer needed or when security 
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **3.5.1** | **Verify that** retired model artifacts (including adapters and safety/policy models) are securely wiped using secure cryptographic erasure. | 1 | D/V |
 | **3.5.2** | **Verify that** model retirement events are logged with timestamp and actor identity, model identifier (version/digest/signature), and trace metadata (environment and consuming services/agents). Model signatures are revoked, registry/serving deny-lists are updated, and model loader caches are invalidated to prevent agents from loading retired artifacts. | 2 | V |
+| **3.5.3** | **Verify that** downstream consumers (services, agents, APIs) identified via the dependency graph are notified of planned model retirement with sufficient advance notice to migrate, and that retirement is blocked until all critical consumers have acknowledged migration or received a documented waiver. | 1 | D/V |
+| **3.5.4** | **Verify that** active inference sessions are gracefully drained and redirected to a fallback model or explicit failure response before model retirement is finalized, preventing in-flight requests from failing silently. | 2 | D |
+| **3.5.5** | **Verify that** retirement procedures include cleanup of all derivative artifacts referencing the retired model, including RAG index entries, cached embeddings, and agent memory store entries tagged with the model identifier. | 2 | D/V |
+| **3.5.6** | **Verify that** post-retirement verification confirms the retired model is inaccessible across all inference paths, including model loader caches, agent tool registries, and API routing tables, with results logged as part of the decommissioning audit record. | 3 | V |
 
 ---
 
