@@ -48,6 +48,10 @@ Address inversion, membership inference, and attribute inference with explicit t
 | :--: | --- | :---: | :--: |
 | **8.4.1** | **Verify that** sensitive vector collections are protected against direct read access by infrastructure administrators via technical controls such as application-layer encryption, envelope encryption with strict KMS policies, or equivalent compensating controls. | 2 | D/V |
 | **8.4.2** | **Verify that** privacy/utility targets for embedding leakage resistance are **defined and measured**, and that changes to embedding models, tokenizers, retrieval settings, or privacy transforms are gated by regression tests against those targets. | 3 | D/V |
+| **8.4.3** | **Verify that** sensitive vector stores are tested against membership inference attacks to confirm that an adversary cannot reliably determine whether a specific record was included in the training data or index at a rate exceeding a defined policy threshold. | 2 | V |
+| **8.4.4** | **Verify that** mitigations against embedding inversion attacks (e.g., dimensionality perturbation, output quantization, projection noise, or equivalent techniques) are applied to sensitive embeddings before they are exposed outside the system's trust boundary. | 2 | D |
+| **8.4.5** | **Verify that** sensitive embedding collections are periodically tested for attribute inference, confirming that protected attributes (such as demographic data, health indicators, or financial class) cannot be inferred from embeddings at a rate exceeding a defined policy threshold. | 3 | V |
+| **8.4.6** | **Verify that** a documented privacy threat model exists for each sensitive embedding collection, covering inversion, membership inference, and attribute inference attack vectors, and is reviewed and updated whenever embedding models, tokenizers, or retrieval configurations change. | 3 | D/V |
 
 ## C8.5 Scope Enforcement for User-Specific Memory
 
