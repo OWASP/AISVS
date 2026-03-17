@@ -90,4 +90,4 @@ Provide periodic disclosures on incidents, drift, and data usage.
 | **14.7.2** | **Verify that** AI impact assessments are conducted and results are included in reporting. | 2 | D/V |
 | **14.7.3** | **Verify that** transparency reports published regularly disclose AI incidents and operational metrics in reasonable detail. | 2 | D/V |
 
-### References
+## References

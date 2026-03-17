@@ -501,7 +501,7 @@ Secure AI accelerator hardware, firmware, memory, interconnects, and edge device
 
 ---
 
-### References
+## References
 
 * [NIST AI Risk Management Framework 1.0](https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf)
 * [ISO/IEC 42001:2023: AI Management Systems Requirements](https://www.iso.org/standard/81230.html)
