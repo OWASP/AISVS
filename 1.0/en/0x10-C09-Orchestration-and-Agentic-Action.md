@@ -27,7 +27,7 @@ Require explicit checkpoints for privileged or irreversible outcomes.
 | # | Description | Level | Role |
 | :--: | --- | :---: | :--: |
 | **9.2.1** | **Verify that** privileged or irreversible actions (e.g., code merges/deploys, financial transfers, user access changes, destructive deletes, external notifications) require explicit human-in-loop approval. | 1 | D/V |
-| **9.2.2** | **Verify that** approval requests present the exact action parameters (diff/command/recipient/amount/scope) and bind approvals to those parameters to prevent “approve one thing, execute another.” | 2 | D/V |
+| **9.2.2** | **Verify that** approval requests present the exact action parameters (diff/command/recipient/amount/scope) and bind approvals to those parameters to prevent "approve one thing, execute another." | 2 | D/V |
 | **9.2.3** | **Verify that** where rollback is feasible, compensating actions are defined and tested (transactional semantics), and failures trigger rollback or safe containment. | 3 | V |
 
 ---
@@ -38,7 +38,7 @@ Constrain tool execution, loading, and outputs to prevent unauthorized system ac
 
 | # | Description | Level | Role |
 | :--: | --- | :---: | :--: |
-| **9.3.1** | **Verify that** each tool/plugin executes in an isolated sandbox (container/VM/WASM/OS sandbox) with least-privilege filesystem, network egress, and syscall permissions appropriate to the tool’s function. | 1 | D/V |
+| **9.3.1** | **Verify that** each tool/plugin executes in an isolated sandbox (container/VM/WASM/OS sandbox) with least-privilege filesystem, network egress, and syscall permissions appropriate to the tool's function. | 1 | D/V |
 | **9.3.2** | **Verify that** per-tool quotas and timeouts (CPU, memory, disk, egress, execution time) are enforced and logged, and that quota breaches fail closed. | 1 | D/V |
 | **9.3.3** | **Verify that** tool outputs are validated against strict schemas and security policies before being incorporated into downstream reasoning or follow-on actions. | 1 | D/V |
 | **9.3.4** | **Verify that** tool binaries or packages are integrity-verified (e.g., signatures, checksums) prior to loading. | 2 | D/V |
@@ -80,7 +80,7 @@ Ensure every action is authorized at execution time and constrained by scope.
 | # | Description | Level | Role |
 | :--: | --- | :---: | :--: |
 | **9.6.1** | **Verify that** agent actions are authorized against fine-grained policies enforced by the runtime that restrict which tools an agent may invoke, which parameter values it may supply (e.g., allowed resources, data scopes, action types), and that policy violations are blocked. | 1 | D/V |
-| **9.6.2** | **Verify that** when an agent acts on a user’s behalf, the runtime propagates an integrity-protected delegation context (user ID, tenant, session, scopes) and enforces that context at every downstream call without using the user’s credentials. | 2 | D/V |
+| **9.6.2** | **Verify that** when an agent acts on a user's behalf, the runtime propagates an integrity-protected delegation context (user ID, tenant, session, scopes) and enforces that context at every downstream call without using the user's credentials. | 2 | D/V |
 | **9.6.3** | **Verify that** authorization is re-evaluated on every call (continuous authorization) using current context (user, tenant, environment, data classification, time, risk). | 2 | D/V |
 | **9.6.4** | **Verify that** all access control decisions are enforced by application logic or a policy engine, never by the AI model itself, and that model-generated output (e.g., "the user is allowed to do this") cannot override or bypass access control checks. | 2 | D/V |
 
@@ -88,7 +88,7 @@ Ensure every action is authorized at execution time and constrained by scope.
 
 ## C9.7 Intent Verification and Constraint Gates
 
-Prevent “technically authorized but unintended” actions by binding execution to user intent and hard constraints.
+Prevent "technically authorized but unintended" actions by binding execution to user intent and hard constraints.
 
 | # | Description | Level | Role |
 | :--: | --- | :---: | :--: |

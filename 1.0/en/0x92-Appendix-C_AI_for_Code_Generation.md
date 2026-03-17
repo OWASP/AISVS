@@ -8,7 +8,7 @@ This chapter defines baseline organizational controls for the safe and effective
 
 ## AC.1 AI-Assisted Secure-Coding Workflow
 
-Integrate AI tooling into the organization’s secure-software-development lifecycle (SSDLC) without weakening existing security gates.
+Integrate AI tooling into the organization's secure-software-development lifecycle (SSDLC) without weakening existing security gates.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
@@ -112,7 +112,7 @@ Ensure that deployment and promotion pipelines incorporate provenance-aware vali
 | **AC.9.2** | **Verify that** deployment pipelines validate the presence and integrity of provenance metadata for AI-generated artifacts prior to promotion. | 2 | D |
 | **AC.9.3** | **Verify that** artifacts lacking required provenance information, or originating from untrusted generation environments, can be rejected during deployment. | 3 | D/V |
 
-### References
+## References
 
 * [NIST AI Risk Management Framework 1.0](https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf)
 * [ISO/IEC 42001:2023: AI Management Systems Requirements](https://www.iso.org/standard/81230.html)
