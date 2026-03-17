@@ -72,6 +72,19 @@ Models must be securely retired when they are no longer needed or when security 
 
 ---
 
+## C3.6 Hosted & Provider-Managed Model Controls
+
+Provider-managed API models (e.g., hosted LLM endpoints) can change behavior behind a stable endpoint without notice. These controls ensure visibility, change detection, and fail-safe behavior when the organization does not control the model weights.
+
+| # | Description | Level | Role |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
+| **3.6.1** | **Verify that** hosted model dependencies are inventoried with provider, endpoint, exposed model identifier, API version or release identifier (if available), and fallback or router relationships. | 1 | D/V |
+| **3.6.2** | **Verify that** upstream model or routing changes (e.g., provider model updates, version deprecations, or endpoint migrations) trigger security re-evaluation before continued use in high-risk workflows. | 2 | D/V |
+| **3.6.3** | **Verify that** request logs capture the exact hosted model identifier returned by the provider, or explicitly record that the provider did not expose one. | 2 | D/V |
+| **3.6.4** | **Verify that** high-assurance deployments fail closed or require approval when the provider cannot expose sufficient model identity or change notification information to satisfy the organization's verification requirements. | 3 | D/V |
+
+---
+
 ## References
 
 * [MITRE ATLAS](https://atlas.mitre.org/)
