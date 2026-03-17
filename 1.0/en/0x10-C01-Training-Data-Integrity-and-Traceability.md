@@ -1,4 +1,4 @@
-# C1 Training Data Integrity & Provenance
+# C1 Training Data Integrity & Traceability
 
 ## Control Objective
 
