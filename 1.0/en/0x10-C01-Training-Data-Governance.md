@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-Training data must be sourced, handled, and maintained in a way that preserves origin traceability, security, quality, and fairness. Doing so fulfils legal duties and reduces risks of bias, poisoning, or privacy breaches that could affect the entire AI lifecycle.
+Training data must be sourced, handled, and maintained in a way that preserves origin traceability, security, quality, and fairness. Doing so fulfills legal duties and reduces risks of bias, poisoning, or privacy breaches that could affect the entire AI lifecycle.
 
 ---
 
@@ -77,6 +77,6 @@ Track the full journey of each dataset from source to model input for auditabili
 ## References
 
 * [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
-* [EU AI Act – Article 10: Data & Data Governance](https://artificialintelligenceact.eu/article/10/)
+* [EU AI Act: Article 10: Data & Data Governance](https://artificialintelligenceact.eu/article/10/)
 * [CISA Advisory: Securing Data for AI Systems](https://www.cisa.gov/news-events/cybersecurity-advisories/aa25-142a)
-* [OpenAI Privacy Center – Data Deletion Controls](https://privacy.openai.com/policies?modal=take-control)
+* [OpenAI Privacy Center: Data Deletion Controls](https://privacy.openai.com/policies?modal=take-control)

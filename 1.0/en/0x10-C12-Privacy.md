@@ -2,11 +2,13 @@
 
 ## Control Objective
 
-Maintain rigorous privacy assurances across the entire AI lifecycle—collection, training, inference, and incident response—so that personal data is only processed with clear consent, minimum necessary scope, provable erasure, and formal privacy guarantees.
+Maintain rigorous privacy assurances across the entire AI lifecycle (collection, training, inference, and incident response) so that personal data is only processed with clear consent, minimum necessary scope, provable erasure, and formal privacy guarantees.
 
 ---
 
 ## C12.1 Anonymization & Data Minimization
+
+Remove or transform personal identifiers before training to prevent re-identification and minimize privacy exposure.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
@@ -19,16 +21,20 @@ Maintain rigorous privacy assurances across the entire AI lifecycle—collection
 
 ## C12.2 Right-to-be-Forgotten & Deletion Enforcement
 
+Ensure data-subject deletion requests propagate across all AI artifacts and that model unlearning is verifiable.
+
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **12.2.1** | **Verify that** data-subject deletion requests propagate to raw datasets, checkpoints, embeddings, logs, and backups within service level agreements of less than 30 days. | 1 | D/V |
 | **12.2.2** | **Verify that** "machine-unlearning" routines physically re-train or approximate removal using certified unlearning algorithms. | 2 | D |
 | **12.2.3** | **Verify that** shadow-model evaluation proves forgotten records influence less than 1% of outputs after unlearning. | 2 | V |
-| **12.2.4** | **Verify that** deletion events are immutably logged and auditable for regulators. | 3 | V
+| **12.2.4** | **Verify that** deletion events are immutably logged and auditable for regulators. | 3 | V |
 
 ---
 
 ## C12.3 Differential-Privacy Safeguards
+
+Track and enforce privacy budgets to provide formal guarantees against individual data leakage.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
@@ -41,6 +47,8 @@ Maintain rigorous privacy assurances across the entire AI lifecycle—collection
 
 ## C12.4 Purpose-Limitation & Scope-Creep Protection
 
+Prevent models and datasets from being used beyond their originally consented purpose.
+
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **12.4.1** | **Verify that** every dataset and model checkpoint carries a machine-readable purpose tag aligned to the original consent. | 1 | D |
@@ -52,6 +60,8 @@ Maintain rigorous privacy assurances across the entire AI lifecycle—collection
 
 ## C12.5 Consent Management & Lawful-Basis Tracking
 
+Record, enforce, and revoke consent across AI processing pipelines.
+
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **12.5.1** | **Verify that** a Consent-Management Platform (CMP) records opt-in status, purpose, and retention period per data-subject. | 1 | D/V |
@@ -62,6 +72,8 @@ Maintain rigorous privacy assurances across the entire AI lifecycle—collection
 
 ## C12.6 Federated Learning with Privacy Controls
 
+Apply differential privacy and poisoning-resistant aggregation to federated learning to protect individual participant data.
+
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **12.6.1** | **Verify that** client updates employ local differential privacy noise addition before aggregation. | 1 | D |
@@ -71,4 +83,10 @@ Maintain rigorous privacy assurances across the entire AI lifecycle—collection
 
 ---
 
-### References
+## References
+
+* [OWASP LLM02:2025 Sensitive Information Disclosure](https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/)
+* [General Data Protection Regulation (GDPR)](https://gdpr-info.eu/)
+* [California Consumer Privacy Act (CCPA)](https://oag.ca.gov/privacy/ccpa)
+* [EU Artificial Intelligence Act](https://artificialintelligenceact.eu/)
+* [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
