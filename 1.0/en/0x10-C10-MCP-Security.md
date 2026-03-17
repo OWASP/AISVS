@@ -42,6 +42,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **10.3.2** | **Verify that** streamable-HTTP MCP transports use authenticated, encrypted channels (TLS 1.3 or later) with certificate validation. | 2 | D/V |
 | **10.3.3** | **Verify that** SSE-based MCP transports are used only within private, authenticated internal channels and enforce TLS, authentication, schema validation, payload size limits, and rate limiting; SSE endpoints must not be exposed to the public internet. | 2 | D/V |
 | **10.3.4** | **Verify that** MCP servers validate the `Origin` and `Host` headers on all HTTP-based transports (including SSE and streamable-HTTP) to prevent DNS rebinding attacks and reject requests from untrusted, mismatched, or missing origins. | 2 | D/V |
+| **10.3.5** | **Verify that** intermediaries do not alter or remove the `Mcp-Protocol-Version` header on streamable-HTTP transports unless explicitly required by the protocol specification, preventing protocol downgrade via header stripping. | 2 | D/V |
 
 ---
 
@@ -55,6 +56,8 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **10.4.4** | **Verify that** MCP servers perform strict input validation for all function calls, including type checking, boundary validation, enumeration enforcement, and rejection of unrecognized or oversized parameters. | 2 | D/V |
 | **10.4.5** | **Verify that** MCP clients maintain a hash or versioned snapshot of tool definitions and that any change to a tool definition (via `notifications/tools/list_changed` or between sessions) triggers re-approval before the modified tool can be invoked. | 2 | D/V |
 | **10.4.6** | **Verify that** MCP server error and exception responses do not expose stack traces, internal file paths, tokens, or tool implementation details to the client or model context. | 1 | D/V |
+| **10.4.7** | **Verify that** MCP implementations reject JSON-RPC messages containing duplicate keys at any nesting level, preventing parser disagreement where different components resolve the same message to different values. | 2 | D/V |
+| **10.4.8** | **Verify that** intermediaries evaluating message content either forward the canonicalized representation they evaluated or reject messages where multiple byte representations could produce different parsed structures. | 3 | D/V |
 
 ---
 
