@@ -53,7 +53,7 @@ Organizations should select a target level based on the risk profile of their AI
 
 ## Requirement Chapters
 
-1. [Training Data Governance & Bias Management](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C01-Training-Data-Governance.md)
+1. [Training Data Integrity & Provenance](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C01-Training-Data-Governance.md)
 2. [User Input Validation](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C02-User-Input-Validation.md)
 3. [Model Lifecycle Management & Change Control](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C03-Model-Lifecycle-Management.md)
 4. [Infrastructure, Configuration & Deployment Security](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C04-Infrastructure.md)

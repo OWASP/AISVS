@@ -1,8 +1,10 @@
-# C1 Training Data Governance & Bias Management
+# C1 Training Data Integrity & Provenance
 
 ## Control Objective
 
-Training data must be sourced, handled, and maintained in a way that preserves origin traceability, security, quality, and fairness. Doing so fulfills legal duties and reduces risks of bias, poisoning, or privacy breaches that could affect the entire AI lifecycle.
+Training data must be sourced, handled, and maintained in a way that preserves origin traceability, integrity, and quality. The core security concern is ensuring data has not been tampered with, poisoned, or corrupted. Security-relevant bias (e.g., skewed abuse-detection training data that allows attackers to bypass controls) is treated as a possible consequence of compromised or unvalidated data, not as a standalone control category.
+
+> **Scope note — bias.** AISVS addresses bias only where it introduces security risk (e.g., bypass of abuse detection, authentication heuristics, or automated trust decisions). Broader fairness governance requirements are out of scope; see ISO/IEC 42001 or the NIST AI RMF for general fairness and ethics guidance.
 
 ---
 
@@ -59,6 +61,7 @@ Combine automated validation, manual spot-checks, and logged remediation to guar
 | **1.4.3** | **Verify that** automatically generated labels (e.g., via models or weak supervision) are subject to confidence thresholds and consistency checks to detect misleading or low-confidence labels. | 2 | D/V |
 | **1.4.4** | **Verify that** appropriate defenses, such as adversarial training, data augmentation with perturbed inputs, or robust optimization techniques, are implemented and tuned for relevant models based on risk assessment. | 3 | D/V |
 | **1.4.5** | **Verify that** automated tests catch label skews on every ingest or significant data transformation. | 2 | D |
+| **1.4.6** | **Verify that** models used in security-relevant decisions (e.g., abuse detection, fraud scoring, automated trust decisions) are evaluated for systematic bias patterns that an adversary could exploit to evade controls (e.g., mimicking a trusted language style or demographic pattern to bypass detection). | 2 | D/V |
 
 ---
 
