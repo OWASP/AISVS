@@ -27,8 +27,8 @@ Ensure cryptographic integrity and supply chain security through reproducible bu
 | # | Description | Level | Role |
 |:--------:|--------------------------------------------------------------------------------------------|:---:|:---:|
 | **4.2.1** | **Verify that** builds are completely automated and produce a software bill of materials (SBOM). | 1 | D/V |
-| **4.2.2** | **Verify that** build artifacts are cryptographically signed with provenance metadata that can be independently verified. | 2 | D/V |
-| **4.2.3** | **Verify that** build artifact signatures and provenance metadata are validated at deployment admission, and unverified artifacts are rejected. | 2 | D/V |
+| **4.2.2** | **Verify that** build artifacts are cryptographically signed with build-origin metadata (source repository, build pipeline, commit hash) that can be independently verified. | 2 | D/V |
+| **4.2.3** | **Verify that** build artifact signatures and build-origin metadata are validated at deployment admission, and unverified artifacts are rejected. | 2 | D/V |
 | **4.2.4** | **Verify that** builds are reproducible, producing identical output from identical source inputs, enabling independent verification of build integrity. | 3 | D/V |
 
 ---
