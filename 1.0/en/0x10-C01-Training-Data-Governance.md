@@ -2,11 +2,11 @@
 
 ## Control Objective
 
-Training data must be sourced, handled, and maintained in a way that preserves provenance, security, quality, and fairness. Doing so fulfils legal duties and reduces risks of bias, poisoning, or privacy breaches that could affect the entire AI lifecycle.
+Training data must be sourced, handled, and maintained in a way that preserves origin traceability, security, quality, and fairness. Doing so fulfils legal duties and reduces risks of bias, poisoning, or privacy breaches that could affect the entire AI lifecycle.
 
 ---
 
-## C1.1 Training Data Provenance
+## C1.1 Training Data Origin & Traceability
 
 Maintain a verifiable inventory of all datasets, accept only trusted sources, and log every change for auditability.
 

@@ -12,7 +12,7 @@ Assess and authenticate third‑party model origins, licenses, and hidden behavi
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **6.1.1** | **Verify that** every third‑party model artifact includes a signed provenance record identifying its source, version, and integrity checksum. | 1 | D/V |
+| **6.1.1** | **Verify that** every third‑party model artifact includes a signed origin-and-integrity record identifying its source, version, and integrity checksum. | 1 | D/V |
 | **6.1.2** | **Verify that** models are scanned for malicious layers or Trojan triggers using automated tools before import. | 1 | D/V |
 | **6.1.3** | **Verify that** model licenses, export‑control tags, and data‑origin statements are recorded in an AI BOM entry. | 2 | V |
 | **6.1.4** | **Verify that** high‑risk models (e.g., publicly uploaded weights, unverified creators) remain quarantined until human review and sign‑off. | 2 | D/V |
