@@ -102,3 +102,4 @@ thornshadow
 Rego
 unvalidated
 
+Cylance
