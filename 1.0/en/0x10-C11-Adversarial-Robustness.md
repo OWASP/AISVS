@@ -123,7 +123,6 @@ Security controls for systems where the AI can modify its own configuration, pro
 | **11.9.4** | **Verify that** self-modification scope is bounded (e.g., maximum change magnitude, rate limits on updates, prohibited modification targets) to prevent runaway or adversarially induced changes. | 3 | D/V |
 | **11.9.5** | **Verify that** when safety violation data (blocked inputs, filtered outputs, flagged hallucinations) is used as training signal for model improvement, the feedback pipeline includes integrity verification, poisoning detection, and human review gates to prevent adversarial manipulation of the improvement mechanism. | 3 | D/V |
 
-
 ## C11.10 Adversarial Bias Exploitation Defense
 
 Protect security-relevant classifiers against adversaries who systematically probe for exploitable bias patterns and weaponize discovered disparities as an evasion vector.
