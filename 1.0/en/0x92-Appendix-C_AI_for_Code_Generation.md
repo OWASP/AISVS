@@ -78,6 +78,40 @@ Improve model security performance over time while preventing negative drift.
 
 ---
 
+## AC.7 AI-Generated Infrastructure & Pipeline Artifacts
+
+Ensure that AI-generated infrastructure-as-code (IaC), CI/CD workflows, deployment configurations, and security policy artifacts are subject to appropriate validation and governance controls.
+
+| # | Description | Level | Role |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
+| **AC.7.1** | **Verify that** AI-generated infrastructure-as-code, CI/CD workflows, and security policy artifacts are clearly identified and tracked. | 1 | D/V |
+| **AC.7.2** | **Verify that** AI-generated infrastructure and pipeline configurations require appropriate review and approval prior to execution. | 2 | D |
+| **AC.7.3** | **Verify that** AI-generated infrastructure and workflow changes are subject to security validation, configuration checks, and policy enforcement equivalent to or stricter than application code. | 3 | D/V |
+
+---
+
+## AC.8 Autonomous Agent Change Control Constraints
+
+Ensure that autonomous AI agents involved in code or configuration generation are subject to appropriate separation of duties and cannot independently approve or promote their own changes.
+
+| # | Description | Level | Role |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
+| **AC.8.1** | **Verify that** autonomous agents cannot approve, merge, sign, or deploy artifacts that they have generated. | 1 | D/V |
+| **AC.8.2** | **Verify that** AI systems operate with scoped identities and permissions that prevent self-promotion of generated artifacts across environments. | 2 | D |
+| **AC.8.3** | **Verify that** separation of duties is enforced between artifact generation, review, approval, and deployment stages for AI-generated changes. | 3 | D/V |
+
+---
+
+## AC.9 AI Provenance-Aware Deployment Controls
+
+Ensure that deployment and promotion pipelines incorporate provenance-aware validation for AI-generated artifacts.
+
+| # | Description | Level | Role |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
+| **AC.9.1** | **Verify that** AI-generated artifacts include provenance metadata identifying the generating system, generation context, and associated traceability records. | 1 | D/V |
+| **AC.9.2** | **Verify that** deployment pipelines validate the presence and integrity of provenance metadata for AI-generated artifacts prior to promotion. | 2 | D |
+| **AC.9.3** | **Verify that** artifacts lacking required provenance information, or originating from untrusted generation environments, can be rejected during deployment. | 3 | D/V |
+
 ### References
 
 * [NIST AI Risk Management Framework 1.0](https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf)
