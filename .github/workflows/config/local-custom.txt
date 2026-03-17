@@ -100,3 +100,6 @@ mbhatt
 cciprofm
 thornshadow
 Rego
+debiasing
+rebalancing
+intersectional
