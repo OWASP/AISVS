@@ -1,6 +1,6 @@
 {
   "last_run": "2026-03-18",
-  "total_runs": 10,
+  "total_runs": 12,
   "pages": {
     "Appendix-A-Glossary.md": {
       "last_updated": "2026-03-18",
@@ -478,8 +478,27 @@
     },
     "C11-01-Model-Alignment-Safety.md": {
       "last_updated": "2026-03-18",
-      "update_count": 1,
-      "quality": null
+      "update_count": 2,
+      "quality": {
+        "lines_added": 130,
+        "lines_removed": 15,
+        "refs_added": 10,
+        "page_lines": 158,
+        "low_yield_streak": 0,
+        "last_strategies": [
+          "alignment-techniques",
+          "jailbreak-rates",
+          "benchmarks",
+          "incidents"
+        ],
+        "last_strategies_yield": [
+          30,
+          35,
+          25,
+          40
+        ],
+        "last_summary": "Added DPO/KTO/ORPO landscape, OGPSA alignment tax solution, 97% jailbreak stats, o3 shutdown resistance, 8 incidents, red-team tools, 5 benchmarks, 10 new refs"
+      }
     },
     "C11-02-Adversarial-Example-Hardening.md": {
       "last_updated": "2026-03-18",
