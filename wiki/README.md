@@ -2,7 +2,9 @@
 
 **OWASP AI Security Verification Standard — Research & Analysis Hub**
 
-This wiki provides per-chapter research pages for the AISVS 1.0 standard. Each page contains the chapter's control objective, section breakdown, research notes, and open questions to guide community contribution and ongoing development.
+> **Experimental, AI-generated content.** This research wiki was generated using Claude to bootstrap research scaffolding for every chapter and appendix in AISVS 1.0. The threat landscapes, tooling references, and open research questions are starting points — not vetted conclusions. All content requires human review, validation, and ongoing refinement by the community. Treat this as a living research workspace, not an authoritative source.
+
+The goal is to attach structured research context to each set of requirements in the standard: what threats motivate them, what tools exist to implement them, where the gaps are, and what questions remain open. Each chapter page provides a template for the community to fill in with real-world incidents, tooling evaluations, and cross-references as the standard matures.
 
 > **Standard source:** [`1.0/en/`](https://github.com/OWASP/AISVS/tree/main/1.0/en) in the main repository
 
