@@ -164,10 +164,6 @@ Every requirement page includes a research table for each requirement:
 
 Pages also include: threat landscape summaries, notable incidents, tooling with implementation maturity ratings, open research questions, related standards, and cross-chapter links.
 
-## Keeping the Wiki Current
-
-Use the `/update-wiki` skill to research and refresh one page at a time. The `.update-tracker.json` file tracks when each page was last updated and quality metrics.
-
 ---
 
 _This wiki is maintained alongside the [AISVS repository](https://github.com/OWASP/AISVS). Contributions welcome._
