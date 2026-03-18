@@ -1,11 +1,28 @@
 {
   "last_run": "2026-03-18",
-  "total_runs": 1,
+  "total_runs": 2,
   "pages": {
     "Appendix-A-Glossary.md": {
       "last_updated": "2026-03-18",
-      "update_count": 1,
-      "quality": null
+      "update_count": 2,
+      "quality": {
+        "lines_added": 199,
+        "lines_removed": 11,
+        "refs_added": 0,
+        "page_lines": 220,
+        "low_yield_streak": 0,
+        "last_strategies": [
+          "cross-reference-analysis",
+          "missing-terms",
+          "definition-review"
+        ],
+        "last_strategies_yield": [
+          100,
+          60,
+          39
+        ],
+        "last_summary": "Added full term-to-chapter cross-reference, 30 high-priority missing terms, 7 medium-priority missing terms, 14 definitions needing improvement"
+      }
     },
     "Appendix-B-References.md": {
       "last_updated": "2026-03-18",
