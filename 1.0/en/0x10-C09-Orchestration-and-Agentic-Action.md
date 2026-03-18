@@ -70,6 +70,7 @@ Protect agent-to-agent and agent-to-tool communications from hijacking, injectio
 | **9.5.2** | **Verify that** all messages are strictly schema-validated; unknown fields, malformed payloads, and oversized frames are rejected. | 1 | D/V |
 | **9.5.3** | **Verify that** message integrity covers the full payload including tool parameters, and that replay protections (nonces/sequence numbers/timestamp windows) are enforced. | 2 | D/V |
 | **9.5.4** | **Verify that** agent outputs propagated to downstream agents are validated against semantic constraints (e.g., value ranges, logical consistency) in addition to schema validation. | 2 | D/V |
+| **9.5.5** | **Verify that** messages received from peer agents or orchestrators are processed as untrusted data and subjected to the same prompt injection detection as end-user input, regardless of the sending agent's authenticated identity. | 1 | D/V |
 
 ---
 
