@@ -1,6 +1,6 @@
 {
   "last_run": "2026-03-18",
-  "total_runs": 6,
+  "total_runs": 7,
   "pages": {
     "Appendix-A-Glossary.md": {
       "last_updated": "2026-03-18",
@@ -129,7 +129,20 @@
     "C02-03-Prompt-Character-Set.md": {
       "last_updated": "2026-03-18",
       "update_count": 1,
-      "quality": null
+      "quality": {
+        "lines_added": 0,
+        "lines_removed": 0,
+        "refs_added": 0,
+        "page_lines": 35,
+        "low_yield_streak": 1,
+        "last_strategies": [
+          "review-only"
+        ],
+        "last_strategies_yield": [
+          0
+        ],
+        "last_summary": "Reviewed - page already comprehensive for 2 requirements; no new content needed"
+      }
     },
     "C02-04-Schema-Type-Length-Validation.md": {
       "last_updated": "2026-03-18",
