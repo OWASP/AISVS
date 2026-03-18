@@ -5,22 +5,22 @@
 
 ## Control Objective
 
-AI infrastructure must be hardened against privilege escalation, supply chain tampering, and lateral movement through secure configuration, runtime isolation, trusted deployment pipelines, and comprehensive monitoring.
+AI infrastructure must be hardened against privilege escalation, supply chain tampering, and lateral movement through secure configuration, runtime isolation, trusted deployment pipelines, and comprehensive monitoring. Only validated and authorized infrastructure components reach production through controlled processes that ensure security, integrity, and auditability.
 
 ---
 
-## Section Breakdown
+## Section Pages
 
 | Section | Title | Reqs | IDs |
 |---------|-------|:----:|-----|
-| C4.1 | Runtime Environment Isolation | 5 | 4.1.1–4.1.5 |
-| C4.2 | Secure Build & Deployment Pipelines | 4 | 4.2.1–4.2.4 |
-| C4.3 | Network Security & Access Control | 5 | 4.3.1–4.3.5 |
-| C4.4 | Secrets & Cryptographic Key Management | 5 | 4.4.1–4.4.5 |
-| C4.5 | AI Workload Sandboxing & Validation | 7 | 4.5.1–4.5.7 |
-| C4.6 | AI Infrastructure Resource Management, Backup and Recovery | 3 | 4.6.1–4.6.3 |
-| C4.7 | AI Hardware Security | 8 | 4.7.1–4.7.8 |
-| C4.8 | Edge & Distributed AI Security | 9 | 4.8.1–4.8.9 |
+| C4.1 | [Runtime Environment Isolation](C04-01-Runtime-Environment-Isolation.md) | 5 | 4.1.1–4.1.5 |
+| C4.2 | [Secure Build & Deployment Pipelines](C04-02-Secure-Build-Deployment.md) | 4 | 4.2.1–4.2.4 |
+| C4.3 | [Network Security & Access Control](C04-03-Network-Security-Access-Control.md) | 5 | 4.3.1–4.3.5 |
+| C4.4 | [Secrets & Cryptographic Key Management](C04-04-Secrets-Key-Management.md) | 5 | 4.4.1–4.4.5 |
+| C4.5 | [AI Workload Sandboxing & Validation](C04-05-Workload-Sandboxing-Validation.md) | 7 | 4.5.1–4.5.7 |
+| C4.6 | [Resource Management, Backup & Recovery](C04-06-Resource-Management-Backup-Recovery.md) | 3 | 4.6.1–4.6.3 |
+| C4.7 | [AI Hardware Security](C04-07-Hardware-Security.md) | 8 | 4.7.1–4.7.8 |
+| C4.8 | [Edge & Distributed AI Security](C04-08-Edge-Distributed-Security.md) | 9 | 4.8.1–4.8.9 |
 
 ---
 
@@ -102,4 +102,3 @@ _Which other AISVS chapters have related or overlapping requirements?_
 _Space for contributor observations, discussion, and context that doesn't fit elsewhere._
 
 ---
-

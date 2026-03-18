@@ -1,0 +1,41 @@
+# C10.3: Secure Transport & Network Boundary Protection
+
+> **Parent:** [C10 MCP Security](C10-MCP-Security)
+> **Requirements:** 5 | **IDs:** 10.3.1–10.3.5
+
+## Purpose
+
+This section ensures that communication between MCP clients and servers uses secure, authenticated, and encrypted transport channels. The MCP specification defines two primary transports: **stdio** (for local, same-machine communication) and **streamable HTTP** (for remote communication, replacing the earlier SSE-based transport). Each transport has distinct threat models — stdio is vulnerable to local process injection and terminal escape attacks, while HTTP-based transports face the standard web threats (MITM, DNS rebinding, protocol downgrade). This section focuses on the HTTP-based transports; stdio restrictions are covered in C10.6.
+
+---
+
+## Requirements
+
+| # | Requirement | Level | Role | Threat Mitigated | Verification Approach | Gaps / Notes |
+|---|-------------|:-----:|:----:|-----------------|----------------------|--------------|
+| **10.3.1** | **Verify that** authenticated, encrypted streamable-HTTP is used as the primary MCP transport in production environments and that alternate transports (e.g., stdio or SSE) are restricted to local or tightly controlled environments with explicit justification. | 2 | D/V | **Unencrypted or unauthenticated transport in production.** Using stdio across network boundaries or SSE without TLS exposes MCP traffic (including tool arguments, responses, and potentially credentials) to network-level interception. Streamable HTTP with TLS is the only transport designed for production remote use. | Review deployment configuration to confirm streamable HTTP is the configured transport for all production MCP connections. Verify that any stdio or SSE usage is documented with justification and restricted to development/local environments. Check network architecture diagrams for MCP traffic paths. | The MCP spec (2025-03-26) introduced streamable HTTP as the recommended transport, deprecating SSE for new deployments. However, many existing MCP servers still use SSE. Migration path and backward compatibility need consideration. |
+| **10.3.2** | **Verify that** streamable-HTTP MCP transports use authenticated, encrypted channels (TLS 1.3 or later) with certificate validation. | 2 | D/V | **Man-in-the-middle interception of MCP traffic.** Without TLS, an attacker on the network path can intercept, read, and modify MCP messages — including tool invocations, responses containing sensitive data, and OAuth tokens in transit. TLS 1.2 is acceptable but 1.3 is preferred for forward secrecy and reduced handshake latency. | Verify TLS configuration on the MCP server endpoint: check certificate validity, minimum TLS version (1.3 preferred, 1.2 minimum), cipher suite selection, and that certificate validation is not disabled in the client. Use tools like `testssl.sh` or `ssllabs-scan` against the MCP server's HTTPS endpoint. | Standard TLS best practice. The main risk is MCP servers deployed with self-signed certificates or TLS disabled for "simplicity" during development, then promoted to production without fixing. MCP SDKs should default to TLS-on with certificate validation. |
+| **10.3.3** | **Verify that** SSE-based MCP transports are used only within private, authenticated internal channels and enforce TLS, authentication, schema validation, payload size limits, and rate limiting; SSE endpoints must not be exposed to the public internet. | 2 | D/V | **SSE endpoint abuse and data exposure.** SSE (Server-Sent Events) connections are long-lived, unidirectional, and lack built-in authentication framing. If exposed publicly, SSE endpoints can be abused for denial-of-service (holding connections open), data exfiltration (streaming sensitive tool responses), or injection (if the SSE stream is not properly framed). | Verify SSE endpoints are not reachable from the public internet (check firewall rules, load balancer configuration). Confirm TLS is enforced. Test for authentication bypass by connecting without credentials. Verify payload size limits and rate limiting are configured. Attempt to send oversized messages. | SSE transport is deprecated in the MCP spec (2025-03-26) in favor of streamable HTTP. This requirement ensures legacy SSE deployments are hardened during the migration period. Organizations should plan migration to streamable HTTP. |
+| **10.3.4** | **Verify that** MCP servers validate the `Origin` and `Host` headers on all HTTP-based transports (including SSE and streamable-HTTP) to prevent DNS rebinding attacks and reject requests from untrusted, mismatched, or missing origins. | 2 | D/V | **DNS rebinding attacks against local MCP servers.** An attacker hosts a malicious webpage that, via DNS rebinding, redirects the victim's browser to make requests to a locally running MCP server (e.g., `localhost:3000`). If the MCP server does not validate Origin/Host, the attacker's page can invoke tools with the victim's local credentials. This is especially dangerous for MCP servers running on developer machines. | Send requests with manipulated `Origin` and `Host` headers and verify the server rejects them. Test with: (1) no Origin header, (2) mismatched Origin, (3) Origin set to an attacker-controlled domain. Verify the server maintains an allowlist of permitted origins. | DNS rebinding is a well-understood attack but frequently overlooked in local development servers. The MCP spec does not explicitly mandate Origin validation, but it is essential for any HTTP-based server that may be accessible from a browser context. |
+| **10.3.5** | **Verify that** intermediaries do not alter or remove the `Mcp-Protocol-Version` header on streamable-HTTP transports unless explicitly required by the protocol specification, preventing protocol downgrade via header stripping. | 2 | D/V | **Protocol downgrade via header stripping.** The `Mcp-Protocol-Version` header negotiates the protocol version between client and server. If a proxy or load balancer strips this header, the server may fall back to an older protocol version with weaker security properties, or the connection may fail silently. An active attacker could strip the header to force downgrade to a version with known vulnerabilities. | Deploy an MCP client and server through a representative intermediary stack (reverse proxy, load balancer, WAF). Verify the `Mcp-Protocol-Version` header is preserved end-to-end. Check proxy configurations for header stripping rules. Test with the header removed and verify the server responds appropriately (rejection or explicit version negotiation, not silent downgrade). | This is a defense-in-depth control. Most current intermediaries (nginx, HAProxy, cloud load balancers) preserve custom headers by default, but WAFs or API gateways with strict header allowlists may strip unknown headers. The `Mcp-Protocol-Version` header should be added to allowlists in gateway configurations. |
+
+---
+
+## Related Standards & References
+
+- [MCP Transports Specification (2025-03-26)](https://spec.modelcontextprotocol.io/specification/2025-03-26/basic/transports/) — official transport definitions
+- [RFC 8446: TLS 1.3](https://datatracker.ietf.org/doc/html/rfc8446) — transport layer security
+- [OWASP Transport Layer Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html)
+- [DNS Rebinding Attacks (Stanford research)](https://crypto.stanford.edu/dns/) — foundational DNS rebinding research
+- [OWASP ASVS v4: V9 Communications](https://owasp.org/www-project-application-security-verification-standard/)
+
+---
+
+## Open Research Questions
+
+- [ ] Should the MCP spec mandate TLS for all HTTP-based transports, or is it sufficient to recommend it?
+- [ ] How should MCP servers handle the transition from SSE to streamable HTTP — is a dual-transport migration period acceptable, and what are the security implications?
+- [ ] Is `Mcp-Protocol-Version` header validation sufficient to prevent downgrade, or should the protocol include a cryptographic version binding?
+- [ ] Should MCP define a standard mechanism for mutual TLS (mTLS) between clients and servers in high-security environments?
+
+---

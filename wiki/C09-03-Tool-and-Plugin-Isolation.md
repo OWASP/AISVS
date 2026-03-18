@@ -1,0 +1,42 @@
+# C9.3: Tool and Plugin Isolation and Safe Integration
+
+[Back to C09 Index](C09-Orchestration-and-Agents.md)
+
+## Purpose
+
+Agents extend their capabilities through tools and plugins -- code execution, file access, API calls, database queries. Each tool represents an attack surface: a compromised or malicious tool can access the host system, exfiltrate data, or escalate privileges. This section requires that tools run in isolated sandboxes with least-privilege permissions, that their outputs are validated before being trusted, and that their supply chain integrity is verified.
+
+---
+
+## Requirements
+
+| # | Requirement | Level | Role | Threat Mitigated | Verification Approach | Gaps / Notes |
+|---|-------------|:-----:|:----:|-----------------|----------------------|--------------|
+| **9.3.1** | **Verify that** each tool/plugin executes in an isolated sandbox (container/VM/WASM/OS sandbox) with least-privilege filesystem, network egress, and syscall permissions appropriate to the tool's function. | 1 | D/V | **Sandbox escape and lateral movement.** A tool that executes arbitrary code (e.g., a code interpreter) without isolation can access the host filesystem, network, and other processes. Prompt injection can turn any tool into a code execution vector. The 2024 attack on Copilot Extensions demonstrated tool-based exfiltration via unsandboxed plugins. | Inspect the runtime environment for each tool. Verify container/VM/WASM boundaries exist. Test by attempting filesystem access outside the sandbox, network egress to unauthorized destinations, and privileged syscalls. Confirm violations are blocked and logged. | E2B, Modal, and Firecracker provide good sandboxing for code execution tools. For non-code tools (API callers, database connectors), "sandboxing" means network policy and credential scoping rather than process isolation. WASM sandboxes are lightweight but may not support all tool dependencies. |
+| **9.3.2** | **Verify that** per-tool quotas and timeouts (CPU, memory, disk, egress, execution time) are enforced and logged, and that quota breaches fail closed. | 1 | D/V | **Resource exhaustion via tool abuse.** A tool triggered to perform expensive computation, generate large outputs, or make many network requests can exhaust resources. An agent in a loop can amplify this. Without per-tool quotas, a single runaway tool call can affect system-wide availability. | Configure quota limits for each tool. Trigger tool executions that exceed CPU, memory, disk, and time limits. Verify the tool is terminated, the breach is logged, and no partial/corrupt output is returned to the agent. | Container runtimes (Docker, Kubernetes) support cgroups-based resource limits. WASM runtimes (Wasmtime, Wasmer) support fuel-based execution limits. Key gap: network egress quotas (rate limiting outbound requests) are harder to enforce and often require sidecar proxies or eBPF-based controls. |
+| **9.3.3** | **Verify that** tool outputs are validated against strict schemas and security policies before being incorporated into downstream reasoning or follow-on actions. | 1 | D/V | **Output injection and data poisoning.** A compromised or malicious tool can return crafted output that manipulates downstream agent reasoning -- injecting instructions, altering data, or triggering unsafe follow-on actions. This is a form of indirect prompt injection via tool output. | Review output validation logic for each tool. Verify schema validation (type checking, field validation, size limits) is applied. Test with malformed, oversized, and adversarial outputs (e.g., outputs containing prompt injection payloads). Confirm invalid outputs are rejected, not passed to the model. | Schema validation catches structural issues but not semantic attacks. An output that is schema-valid but contains manipulative natural language content requires additional defenses (output sanitization, context separation). This overlaps with C02 (input validation) applied to tool outputs. |
+| **9.3.4** | **Verify that** tool binaries or packages are integrity-verified (e.g., signatures, checksums) prior to loading. | 2 | D/V | **Supply chain compromise.** A tampered tool binary or package could contain backdoors, data exfiltration logic, or privilege escalation code. Without integrity verification, an attacker who compromises the tool distribution channel can inject malicious tools into the agent runtime. | Verify that tool loading checks cryptographic signatures or checksums against a trusted manifest. Test by modifying a tool binary and confirming it is rejected at load time. Check that the trusted manifest itself is integrity-protected. | Sigstore/cosign for container images, npm provenance for Node packages, and pip hash-checking mode for Python packages provide tooling. Challenge: many agent tools are loaded dynamically (e.g., from a tool registry or MCP server) and may not have established signing infrastructure. |
+| **9.3.5** | **Verify that** tool manifests declare required privileges, side-effect level, resource limits, and output validation requirements, and that the runtime enforces these declarations. | 2 | D/V | **Implicit privilege accumulation.** Without explicit privilege declarations, tools may silently acquire more access than needed. A tool that "just reads files" might also have network access. Manifests make permissions explicit and auditable, enabling least-privilege enforcement. | Review tool manifest schema. Verify each tool has a manifest declaring: required filesystem paths, network destinations, syscall capabilities, side-effect classification (read-only vs. mutating), resource limits, and output schema. Confirm the runtime rejects tools with missing manifests and enforces declared limits. | MCP tool definitions include basic metadata (name, description, input schema) but not privilege/side-effect declarations. This is an emerging area. Android-style permission manifests for AI tools are a useful mental model. The enforcement mechanism needs to live in the orchestration runtime, not just documentation. |
+| **9.3.6** | **Verify that** sandbox escape indicators or policy violations trigger automated containment (tool disabled/quarantined). | 3 | D/V | **Persistent compromise after sandbox breach.** If a tool escapes its sandbox or violates security policy but is not automatically contained, it (or the agent using it) can continue operating in a compromised state. Automated containment prevents the blast radius from expanding. | Simulate sandbox escape indicators (unexpected network connections, filesystem access outside sandbox, privilege escalation attempts). Verify the runtime automatically disables the tool, quarantines related state, alerts operators, and blocks further invocations of the compromised tool. | Detection of sandbox escapes in real-time is challenging. Runtime security tools (Falco, Sysdig) can detect anomalous syscalls and network activity. The "quarantine" mechanism needs to handle in-flight requests gracefully. False positives in escape detection could cause availability issues. |
+
+---
+
+## Related Standards & References
+
+- [OWASP LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/) -- tools are the primary mechanism through which excessive agency manifests
+- [NIST SSDF (SP 800-218)](https://csrc.nist.gov/pubs/sp/800/218/final) -- secure software development practices applicable to tool supply chain
+- [Sigstore](https://www.sigstore.dev/) -- keyless signing and verification for software artifacts
+- [E2B](https://e2b.dev/) -- sandboxed code execution environments designed for AI agents
+- AISVS C06 (Supply Chain) -- covers broader AI supply chain concerns; C09.3 is specifically about tool/plugin integrity at runtime
+- AISVS C10 (MCP Security) -- covers MCP-specific tool security; C09.3 is protocol-agnostic
+
+---
+
+## Open Research Questions
+
+- What is the right granularity for tool permission manifests -- per-tool, per-invocation, or per-task?
+- How do you securely handle tools that need stateful sessions (e.g., database connections, authenticated API sessions) within sandbox isolation boundaries?
+- Can tool output validation be automated using a secondary LLM as a "tool output auditor," or does this introduce new attack surface?
+- How should dynamic tool discovery (agent finds and loads tools at runtime) be secured without making the system too rigid?
+
+---

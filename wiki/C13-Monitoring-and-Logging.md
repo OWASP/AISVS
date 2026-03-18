@@ -9,18 +9,18 @@ This section provides requirements for delivering real-time and forensic visibil
 
 ---
 
-## Section Breakdown
+## Section Pages
 
-| Section | Title | Reqs | IDs |
-|---------|-------|:----:|-----|
-| C13.1 | Request & Response Logging | 8 | 13.1.1–13.1.8 |
-| C13.2 | Abuse Detection and Alerting | 10 | 13.2.1–13.2.10 |
-| C13.3 | Model Drift Detection | 5 | 13.3.1–13.3.5 |
-| C13.4 | Performance & Behavior Telemetry | 5 | 13.4.1–13.4.5 |
-| C13.5 | AI Incident Response Planning & Execution | 3 | 13.5.1–13.5.3 |
-| C13.6 | AI Performance Degradation Detection | 6 | 13.6.1–13.6.6 |
-| C13.7 | DAG Visualization & Workflow Security | 5 | 13.7.1–13.7.5 |
-| C13.8 | Proactive Security Behavior Monitoring | 5 | 13.8.1–13.8.5 |
+| Section | Title | Reqs | Page |
+|---------|-------|:----:|------|
+| C13.1 | Request & Response Logging | 8 | [C13-01-Request-Response-Logging](C13-01-Request-Response-Logging) |
+| C13.2 | Abuse Detection and Alerting | 10 | [C13-02-Abuse-Detection-Alerting](C13-02-Abuse-Detection-Alerting) |
+| C13.3 | Model Drift Detection | 5 | [C13-03-Model-Drift-Detection](C13-03-Model-Drift-Detection) |
+| C13.4 | Performance & Behavior Telemetry | 5 | [C13-04-Performance-Behavior-Telemetry](C13-04-Performance-Behavior-Telemetry) |
+| C13.5 | AI Incident Response Planning & Execution | 3 | [C13-05-Incident-Response](C13-05-Incident-Response) |
+| C13.6 | AI Performance Degradation Detection | 6 | [C13-06-Performance-Degradation-Detection](C13-06-Performance-Degradation-Detection) |
+| C13.7 | DAG Visualization & Workflow Security | 5 | [C13-07-DAG-Visualization-Workflow-Security](C13-07-DAG-Visualization-Workflow-Security) |
+| C13.8 | Proactive Security Behavior Monitoring | 5 | [C13-08-Proactive-Security-Behavior-Monitoring](C13-08-Proactive-Security-Behavior-Monitoring) |
 
 ---
 
@@ -35,8 +35,6 @@ Known attacks, real-world incidents, and threat vectors relevant to this chapter
 - Alert fatigue from overly broad anomaly detection
 
 ### Notable Incidents & Research
-
-_Add links to CVEs, published attacks, blog posts, and academic papers relevant to this chapter._
 
 | Date | Incident / Paper | Relevance | Link |
 |------|------------------|-----------|------|
@@ -57,14 +55,14 @@ Current tools, frameworks, and libraries that help implement these controls:
 
 | Control Area | Tooling Maturity | Notes |
 |--------------|:---:|-------|
-| C13.1 Request & Response Logging | _TBD_ | |
-| C13.2 Abuse Detection and Alerting | _TBD_ | |
-| C13.3 Model Drift Detection | _TBD_ | |
-| C13.4 Performance & Behavior Telemetry | _TBD_ | |
-| C13.5 AI Incident Response Planning & Execution | _TBD_ | |
-| C13.6 AI Performance Degradation Detection | _TBD_ | |
-| C13.7 DAG Visualization & Workflow Security | _TBD_ | |
-| C13.8 Proactive Security Behavior Monitoring | _TBD_ | |
+| C13.1 Request & Response Logging | Medium | OpenTelemetry GenAI SIG and LLM observability platforms provide solid foundations |
+| C13.2 Abuse Detection and Alerting | Low-Medium | Signature-based detection exists; behavioral analysis is emerging |
+| C13.3 Model Drift Detection | Medium | Well-established for traditional ML; less mature for LLMs |
+| C13.4 Performance & Behavior Telemetry | Medium-High | Standard APM tools extend to AI workloads |
+| C13.5 AI Incident Response Planning & Execution | Low | Few AI-specific IR frameworks or playbooks exist |
+| C13.6 AI Performance Degradation Detection | Medium | Mature for tabular ML; nascent for generative AI |
+| C13.7 DAG Visualization & Workflow Security | Low | Emerging area with limited dedicated tooling |
+| C13.8 Proactive Security Behavior Monitoring | Low | Research-stage; minimal production tooling |
 
 ---
 
@@ -74,6 +72,8 @@ Current tools, frameworks, and libraries that help implement these controls:
 - [ ] How do you balance logging completeness with privacy (PII in prompts/responses)?
 - [ ] What AI-specific SIEM rules are most effective for detecting attacks?
 - [ ] How should model drift detection thresholds be calibrated?
+- [ ] How do you distinguish adversarial drift from natural concept drift?
+- [ ] What DAG visualization security controls are necessary vs. theoretical?
 
 ---
 
@@ -86,11 +86,12 @@ Current tools, frameworks, and libraries that help implement these controls:
 
 ### AISVS Cross-Chapter Links
 
-_Which other AISVS chapters have related or overlapping requirements?_
-
 | Related Chapter | Overlap Area | Notes |
 |-----------------|--------------|-------|
-| | | |
+| C02 User Input Validation | Prompt injection detection | C13.2 monitors for attacks that C02 prevents at input |
+| C07 Model Behavior | Safety filter logging | C13.1 logs filter decisions defined in C07 |
+| C09 Orchestration & Agents | Agent action logging | C13.8 monitors agent behaviors governed by C09 |
+| C12 Privacy | PII redaction in logs | C13.1.4 redaction supports C12 privacy requirements |
 
 ---
 
@@ -99,4 +100,3 @@ _Which other AISVS chapters have related or overlapping requirements?_
 _Space for contributor observations, discussion, and context that doesn't fit elsewhere._
 
 ---
-
