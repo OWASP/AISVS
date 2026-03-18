@@ -1,0 +1,43 @@
+# C2.8 Real-Time Adaptive Threat Detection
+
+> **Parent:** [C02: User Input Validation](C02-User-Input-Validation)
+
+## Purpose
+
+Static detection rules and fixed classifiers will always lag behind evolving attack techniques. This section requires threat detection systems that adapt to new patterns in real time, adjusting sensitivity based on observed attack activity and contextual signals. This ranges from basic pattern matching (Level 1) to fully adaptive detection with continuous performance monitoring (Level 3). The goal is a detection layer that improves over time rather than degrading as attackers learn to bypass fixed rules.
+
+---
+
+## Requirements
+
+| # | Requirement | Level | Role | Threat Mitigated | Verification Approach | Gaps / Notes |
+|---|-------------|:-----:|:----:|-----------------|----------------------|--------------|
+| **2.8.1** | **Verify that** pattern matching (e.g., compiled regular expressions) runs on all inputs and outputs (including tool/MCP surfaces). | 1 | D/V | Known prompt injection patterns; known jailbreak phrases; SQL/code injection via tool arguments; known adversarial prefixes/suffixes; policy-violating keyword patterns. | 1. Confirm a pattern matching engine is integrated into the input/output pipeline. 2. Review the ruleset: does it cover known prompt injection patterns (e.g., "ignore previous instructions", "you are now", "system prompt:"), common jailbreak techniques, and injection patterns for tool arguments? 3. Verify patterns run on both inputs and outputs. 4. Verify patterns cover tool/MCP argument surfaces (not just the main prompt endpoint). 5. Test with known patterns and confirm detection. 6. Confirm regex patterns are compiled (not interpreted per-request) for performance. | Pattern matching is the simplest detection layer and should be the baseline. Regex-based detection is fast but brittle -- attackers can easily rephrase to avoid exact matches. The ruleset must be maintained and updated as new attack patterns emerge. Open-source rulesets: Rebuff patterns, OWASP prompt injection patterns, custom rules based on red-team findings. Compiled regex (Python `re.compile()`, Rust `regex` crate) is essential for performance at scale. Output-side pattern matching catches cases where the model produces content that should have been blocked (e.g., leaked system prompts). |
+| **2.8.2** | **Verify that** adaptive detection models adjust sensitivity based on recent attack activity and are updated with new patterns in real time, and trigger risk-adaptive responses (for example disable tools, shrink context, or require HITL approval). | 2 | D/V | Novel attack patterns not covered by static rules; evolving jailbreak techniques; zero-day prompt injection methods; attack campaigns that adapt to bypass fixed detections. | 1. Review the detection system's architecture for adaptive capabilities: dynamic rule updates, ML model retraining pipeline, or online learning. 2. Verify sensitivity adjustment mechanisms: can detection thresholds be tightened in response to increased attack activity? 3. Test risk-adaptive responses: submit inputs that trigger escalating risk levels and verify graduated responses (e.g., low risk = normal processing, medium risk = disable tools, high risk = HITL required). 4. Confirm new detection patterns can be deployed without full system restart (hot-reload). | Adaptive detection is a significant step up from static rules. Practical implementations: a rule engine with hot-reloadable rulesets (updated by security team based on observed attacks), ML classifiers retrained on recent data, or online learning systems. Risk-adaptive responses are key -- rather than binary accept/reject, the system degrades capabilities proportionally to risk. "Shrink context" means reducing the context window to give more weight to system instructions. "Disable tools" removes the most dangerous capability (code execution, data access) while keeping basic chat. Frameworks: custom implementations, or services like Lakera Guard which update detection models continuously. |
+| **2.8.3** | **Verify that** detection accuracy is improved via contextual analysis of user history, source, and session behavior, including trace metadata (source, tool or MCP server, agent ID, session). | 3 | D/V | Evasion of per-request detection; slow-roll attacks (gradually escalating across sessions); repeat offender attacks from known-bad sources; context-dependent attacks that appear benign in isolation but are malicious in context. | 1. Verify the detection system has access to user history (previous requests, previous detection flags, risk score trends). 2. Confirm source reputation is factored into detection (e.g., new accounts vs. established users, IP reputation, API key risk level). 3. Test contextual detection: submit a sequence of individually benign requests that form a crescendo attack and verify detection. 4. Verify session behavior analysis: detecting anomalous patterns within a session (e.g., rapid topic switching, progressive probing). | Level 3 because contextual detection requires significant data infrastructure (user history storage, session tracking, behavioral analytics). Privacy implications: storing user interaction history for security detection must comply with data protection regulations and retention policies. Crescendo attack detection (Russinovich et al., 2024) requires analyzing conversation trajectories, which is architecturally different from per-request classification. Practical starting points: maintain a per-user risk score that increases with detected anomalies and decays over time; use IP/API key reputation services. |
+| **2.8.4** | **Verify that** detection performance metrics (detection rate, false positive rate, processing latency) are continuously monitored and optimized, including time-to-block and stage (pre-prompt/post-response). | 3 | D/V | Detection drift (classifier performance degrading over time); unacceptable false positive rates blocking legitimate users; excessive detection latency impacting user experience; inability to quantify security posture. | 1. Confirm detection metrics are collected: true positive rate, false positive rate, false negative rate (from manual review), processing latency (p50, p95, p99), time-to-block. 2. Verify metrics are broken down by detection stage (pre-prompt vs. post-response). 3. Confirm a dashboard or reporting mechanism exists for these metrics. 4. Review optimization cadence: how often are thresholds adjusted, rules updated, or models retrained based on metrics? 5. Verify SLA targets exist for detection latency (e.g., <100ms for pattern matching, <500ms for ML-based detection). | Level 3 because continuous metric monitoring and optimization requires dedicated security engineering resources and infrastructure. Key metrics: detection rate (true positives / total attacks), false positive rate (false alarms / total legitimate requests), latency overhead (added processing time per request), time-to-block (from attack detection to block enforcement). False negative measurement is inherently difficult -- it requires ground truth from manual review or red-team exercises. Benchmarking against adversarial test suites (e.g., HarmBench, JailbreakBench, AdvBench) can provide periodic ground truth. |
+
+---
+
+## Related Standards & References
+
+- [MITRE ATLAS AML.M00150: Adversarial Input Detection](https://atlas.mitre.org/mitigations/AML.M00150)
+- [NIST AI 100-2e2025: Adversarial Machine Learning](https://csrc.nist.gov/pubs/ai/100/2/e2025/final)
+- [Crescendo Attack: Multi-Turn Jailbreak (Russinovich et al., 2024)](https://arxiv.org/abs/2404.01833)
+- [HarmBench: Standardized Evaluation of Automated Red Teaming](https://github.com/centerforaisafety/HarmBench)
+- [JailbreakBench](https://jailbreakbench.github.io/)
+- [Lakera Guard](https://www.lakera.ai/)
+- [Rebuff -- Prompt Injection Detection](https://github.com/protectai/rebuff)
+- [LLM Guard by Protect AI](https://llm-guard.com/)
+
+---
+
+## Open Research Questions
+
+- What is the optimal architecture for adaptive AI threat detection -- should it be a separate ML model, a rule engine, or a hybrid?
+- How can detection systems be updated in real time without introducing instability or being manipulated by adversarial feedback?
+- What detection latency is acceptable for different AI application types (real-time chat vs. batch processing)?
+- How should detection metrics be benchmarked -- are existing adversarial AI benchmarks (HarmBench, JailbreakBench) sufficient for production evaluation?
+- Can federated threat intelligence (sharing attack patterns across organizations) improve detection without exposing proprietary data?
+
+---

@@ -9,18 +9,18 @@ Autonomous and multi-agent systems must execute only authorized, intended, and b
 
 ---
 
-## Section Breakdown
+## Section Pages
 
-| Section | Title | Reqs | IDs |
-|---------|-------|:----:|-----|
-| C9.1 | Execution Budgets, Loop Control, and Circuit Breakers | 5 | 9.1.1–9.1.5 |
-| C9.2 | High-Impact Action Approval and Irreversibility Controls | 3 | 9.2.1–9.2.3 |
-| C9.3 | Tool and Plugin Isolation and Safe Integration | 6 | 9.3.1–9.3.6 |
-| C9.4 | Agent and Orchestrator Identity, Signing, and Tamper-Evident Audit | 4 | 9.4.1–9.4.4 |
-| C9.5 | Secure Messaging and Protocol Hardening | 4 | 9.5.1–9.5.4 |
-| C9.6 | Authorization, Delegation, and Continuous Enforcement | 4 | 9.6.1–9.6.4 |
-| C9.7 | Intent Verification and Constraint Gates | 4 | 9.7.1–9.7.4 |
-| C9.8 | Multi-Agent Domain Isolation and Swarm Risk Controls | 2 | 9.8.1–9.8.2 |
+| Section | Title | Reqs | Page |
+|---------|-------|:----:|------|
+| C9.1 | Execution Budgets, Loop Control, and Circuit Breakers | 5 | [C09-01-Execution-Budgets](C09-01-Execution-Budgets.md) |
+| C9.2 | High-Impact Action Approval and Irreversibility Controls | 3 | [C09-02-High-Impact-Action-Approval](C09-02-High-Impact-Action-Approval.md) |
+| C9.3 | Tool and Plugin Isolation and Safe Integration | 6 | [C09-03-Tool-and-Plugin-Isolation](C09-03-Tool-and-Plugin-Isolation.md) |
+| C9.4 | Agent and Orchestrator Identity, Signing, and Tamper-Evident Audit | 4 | [C09-04-Agent-Identity-and-Audit](C09-04-Agent-Identity-and-Audit.md) |
+| C9.5 | Secure Messaging and Protocol Hardening | 4 | [C09-05-Secure-Messaging](C09-05-Secure-Messaging.md) |
+| C9.6 | Authorization, Delegation, and Continuous Enforcement | 4 | [C09-06-Authorization-and-Delegation](C09-06-Authorization-and-Delegation.md) |
+| C9.7 | Intent Verification and Constraint Gates | 4 | [C09-07-Intent-Verification](C09-07-Intent-Verification.md) |
+| C9.8 | Multi-Agent Domain Isolation and Swarm Risk Controls | 2 | [C09-08-Multi-Agent-Isolation](C09-08-Multi-Agent-Isolation.md) |
 
 ---
 
@@ -29,18 +29,12 @@ Autonomous and multi-agent systems must execute only authorized, intended, and b
 Known attacks, real-world incidents, and threat vectors relevant to this chapter:
 
 - Recursive agent loops causing unbounded API spend or compute consumption
-- Tool misuse — agent calling dangerous tools (rm -rf, DROP TABLE) via prompt injection
+- Tool misuse -- agent calling dangerous tools (rm -rf, DROP TABLE) via prompt injection
 - Privilege escalation through tool chaining (combining benign tools for malicious effect)
 - Agent impersonation in multi-agent systems
-- Confused deputy — agent acting with human's credentials beyond intended delegation scope
-
-### Notable Incidents & Research
-
-_Add links to CVEs, published attacks, blog posts, and academic papers relevant to this chapter._
-
-| Date | Incident / Paper | Relevance | Link |
-|------|------------------|-----------|------|
-| | | | |
+- Confused deputy -- agent acting with human's credentials beyond intended delegation scope
+- Replay attacks on inter-agent messages to re-trigger actions
+- Emergent swarm behaviors in multi-agent deployments leading to resource exhaustion or oscillation
 
 ---
 
@@ -52,28 +46,8 @@ Current tools, frameworks, and libraries that help implement these controls:
 - **Sandboxing:** E2B, Modal, Firecracker for code execution sandboxes
 - **Budget controls:** Token/cost limits in API calls, timeout-based circuit breakers
 - **Approval workflows:** Human-in-the-loop gating via Slack/webhook integrations
-
-### Implementation Maturity
-
-| Control Area | Tooling Maturity | Notes |
-|--------------|:---:|-------|
-| C9.1 Execution Budgets, Loop Control, and Circuit Breakers | _TBD_ | |
-| C9.2 High-Impact Action Approval and Irreversibility Controls | _TBD_ | |
-| C9.3 Tool and Plugin Isolation and Safe Integration | _TBD_ | |
-| C9.4 Agent and Orchestrator Identity, Signing, and Tamper-Evident Audit | _TBD_ | |
-| C9.5 Secure Messaging and Protocol Hardening | _TBD_ | |
-| C9.6 Authorization, Delegation, and Continuous Enforcement | _TBD_ | |
-| C9.7 Intent Verification and Constraint Gates | _TBD_ | |
-| C9.8 Multi-Agent Domain Isolation and Swarm Risk Controls | _TBD_ | |
-
----
-
-## Open Research Questions
-
-- [ ] What's the right granularity for tool permissions in agentic systems?
-- [ ] How do you prevent indirect prompt injection from causing tool misuse in multi-step agents?
-- [ ] What budget/cost controls are adequate for autonomous agents?
-- [ ] How should multi-agent trust boundaries be defined and enforced?
+- **Identity/Auth:** SPIFFE/SPIRE for workload identity, OPA for policy enforcement
+- **Messaging:** A2A protocol (Google), MCP (Anthropic) for structured agent communication
 
 ---
 
@@ -87,11 +61,13 @@ Current tools, frameworks, and libraries that help implement these controls:
 
 ### AISVS Cross-Chapter Links
 
-_Which other AISVS chapters have related or overlapping requirements?_
-
 | Related Chapter | Overlap Area | Notes |
 |-----------------|--------------|-------|
-| | | |
+| C02 User Input Validation | Prompt injection leading to tool misuse | C02 covers input-level defenses; C09 covers execution-level containment |
+| C05 Access Control | Authorization enforcement | C05 covers model/data access; C09 covers agent action authorization |
+| C10 MCP Security | Tool/server integration security | C10 is MCP-protocol-specific; C09 is protocol-agnostic orchestration |
+| C13 Monitoring and Logging | Audit and observability | C13 covers general AI logging; C09.4 covers agent-specific tamper-evident audit |
+| C14 Human Oversight | Human-in-the-loop controls | C14 covers oversight broadly; C09.2/C09.7 cover approval gates for agent actions |
 
 ---
 
@@ -100,4 +76,3 @@ _Which other AISVS chapters have related or overlapping requirements?_
 _Space for contributor observations, discussion, and context that doesn't fit elsewhere._
 
 ---
-
