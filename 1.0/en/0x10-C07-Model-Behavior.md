@@ -45,6 +45,7 @@ Technical controls to detect and scrub bad content before it is shown to the use
 | **7.3.4** | **Verify that** data labeled as "confidential" in the system remains blocked or redacted. | 2 | D |
 | **7.3.5** | **Verify that** safety filters can be configured differently based on the user's role or location (e.g., stricter filters for minors) as appropriate. | 2 | D/V |
 | **7.3.6** | **Verify that** the system requires a human approval step or re-authentication if the model generates high-risk content. | 3 | D/V |
+| **7.3.7** | **Verify that** output filters detect and block responses that reproduce verbatim segments of system prompt content, and that LLM client applications restrict rendering of external URLs and images to allowlisted domains to prevent side-channel exfiltration. | 1 | D/V |
 
 ---
 
