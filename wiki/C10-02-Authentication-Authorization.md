@@ -1,11 +1,12 @@
 # C10.2: Authentication & Authorization
 
-> **Parent:** [C10 MCP Security](C10-MCP-Security)
+> **Parent:** [C10 MCP Security](C10-MCP-Security.md)
 > **Requirements:** 12 | **IDs:** 10.2.1–10.2.12
+> **Last Researched:** 2026-03-18
 
 ## Purpose
 
-This section ensures that MCP clients and servers authenticate each other properly and that authorization is enforced at every tool invocation. The MCP specification (2025-03-26) mandates OAuth 2.1 as the authorization framework for HTTP-based transports. This is the largest section in C10 because the auth surface is broad: token validation, scope enforcement, session management, token relay prevention, consent management for third-party APIs, and the critical requirement that model-generated output cannot bypass access control logic. Without rigorous auth controls, an MCP server becomes an unauthenticated API gateway that any agent — or any prompt injection — can invoke.
+This section ensures that MCP clients and servers authenticate each other properly and that authorization is enforced at every tool invocation. The MCP specification mandates OAuth 2.1 as the authorization framework for HTTP-based transports. The auth spec was **substantially revised on November 25, 2025** to address disclosed vulnerabilities including confused deputy attacks and token pass-through. As of early 2026, at least **5 CVEs** have been assigned to MCP components, OAuth implementation flaws affected 43% of surveyed MCP servers, and the OWASP MCP Top 10 (v0.1 beta) lists Token Mismanagement (MCP01) and Insufficient Authentication (MCP07) as top risks.
 
 ---
 
@@ -28,23 +29,95 @@ This section ensures that MCP clients and servers authenticate each other proper
 
 ---
 
+## MCP Auth CVEs and Incidents (2025-2026)
+
+| Date | Incident | CVE | Impact |
+|------|----------|-----|--------|
+| Apr 2025 | WhatsApp MCP tool poisoning | — | Invariant Labs demonstrated exfiltration of thousands of messages via backdoored tool descriptions |
+| May 2025 | GitHub MCP prompt injection | — | Over-privileged PATs enabled extraction of private repo data via prompt injection |
+| Jun 2025 | Anthropic MCP Inspector RCE | CVE-2025-49596 | Unauthenticated RCE on developer machines via unprotected localhost listener |
+| Jul 2025 | mcp-remote command injection | CVE-2025-6514 | Critical: malformed `authorization_endpoint` passed to system shell; 437K+ downloads affected (Cloudflare, Hugging Face, Auth0 guides) |
+| Aug 2025 | Anthropic Filesystem MCP Server | CVE-2025-53109, CVE-2025-53110 | Sandbox escape + symlink bypass enabling arbitrary file access |
+| Aug-Sep 2025 | Square MCP Server OAuth flaw | — | Missing `redirect_uri` restrictions during DCR enabled one-click merchant account takeover |
+| Sep 2025 | Malicious Postmark MCP package | — | Supply-chain: BCC'd all outgoing emails to attacker-controlled servers |
+| Oct 2025 | Smithery MCP hosting path traversal | — | Leaked Docker credentials and Fly.io API token controlling 3,000+ apps |
+| Oct 2025 | Figma/Framelink MCP command injection | CVE-2025-53967 | Unsafe `child_process.exec` with untrusted input |
+
+Sources: [AuthZed Timeline](https://authzed.com/blog/timeline-mcp-breaches), [Invariant Labs](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks), [Obsidian Security](https://www.obsidiansecurity.com/blog/when-mcp-meets-oauth-common-pitfalls-leading-to-one-click-account-takeover)
+
+---
+
+## MCP Auth Specification Evolution
+
+Key changes in the **November 25, 2025** spec revision:
+- **Client ID Metadata Documents (CIMD)** added as the preferred client registration mechanism (adoption still at ~3%)
+- **RFC 8707 Resource Indicators** now mandatory — tokens MUST be bound to specific MCP servers
+- **Token pass-through explicitly forbidden** — servers must obtain separate tokens for downstream APIs
+- **Confused deputy mitigations** added for proxy servers
+- **PKCE with S256 method** mandatory for all flows
+
+Three client registration mechanisms in priority order: (1) CIMD (new, preferred), (2) Pre-registration, (3) Dynamic Client Registration (now a backwards-compatibility fallback).
+
+---
+
+## MCP Security Tools
+
+| Tool | Purpose | Key Metric |
+|------|---------|-----------|
+| [MCPTox](https://arxiv.org/abs/2508.14925) | Tool poisoning benchmark | Tests 20 LLM agents across 45 servers, 353 tools; o1-mini: 72.8% ASR; Claude 3.7 Sonnet: <3% refusal |
+| [MindGuard](https://arxiv.org/html/2508.20412v1) | Decision-level guardrail | 94-99% avg precision detecting poisoned invocations; 95-100% attribution accuracy; sub-second processing |
+| [MCP Auth library](https://mcp-auth.dev/docs) | OAuth implementation | Implements MCP auth spec 2025-06-18 for adding OAuth to servers |
+| [mcp-client-gen](https://github.com/kriasoft/mcp-client-gen) | Type-safe SDK generator | OAuth 2.1 support; generates TypeScript SDKs from MCP servers |
+
+---
+
+## OWASP MCP Top 10 (v0.1 Beta)
+
+| # | Risk | AISVS Mapping |
+|---|------|---------------|
+| MCP01 | Token Mismanagement & Secret Exposure | 10.2.5, 10.2.9, 10.1.2 |
+| MCP02 | Privilege Escalation via Scope Creep | 10.2.7, 10.2.11 |
+| MCP03 | Tool Poisoning | 10.4.1, 10.4.5 |
+| MCP04 | Software Supply Chain Attacks | 10.1.1 |
+| MCP05 | Command Injection & Execution | 10.4.4, 10.5.1 |
+| MCP06 | Intent Flow Subversion | 10.2.4, 10.4.1 |
+| MCP07 | Insufficient Authentication & Authorization | 10.2.1, 10.2.2, 10.2.7 |
+| MCP08 | Lack of Audit and Telemetry | C13.1, C13.2 |
+| MCP09 | Shadow MCP Servers | 10.2.3 |
+| MCP10 | Context Injection & Over-Sharing | 10.4.1, 10.2.6 |
+
+Source: [OWASP MCP Top 10](https://owasp.org/www-project-mcp-top-10/)
+
+---
+
 ## Related Standards & References
 
-- [MCP Authorization Specification (2025-03-26)](https://spec.modelcontextprotocol.io/specification/2025-03-26/basic/authorization/) — official OAuth 2.1 integration for MCP
-- [OAuth 2.1 (draft-ietf-oauth-v2-1)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-12) — the base authorization framework
-- [RFC 7636: PKCE](https://datatracker.ietf.org/doc/html/rfc7636) — required by MCP for public clients
-- [RFC 7591: Dynamic Client Registration](https://datatracker.ietf.org/doc/html/rfc7591) — used by MCP for client onboarding
-- [RFC 8707: Resource Indicators](https://datatracker.ietf.org/doc/html/rfc8707) — audience restriction for tokens
+- [MCP Authorization Specification (latest)](https://modelcontextprotocol.io/specification/draft/basic/authorization/) — OAuth 2.1 integration, revised Nov 2025
+- [OAuth 2.1 (draft-ietf-oauth-v2-1-13)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-13) — base authorization framework
+- [RFC 7636: PKCE](https://datatracker.ietf.org/doc/html/rfc7636) — mandatory for MCP
+- [RFC 7591: Dynamic Client Registration](https://datatracker.ietf.org/doc/html/rfc7591) — backwards-compat fallback
+- [RFC 8707: Resource Indicators](https://datatracker.ietf.org/doc/html/rfc8707) — now mandatory for MCP token binding
+- [OWASP MCP Top 10 (v0.1 Beta)](https://owasp.org/www-project-mcp-top-10/)
+- [OWASP Practical Guide: Securely Using Third-Party MCP Servers](https://genai.owasp.org/resource/cheatsheet-a-practical-guide-for-securely-using-third-party-mcp-servers-1-0/)
+- [OWASP Practical Guide: Secure MCP Server Development](https://genai.owasp.org/resource/a-practical-guide-for-secure-mcp-server-development/)
+- [Microsoft MCP Azure Security Guide](https://microsoft.github.io/mcp-azure-security-guide/)
+- [Red Hat MCP Security Analysis](https://www.redhat.com/en/blog/model-context-protocol-mcp-understanding-security-risks-and-controls)
+- [Elastic Security Labs: MCP Attack/Defense](https://www.elastic.co/security-labs/mcp-tools-attack-defense-recommendations)
+- [SMCP: Secure MCP Proposal](https://arxiv.org/pdf/2602.01129)
 - [OWASP ASVS v4: V3 Session Management](https://owasp.org/www-project-application-security-verification-standard/)
 
 ---
 
 ## Open Research Questions
 
-- [ ] What is the right OAuth scope granularity for MCP — per-tool, per-resource-type, or per-action? Should the MCP spec define standard scope naming conventions?
-- [ ] How should argument-level authorization be modeled — ABAC, RBAC, or policy-as-code (e.g., OPA/Rego)?
-- [ ] Is on-behalf-of (OBO) flow viable across diverse identity providers for MCP token exchange, or should client credentials be the default?
-- [ ] How do you handle consent for dynamically registered MCP clients in a way that is usable but not bypassable?
-- [ ] Should MCP define a standard session teardown protocol beyond HTTP DELETE, covering crash recovery and timeout cleanup?
+- What is the right OAuth scope granularity for MCP — per-tool, per-resource-type, or per-action? The MCP spec does not define standard scope names.
+- How should argument-level authorization be modeled — ABAC, RBAC, or policy-as-code (e.g., OPA/Rego)?
+- Is on-behalf-of (OBO) flow viable across diverse identity providers for MCP token exchange?
+- How do you handle consent for dynamically registered MCP clients given CIMD adoption is at 3%?
+- What is the right response to rug-pull attacks (tool definitions that mutate post-approval)?
+- How should MCP auth interact with multi-agent delegation chains where trust must be propagated?
+- Can MindGuard-style decision-level guardrails become a standard architectural component for MCP deployments?
 
 ---
+
+[C10 Index](C10-MCP-Security.md) | [README](README.md)
