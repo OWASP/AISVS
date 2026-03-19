@@ -107,6 +107,10 @@ Reduce cross-domain interference and emergent unsafe collective behavior.
 | :--: | --- | :---: | :--: |
 | **9.8.1** | **Verify that** agents in different tenants, security domains, or environments (dev/test/prod) run in isolated runtimes and network segments, with default-deny controls that prevent cross-domain discovery and calls. | 1 | D/V |
 | **9.8.2** | **Verify that** runtime monitoring detects unsafe emergent behavior (oscillation, deadlocks, uncontrolled broadcast, abnormal call graphs) and automatically applies corrective actions (throttle, isolate, terminate). | 3 | D/V |
+| **9.8.3** | **Verify that** each agent is restricted to its own memory namespace and is technically prevented from reading or modifying peer agent state, preventing unauthorized cross-agent access within the same swarm. | 2 | D/V |
+| **9.8.4** | **Verify that** each agent operates with an isolated context window and dedicated credentials scoped to its role, preventing peer agents from accessing or influencing another agent's context or credential scope to prevent unauthorized cross-agent access within the same swarm. | 3 | D/V |
+| **9.8.5** | **Verify that** swarm-level aggregate action rate limits (e.g., total external API calls, file writes, or network requests per time window across all agents) are enforced to prevent bursts that cause denial-of-service or abuse of external systems. | 3 | D/V |
+| **9.8.6** | **Verify that** a swarm-level shutdown capability exists that can halt all active agent instances or selected problematic instances in an organized fashion and prevents new agent spawning, with shutdown completable within a pre-defined response time. | 3 | D/V |
 
 ---
 
