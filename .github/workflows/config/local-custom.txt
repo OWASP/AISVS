@@ -101,3 +101,5 @@ cciprofm
 thornshadow
 Rego
 unvalidated
+
+Cylance
