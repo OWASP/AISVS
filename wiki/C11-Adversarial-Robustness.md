@@ -1,7 +1,7 @@
 # C11: Adversarial Robustness & Attack Resistance
 
 > **Source:** [`1.0/en/0x10-C11-Adversarial-Robustness.md`](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C11-Adversarial-Robustness.md)
-> **Requirements:** 38 | **Sections:** 9
+> **Requirements:** 41 | **Sections:** 10
 
 ## Control Objective
 
@@ -24,6 +24,7 @@ Ensure that AI systems remain reliable, privacy-preserving, and abuse-resistant 
 | C11.7 | Security Policy Adaptation | 4 | [C11-07-Security-Policy-Adaptation](C11-07-Security-Policy-Adaptation) |
 | C11.8 | Agent Security Self-Assessment | 3 | [C11-08-Agent-Security-Self-Assessment](C11-08-Agent-Security-Self-Assessment) |
 | C11.9 | Self-Modification & Autonomous Update Security | 5 | [C11-09-Self-Modification-Autonomous-Update-Security](C11-09-Self-Modification-Autonomous-Update-Security) |
+| C11.10 | Adversarial Bias Exploitation Defense | 3 | [C11-10-Adversarial-Bias-Exploitation-Defense](C11-10-Adversarial-Bias-Exploitation-Defense) |
 
 ---
 
@@ -38,6 +39,7 @@ Known attacks, real-world incidents, and threat vectors relevant to this chapter
 - **Inference-time poisoning** via compromised RAG corpora, tool outputs, or injected context
 - **Alignment bypass** through jailbreaks, prompt manipulation, and multi-turn escalation
 - **Self-modification abuse** -- adversarially induced changes to agent behavior or configuration
+- **Adversarial bias exploitation** -- systematic probing for subgroup-specific robustness gaps in security classifiers, then weaponizing discovered disparities as evasion vectors
 
 ---
 
@@ -62,5 +64,7 @@ Known attacks, real-world incidents, and threat vectors relevant to this chapter
 | C9 Orchestration and Agents | Agent safety, tool use | C9 covers orchestration security; C11.8-C11.9 address agent self-assessment and self-modification |
 | C12 Privacy | Differential privacy, data leakage | C12 covers privacy holistically; C11.3-C11.4 focus on inference/inversion attacks specifically |
 | C13 Monitoring and Logging | Detection, alerting | C13 covers monitoring infrastructure; C11.5-C11.7 cover adversarial-specific detection and policy adaptation |
+| C2 User Input Validation | Bias probing as input pattern | C2 covers input validation; C11.10 monitors for structured probing patterns that indicate bias exploitation reconnaissance |
+| C7 Model Behavior | Output filtering and subgroup fairness | C7 covers output safety; C11.10 adds subgroup-stratified robustness evaluation for security classifiers |
 
 ---
