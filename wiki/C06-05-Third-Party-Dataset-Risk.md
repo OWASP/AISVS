@@ -8,6 +8,60 @@ Datasets are a uniquely dangerous supply-chain vector for AI systems. Unlike cod
 
 ---
 
+## 2025-2026 Landscape Update
+
+### Web-Scale Dataset Poisoning is Practical and Cheap
+
+Carlini et al. (2023) demonstrated two concrete attack methods against web-scale datasets that remain relevant and under-mitigated:
+
+- **Split-view poisoning**: Many distributed datasets (LAION-400M, COYO-700M, Conceptual 12M) store URLs rather than actual data. Domain names in these URL lists continuously expire. An attacker can purchase expired domains for as little as $10 each and serve malicious content to any future downloader. The researchers found that all ten tested datasets contained between 0.14% and 6.48% purchasable expired domains. Poisoning 0.01% of LAION-400M or COYO-700M costs approximately $60 USD. Critically, nearly all third-party download tools for these datasets ignore the hash checksums that were provided.
+
+- **Frontrunning poisoning**: For crowdsourced datasets derived from Wikipedia snapshots, attackers can predict snapshot timing to the minute and inject malicious edits that are captured in the dataset but quickly reverted. This could theoretically poison approximately 6.5% of English Wikipedia-derived documents, with multilingual Wikipedias showing vulnerability rates up to 25.3%.
+
+Even poisoning rates as low as 0.00025% of a dataset can achieve 60% success in targeted misclassification attacks. These findings mean that any organization using URL-based or web-scraped datasets without hash verification is accepting a materially exploitable risk.
+
+### LAION Dataset Controversies and Remediation
+
+The LAION-5B dataset saga illustrates the full spectrum of third-party dataset risks:
+
+- **CSAM discovery (December 2023)**: The Stanford Internet Observatory found 3,226 suspected instances of links to child sexual abuse material in LAION-5B, with 1,008 externally validated. LAION temporarily removed LAION-5B and LAION-400M.
+- **Sensitive personal data**: An investigation by Bayerischer Rundfunk found that LAION datasets contain large amounts of private and sensitive data harvested from public websites without consent.
+- **Hateful and harmful content**: Research (Birhane et al. 2023) documented widespread instances of rape, pornography, malign stereotypes, racist and ethnic slurs, and other extremely problematic content within LAION-5B.
+- **Re-LAION-5B (August 2024)**: LAION released a cleaned version, removing 2,236 links after matching against known-abuse lists. However, the fundamental architecture of URL-based datasets means that the content behind remaining links continues to change over time.
+
+The LAION case is instructive: even well-intentioned, widely-used datasets can harbor serious content and legal risks that are only discovered years after initial release and widespread adoption.
+
+### Legal Landscape for Training Data
+
+The legal environment for training data has become more complex:
+
+- **NYT v. OpenAI** and **Getty v. Stability AI** established that training on copyrighted content carries real litigation risk.
+- **LAION v. Kneschke (2024)**: A German court ruled that building public datasets is covered by the text and data mining (TDM) exception under EU copyright law, providing some legal cover for research datasets, but the ruling's applicability to commercial use remains contested.
+- **GDPR and CCPA enforcement**: Models that memorize and regurgitate PII from training data face regulatory action. The EU AI Act imposes additional transparency requirements for training data documentation.
+
+### Dataset Vetting Tools: Current State
+
+The tooling landscape for dataset security has matured but remains incomplete:
+
+- **Cleanlab**: Identifies label errors, outliers, and near-duplicates in datasets. Useful for detecting dirty-label poisoning but limited against clean-label attacks.
+- **Great Expectations**: General-purpose data validation framework that can enforce schema, statistical, and distribution constraints on incoming datasets.
+- **Microsoft Presidio**: PII detection and redaction for unstructured text. Supports multiple languages but has significant false-negative rates for non-English content and domain-specific identifiers.
+- **Croissant (MLCommons)**: Metadata format for ML datasets gaining adoption, providing standardized fields for provenance, license, and content description. Complementary to the "Datasheets for Datasets" framework.
+- **ScanCode / REUSE**: License detection for code datasets, important for detecting copyleft or restricted-license code in training corpora.
+- **Data Provenance Initiative**: Academic effort to catalog and document the provenance of major ML training datasets, providing a reference for organizations performing due diligence.
+
+### Data Supply Chain Security
+
+Organizations should treat datasets with the same supply-chain rigor applied to code dependencies:
+
+1. **Hash-verify on download**: Always verify dataset integrity using cryptographic hashes. Do not rely on URL stability.
+2. **Mirror locally**: Download and snapshot datasets to internal storage rather than re-fetching from external URLs at training time.
+3. **Version-pin datasets**: Reference specific dataset versions or commits (e.g., Hugging Face dataset revisions) rather than "latest."
+4. **Scan before training**: Run automated content scanning (PII, CSAM, copyright, poisoning indicators) before any training use.
+5. **Document in AI BOM**: Capture provenance, license, preprocessing steps, and known limitations for every dataset.
+
+---
+
 ## Requirements
 
 | # | Requirement | Level | Role | Threat Mitigated | Verification Approach | Gaps / Notes |
@@ -23,7 +77,7 @@ Datasets are a uniquely dangerous supply-chain vector for AI systems. Unlike cod
 ## Related Standards & References
 
 - [MITRE ATLAS AML.T0020 — Poison Training Data](https://atlas.mitre.org/techniques/AML.T0020)
-- [Carlini et al. — Poisoning Web-Scale Training Datasets (2023)](https://arxiv.org/abs/2302.10149)
+- [Carlini et al. — Poisoning Web-Scale Training Datasets is Practical (2023)](https://arxiv.org/abs/2302.10149)
 - [Gebru et al. — Datasheets for Datasets (2021)](https://arxiv.org/abs/1803.09010)
 - [MLCommons Croissant Metadata Format](https://mlcommons.org/working-groups/data/croissant/)
 - [Microsoft Presidio — PII Detection](https://microsoft.github.io/presidio/)
@@ -31,6 +85,11 @@ Datasets are a uniquely dangerous supply-chain vector for AI systems. Unlike cod
 - [IBM AI Fairness 360](https://aif360.mybluemix.net/)
 - [Microsoft Fairlearn](https://fairlearn.org/)
 - [Great Expectations — Data Validation](https://greatexpectations.io/)
+- [LAION Re-LAION-5B — Transparent Iteration with Safety Fixes](https://laion.ai/blog/relaion-5b/)
+- [Stanford Internet Observatory — CSAM in LAION-5B](https://incidentdatabase.ai/reports/3555/)
+- [Birhane et al. — Into the LAION's Den: Investigating Hate in Multimodal Datasets (2023)](https://arxiv.org/abs/2311.03449)
+- [LAION v. Kneschke — TDM Exception Ruling (2024)](https://communia-association.org/2024/10/11/laion-vs-kneschke-building-public-datasets-is-covered-by-the-tdm-exception/)
+- [Data Provenance Initiative](https://dataprovenance.org/)
 
 ---
 
@@ -40,3 +99,6 @@ Datasets are a uniquely dangerous supply-chain vector for AI systems. Unlike cod
 - What legal frameworks will emerge for dataset liability — is the dataset provider, the model trainer, or the deployer responsible for content issues?
 - How should organizations handle "inherited bias" when fine-tuning on a clean dataset but starting from a base model trained on a biased one?
 - Can data provenance be established retroactively for models already in production that were trained on insufficiently documented datasets?
+- Given that split-view poisoning costs as little as $60 for web-scale datasets, should URL-based dataset distribution be considered fundamentally insecure? What alternative distribution models (content-addressed storage, IPFS-pinned datasets) could replace it?
+- How should the LAION v. Kneschke TDM exception ruling affect organizational risk assessments for training on web-scraped data in EU jurisdictions?
+- What automated tooling is needed to continuously monitor the domain registration status of URLs within active training datasets?

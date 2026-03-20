@@ -8,6 +8,36 @@ ML pipelines often have deep and wide dependency trees — a typical PyTorch pro
 
 ---
 
+## 2025-2026 Landscape Update
+
+### Dependency Confusion Remains a Live Threat in ML
+
+The PyTorch `torchtriton` dependency confusion incident demonstrated how ML-specific internal package names that are not claimed on public registries can be weaponized. An attacker published a malicious `torchtriton` on PyPI that was installed instead of the legitimate internal package, gaining code execution on developer machines and CI systems. This pattern is especially dangerous in ML because teams frequently create internal packages for custom operators, data loaders, and model utilities with names that are not reserved on public registries.
+
+PEP 708 (accepted for Python) extends the Simple Repository API to allow repository operators to indicate that a project "tracks" a project on different repositories, enabling installers to detect when a dependency confusion attack may be occurring. Organizations running private ML package registries should monitor adoption of PEP 708 by pip and other installers.
+
+In September 2025, the GhostAction supply chain attack compromised 327 GitHub users across 817 repositories, exfiltrating 3,325 secrets including PyPI tokens. Stolen PyPI credentials can be used to publish malicious versions of legitimate packages, making hash-verified lockfiles even more critical as a defense layer.
+
+### SLSA v1.1 and ML Build Provenance
+
+SLSA (Supply-chain Levels for Software Artifacts) v1.1, released in 2025, defines four progressive levels (0-3) for build integrity. The framework provides a structured path for ML teams to adopt provenance attestations:
+
+- **SLSA Level 1**: Build provenance exists (e.g., recording which packages were installed during model training).
+- **SLSA Level 2**: Builds occur on a hosted, tamper-resistant build service with signed provenance.
+- **SLSA Level 3**: Builds run in an isolated, ephemeral environment with non-falsifiable provenance.
+
+Most ML CI/CD tools (Kubeflow Pipelines, MLflow, Weights & Biases) do not natively produce SLSA attestations as of early 2026. However, GitHub Actions and Google Cloud Build both support SLSA Level 3 provenance generation, which can be integrated into ML build workflows with custom configuration. The in-toto framework provides a complementary approach, allowing teams to define a "layout" of expected build steps and verify that each step was performed by an authorized party.
+
+### Hydra Dependency and Systemic ML Ecosystem Risk
+
+Research published in January 2026 identified that Hugging Face models collectively depend on more than 100 Python libraries, with nearly half using the Hydra configuration framework. Critical vulnerabilities in Hydra and other widely-shared dependencies create systemic exposure: a single compromised dependency can affect tens of thousands of models. This reinforces the importance of hash-verified lockfiles and continuous dependency monitoring specifically for ML dependency trees, which tend to be wider and less scrutinized than traditional software dependencies.
+
+### Reproducible Builds: Practical Progress
+
+For inference containers and serving pipelines, reproducible builds are increasingly achievable using tools like `apko` (Chainguard), `ko` (for Go-based serving), and Buildkit with `SOURCE_DATE_EPOCH`. For training pipelines, full reproducibility remains challenging due to GPU floating-point non-determinism, but deterministic data loading and preprocessing pipelines are practical targets for hash-comparison verification.
+
+---
+
 ## Requirements
 
 | # | Requirement | Level | Role | Threat Mitigated | Verification Approach | Gaps / Notes |
@@ -22,14 +52,18 @@ ML pipelines often have deep and wide dependency trees — a typical PyTorch pro
 
 ## Related Standards & References
 
-- [SLSA Framework (Supply-chain Levels for Software Artifacts)](https://slsa.dev/)
+- [SLSA Framework v1.1 (Supply-chain Levels for Software Artifacts)](https://slsa.dev/)
 - [in-toto — Software Supply Chain Integrity](https://in-toto.io/)
 - [Sigstore/Rekor Transparency Log](https://www.sigstore.dev/)
 - [Alex Birsan — Dependency Confusion (2021)](https://medium.com/@alex.birsan/dependency-confusion-4a5d60fec610)
+- [PEP 708 — Extending the Repository API to Mitigate Dependency Confusion Attacks](https://peps.python.org/pep-0708/)
+- [PyTorch torchtriton Dependency Confusion — Aqua Security Analysis](https://www.aquasec.com/blog/pytorch-dependency-confusion-administered-malware/)
 - [pip --require-hashes Documentation](https://pip.pypa.io/en/stable/topics/secure-installs/)
 - [conda-lock](https://github.com/conda/conda-lock)
 - [Renovate Bot — Digest Pinning](https://docs.renovatebot.com/docker/)
 - [Hadolint — Dockerfile Linter](https://github.com/hadolint/hadolint)
+- [Hydra Dependency Systemic Risk Across Hugging Face Models (2026)](https://www.opensourceforu.com/2026/01/hydra-dependency-creates-systemic-ai-security-risk-across-hugging-face-models/)
+- [Chainguard apko — Reproducible Container Builds](https://edu.chainguard.dev/compliance/slsa/what-is-slsa/)
 
 ---
 
@@ -38,3 +72,6 @@ ML pipelines often have deep and wide dependency trees — a typical PyTorch pro
 - How can reproducible-build principles be extended to GPU-accelerated training pipelines given inherent floating-point non-determinism?
 - What is the right retention period for build attestations in regulated AI applications (healthcare, finance, autonomous vehicles)?
 - How should SLSA provenance levels be adapted for ML artifacts that include both code and data components?
+- How will PEP 708 adoption by pip and other Python installers change the dependency confusion threat landscape for ML-specific internal packages?
+- What tooling is needed to generate SLSA Level 2+ attestations natively within ML pipeline orchestrators (Kubeflow, MLflow, Airflow)?
+- Given that ML dependency trees are wider and less scrutinized than traditional software, how should organizations prioritize which transitive dependencies receive manual security review?
