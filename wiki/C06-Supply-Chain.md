@@ -7,6 +7,8 @@
 
 AI supply-chain attacks exploit third-party models, frameworks, or datasets to embed backdoors, bias, or exploitable code. These controls provide end-to-end traceability, vulnerability management, and monitoring to protect the entire model lifecycle.
 
+> **2025-2026 Highlights:** The AI BOM ecosystem (CycloneDX ML, SPDX AI) is gaining adoption alongside SLSA for ML pipelines. Malicious model discoveries on public registries continued to grow, reinforcing the need for model scanning and SafeTensors format enforcement as baseline controls.
+
 ---
 
 ## Section Pages

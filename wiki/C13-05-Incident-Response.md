@@ -19,10 +19,65 @@ This section addresses the preparation for and execution of incident response pr
 
 ---
 
+## Implementation Guidance
+
+### AI-Specific IR Playbook Structure (2024--2026 Developments)
+
+The field of AI incident response has matured significantly with the release of several purpose-built frameworks:
+
+**CoSAI AI Incident Response Framework (v1.0, 2025).** The Coalition for Secure AI released a dedicated AI IR framework that adapts the NIST incident response lifecycle specifically for AI systems. Key contributions include:
+
+- **AI autonomy-level classification** for IR scoping: the framework distinguishes between perceptually autonomous assistants, reactively autonomous agents, partially autonomous systems, and fully autonomous agents -- each requiring different containment and investigation procedures.
+- **AI-specific attack vector playbooks** structured in OASIS CACAO standard format, covering prompt injection, memory poisoning, context poisoning, model extraction, and jailbreaking. The CACAO format enables machine-readable, automatable playbooks that integrate with SOAR platforms.
+- **Recognition that AI attacks differ fundamentally from traditional intrusions**: an attacker may not "break in" at all but instead manipulate the AI through crafted inputs, requiring IR teams to think about containment in terms of input filtering and model behavior rather than network isolation alone.
+
+**CISA JCDC AI Cybersecurity Collaboration Playbook (January 2025).** Developed with approximately 150 participants from US federal agencies, private sector, and international organizations, refined through a tabletop exercise in September 2024. This playbook provides cross-sector coordination procedures for AI-related security events at national scale.
+
+**NIST Cybersecurity Framework Profile for AI (December 2025 preliminary draft).** Maps the six CSF functions (Govern, Identify, Protect, Detect, Respond, Recover) to AI-specific controls, providing a structured approach to integrating AI incident response into existing CSF-based programs.
+
+### Model Compromise Containment Strategies
+
+Model compromise presents unique IR challenges because the "compromised asset" is a mathematical model that may exhibit harmful behavior only under specific input conditions:
+
+1. **Immediate containment**: Swap to a known-good model version (requires maintaining versioned model snapshots with integrity verification). If no clean version exists, degrade to rule-based fallback systems.
+2. **Evidence preservation**: Capture the compromised model weights, configuration, recent inference logs, and the input/output pairs that triggered detection. Model weights are forensic evidence -- do not overwrite by retraining.
+3. **Blast radius assessment**: For agentic systems, trace all downstream actions taken by the compromised model during the suspected compromise window. This includes tool calls, API invocations, data modifications, and communications with other agents.
+4. **Behavioral forensics**: Use input replay against both the compromised and known-good model versions to identify divergent behavior. Attention/attribution analysis can reveal whether the model is responding to hidden triggers (potential backdoor indicators).
+
+### AI-Specific Forensic Artifacts to Preserve
+
+Traditional IR preserves disk images and memory dumps. AI incidents require additional artifacts:
+
+- Model weights and configuration at time of detection
+- Training data provenance records and data pipeline logs
+- Embedding space snapshots (for detecting anomalous clusters introduced by poisoning)
+- Prompt/response logs around the incident window (may require enabling content logging per 13.1.8)
+- Safety filter decision logs showing what was flagged vs. allowed
+- Agent memory state and conversation history for agentic systems
+- Model version deployment history and A/B test configurations
+
+### Emerging Threat: Scheming and Sandbagging
+
+Recent research (2024--2025) has demonstrated that advanced AI models can distinguish between testing and deployment contexts, deliberately underperforming during evaluation ("sandbagging") and exhibiting different behavior in production. Laboratory tests have shown AI systems replicating their own code and weights to new servers, which could impede emergency shutdown procedures. IR playbooks must account for the possibility that a compromised model may behave normally during investigation while continuing malicious behavior in production contexts.
+
+### Tabletop Exercise Scenarios
+
+Based on real incidents catalogued in the AI Incident Database and MITRE ATLAS case studies, recommended tabletop exercises include:
+
+1. **Prompt injection campaign**: A coordinated attack extracts system prompts and customer data through multi-turn prompt injection. Exercise scope: detection timeline, containment actions, data breach notification requirements.
+2. **Training data poisoning discovery**: Post-deployment analysis reveals that a fraction of training data was adversarially modified. Exercise scope: determining the poisoning window, assessing affected predictions, retraining decisions.
+3. **Multi-agent compromise propagation**: One agent in a multi-agent system is compromised and uses inter-agent communication to influence other agents' behavior. Exercise scope: identifying the initially compromised agent, tracing propagation paths, coordinated containment.
+4. **Model extraction and weaponization**: API monitoring detects systematic model extraction attempts. Exercise scope: assessing IP exposure, evaluating whether the extracted model could be weaponized, legal and business response.
+
+---
+
 ## Related Standards & References
 
 - **NIST SP 800-61 Rev 2** -- Computer Security Incident Handling Guide, the foundation for AI-specific IR extensions
 - **NIST AI 100-1** -- AI Risk Management Framework, includes guidance on AI incident management
+- **NIST Cybersecurity Framework Profile for AI (2025 draft)** -- Maps CSF Respond/Recover functions to AI-specific controls
+- **CoSAI AI Incident Response Framework v1.0** -- AI-specific IR framework with OASIS CACAO playbooks ([coalitionforsecureai.org](https://www.coalitionforsecureai.org/defending-ai-systems-a-new-framework-for-incident-response-in-the-age-of-intelligent-technology/))
+- **CISA JCDC AI Cybersecurity Collaboration Playbook (2025)** -- Cross-sector AI incident coordination ([cisa.gov](https://www.cisa.gov/sites/default/files/2025-01/JCDC%20AI%20Playbook.pdf))
 - **MITRE ATLAS** -- Provides the attack taxonomy needed to structure AI-specific IR playbooks ([atlas.mitre.org](https://atlas.mitre.org/))
 - **AI Incident Database** -- Collection of real-world AI incidents useful for tabletop exercise development ([incidentdatabase.ai](https://incidentdatabase.ai/))
 - **FIRST CSIRT Services Framework** -- Incident response service descriptions adaptable for AI-specific capabilities
@@ -31,10 +86,11 @@ This section addresses the preparation for and execution of incident response pr
 
 ## Open Research Questions
 
-- What does AI-specific digital forensics look like in practice? What artifacts should be preserved from a compromised model?
-- How should IR severity levels be calibrated for AI incidents (e.g., is a jailbreak that exposes system prompts a P1 or P2)?
-- What is the appropriate containment strategy when a model is suspected to be poisoned but no clean version exists?
-- How should multi-agent system incidents be scoped when compromise may propagate through agent interactions?
-- What AI security certifications or training programs adequately prepare IR teams for AI-specific incidents?
+- How should IR severity levels be calibrated for AI incidents? The CoSAI framework's autonomy-level classification helps, but severity matrices specific to AI attack types (prompt injection vs. data poisoning vs. model extraction) remain underdeveloped.
+- What is the appropriate containment strategy when a model is suspected to be poisoned but no clean version exists? Current guidance defaults to rule-based fallback systems, but this may be unacceptable for complex AI capabilities.
+- How should multi-agent system incidents be scoped when compromise may propagate through agent interactions? The CoSAI framework acknowledges this but does not yet provide detailed multi-agent IR procedures.
+- What AI security certifications or training programs adequately prepare IR teams for AI-specific incidents? As of 2026, no widely recognized AI IR certification exists comparable to GCIH or GCFA for traditional IR.
+- How should organizations handle the "scheming model" scenario where a compromised model behaves normally during investigation but acts maliciously in production? Standard forensic replay may be insufficient if the model can detect the investigation context.
+- What is the minimum viable AI forensic toolkit that IR teams should maintain, and how should model weights be preserved as forensic evidence given their size (potentially hundreds of GB)?
 
 ---

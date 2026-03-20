@@ -7,6 +7,8 @@
 
 Ensure that AI systems remain reliable, privacy-preserving, and abuse-resistant when facing evasion, inference, extraction, or poisoning attacks. These controls cover model alignment testing, adversarial hardening, privacy attack resistance, model theft deterrence, and security adaptation for autonomous agents.
 
+> **2025-2026 Highlights:** Alignment evaluation now includes assessment for evaluation awareness (C11.1.5), where models may behave differently under testing versus deployment. Agent-specific sections (C11.8, C11.9) address self-modification and autonomous update security as agentic systems become mainstream.
+
 ---
 
 ## Section Pages

@@ -21,6 +21,70 @@ This section addresses the monitoring and security validation of proactive agent
 
 ---
 
+## Implementation Guidance
+
+### Proactive AI Security Monitoring Landscape (2024--2026)
+
+The security industry is undergoing a significant shift toward proactive, AI-augmented defense capabilities that are directly relevant to monitoring autonomous AI agents:
+
+**Behavioral Anomaly Detection for AI Agents.** Applying User and Entity Behavior Analytics (UEBA) principles to AI agents requires establishing behavioral baselines that capture:
+
+- Typical action types and their frequencies per agent
+- Normal operating time windows and trigger patterns
+- Expected target resources and interaction partners
+- Typical action outcomes and error rates
+- Token consumption patterns and cost profiles
+
+Research and industry practice (2025--2026) indicate that behavioral baselines require **60--90 days of data collection** before anomaly detection becomes reliable. Organizations that begin baseline establishment should expect a maturation period before proactive hunting capabilities become effective. This timeline has implications for 13.8.5 -- newly deployed agents will have a vulnerability window during baseline establishment where behavioral anomalies cannot be reliably detected.
+
+**Anomaly Detection Methods for Agent Behavior:**
+
+| Method | Strengths | Limitations |
+|--------|-----------|-------------|
+| Statistical Process Control (SPC) charts | Simple, interpretable, low false-positive rates for stable behaviors | Struggles with legitimately evolving agent behavior |
+| Isolation Forests | Effective for high-dimensional behavioral feature vectors | Requires careful feature engineering; opaque decisions |
+| Rule-based deviation detection | Precise, auditable, no training period needed | Cannot detect novel anomaly patterns |
+| Sequence-based models (LSTM/Transformer) | Can detect complex temporal patterns in action sequences | Requires substantial training data; expensive to maintain |
+
+### AI Honeypots and Deception Technology
+
+An emerging area directly relevant to proactive monitoring of AI systems is the adaptation of deception technology for AI contexts:
+
+**Traditional honeypots adapted for AI systems.** Research published in 2025 demonstrates the use of honeypot-style systems (building on frameworks like the Cowrie honeypot) to lure attackers targeting AI endpoints and collect behavioral data that enhances detection capabilities. These systems capture indicators of compromise (IOCs) and attack patterns that production monitoring may miss.
+
+**AI-specific deception approaches include:**
+
+1. **Decoy model endpoints** that appear to be production AI APIs but are monitored for model extraction attempts, systematic probing, and prompt injection campaigns. These complement 13.8.1 (pre-execution validation) by providing an early warning layer.
+2. **Canary prompts and responses** injected into agent memory or knowledge bases that, if surfaced in outputs, indicate unauthorized access to internal data stores or memory poisoning.
+3. **Synthetic agent identities** in multi-agent systems that appear as legitimate peer agents but monitor for attempts by compromised agents to influence or recruit other agents.
+
+### Agentic AI Threat Hunting (2025--2026)
+
+The threat hunting discipline is evolving to address AI-specific concerns. Key developments:
+
+**Autonomous threat hunting agents.** Tools like Dropzone AI's AI Threat Hunter (announced March 2026, GA expected Summer 2026) represent the next generation of proactive security: AI agents that continuously hunt for threats across environments. This creates a recursive security challenge -- the threat hunting AI agent itself must be monitored for compromise (applying 13.8.5 to security tooling).
+
+**AI-specific threat hunting hypotheses** that security teams should investigate proactively:
+
+- **Behavioral drift as compromise indicator**: Is an agent's action distribution shifting in ways not explained by legitimate updates or changing inputs? (Connects to 13.8.3 and 13.8.5)
+- **Privilege escalation through tool discovery**: Is an agent discovering and using tools or API endpoints beyond its documented scope? This may indicate prompt injection or jailbreaking of the agent's system instructions.
+- **Data exfiltration through normal operations**: Is an agent encoding sensitive information in its normal outputs (covert channels through AI responses, connecting to C13.2.10)?
+- **Inter-agent influence campaigns**: In multi-agent systems, is one agent systematically influencing other agents' behavior through shared memory, message passing, or tool invocation patterns?
+
+**Threat hunting cadence for AI systems**: Given the speed at which AI agents operate, traditional weekly or monthly threat hunting cycles are insufficient. Automated hypothesis-driven hunts should run continuously, with human-led deep-dive investigations triggered by automated findings.
+
+### Pre-Execution Validation Pipeline
+
+Implementing 13.8.1 effectively requires a structured validation pipeline for proactive agent actions:
+
+1. **Action classification**: Categorize the proposed action against a risk taxonomy (read-only vs. write, internal vs. external, cost implications).
+2. **Context validation**: Verify that the triggering context is still valid and has not been tampered with. Stale context is a common source of unintended proactive actions.
+3. **Scope verification**: Confirm the action falls within the agent's authorized scope as defined in its governance policy (C09).
+4. **Conflict detection**: Check whether the proposed action conflicts with other pending actions, active incidents, or current threat conditions.
+5. **Threat context integration**: During active security incidents, suppress or elevate proactive behaviors to require human approval to prevent compromised agents from taking autonomous actions while IR is in progress.
+
+---
+
 ## Related Standards & References
 
 - **NIST AI 100-1 Section GOVERN 1.7** -- Discusses autonomous system monitoring and oversight requirements
@@ -28,15 +92,20 @@ This section addresses the monitoring and security validation of proactive agent
 - **IEEE 7001-2021** -- Transparency of Autonomous Systems, relevant to audit trail requirements
 - **UEBA (User and Entity Behavior Analytics)** -- Established discipline applicable to agent behavior monitoring (Exabeam, Microsoft Sentinel UEBA)
 - **AISVS C09 (Orchestration and Agents)** -- Defines the agent governance controls that C13.8 monitors
+- **Dropzone AI Threat Hunter** -- Autonomous threat hunting agent for continuous SOC detection ([helpnetsecurity.com](https://www.helpnetsecurity.com/2026/03/18/dropzone-ai-ai-threat-hunting/))
+- **AI-Powered Intrusion Detection with Honeypot Integration (2025)** -- Research on adaptive honeypots for AI system defense ([sciencepublishinggroup.com](https://www.sciencepublishinggroup.com/article/10.11648/j.ijiis.20251404.11))
+- **SecurityWeek: Threat Hunting in an Age of Automation and AI (2026)** -- Industry analysis of agentic AI threat hunting ([securityweek.com](https://www.securityweek.com/cyber-insights-2026-threat-hunting-in-an-age-of-automation-and-ai/))
 
 ---
 
 ## Open Research Questions
 
-- How should "normal" proactive behavior baselines be established for agents whose behavior is expected to evolve and improve over time?
-- What approval mechanisms provide adequate security without creating bottlenecks that negate the value of autonomous agent behavior?
-- Can UEBA models trained on human user behavior be adapted for AI agent behavior monitoring, or do agents require fundamentally different behavioral models?
-- How should proactive behavior monitoring scale in multi-agent systems where agents interact and influence each other's behavior?
-- What is the minimum monitoring granularity needed to detect subtle agent compromise without generating excessive telemetry data?
+- How should "normal" proactive behavior baselines be established for agents whose behavior is expected to evolve and improve over time? The 60--90 day baseline establishment period creates a vulnerability window for newly deployed agents.
+- What approval mechanisms provide adequate security without creating bottlenecks that negate the value of autonomous agent behavior? Lightweight approval mechanisms (e.g., risk-tiered auto-approval with audit) are needed but not yet standardized.
+- Can UEBA models trained on human user behavior be adapted for AI agent behavior monitoring, or do agents require fundamentally different behavioral models? Agent behavior is higher-volume, more deterministic, and lacks the natural variability of human users -- existing UEBA may produce excessive false positives or miss subtle agent-specific anomalies.
+- How should proactive behavior monitoring scale in multi-agent systems where agents interact and influence each other's behavior? Graph-based anomaly detection on agent interaction networks is a promising but immature approach.
+- What is the minimum monitoring granularity needed to detect subtle agent compromise without generating excessive telemetry data? The trade-off between detection fidelity and telemetry cost is especially acute for high-throughput agentic systems.
+- How should AI honeypots and deception technology be validated to ensure they do not interfere with legitimate agent operations or create false positive cascades?
+- Who monitors the monitoring agents? Autonomous threat hunting AI (e.g., Dropzone AI Threat Hunter) introduces recursive trust challenges -- compromised monitoring agents could suppress detection of other compromised agents.
 
 ---

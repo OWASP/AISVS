@@ -7,6 +7,8 @@
 
 AI infrastructure must be hardened against privilege escalation, supply chain tampering, and lateral movement through secure configuration, runtime isolation, trusted deployment pipelines, and comprehensive monitoring. Only validated and authorized infrastructure components reach production through controlled processes that ensure security, integrity, and auditability.
 
+> **2025-2026 Highlights:** Confidential computing for GPU workloads (AMD SEV-SNP, Intel TDX, NVIDIA H100 CC) is maturing rapidly, and edge/on-device AI security requirements (C4.8) now address model encryption in secure enclaves and anti-tampering for mobile deployments.
+
 ---
 
 ## Section Pages

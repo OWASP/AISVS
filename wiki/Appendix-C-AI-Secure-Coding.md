@@ -2,10 +2,58 @@
 
 > **Source:** [`1.0/en/0x92-Appendix-C_AI_for_Code_Generation.md`](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x92-Appendix-C_AI_for_Code_Generation.md)
 > **Requirements:** 27 | **Sections:** 9
+> **Last Researched:** 2026-03-20
 
 ## Overview
 
 Controls for the safe use of AI-assisted coding tools, covering workflow security, tool qualification, prompt management, code validation, and deployment controls.
+
+### AI-Generated Code Vulnerability Landscape (2024-2026)
+
+The security properties of AI-generated code have been extensively studied. Key findings:
+
+- **Overall vulnerability rate: 25.1%** across 534 AI-generated code samples from 6 major LLMs (AppSec Santa 2026). Safest model (GPT-5.2): 19.1%; three models tied at 29.2%.
+- **Copilot-specific:** 32.8% of Python and 24.5% of JavaScript snippets contained security issues ([ACM TOSEM 2025](https://dl.acm.org/doi/10.1145/3716848)). NYU found ~40% of Copilot-generated programs contained vulnerabilities.
+- **Veracode 2025:** 45% of AI-generated code contains security flaws when tested across 100+ LLMs.
+- **GitHub Copilot generates ~46% of code** in files where enabled, making the audit surface substantial.
+- **Trust gap is the primary risk:** Per-line vulnerability rates are comparable to human code, but developers review AI output less carefully, amplifying risk.
+
+**Most common CWEs in AI-generated code (2026 data):**
+
+| CWE | Description | Frequency |
+|-----|-------------|-----------|
+| CWE-918 | Server-Side Request Forgery (SSRF) | Most frequent (32 instances in 534 samples) |
+| CWE-215 | Debug Information Leak | 18 instances |
+| CWE-502 | Insecure Deserialization | 14 instances |
+| CWE-79 | Cross-Site Scripting (XSS) | Common across all models |
+| CWE-89 | SQL Injection | String concatenation pattern |
+| CWE-798 | Hardcoded Credentials | Persistent across models |
+| CWE-78 | OS Command Injection | Common in system utility code |
+| CWE-22 | Path Traversal | Missing canonicalization |
+
+**Critical SAST finding:** 78% of confirmed vulnerabilities were caught by only one scanning tool, meaning multiple scanners are necessary for adequate coverage of AI-generated code.
+
+### AI Code Review Tools: Capabilities and Limitations (2025-2026)
+
+| Tool | Status | Security Capability |
+|------|--------|-------------------|
+| **GitHub Copilot Code Review** | GA April 2025; 1M users in first month; CodeQL + ESLint integration Oct 2025 | Failed to flag any OWASP Top 10 vulnerabilities in WebGoat testing; cannot reason about cross-function data flow |
+| **CodeRabbit** | Most-installed AI code review on GitHub/GitLab; 2M+ repos, 13M+ PRs | Broad coverage; not security-specialized |
+| **Aegis** | Purpose-built for AI-generated code security | Specialized for AI-specific vulnerability patterns |
+| **GitHub Advanced Security** | Code scanning + secret scanning + Dependabot + Copilot Autofix | Comprehensive but requires GitHub Enterprise |
+| **Endor Labs AI Security Review** | Launched 2025 | Focus on dependency and supply chain risks |
+
+**Key limitation:** Copilot's code review reviewed only 6 of 9 XSS-vulnerable files and 4 of 9 SQL injection files in testing, making no security comments on any. Cross-function data flow analysis remains a fundamental weakness of current AI code reviewers.
+
+### Copilot-Specific Security Vulnerabilities (2025)
+
+Several critical CVEs have been discovered in AI coding tools themselves:
+
+- **CVE-2025-62453:** Improper validation of generative AI output in Copilot code suggestions
+- **CVE-2025-53773:** Exploits Copilot's ability to modify project configuration files, enabling arbitrary command execution
+- **"Affirmation jailbreak":** Simple agreeing words tricked Copilot into producing disallowed code
+- **Proxy hijack:** Exploited Copilot's proxy settings to steal API tokens
+- **Prompt injection via repository context:** Malicious `.cursorrules`, `CLAUDE.md`, or similar files can inject instructions into AI coding assistants (Pillar Security research)
 
 ---
 
@@ -119,36 +167,57 @@ Ensure that deployment and promotion pipelines incorporate provenance-aware vali
 
 ## Threat Landscape
 
-- AI-generated code introducing subtle vulnerabilities (SQL injection, XSS, insecure defaults)
-- Prompt injection through repository context (malicious CLAUDE.md, .cursorrules files)
-- Over-reliance on AI-generated code without human review
+- AI-generated code introducing subtle vulnerabilities (SQL injection, XSS, insecure defaults) -- 25.1% overall vulnerability rate (2026 data)
+- Prompt injection through repository context (malicious CLAUDE.md, .cursorrules files) -- demonstrated as practical attack vector by Pillar Security (2025)
+- Over-reliance on AI-generated code without human review -- the "trust gap" is the primary risk amplifier; developers review AI output less carefully
 - Leaked secrets or PII in prompts sent to cloud-hosted coding assistants
-- AI-generated infrastructure-as-code with insecure defaults
-- Package hallucination: AI models suggest non-existent packages that attackers register
+- AI-generated infrastructure-as-code with insecure defaults (overly permissive IAM, public S3, open security groups)
+- Package hallucination: AI models suggest non-existent packages that attackers register (Lanyado, Vulcan Cyber, 2023)
 - Autonomous agents with excessive permissions bypassing change control
 - Supply-chain attacks via compromised IDE extensions
+- **[New]** Direct exploitation of AI coding tools: CVE-2025-62453 (improper output validation), CVE-2025-53773 (config file manipulation leading to RCE)
+- **[New]** Jailbreak attacks on coding assistants: "affirmation jailbreak" bypasses safety filters with simple agreeing words
+- **[New]** SSRF (CWE-918) as dominant AI-generated vulnerability: most frequent single weakness in 2026 benchmarks, surpassing traditional injection categories
+- **[New]** AI code review tool limitations: Copilot Code Review failed to flag OWASP Top 10 in controlled testing; cannot reason about cross-function data flow
 
 ## Tooling & Implementation
 
-- **Coding assistants:** GitHub Copilot, Cursor, Claude Code, Amazon Q Developer
-- **Code scanning:** Semgrep, CodeQL, Snyk Code, SonarQube (applied to AI-generated output)
+- **Coding assistants:** GitHub Copilot, Cursor, Claude Code, Amazon Q Developer, Windsurf
+- **AI code review:** GitHub Copilot Code Review (GA Apr 2025; CodeQL integration Oct 2025), CodeRabbit (2M+ repos), Aegis (AI-code-specialized), Qodo (formerly CodiumAI)
+- **Code scanning:** Semgrep, CodeQL, Snyk Code, SonarQube -- note: 78% of AI-generated vulnerabilities caught by only one tool, so run multiple scanners
 - **IaC scanning:** Checkov, tfsec, KICS, Bridgecrew
 - **Provenance tracking:** Git metadata, AI attribution in commit messages, SLSA attestations, Sigstore/cosign
 - **Sandbox testing:** CI/CD gates for AI-generated code, pre-commit hooks
 - **Secret detection:** detect-secrets, gitleaks, TruffleHog
 - **Property/fuzz testing:** Hypothesis, fast-check, AFL, libFuzzer
 - **Policy-as-code:** OPA/Rego, HashiCorp Sentinel
+- **Security benchmarks for code LLMs:** CyberSecEval (Meta), SecurityEval, SVEN, [AppSec Santa AI Code Security Benchmark](https://appsecsanta.com/api-ai-security/ai-code-security)
 
 ## Open Research Questions
 
-- [ ] What percentage of AI-generated code contains security vulnerabilities in practice?
-- [ ] How should organizations track and audit AI-generated vs. human-written code?
+- [x] What percentage of AI-generated code contains security vulnerabilities in practice? **Answered (2026):** ~25% overall; 19-29% depending on model; comparable per-line to human code but amplified by reduced review scrutiny.
+- [ ] How should organizations track and audit AI-generated vs. human-written code? Git metadata and commit tags remain the most practical approach, but no standard has emerged.
 - [ ] What constitutes adequate review of AI-generated infrastructure-as-code?
-- [ ] How do autonomous coding agents change the threat model for SDLC security?
-- [ ] How effective are current SAST tools at detecting AI-specific vulnerability patterns?
-- [ ] What is the optimal human review depth for high-volume AI-generated code?
+- [ ] How do autonomous coding agents change the threat model for SDLC security? Prompt injection via repository context files is now a demonstrated attack vector.
+- [x] How effective are current SAST tools at detecting AI-specific vulnerability patterns? **Partially answered (2026):** 78% of vulnerabilities caught by only one tool; no single scanner is sufficient. SSRF (CWE-918) is now the top AI-generated vulnerability but is poorly covered by many SAST tools.
+- [ ] What is the optimal human review depth for high-volume AI-generated code? Copilot generates ~46% of code where enabled; Copilot Code Review failed to flag OWASP Top 10 in testing, so human review remains essential.
+- [ ] **[New]** How should AI coding tool CVEs (e.g., CVE-2025-62453, CVE-2025-53773) be tracked and managed differently from traditional software CVEs?
+- [ ] **[New]** Can AI code review tools be made to reason about cross-function and cross-file data flow, which is the key limitation identified in 2025 testing?
+- [ ] **[New]** What is the security impact of prompt injection attacks via repository context files (.cursorrules, CLAUDE.md) at scale?
 
 ---
+
+## References (2024-2026 Research)
+
+- [Security Weaknesses of Copilot-Generated Code (ACM TOSEM, 2025)](https://dl.acm.org/doi/10.1145/3716848) -- empirical study of vulnerability rates in Copilot output
+- [Copilot Code Review: Can AI Spot Security Flaws? (arXiv, 2025)](https://arxiv.org/html/2509.13650v1) -- WebGoat testing showing failure to detect OWASP Top 10
+- [AI-Generated Code Security: Risks & Testing (AppSec Santa, 2026)](https://appsecsanta.com/api-ai-security/ai-code-security) -- 534-sample benchmark across 6 LLMs
+- [Vulnerability in Copilot and Cursor: Weaponizing Code Agents (Pillar Security, 2025)](https://www.pillar.security/blog/new-vulnerability-in-github-copilot-and-cursor-how-hackers-can-weaponize-code-agents)
+- [GitHub Copilot RCE via Prompt Injection (CybersecurityNews, 2025)](https://cybersecuritynews.com/github-copilot-rce-vulnerability/)
+- [OWASP Gen AI Incident Round-up, Jan-Feb 2025](https://genai.owasp.org/2025/03/06/owasp-gen-ai-incident-exploit-round-up-jan-feb-2025/)
+- [GitHub Copilot Security Risks: Enterprise Guide (MintMCP)](https://www.mintmcp.com/blog/github-copilot-security-risks)
+- [AI Code Security Explained (Wiz Academy)](https://www.wiz.io/academy/application-security/ai-code-security)
+- [Endor Labs: AI Security Code Review (2025)](https://www.endorlabs.com/learn/introducing-ai-security-code-review)
 
 ## Community Notes
 

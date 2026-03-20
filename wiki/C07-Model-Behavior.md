@@ -7,6 +7,8 @@
 
 This control category ensures that model outputs are technically constrained, validated, and monitored so that unsafe, malformed, or high-risk responses cannot reach users or downstream systems.
 
+> **2025-2026 Highlights:** Hallucination detection (C7.2) now includes tool-invocation-aware signals alongside confidence scoring, reflecting 2025-2026 research on grounding verification. Source attribution (C7.8) requirements address RAG citation integrity as retrieval-augmented generation becomes standard.
+
 ---
 
 ## Section Pages

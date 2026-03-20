@@ -7,6 +7,8 @@
 
 Autonomous and multi-agent systems must execute only authorized, intended, and bounded actions. This control family reduces risk from tool misuse, privilege escalation, uncontrolled recursion/cost growth, protocol manipulation, and cross-agent or cross-tenant interference.
 
+> **2025-2026 Highlights:** Agentic AI security became a top concern in 2025-2026, with the OWASP Top 10 for Agentic Applications published and agent frameworks (LangGraph, Claude Agent SDK, AutoGen) adding built-in budget controls and approval workflows. Execution budgets and intent verification gates are now foundational requirements.
+
 ---
 
 ## Section Pages
