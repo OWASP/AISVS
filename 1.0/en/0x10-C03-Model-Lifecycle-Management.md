@@ -85,6 +85,19 @@ Hosted and provider-managed models may change behavior without notice. These con
 
 ---
 
+## C3.7 Fine-Tuning Pipeline Authorization & Reward Model Integrity
+
+Fine-tuning pipelines are high-privilege operations that can alter deployed model behavior at scale. Multi-stage pipelines compound this risk because a compromise at any intermediate stage produces a subtly altered artifact that subsequent stages accept. Reward models used in RLHF are ML artifacts subject to tampering yet often treated as static infrastructure rather than versioned, validated components.
+
+| # | Description | Level | Role |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
+| **3.7.1** | **Verify that** initiating a fine-tuning run requires authenticated authorization from a designated approver separate from the person requesting the run, with the approval identity, timestamp, and approved training configuration recorded in an immutable audit log before pipeline execution begins. | 2 | D/V |
+| **3.7.2** | **Verify that** the reward model used in any RLHF fine-tuning stage is treated as a versioned, signed artifact subject to the same integrity verification and validation gates required of policy model artifacts before it is used in a training run. | 2 | D/V |
+| **3.7.3** | **Verify that** reward hacking is evaluated after each RLHF training stage by measuring the policy model's reward scores on a held-out probe set and comparing them to human preference scores on the same set, with the run blocked from promotion if divergence exceeds a defined threshold. | 3 | D/V |
+| **3.7.4** | **Verify that** in multi-stage fine-tuning pipelines, each stage's output checkpoint is cryptographically signed and recorded as a distinct artifact in the model registry before the next stage begins, enabling isolation and rollback of any compromised intermediate stage. | 3 | D/V |
+
+---
+
 ## References
 
 * [MITRE ATLAS](https://atlas.mitre.org/)
