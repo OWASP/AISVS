@@ -1,7 +1,7 @@
 # C09: Autonomous Orchestration & Agentic Action Security
 
 > **Source:** [`1.0/en/0x10-C09-Orchestration-and-Agentic-Action.md`](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C09-Orchestration-and-Agentic-Action.md)
-> **Requirements:** 32 | **Sections:** 8
+> **Requirements:** 36 | **Sections:** 8
 
 ## Control Objective
 
@@ -22,7 +22,7 @@ Autonomous and multi-agent systems must execute only authorized, intended, and b
 | C9.5 | Secure Messaging and Protocol Hardening | 4 | [C09-05-Secure-Messaging](C09-05-Secure-Messaging.md) |
 | C9.6 | Authorization, Delegation, and Continuous Enforcement | 4 | [C09-06-Authorization-and-Delegation](C09-06-Authorization-and-Delegation.md) |
 | C9.7 | Intent Verification and Constraint Gates | 4 | [C09-07-Intent-Verification](C09-07-Intent-Verification.md) |
-| C9.8 | Multi-Agent Domain Isolation and Swarm Risk Controls | 2 | [C09-08-Multi-Agent-Isolation](C09-08-Multi-Agent-Isolation.md) |
+| C9.8 | Multi-Agent Domain Isolation and Swarm Risk Controls | 6 | [C09-08-Multi-Agent-Isolation](C09-08-Multi-Agent-Isolation.md) |
 
 ---
 
