@@ -19,12 +19,44 @@ Agent-to-agent and agent-to-tool communication channels carry sensitive data and
 
 ---
 
+## Implementation Guidance
+
+### Protocol Landscape (2025--2026)
+
+The inter-agent messaging space has consolidated around several protocols, each with distinct security properties:
+
+- **A2A (Agent-to-Agent):** Originally introduced by Google in April 2025 and later donated to the Linux Foundation, A2A transmits over HTTPS with TLS and supports declared authentication schemes (OAuth 2.0, OIDC, API keys, mTLS) via Agent Cards. However, threat modeling research (Trivedi et al., 2026) identifies missing freshness mechanisms at the application layer, coarse-grained token scopes, and Agent Card forgery as key weaknesses.
+- **MCP (Model Context Protocol):** Standardizes agent-to-tool integration over SSE/HTTP. Security analysis reveals that MCP lacks mandatory validation for executable components and is vulnerable to tool poisoning (maliciously-named tools that clients prioritize over legitimate ones) and slash command overlap across tool providers.
+- **ACP (Agent Communication Protocol) and ANP (Agent Network Protocol):** Lighter-weight alternatives. ANP uses DIDs for identity but provides no protection against Sybil attacks without reputation mechanisms. Agora uses natural-language negotiation for protocol documents, which enables semantic manipulation of contracts.
+
+### Cross-Protocol Threats
+
+A comparative threat analysis of MCP, A2A, Agora, and ANP (arXiv:2602.11327) identifies several cross-cutting vulnerabilities:
+
+- **Replay attacks across all protocols:** All four protocols lack standard freshness mechanisms at the application layer despite transport-level TLS. Attackers can capture valid tool calls or tokens and reuse them, especially in A2A's asynchronous long-running workflows where periodic status updates create extended replay windows.
+- **Shadowing attacks:** Malicious actors register agents or tools that impersonate legitimate endpoints through decentralized discovery, intercepting and modifying workflow results while appearing authentic.
+- **Cross-protocol confusion:** When multiple protocols coexist, attackers force downgrades to less secure or poorly maintained implementations, exploiting version fragmentation.
+- **Intent deception:** Attackers manipulate task semantics by exploiting ambiguous capability descriptions or natural-language negotiation features present in several protocols.
+
+### Hardening Recommendations
+
+1. **Application-layer freshness:** Add nonce/timestamp validation at the message level in addition to TLS transport security. This is critical for systems with proxies, load balancers, or message queues between agents where TLS is terminated before the final recipient.
+2. **Cryptographic binding for discovery:** Replace name-based tool and agent discovery with cryptographic evidence (code signing, integrity checksums) to prevent tool poisoning and shadowing attacks.
+3. **Token hardening:** Enforce short expiration windows, single-use tokens, and strictly granular scopes per the principle of least privilege.
+4. **Schema validation before LLM exposure:** Schema validation must occur before message content reaches the language model, not after, to prevent prompt injection via message fields.
+5. **Service mesh automation:** mTLS setup complexity is a common deployment barrier. Service mesh solutions (Istio, Linkerd) can automate mutual authentication for network-spanning agent communication.
+
+---
+
 ## Related Standards & References
 
 - [RFC 8446: TLS 1.3](https://www.rfc-editor.org/rfc/rfc8446) -- current recommended transport security protocol
-- [Google A2A Protocol](https://github.com/google/A2A) -- agent-to-agent communication protocol with built-in security considerations
+- [A2A Protocol Specification](https://a2a-protocol.org/latest/) -- agent-to-agent communication protocol (Linux Foundation), with built-in security considerations
 - [Anthropic MCP Specification](https://modelcontextprotocol.io/) -- Model Context Protocol for tool integration; see AISVS C10 for MCP-specific requirements
 - [JSON Schema](https://json-schema.org/) -- schema validation for JSON-based messaging
+- [Security Threat Modeling for Emerging AI-Agent Protocols (arXiv:2602.11327)](https://arxiv.org/abs/2602.11327) -- comparative security analysis of MCP, A2A, Agora, and ANP
+- [Building A Secure Agentic AI Application Leveraging A2A Protocol (arXiv:2504.16902)](https://arxiv.org/abs/2504.16902) -- PKI-based agent authentication architecture
+- [MCP vs A2A: A Guide to AI Agent Communication Protocols (Auth0)](https://auth0.com/blog/mcp-vs-a2a/) -- practical comparison of protocol security features
 - AISVS C10 (MCP Security) -- MCP-protocol-specific messaging security; C09.5 covers all inter-agent protocols
 
 ---
@@ -35,5 +67,7 @@ Agent-to-agent and agent-to-tool communication channels carry sensitive data and
 - Can formal verification be applied to agent communication protocols to prove safety properties (e.g., no injection is possible given the schema)?
 - What semantic validation approaches are effective against adversarial outputs from compromised agents in multi-agent systems?
 - How do you secure agent messaging in heterogeneous environments where agents use different protocols (A2A, MCP, custom REST)?
+- How should application-layer replay protection be standardized across A2A, MCP, and emerging protocols to close the freshness gap identified in current threat models?
+- What defense mechanisms effectively prevent cross-protocol confusion attacks when agents operate in mixed-protocol environments?
 
 ---

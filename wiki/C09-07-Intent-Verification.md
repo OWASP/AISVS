@@ -19,10 +19,57 @@ Authorization answers "is the agent allowed to do this?" but intent verification
 
 ---
 
+## Implementation Guidance
+
+### The Prompt Fidelity Problem
+
+Research published in early 2026 (Towards Data Science) quantifies a critical gap in prompt-to-action fidelity: agents may use only about 25% of user-specified constraints as validated input, with the remaining 75% filled in by LLM inference. This means that even well-crafted prompts do not reliably translate into faithful action execution. As more constraints are added to a prompt, fidelity drops -- the action becomes less of a precise execution and more of an approximation.
+
+This finding directly motivates requirement 9.7.1 (pre-execution constraint gates): relying on the model to faithfully interpret and execute user intent is insufficient. Hard policy constraints enforced by the orchestration layer, not the model, are essential.
+
+### Intent Security as a Discipline (2025--2026)
+
+Industry analysis projects that in 2026, the primary security concern for autonomous agents will shift from data protection to **intent security** -- ensuring AI systems act according to organizational goals and user expectations. Intent security encompasses:
+
+- **Intent alignment:** Does the agent's proposed action actually match the user's request? This is distinct from authorization (is the agent allowed?) and focuses on semantic fidelity.
+- **Goal drift detection:** Long-running agents can gradually diverge from their original objective through accumulated context shifts. Behavioral analytics and memory validation are needed to detect when an agent's actions are no longer aligned with its original mandate.
+- **Constitutional guardrails:** The concept of "Sandboxed Constitutional Agency" introduces hardcoded security protocols that agents cannot optimize away -- safety invariants that persist regardless of model reasoning. These are the "constraint gates" of requirement 9.7.1.
+
+### Pre-Execution Gate Design
+
+Pre-execution gates are conceptually similar to web application firewalls (WAFs) but operate on agent actions rather than HTTP requests. Effective gate design includes:
+
+- **Deny rules (invariant constraints):** Actions that must never occur regardless of authorization or intent (e.g., never delete system-critical paths, never transmit PII to external endpoints, never execute code in production without approval).
+- **Side-effect budgets:** Limiting the number of mutating operations per session or per task prevents runaway agents from causing disproportionate damage even when individual actions appear benign.
+- **Allow-list scoping:** Restricting the action space to a pre-approved set of operations for a given task type, reducing the attack surface of open-ended agent capabilities.
+- **Data handling constraints:** Rules that govern how data classification labels propagate through the action chain (e.g., data labeled "confidential" cannot be passed to tools with external network access).
+
+### Post-Condition Verification Approaches
+
+Post-condition checks (9.7.3) close the verification loop after execution. Practical approaches include:
+
+- **State-diff comparison:** Capture system state before and after execution; compare the diff against the expected outcome definition.
+- **Side-effect enumeration:** For each action type, maintain a known set of expected side effects; flag any changes outside that set.
+- **Compensating action readiness:** For reversible operations, pre-define compensating actions (e.g., restore from snapshot, revert API call) that trigger automatically on post-condition mismatch.
+- **Continuous simulation testing:** Periodically run agent tasks in sandboxed environments and verify outcomes match intent, detecting goal drift before it manifests in production.
+
+### Integrity Verification for Agent Configurations
+
+Requirement 9.7.4 addresses supply chain attacks on agent behavior. If an attacker can modify prompt templates or policy configurations, they alter agent behavior without changing code. Practical integrity verification approaches:
+
+- **Git commit hashes as integrity anchors:** If the deployment pipeline verifies the commit hash, prompt templates committed to version control have a built-in integrity chain.
+- **Separate signing for dynamic configurations:** For configurations loaded from databases or APIs, a separate signing mechanism (e.g., JWS-signed configuration payloads) is needed since Git-based integrity does not apply.
+- **Load-time verification:** The runtime must verify integrity at startup and refuse to operate with tampered configurations, similar to code signing for executables.
+
+---
+
 ## Related Standards & References
 
 - [OWASP LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/) -- intent mismatch is a core excessive agency risk
 - [OWASP Agentic AI Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/) -- covers intent verification concepts
+- [Prompt Fidelity: Measuring How Much of Your Intent an AI Agent Actually Executes (Towards Data Science, 2026)](https://towardsdatascience.com/prompt-fidelity-measuring-how-much-of-your-intent-an-ai-agent-actually-executes/) -- quantitative research on prompt-to-action fidelity gaps
+- [AI Agent Guardrails: Production Guide for 2026 (Authority Partners)](https://authoritypartners.com/insights/ai-agent-guardrails-production-guide-for-2026/) -- practical guardrail implementation patterns
+- [The Rise of Agentic AI Security: Protecting Workflows, Not Just Apps (Reco)](https://www.reco.ai/blog/rise-of-agentic-ai-security) -- intent security as an emerging discipline
 - AISVS C09.2 (High-Impact Action Approval) -- organizational approval workflows complement intent verification
 - AISVS C02 (User Input Validation) -- input validation is the first layer; intent verification is the last layer before execution
 
@@ -34,5 +81,7 @@ Authorization answers "is the agent allowed to do this?" but intent verification
 - How do you define "intended outcome" formally enough for automated post-condition checking across diverse action types?
 - What is the right expiration window for intent confirmations? Too short causes failures; too long enables replay.
 - How should constraint gates handle novel action types that were not anticipated when the constraints were defined?
+- Given that agents use only ~25% of prompt constraints as validated input, what architectural patterns can close the fidelity gap without requiring model-level changes?
+- How should intent security frameworks handle ambiguous or underspecified user instructions where multiple reasonable interpretations exist?
 
 ---
