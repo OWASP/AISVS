@@ -26,10 +26,60 @@ This section addresses the detection of adversarial activity, abuse patterns, an
 
 ---
 
+## Implementation Guidance
+
+### AI Firewall and Guardrail Products (2025-2026)
+
+A new category of "AI Firewalls" has emerged to address requirements 13.2.1 and 13.2.4-13.2.6 at the infrastructure layer:
+
+- **Azure AI Content Safety -- Prompt Shields** -- Microsoft's unified API that analyzes prompts and documents before content generation, detecting both direct jailbreak attempts and indirect prompt injection from retrieved documents. Provides classification scores and block/allow decisions that can be logged per 13.1.5.
+- **Cloudflare Firewall for AI** -- Edge-layer protection that intercepts LLM API traffic, applying prompt injection and jailbreak detection rules across all models behind a single policy. Enforces guardrails at the network layer before requests reach model endpoints.
+- **Akamai Firewall for AI** -- Real-time monitoring and adaptive filtering that detects jailbreaks, prompt injections, and toxic content with guardrail policies applied at the CDN/WAF layer.
+- **Palo Alto Networks AI Security** -- Enterprise AI security posture management with prompt injection detection integrated into their NGFW and Prisma Cloud platforms. Unit 42 research has documented web-based indirect prompt injection attacks against AI agents observed in the wild.
+
+These products enable requirement 13.2.2 (SIEM integration) by emitting structured security events via standard protocols (CEF, syslog, OTLP) that flow into existing SOC workflows.
+
+### Evolving Attack Landscape
+
+The threat landscape for AI abuse detection continues to evolve rapidly:
+
+- **Best-of-N (BoN) Jailbreaking** -- Automated attacks that generate large numbers of prompt variations using obfuscation techniques (character substitution, encoding, rephrasing), achieving near-100% success rates against safety filters in seconds. This makes signature-based detection (13.2.1) necessary but insufficient -- behavioral detection (13.2.4) and session analysis (13.2.8) are critical complementary layers.
+- **Multi-turn Crescendo Attacks** -- Attackers gradually shift model behavior across conversation turns, with no single turn being overtly malicious. Detection requires session-level trajectory analysis (13.2.8) using sliding window analysis over conversation embeddings or cumulative risk scoring.
+- **Indirect Prompt Injection via Tool Use** -- As AI agents gain tool-calling capabilities, adversarial content embedded in retrieved documents, web pages, or API responses can hijack agent behavior. Detection must extend beyond user-submitted prompts to cover all inputs the model processes.
+- **LLM-as-C2-Channel** -- Security researchers have demonstrated command-and-control frameworks using LLM APIs (ChatGPT, Claude) as communication channels, validating the threat addressed by 13.2.10. Detection relies on entropy analysis of inputs/outputs, periodicity detection in session patterns, and structural analysis of query patterns.
+
+### Detection Architecture
+
+A layered detection architecture addresses the full spectrum of requirements:
+
+1. **Layer 1 -- Signature-Based (13.2.1):** Pattern matching against known jailbreak databases (JailbreakBench, PromptInject). Fast, low false-positive, but easily evaded by novel attacks. Signature databases require continuous updates.
+2. **Layer 2 -- Classifier-Based (13.2.4):** ML classifiers trained on adversarial input datasets detect prompt injection and jailbreaks that evade signatures. Azure Prompt Shields and similar products operate at this layer.
+3. **Layer 3 -- Behavioral Anomaly (13.2.4, 13.2.9):** Statistical anomaly detection on session-level features (retry rates, token consumption patterns, input diversity scores, query timing). Catches automated attack tools and probing behavior.
+4. **Layer 4 -- Session Trajectory (13.2.8):** Multi-turn conversation analysis using embedding similarity, cumulative risk scoring, or LLM-as-judge evaluation of conversation summaries. Detects crescendo attacks and progressive manipulation.
+5. **Layer 5 -- Cross-Session Correlation (13.2.6):** SIEM rules correlating events across users, IPs, and time windows to detect coordinated campaigns and model extraction attempts.
+
+### SIEM Integration Patterns
+
+For requirement 13.2.2, the most maintainable integration approach in 2025-2026 uses OpenTelemetry pipelines:
+
+- **Collection:** OpenTelemetry SDK emits GenAI spans with security event attributes
+- **Processing:** OpenTelemetry Collector or Vector/Fluentd normalizes and enriches events
+- **Routing:** OTLP export to SIEM (Splunk, Elastic, Sentinel) alongside observability backends
+- **Detection:** Custom SIEM rules augmented with AI-specific detection logic (13.2.6)
+
+Most SIEMs still lack native AI event parsers as of 2026, requiring custom parsing rules and field mappings for AI-specific attributes.
+
+---
+
 ## Related Standards & References
 
 - **MITRE ATLAS** -- Tactics and techniques for adversarial ML, directly informing detection rules ([atlas.mitre.org](https://atlas.mitre.org/))
-- **OWASP Top 10 for LLM Applications** -- LLM01 (Prompt Injection), LLM02 (Insecure Output Handling) relevant to detection targets
+- **OWASP Top 10 for LLM Applications 2025** -- LLM01 (Prompt Injection) remains the top-ranked vulnerability
+- **Azure AI Content Safety -- Prompt Shields** -- Unified API for jailbreak and prompt injection detection ([learn.microsoft.com](https://learn.microsoft.com/en-us/azure/ai-services/content-safety/concepts/jailbreak-detection))
+- **Cloudflare Firewall for AI** -- Edge-layer AI security with prompt injection detection ([blog.cloudflare.com](https://blog.cloudflare.com/block-unsafe-llm-prompts-with-firewall-for-ai/))
+- **Akamai Firewall for AI** -- CDN-layer guardrails for AI applications ([akamai.com](https://www.akamai.com/products/firewall-for-ai))
+- **Palo Alto Unit 42 -- Indirect Prompt Injection in the Wild** -- Research documenting web-based indirect prompt injection against AI agents ([unit42.paloaltonetworks.com](https://unit42.paloaltonetworks.com/ai-agent-prompt-injection/))
+- **Best-of-N Jailbreaking** -- Automated attack technique achieving near-100% bypass rates ([giskard.ai](https://www.giskard.ai/knowledge/best-of-n-jailbreaking-the-automated-llm-attack-that-takes-only-seconds))
 - **JailbreakBench** -- Standardized jailbreak evaluation dataset useful for testing 13.2.1
 - **NIST SP 800-61 Rev 2** -- Computer Security Incident Handling Guide, foundation for AI IR workflows
 - **Elastic Detection Rules** -- Open-source SIEM rules that can be extended with AI-specific patterns
@@ -43,5 +93,7 @@ This section addresses the detection of adversarial activity, abuse patterns, an
 - Can LLM-as-judge approaches reliably detect adversarial conversations without introducing unacceptable latency?
 - What entropy thresholds reliably distinguish C2 traffic from legitimate Base64 usage (e.g., image uploads) in LLM API traffic?
 - How should detection rules be shared across organizations without revealing proprietary model vulnerabilities?
+- How do AI firewall products (Azure Prompt Shields, Cloudflare, Akamai) compare in detection rates for novel vs. known jailbreak techniques, and what are the latency/accuracy tradeoffs of edge-layer vs. application-layer detection?
+- What is the false positive rate of behavioral anomaly detection systems in high-volume production environments, and how should thresholds adapt to different user populations?
 
 ---

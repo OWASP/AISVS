@@ -21,11 +21,70 @@ This section addresses the detection of changes in model behavior over time that
 
 ---
 
+## Implementation Guidance
+
+### Drift Detection Tool Landscape (2025-2026)
+
+The model monitoring ecosystem has consolidated around several mature platforms, each with distinct strengths:
+
+- **Evidently AI** -- Open-source Python library with 20+ pre-built drift detection methods. Supports tabular, text, and embedding data. Generates interactive data drift reports, integrates with orchestration workflows via test suites, and provides live monitoring dashboards. Best suited for teams wanting flexible, self-hosted drift analysis with strong visualization.
+- **NannyML** -- Specializes in performance estimation without ground truth labels and precise drift timing detection using the Confidence-Based Performance Estimation (CBPE) and Direct Loss Estimation (DLE) methods. Its meaningful alerting approach reduces false positives by focusing on performance-impacting drift rather than all statistical shifts. Primary limitation: strongest for tabular data, less mature for text/embedding modalities.
+- **WhyLabs / whylogs** -- Enterprise-grade AI observability platform, open-sourced under Apache 2.0 in January 2025. Provides real-time data drift monitoring, anomaly detection, and profile-based logging. Lightweight profiling approach scales to high-volume production workloads.
+- **Fiddler AI** -- Enterprise ML monitoring platform with explainability features, drift detection, and performance analytics. Focuses on model governance and compliance use cases.
+- **Arize AI** -- Production ML observability with embedding drift visualization, performance tracing, and automated root cause analysis. Strong integration with LLM evaluation workflows.
+
+PeerSpot's 2025 rankings place Evidently AI, NannyML, Fiddler AI, Arize AI, and H2O.ai as the top 5 model monitoring solutions.
+
+### Statistical Methods for Drift Detection
+
+Choosing the right statistical method depends on data type, sample size, and sensitivity requirements:
+
+**For Numerical Features:**
+- **Kolmogorov-Smirnov (KS) test** -- Non-parametric test comparing cumulative distributions. Good default for continuous features. Generates p-values indicating statistical significance.
+- **Wasserstein Distance** -- Measures the "earth mover's distance" between distributions. Produces an interpretable drift magnitude score rather than a binary test result.
+- **Population Stability Index (PSI)** -- Originally from credit scoring, widely used for production monitoring. Thresholds: PSI < 0.1 (no drift), 0.1-0.25 (moderate), > 0.25 (significant).
+- **Jensen-Shannon Divergence** -- Symmetric, bounded (0-1) divergence measure suitable for comparing probability distributions.
+
+**For Categorical Features:**
+- **Chi-square test** -- Tests whether observed frequency distributions differ from expected.
+- **PSI (binned)** -- Applied to category frequency distributions.
+
+**For Text and Embeddings (LLM-relevant):**
+- **Embedding centroid drift** -- Track the centroid of output embeddings over time; significant centroid shift indicates behavioral change.
+- **Maximum Mean Discrepancy (MMD)** -- Kernel-based test for comparing embedding distributions, applicable to high-dimensional spaces.
+- **Cosine similarity distributions** -- Monitor the distribution of cosine similarities between current outputs and a reference corpus.
+
+An important caveat from current research: a statistically significant difference may not always be practically significant. Teams should analyze drift before taking action, distinguishing between legitimate distribution changes, data quality issues, and true model degradation.
+
+### Drift Detection for LLM Systems
+
+Traditional drift detection was designed for tabular ML models with well-defined feature spaces. Adapting to LLMs requires different approaches:
+
+- **Output embedding drift:** Embed model outputs using a reference embedding model and monitor distribution shifts in embedding space. This captures semantic behavioral changes even when surface-level text varies.
+- **Topic distribution drift:** Use topic modeling (BERTopic, LDA) on model outputs and track topic proportion changes over time.
+- **Quality metric drift:** Track task-specific quality metrics (ROUGE, BLEU, exact match, human eval scores) as time series per 13.3.1, and apply changepoint detection (CUSUM, PELT algorithms) to identify sudden vs. gradual shifts per 13.3.5.
+- **Hallucination rate tracking:** Per 13.3.3, monitor hallucination rates using retrieval-based fact checking, self-consistency checks (multiple generations compared), LLM-as-judge evaluation, or entailment-based verification. Track as continuous time-series metrics to detect sustained degradation trends.
+- **Schema drift for structured AI inputs:** Per 13.3.4, for LLM applications "schema drift" applies to RAG document format changes, API request format changes, tool/function calling schema changes, and structured output format validation. Great Expectations and Pandera provide schema validation for structured data pipelines.
+
+### Distinguishing Expected vs. Unexplained Drift
+
+Requirement 13.3.5 addresses the security-critical distinction between gradual operational drift and sudden unexplained behavioral shifts. Implementation approaches:
+
+- **Changepoint detection algorithms** (CUSUM, PELT) identify abrupt statistical changes in metric time series
+- **Correlation analysis** cross-references drift events with known changes (deployments, data updates, config changes) to classify drift as expected vs. unexplained
+- **Security escalation triggers:** Sudden drift indicators that warrant investigation include step-changes in output distribution, new output patterns unseen in training data, and behavioral changes uncorrelated with any known data or configuration change
+
+---
+
 ## Related Standards & References
 
-- **Evidently AI** -- Open-source ML monitoring with drift detection for tabular and text data ([evidentlyai.com](https://www.evidentlyai.com/))
+- **Evidently AI** -- Open-source ML monitoring with 20+ drift detection methods for tabular, text, and embedding data ([evidentlyai.com](https://www.evidentlyai.com/))
 - **NannyML** -- Drift detection and performance estimation without ground truth ([nannyml.com](https://www.nannyml.com/))
-- **WhyLabs / whylogs** -- Data logging and drift monitoring for ML pipelines
+- **WhyLabs / whylogs** -- Open-sourced (Apache 2.0, January 2025) AI observability platform for data drift and anomaly detection
+- **Arize AI** -- Production ML observability with embedding drift visualization and automated root cause analysis
+- **Fiddler AI** -- Enterprise ML monitoring with explainability and drift detection
+- **Evidently AI Data Drift Guide** -- Comprehensive guide to drift detection methods and best practices ([evidentlyai.com/ml-in-production/data-drift](https://www.evidentlyai.com/ml-in-production/data-drift))
+- **Open-Source Drift Detection Tools in Action** -- Comparative study of drift detection tools across use cases ([arxiv.org/abs/2404.18673](https://arxiv.org/abs/2404.18673))
 - **NIST AI 100-1 Section 5.1** -- Discusses monitoring for AI system degradation
 - **Google MLOps: Continuous Delivery for ML** -- Describes drift detection in production ML systems
 
@@ -38,5 +97,7 @@ This section addresses the detection of changes in model behavior over time that
 - Can embedding-space drift detection (monitoring shifts in output embedding distributions) serve as a general-purpose LLM drift indicator?
 - How do you establish meaningful baselines for models that are expected to exhibit different behavior across different prompt types?
 - What is the minimum sample size needed to detect statistically significant drift in LLM outputs?
+- How do the open-source tools (Evidently, NannyML, WhyLabs) compare in detection sensitivity and false positive rates for text/embedding drift in LLM applications specifically?
+- Can topic distribution monitoring reliably detect subtle capability degradation in general-purpose LLMs, or is it only effective for narrow-domain models?
 
 ---

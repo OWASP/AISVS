@@ -19,6 +19,30 @@ Limit the ability to determine whether a specific record was in the training dat
 
 ---
 
+## Recent Research (2024--2026)
+
+### Inference-Time Defenses: Ensemble Privacy Defense (EPD)
+
+A significant development is the **Ensemble Privacy Defense (EPD)** framework (December 2025), which operates entirely at inference time and requires no model retraining. EPD aggregates outputs from three components: the fine-tuned target model, an unmodified base LLM, and a judge model that synthesizes candidate answers while considering loss values. Against reference-based MIAs like LiRA, EPD achieves up to 27.8% MIA success rate reduction on fine-tuned models and up to 526.3% relative improvement on RAG models, while maintaining acceptable accuracy (EM/F1). This is particularly relevant because training-time defenses like DP-SGD are computationally prohibitive for large-scale LLMs.
+
+### MIAs Beyond Overfitting
+
+Research published in late 2025 ("Membership Inference Attacks Beyond Overfitting") demonstrates that MIAs can succeed even on well-regularized models that do not exhibit classical overfitting. This challenges the assumption that standard regularization techniques (dropout, weight decay, early stopping) provide meaningful membership privacy. The finding strengthens the case for requirement 11.3.2's differential privacy approach as the only principled training-time defense, and supports the need for empirical MIA simulation testing (requirement 11.3.3) rather than relying on overfitting proxies.
+
+### MIAs Against In-Context Learning
+
+Wen et al. (CCS 2024) introduced membership inference attacks specifically targeting in-context learning (ICL), demonstrating that an adversary can determine whether a specific example was included in the few-shot demonstration context. This extends the MIA threat model beyond traditional training data to include runtime context -- a concern for RAG systems and few-shot prompting workflows that directly relates to the open question about RAG side channels.
+
+### Selective Data Obfuscation (SOFT)
+
+**SOFT** (USENIX Security 2025) mitigates privacy leakage by identifying training samples most vulnerable to MIAs and replacing them with obfuscated paraphrases in the fine-tuning dataset. This targeted approach balances performance and privacy more effectively than blanket DP-SGD application, achieving meaningful MIA resistance with less utility degradation. SOFT represents a practical middle ground between no protection and full differential privacy for organizations where DP-SGD's 2-5% accuracy drop is unacceptable.
+
+### LLM-Specific MIA Risks
+
+Empirical results from 2024-2025 research show that most MIA attacks achieve AUC exceeding 0.8 when targeting fine-tuned LLMs (e.g., Pythia-6.9B), with privacy leakage increasing with model size and data exposure. Significant risks are evident even after a single epoch of fine-tuning, confirming that the "meaningfully exceed random guessing" threshold in requirement 11.3.3 should be operationalized as AUC < 0.55 with subpopulation-level analysis.
+
+---
+
 ## Related Standards & References
 
 - [MITRE ATLAS AML.T0024.000 -- Infer Training Data Membership](https://atlas.mitre.org/techniques/AML.T0024.000) -- Attack technique description and known cases
@@ -28,6 +52,10 @@ Limit the ability to determine whether a specific record was in the training dat
 - [Opacus (Meta)](https://opacus.ai/) -- Differential privacy training for PyTorch
 - [TensorFlow Privacy](https://github.com/tensorflow/privacy) -- DP-SGD implementation for TensorFlow
 - [OWASP LLM02:2025 Sensitive Information Disclosure](https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/)
+- [Ensemble Privacy Defense for Knowledge-Intensive LLMs (December 2025)](https://arxiv.org/abs/2512.03100) -- Training-free inference-time MIA defense using model ensemble and judge
+- [Membership Inference Attacks Beyond Overfitting (November 2025)](https://arxiv.org/abs/2511.16792) -- MIAs succeeding without classical overfitting
+- [Membership Inference Attacks Against In-Context Learning (CCS 2024)](https://yangzhangalmo.github.io/papers/CCS24-ICLMIA.pdf) -- MIAs targeting few-shot ICL demonstrations
+- [SOFT: Selective Data Obfuscation for LLM Fine-tuning (USENIX Security 2025)](https://www.usenix.org/system/files/usenixsecurity25-zhang-kaiyuan.pdf) -- Targeted obfuscation of MIA-vulnerable training samples
 
 ---
 
@@ -37,6 +65,8 @@ Limit the ability to determine whether a specific record was in the training dat
 - Can membership inference be meaningfully mitigated for models that are not trained with DP, or is DP the only principled defense?
 - How should organizations set the "meaningfully exceed random guessing" threshold in 11.3.3 -- what AUC-ROC value constitutes an acceptable residual risk?
 - Are there subpopulation-level membership inference risks that aggregate metrics miss (e.g., high inference accuracy on rare or underrepresented data points)?
-- How do retrieval-augmented generation (RAG) systems change the membership inference threat model -- does retrieval create a side channel?
+- How do retrieval-augmented generation (RAG) systems change the membership inference threat model -- does retrieval create a side channel? (CCS 2024 ICL MIA work suggests yes.)
+- Can inference-time ensemble defenses like EPD replace training-time DP for practical LLM deployments, or do they provide fundamentally weaker guarantees?
+- How should MIA testing account for subpopulation vulnerability -- are aggregate AUC metrics sufficient, or should per-group analysis be required?
 
 ---

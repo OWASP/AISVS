@@ -7,6 +7,8 @@
 
 This section ensures that communication between MCP clients and servers uses secure, authenticated, and encrypted transport channels. The MCP specification defines two primary transports: **stdio** (for local, same-machine communication) and **streamable HTTP** (for remote communication, replacing the earlier SSE-based transport). Each transport has distinct threat models — stdio is vulnerable to local process injection and terminal escape attacks, while HTTP-based transports face the standard web threats (MITM, DNS rebinding, protocol downgrade). This section focuses on the HTTP-based transports; stdio restrictions are covered in C10.6.
 
+The MCP transport landscape evolved significantly in 2025-2026. Streamable HTTP was introduced in the MCP specification version 2025-03-26 as the recommended approach for remote servers, and in May 2025 the MCP team formally deprecated the old HTTP+SSE transport. The shift to Streamable HTTP was motivated by security improvements: it enables an `Authorization: Bearer` header on every single message envelope (not just the initial connection), supports standard CORS policies, and provides secure session management — whereas SSE's long-lived unidirectional connections lacked built-in authentication framing and were susceptible to connection-holding DoS attacks. As of the 2025-06-18 specification revision, Streamable HTTP is the sole standard HTTP transport, with SSE retained only as an optional streaming mechanism within Streamable HTTP responses. Despite this, many existing MCP servers still use legacy SSE transport, making migration guidance and backward-compatibility security a practical concern.
+
 ---
 
 ## Requirements
@@ -21,13 +23,25 @@ This section ensures that communication between MCP clients and servers uses sec
 
 ---
 
+## Transport Evolution Timeline
+
+| Date | Event | Security Impact |
+|------|-------|----------------|
+| 2024-11-05 | MCP spec defines HTTP+SSE transport | SSE long-lived connections lack per-message auth; vulnerable to connection-holding DoS |
+| 2025-03-26 | Streamable HTTP introduced as recommended transport | Per-message Bearer tokens, standard CORS, secure session management |
+| 2025-05 | MCP team formally deprecates HTTP+SSE | Legacy deployments must migrate; dual-transport period introduces attack surface |
+| 2025-06-18 | Streamable HTTP becomes sole standard HTTP transport | SSE retained only as optional streaming within Streamable HTTP responses |
+| 2025-2026 | MCP gateway products emerge (10+ commercial offerings by early 2026) | Centralized transport policy enforcement, TLS termination, protocol version pinning |
+
 ## Related Standards & References
 
-- [MCP Transports Specification (2025-03-26)](https://spec.modelcontextprotocol.io/specification/2025-03-26/basic/transports/) — official transport definitions
+- [MCP Transports Specification (2025-06-18)](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports) — current official transport definitions
 - [RFC 8446: TLS 1.3](https://datatracker.ietf.org/doc/html/rfc8446) — transport layer security
 - [OWASP Transport Layer Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Security_Cheat_Sheet.html)
 - [DNS Rebinding Attacks (Stanford research)](https://crypto.stanford.edu/dns/) — foundational DNS rebinding research
 - [OWASP ASVS v4: V9 Communications](https://owasp.org/www-project-application-security-verification-standard/)
+- [Auth0: Why MCP's Move Away from SSE Simplifies Security](https://auth0.com/blog/mcp-streamable-http/) — analysis of streamable HTTP security benefits
+- [AWS: MCP Transport Mechanisms](https://builder.aws.com/content/35A0IphCeLvYzly9Sw40G1dVNzc/mcp-transport-mechanisms-stdio-vs-streamable-http) — transport comparison from AWS perspective
 
 ---
 
@@ -37,5 +51,6 @@ This section ensures that communication between MCP clients and servers uses sec
 - [ ] How should MCP servers handle the transition from SSE to streamable HTTP — is a dual-transport migration period acceptable, and what are the security implications?
 - [ ] Is `Mcp-Protocol-Version` header validation sufficient to prevent downgrade, or should the protocol include a cryptographic version binding?
 - [ ] Should MCP define a standard mechanism for mutual TLS (mTLS) between clients and servers in high-security environments?
+- [ ] As MCP gateways become standard infrastructure, should TLS termination and protocol version enforcement be delegated to the gateway layer, and what are the trust implications?
 
 ---

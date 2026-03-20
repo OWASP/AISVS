@@ -19,12 +19,52 @@ For agentic AI systems, validate that the agent's reasoning and actions are subj
 
 ---
 
+## Implementation Guidance (2024--2026 Research)
+
+### Metacognitive Security and Self-Monitoring
+
+The concept of "metacognitive security" -- agents that monitor and evaluate their own security posture -- has advanced significantly in 2024--2026 research:
+
+- **Agentic metacognition for failure prediction**: Research from Arxiv (2025, paper 2509.19783) introduces metacognitive agent architectures where continuous self-evaluation of the agent's state against predefined triggers enables proactive handoff protocols. When an agent detects impending failures or policy violations, structured human-guided recovery is initiated rather than allowing uncontrolled operation. This generates traceable, auditable logs of agent decisions and reasons for escalation, directly supporting requirement 11.8.3.
+- **Self-evaluation through chain-of-thought**: Galileo's research on self-evaluation in AI agents demonstrates that chain-of-thought reasoning enables agents to evaluate answer quality, recognize limitations, and identify potential errors through metacognitive processes. When applied to security, this pattern allows agents to reason explicitly about whether a planned action might violate security policy before execution.
+- **Declared vs. observed behavior comparison**: The CSA MAESTRO framework (2025) introduces a pattern where an agent's declared skill behavior is compared against its observed behavior to identify deceptive, unsafe, or non-compliant functionality -- such as agents attempting to invoke unapproved services or access tools outside their declared scope. This comparison mechanism is a concrete implementation approach for requirement 11.8.1.
+
+### Agentic AI Security Scoping
+
+AWS published the Agentic AI Security Scoping Matrix (2025--2026), establishing a framework for classifying agent security requirements based on autonomy level and capability scope. Key findings relevant to self-assessment include:
+
+- Organizations report a significant readiness gap: only 18% of respondents are "highly confident" their current identity and access management systems can manage agent identities effectively, despite 40% already having agents in production.
+- Agent security self-assessment is most effective when combined with external monitoring -- self-review alone is insufficient because the agent shares failure modes with its own reviewer.
+
+### Architecture Patterns for Security Review
+
+Emerging best practices for implementing requirement 11.8.1 include a layered approach:
+
+1. **Rule-based pre-filters**: Fast, deterministic checks against known-bad action patterns (e.g., data deletion, privilege escalation, external communication). Reliable but brittle against novel attacks.
+2. **Secondary model review**: A separate, hardened model evaluates structured action descriptions (not raw user input) against security policy. Provides independence from the primary model's failure modes but adds latency.
+3. **Architectural isolation**: The review mechanism receives a sanitized, structured representation of the proposed action rather than the full conversation context, reducing the attack surface for prompt injection targeting the reviewer (11.8.2).
+
+### Hardening Review Mechanisms Against Bypass
+
+The hardening of security review mechanisms (11.8.2) remains one of the most challenging problems in agentic AI security. 2025--2026 research confirms that:
+
+- No current approach provides guaranteed protection against all prompt injection variants targeting the reviewer.
+- The strongest mitigation is architectural: the reviewer should never directly process untrusted inputs. Instead, the primary agent produces a structured action proposal (tool name, parameters, justification), and only this structured representation is evaluated.
+- Multi-agent review architectures (dedicated security agent reviewing all actions) show promise but introduce coordination complexity and latency.
+
+---
+
 ## Related Standards & References
 
 - [OWASP LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm012025-prompt-injection/) -- Prompt injection is the primary attack vector against agent review mechanisms
 - [OWASP LLM09:2025 Misinformation](https://genai.owasp.org/llmrisk/llm092025-misinformation/) -- Agent hallucination leading to harmful planned actions
 - [MITRE ATLAS AML.T0054 -- LLM Prompt Injection](https://atlas.mitre.org/techniques/AML.T0054) -- Prompt injection techniques applicable to agent review bypass
 - [NIST AI 100-1 -- Artificial Intelligence Risk Management Framework](https://www.nist.gov/artificial-intelligence/executive-order-safe-secure-and-trustworthy-artificial-intelligence) -- Risk management for autonomous AI systems
+- [CSA MAESTRO -- Agentic AI Threat Modeling Framework](https://cloudsecurityalliance.org/blog/2025/02/06/agentic-ai-threat-modeling-framework-maestro) -- Layer-by-layer threat modeling for agentic AI
+- [AWS Agentic AI Security Scoping Matrix](https://aws.amazon.com/blogs/security/the-agentic-ai-security-scoping-matrix-a-framework-for-securing-autonomous-ai-systems/) -- Framework for scoping agent security controls by autonomy level
+- [Agentic Metacognition -- Arxiv 2509.19783 (2025)](https://arxiv.org/abs/2509.19783) -- Self-aware agent architectures for failure prediction and human handoff
+- [Self-Evaluation in AI Agents -- Galileo](https://galileo.ai/blog/self-evaluation-ai-agents-performance-reasoning-reflection) -- Chain-of-thought self-evaluation for agent security reasoning
+- [Obsidian Security -- From Agentic AI to Autonomous Risk](https://www.obsidiansecurity.com/blog/agentic-ai-security) -- Enterprise agentic AI security challenges
 - AISVS C9 (Orchestration and Agents) -- Complementary agent security controls
 
 ---
@@ -36,5 +76,7 @@ For agentic AI systems, validate that the agent's reasoning and actions are subj
 - How should "high-risk actions" be classified in a general-purpose agent that can use arbitrary tools -- is a capability-based approach (classifying tool permissions) more practical than action-based classification?
 - What is the right balance between security review thoroughness and agent response latency -- can review be done asynchronously for some action types?
 - How do multi-agent systems change the security review model -- should agents review each other, or should a dedicated security agent review all actions?
+- Can metacognitive self-monitoring reliably detect adversarial manipulation of the agent's own reasoning, or does this fundamentally require external observation?
+- How should the fidelity of "declared vs. observed behavior" comparison be measured, and what deviation thresholds should trigger security escalation?
 
 ---
