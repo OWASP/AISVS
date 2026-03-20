@@ -24,13 +24,62 @@ This section establishes requirements for capturing structured, security-relevan
 
 ---
 
+## Implementation Guidance
+
+### Structured Logging with OpenTelemetry GenAI Semantic Conventions
+
+The OpenTelemetry GenAI Semantic Conventions (stable as of OTel spec v1.37+, 2025) define a vendor-neutral schema for AI interaction telemetry. Teams should adopt these conventions to ensure interoperability across observability backends. Key attributes include:
+
+- `gen_ai.system` -- Provider identifier (e.g., `openai`, `anthropic`)
+- `gen_ai.request.model` -- Model name/version used for inference
+- `gen_ai.usage.input_tokens` / `gen_ai.usage.output_tokens` -- Token consumption per request
+- `gen_ai.response.finish_reasons` -- Why the model stopped generating
+- `gen_ai.request.temperature`, `gen_ai.request.top_p` -- Sampling parameters
+
+As of 2025-2026, the GenAI SIG is extending conventions to cover agentic systems, including spans for agent tasks, tool calls, memory operations, and multi-step reasoning traces. A draft convention for AI agent frameworks (CrewAI, AutoGen, LangGraph) is under development to standardize telemetry across agent orchestrators.
+
+### Observability Platform Landscape (2025-2026)
+
+The LLM observability ecosystem has matured significantly:
+
+- **OpenLLMetry** (by Traceloop) -- Open-source instrumentation library built on OpenTelemetry that auto-instruments LLM frameworks (LangChain, LlamaIndex, OpenAI SDK) and emits GenAI semantic convention-compliant spans. Supported by Dynatrace, Grafana, and other backends.
+- **LangSmith** (by LangChain) -- Full-lifecycle LLM observability platform with trace visualization, prompt versioning, evaluation datasets, and production monitoring.
+- **Langfuse** -- Open-source LLM observability with tracing, prompt management, and evaluation scoring. Self-hostable.
+- **Datadog LLM Observability** -- Announced native OpenTelemetry GenAI Semantic Convention support at DASH 2025, enabling OTLP-based ingestion of LLM traces directly into Datadog dashboards.
+- **Grafana Cloud** -- Published comprehensive guides for LLM observability using OpenTelemetry + Grafana stack (Tempo for traces, Loki for logs, Mimir for metrics).
+
+### Tiered Logging Model
+
+Requirement 13.1.8 establishes a tiered logging architecture that has become industry best practice:
+
+- **Tier 1 (Always):** Structured metadata -- timestamp, user ID, session ID, model version, token counts, input hash, safety filter outcome. Minimal storage cost, no privacy concerns.
+- **Tier 2 (Conditional):** Full prompt/response content captured only on security-relevant triggers (safety filter activation, prompt injection detection, anomaly flags). Stored in access-restricted repositories with shorter retention.
+- **Tier 3 (Consent-based):** Full content logging enabled by explicit user consent with documented legal basis (GDPR Article 6), typically for debugging or quality improvement programs.
+
+### PII Redaction Pipeline
+
+For requirement 13.1.4, the current best-practice pipeline combines multiple detection methods:
+
+1. **Regex patterns** for structured PII (SSN, credit cards, phone numbers, email addresses)
+2. **NER-based detection** (Microsoft Presidio, spaCy, AWS Comprehend) for entity types (names, addresses, organizations)
+3. **LLM-based classification** for context-dependent sensitive data that regex and NER miss (e.g., medical conditions described in natural language, proprietary business logic in few-shot examples)
+4. **Custom rules** for domain-specific patterns (internal project names, customer identifiers)
+
+Redaction must occur in the logging pipeline before write, not as a post-hoc process. False positive rates in redaction tools remain a practical concern -- over-redaction degrades forensic utility while under-redaction creates compliance risk.
+
+---
+
 ## Related Standards & References
 
-- **OpenTelemetry GenAI Semantic Conventions** -- Emerging standard for structured AI observability telemetry ([opentelemetry.io](https://opentelemetry.io/))
+- **OpenTelemetry GenAI Semantic Conventions** -- Now stable in OTel spec v1.37+, defining the standard schema for AI observability telemetry ([opentelemetry.io/docs/specs/semconv/gen-ai](https://opentelemetry.io/docs/specs/semconv/gen-ai/))
+- **OpenLLMetry** -- Open-source OTel-based instrumentation for LLM applications, adopted by Dynatrace and others ([traceloop.com](https://www.traceloop.com/docs/openllmetry/contributing/semantic-conventions))
+- **Datadog LLM Observability with OTel** -- Native GenAI semantic convention support ([datadoghq.com](https://www.datadoghq.com/blog/llm-otel-semantic-convention/))
+- **Grafana LLM Observability Guide** -- Complete guide to LLM monitoring with OTel and Grafana Cloud ([grafana.com](https://grafana.com/blog/a-complete-guide-to-llm-observability-with-opentelemetry-and-grafana-cloud/))
 - **OWASP Logging Cheat Sheet** -- General logging best practices applicable to AI systems
 - **Microsoft Presidio** -- Open-source PII detection and redaction engine useful for 13.1.4
 - **NIST SP 800-92** -- Guide to Computer Security Log Management
 - **GDPR Articles 5, 6, 25** -- Data minimization, lawful basis, and data protection by design relevant to content logging decisions
+- **OneUptime LLM Monitoring Guide** -- Practical guide to tracking token usage, costs, and latency with OpenTelemetry ([oneuptime.com](https://oneuptime.com/blog/post/2026-02-06-monitor-llm-opentelemetry-genai-semantic-conventions/view))
 
 ---
 
@@ -40,5 +89,7 @@ This section establishes requirements for capturing structured, security-relevan
 - How effective are current NER-based redaction tools (Presidio, spaCy) at catching AI-specific sensitive data patterns (e.g., few-shot examples containing PII, system prompt leakage)?
 - Should input hashing use collision-resistant hashes (SHA-256) or locality-sensitive hashes (for near-duplicate detection)?
 - How should log schemas evolve to capture multi-modal interactions (image, audio, video inputs/outputs)?
+- How should the emerging OpenTelemetry agent observability conventions (task spans, tool call spans, memory operations) be integrated with security logging requirements to provide both operational and forensic visibility?
+- What is the right granularity for logging agentic workflows -- should each tool invocation, reasoning step, and planning phase get its own span, or does that create prohibitive overhead?
 
 ---

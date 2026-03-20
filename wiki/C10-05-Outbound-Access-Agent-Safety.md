@@ -7,6 +7,8 @@
 
 This section ensures that MCP servers are constrained in what they can reach and how much they can do. MCP servers are code-execution endpoints — when a tool is invoked, the server runs arbitrary logic that may make outbound API calls, access databases, read files, or interact with cloud services. Without egress controls and execution limits, a compromised or manipulated MCP server becomes an unrestricted proxy into the internal network. Additionally, agentic workflows can create unbounded chains of tool invocations where a single prompt injection cascades into dozens of side-effecting operations. This section applies both network-level and execution-level constraints.
 
+The real-world severity of these risks was starkly demonstrated in 2025-2026. CVE-2026-26118 (CVSS 8.8) exposed a critical SSRF vulnerability in Azure MCP Server Tools (versions prior to 2.0.0-beta.17), where low-privileged attackers could craft malicious payloads that tricked the MCP server into leaking its managed identity token — enabling impersonation of the server's Azure identity to access storage accounts, virtual machines, and databases. CVE-2026-27826 (CVSS 8.2) in mcp-atlassian allowed unauthenticated attackers to supply arbitrary URLs via custom routing headers; in cloud deployments, pointing this at the 169.254.169.254 metadata endpoint stole IAM role credentials. A survey of MCP implementations found that 30% were vulnerable to SSRF, 43% allowed command injection, and 22% had arbitrary file read via path traversal. These are not theoretical risks — they have active proof-of-concept exploits on GitHub and have been exploited in the wild.
+
 ---
 
 ## Requirements
@@ -19,12 +21,28 @@ This section ensures that MCP servers are constrained in what they can reach and
 
 ---
 
+## Real-World SSRF and Agent Safety Incidents (2025-2026)
+
+| CVE / Incident | CVSS | Description | Impact |
+|---|---|---|---|
+| CVE-2026-26118 | 8.8 | SSRF in Azure MCP Server Tools | Managed identity token theft; impersonation of server identity to access Azure storage, VMs, databases |
+| CVE-2026-27826 | 8.2 | SSRF in mcp-atlassian | Unauthenticated URL injection; cloud metadata credential theft via 169.254.169.254 |
+| Supabase Cursor Agent (mid-2025) | — | Privileged agent processed untrusted support tickets | SQL injection exfiltrated integration tokens via public support thread |
+| Anthropic/Microsoft MCP Server Flaws (Jan 2026) | — | Multiple flaws in first-party MCP servers | Highlighted that even vendor-maintained servers had SSRF and injection vulnerabilities |
+
+Christian Schneider's "Securing MCP: A Defense-First Architecture Guide" (2025) outlines a layered defense model: Layer 1 network egress controls block SSRF outbound requests, file system root path pinning blocks arbitrary file writes, and runtime sandboxing constrains execution. Elastic Security Labs published MCP-specific attack and defense recommendations for autonomous agents, documenting tool invocation chains where a single prompt injection cascades through 10+ tool calls before triggering any detection.
+
 ## Related Standards & References
 
 - [OWASP SSRF Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html)
 - [AWS IMDSv2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html) — mitigating metadata endpoint SSRF
 - [MCP Tool Annotations (2025-03-26 spec)](https://spec.modelcontextprotocol.io/specification/2025-03-26/server/tools/) — `destructiveHint`, `readOnlyHint` annotations
 - [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/pubs/detail/sp/800-207/final) — least-privilege network access
+- [Blueinfy: SSRF in Azure MCP Server Tools](https://blog.blueinfy.com/2026/03/ssrf-in-azure-mcp-server-tools.html) — CVE-2026-26118 analysis
+- [Elastic Security Labs: MCP Tools Attack Vectors and Defense](https://www.elastic.co/security-labs/mcp-tools-attack-defense-recommendations) — agent execution chain analysis
+- [Christian Schneider: Securing MCP Defense-First Architecture](https://christian-schneider.net/blog/securing-mcp-defense-first-architecture/) — layered defense model
+- [Checkmarx: 11 Emerging AI Security Risks with MCP](https://checkmarx.com/zero-post/11-emerging-ai-security-risks-with-mcp-model-context-protocol/) — comprehensive risk taxonomy
+- [AuthZed: Timeline of MCP Security Breaches](https://authzed.com/blog/timeline-mcp-breaches) — breach chronology
 
 ---
 
@@ -34,5 +52,7 @@ This section ensures that MCP servers are constrained in what they can reach and
 - [ ] Can execution limits be specified declaratively in the MCP protocol (e.g., server-advertised rate limits or timeout hints)?
 - [ ] How should human-in-the-loop confirmation work in fully autonomous agent workflows where no user is present (e.g., batch processing, scheduled tasks)?
 - [ ] Should MCP servers expose their egress allowlist as metadata, allowing clients to assess the server's network reach before connecting?
+- [ ] Given that CVE-2026-26118 exploited over-privileged managed identities, should MCP deployment standards mandate identity scoping (e.g., per-tool or per-session managed identities rather than broad service principals)?
+- [ ] How should MCP gateways enforce egress policies — at the network layer (security groups), application layer (URL allowlists in the gateway), or both?
 
 ---

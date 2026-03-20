@@ -19,6 +19,37 @@ Prevent reconstruction of private training data or sensitive attributes from mod
 
 ---
 
+## Recent Research (2024--2026)
+
+### Comprehensive Survey and Taxonomy (2025)
+
+A comprehensive survey on deep learning model inversion attacks and defenses (January 2025) provides a systematic taxonomy covering optimization-based, training-based, and GAN-based attack methods, along with defense categories including differential privacy, output perturbation, model architecture modifications, and regularization-based approaches. The survey catalogs 16 state-of-the-art attack and defense methods, establishing that combined defense strategies can mitigate up to 50% of model inversion attacks while maintaining model utility.
+
+### LLM-Specific Inversion Attacks
+
+Recent work has demonstrated that LLMs face novel inversion attack surfaces distinct from traditional discriminative models:
+
+- **Activation Inversion Attacks (AIA)** target decentralized and split-learning LLM training setups, using public datasets to construct shadow datasets of text labels and corresponding activations, then training attack models to reconstruct training data from intermediate activations. This is particularly relevant for federated or distributed LLM training architectures.
+- **Cross-lingual Model Inversion** research shows that multilingual language models are more vulnerable to inversion attacks than monolingual models, with black-box multilingual and cross-lingual inversion attacks achieving higher reconstruction fidelity. Organizations deploying multilingual models should factor this into their inversion risk assessments.
+
+### Advanced Attack Techniques
+
+**Stepwise Gradient Inversion (SGI)** (2024) significantly improves image reconstruction quality through a two-stage approach: first modeling the coefficient of variation of features and applying an evolutionary algorithm for label recovery, then performing stepwise gradient inversion. SGI demonstrates that inversion attacks continue to improve in fidelity, reinforcing the need for proactive defenses (requirements 11.4.1-11.4.3) rather than relying on attack difficulty as a defense.
+
+### Embedding Protection
+
+**Embedding Guard (EGuard)** (2024) employs transformer-based projection networks and textual mutual information optimization to protect embeddings while retaining LLM utility. This addresses a gap in requirement 11.4.3 where traditional DP approaches are too costly -- EGuard provides embedding-level protection without full DP-SGD overhead, applicable to models where embeddings are exposed through APIs or shared architectures.
+
+### MIBench Benchmark
+
+**MIBench** (2025) is the first standardized benchmark for model inversion attacks and defenses, integrating 16 state-of-the-art methods with consistent evaluation metrics. This enables reproducible comparison of defense effectiveness and directly supports verification approaches for requirements 11.4.1-11.4.3 by providing standardized evaluation methodology.
+
+### Combined Defense Strategies
+
+Research from 2024-2025 has demonstrated that no single defense is sufficient. The most effective approaches combine multiple layers: differential privacy during training, adaptive noise injection at inference, output generalization (requirement 11.4.1), and rate limiting (requirement 11.4.2). Combined systems integrating DP, federated learning, adaptive noise, and ensemble-based obfuscation show substantially better protection than any individual technique.
+
+---
+
 ## Related Standards & References
 
 - [MITRE ATLAS AML.T0024.001 -- Invert ML Model](https://atlas.mitre.org/techniques/AML.T0024.001) -- Attack technique description and known cases
@@ -26,6 +57,9 @@ Prevent reconstruction of private training data or sensitive attributes from mod
 - [Fredrikson et al., "Model Inversion Attacks that Exploit Confidence Information" (2015)](https://doi.org/10.1145/2810103.2813677) -- Foundational model inversion paper
 - [Zhang et al., "The Secret Revealer: Generative Model-Inversion Attacks Against Deep Neural Networks" (2020)](https://arxiv.org/abs/1911.07135) -- GAN-based model inversion producing high-fidelity reconstructions
 - [OWASP LLM02:2025 Sensitive Information Disclosure](https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/)
+- [Deep Learning Model Inversion Attacks and Defenses: A Comprehensive Survey (January 2025)](https://arxiv.org/abs/2501.18934) -- Systematic taxonomy of MI attacks and defenses with 16 methods
+- [MIBench: Comprehensive Benchmark for Model Inversion (2025)](https://openreview.net/forum?id=QWjpjisCjs) -- Standardized evaluation benchmark for MI attack and defense methods
+- [Model Inversion Attacks: A Survey of Approaches and Countermeasures (November 2024)](https://arxiv.org/abs/2411.10023) -- Attack survey with comprehensive countermeasure catalog and GitHub repository
 
 ---
 
@@ -36,5 +70,8 @@ Prevent reconstruction of private training data or sensitive attributes from mod
 - How should model inversion risk be assessed for models that process sensitive data only at inference time (e.g., RAG over medical records) rather than training time?
 - Can model inversion attacks be reliably detected through query-pattern analysis, or are they indistinguishable from legitimate exploratory queries?
 - What output generalization granularity provides a useful privacy-utility trade-off for different domains (healthcare, finance, HR)?
+- Are multilingual models fundamentally more vulnerable to inversion than monolingual models, and should multilingual deployments require stricter defenses?
+- Can embedding-level protections like EGuard substitute for full DP-SGD in scenarios where training-time DP is infeasible?
+- How should MIBench-style standardized benchmarks be incorporated into verification procedures for requirements 11.4.1-11.4.3?
 
 ---

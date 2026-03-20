@@ -7,6 +7,8 @@
 
 This section provides requirements for delivering real-time and forensic visibility into what the model and other AI components see, do, and return, so threats can be detected, triaged, and learned from.
 
+> **2025-2026 Highlights:** OpenTelemetry GenAI SIG and LLM observability platforms (LangSmith, Langfuse, Arize) are establishing standard schemas for AI telemetry. New requirements address covert channel detection in LLM API traffic (C13.2.10) and session-level multi-turn jailbreak trajectory analysis (C13.2.8).
+
 ---
 
 ## Section Pages

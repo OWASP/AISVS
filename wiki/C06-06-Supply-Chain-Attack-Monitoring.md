@@ -6,6 +6,49 @@
 
 Preventive controls (vetting, scanning, pinning) reduce supply-chain risk but cannot eliminate it. This section addresses the detection and response layer — ensuring that when a supply-chain compromise does occur, the organization can detect it quickly, respond effectively, and roll back to a known-good state. AI supply chains have unique monitoring challenges: model poisoning may not manifest as a traditional indicator of compromise, and CI/CD pipelines for ML workloads have distinct attack patterns.
 
+## 2024-2026 Landscape: ML Supply Chain Attack Monitoring
+
+The ML supply chain threat landscape has intensified significantly since 2024, with model repositories like Hugging Face becoming primary attack vectors. Research and incident data reveal both the growing sophistication of attacks and the rapid evolution of detection tooling.
+
+### Hugging Face Security Scanning and Evasion
+
+Hugging Face hosts over 700,000 models and has become a high-value target for supply chain attacks. The platform implements PickleScanning (combining ClamAV anti-virus scanning with targeted analysis of imports within pickle files), but this approach has proven insufficient against determined attackers:
+
+- **nullifAI evasion techniques (early 2025):** ReversingLabs discovered malicious models that bypassed Hugging Face's Picklescan detection entirely. Hugging Face responded within 24 hours, removing the models and updating Picklescan, but the incident demonstrated that scanner-evasion is an active adversarial frontier.
+- **MalHug detection pipeline:** Researchers developed a more comprehensive detection system combining dataset loading script extraction, model deserialization analysis, in-depth taint analysis, and heuristic pattern matching. Over three months of monitoring 705,000 models and 176,000 datasets, MalHug uncovered 91 malicious models and 9 malicious dataset loading scripts — far more than platform-native scanning alone detected.
+- **Namespace hijacking attacks (2024-2025):** Palo Alto Unit 42 documented how deleted Hugging Face author accounts can be re-registered by attackers, enabling namespace hijacking to distribute malicious model versions under trusted names. This mirrors traditional package repository typosquatting but exploits model-name trust specifically.
+
+### Model Serialization as an Attack Surface
+
+Python's Pickle format remains the dominant serialization mechanism and the primary attack vector. Pickle files are inherently unsafe because they allow embedded Python code execution during deserialization. At least 100 malicious ML model instances have been identified on Hugging Face, with some (e.g., baller423/goober2) executing arbitrary code on victim machines and providing persistent backdoor access.
+
+The industry response has been a push toward **SafeTensors**, which stores only numerical tensor data with no code execution on load. However, Pickle remains widely used, making continuous scanning essential.
+
+### Dedicated Model Scanning Tools
+
+Several purpose-built tools have emerged for ML supply chain monitoring:
+
+- **ModelScan (Protect AI, open source):** Scans models byte-by-byte for unsafe code signatures. Supports H5, Pickle, and SavedModel formats across PyTorch, TensorFlow, Keras, Sklearn, and XGBoost. First tool to support multiple model formats.
+- **Guardian (Protect AI, enterprise):** Enterprise-grade scanning with broader model support, CI/CD pipeline integration, and policy enforcement for Hugging Face models before they enter internal environments.
+- **HiddenLayer Model Scanner:** Commercial model scanning tool focused on detecting serialization attacks, backdoors, and trojans in model files.
+- **ReversingLabs Spectra Assure:** Software supply chain security assessment extended to ML model file analysis using binary analysis capabilities.
+
+### Runtime Supply Chain Integrity
+
+Runtime integrity monitoring has advanced beyond static scanning to include:
+
+- **Cryptographic hash verification of model binaries on load**, stopping covert alterations at inference time.
+- **Anomalous CI/CD behavior detection**, including unusual package source changes, unexpected model registry writes, and GPU resource consumption anomalies.
+- **Holistic supply chain governance** that covers models, datasets, and OSS dependencies simultaneously — scanning models for malicious pickles while ignoring the provenance of underlying Python packages leaves the supply chain fundamentally broken.
+
+### AI-Specific Threat Intelligence
+
+AI-specific threat intelligence remains immature compared to traditional software security, but several sources have emerged:
+
+- **Protect AI Huntr:** The first dedicated AI/ML bug bounty platform, generating a growing corpus of AI-specific vulnerability reports.
+- **MITRE ATLAS:** Continues to expand its taxonomy of ML attack techniques, including supply chain compromise patterns (AML.T0010).
+- **Large-scale empirical studies:** Academic research (e.g., arXiv:2410.04490) has begun instrumenting Hugging Face at scale to catalog exploit patterns, providing structured data for detection rule development.
+
 ---
 
 ## Requirements
@@ -22,6 +65,12 @@ Preventive controls (vetting, scanning, pinning) reduce supply-chain risk but ca
 
 - [MITRE ATLAS — ML Attack Techniques](https://atlas.mitre.org/)
 - [Protect AI Huntr — AI/ML Bug Bounty](https://huntr.com/)
+- [Protect AI ModelScan — Open Source Model Scanning](https://github.com/protectai/modelscan)
+- [HiddenLayer Model Scanner](https://hiddenlayer.com/model-scanner/)
+- [ReversingLabs — Malicious ML Models on Hugging Face](https://www.reversinglabs.com/blog/rl-identifies-malware-ml-model-hosted-on-hugging-face)
+- [Palo Alto Unit 42 — Model Namespace Reuse Attack](https://unit42.paloaltonetworks.com/model-namespace-reuse/)
+- [JFrog — Malicious Hugging Face ML Models with Silent Backdoor](https://jfrog.com/blog/data-scientists-targeted-by-malicious-hugging-face-ml-models-with-silent-backdoor/)
+- [Large-Scale Exploit Study of AI/ML Supply Chain Attacks (arXiv:2410.04490)](https://arxiv.org/abs/2410.04490)
 - [NIST Cybersecurity Framework — Respond Function](https://www.nist.gov/cyberframework)
 - [CISA — Defending CI/CD Pipelines](https://www.cisa.gov/news-events/alerts)
 - [OpenSSF Scorecard — Supply Chain Security](https://securityscorecards.dev/)
@@ -36,3 +85,6 @@ Preventive controls (vetting, scanning, pinning) reduce supply-chain risk but ca
 - How can model behavior monitoring (C13) be integrated with supply-chain monitoring to detect poisoning that only manifests in production inference behavior?
 - What does an effective AI supply-chain incident response tabletop exercise look like — what scenarios should it cover?
 - How should organizations handle "slow-burn" supply-chain attacks where poisoning is introduced gradually across multiple dataset or model updates?
+- Can scanner-evasion techniques (like nullifAI) be reliably detected through semantic-level analysis rather than signature-based approaches, and what is the performance cost?
+- How should organizations monitor for namespace hijacking attacks on model repositories at scale, given that name-trust is the primary discovery mechanism?
+- What is the appropriate balance between SafeTensors adoption mandates and backward compatibility with the large existing corpus of Pickle-serialized models?

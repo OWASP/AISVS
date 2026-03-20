@@ -18,20 +18,149 @@ Prevent resource exhaustion attacks and ensure fair resource allocation through 
 
 ---
 
+## Implementation Guidance
+
+### GPU Resource Quotas and Admission Control
+
+Traditional Kubernetes ResourceQuotas limit GPU consumption per namespace, enabling fair sharing across teams. However, GPU-bound AI architectures need more advanced admission control. Two mature solutions have emerged by 2025-2026:
+
+- **Kueue** (Kubernetes-native): Admits entire workloads atomically only when quota allows, preventing partial allocations that waste GPU capacity. ClusterQueues implement quotas by ResourceFlavor (e.g., H100 vs. A100), preventing any single tenant from monopolizing GPU inventory. Each queue has a `nominalQuota` cap with explicit borrowing rules between cohorts.
+- **Volcano**: Uses PodGroup semantics with `minMember` thresholds and preemption plugins to enforce fair eviction across multi-GPU training jobs.
+- **NVIDIA KAI Scheduler**: An open-source Kubernetes-native scheduler for AI workloads that allows customization of quotas, over-quota weights, limits, and priorities per queue while ensuring equitable distribution using Dominant Resource Fairness (DRF) and resource reclamation across queues.
+
+LimitRanges should set both default and maximum GPU requests per pod. Defaults ensure pods without explicit GPU requests still receive appropriate allocations; maximums prevent individual pods from requesting excessive GPU capacity.
+
+For multi-tenant environments, use per-tenant LocalQueues bound to ClusterQueues with borrowing controls rather than a single shared production queue. Implement WorkloadPriorityClasses to ensure critical inference workloads are not starved by lower-priority batch training jobs.
+
+### GPU Partitioning and Multi-Tenant Isolation
+
+NVIDIA Multi-Instance GPU (MIG) provides hardware-enforced isolation on Ampere and Hopper GPUs (A100, H100), partitioning a single GPU into up to seven independent instances with dedicated memory, cache, and compute slices. This is critical for multi-tenant safety because workloads cannot interfere with each other's memory or execution, unlike time-slicing approaches where a crash or memory leak in one workload can destabilize neighbors.
+
+Best practices for GPU isolation include:
+
+- **Separate node pools** by GPU family and MIG policy, exposed as distinct Flavors to prevent unexpected layout conflicts
+- **Topology Manager** (`single-numa-node`) on kubelet to ensure CPU/device alignment and prevent performance degradation from cross-NUMA access
+- **Node Feature Discovery (NFD)** to label GPU capabilities, enabling placement constraints that segregate workload types by security sensitivity
+
+### GPU Cryptojacking and Resource Abuse
+
+GPU infrastructure is a high-value target for cryptojacking attacks because GPU compute is directly monetizable through cryptocurrency mining. Real-world attacks targeting AI clusters have escalated significantly in 2024-2026:
+
+- **ShadowRay 2.0 (2024-2025)**: Exploits CVE-2023-48022 (CVSS 9.8) in the Ray framework, allowing unauthenticated remote code execution via the Jobs API on internet-exposed dashboards. Exposed Ray environments grew from a few thousand to approximately 230,000 by late 2025. Attackers (tracked as IronErn440) turned Ray's legitimate orchestration features into a self-propagating, globally distributed cryptojacking operation that spreads autonomously across exposed clusters.
+- **Dero Cryptojacking Campaign**: Targets Kubernetes clusters with anonymous access enabled on the Kubernetes API listening on non-standard ports. Attackers deploy a DaemonSet named "proxy-api" that places a malicious pod on every node, harnessing all GPU resources simultaneously for mining.
+- **Nvidia Container Escape (July 2025)**: Container-to-host GPU escape vulnerability enabling attackers to break out of containerized AI workloads and access the underlying host's GPU resources.
+
+Detection indicators for cryptojacking on AI infrastructure:
+
+- Sustained high GPU utilization (>90%) on nodes that should be idle or running light inference workloads
+- Unexpected outbound network connections, particularly to mining pool addresses
+- DaemonSets or pods deployed outside normal CI/CD pipelines
+- Anomalous power draw and temperature patterns on accelerator telemetry
+- Unexplained increases in cloud compute bills (enterprises underestimate AI infrastructure costs by 30% on average, making cryptojacking charges easy to miss)
+
+Mitigations: enforce network policies with default-deny egress, require authentication on all orchestration APIs (Ray, Kubernetes), monitor accelerator telemetry for anomalous utilization patterns, and implement admission controllers that reject unsigned container images.
+
+### AI-Specific Cost Management
+
+AI workloads present unique cost management challenges due to GPU price volatility, token-based inference pricing, and the ease with which resource abuse can hide in legitimately high utilization. Key practices for 2025-2026:
+
+- **Cost-per-inference tracking**: Track cost per inference or per thousand tokens as a first-class operational metric, not just aggregate GPU-hours. This makes unauthorized workloads visible.
+- **Rightsizing models and hardware**: Use the smallest model that satisfies accuracy requirements. A 7B parameter model running on a single GPU may serve the same business need as a 70B model on eight GPUs at 10x the cost.
+- **AI-native FinOps**: Organizations applying AI-specific financial operations practices report 30-40% reductions in cloud spend through dynamic pooling, priority scheduling, and automated lifecycle management that eliminates idle capacity between training runs.
+- **Utilization as security signal**: Organizations achieving sustained 90% GPU utilization under active load have better visibility into anomalous resource consumption. GPUs sitting idle 70-85% of the time (a common finding) make it easy for cryptojacking to go unnoticed.
+
+---
+
+## Backup and Recovery for AI Assets
+
+### What Must Be Backed Up
+
+AI disaster recovery requires protecting a broader set of artifacts than traditional application backups. Critical components include:
+
+- **Model weights** (potentially 100GB-1TB+ for large language models)
+- **Training checkpoints** saved every 1,000-5,000 steps (every 500 steps for high-stakes models)
+- **Tokenizer vocabularies and quantization configurations** -- 32% of recovery failures occur because teams back up weights but forget tokenizer files or quantization configs, causing models to load but fail to process input correctly
+- **Prompt templates and system prompts**
+- **Fine-tuning adapters** (LoRA weights, configuration files)
+- **API rate limits and security filter configurations**
+- **Preprocessing scripts, data versioning, and augmentation rules** (back up metadata rather than raw training data)
+- **Experiment tracking metadata and evaluation results**
+
+All components must be version-consistent: if model weights are out of sync with prompt templates or API endpoint configurations, recovery will fail even if individual artifacts are intact.
+
+### Recovery Targets (RTO/RPO)
+
+Industry benchmarks for AI infrastructure disaster recovery as of 2025:
+
+| Workload Type | RTO Target | RPO Target | Notes |
+|---|---|---|---|
+| Inference APIs | 22-47 minutes | Under 5 minutes | Bandwidth-constrained: transferring a 200GB model over 1 Gbps takes 27 minutes |
+| Training environments | 4-8 hours | 24 hours | Acceptable due to checkpoint-based resumption |
+| Real-time fine-tuned models | 30-60 minutes | 15 minutes | Frequent incremental backup required |
+
+### Immutable Storage and the 3-2-1-1-0 Rule
+
+The traditional 3-2-1 backup rule has been adapted for AI environments as the **3-2-1-1-0 rule**:
+
+- **3** copies of data (production + two backups)
+- **2** different storage types (e.g., object storage + tape/cold storage)
+- **1** offsite location (different region or cloud provider)
+- **1** immutable copy (WORM-protected, cannot be modified or deleted even by administrators)
+- **0** errors through automated verification (hash-based integrity checks on every backup)
+
+WORM-protected storage options: AWS S3 Object Lock (Governance or Compliance mode), Azure Immutable Blob Storage, GCP Bucket Lock with retention policies. Compliance mode prevents even root/admin users from deleting backups before the retention period expires.
+
+### Automated Failover Process
+
+A proven failover sequence used by major enterprises (JPMorgan Chase, Mayo Clinic):
+
+1. Monitor model performance continuously (latency, error rates, output quality)
+2. Trigger failover if accuracy drops below threshold for 3+ minutes
+3. Route traffic to standby region via DNS/API gateway updates
+4. Load latest checkpoint from object storage (S3, GCS, Blob Storage)
+5. Validate model with a test batch before enabling live traffic
+6. Alert the team and log the incident
+
+Organizations following structured recovery playbooks recover 63% faster than those using generic IT DR plans and spend 40% less on emergency fixes.
+
+### Recovery Testing
+
+A critical gap: **41% of companies have not tested AI infrastructure recovery in over a year**. Recovery testing should include:
+
+- Quarterly simulated regional outages with full end-to-end recovery
+- Validation that all artifacts load correctly together (not just that individual backups exist)
+- Verification of version consistency between model weights, tokenizers, prompt templates, and configurations
+- Measurement of actual RTO against target RTO
+- Offline runbooks with step-by-step recovery instructions that do not depend on systems that might be unavailable during an outage
+
+Use incremental backups to reduce storage costs (e.g., 200GB monthly vs. 6TB for daily full backups), but test that incremental restoration actually produces a functional system.
+
+---
+
 ## Related Standards & References
 
 - [NIST SP 800-184: Guide for Cybersecurity Event Recovery](https://csrc.nist.gov/publications/detail/sp/800-184/final)
 - [CIS Controls v8 -- Control 11: Data Recovery](https://www.cisecurity.org/controls/data-recovery)
 - [Kubernetes Resource Management](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)
+- [Kubernetes Resource Quotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/)
 - [NVIDIA MIG User Guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/)
 - [AWS S3 Object Lock](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html)
+- [NVIDIA KAI Scheduler (GitHub)](https://github.com/NVIDIA/KAI-Scheduler)
+- [Kueue: Kubernetes-Native AI Workload Scheduling](https://www.coreweave.com/blog/kueue-a-kubernetes-native-system-for-ai-training-workloads)
+- [Kubernetes GPU Scheduling 2025: Kueue, Volcano, MIG](https://debugg.ai/resources/kubernetes-gpu-scheduling-2025-kueue-volcano-mig)
+- [CrowdStrike: Dero Cryptojacking Campaign Targeting Kubernetes](https://www.crowdstrike.com/en-us/blog/crowdstrike-discovers-first-ever-dero-cryptojacking-campaign-targeting-kubernetes/)
+- [Disaster Recovery for LLM Infrastructure: Backups and Failover](https://brics-econ.org/disaster-recovery-for-large-language-model-infrastructure-backups-and-failover)
+- [Securing GPU-Accelerated AI Workloads in Kubernetes (Oracle/Sysdig)](https://blogs.oracle.com/cloud-infrastructure/securing-gpu-accelerated-ai-workloads-kubernetes)
 
 ---
 
 ## Open Research Questions
 
-- [ ] How should resource quotas account for the variable compute cost of different inference requests (short vs. long sequences, simple vs. complex generation)?
-- [ ] What is the optimal checkpoint frequency for long-running training jobs balancing storage cost against potential recompute cost?
-- [ ] How can WORM-protected backups handle the iterative nature of model development where old checkpoints are regularly superseded?
+- [ ] How should resource quotas account for the variable compute cost of different inference requests (short vs. long sequences, simple vs. complex generation)? Kueue's ResourceFlavor approach is promising but does not yet support per-request cost estimation.
+- [ ] What is the optimal checkpoint frequency for long-running training jobs balancing storage cost against potential recompute cost? Current guidance (every 1,000-5,000 steps) is rule-of-thumb; cost-optimal frequency depends on training cost per step and probability of failure.
+- [ ] How can WORM-protected backups handle the iterative nature of model development where old checkpoints are regularly superseded? Retention policies must balance immutability guarantees against storage cost growth.
+- [ ] Can accelerator telemetry (power draw, temperature, performance counters) reliably distinguish cryptojacking from legitimate high-utilization AI training workloads without unacceptable false positive rates?
+- [ ] As model sizes continue to grow (potentially multi-terabyte weights), how should disaster recovery strategies adapt when network transfer times dominate RTO? Pre-staged warm replicas across regions may become mandatory for critical inference services.
+- [ ] How should organizations handle backup and recovery for agentic AI systems where state includes not just model weights but also tool configurations, memory stores, and active execution context?
 
 ---

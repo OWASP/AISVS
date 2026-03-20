@@ -21,6 +21,37 @@ Detect and deter unauthorized model cloning through API abuse. Model extraction 
 
 ---
 
+## Recent Research (2024--2026)
+
+### Expanded LLM Extraction Threat Model
+
+A comprehensive survey on model extraction attacks and defenses for LLMs (June 2025) identifies three primary attack categories beyond traditional functionality extraction: **training data extraction** (exploiting memorization to recover sensitive training examples via crafted prompts), **prompt-targeted attacks** (stealing system prompts, few-shot examples, and other prompt IP), and **parameter recovery** (reverse-engineering internal weights). This expanded threat model means that rate limiting (requirement 11.5.1) and query-pattern analysis (11.5.3) must account for all three attack vectors, not just functionality cloning.
+
+### Adaptive Watermarking: ModelShield
+
+**ModelShield** (IEEE TIFS, January 2025) introduces adaptive and robust watermarking that dynamically adjusts protection strength based on query patterns. Unlike static watermarking schemes that can be characterized and removed, ModelShield strategically perturbs responses while maintaining high utility for legitimate users. This addresses a key gap in requirement 11.5.4: static watermarks are increasingly vulnerable to removal through fine-tuning and pruning, while adaptive approaches resist these attacks more effectively.
+
+### Explanation-Based Watermarking (EaaW)
+
+**Explanation as a Watermark (EaaW)** (2024) introduces a novel paradigm that embeds multi-bit watermarks into feature attribution explanations rather than model predictions. This means verification behaviors are implanted in the explanation layer rather than the output layer, making the watermark invisible to standard extraction pipelines that only replicate input-output mappings. EaaW supports multi-bit encoding, enabling richer ownership claims than single-bit backdoor watermarks.
+
+### Watermark Vulnerability Research
+
+USENIX Security 2024 research ("How to Break White-Box DNN-Watermarking Schemes") systematically demonstrated attacks against existing white-box watermarking schemes, showing that many can be removed or forged. This directly validates requirement 11.5.5's emphasis on protecting watermark verification keys and trigger sets -- if an attacker gains access to verification materials, watermark schemes are fundamentally compromised. Organizations implementing watermarking should assume adversaries will attempt both extraction-then-removal and direct watermark attacks.
+
+### Edge Deployment Protection
+
+Recent work on **TransLinkGuard** and **CoreGuard** addresses model extraction defense for edge-deployed models where rate limiting and API-level defenses are not available. These techniques embed architectural-level watermarks that persist even when models are deployed on untrusted hardware, extending the protection scope beyond API-served models.
+
+### Defense Taxonomy
+
+The 2025 LLM extraction survey organizes defenses into three categories that map well to AISVS requirements:
+1. **Model Protection** (architectural defenses, output control) -- maps to requirements 11.5.1, 11.5.3, 11.5.4
+2. **Data Privacy Protection** (preventing training data extraction, output sanitization) -- connects to C11.3 and C11.4
+3. **Prompt Protection** (watermarking prompts, query monitoring for prompt theft) -- an emerging concern not yet explicitly covered in the current requirements
+
+---
+
 ## Related Standards & References
 
 - [MITRE ATLAS AML.T0024.002 -- Extract ML Model](https://atlas.mitre.org/techniques/AML.T0024.002) -- Attack technique description and known cases
@@ -29,6 +60,10 @@ Detect and deter unauthorized model cloning through API abuse. Model extraction 
 - [Tramer et al., "Stealing Machine Learning Models via Prediction APIs" (2016)](https://arxiv.org/abs/1609.02943) -- Foundational model extraction paper
 - [Adi et al., "Turning Your Weakness Into a Strength: Watermarking Deep Neural Networks" (2018)](https://arxiv.org/abs/1802.04633) -- Backdoor-based DNN watermarking
 - [Kirchenbauer et al., "A Watermark for Large Language Models" (2023)](https://arxiv.org/abs/2301.10226) -- LLM output watermarking
+- [Survey on Model Extraction Attacks and Defenses for LLMs (June 2025)](https://arxiv.org/abs/2506.22521) -- Comprehensive taxonomy of LLM extraction attacks and three-category defense framework
+- [ModelShield: Adaptive and Robust Watermark Against Model Extraction (IEEE TIFS, 2025)](https://dl.acm.org/doi/10.1109/TIFS.2025.3530691) -- Dynamically adaptive watermarking for extraction defense
+- [Explanation as a Watermark: Multi-bit Model Ownership Verification (2024)](https://arxiv.org/abs/2405.04825) -- Feature-attribution-based watermarking paradigm
+- [How to Break White-Box DNN-Watermarking Schemes (USENIX Security 2024)](https://www.usenix.org/system/files/usenixsecurity24-pegoraro.pdf) -- Systematic attacks against existing watermarking defenses
 
 ---
 
@@ -39,5 +74,8 @@ Detect and deter unauthorized model cloning through API abuse. Model extraction 
 - How robust are current watermarking schemes against extraction-then-fine-tuning pipelines that are standard in transfer learning?
 - Should model extraction defenses focus on prevention (making extraction harder) or detection (identifying extracted copies after the fact)?
 - How do multi-modal models change the extraction threat model -- can an attacker extract one modality more easily than others?
+- Should prompt theft (system prompt extraction) be treated as a distinct requirement, or is it adequately covered by existing model extraction controls?
+- How should adaptive watermarking schemes like ModelShield be evaluated for robustness -- do they need their own adaptive attack testing (analogous to C11.2.4)?
+- Can explanation-based watermarks (EaaW) survive extraction attacks that also replicate feature attribution behavior?
 
 ---

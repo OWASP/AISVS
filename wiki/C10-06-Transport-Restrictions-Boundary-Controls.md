@@ -7,6 +7,8 @@
 
 This section addresses high-risk deployment patterns and boundary controls that are difficult to implement but critical for security-sensitive environments. These are Level 3 requirements — they represent defense-in-depth measures for organizations with elevated threat models. The section covers three distinct but related concerns: restricting stdio transport to safe contexts, preventing dynamic dispatch of tool functions, and enforcing tenant/environment isolation at the MCP layer. These controls are particularly relevant for multi-tenant SaaS platforms, financial services, healthcare, and government deployments where boundary violations have regulatory or safety consequences.
 
+The emergence of MCP gateways in 2025-2026 (with 10+ commercial products by early 2026, including offerings from Composio, MintMCP, Gravitee, Cloudflare, Pomerium, and others) has made several of these controls more practical to implement. MCP gateways act as centralized security boundaries between AI applications and external MCP servers, enforcing access control policies, tenant-aware routing, transport restrictions, and audit logging. Gateway architectures support tool-level RBAC at global, service, and individual tool levels while delivering low latency (~4ms p99). For multi-tenant deployments, gateways provide policy scoping and identity-based access controls that ensure each tenant sees only its own resources. However, gateways also introduce a new trust boundary — the gateway itself becomes a high-value target, and misconfigured gateway policies can silently weaken isolation. These controls remain Level 3 because even with gateway support, correct implementation requires coordination across network, identity, and application layers.
+
 ---
 
 ## Requirements
@@ -19,13 +21,31 @@ This section addresses high-risk deployment patterns and boundary controls that 
 
 ---
 
+## MCP Gateway Landscape (2025-2026)
+
+The rapid emergence of MCP gateways has changed the practical feasibility of boundary controls. Key capabilities relevant to this section:
+
+| Capability | Description | Relevance to C10.6 |
+|---|---|---|
+| **Transport policy enforcement** | Gateways can restrict which transports are permitted per environment (e.g., block stdio in production) | Directly supports 10.6.1 enforcement |
+| **Tool-level RBAC** | Fine-grained access control at global, service, and individual tool levels | Supports 10.6.2 by restricting callable functions |
+| **Tenant-aware routing** | Policy scoping and identity-based routing ensures each tenant's agents reach only their own MCP servers | Directly supports 10.6.3 isolation |
+| **Audit logging** | Centralized logging of all tool invocations with tenant, environment, and user context | Enables verification of boundary enforcement |
+| **Environment tagging** | Gateways can tag MCP connections with environment metadata (dev/staging/prod) and enforce separation | Supports 10.6.3 environment isolation |
+
+Notable gateway products as of early 2026 include Composio, MintMCP, Gravitee, Cloudflare Agents, Pomerium, obot, and TrueFoundry, among others. The "Breaking the Protocol" research (arXiv:2601.17549) demonstrated that multi-server deployments without isolation boundaries allow cross-server propagation attacks to succeed 61.3% of the time — providing quantitative justification for the tenant isolation controls in this section.
+
 ## Related Standards & References
 
-- [MCP Transports Specification (2025-03-26)](https://spec.modelcontextprotocol.io/specification/2025-03-26/basic/transports/) — stdio and streamable HTTP transport definitions
+- [MCP Transports Specification (2025-06-18)](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports) — current stdio and streamable HTTP transport definitions
 - [OWASP Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Injection_Prevention_Cheat_Sheet.html) — relevant to dynamic dispatch prevention
 - [CWE-470: Use of Externally-Controlled Input to Select Classes or Code](https://cwe.mitre.org/data/definitions/470.html) — dynamic dispatch vulnerability class
 - [NIST SP 800-53: SC-4 Information in Shared System Resources](https://csf.tools/reference/nist-sp-800-53/r5/sc/sc-4/) — multi-tenant isolation controls
 - [Linux seccomp](https://man7.org/linux/man-pages/man2/seccomp.2.html) — process-level sandboxing for stdio isolation
+- [Composio: Best MCP Gateways for Developers (2026)](https://composio.dev/content/best-mcp-gateway-for-developers) — gateway comparison
+- [Gravitee: MCP API Gateway Explained](https://www.gravitee.io/blog/mcp-api-gateway-explained-protocols-caching-and-remote-server-integration) — gateway architecture patterns
+- [MintMCP: MCP Gateways for Platform Engineering Teams](https://www.mintmcp.com/blog/mcp-gateways-platform-engineering-teams) — multi-tenant gateway patterns
+- [Breaking the Protocol (arXiv:2601.17549)](https://arxiv.org/html/2601.17549) — cross-server propagation attack data
 
 ---
 
@@ -36,5 +56,7 @@ This section addresses high-risk deployment patterns and boundary controls that 
 - [ ] What is the minimum viable tenant isolation architecture for MCP in a multi-tenant SaaS — separate instances, shared instances with token-based isolation, or a hybrid?
 - [ ] How should MCP server discovery be scoped to prevent cross-environment leakage (e.g., dev discovering prod servers via a shared registry)?
 - [ ] Is there a role for hardware-level isolation (TEEs, enclaves) for high-sensitivity MCP servers handling regulated data?
+- [ ] As MCP gateways become standard infrastructure, should the AISVS define gateway-specific requirements (authentication of the gateway itself, gateway-to-server mTLS, gateway configuration integrity)?
+- [ ] How should gateway failover and bypass be handled — if the gateway is unavailable, should MCP connections fail closed or fall back to direct connections?
 
 ---

@@ -1,7 +1,7 @@
 # C7.2 Hallucination Detection & Mitigation
 
 > [Back to C07 Index](C07-Model-Behavior.md)
-> **Last Researched:** 2026-03-18
+> **Last Researched:** 2026-03-20
 
 ## Purpose
 
@@ -55,10 +55,27 @@ Hallucination — the generation of plausible-sounding but factually incorrect o
 | [HHEM-2.1-Open](https://huggingface.co/vectara/hallucination_evaluation_model) | Open source (T5) | English-only | Degrades on long contexts (8.99% accuracy drop) |
 | [FaithJudge](https://arxiv.org/html/2505.04847v1) | LLM-as-Judge | ACL EMNLP 2025 | Few-shot human-annotated examples |
 | [Arize LibreEval](https://arize.com/llm-hallucination-dataset/) | Dataset + detection | LLM Council > human (94% vs 93%) | Largest open-source RAG hallucination dataset |
-| [SelfCheckGPT](https://arxiv.org/abs/2303.08896) | Sampling consistency | Zero-resource | No external knowledge needed |
+| [SelfCheckGPT](https://arxiv.org/abs/2303.08896) | Sampling consistency | Zero-resource | No external knowledge needed; stochastic sampling detects hallucinations via cross-sample contradiction |
+| [FACTUM](https://arxiv.org/abs/2601.05866) | Mechanistic (internal pathway analysis) | +37.5% AUC over baselines | ECIR 2026; detects citation hallucination in RAG by analyzing Attention vs. FFN pathway coordination; scale-dependent signatures |
+| [ChainPoll](https://arxiv.org/abs/2310.18344) | Chain-of-Thought judging | Outperforms SelfCheckGPT, GPTScore, G-Eval, TRUE | Uses CoT reasoning to judge hallucination presence across closed and open domain |
+| [REFIND](https://arxiv.org/html/2502.13622v2) | Retrieval-augmented span detection | SemEval-2025 Task 3 | Token-level Context Sensitivity Ratio (CSR) identifies hallucinated spans within LLM text |
 | [HalluLens](https://arxiv.org/html/2504.17550v1) | Benchmark | 94.77% agreement with humans | Extrinsic vs. intrinsic distinction |
 | [RAGAS](https://docs.ragas.io/) | RAG evaluation | Faithfulness + relevance | Framework for RAG pipeline assessment |
 | MiniCheck / Bespoke-MiniCheck | Small classifier | Efficient inference | AlignScore alternative |
+
+### Detection Method Taxonomy (2025-2026 State of the Art)
+
+The hallucination detection field has consolidated into five major approach categories, with significant advances in 2025-2026:
+
+| Approach | How It Works | Strengths | Limitations |
+|----------|-------------|-----------|-------------|
+| **Retrieval-based** (REFIND, RAG grounding) | Compares generated claims against retrieved source documents; token-level sensitivity ratios identify unsupported spans | Anchors verification to authoritative sources; identifies specific hallucinated spans, not just binary judgments | Depends on retrieval quality; cannot detect hallucinations about topics absent from the corpus |
+| **Self-consistency** (SelfCheckGPT, semantic entropy) | Samples multiple responses and detects contradictions; Nature 2024 showed semantic entropy predicts hallucinations | Zero-resource; works on black-box models; no external knowledge base needed | Computationally expensive (multiple forward passes); fails when model consistently hallucinates the same wrong answer |
+| **LLM-as-Judge** (ChainPoll, FaithJudge, LLM Council) | Uses a separate LLM (often with Chain-of-Thought) to evaluate whether output is faithful to sources or factually correct | High agreement with human annotators (94%+); flexible across domains | Introduces judge model as single point of failure; susceptible to shared biases between generator and judge |
+| **Mechanistic / Internal** (FACTUM) | Analyzes internal model pathways (Attention vs. FFN coordination) to detect citation hallucinations from within | Up to 37.5% AUC improvement; does not require external knowledge; signature analysis reveals *why* hallucination occurs | Requires white-box model access; detection signatures shift with model scale (3B vs. 8B behave differently) |
+| **Embedding / Learning-based** (HHEM, MiniCheck, AlignScore) | Trained classifiers that score generated text against reference for factual consistency | Fast inference; can be deployed as lightweight pipeline components | Require training data; may not generalize across domains without fine-tuning |
+
+**Key 2025-2026 insight:** The field is moving from binary hallucination detection (hallucinated yes/no) toward span-level identification (which specific tokens or claims are hallucinated) and mechanistic understanding (why the model hallucinated). FACTUM's pathway analysis and REFIND's token-level CSR scoring represent this shift.
 
 ### Mitigation Effectiveness
 
@@ -114,6 +131,12 @@ Medical context: Clinical vignette hallucination rates of 64-68% without mitigat
 - [SelfCheckGPT (Manakul et al., 2023)](https://arxiv.org/abs/2303.08896)
 - [FActScore (Min et al., 2023)](https://arxiv.org/abs/2305.14251)
 - [RAGAS Framework](https://docs.ragas.io/)
+- [FACTUM: Mechanistic Citation Hallucination Detection (ECIR 2026)](https://arxiv.org/abs/2601.05866) — internal pathway analysis for RAG citation hallucination
+- [ChainPoll (Friel & Sanyal, 2023)](https://arxiv.org/abs/2310.18344) — CoT-based hallucination detection outperforming SelfCheckGPT, GPTScore, TRUE
+- [REFIND: Retrieval-Augmented Factuality Detection (SemEval-2025)](https://arxiv.org/html/2502.13622v2) — token-level hallucination span identification
+- [Semantic Entropy for Hallucination Detection (Nature, 2024)](https://www.nature.com/articles/s41586-024-07421-0) — uncertainty estimation via semantic clustering
+- [Hallucination Detection with Metamorphic Relations (ACM, 2025)](https://dl.acm.org/doi/10.1145/3715735) — software engineering approach to hallucination testing
+- [Comprehensive Survey: Hallucination in LLMs (ACM TOIS, 2025)](https://dl.acm.org/doi/10.1145/3703155) — taxonomy of causes, detection, and mitigation
 - [AI Hallucination Cases Database (Charlotin)](https://www.damiencharlotin.com/hallucinations/)
 - [AI Hallucination Statistics 2026 (AllAboutAI)](https://www.allaboutai.com/resources/ai-statistics/ai-hallucinations/)
 
@@ -126,8 +149,11 @@ Medical context: Clinical vignette hallucination rates of 64-68% without mitigat
 - Can hallucination detection generalize across domains, or does it require domain-specific training data?
 - How should systems handle "confident hallucinations" — the overconfidence paradox (Gemini 3 Pro: 53% accuracy, 88% hallucination rate)?
 - Is there a principled way to distinguish creative embellishment (acceptable) from factual fabrication (unacceptable)?
-- Should citation verification check URL content or just URL existence? (Perplexity cites real URLs with fabricated claims)
+- Should citation verification check URL content or just URL existence? (Perplexity cites real URLs with fabricated claims) FACTUM's mechanistic approach detects citation hallucination internally, but requires white-box access.
 - Can LLM-as-Judge approaches be made adversarially robust, or do they introduce a new single point of failure?
+- **[New]** How do mechanistic detection signatures (FACTUM) scale across model architectures? Current evidence shows 3B and 8B models use different internal strategies — will this generalize to 70B+ models?
+- **[New]** Can span-level hallucination detection (REFIND's token-level CSR) be made fast enough for real-time production use, or is it limited to offline evaluation?
+- **[New]** How should retrieval-based and self-consistency approaches be combined? Each catches different hallucination types; no single method dominates across all benchmarks.
 
 ---
 

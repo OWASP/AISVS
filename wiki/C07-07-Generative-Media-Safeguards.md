@@ -6,6 +6,20 @@
 
 Generative media safeguards address the unique risks of AI systems that produce images, audio, video, or other non-text media. These systems can create non-consensual intimate imagery, generate deepfakes of real people, produce copyright-infringing content, and manufacture disinformation at scale. Unlike text-based safety filtering, media safeguards must operate across modalities — analyzing both the text prompt that drives generation and the resulting media artifact. This section covers input filtering, consent verification, copyright checking, bypass detection, and provenance marking.
 
+### 2024-2026 Landscape: Deepfakes, Watermarking, and Regulatory Mandates
+
+The generative media threat landscape has shifted dramatically. By 2025, deepfake-as-a-service platforms have proliferated, enabling real-time deepfake injection directly into virtual camera feeds during identity verification sessions. Detection systems have responded: Incode's Deepsight multi-modal AI (analyzing video, motion, and depth data simultaneously) is deployed at scale with TikTok, Scotiabank, and Nubank, protecting millions of users across over six million live identity sessions. Academic detection has also advanced -- a multi-model framework achieved 97% detection accuracy and 92% F1 in the UK Home Office Deepfake Detection Challenge 2024, and parameter-efficient adaptation methods like LNCLIP-DF (fine-tuning only LayerNorm parameters of a CLIP vision encoder) have demonstrated strong cross-benchmark generalization.
+
+On the provenance side, three dominant watermarking approaches have emerged for AI-generated media:
+
+- **C2PA 2.1+ Content Credentials** -- The Coalition for Content Provenance and Authenticity has matured its open standard significantly. C2PA 2.1 (2025-2026) introduces "soft binding," embedding imperceptible digital watermarks directly into image pixels or video frames as a persistent link back to the C2PA manifest, solving the "orphaned manifest" problem where metadata could be stripped from content. The C2PA specification reached version 2.3 by late 2025.
+- **Google SynthID** -- Embeds imperceptible watermarks directly into video pixels using neural network techniques, distributing authenticity information across the entire visual spectrum. SynthID watermarks survive multiple rounds of compression and transcoding, making removal without destroying video quality virtually impossible. Google has integrated SynthID across its generative AI products and joined C2PA for interoperability.
+- **Meta Video Seal** -- Open-sourced in December 2024, providing an alternative watermarking approach for video content with a focus on open research and interoperability.
+
+Regulatory pressure is now a primary driver. The EU AI Act (Article 50, effective 2025-2026) mandates machine-readable labeling of AI-generated content. Multiple US states, including California, have enacted digital labeling laws for synthetic media. In January 2025, NSA and CISA jointly published "Strengthening Multimedia Integrity in the Generative AI Era," endorsing C2PA content credentials as a recommended countermeasure for government agencies and critical infrastructure operators. The guidance recommends a multi-faceted approach combining provenance, education, policy, and detection.
+
+Despite these advances, the arms race continues. Deepfakes are projected to become "synthetic performers" capable of real-time interaction by 2026, and the meaningful line of defense is shifting from human judgment to infrastructure-level protections with cryptographic provenance at the core.
+
 ---
 
 ## Requirements
@@ -22,21 +36,27 @@ Generative media safeguards address the unique risks of AI systems that produce 
 
 ## Related Standards & References
 
-- [C2PA (Coalition for Content Provenance and Authenticity)](https://c2pa.org/) — open standard for media provenance and authenticity
-- [SynthID (Google DeepMind)](https://deepmind.google/technologies/synthid/) — invisible watermarking for AI-generated content
-- [EU AI Act, Article 50 — Transparency obligations for providers and deployers of certain AI systems](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) — requires machine-readable marking of AI-generated content
+- [C2PA Technical Specification 2.3](https://spec.c2pa.org/specifications/specifications/2.3/specs/C2PA_Specification.html) — latest C2PA open standard for media provenance, including soft binding watermarks
+- [C2PA Content Credentials Explainer 2.2 (April 2025)](https://spec.c2pa.org/specifications/specifications/2.2/explainer/_attachments/Explainer.pdf) — overview of Content Credentials architecture and implementation
+- [SynthID (Google DeepMind)](https://deepmind.google/technologies/synthid/) — invisible watermarking for AI-generated content across text, image, audio, and video
+- [Meta Video Seal (December 2024)](https://github.com/facebookresearch/videoseal) — open-source video watermarking for AI-generated content
+- [NSA/CISA: Strengthening Multimedia Integrity in the Generative AI Era (January 2025)](https://media.defense.gov/2025/Jan/29/2003634788/-1/-1/0/CSI-CONTENT-CREDENTIALS.PDF) — joint government guidance endorsing C2PA content credentials
+- [EU AI Act, Article 50 — Transparency obligations](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) — requires machine-readable marking of AI-generated content
 - [Content Authenticity Initiative (CAI)](https://contentauthenticity.org/) — industry initiative for content provenance based on C2PA
 - [NIST AI 100-4 (Synthetic Content)](https://www.nist.gov/artificial-intelligence) — NIST work on reducing risks of synthetic content
+- [UK Home Office Deepfake Detection Challenge 2024](https://detecting-ai.com/blog/the-rise-of-deepfake-detection-technologies-in-2025) — government-sponsored evaluation of deepfake detection systems
 - [National CSAM reporting requirements](https://www.missingkids.org/gethelpnow/cybertipline) — legal obligations for detecting and reporting CSAM in generated content
 
 ---
 
 ## Open Research Questions
 
-- How robust are current watermarking schemes to adversarial removal? Can watermarks survive screenshot-and-reupload workflows?
-- How should consent verification work at scale for voice cloning and face generation? Is a consent database technically feasible?
+- How robust are current watermarking schemes to adversarial removal? C2PA soft binding and SynthID have improved robustness to compression and transcoding, but can watermarks survive screenshot-and-reupload workflows or adversarial neural network attacks designed specifically to strip them?
+- How should consent verification work at scale for voice cloning and face generation? Is a consent database technically feasible, and how do existing consent mechanisms (which are often trivially bypassable) need to evolve?
 - What similarity threshold constitutes copyright infringement in generated visual and audio content?
-- How should generative media safeguards evolve as video generation quality approaches photorealism?
-- Should AI-generated media provenance be mandatory for all generative systems, or only for systems above a certain capability threshold?
+- As deepfakes become capable of real-time interaction and injection into live video feeds, how should detection shift from post-hoc analysis to infrastructure-level prevention (e.g., cryptographic provenance at capture time)?
+- With C2PA, SynthID, and Video Seal emerging as competing/complementary standards, what interoperability mechanisms are needed to ensure a unified provenance ecosystem?
+- How should detection systems handle scale-dependent behavior, given that deepfake detection models exhibit different accuracy patterns at different model scales (e.g., LNCLIP-DF generalization characteristics)?
+- Should AI-generated media provenance be mandatory for all generative systems, or only for systems above a certain capability threshold? The EU AI Act and US state laws are converging on broad mandates, but enforcement mechanisms remain unclear.
 
 ---

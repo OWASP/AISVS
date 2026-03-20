@@ -1,11 +1,13 @@
 # C10: Model Context Protocol (MCP) Security
 
 > **Source:** [`1.0/en/0x10-C10-MCP-Security.md`](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C10-MCP-Security.md)
-> **Requirements:** 33 | **Sections:** 6
+> **Requirements:** 34 | **Sections:** 6
 
 ## Control Objective
 
 Ensure secure discovery, authentication, authorization, transport, and use of MCP-based tool and resource integrations to prevent context confusion, unauthorized tool invocation, or cross-tenant data exposure.
+
+> **2025-2026 Highlights:** The MCP spec matured significantly with OAuth 2.1 authorization and streamable HTTP transport replacing legacy SSE. Tool poisoning and rug-pull attacks were publicly disclosed, driving new requirements for component allowlisting (C10.1) and tool definition change detection (C10.4).
 
 ---
 
@@ -13,7 +15,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 
 | Section | Title | Reqs | IDs | Page |
 |---------|-------|:----:|-----|------|
-| C10.1 | Component Integrity & Supply Chain Hygiene | 2 | 10.1.1–10.1.2 | [C10-01-Component-Integrity](C10-01-Component-Integrity) |
+| C10.1 | Component Integrity & Supply Chain Hygiene | 3 | 10.1.1–10.1.3 | [C10-01-Component-Integrity](C10-01-Component-Integrity) |
 | C10.2 | Authentication & Authorization | 12 | 10.2.1–10.2.12 | [C10-02-Authentication-Authorization](C10-02-Authentication-Authorization) |
 | C10.3 | Secure Transport & Network Boundary Protection | 5 | 10.3.1–10.3.5 | [C10-03-Secure-Transport](C10-03-Secure-Transport) |
 | C10.4 | Schema, Message, and Input Validation | 8 | 10.4.1–10.4.8 | [C10-04-Schema-Message-Validation](C10-04-Schema-Message-Validation) |

@@ -21,6 +21,30 @@ Increase resilience to manipulated inputs designed to cause misclassification or
 
 ---
 
+## Recent Research (2024--2026)
+
+### Adversarial Training Advances for LLMs and VLMs
+
+Adversarial training remains the most empirically validated hardening technique, but recent work has adapted it substantially for foundation models. **Prompt Adversarial Tuning (PAT)** enhances robustness through systematic adversarial example exposure during fine-tuning, enabling improved resistance without architectural modifications. For LLMs, **Adversarial Preference Learning** (ACL 2025 Findings) integrates adversarial robustness objectives directly into RLHF-style alignment, treating adversarial jailbreak prompts as negative preference signals -- bridging the gap between traditional adversarial training and LLM safety training.
+
+**DiffuseDef** (ACL 2025) applies diffusion-based input purification to improve NLP model robustness against adversarial text attacks, reconstructing clean inputs from noisy adversarial perturbations without requiring adversarial training. This represents a shift toward purification-based defenses that decouple robustness from the training pipeline, reducing the 3-10x training cost overhead of classical adversarial training.
+
+### Vision-Language Model Robustness
+
+Chain of Attack (CVPR 2025) demonstrated new cross-modal attack surfaces in vision-language models (VLMs), where adversarial perturbations in one modality (e.g., images) can cascade to compromise outputs that depend on the other modality (text). This confirms that multi-modal systems require modality-specific and cross-modal adversarial evaluation, directly relevant to requirement 11.2.1's call for modality-appropriate testing.
+
+### Certified Robustness Progress
+
+Certified defense methods have advanced beyond Lp-norm bounds for classification. ICLR 2026 work on dissecting adversarial robustness of multi-modal models introduced certified robustness techniques applicable to transformer-based architectures, narrowing the gap between formal verification (requirement 11.2.5) and practical model sizes. However, certified bounds for production-scale LLMs remain out of reach -- current methods scale to models with hundreds of thousands of parameters but not billions.
+
+Hybrid defense strategies that combine certified bounds for safety-critical subcomponents with empirical adversarial evaluation for the full system are emerging as the practical approach for organizations implementing both Level 2 and Level 3 requirements.
+
+### Adversarial Robustness Evaluation Tooling
+
+**AdvERSEM** (StarSEM 2025) provides an adversarial robustness testing and training framework specifically designed for NLP semantic models, complementing existing tools like TextAttack and ART. The growing availability of modality-specific evaluation toolkits reduces the barrier for organizations to implement requirement 11.2.1 and 11.2.4.
+
+---
+
 ## Related Standards & References
 
 - [NIST AI 100-2e2023 -- Evasion Attacks](https://csrc.nist.gov/pubs/ai/100/2/e2023/final) -- Comprehensive taxonomy of adversarial ML evasion techniques and mitigations
@@ -29,6 +53,10 @@ Increase resilience to manipulated inputs designed to cause misclassification or
 - [TextAttack](https://github.com/QData/TextAttack) -- NLP adversarial attack and augmentation framework
 - [AutoAttack (Croce & Hein, 2020)](https://arxiv.org/abs/2003.01690) -- Ensemble of parameter-free attacks for reliable robustness evaluation
 - [Carlini et al., "On Evaluating Adversarial Robustness" (2019)](https://arxiv.org/abs/1902.06705) -- Guidelines for rigorous adversarial robustness evaluation
+- [DiffuseDef: Improved Robustness to Adversarial Attacks via Diffusion (ACL 2025)](https://aclanthology.org/2025.acl-long.454.pdf) -- Diffusion-based input purification for NLP adversarial defense
+- [Adversarial Preference Learning for Robust LLM Alignment (ACL 2025 Findings)](https://aclanthology.org/2025.findings-acl.1126.pdf) -- Integrating adversarial robustness into RLHF alignment
+- [Chain of Attack: Robustness of Vision-Language Models (CVPR 2025)](https://openaccess.thecvf.com/content/CVPR2025/papers/Xie_Chain_of_Attack_On_the_Robustness_of_Vision-Language_Models_Against_CVPR_2025_paper.pdf) -- Cross-modal adversarial attacks on VLMs
+- [AdvERSEM: Adversarial Robustness Testing for NLP (StarSEM 2025)](https://aclanthology.org/2025.starsem-1.32.pdf) -- NLP-specific adversarial evaluation framework
 
 ---
 
@@ -39,5 +67,7 @@ Increase resilience to manipulated inputs designed to cause misclassification or
 - Will formal verification methods ever scale to production-sized models, or will empirical evaluation remain the practical ceiling?
 - How do adversarial examples interact with multi-modal models that accept both text and images -- does one modality create attack surfaces for the other?
 - What is the relationship between adversarial robustness and out-of-distribution generalization -- can improving one harm the other?
+- How should adversarial preference learning (integrating robustness into RLHF) be evaluated -- do alignment-focused adversarial defenses transfer to traditional evasion robustness?
+- Can diffusion-based purification defenses like DiffuseDef scale to real-time inference workloads without unacceptable latency?
 
 ---

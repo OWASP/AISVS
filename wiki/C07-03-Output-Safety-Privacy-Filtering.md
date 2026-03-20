@@ -21,6 +21,41 @@ Output safety and privacy filtering prevents harmful, toxic, or privacy-violatin
 
 ---
 
+## Implementation Guidance (2025-2026 Landscape)
+
+### Content Moderation Tooling
+
+The output safety filtering ecosystem has matured significantly through 2025-2026, with multiple production-ready options:
+
+- **LLM Guard** (Protect AI): Open-source library providing output scanners for content moderation, bias detection, malicious URL detection, and PII anonymization. Supports configurable scanner pipelines.
+- **OpenAI Moderation API**: Cloud-hosted content classification covering hate, harassment, self-harm, sexual, and violence categories.
+- **Azure AI Content Safety**: Microsoft's multi-category classifier with adjustable severity thresholds.
+- **Perspective API** (Google/Jigsaw): Toxicity scoring specialized for text, with multi-language support.
+- **SafeGPT** (2026): A two-sided guardrail system integrating input-side detection/redaction, output-side moderation/reframing, and human-in-the-loop feedback. Published results show 92% precision, 87% recall, and 84% policy violation remediation.
+- **Agreement Validation Interface (AVI)** (2025): Demonstrated 82% reduction in successful injection attacks, 75% decrease in toxic content generation, and PII detection F1-score of approximately 0.95.
+- **Agentgateway**: Provides layered content safety through prompt guards that can reject, mask, or moderate content before it reaches the LLM or returns to users.
+
+### Critical Finding: Output Guardrails Are Weak
+
+A 2025 Palo Alto Unit 42 study comparing LLM guardrails across major GenAI platforms revealed that **output filters consistently underperform input filters**. While input filters blocked 53-92% of malicious prompts depending on platform, output filter detection rates were critically low (0-1.6% of harmful responses caught). The study found that model alignment itself blocked harmful content in 109 out of 123 jailbreak prompts across all platforms, meaning output guardrails provided only marginal additional protection. This underscores the need for **multi-layered classification** (keyword + ML-based + LLM-as-judge) rather than relying on a single output filter.
+
+Common evasion techniques that succeeded included role-play scenarios, indirect phrasing without explicit harmful keywords, and narrative framing embedding malicious requests in fictional contexts.
+
+### PII Detection and Redaction
+
+A 2025 study revealed that 8.5% of prompts submitted to tools like ChatGPT and Copilot included sensitive information -- PII, credentials, and internal file references -- most of which were not flagged by traditional DLP systems because they occurred during natural language interactions rather than structured data entry.
+
+Key PII detection tools for output filtering:
+
+- **Microsoft Presidio**: Open-source, configurable entity recognizers supporting 30+ PII types. Best-in-class for structured PII (credit cards, SSNs, emails).
+- **AWS Comprehend PII Detection**: Managed service with NER-based detection for names and addresses in addition to pattern-based detection.
+- **Google Cloud DLP**: Enterprise DLP with over 150 built-in infoTypes and custom detector support.
+- **Lakera Guard**: Provides PII detection integrated with prompt injection defense as a unified guardrail layer.
+
+Regex-based detection handles structured PII well but struggles with unstructured PII (names in context). NER-based approaches provide better coverage for names, addresses, and contextual PII. Best practice is to combine both approaches.
+
+---
+
 ## Related Standards & References
 
 - [OWASP LLM05:2025 Improper Output Handling](https://genai.owasp.org/llmrisk/llm052025-improper-output-handling/) — broader output handling risks
@@ -29,14 +64,21 @@ Output safety and privacy filtering prevents harmful, toxic, or privacy-violatin
 - [Perspective API (Jigsaw/Google)](https://perspectiveapi.com/) — toxicity scoring for text
 - [NIST AI 600-1 (GenAI Profile)](https://csrc.nist.gov/pubs/ai/600/1/final) — addresses content safety for generative AI
 - [COPPA (Children's Online Privacy Protection Act)](https://www.ftc.gov/legal-library/browse/rules/childrens-online-privacy-protection-rule-coppa) — US regulation relevant to C7.3.5
+- [LLM Guard (Protect AI)](https://protectai.com/llm-guard) — open-source LLM security guardrails
+- [Palo Alto Unit 42: Comparing LLM Guardrails](https://unit42.paloaltonetworks.com/comparing-llm-guardrails-across-genai-platforms/) — 2025 comparative study of guardrail effectiveness
+- [SafeGPT (2026)](https://arxiv.org/html/2601.06366) — two-sided guardrail system for data leakage and unethical output prevention
+- [Lakera Guard](https://www.lakera.ai/blog/personally-identifiable-information) — unified PII detection and prompt injection defense
+- [Datadog LLM Guardrails Best Practices](https://www.datadoghq.com/blog/llm-guardrails-best-practices/) — deployment guidance for LLM safety filters
 
 ---
 
 ## Open Research Questions
 
 - How should safety filters handle multilingual content where toxicity classifiers have lower accuracy in non-English languages?
-- What is the right trade-off between filtering aggressiveness and model utility? How should false positive rates be measured and managed?
+- What is the right trade-off between filtering aggressiveness and model utility? The Unit 42 study found false positive rates ranged from 0.1% to 13.1% across platforms -- how should these be measured and managed?
 - How can PII detection be extended to handle emerging PII types (biometric descriptions, behavioral patterns, AI-inferred attributes)?
 - Should safety filter configurations be transparent to users, or does transparency enable filter evasion?
+- Given that output guardrails catch less than 2% of harmful responses (Unit 42, 2025), should the industry shift investment toward model alignment and input filtering rather than output-side classification?
+- How can multi-layered classification approaches (keyword + ML-based + LLM-as-judge) be standardized and benchmarked for consistent cross-platform evaluation?
 
 ---

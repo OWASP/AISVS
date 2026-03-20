@@ -19,13 +19,57 @@ Agents act on behalf of users and interact with systems that have their own acce
 
 ---
 
+## Implementation Guidance
+
+### The Authorization Crisis for Agentic AI (2025--2026)
+
+Traditional IAM frameworks were designed for human users and static service accounts. Research and industry analysis in 2025--2026 identifies seven critical failures when applying these frameworks to AI agents (ISACA, 2025):
+
+1. **Coarse-grained permissions:** Agents need fine-grained, task-specific permissions that dynamically change based on context, not static role-based access with long-lived tokens.
+2. **Single-entity model limitations:** Current systems cannot track complex nested delegations where agents spawn sub-agents or represent multiple principals simultaneously.
+3. **Context blindness:** Access decisions lack awareness of runtime context, agent intent, or risk level -- permissions remain static throughout sessions.
+4. **Scalability pressures:** Hundreds or thousands of transient agents generate overwhelming token management demands (issuance, validation, revocation).
+5. **Inadequate inter-agent authentication:** OAuth and SAML rely on hierarchical trust models unsuitable for decentralized agent networks that require peer-to-peer trust.
+6. **Secret sprawl:** Each agent's multiple API integrations create a multiplicative factor in secrets requiring rotation and storage.
+7. **Revocation complexity:** Revoking access in one place does not automatically cut off access elsewhere across distributed ephemeral sessions.
+
+A 2026 survey (Grantex) found that 93% of popular AI agent projects use unscoped API keys, and fewer than half of companies deploying agents had comprehensive governance in place.
+
+### Emerging Standards and Frameworks
+
+- **NIST Agent Identity and Authorization (February 2026):** NIST released a concept paper on "Accelerating the Adoption of Software and Artificial Intelligence Agent Identity and Authorization," proposing demonstrations to explore identity and authorization practices for AI agents in enterprise settings. This signals that federal standardization of agent authorization is underway.
+- **Agent Relationship-Based Identity and Authorization (ARIA):** Treats delegation relationships as explicit, cryptographically verifiable entities in a graph. Every delegation is a distinct relationship that enables surgical permission revocation and full auditability. ARIA integrates OAuth 2.0 Rich Authorization Requests, OAuth 2.0 token exchange (RFC 8693), and OpenID AuthZEN for context-aware policy evaluation.
+- **OpenID AuthZEN:** Enables evaluation of fine-grained, context-aware policies without abandoning installed-base OAuth infrastructure -- applying constraints such as geo-fences, budget thresholds, and temporal windows alongside requirements like audit trails and notifications.
+- **Zero Trust Identity with DIDs:** Combines Decentralized Identifiers, Verifiable Credentials, Agent Naming Services, and zero-knowledge proofs for privacy-preserving compliance verification in agent identity.
+
+### Practical Authorization Patterns
+
+- **Scopes for coarse-grained limits, claims for fine-grained context:** Use OAuth scopes to define broad permission boundaries and token claims to carry runtime context (user identity, tenant, data classification, risk score) that policy engines evaluate per-call.
+- **On-behalf-of delegation:** OAuth 2.0 token exchange (RFC 8693) cryptographically binds an actor (the agent) to a delegator (user or service), preserving the chain of responsibility without exposing the user's credentials.
+- **Policy engines at the enforcement point:** OPA, Cedar, and Zanzibar-style systems enforce fine-grained policies. The policy engine must sit between the model's tool selection and actual tool execution -- never after.
+- **Short-lived, single-use credentials:** Replace long-lived API keys with ephemeral tokens scoped to individual tasks. This limits blast radius and eliminates the stale-authorization window.
+
+### Anti-Patterns to Avoid
+
+- Letting the AI model make access control decisions based on conversation context (prompt injection can manipulate these).
+- Using the end user's actual credentials for agent actions instead of scoped delegation tokens.
+- Caching authorization decisions for long-running agent tasks without event-driven invalidation.
+- Granting agents broad "admin" or "full-access" scopes because their task is open-ended.
+
+---
+
 ## Related Standards & References
 
 - [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/pubs/detail/sp/800-207/final) -- continuous verification and least-privilege principles
+- [NIST Concept Paper: AI Agent Identity and Authorization (Feb 2026)](https://www.hoganlovells.com/en/publications/shaping-the-future-of-ai-security-nist-seeking-input-on-agent-identity-authorization) -- federal standardization initiative
 - [OAuth 2.0 Token Exchange (RFC 8693)](https://www.rfc-editor.org/rfc/rfc8693) -- delegation token mechanism
 - [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) -- general-purpose policy engine
 - [AWS Cedar](https://www.cedarpolicy.com/) -- policy language and evaluation engine
 - [OWASP LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/) -- excessive permissions and lack of authorization
+- [The Looming Authorization Crisis: Why Traditional IAM Fails Agentic AI (ISACA)](https://www.isaca.org/resources/news-and-trends/industry-news/2025/the-looming-authorization-crisis-why-traditional-iam-fails-agentic-ai) -- analysis of IAM failures for agents
+- [State of AI Agent Security 2026 (Grantex)](https://grantex.dev/report/state-of-agent-security-2026) -- survey data on agent security practices
+- [Best Practices of Authorizing AI Agents (Oso)](https://www.osohq.com/learn/best-practices-of-authorizing-ai-agents) -- practical implementation guidance
+- [AI Agents Are Becoming Authorization Bypass Paths (Hacker News)](https://thehackernews.com/2026/01/ai-agents-are-becoming-privilege.html) -- real-world exploitation patterns
 - AISVS C05 (Access Control) -- general AI access control; C09.6 addresses agent-specific delegation and continuous enforcement
 
 ---
@@ -36,5 +80,7 @@ Agents act on behalf of users and interact with systems that have their own acce
 - Can authorization policies for agent actions be auto-generated from tool manifests and user role definitions?
 - What are the performance implications of per-call authorization in high-throughput agent systems, and what caching strategies are safe?
 - How should authorization work for agents that operate across organizational boundaries (federated agent systems)?
+- How will the NIST AI Agent Identity and Authorization framework interact with existing OAuth/OIDC infrastructure once finalized?
+- Can the ARIA graph-based delegation model scale to environments with thousands of transient agents and sub-agents?
 
 ---

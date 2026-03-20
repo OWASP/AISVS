@@ -7,6 +7,8 @@
 
 This section ensures that all data flowing through MCP — tool definitions, tool arguments, tool responses, and JSON-RPC framing — is validated for integrity, authenticity, and safety. MCP is fundamentally a protocol for injecting external data into an LLM's context window, which makes it a prime vector for indirect prompt injection. Tool responses that are injected into the context without validation can manipulate the model's behavior. Tool definitions themselves can contain hidden instructions in their descriptions (tool poisoning). Schema tampering can change what arguments a tool accepts, enabling parameter injection. This section addresses all of these vectors.
 
+Research published in early 2026 ("Breaking the Protocol," arXiv:2601.17549) provided rigorous quantification of these risks. The study found that MCP's architecture amplifies prompt injection attack success rates by 23-41% depending on attack type, with cross-server propagation attacks succeeding 61.3% of the time (vs. 19.7% baseline) and tool response manipulation reaching 52.1% (vs. 28.4% baseline). The JSON-RPC specification underlying MCP provides no application-layer protections — no message authentication, no replay protection, no capability binding, and no application-level origin identification. The study proposed AttestMCP, a backward-compatible protocol extension using HMAC-SHA256 message signatures and cryptographic capability certificates, which reduced overall attack success from 52.8% to 12.4% (a 76.5% reduction). The residual 12.4% reflects indirect injection through legitimately-retrieved content — a fundamental LLM limitation beyond protocol remediation. These findings validate every requirement in this section and underscore the urgency of schema and message validation in MCP deployments.
+
 ---
 
 ## Requirements
@@ -24,6 +26,27 @@ This section ensures that all data flowing through MCP — tool definitions, too
 
 ---
 
+## Research Findings: Attack Amplification Through MCP (2025-2026)
+
+The "Breaking the Protocol" study (arXiv:2601.17549, January 2026) quantified how MCP's architecture amplifies known attack vectors:
+
+| Attack Type | Baseline Success | With MCP | Amplification |
+|---|---|---|---|
+| Cross-Server Propagation | 19.7% | 61.3% | +41.6% |
+| Tool Response Manipulation | 28.4% | 52.1% | +23.7% |
+| Sampling-Specific Attacks | — | 58-72% | — |
+| Data Exfiltration via Sampling | — | 42-61% | — |
+| **Overall** | **26.4%** | **52.8%** | **+26.4%** |
+
+Three protocol-level vulnerabilities were identified:
+1. **Capability Attestation Absence:** Servers self-assert capabilities without cryptographic verification, allowing malicious servers to claim any capability and escalate permissions post-initialization.
+2. **Unauthenticated Sampling:** The `sampling/createMessage` mechanism allows servers to inject prompts processed identically to user input, with no tested MCP host providing visual distinction for server-sourced messages.
+3. **Implicit Trust Propagation:** In multi-server deployments, tool outputs from one server influence operations on others without provenance tracking, enabling cross-server data exfiltration.
+
+The proposed AttestMCP extension addresses these with HMAC-SHA256 message signatures, cryptographic capability certificates, origin tagging, and replay protection (timestamp/nonce validation) — adding median overhead of only 2.4ms per message (cached).
+
+Additional research by Palo Alto Unit 42 documented prompt injection attack vectors specifically through MCP sampling, and Equixly published offensive security testing methodologies for MCP servers (February 2026) demonstrating practical exploitation of schema validation gaps.
+
 ## Related Standards & References
 
 - [JSON-RPC 2.0 Specification](https://www.jsonrpc.org/specification) — the message protocol underlying MCP
@@ -32,6 +55,10 @@ This section ensures that all data flowing through MCP — tool definitions, too
 - [OWASP Error Handling Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Error_Handling_Cheat_Sheet.html)
 - [Invariant Labs: MCP Tool Poisoning Research](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks)
 - [HTTP Request Smuggling (research by James Kettle / PortSwigger)](https://portswigger.net/research/http-desync-attacks-request-smuggling-reborn) — analogous parser differential attacks
+- [Breaking the Protocol: MCP Security Analysis (arXiv:2601.17549)](https://arxiv.org/html/2601.17549) — quantitative analysis of MCP attack amplification and AttestMCP proposal
+- [Palo Alto Unit 42: Prompt Injection via MCP Sampling](https://unit42.paloaltonetworks.com/model-context-protocol-attack-vectors/) — sampling-specific attack vectors
+- [Equixly: Offensive Security for MCP Servers](https://equixly.com/blog/2026/02/26/offensive-security-for-mcp-servers/) — practical exploitation methodology
+- [Vulnerable MCP Project](https://vulnerablemcp.info/) — comprehensive MCP security vulnerability database
 
 ---
 
@@ -42,5 +69,7 @@ This section ensures that all data flowing through MCP — tool definitions, too
 - [ ] Can static analysis of tool definitions detect potential tool-poisoning payloads in descriptions (e.g., hidden instructions)?
 - [ ] What is the right response when a rug-pull is detected — block the tool, alert the user, or quarantine the server?
 - [ ] Should MCP mandate a canonical JSON representation (e.g., JCS / RFC 8785) to eliminate parser differential attacks?
+- [ ] Should AttestMCP (or a similar message authentication extension) be incorporated into the core MCP specification, given the demonstrated 76.5% reduction in attack success?
+- [ ] How should MCP implementations handle the residual 12.4% attack success rate that stems from legitimate content containing indirect injection — is this a protocol problem or an LLM problem?
 
 ---
