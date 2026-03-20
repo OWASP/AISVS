@@ -77,6 +77,18 @@ Track the full journey of each dataset from source to model input for auditabili
 
 ---
 
+## C1.6 RLHF & Fine-Tuning Feedback Data Integrity
+
+Reinforcement Learning from Human Feedback introduces preference pairs as a distinct training data class whose integrity cannot be guaranteed by general training data controls alone. Adversarial annotators or tampered preference records can steer policy model behavior in ways invisible to standard dataset validation.
+
+| # | Description | Level | Role |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
+| **1.6.1** | **Verify that** each annotator identity is authenticated via a mechanism that binds individual identity to submitted preference pairs, so that every judgment record in the preference dataset can be attributed to a specific, verified human annotator. | 2 | D/V |
+| **1.6.2** | **Verify that** preference pair records (prompt, chosen response, rejected response, annotator identity, and timestamp) are integrity-protected using cryptographic hashes or signatures at the time of submission, and that any post-submission modification is detectable and logged. | 2 | D/V |
+| **1.6.3** | **Verify that** statistical anomaly detection is applied to preference datasets prior to reward model training to identify patterns consistent with coordinated label manipulation, such as implausibly uniform annotator agreement, systematic bias toward specific response attributes, or submission velocity outliers. | 3 | D/V |
+
+---
+
 ## References
 
 * [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
