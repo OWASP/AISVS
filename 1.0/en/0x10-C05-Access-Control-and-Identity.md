@@ -93,4 +93,4 @@ Control permissions for AI agents and autonomous systems through scoped capabili
 * [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final)
 * [NIST SP 800-63-3: Digital Identity Guidelines](https://csrc.nist.gov/pubs/sp/800/63/3/final)
 * [NIST IR 8360: Machine Learning for Access Control Policy Verification](https://csrc.nist.gov/pubs/ir/8360/final)
-* [PromptPeek: Reconstructing Prompts from KV-Cache Side Channels in LLM Serving (NDSS 2025)](https://www.ndss-symposium.org/ndss-paper/promptpeek-reconstructing-prompts-from-kv-cache-side-channels-in-llm-serving/)
+* [I Know What You Asked: Prompt Leakage via KV-Cache Sharing in Multi-Tenant LLM Serving (NDSS 2025)](https://www.ndss-symposium.org/ndss-paper/i-know-what-you-asked-prompt-leakage-via-kv-cache-sharing-in-multi-tenant-llm-serving/)
