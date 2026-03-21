@@ -62,33 +62,19 @@ Model development and training processes must follow secure practices to prevent
 
 ---
 
-## C3.5 Model Retirement & Decommissioning
-
-Models must be securely retired when they are no longer needed or when security issues are identified.
-
-| # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **3.5.1** | **Verify that** retired model artifacts (including adapters and safety/policy models) are securely wiped using secure cryptographic erasure. | 1 | D/V |
-| **3.5.2** | **Verify that** model retirement events are logged with timestamp and actor identity, model identifier (version/digest/signature), and trace metadata (environment and consuming services/agents). Model signatures are revoked, registry/serving deny-lists are updated, and model loader caches are invalidated to prevent agents from loading retired artifacts. | 2 | V |
-| **3.5.3** | **Verify that** downstream consumers (services, agents, APIs) identified via the dependency graph are notified of planned model retirement with sufficient advance notice to migrate, and that retirement is blocked until all critical consumers have acknowledged migration or received a documented waiver. | 1 | D/V |
-| **3.5.4** | **Verify that** active inference sessions are gracefully drained and redirected to a fallback model or explicit failure response before model retirement is finalized, preventing in-flight requests from failing silently. | 2 | D |
-| **3.5.5** | **Verify that** retirement procedures include cleanup of all derivative artifacts referencing the retired model, including RAG index entries, cached embeddings, and agent memory store entries tagged with the model identifier. | 2 | D/V |
-| **3.5.6** | **Verify that** post-retirement verification confirms the retired model is inaccessible across all inference paths, including model loader caches, agent tool registries, and API routing tables, with results logged as part of the decommissioning audit record. | 3 | V |
-
----
-
-## C3.6 Hosted and Provider-Managed Model Controls
+## C3.5 Hosted and Provider-Managed Model Controls
 
 Hosted and provider-managed models may change behavior without notice. These controls help ensure visibility, reassessment, and safe operation when the organization does not control the model weights.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **3.6.1** | **Verify that** hosted model dependencies are inventoried with provider, endpoint, provider-exposed model identifier, version or release identifier when available, and fallback or routing relationships. | 1 | D/V |
-| **3.6.2** | **Verify that** provider model, version, or routing changes trigger security re-evaluation before continued use in high-risk workflows. | 2 | D/V |
-| **3.6.3** | **Verify that** logs record the exact hosted model identifier returned by the provider, or explicitly record that no such identifier was exposed. | 2 | D/V |
-| **3.6.4** | **Verify that** high-assurance deployments fail closed or require explicit approval when the provider does not expose sufficient model identity or change notification information for verification. | 3 | D/V |
+| **3.5.1** | **Verify that** hosted model dependencies are inventoried with provider, endpoint, provider-exposed model identifier, version or release identifier when available, and fallback or routing relationships. | 1 | D/V |
+| **3.5.2** | **Verify that** provider model, version, or routing changes trigger security re-evaluation before continued use in high-risk workflows. | 2 | D/V |
+| **3.5.3** | **Verify that** logs record the exact hosted model identifier returned by the provider, or explicitly record that no such identifier was exposed. | 2 | D/V |
+| **3.5.4** | **Verify that** high-assurance deployments fail closed or require explicit approval when the provider does not expose sufficient model identity or change notification information for verification. | 3 | D/V |
 
 ---
+
 
 ## References
 
