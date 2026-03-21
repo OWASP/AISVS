@@ -75,7 +75,6 @@ Hosted and provider-managed models may change behavior without notice. These con
 
 ---
 
-
 ## References
 
 * [MITRE ATLAS](https://atlas.mitre.org/)
