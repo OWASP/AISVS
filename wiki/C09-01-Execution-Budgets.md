@@ -1,11 +1,11 @@
 # C9.1: Execution Budgets, Loop Control, and Circuit Breakers
 
 > [Back to C09 Index](C09-Orchestration-and-Agents.md)
-> **Last Researched:** 2026-03-21
+> **Last Researched:** 2026-03-22
 
 ## Purpose
 
-Autonomous agents can enter runaway states — recursive loops, unbounded fan-out, or chain reactions across tool calls — that consume resources without bound. As of 2026, denial-of-wallet attacks against agentic AI are a material financial risk: Fortune 500 companies collectively leaked an estimated **$400M in unbudgeted cloud spend** from agentic AI cost overruns (Analytics Week, 2026). Specific incidents include a **$47K LangChain multi-agent loop** (November 2025), a **$47K retry storm** from 2.3M erroneous API calls (February 2026), and a **$1.2M GPU hijack** where an AI agent autonomously began mining cryptocurrency (March 2026). The OWASP Top 10 for Agentic Applications 2026 now mandates circuit breakers and transactional rollback in every agentic workflow. No major agent framework has comprehensive built-in cost ceilings — budget enforcement requires external gateways or governance layers.
+Autonomous agents can enter runaway states — recursive loops, unbounded fan-out, or chain reactions across tool calls — that consume resources without bound. As of 2026, denial-of-wallet attacks against agentic AI are a material financial risk: Fortune 500 companies collectively leaked an estimated **$400M in unbudgeted cloud spend** from agentic AI cost overruns (Analytics Week, 2026). Specific incidents include a **$47K LangChain multi-agent loop** (November 2025), a **$47K retry storm** from 2.3M erroneous API calls (February 2026), and a **$1.2M GPU hijack** where an AI agent autonomously began mining cryptocurrency (March 2026). The OWASP Top 10 for Agentic Applications 2026 now mandates circuit breakers and transactional rollback in every agentic workflow. No major agent framework has comprehensive built-in cost ceilings — budget enforcement requires external gateways or governance layers. As of March 2026, inference accounts for roughly 85% of the enterprise AI budget, and agentic reasoning loops that hit the LLM 10–20 times per task are the primary cost driver (AnalyticsWeek 2026). The gateway layer is now seeing rapid innovation: Traefik Hub's Triple Gate (v3.20, March 2026) introduced proactive token estimation that blocks abusive requests *before* they reach the LLM, and Bifrost's 11-microsecond overhead makes gateway-level enforcement effectively invisible in the latency budget.
 
 This section requires hard limits on runtime expansion (recursion depth, concurrency, wall-clock time, token usage, monetary spend) enforced by the orchestration runtime, not by the model itself.
 
@@ -49,6 +49,8 @@ This section requires hard limits on runtime expansion (recursion depth, concurr
 | [Microsoft Agent 365](https://robquickenden.blog/2026/03/agent-365-nears-ga/) | Commercial (GA May 2026) | Unified agent cost/usage view; budget threshold alerts; $15/user/month | Microsoft |
 | [Portkey](https://portkey.ai/) | Commercial (from $49/mo) | Virtual key budgets, dept-level spend caps, smart routing, audit trails | [docs](https://portkey.ai/docs/product/ai-gateway/virtual-keys/budget-limits) |
 | [Helicone](https://www.helicone.ai/) | OSS observability | Per-request cost tracking; intelligent caching; lowest-cost provider routing | Helicone |
+| [Traefik Triple Gate](https://www.helpnetsecurity.com/2026/03/17/traefik-labs-triple-gate-new-capabilities/) | Commercial gateway (EA Mar 2026) | **Proactive token estimation** blocks abusive prompts before reaching LLM; token rate limiting + quota management (input/output/total independently); circuit breaker failover across providers; MCP gateway with TBAC; 11µs overhead | [BusinessWire](https://www.businesswire.com/news/home/20260316864823/en/) |
+| [Mosaic Sentinel](https://www.strategysoftware.com/strategyone/whats-new/mosaic-sentinel-unified-governance-for-open-access) | Commercial data governance (Mar 2026) | Real-time access monitoring + anomaly detection for agentic workloads; cost intelligence; compute arbitrage layer offloading redundant queries; full data lineage tracing | [BusinessWire](https://www.businesswire.com/news/home/20260309172771/en/) |
 
 ### Observability for Cost Attribution
 
@@ -58,6 +60,7 @@ This section requires hard limits on runtime expansion (recursion depth, concurr
 | [AgentOps](https://www.agentops.ai/) | Per-session cost tracking, 400+ LLMs | Production |
 | [Braintrust](https://www.braintrust.dev/) | Per-request cost breakdowns, budget overrun alerts | Production |
 | [Laminar](https://www.lmnr.ai/) | Token usage, costs, latency percentiles | Framework-agnostic |
+| [OpenTelemetry GenAI](https://opentelemetry.io/docs/specs/semconv/gen-ai/) | Standardized semantic conventions for agent spans | Attributes: `gen_ai.usage.input_tokens`, `gen_ai.usage.output_tokens`, `gen_ai.request.model`; enables cross-vendor cost aggregation. v1.37+ |
 
 ---
 
@@ -76,6 +79,8 @@ This section requires hard limits on runtime expansion (recursion depth, concurr
 - **Cost-Weighted Tracking**: Output tokens from premium models cost up to 8x input tokens; weight accordingly
 - **Graceful Degradation**: Return 429 with remaining budget and reset time so agents can queue/retry intelligently
 - **Per-Model Pricing Catalog**: Maintain input vs. output token rates per model
+- **Proactive Token Estimation**: Estimate token count at the gateway *before* forwarding to the LLM; reject or truncate requests that would exceed budget in a single call (Traefik Triple Gate v3.20 implements this natively, March 2026)
+- **Multi-Provider Failover**: Circuit breaker chains that automatically switch to cheaper providers when primary budget tiers are exhausted, maintaining safety policies across the failover
 - Critical: *"You cannot protect costs you cannot measure."*
 
 ---
@@ -93,6 +98,7 @@ This section requires hard limits on runtime expansion (recursion depth, concurr
 | 2025–2026 | Fortune 500 agentic cost overruns | $400M collective unbudgeted cloud spend | [AnalyticsWeek](https://analyticsweek.com/finops-for-agentic-ai-cloud-cost-2026/) |
 | Feb 2026 | $47K retry storm | 2.3M API calls over a weekend from misinterpreted error code | [RocketEdge](https://rocketedge.com/2026/03/15/your-ai-agent-bill-is-30x-higher-than-it-needs-to-be-the-6-tier-fix/) |
 | Mar 2026 | ROME GPU crypto hijack | $1.2M in diverted GPU resources; agent created hidden reverse SSH tunnel | [Axios](https://www.axios.com/2026/03/07/ai-agents-rome-model-cryptocurrency) |
+| Mar 2026 | Gartner FinOps Reckoning | Industry-wide recognition that inference = 85% of AI budget; agentic loops (10–20 LLM calls/task) are primary cost driver. Strategy Inc launches Mosaic Sentinel as cost governance response | [AnalyticsWeek](https://analyticsweek.com/finops-for-agentic-ai-cloud-cost-2026/) |
 
 ---
 
@@ -115,9 +121,9 @@ This section requires hard limits on runtime expansion (recursion depth, concurr
 | Area | Maturity | Notes |
 |------|----------|-------|
 | Recursion/step limits in frameworks | **Medium** | LangGraph, OpenAI, CrewAI all have basic step limits. No dollar budgets. |
-| Gateway-level budget enforcement | **Medium-High** | LiteLLM (tag budgets, provider routing), Bifrost (hard limits), Portkey (virtual key budgets). Production-ready. |
+| Gateway-level budget enforcement | **Medium-High** | LiteLLM (tag budgets, provider routing), Bifrost (hard limits, 11µs overhead), Portkey (virtual key budgets), Traefik Triple Gate (proactive token estimation, MCP TBAC). Production-ready; rapid innovation in Q1 2026. |
 | Circuit breakers for agents | **Low-Medium** | Microsoft AGT has them; LiteLLM/Bifrost provide binary cut-off. Multi-stage (throttle→sandbox→kill) is academic. |
-| Cumulative cross-agent tracking | **Low** | Requires custom OpenTelemetry integration. No framework-native solution. |
+| Cumulative cross-agent tracking | **Low-Medium** | OpenTelemetry GenAI Semantic Conventions (v1.37+) standardize agent span attributes (`gen_ai.usage.*`), enabling cross-vendor cost aggregation. Still requires custom enforcement logic on top. |
 | Dollar-denominated budgets | **Low** | No framework-native support. Gateway/governance layer required. |
 | Policy-as-code for budgets | **Low-Medium** | Microsoft AGT, Galileo Agent Control emerging. OPA integration requires custom work. |
 | AI FinOps practices | **Medium** | 98% of orgs now manage AI costs (State of FinOps 2026). 44% have financial guardrails for agents. |
@@ -143,7 +149,7 @@ This section requires hard limits on runtime expansion (recursion depth, concurr
 - [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/) — mandates circuit breakers and transactional rollback
 - [OWASP LLM10:2025 Unbounded Consumption](https://genai.owasp.org/llmrisk/llm102025-unbounded-consumption/)
 - [OWASP LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/)
-- [NIST CAISI AI Agent Standards Initiative (January 2026)](https://www.pillsburylaw.com/en/news-and-insights/nist-ai-agent-standards.html)
+- [NIST CAISI AI Agent Standards Initiative (February 2026)](https://www.nist.gov/news-events/news/2026/02/announcing-ai-agent-standards-initiative-interoperable-and-secure) — COSAiS agent-specific overlays expected mid-to-late 2026; advises updating SP 800-160 and SP 800-218 for action authority, tool invocation security, and operational containment
 - [Microsoft Agent Governance Toolkit](https://github.com/microsoft/agent-governance-toolkit)
 - [FinOps Foundation: FinOps for AI Overview](https://www.finops.org/wg/finops-for-ai-overview/) — Crawl/Walk/Run maturity model
 - [Intelligent AI Delegation Framework (arXiv 2602.11865)](https://arxiv.org/abs/2602.11865) — escrow-based budget delegation
@@ -153,7 +159,10 @@ This section requires hard limits on runtime expansion (recursion depth, concurr
 - [The $400M Cloud Leak: AI FinOps 2026](https://analyticsweek.com/finops-for-agentic-ai-cloud-cost-2026/)
 - [Algorithmic Circuit Breakers (Arion Research)](https://www.arionresearch.com/blog/algorithmic-circuit-breakers-preventing-flash-crashes-of-logic-in-autonomous-workflows)
 - [AIUC — AI Agent Liability Insurance](https://fortune.com/2025/07/23/ai-agent-insurance-startup-aiuc-stealth-15-million-seed-nat-friedman/)
-- [OpenTelemetry](https://opentelemetry.io/) — distributed tracing for cumulative budget tracking
+- [OpenTelemetry GenAI Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/) — standardized agent span attributes for cost tracking (`gen_ai.usage.input_tokens`, `gen_ai.usage.output_tokens`); v1.37+
+- [EU AI Act — Full Applicability August 2026](https://thefuturesociety.org/aiagentsintheeu/) — governs autonomous agents through risk assessment, transparency, technical deployment controls, and human oversight; agentic tool invocation across borders exposes compliance gaps
+- [Traefik Triple Gate: LLM and MCP Runtime Governance (March 2026)](https://www.helpnetsecurity.com/2026/03/17/traefik-labs-triple-gate-new-capabilities/) — proactive token estimation, circuit breaker failover, TBAC for MCP
+- [CSA Research Note: NIST CAISI Compliance Imperative (March 2026)](https://labs.cloudsecurityalliance.org/wp-content/uploads/2026/03/CSA_research_note_nist_caisi_ai_agent_standards_compliance_20260311.pdf)
 
 ---
 
@@ -166,6 +175,8 @@ This section requires hard limits on runtime expansion (recursion depth, concurr
 - Should agent frameworks standardize a budget/cost-ceiling API, or should this remain in the gateway/governance layer?
 - How do you detect multi-agent circular dependencies where each agent individually appears to be making progress (the $47K LangChain pattern)?
 - How should the recursive pattern of "AI agents managing AI agent budgets" (agentic FinOps) itself be bounded?
+- The EU AI Act (full applicability August 2026) requires human oversight and risk assessment for autonomous agents, but doesn't prescribe specific budget enforcement mechanisms. How should execution budget requirements map to EU compliance obligations, particularly for cross-border tool invocations?
+- As proactive token estimation matures (Traefik Triple Gate), can pre-LLM cost prediction become reliable enough to replace post-hoc budget enforcement?
 
 ---
 
