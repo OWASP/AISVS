@@ -4,7 +4,7 @@
 
 ## Overview
 
-Appendix B lists the standards, frameworks, specifications, and publications referenced throughout AISVS. This research page audits coverage: which chapter references are missing from Appendix B, which Appendix B entries aren't cited, and where URL inconsistencies exist. As of March 2026, **29 additional references** have been identified from recent standards publications, framework releases, and specification updates that should be considered for inclusion.
+Appendix B lists the standards, frameworks, specifications, and publications referenced throughout AISVS. This research page audits coverage: which chapter references are missing from Appendix B, which Appendix B entries aren't cited, and where URL inconsistencies exist. As of March 2026, **38+ additional references** have been identified from recent standards publications, framework releases, and specification updates that should be considered for inclusion. The Q1 2026 period has been particularly active, with NIST AI 800-4 (post-deployment monitoring), new OWASP MCP security guides, and continued EU AI Act implementing guidance all reaching publication.
 
 ---
 
@@ -28,6 +28,8 @@ The original audit identified 39 references cited across chapters but absent fro
 | NIST IR 8360: ML for Access Control Policy Verification | Nov 2021 | C5 | https://csrc.nist.gov/pubs/ir/8360/final |
 | NIST AI 100-2e2023: Adversarial Machine Learning | Jan 2024 | C11 | https://csrc.nist.gov/pubs/ai/100/2/e2023/final |
 | NIST CAISI AI Agent Standards Initiative | Feb 2026 | C09, C05, C10 | https://www.nist.gov/caisi/ai-agent-standards-initiative |
+| NIST AI 800-4: Challenges to Monitoring Deployed AI Systems | Mar 2026 | C13, C14, C07 | https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.800-4.pdf |
+| NIST CAISI RFI: Security Considerations for AI Agents | Jan 2026 | C09, C05, C10 | https://www.federalregister.gov/documents/2026/01/08/2026-00206/request-for-information-regarding-security-considerations-for-artificial-intelligence-agents |
 | MITRE SAFE-AI Framework | Apr 2025 | C04, C03, C11 | https://atlas.mitre.org/pdf-files/SAFEAI_Full_Report.pdf |
 | CSA AI Controls Matrix (AICM) — 243 controls, 18 domains | Jul 2025 | All chapters | https://cloudsecurityalliance.org/artifacts/ai-controls-matrix |
 | ISO/IEC 42005:2025: AI System Impact Assessment | May 2025 | C14, C12, C03 | https://www.iso.org/standard/42005 |
@@ -51,6 +53,12 @@ The original audit identified 39 references cited across chapters but absent fro
 | OWASP AI Exchange (Flagship) | Ongoing | All | https://owaspai.org/ |
 | OWASP Agentic Security Initiative | Feb 2025+ | C09, C10, C05 | https://genai.owasp.org/initiatives/agentic-security-initiative/ |
 | OWASP Agentic AI Threats and Mitigations | 2025 | C09 | https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/ |
+| OWASP Guide for Secure MCP Server Development | Feb 2026 | C10, C09 | https://genai.owasp.org/resource/a-practical-guide-for-secure-mcp-server-development/ |
+| OWASP Cheat Sheet: Securely Using Third-Party MCP Servers | 2026 | C10, C06 | https://genai.owasp.org/resource/cheatsheet-a-practical-guide-for-securely-using-third-party-mcp-servers-1-0/ |
+| OWASP AIBOM Generator (AI Bill of Materials) | Dec 2025 | C06 | https://genai.owasp.org/resource/owasp-aibom-generator/ |
+| OWASP Vendor Evaluation Criteria for AI Red Teaming v1.0 | Feb 2026 | C11, C07 | https://genai.owasp.org/resource/owasp-vendor-evaluation-criteria-for-ai-red-teaming-providers-tooling-v1-0/ |
+| OWASP GenAI Data Security Risks and Mitigations 2026 | Q1 2026 | C01, C08, C12 | https://genai.owasp.org/resources/ |
+| OWASP AI Security Solutions Landscape Guide Q2 2026 | Q2 2026 | All | https://genai.owasp.org/resources/ |
 | LLM Prompt Injection Prevention Cheat Sheet | — | C2 | https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html |
 | AI Agent Security Cheat Sheet | — | C9, C10 | https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html |
 
@@ -80,8 +88,9 @@ The original audit identified 39 references cited across chapters but absent fro
 
 | Reference | Date | Cited In | Link |
 |-----------|------|----------|------|
-| EU Code of Practice for General-Purpose AI (GPAI) | Jul 2025 | C07, C01, C14 | https://artificialintelligenceact.eu/code-of-practice-overview/ |
+| EU Code of Practice for General-Purpose AI (GPAI) — Final Version | Jul 2025 | C07, C01, C14 | https://code-of-practice.ai/ |
 | EU Code of Practice on Transparency of AI-Generated Content | Dec 2025 | C07, C14 | https://artificialintelligenceact.eu/introduction-to-code-of-practice/ |
+| EC Guidelines for Providers of General-Purpose AI Models | 2025 | C07, C03, C14 | https://digital-strategy.ec.europa.eu/en/policies/guidelines-gpai-providers |
 
 #### MCP Specification Updates (missing)
 
@@ -89,6 +98,7 @@ The original audit identified 39 references cited across chapters but absent fro
 |-----------|------|----------|------|
 | MCP Authorization Specification (2025-06-18) | Jun 2025 | C10 | https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization |
 | MCP Specification 2025-11-25 Revision | Nov 2025 | C10 | https://modelcontextprotocol.io/specification/2025-11-25/changelog |
+| MCP Draft Authorization Spec (client-credentials, enterprise IdP) | Draft 2026 | C10, C05 | https://modelcontextprotocol.io/specification/draft/basic/authorization |
 
 #### Key RFCs Mandated by MCP (missing)
 
@@ -166,7 +176,13 @@ The same document is referenced with different URLs across chapters:
 
 5. **New category needed: "AI Agent and Agentic Frameworks"** — CoSAI, OWASP Agentic Security Initiative, NIST CAISI, and the OWASP Top 10 for Agentic Applications form a distinct category not well served by current Appendix B structure.
 
-6. **New category needed: "MCP-Specific References"** — MCP specification versions, authorization spec, OWASP MCP Top 10, CoSAI MCP taxonomy, and mandated RFCs warrant their own section given MCP has its own dedicated chapter (C10).
+6. **New category needed: "MCP-Specific References"** — MCP specification versions, authorization spec, OWASP MCP Top 10, OWASP Guide for Secure MCP Server Development, CoSAI MCP taxonomy, and mandated RFCs warrant their own section given MCP has its own dedicated chapter (C10).
+
+7. **NIST AI 800-4 (March 2026) cross-references needed** — This new NIST publication on post-deployment AI monitoring challenges is directly relevant to C13 (Monitoring and Logging) and C14 (Human Oversight). It identifies six monitoring categories and documents barriers from workshops with 200+ practitioners. Should be referenced in those chapters.
+
+8. **OWASP GenAI project publication velocity** — The OWASP GenAI Security Project published seven new resources between December 2025 and March 2026 (AIBOM generator, MCP server security guide, MCP third-party server cheat sheet, red teaming vendor evaluation criteria, data security risks guide, solutions landscape Q2 2026, and the GenAI Red Teaming Guide). Appendix B should consider a dedicated "OWASP GenAI Security Project Resources" sub-section.
+
+9. **EU GPAI Code of Practice now final** — The Code of Practice for general-purpose AI was finalized in July 2025 at https://code-of-practice.ai/. The previously referenced `artificialintelligenceact.eu/code-of-practice-overview/` URL remains valid as a summary but the canonical final version link should be used. Commission enforcement begins August 2, 2026.
 
 ---
 
@@ -176,17 +192,17 @@ Based on the audit, Appendix B should be restructured to cover the full referenc
 
 | Category | Current Count | Missing | Recommended Total |
 |----------|:------------:|:-------:|:-----------------:|
-| Standards and Frameworks | 7 | 22 | ~29 |
-| Specifications and Protocols | 5 | 7 (MCP spec versions + RFCs) | ~12 |
-| OWASP Publications | 3 | 10 (LLM entries, agentic, MCP, cheat sheets) | ~13 |
+| Standards and Frameworks | 7 | 24 (incl. NIST AI 800-4, CAISI RFI) | ~31 |
+| Specifications and Protocols | 5 | 8 (MCP spec versions, draft auth + RFCs) | ~13 |
+| OWASP Publications | 3 | 17 (LLM entries, agentic, MCP guides, AIBOM, red teaming, data security, landscape) | ~20 |
 | MITRE ATLAS | 1 (main site) | 10 (individual techniques) | ~11 |
 | CoSAI | 0 | 4 | 4 |
-| EU AI Act & Implementing Guidance | 1 | 2 (codes of practice) | 3 |
+| EU AI Act & Implementing Guidance | 1 | 3 (codes of practice + GPAI guidelines) | 4 |
 | Privacy and Data Protection | 3 | 0 | 3 |
 | Cryptographic Standards | 2 | 0 | 2 |
 | Policy Engines | 2 | 0 | 2 |
 | Vendor Documentation | 0 | 5 | 5 |
-| **Total** | **18** | **~60** | **~84** |
+| **Total** | **18** | **~71** | **~95** |
 
 ---
 
