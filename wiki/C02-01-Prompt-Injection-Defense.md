@@ -1,13 +1,15 @@
 # C2.1 Prompt Injection Defense
 
 > **Parent:** [C02: User Input Validation](C02-User-Input-Validation.md)
-> **Last Researched:** 2026-03-21
+> **Last Researched:** 2026-03-22
 
 ## Purpose
 
 Prompt injection is consistently ranked the #1 risk for LLM-based systems (OWASP LLM01:2025). Attacks range from direct injection (user crafts input to override system instructions) to indirect injection (malicious instructions embedded in retrieved documents, tool outputs, MCP responses, or third-party content). As of 2026, no model reliably defends against prompt injection through alignment alone — this is consensus across Google DeepMind, HiddenLayer, OWASP, and academic research. A meta-analysis of 78 studies (2021–2026) found adaptive attack success rates exceed 85% against state-of-the-art defenses. Defense-in-depth with layered controls is the only viable strategy.
 
 The threat has evolved beyond isolated prompt tricks. The Promptware Kill Chain (Schneier et al., January 2026) formalizes prompt injection as merely the "Initial Access" step in a seven-stage attack chain: Initial Access → Privilege Escalation → Reconnaissance → Persistence → C2 → Lateral Movement → Actions on Objective. Analysis of 36 real-world incidents (21 from 2025–2026) shows attacks now routinely reach 4+ stages, with LLM memory features serving as persistent command channels.
+
+A collaborative study from OpenAI, Anthropic, and Google DeepMind — "The Attacker Moves Second" (arXiv:2510.09023, October 2025) — subjected 12 published defenses to adaptive attacks using gradient descent, reinforcement learning, random search, and human-guided exploration. Attack success rates exceeded 90% for most defenses, despite those defenses originally reporting near-zero ASR. This underscores that static evaluation dramatically overstates defense effectiveness. As of March 2026, PISmith (arXiv:2603.13026) extends this finding by using RL-based red teaming to demonstrate that even GPT-4o-mini and GPT-5-nano-defended systems remain vulnerable to adaptive prompt injection across 13 benchmarks.
 
 ---
 
@@ -37,6 +39,9 @@ The threat has evolved beyond isolated prompt tricks. The Promptware Kill Chain 
 | [Promptfoo](https://www.promptfoo.dev/docs/red-team/) | Red-team framework | CI/CD integration; trusted by >25% Fortune 500 | Acquired by OpenAI March 2026; will integrate into OpenAI Frontier agent platform. Remains open-source. |
 | [Garak](https://github.com/NVIDIA/garak) | Vuln scanner | Modular probes (latentinjection, AutoDAN, GCG) | NVIDIA; last updated Feb 2026. |
 | [Cisco AI Defense](https://www.cisco.com/site/us/en/products/security/ai-defense/index.html) | Enterprise platform | MCP traffic inspection (Feb 2026) | Real-time agentic guardrails; MCP Catalog; AI BOM. Integrates NeMo Guardrails. |
+| [Arcjet](https://www.helpnetsecurity.com/2026/03/19/arcjet-ai-prompt-injection-protection/) | Inline app-boundary defense (Mar 2026) | Pre-inference blocking | Detects hostile prompts before model inference. Integrates with Vercel AI SDK, LangChain. JS/Python SDKs. |
+| [PISmith](https://arxiv.org/abs/2603.13026) | RL-based red-team framework (Mar 2026) | Outperforms 7 baselines across 13 benchmarks | Black-box adaptive attack generation. Tests against GPT-4o-mini, GPT-5-nano. Adaptive entropy regularization. |
+| [Thales AI Security Fabric](https://cpl.thalesgroup.com/about-us/newsroom/thales-launches-ai-security-fabric) | Enterprise runtime security | Prompt injection + jailbreak detection | MCP security gateway planned for 2026. RAG security, data leakage prevention. |
 
 ### Cloud Provider Defenses
 
@@ -58,6 +63,9 @@ The threat has evolved beyond isolated prompt tricks. The Promptware Kill Chain 
 | **StruQ** (Structured Query) | Research-backed prompt structuring to separate instructions from data | Reduces attack surface; defeated by ToolHijacker (99.71% ASR) |
 | **Content Disarm & Reconstruction** | Strip active content from documents before processing | Emerging complementary control for indirect injection via files |
 | **Provenance-aware defense** | Track modality, source, and trust level of every prompt/output across agents | Academic framework (Jan 2026) for LangChain/GraphChain multi-agent systems |
+| **[OpenClaw privilege separation](https://arxiv.org/abs/2603.13424)** | Two-agent pipeline with tool partitioning; JSON formatting strips persuasive framing before action agent | 0% ASR on LLMail-Inject (649 attacks); agent isolation is dominant mechanism (0.31% ASR alone, 323x improvement) |
+| **[Agents Rule of Two](https://simonw.substack.com/p/new-prompt-injection-papers-agents)** (Meta, Oct 2025) | Agents must satisfy at most 2 of: (A) process untrusted inputs, (B) access sensitive data, (C) change state/communicate externally | Pragmatic design principle inspired by Chrome's Rule of 2. If all three needed, require human-in-the-loop. |
+| **Cross-Agent Multimodal Provenance Framework** ([arXiv:2512.23557](https://arxiv.org/abs/2512.23557), Jan 2026) | Text/visual sanitizers + output validator + provenance ledger tracking data origin and trust | 94% detection accuracy, 70% reduction in trust leakage, 96% task accuracy retention |
 
 ---
 
@@ -81,6 +89,12 @@ The threat has evolved beyond isolated prompt tricks. The Promptware Kill Chain 
 | Feb 2026 | ChatInject (ICLR 2026) | Chat template mimicry causes agents to accept injections as natural conversation | [GitHub](https://github.com/hwanchang00/ChatInject) |
 | Mar 2026 | CVE-2026-32626 — AnythingLLM streaming XSS-to-RCE (CVSS 9.7) | Prompt injection via RAG documents achieved arbitrary code execution | [GHSA-rrmw-2j6x-4mf2](https://github.com/Mintplex-Labs/anything-llm/security/advisories/GHSA-rrmw-2j6x-4mf2) |
 | Mar 2026 | OpenAI acquires Promptfoo | Red-teaming tooling goes native in OpenAI Frontier; remains open-source | [OpenAI](https://openai.com/index/openai-to-acquire-promptfoo/) |
+| Mar 2026 | OpenClaw privilege separation (arXiv:2603.13424) | Structural two-agent defense achieves 0% ASR on 649-attack benchmark | [arXiv:2603.13424](https://arxiv.org/abs/2603.13424) |
+| Mar 2026 | PISmith RL-based red teaming (arXiv:2603.13026) | Adaptive attacks bypass SOTA defenses on GPT-4o-mini and GPT-5-nano across 13 benchmarks | [arXiv:2603.13026](https://arxiv.org/abs/2603.13026) |
+| Mar 2026 | Arcjet prompt injection protection | Inline pre-inference blocking at application boundary; JS/Python SDK | [Help Net Security](https://www.helpnetsecurity.com/2026/03/19/arcjet-ai-prompt-injection-protection/) |
+| Feb 2026 | CrowdStrike AI Unlocked | Interactive prompt injection training challenge; three progressively harder rooms | [CrowdStrike](https://www.crowdstrike.com/en-us/blog/introducing-ai-unlocked-interactive-prompt-injection-challenge/) |
+| Oct 2025 | "The Attacker Moves Second" (OpenAI/Anthropic/DeepMind) | 12 published defenses bypassed at >90% ASR using adaptive attacks | [arXiv:2510.09023](https://arxiv.org/abs/2510.09023) |
+| Oct 2025 | Agents Rule of Two (Meta) | Design principle: agents must satisfy at most 2 of 3 dangerous properties | [Simon Willison](https://simonw.substack.com/p/new-prompt-injection-papers-agents) |
 | 2025 | Crescendo multi-turn attack (USENIX Security) | 98% success on GPT-4, 100% on Gemini-Pro; defeats per-request inspection | [arXiv:2404.01833](https://arxiv.org/abs/2404.01833) |
 
 ---
@@ -139,7 +153,7 @@ See also: [C10.4 Schema & Message Validation](C10-04-Schema-Message-Validation.m
 |------|----------|-------|
 | Detection classifiers | **Medium-High** | PromptArmor, Prompt Guard 2, DefensiveTokens show strong results. Still bypassed by adaptive attacks. |
 | Model-level instruction hierarchy | **Medium** | OpenAI IH training, Meta SecAlign improving. Not universally available across providers. |
-| Architectural separation (CaMeL-style) | **Low** | Provable security demonstrated in research. Not deployed in production systems. |
+| Architectural separation (CaMeL/OpenClaw-style) | **Low-Medium** | CaMeL provides provable security; OpenClaw achieves 0% ASR via privilege separation. Production deployment still nascent but multiple viable frameworks now exist. |
 | MCP/tool injection defense | **Low** | 43% of MCP implementations have command injection. No standardized tool description integrity verification. |
 | Multi-agent injection defense | **Low** | MASpi shows single-agent defenses don't transfer. Provenance-aware frameworks are academic only. |
 | Enterprise adoption | **Low-Medium** | 34.7% have purchased dedicated solutions. 83% plan agentic AI but only 29% feel secure. |
@@ -178,6 +192,13 @@ See also: [C10.4 Schema & Message Validation](C10-04-Schema-Message-Validation.m
 - [CVE-2025-53773 — ZombAI (GitHub Copilot RCE)](https://embracethered.com/blog/posts/2025/github-copilot-remote-code-execution-via-prompt-injection/)
 - [CVE-2025-68664 — LangGrinch (LangChain Core)](https://cyata.ai/blog/langgrinch-langchain-core-cve-2025-68664/)
 - [Third-Party Chatbot Plugin Injection (IEEE S&P 2026)](https://arxiv.org/abs/2511.05797)
+- [The Attacker Moves Second (OpenAI/Anthropic/DeepMind, Oct 2025)](https://arxiv.org/abs/2510.09023)
+- [OpenClaw: Agent Privilege Separation (Mar 2026)](https://arxiv.org/abs/2603.13424)
+- [PISmith: RL-Based Red Teaming for Prompt Injection Defenses (Mar 2026)](https://arxiv.org/abs/2603.13026)
+- [Agents Rule of Two (Meta, Oct 2025)](https://simonw.substack.com/p/new-prompt-injection-papers-agents)
+- [Cross-Agent Multimodal Provenance-Aware Framework (Jan 2026)](https://arxiv.org/abs/2512.23557)
+- [Arcjet AI Prompt Injection Protection (Mar 2026)](https://www.helpnetsecurity.com/2026/03/19/arcjet-ai-prompt-injection-protection/)
+- [Thales AI Security Fabric](https://cpl.thalesgroup.com/about-us/newsroom/thales-launches-ai-security-fabric)
 
 ---
 
@@ -198,7 +219,7 @@ See also: [C10.4 Schema & Message Validation](C10-04-Schema-Message-Validation.m
 
 ## Open Research Questions
 
-- Can instruction hierarchy be formally guaranteed at the model level, or will it always be a probabilistic defense? CaMeL suggests the answer is architectural, not model-level. OpenAI's IH training is a middle ground.
+- Can instruction hierarchy be formally guaranteed at the model level, or will it always be a probabilistic defense? CaMeL and OpenClaw suggest the answer is architectural (privilege separation), not model-level. OpenAI's IH training is a middle ground, but "The Attacker Moves Second" shows even trained defenses fall to adaptive attacks at >90% ASR.
 - What is the optimal ratio of system instruction tokens to user content tokens for maintaining instruction adherence across different model families?
 - How should prompt injection detection evolve to handle multi-turn conversational attacks (crescendo), given 97% success within 5 turns?
 - Is there a reliable cross-provider benchmark beyond AgentDojo? AgentDyn, MASpi, and WAInjectBench are expanding coverage to agentic and web-agent scenarios.
@@ -206,6 +227,8 @@ See also: [C10.4 Schema & Message Validation](C10-04-Schema-Message-Validation.m
 - Can adversarial fine-tuning scale to defend against the long tail of creative injection techniques without capability degradation?
 - How should physical-environment prompt injection (CHAI) be addressed for embodied AI systems?
 - As the Promptware Kill Chain shows attacks reaching 4+ stages, should defenses shift from perimeter-only to defense-in-depth across all 7 stages?
+- Does the "Rule of Two" (Meta) represent a more viable design constraint than attempting perfect injection defense? What is the operational cost of enforcing it in production agentic systems?
+- Can RL-based red teaming (PISmith) be integrated into CI/CD pipelines as a continuous defense validation tool, similar to how Promptfoo handles static red teaming?
 
 ---
 
