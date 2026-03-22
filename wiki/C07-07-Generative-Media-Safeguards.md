@@ -20,6 +20,20 @@ Regulatory pressure is now a primary driver. The EU AI Act (Article 50, effectiv
 
 Despite these advances, the arms race continues. Deepfakes are projected to become "synthetic performers" capable of real-time interaction by 2026, and the meaningful line of defense is shifting from human judgment to infrastructure-level protections with cryptographic provenance at the core.
 
+### Notable Incidents
+
+| Date | Incident | Relevance | Link |
+|------|----------|-----------|------|
+| Feb 2024 | Arup $25.6M deepfake video fraud — all call participants were AI-generated | Finance worker authorized 15 wire transfers to deepfakes of CFO and senior colleagues | [WEF](https://www.weforum.org/stories/2025/02/deepfake-ai-cybercrime-arup/) |
+| May 2025 | TAKE IT DOWN Act signed into U.S. federal law (409-2 House vote) | Criminalizes non-consensual intimate AI deepfakes; platforms must remove within 48 hours; FTC enforcement | [Orrick](https://www.orrick.com/en/Insights/2025/05/TAKE-IT-DOWN-Act-Becomes-Law) |
+| Feb 2025 | Operation Cumberland — Europol raids across 19 countries for AI-generated CSAM | 25 arrested, 273 suspects identified; NCMEC received 400K+ AI-CSAM reports in H1 2025 (600%+ increase) | [Europol](https://www.europol.europa.eu/media-press/newsroom/news/25-arrested-in-global-hit-against-ai-generated-child-sexual-abuse-material) |
+| 2025 | Sweden investment scam — $52.5M lost via deepfake financial advisor videos | ~5,000 investors defrauded by AI-impersonated prominent Swedish financial figures | [Cyble](https://cyble.com/knowledge-hub/deepfake-as-a-service-exploded-in-2025/) |
+| 2025 | Ferrari CEO voice clone foiled by verification question | AI replicated southern Italian accent of CEO Benedetto Vigna; failed only because exec asked a personal question | [Brightside AI](https://www.brside.com/blog/deepfake-ceo-fraud-50m-voice-cloning-threat-cfos) |
+| Nov 2025 | Getty v. Stability AI UK ruling — model weights are not "copies" | First major UK copyright ruling: AI parameters ≠ stored reproductions; limited trademark infringement for outputs with Getty watermarks | [Mayer Brown](https://www.mayerbrown.com/en/insights/publications/2025/11/getty-images-v-stability-ai-what-the-high-courts-decision-means-for-rights-holders-and-ai-developers) |
+| Sep 2025 | Google Pixel 10 ships with C2PA Assurance Level 2 | First smartphone with highest-tier C2PA Content Credentials signed via Pixel Camera app | [Google Security Blog](https://security.googleblog.com/2025/09/pixel-android-trusted-images-c2pa-content-credentials.html) |
+
+**Key statistics (2025):** Deepfake-enabled vishing attacks surged 1,600% in Q1 2025. US deepfake fraud losses reached $1.1B (3x from 2024). 580 reported incidents in H1 2025 vs 150 in all of 2024. Human detection accuracy is only 24.5% for high-quality deepfake video. Detection tools lose up to 50% accuracy on novel deepfake types not in training data.
+
 ---
 
 ## Requirements
@@ -46,6 +60,39 @@ Despite these advances, the arms race continues. Deepfakes are projected to beco
 - [NIST AI 100-4 (Synthetic Content)](https://www.nist.gov/artificial-intelligence) — NIST work on reducing risks of synthetic content
 - [UK Home Office Deepfake Detection Challenge 2024](https://detecting-ai.com/blog/the-rise-of-deepfake-detection-technologies-in-2025) — government-sponsored evaluation of deepfake detection systems
 - [National CSAM reporting requirements](https://www.missingkids.org/gethelpnow/cybertipline) — legal obligations for detecting and reporting CSAM in generated content
+
+---
+
+## Implementation Maturity
+
+| Requirement | Maturity | Notes |
+|-------------|:---:|-------|
+| 7.7.1 Input filtering | Mature | DALL-E 3, Midjourney use multi-layer filters (keyword + contextual AI + output analysis). Bypass rates: 33-47% in academic studies. Open-source models (Stable Diffusion, Flux) have optional/removable filters. |
+| 7.7.2 Consent verification | Emerging | Celebrity blocklists and output face classifiers deployed by DALL-E/Midjourney. No scalable consent verification workflow exists. Voice cloning consent is trivially bypassable. |
+| 7.7.3 Copyright checking | Emerging | Audible Magic partnered with Udio (April 2025) for AI music fingerprinting. Visual copyright detection relies on perceptual hashing (DINOHash outperforms NeuralHash). Getty v. Stability AI ruling (Nov 2025) clarified that model weights ≠ copies. No production system reliably prevents copyright infringement pre-release. |
+| 7.7.4 Bypass detection | Maturing | Behavioral signals (rapid sequential prompts, progressive boundary testing, known obfuscation patterns) are documented. Feeds into C7.6 monitoring and C13 logging. SurrogatePrompt and MPDA attacks demonstrate ongoing evasion research. |
+| 7.7.5 Watermarking/provenance | Maturing | C2PA v2.3 with soft binding, SynthID (10B+ watermarks, text component open-sourced), Meta Video Seal (open-source). Google Pixel 10 ships with C2PA Level 2. EU AI Act Art 50 mandates machine-readable marking by August 2026. Gap: C2PA metadata can be stripped (Instagram/Facebook still strip on upload); SynthID image/video/audio remain closed-source. |
+
+### Tooling Landscape
+
+| Category | Key Tools |
+|----------|-----------|
+| **Deepfake detection** | [Reality Defender](https://www.realitydefender.com/) (~91% accuracy, multimodal API), [Sensity AI](https://sensity.ai/) (98% claimed, face-swap forensics), Intel FakeCatcher (~96% controlled, PPG-based), Hive Moderation |
+| **Voice clone detection** | [Pindrop Pulse](https://www.pindrop.com/) (real-time for contact centers), [Resemble Detect](https://www.resemble.ai/) (Fortune 500 + government), Reality Defender (audio mode) |
+| **CSAM detection** | PhotoDNA (Microsoft/NCMEC, perceptual hashing), [Thorn Safer](https://safer.io/) (ML classifier for novel content), Meta PDQ/SaferHash (open-source hashing), Google Content Safety API |
+| **Media provenance** | [C2PA SDKs](https://github.com/contentauth/c2pa-rs) (Rust/Python/JS/Mobile, MIT/Apache 2.0), [SynthID](https://deepmind.google/technologies/synthid/) (text [open-sourced](https://github.com/google-deepmind/synthid-text)), [Meta Video Seal](https://github.com/facebookresearch/videoseal) |
+| **Copyright detection** | [Audible Magic](https://www.audiblemagic.com/) (AI music fingerprinting with Udio), Pex (cross-platform monitoring), DINOHash (research, outperforms NeuralHash) |
+
+### Cross-Chapter Links
+
+| Related Chapter | Overlap Area | Notes |
+|-----------------|--------------|-------|
+| [C02 User Input](C02-User-Input-Validation.md) | Prompt filtering for media generation | C7.7.1 prompt blocking is a specialization of C02 input validation for the media modality. Multi-language and euphemism testing applies from C02 techniques. |
+| [C07.3 Output Safety](C07-03-Output-Safety-Privacy-Filtering.md) | Content classification overlap | C7.3 covers general output safety classifiers; C7.7 specializes for media modalities (image/audio/video). NSFW/violence classifiers serve both sections. |
+| [C07.4 Action Limiting](C07-04-Output-Action-Limiting.md) | Rate limiting for media generation | C7.7.4 bypass detection benefits from C7.4 rate limiting. Rapid sequential media generation attempts are a behavioral signal. |
+| [C11 Adversarial Robustness](C11-Adversarial-Robustness.md) | Adversarial filter bypass | C7.7.4 bypass detection overlaps with C11.2 adversarial-example hardening. SurrogatePrompt and MPDA attacks are adversarial techniques targeting media safety. |
+| [C12 Privacy](C12-Privacy.md) | Consent and PII in generated media | C7.7.2 consent verification connects to C12 privacy controls. Generating media of real people without consent is both a privacy and a safety violation. |
+| [C13 Monitoring](C13-Monitoring-and-Logging.md) | Logging bypass attempts | C7.7.4 requires logging filter bypass attempts as security events, feeding into C13 monitoring infrastructure. |
 
 ---
 
