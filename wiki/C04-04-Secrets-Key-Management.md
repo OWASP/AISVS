@@ -22,6 +22,30 @@ The scale of this problem is growing rapidly. GitGuardian's 2026 State of Secret
 
 ---
 
+## Implementation Maturity
+
+| Requirement | Maturity | Notes |
+|-------------|:---:|-------|
+| 4.4.1 Dedicated secrets management | Mature | HashiCorp Vault, AWS Secrets Manager, Azure Key Vault, GCP Secret Manager, and Infisical are all production-grade. External Secrets Operator bridges K8s to any backend. Gap: ML notebooks and MCP configs remain major leak vectors — 8.8% of MCP secrets validated as active credentials. |
+| 4.4.2 Strong authentication for secrets access | Mature | Workload identity (AWS IRSA, GCP Workload Identity, Azure Pod Identity) and MFA for human access are well-established. Gap: agentic AI systems break traditional vault assumptions — agents change context dynamically, requiring identity-first access (Aembit) with real-time context-bound decisions rather than pre-assigned static credentials. |
+| 4.4.3 Runtime injection, no embedded secrets | Maturing | Vault Agent sidecar, K8s Secrets CSI driver, and External Secrets Operator handle injection well. Pre-commit scanning (detect-secrets, TruffleHog, ggshield) catches leaks. Gap: many ML frameworks default to env-var-based keys (`OPENAI_API_KEY`, `HF_TOKEN`) — wrappers needed. AI coding assistants double secret-leak rates (3.2% vs 1.5% baseline per GitGuardian 2026). |
+| 4.4.4 HSM/KMS-backed key storage | Mature | AWS KMS (CloudHSM), Azure Managed HSM, GCP Cloud HSM are production-ready for model signing, data encryption, and TLS keys. Gap: post-quantum readiness — NIST finalized ML-KEM/ML-DSA/SLH-DSA (Aug 2024), HQC selected (Mar 2025). Organizations should begin crypto-agility planning; AI model signing keys are long-lived and vulnerable to "harvest now, decrypt later." |
+| 4.4.5 Automated secrets rotation | Maturing | Vault dynamic secrets, AWS rotation lambdas, and Infisical auto-rotation work well. Gap: model provider API keys (OpenAI, Anthropic, DeepSeek) often lack rotation API support — manual workflows needed. GitGuardian found 64% of 2022 secrets still valid in Jan 2026, showing rotation is widely neglected. Agentic AI needs ephemeral, dynamically generated credentials tied to task context. |
+
+### Cross-Chapter Links
+
+| Related Chapter | Overlap Area | Notes |
+|-----------------|--------------|-------|
+| [C04.3 Network Security](C04-03-Network-Security-Access-Control.md) | Metadata service and admin access | C4.3.3 restricts cloud metadata services (IMDSv1 SSRF) which expose IAM credentials. C4.4 protects the credentials themselves. Both must be in place — metadata restriction prevents credential exposure; secrets management limits blast radius if exposed. |
+| [C04.7 AI Hardware Security](C04-07-Hardware-Security.md) | HSM for model weight encryption | C4.4.4 mandates HSM/KMS for key storage; C4.7.6 requires HSM protection specifically for AI model weights and crypto keys at FIPS 140-3 Level 3 or CC EAL4+. |
+| [C05 Access Control](C05-Access-Control.md) | Identity and authentication | C4.4.2 strong auth for secrets access complements C05 broader identity controls. SPIFFE workload identity spans both chapters. |
+| [C06 Supply Chain](C06-Supply-Chain.md) | Model signing and artifact integrity | C4.4.4 HSM-backed key storage protects model signing keys used in C06 supply chain integrity verification. OpenSSF Model Signing v1.0 relies on secure key management. |
+| [C09 Orchestration & Agents](C09-Orchestration-and-Agents.md) | Agent credential management | C9.4 requires cryptographic agent identity; C4.4 provides the key management infrastructure. Agentic AI breaks traditional vault patterns — agents need ephemeral, context-bound credentials (C4.4.5). |
+| [C10 MCP Security](C10-MCP-Security.md) | MCP credential management | C10.1.2 requires no plaintext secrets in MCP configs; C4.4.1/4.4.3 provide the secrets management infrastructure. 24,008 secrets found in MCP configs (GitGuardian 2026). OWASP MCP01 (Token Mismanagement) maps directly. |
+| [C13 Monitoring & Logging](C13-Monitoring-and-Logging.md) | Secrets access auditing | C4.4.2 requires strong auth with access logs; C13 provides logging infrastructure and anomaly detection for secrets access patterns. |
+
+---
+
 ## Incident Case Studies
 
 | Date | Incident | Impact | Lesson |
