@@ -13,7 +13,7 @@ The standard is organized into 14 chapters spanning the full AI application secu
 | # | Chapter | Reqs | Pages | Type | Updated |
 |---|---------|:----:|:-----:|------|:-------:|
 | C1 | Training Data Integrity & Traceability | 24 | [C01](C01-Training-Data.md) | Single | 2026-03-22 |
-| C2 | User Input Validation | 33 | [C02](C02-User-Input-Validation.md) | [8 sections](#c2-user-input-validation) | 2026-03-21 |
+| C2 | User Input Validation | 33 | [C02](C02-User-Input-Validation.md) | [8 sections](#c2-user-input-validation) | 2026-03-22 |
 | C3 | Model Lifecycle Management | 24 | [C03](C03-Model-Lifecycle-Management.md) | Single | 2026-03-20 |
 | C4 | Infrastructure & Deployment Security | 46 | [C04](C04-Infrastructure.md) | [8 sections](#c4-infrastructure--deployment-security) | 2026-03-21 |
 | C5 | Access Control & Identity | 26 | [C05](C05-Access-Control.md) | Single | 2026-03-22 |
