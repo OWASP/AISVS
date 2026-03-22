@@ -20,6 +20,29 @@ Pretrained models downloaded from public hubs (Hugging Face, Model Zoo, Civitai,
 
 ---
 
+## Implementation Maturity
+
+| Requirement | Maturity | Notes |
+|-------------|:---:|-------|
+| 6.1.1 Signed origin and integrity records | Emerging | OpenSSF Model Signing v1.0 (April 2025) provides Sigstore-based signing/verification. NVIDIA signs all NGC models. But most Hugging Face publishers don't sign — organizations must self-sign upon import. CycloneDX ML-BOM and SPDX AI profile provide provenance metadata formats. EU AI Act GPAI obligations (Aug 2025) may drive adoption. |
+| 6.1.2 Malicious layer/Trojan scanning | Maturing | Multiple scanners available: ModelScan, ModelAudit (42+ formats, allowlist-first), Fickling (pickle allowlist, 100% detection). But JFrog PickleScan zero-days (CVE-2025-10155/56/57) and nullifAI proved no single scanner is reliable. Defense-in-depth required: multiple scanners + SafeTensors format restriction + sandboxed loading. |
+| 6.1.3 License/export-control/data-origin in AI BOM | Maturing | CycloneDX ML-BOM stable through v1.7 (ECMA-424). OWASP AIBOM Generator scans repos for HF model usage. SPDX 3.0.1 adds AI profiles. Gap: many open-weight models lack clear data-origin disclosures, requiring independent provenance research. |
+| 6.1.4 Quarantine until human review | Maturing | Protect AI Guardian and Black Duck (Oct 2025) offer managed quarantine-and-scan pipelines. Palo Alto AI Runtime Security provides enterprise workflows. MalHug found 91 malicious models across 705K+ on HF — quarantine is essential, not optional. |
+| 6.1.5 Adversarial evaluation of fine-tunes | Emerging | Computationally expensive with no standardized tooling. Neural Cleanse, ABS, MNTD for backdoor detection. NIST TrojAI developing benchmarks. Anthropic "Sleeper Agents" (2024) showed backdoors survive fine-tuning. Level 3 is appropriate given the tooling gap. |
+
+### Cross-Chapter Links
+
+| Related Chapter | Overlap Area | Notes |
+|-----------------|--------------|-------|
+| [C04.2 Secure Build & Deployment](C04-02-Secure-Build-Deployment.md) | Model artifact signing and admission | C4.2.2-2.3 cover cryptographic signing and admission control for build artifacts — the same signing infrastructure (Sigstore/cosign, SLSA) applies to model artifacts in C6.1.1. |
+| [C04.4 Secrets & Key Management](C04-04-Secrets-Key-Management.md) | Model signing key protection | C4.4.4 HSM-backed key storage protects the signing keys used for C6.1.1 model integrity verification. OpenSSF Model Signing relies on secure key management. |
+| [C06.7 AI BOM](C06-07-AI-BOM-Model-Artifacts.md) | BOM generation and completeness | C6.1.3 records provenance in an AI BOM; C6.7 covers the full AI BOM lifecycle including automated generation, signing, completeness checks, and downstream queryability. |
+| [C11.1 Model Alignment & Safety](C11-01-Model-Alignment-Safety.md) | Alignment testing | C6.1.5 adversarial evaluation for hidden behaviors overlaps with C11.1 alignment testing — both assess whether a model behaves as expected under adversarial conditions. Sleeper agents (Anthropic 2024) bridge both. |
+| [C11.6 Inference-Time Poisoned Data](C11-06-Inference-Time-Poisoned-Data-Detection.md) | Backdoor activation | C6.1.2 scans for embedded backdoors at import; C11.6 detects when backdoors activate at inference time through anomalous inputs. Both are needed — supply-chain scanning prevents most threats, but runtime detection catches what static analysis misses. |
+| [C09.3 Tool & Plugin Isolation](C09-03-Tool-and-Plugin-Isolation.md) | Sandboxed model loading | C9.3.1 sandbox isolation applies to loading untrusted model files — pickle deserialization RCE can be contained if the model is loaded in an isolated sandbox (E2B, Firecracker). |
+
+---
+
 ## Related Standards & References
 
 ### Standards & Frameworks
