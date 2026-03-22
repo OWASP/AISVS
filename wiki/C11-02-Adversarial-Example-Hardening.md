@@ -31,17 +31,45 @@ Adversarial training remains the most empirically validated hardening technique,
 
 ### Vision-Language Model Robustness
 
-Chain of Attack (CVPR 2025) demonstrated new cross-modal attack surfaces in vision-language models (VLMs), where adversarial perturbations in one modality (e.g., images) can cascade to compromise outputs that depend on the other modality (text). This confirms that multi-modal systems require modality-specific and cross-modal adversarial evaluation, directly relevant to requirement 11.2.1's call for modality-appropriate testing.
+The attack surface for vision-language models (VLMs) has expanded significantly. **Chain of Attack** (CVPR 2025) demonstrated cross-modal attack surfaces where adversarial perturbations in one modality (e.g., images) cascade to compromise outputs in the other modality (text), confirming that multi-modal systems require both modality-specific and cross-modal adversarial evaluation.
+
+**AnyAttack** (CVPR 2025) introduced a self-supervised adversarial framework pre-trained on LAION-400M that transforms any image into a targeted attack vector without requiring label supervision. The approach transfers successfully to commercial VLM systems (GPT-4, Gemini, Claude, Copilot), demonstrating that adversarial transferability is a systemic concern across deployed models, not just a research curiosity. This has direct implications for requirement 11.2.1 -- evaluations must account for transfer-based attacks originating from open-source surrogate models.
+
+**GLEAM** (ICCV 2025) further advanced transferable adversarial attacks by combining diversified local region transformations with cross-modal feature alignment exploitation, achieving higher transfer rates across VLM architectures. A March 2026 survey of adversarial attacks against modern VLMs confirms that the attack-defense arms race in multi-modal systems is accelerating, with new attack vectors emerging faster than defenses can adapt.
+
+### Autonomous Systems and Safety-Critical Deployments
+
+Adversarial attacks on safety-critical vision systems remain a pressing concern. As of 2025, systematic reviews of adversarial attacks on autonomous driving deep learning models document attack success rates of 52--67% against production object detection models (LLaVA-v1.5, Qwen2.5-VL) using gradient-based methods (BIM, PGD, CLIP-based spectral attacks). Physical-world adversarial patches placed on road surfaces have demonstrated the ability to cause lane detection failures, leading to incorrect steering decisions. These findings underscore requirement 11.2.2's emphasis on runtime detection -- adversarial inputs in safety-critical deployments cannot rely solely on pre-deployment hardening.
 
 ### Certified Robustness Progress
 
 Certified defense methods have advanced beyond Lp-norm bounds for classification. ICLR 2026 work on dissecting adversarial robustness of multi-modal models introduced certified robustness techniques applicable to transformer-based architectures, narrowing the gap between formal verification (requirement 11.2.5) and practical model sizes. However, certified bounds for production-scale LLMs remain out of reach -- current methods scale to models with hundreds of thousands of parameters but not billions.
 
+A notable breakthrough is the scaling of **randomized smoothing** to VLMs. Traditional randomized smoothing requires ~10^5 samples per input for certification, making it infeasible for large generative models. As of late 2025, researchers demonstrated that connecting generative outputs to oracle classification tasks (e.g., harmful vs. harmless classification) and applying improved scaling laws reduces the sample requirement by 2--3 orders of magnitude (EMNLP 2025). This makes certified robustness computationally feasible for state-of-the-art VLMs for the first time, though the certification scope is limited to specific output classification properties rather than full generative robustness.
+
+Randomized smoothing has also been applied to **LLM-driven multi-agent systems**, providing statistical robustness certification for agent coordination -- relevant for organizations deploying agentic architectures under requirement 11.2.5's formal verification expectations.
+
 Hybrid defense strategies that combine certified bounds for safety-critical subcomponents with empirical adversarial evaluation for the full system are emerging as the practical approach for organizations implementing both Level 2 and Level 3 requirements.
 
 ### Adversarial Robustness Evaluation Tooling
 
-**AdvERSEM** (StarSEM 2025) provides an adversarial robustness testing and training framework specifically designed for NLP semantic models, complementing existing tools like TextAttack and ART. The growing availability of modality-specific evaluation toolkits reduces the barrier for organizations to implement requirement 11.2.1 and 11.2.4.
+The tooling landscape for adversarial robustness testing has matured considerably:
+
+- **IBM Adversarial Robustness Toolbox (ART) v1.17+** remains the most comprehensive open-source framework, hosted by the Linux Foundation AI & Data Foundation. ART supports evasion, poisoning, extraction, and inference attacks across all major ML frameworks (PyTorch, TensorFlow, scikit-learn, XGBoost) and data types (images, text, audio, tabular). It includes 3 robustness metrics, certification, and verification capabilities. For organizations implementing requirements 11.2.1 and 11.2.4, ART provides both attack simulation and defense evaluation in a single toolkit.
+
+- **AdvERSEM** (StarSEM 2025) provides adversarial robustness testing and training specifically designed for NLP semantic models, complementing TextAttack for text-domain evaluations.
+
+- **Mindgard** has emerged as a commercial automated red-teaming platform (recognized in the Gartner Hype Cycle for Application Security 2025 and winner of the 2025 Cybersecurity Excellence Award). It simulates thousands of adversarial attack scenarios across text, image, audio, and multi-modal models, with CI/CD pipeline integration so adversarial tests run on every commit. The platform aligns its attack library to MITRE ATLAS and OWASP taxonomies, making it useful for organizations that need to demonstrate compliance with requirement 11.2.4's adaptive attack evaluation.
+
+- **Promptfoo** provides MITRE ATLAS-aligned red-teaming for LLM applications, enabling automated adversarial evaluation against the ATLAS technique taxonomy.
+
+The growing availability of modality-specific and commercially supported evaluation toolkits reduces the barrier for organizations to implement requirements 11.2.1 and 11.2.4, though expertise in interpreting results and designing adaptive attacks remains a bottleneck.
+
+### Regulatory Momentum: EU AI Act Adversarial Testing
+
+As of March 2026, the EU AI Act has established concrete adversarial testing mandates. For general-purpose AI (GPAI) models classified as posing systemic risk, providers must perform adversarial testing throughout the model lifecycle, including red-teaming exercises simulating malicious use (effective August 2025). For high-risk AI systems (full enforcement August 2026), performance standards explicitly require resilience against adversarial manipulation, with testing and validation reports covering stress testing under edge cases and adversarial attack scenarios. Non-compliance penalties reach up to EUR 35 million or 7% of global revenue.
+
+This regulatory environment directly reinforces requirements 11.2.1 through 11.2.4 -- organizations deploying in the EU will need documented adversarial evaluation (11.2.1), runtime detection (11.2.2), hardening procedures (11.2.3), and adaptive attack evaluation (11.2.4) as compliance obligations, not just best practices.
 
 ---
 
@@ -57,6 +85,14 @@ Hybrid defense strategies that combine certified bounds for safety-critical subc
 - [Adversarial Preference Learning for Robust LLM Alignment (ACL 2025 Findings)](https://aclanthology.org/2025.findings-acl.1126.pdf) -- Integrating adversarial robustness into RLHF alignment
 - [Chain of Attack: Robustness of Vision-Language Models (CVPR 2025)](https://openaccess.thecvf.com/content/CVPR2025/papers/Xie_Chain_of_Attack_On_the_Robustness_of_Vision-Language_Models_Against_CVPR_2025_paper.pdf) -- Cross-modal adversarial attacks on VLMs
 - [AdvERSEM: Adversarial Robustness Testing for NLP (StarSEM 2025)](https://aclanthology.org/2025.starsem-1.32.pdf) -- NLP-specific adversarial evaluation framework
+- [AnyAttack: Self-supervised Adversarial Attacks on VLMs (CVPR 2025)](https://arxiv.org/abs/2410.05346) -- Transfer-based adversarial attacks effective against commercial VLMs
+- [GLEAM: Enhanced Transferable Adversarial Attacks for VLMs (ICCV 2025)](https://openaccess.thecvf.com/content/ICCV2025/papers/Liu_GLEAM_Enhanced_Transferable_Adversarial_Attacks_for_Vision-Language_Pre-training_Models_via_ICCV_2025_paper.pdf) -- Cross-modal feature alignment exploitation for adversarial transferability
+- [Randomized Smoothing Meets Vision-Language Models (EMNLP 2025)](https://arxiv.org/abs/2509.16088) -- Scaling certified robustness to VLMs via improved sampling laws
+- [Enhancing Robustness of LLM-driven Multi-Agent Systems through Randomized Smoothing (2025)](https://www.sciencedirect.com/science/article/pii/S1000936125003851) -- Certified robustness for multi-agent LLM coordination
+- [Mindgard -- Automated AI Red Teaming Platform](https://mindgard.ai/) -- Commercial adversarial robustness testing with CI/CD integration
+- [Promptfoo MITRE ATLAS Red Teaming](https://www.promptfoo.dev/docs/red-team/mitre-atlas/) -- ATLAS-aligned automated adversarial evaluation for LLMs
+- [EU AI Act -- Adversarial Testing Requirements for GPAI and High-Risk Systems](https://artificialintelligenceact.eu/high-level-summary/) -- Regulatory mandates for adversarial evaluation (August 2025/2026 deadlines)
+- [Adversarial Attacks on Autonomous Driving DL Models: Systematic Review (ACM Computing Surveys, 2024)](https://dl.acm.org/doi/10.1145/3691625) -- Comprehensive survey of adversarial attacks and defenses in safety-critical vision systems
 
 ---
 
@@ -69,5 +105,8 @@ Hybrid defense strategies that combine certified bounds for safety-critical subc
 - What is the relationship between adversarial robustness and out-of-distribution generalization -- can improving one harm the other?
 - How should adversarial preference learning (integrating robustness into RLHF) be evaluated -- do alignment-focused adversarial defenses transfer to traditional evasion robustness?
 - Can diffusion-based purification defenses like DiffuseDef scale to real-time inference workloads without unacceptable latency?
+- How should organizations defend against self-supervised transfer attacks (e.g., AnyAttack) that require no target-model access and transfer across commercial systems?
+- As the EU AI Act mandates adversarial testing, what constitutes a "sufficient" evaluation methodology -- and who certifies the adequacy of red-team exercises?
+- Can randomized smoothing's recent scaling advances for VLMs extend to certifying robustness of full generative outputs, or will certification remain limited to classification-like properties?
 
 ---
