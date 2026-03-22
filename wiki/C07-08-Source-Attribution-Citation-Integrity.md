@@ -20,6 +20,20 @@ Research into citation hallucination and grounded generation has advanced substa
 
 **Agentic and tool-augmented verification.** A comprehensive survey on hallucination mitigation (2025) highlights the emergence of agentic systems that incorporate retrieval verification as an explicit reasoning step -- the model is prompted or fine-tuned to verify its own citations against retrieved context before emitting a response, sometimes using separate verification tool calls. This connects to AISVS C7.2.5's requirement for tracking tool invocation history as a hallucination detection signal.
 
+### Notable Incidents
+
+| Date | Incident | Relevance | Link |
+|------|----------|-----------|------|
+| Jan 2026 | NeurIPS 2025: 100+ hallucinated citations in 53 accepted papers | GPTZero found fabricated author names, invented DOIs, non-existent journals — all missed by 3+ peer reviewers per paper. 50+ more found in ICLR 2026. | [GPTZero](https://gptzero.me/news/neurips/) |
+| Nov 2025 | GPT-4o citation study: ~65% of references unreliable | ~20% completely fabricated + ~45% of real references contain introduced errors (wrong authors, year, journal) | [StudyFinds](https://studyfinds.org/chatgpts-hallucination-problem-fabricated-references/) |
+| Dec 2024 | "Correctness is not Faithfulness" — 57% of RAG citations post-rationalized | Cohere Command-R+ generates answers from parametric memory then superficially matches to retrieved docs. Citations are factually correct but causally misleading. | [arXiv](https://arxiv.org/abs/2412.18004) |
+| 2024 | Stanford RegLab: legal RAG tools hallucinate 17-33% | Lexis+ AI at 17%, Westlaw AI-Assisted Research at 33% — despite vendor "hallucination-free" claims | [Stanford HAI](https://hai.stanford.edu/news/ai-trial-legal-models-hallucinate-1-out-6-or-more-benchmarking-queries) |
+| Mar 2024 | NYC MyCity chatbot gave illegal business advice despite RAG grounding | Told landlords to refuse Section 8 tenants, employers to take worker tips — all from grounded responses over 2,000+ authoritative city pages. Shut down 2025. | [The Markup](https://themarkup.org/artificial-intelligence/2024/03/29/nycs-ai-chatbot-tells-businesses-to-break-the-law) |
+| Feb 2024 | Air Canada chatbot hallucinated bereavement fare policy — liable | Tribunal ruled airline responsible for chatbot's fabricated policy info, rejecting "chatbot as separate entity" defense. $812 + fees. | [ABA](https://www.americanbar.org/groups/business_law/resources/business-law-today/2024-february/bc-tribunal-confirms-companies-remain-liable-information-provided-ai-chatbot/) |
+| Mar 2026 | AI hallucination cases database reaches 1,170 entries | 446 lawyer cases, 695 pro se. Latest: Kenosha DA sanctioned Feb 2026 for undisclosed AI producing false legal citations. | [Database](https://www.damiencharlotin.com/hallucinations/) |
+
+**Key statistics:** Best measured citation attribution F1 is only 58.9% (GaRAGe benchmark, ACL 2025). Deflection true positive rate (detecting when no grounding exists) peaks at 31%. ChatGPT fabricates 39-55% of citations (GPT-3.5) and 18-29% (GPT-4). None of the major platforms (Perplexity, ChatGPT, Google AI Overviews) disclose their citation verification architectures.
+
 ---
 
 ## Requirements
@@ -43,6 +57,35 @@ Research into citation hallucination and grounded generation has advanced substa
 - [OWASP LLM Top 10 — Overreliance](https://genai.owasp.org/) — risks from trusting model outputs including fabricated citations
 - [Attributed QA (Bohnet et al., 2022)](https://arxiv.org/abs/2212.08037) — research on attributable question answering and citation verification
 - AISVS C7.2 (Hallucination Detection & Mitigation) — complementary controls; C7.8 focuses specifically on RAG attribution while C7.2 addresses hallucination more broadly
+
+---
+
+## Implementation Maturity
+
+| Requirement | Maturity | Notes |
+|-------------|:---:|-------|
+| 7.8.1 Source attribution from retrieval metadata | Maturing | Architecturally straightforward: attach document IDs from vector search results rather than letting the model generate citations. Function calling and structured outputs make this implementable. The challenge is ensuring the model doesn't "override" metadata-based citations with its own generated ones. No standard protocol exists — each RAG framework implements differently. |
+| 7.8.2 Claim-level entailment verification | Emerging | Best tools: [Vectara HHEM-2.1](https://huggingface.co/vectara/hallucination_evaluation_model) (neural classifier, 30%+ better than GPT-4 at detection, ~0.6s on RTX 3090), [RAGAS faithfulness](https://docs.ragas.io/) (LLM-based claim extraction), [DeepEval](https://github.com/confident-ai/deepeval) (14+ metrics, CI/CD integration), [Google Vertex AI Check Grounding](https://cloud.google.com/generative-ai-app-builder/docs/check-grounding) (API, <500ms, 0-1 support score). But GaRAGe benchmark (ACL 2025) shows best F1 is only 58.9%. Level 3 because real-time claim-level verification at scale remains a hard problem. |
+
+### Tooling Landscape
+
+| Category | Key Tools |
+|----------|-----------|
+| **Factual consistency scoring** | [Vectara HHEM-2.1](https://huggingface.co/vectara/hallucination_evaluation_model) (neural classifier, open-source, 1.5x better than GPT-3.5 at detection), [Google Vertex AI Check Grounding](https://cloud.google.com/generative-ai-app-builder/docs/check-grounding) (API service, claim-level citation mapping) |
+| **RAG evaluation frameworks** | [RAGAS](https://docs.ragas.io/) (faithfulness, context precision/recall), [DeepEval](https://github.com/confident-ai/deepeval) (faithfulness + 13 other metrics, pytest-native), [TruLens](https://www.trulens.org/) (RAG Triad: groundedness, context relevance, answer relevance) |
+| **NLI entailment models** | [cross-encoder/nli-deberta-v3-base](https://huggingface.co/cross-encoder/nli-deberta-v3-base) (3-class entailment, CPU-capable, most widely used baseline), ModernCE-large-nli (stronger for demanding tasks) |
+| **Benchmarks** | [GaRAGe](https://arxiv.org/abs/2506.07671) (ACL 2025, 2,366 questions, 35K+ annotations — best F1 58.9%), [Vectara Hallucination Leaderboard](https://www.vectara.com/blog/introducing-the-next-generation-of-vectaras-hallucination-leaderboard) (7,700+ articles, ranks LLMs by hallucination propensity) |
+| **Mechanistic detection** | [FACTUM](https://arxiv.org/abs/2601.05866) (January 2026 — examines model internal states, 37.5% AUC improvement, but requires activation access — not available for API-based LLMs) |
+
+### Cross-Chapter Links
+
+| Related Chapter | Overlap Area | Notes |
+|-----------------|--------------|-------|
+| [C07.2 Hallucination Detection](C07-02-Hallucination-Detection.md) | Complementary controls | C7.2 addresses hallucination broadly (confidence scoring, fallback messages, verification steps); C7.8 focuses specifically on RAG citation integrity. C7.2.5 (tool invocation tracking as hallucination signal) directly supports C7.8 verification. |
+| [C07.1 Output Format Enforcement](C07-01-Output-Format-Enforcement.md) | Structured citation output | C7.1 schema validation ensures citations conform to expected format (document ID, chunk reference, URL). Function calling architectures (C7.1) naturally separate citation metadata from generated content. |
+| [C11.6 Inference-Time Poisoned Data Detection](C11-06-Inference-Time-Poisoned-Data-Detection.md) | RAG corpus poisoning | PoisonedRAG (USENIX Security 2025) showed 5 documents can corrupt 90% of RAG responses. C11.6 anomaly detection on retrieved content is a prerequisite for trustworthy C7.8 citations — poisoned sources produce "correctly cited" but adversarially controlled content. |
+| [C02 User Input Validation](C02-User-Input-Validation.md) | Query manipulation | Adversarial queries designed to steer retrieval toward specific documents (retrieval manipulation) bridge C02 input validation and C7.8 citation integrity. |
+| [C13 Monitoring & Logging](C13-Monitoring-and-Logging.md) | Citation quality monitoring | C13 should log citation verification scores, unsupported claim rates, and retrieval-generation alignment over time to detect degradation and adversarial patterns. |
 
 ---
 
