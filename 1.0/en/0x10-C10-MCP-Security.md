@@ -11,8 +11,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | # | Description | Level | Role |
 | :--: | --- | :---: | :--: |
 | **10.1.1** | **Verify that** MCP server and client components are obtained only from trusted sources and verified using signatures, checksums, or secure package metadata, rejecting tampered or unsigned builds. | 1 | D/V |
-| **10.1.2** | **Verify that** MCP client and server configurations do not contain plaintext secrets (API keys, tokens, client secrets) and that credentials are injected or resolved at runtime rather than stored in configuration files, environment variables, or source code. | 1 | D/V |
-| **10.1.3** | **Verify that** only allowlisted MCP server identifiers (name, version, and registry) are permitted in production and that the runtime rejects connections to unlisted or unregistered servers at load time. | 1 | D/V |
+| **10.1.2** | **Verify that** only allowlisted MCP server identifiers (name, version, and registry) are permitted in production and that the runtime rejects connections to unlisted or unregistered servers at load time. | 1 | D/V |
 
 ---
 
