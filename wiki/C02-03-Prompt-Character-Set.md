@@ -41,6 +41,24 @@ Zero-width spaces (U+200B), joiners (U+200C, U+200D), word joiners (U+2060), and
 
 Research by Geh, Shao, and Van den Broeck (ACL 2025, arXiv:2503.02174) demonstrated that BPE tokenizers have exponentially many valid ways to segment any given string. Simply changing token boundaries — without modifying the text itself — can bypass safety alignment. This is "competitive against existing state-of-the-art adversarial approaches." Character set restrictions reduce the input alphabet, limiting the tokenizer's segmentation options and constraining this attack surface.
 
+### Emoji Smuggling via Variation Selectors
+
+Variation Selectors (U+FE00–U+FE0F and U+E0100–U+E01EF) are legitimate Unicode characters used to specify glyph variants, but attackers repurpose them to embed invisible payloads inside ordinary emoji. A shift cipher transforms standard Unicode characters into Variation Selector codepoints, producing a string that displays as a harmless emoji but contains hidden instructions. FireTail research (2025) confirmed that Google Gemini and Grok decode these payloads when given a decoding algorithm in-context, while Meta, ChatGPT, DeepSeek, and Claude rejected the technique. The Mindgard study (arXiv:2504.11168) measured up to 100% bypass rates against commercial guardrails using this method.
+
+**Detection:** Block all Variation Selectors (U+FE00–U+FE0F, U+E0100–U+E01EF) at the input layer. If emoji rendering is required, re-encode through a known-safe emoji library that strips non-standard variation sequences. The Black Box Emoji Fix technique (Renee M. Gagnon, 2025) applies NFKC normalization followed by grapheme cluster analysis to detect token-explosion triggers and strip injected variation selectors.
+
+### Token Explosion Attacks
+
+Certain Unicode characters — particularly complex emoji sequences, deeply nested combining characters, and abuse of Variation Selectors — can cause a single visible character to expand into dozens or hundreds of tokens during BPE tokenization. This enables denial-of-service by consuming the model's context window with a small input, and can also cause misclassification of harmful content when safety classifiers operate on unexpected token counts. OWASP classifies unbounded consumption as a top-10 LLM vulnerability (LLM10:2025).
+
+**Detection:** Implement a pre-tokenization check that measures the token-to-grapheme ratio. Flag inputs where any single grapheme cluster produces more than a configurable threshold of tokens (e.g., >10 tokens per cluster). The Black Box Emoji Fix approach uses a custom tokenizer to detect excessive tokenization within grapheme clusters before the input reaches the model.
+
+### Invisible Unicode in Supply-Chain Attacks (Glassworm)
+
+As of March 2026, the Glassworm campaign demonstrated that invisible Unicode characters are now used to hide malicious code in software repositories — not just in LLM prompts. Attackers embed payloads using Variation Selectors and PUA characters that render as empty strings in editors, terminals, and code review interfaces. When executed, a decoder extracts the hidden payload and passes it to `eval()`. This is directly relevant to AI coding assistants (Copilot, Cursor, Amp) that process repository code as context: if the assistant ingests invisible-Unicode payloads from compromised dependencies, the hidden instructions may be interpreted as part of the prompt context.
+
+**Detection:** Apply the same character allow-list filtering to code inputs ingested by AI assistants. Scan for Variation Selectors, PUA ranges, and Tags block characters in source code files. Tools like Aikido Safe Chain and Snyk can detect invisible Unicode payloads in package dependencies.
+
 ---
 
 ## Notable Incidents
@@ -52,6 +70,9 @@ Research by Geh, Shao, and Van den Broeck (ACL 2025, arXiv:2503.02174) demonstra
 | September 2025 | FireTail/Viktor Markopoulos demonstrates ASCII smuggling against Google Gemini, Grok, and DeepSeek — Google Calendar identity spoofing and e-commerce review poisoning. Google declined to patch after responsible disclosure | Shows real-world exploitation of Unicode tag attacks against production systems |
 | 2025 | Sourcegraph Amp Code vulnerable to invisible Unicode prompt injection in code files, allowing agent hijacking. Fixed after disclosure by Johann Rehberger | Demonstrates Unicode tag attacks in agentic coding tools, not just chat interfaces |
 | December 2025 | Palo Alto Unit 42 documents real-world indirect prompt injection using invisible Unicode targeting AI-based product ad review systems in production | First documented in-the-wild exploitation of invisible Unicode against production AI business systems |
+| March 2026 | Glassworm supply-chain campaign uses invisible Unicode characters (Variation Selectors U+FE00–U+FE0F and Supplementary PUA U+E0100–U+E01EF) to hide malicious payloads in 151+ GitHub repositories and npm packages — code renders as empty strings in editors but executes second-stage payloads via `eval()`. Compromised projects include Wasmer and Reworm (1,460 stars). Discovered by Aikido Security and Koi Security | Demonstrates that invisible Unicode is now weaponized in software supply chains, not just LLM prompts. Character filtering must extend to code inputs processed by AI coding assistants |
+| 2025–2026 | FireTail research confirms emoji smuggling via Variation Selectors successfully exploits Google Gemini and Grok — hidden payloads invisible to humans are decoded when the model is given a decoding algorithm. Meta, ChatGPT, DeepSeek, and Claude are not vulnerable to this specific technique | Highlights that emoji smuggling is model-dependent; defense-in-depth at the input layer catches attacks regardless of model resilience |
+| 2025 | Palo Alto Unit 42 documents homograph attacks using Cyrillic/Greek substitution to bypass email and content security filters, with AI-driven phishing at scale making detection harder. Cortex analysis reveals multiple financial-services impersonation campaigns | Reinforces that homoglyph detection (UTS #39 confusable analysis) is critical even outside LLM-specific contexts |
 
 ---
 
@@ -70,6 +91,8 @@ A layered approach, applied in order before any prompt assembly:
 4. **Run confusable detection** on remaining text — flag or reject strings mixing confusable scripts (e.g., Latin + Cyrillic) unless the application explicitly requires mixed-script input.
 
 5. **Validate at every entry point** — not just direct user input but also indirect inputs from RAG retrieval, tool outputs, MCP server responses, and web content (per C2.1.1).
+
+6. **Deploy WAF-level character filtering** as an additional perimeter layer. Cisco documented a YARA rule for Unicode tag detection (`{ F3 A0 [0-2] ?? }` with threshold >10 matches), and Kemp LoadMaster WAF supports custom rules to block requests containing Tags block characters. WAF filtering catches attacks before they reach application code, providing defense-in-depth even if application-level validation has bugs.
 
 ### UTS #39 Restriction Levels
 
@@ -95,6 +118,9 @@ The Unicode Consortium defines six restriction levels that provide a ready-made 
 | [ICU4X](https://github.com/unicode-org/icu4x) v2.0 | Rust/WASM | Modern Unicode property queries and normalization with FFI bindings to JS, C++, Dart | Suitable for edge/browser deployment |
 | [Garak](https://github.com/NVIDIA/garak) | Python | Red-team testing for character-level attacks on LLMs | Validates that defenses actually hold |
 | [Promptfoo](https://www.promptfoo.dev/) | Node.js | ASCII smuggling plugin for testing Unicode tag injection | Integrates into CI/CD red-team pipelines |
+| [Black Box Emoji Fix](https://www.tdcommons.org/dpubs_series/7836/) | Python | NFKC normalization + grapheme cluster analysis + token explosion detection for emoji-based injection | Apache 2.0. Detects variation selector abuse and anomalous token-to-grapheme ratios |
+| [Prompt Security](https://prompt.security/) | SaaS/API | Real-time Unicode-level text inspection with configurable blocking/redaction of visible and invisible characters | Commercial. Includes both input scanning and output filtering |
+| [Aikido Safe Chain](https://www.aikido.dev/) | npm wrapper | Scans npm/yarn/pnpm dependencies for invisible Unicode payloads (Glassworm-style supply-chain attacks) | Protects AI coding assistants that ingest repository code |
 
 ---
 
@@ -107,6 +133,9 @@ The Unicode Consortium defines six restriction levels that provide a ready-made 
 | Homoglyph/confusable detection | **Medium** — libraries exist but require tuning for false positives | UTS #39 restriction levels help, but mixed-script legitimate content (academic, multilingual) needs careful policy |
 | Automated correlation of rejection logs with prompt injection attempts | **Low** — no off-the-shelf tooling as of March 2026 | Must build custom SIEM rules; significant gap for SOC teams |
 | Per-field adaptive allow-lists | **Low** — most implementations use a single global policy | Dynamic allow-lists that adjust per input context are an open research area |
+| Token explosion detection | **Medium** — grapheme cluster analysis approach documented (Black Box Emoji Fix, 2025) but not yet widely adopted | Requires custom tokenizer integration; no standard library support yet |
+| Supply-chain invisible Unicode scanning | **Medium** — Aikido Safe Chain and Snyk detect Glassworm-style payloads in npm/GitHub | Growing adoption after March 2026 Glassworm campaign; most CI/CD pipelines still lack this check |
+| WAF-level Unicode tag filtering | **Medium** — YARA rules and WAF custom rules documented by Cisco and Kemp | Effective perimeter defense but requires tuning to avoid blocking legitimate Unicode in multilingual deployments |
 
 ---
 
@@ -120,6 +149,7 @@ The Unicode Consortium defines six restriction levels that provide a ready-made 
 | 2.3.2 (Rejection logging) | **C2.6** (Rate limiting) | High-volume rejection events from a single source should trigger rate-limiting thresholds |
 | 2.3.1 (Character allow-list) | **C2.7.1** (Multi-modal input validation) | Extracted text from images, audio, and documents (OCR, STT) must pass through the same character allow-list before prompt assembly |
 | 2.3.1 (Character allow-list) | **C11.1** (Model alignment safety) | Character-level filtering is a defense-in-depth layer for adversarial robustness — restricts the input alphabet available to adversaries |
+| 2.3.1 (Character allow-list) | **C6** (Supply chain) | Invisible Unicode in code dependencies (Glassworm, March 2026) can inject payloads into AI coding assistants — character filtering must extend to code inputs |
 
 ---
 
@@ -144,6 +174,15 @@ The Unicode Consortium defines six restriction levels that provide a ready-made 
 - Geh, Shao, Van den Broeck. "Adversarial Tokenization." ACL 2025 (arXiv:2503.02174)
 - "Special-Character Adversarial Attacks on Open-Source Language Models." arXiv:2508.14070 (November 2025)
 - "Tokenization Matters! Degrading Large Language Models through Challenging Their Tokenization." arXiv:2405.17067 (May 2025)
+- [Aikido: Glassworm Returns — Invisible Unicode Attack on GitHub, npm, and VS Code](https://www.aikido.dev/blog/glassworm-returns-unicode-attack-github-npm-vscode) (March 2026)
+- [FireTail: Emoji Smuggling and Modern LLMs](https://www.firetail.ai/blog/peek-a-boo-emoji-smuggling-and-modern-llms)
+- [Palo Alto Unit 42: The Homograph Illusion — Not Everything Is As It Seems](https://unit42.paloaltonetworks.com/homograph-attacks/)
+- [Black Box Emoji Fix: A Unicode Sanitization Method for Mitigating Emoji-Based Injection Attacks in LLM Systems](https://www.tdcommons.org/dpubs_series/7836/) (2025)
+- [Keysight: Understanding Invisible Prompt Injection Attack](https://www.keysight.com/blogs/en/tech/nwvs/2025/05/16/invisible-prompt-injection-attack)
+- [Prompt Security: Unicode Exploits Are Compromising Application Security](https://prompt.security/blog/unicode-exploits-are-compromising-application-security)
+- [NIST Cybersecurity Framework Profile for Artificial Intelligence](https://www.nist.gov/news-events/news/2025/12/draft-nist-guidelines-rethink-cybersecurity-ai-era) (December 2025)
+- [OWASP AI Agent Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html)
+- "Emoji Attack: Enhancing Jailbreak Attacks Against Judge LLM Detection." arXiv:2411.01077 (2024)
 
 ---
 
@@ -153,6 +192,8 @@ The Unicode Consortium defines six restriction levels that provide a ready-made 
 - How do character set restrictions interact with tokenizer behavior — can a restricted character set inadvertently produce unexpected token sequences? Research on adversarial tokenization (Geh et al., ACL 2025) suggests that reducing the input alphabet constrains the tokenizer's segmentation space, but the interaction is not fully characterized.
 - Should character set restrictions be applied per-field (structured input) or globally (free-text prompts), and how does this affect usability? Current implementations largely use a single global policy; adaptive per-field allow-lists remain an open area.
 - Can character-level rejection telemetry be reliably used as an early-warning signal for prompt injection campaigns? No published work correlates character rejection patterns with downstream attack success rates.
-- How should character filtering handle code inputs (e.g., in coding assistants) where control characters, Unicode escapes, and unusual symbols may be legitimate? The tension between security and functionality is especially acute for developer-facing AI tools.
+- How should character filtering handle code inputs (e.g., in coding assistants) where control characters, Unicode escapes, and unusual symbols may be legitimate? The tension between security and functionality is especially acute for developer-facing AI tools. The Glassworm campaign (March 2026) makes this question urgent — AI coding assistants must filter invisible Unicode from ingested code without breaking legitimate use of Unicode in string literals and comments.
+- What is the optimal token-to-grapheme ratio threshold for detecting token explosion attacks? The Black Box Emoji Fix approach proposes grapheme cluster analysis, but real-world calibration data across different tokenizers (GPT-4, Claude, Llama) is lacking.
+- How should emoji smuggling defenses differ between models? FireTail research shows Gemini and Grok are vulnerable while Claude and ChatGPT are not — should defenses be model-aware, or should input-layer filtering be uniform regardless of downstream model?
 
 ---
