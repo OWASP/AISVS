@@ -10,23 +10,23 @@ Welcome to the AISVS research wiki. This wiki provides structured research conte
 
 The standard is organized into 14 chapters spanning the full AI application security lifecycle, from training data through deployment, monitoring, and human oversight. Larger chapters are split into per-section pages for easier navigation, while smaller chapters are covered on a single page.
 
-| # | Chapter | Reqs | Pages | Type |
-|---|---------|:----:|:-----:|------|
-| C1 | Training Data Integrity & Traceability | 24 | [C01](C01-Training-Data.md) | Single |
-| C2 | User Input Validation | 33 | [C02](C02-User-Input-Validation.md) | [8 sections](#c2-user-input-validation) |
-| C3 | Model Lifecycle Management | 24 | [C03](C03-Model-Lifecycle-Management.md) | Single |
-| C4 | Infrastructure & Deployment Security | 46 | [C04](C04-Infrastructure.md) | [8 sections](#c4-infrastructure--deployment-security) |
-| C5 | Access Control & Identity | 26 | [C05](C05-Access-Control.md) | Single |
-| C6 | Supply Chain Security | 33 | [C06](C06-Supply-Chain.md) | [7 sections](#c6-supply-chain-security) |
-| C7 | Model Behavior & Output Control | 33 | [C07](C07-Model-Behavior.md) | [8 sections](#c7-model-behavior--output-control) |
-| C8 | Memory, Embeddings & Vector DB Security | 25 | [C08](C08-Memory-and-Embeddings.md) | Single |
-| C9 | Orchestration & Agentic Action Security | 36 | [C09](C09-Orchestration-and-Agents.md) | [8 sections](#c9-orchestration--agentic-action-security) |
-| C10 | MCP Security | 34 | [C10](C10-MCP-Security.md) | [6 sections](#c10-mcp-security) |
-| C11 | Adversarial Robustness | 41 | [C11](C11-Adversarial-Robustness.md) | [10 sections](#c11-adversarial-robustness) |
-| C12 | Privacy Protection | 23 | [C12](C12-Privacy.md) | Single |
-| C13 | Monitoring, Logging & Anomaly Detection | 47 | [C13](C13-Monitoring-and-Logging.md) | [8 sections](#c13-monitoring-logging--anomaly-detection) |
-| C14 | Human Oversight & Accountability | 25 | [C14](C14-Human-Oversight.md) | Single |
-| | **Total** | **450** | **82 pages** | |
+| # | Chapter | Reqs | Pages | Type | Updated |
+|---|---------|:----:|:-----:|------|:-------:|
+| C1 | Training Data Integrity & Traceability | 24 | [C01](C01-Training-Data.md) | Single | 2026-03-22 |
+| C2 | User Input Validation | 33 | [C02](C02-User-Input-Validation.md) | [8 sections](#c2-user-input-validation) | 2026-03-21 |
+| C3 | Model Lifecycle Management | 24 | [C03](C03-Model-Lifecycle-Management.md) | Single | 2026-03-20 |
+| C4 | Infrastructure & Deployment Security | 46 | [C04](C04-Infrastructure.md) | [8 sections](#c4-infrastructure--deployment-security) | 2026-03-21 |
+| C5 | Access Control & Identity | 26 | [C05](C05-Access-Control.md) | Single | 2026-03-20 |
+| C6 | Supply Chain Security | 33 | [C06](C06-Supply-Chain.md) | [7 sections](#c6-supply-chain-security) | 2026-03-21 |
+| C7 | Model Behavior & Output Control | 33 | [C07](C07-Model-Behavior.md) | [8 sections](#c7-model-behavior--output-control) | 2026-03-21 |
+| C8 | Memory, Embeddings & Vector DB Security | 25 | [C08](C08-Memory-and-Embeddings.md) | Single | 2026-03-20 |
+| C9 | Orchestration & Agentic Action Security | 36 | [C09](C09-Orchestration-and-Agents.md) | [8 sections](#c9-orchestration--agentic-action-security) | 2026-03-21 |
+| C10 | MCP Security | 34 | [C10](C10-MCP-Security.md) | [6 sections](#c10-mcp-security) | 2026-03-21 |
+| C11 | Adversarial Robustness | 41 | [C11](C11-Adversarial-Robustness.md) | [10 sections](#c11-adversarial-robustness) | 2026-03-21 |
+| C12 | Privacy Protection | 23 | [C12](C12-Privacy.md) | Single | 2026-03-20 |
+| C13 | Monitoring, Logging & Anomaly Detection | 47 | [C13](C13-Monitoring-and-Logging.md) | [8 sections](#c13-monitoring-logging--anomaly-detection) | 2026-03-21 |
+| C14 | Human Oversight & Accountability | 25 | [C14](C14-Human-Oversight.md) | Single | 2026-03-20 |
+| | **Total** | **450** | **82 pages** | | |
 
 ---
 
@@ -155,12 +155,12 @@ Covers request and response logging, abuse detection, model drift detection, per
 
 The appendices provide supporting material including a glossary of AI security terms, a curated reference list, requirements for AI-assisted secure coding, and an inventory of security controls mapped to the standard.
 
-| Appendix | Page |
-|----------|------|
-| A: Glossary | [Appendix A Glossary](Appendix-A-Glossary.md) |
-| B: References | [Appendix B References](Appendix-B-References.md) |
-| C: AI-Assisted Secure Coding (27 reqs) | [Appendix C AI Secure Coding](Appendix-C-AI-Secure-Coding.md) |
-| D: AI Security Controls Inventory | [Appendix D Controls Inventory](Appendix-D-Controls-Inventory.md) |
+| Appendix | Page | Updated |
+|----------|------|:-------:|
+| A: Glossary | [Appendix A Glossary](Appendix-A-Glossary.md) | 2026-03-21 |
+| B: References | [Appendix B References](Appendix-B-References.md) | 2026-03-21 |
+| C: AI-Assisted Secure Coding (27 reqs) | [Appendix C AI Secure Coding](Appendix-C-AI-Secure-Coding.md) | 2026-03-22 |
+| D: AI Security Controls Inventory | [Appendix D Controls Inventory](Appendix-D-Controls-Inventory.md) | 2026-03-21 |
 
 ---
 
