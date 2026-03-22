@@ -19,6 +19,28 @@ Ensure cryptographic integrity and supply chain security through reproducible bu
 
 ---
 
+## Implementation Maturity
+
+| Requirement | Maturity | Notes |
+|-------------|:---:|-------|
+| 4.2.1 Automated builds with SBOM | Mature | CI/CD automation is standard. CycloneDX 1.7 ML-BOM and SPDX 3.0 AI profile provide AI-specific SBOM formats. OWASP AIBOM Generator produces CycloneDX output from HF model references. Gap: only 21% of orgs have complete dependency visibility (Datadog DevSecOps 2026). Model weights, training data provenance, and custom CUDA kernels are still underrepresented in SBOMs. |
+| 4.2.2 Cryptographic signing with provenance | Maturing | Sigstore/cosign for containers is production-ready. OpenSSF Model Signing (OMS) spec specifically addresses ML models with detached signatures — NVIDIA signs all NGC models with OMS. SLSA v1.1 defines progressive build security levels. Gap: SLSA provenance for training data and long-running training jobs remains challenging. |
+| 4.2.3 Admission control rejecting unsigned artifacts | Maturing | Kyverno, OPA Gatekeeper, and Sigstore Policy Controller enforce container image signature verification. Gap: admission control for model weight files loaded from object storage (S3, GCS, HF Hub) is less standardized — requires custom validation hooks. Picklescan alone is insufficient (NullifAI, JFrog zero-days). |
+| 4.2.4 Reproducible builds | Emerging | Practical for serving infrastructure container images. Extremely challenging for GPU-trained model weights due to floating-point non-determinism. `torch.use_deterministic_algorithms(True)` helps but has performance penalties. Hermetic builds with pinned dependencies are essential but insufficient without hardened CI/CD trigger configurations (Ultralytics lesson). |
+
+### Cross-Chapter Links
+
+| Related Chapter | Overlap Area | Notes |
+|-----------------|--------------|-------|
+| [C04.4 Secrets & Key Management](C04-04-Secrets-Key-Management.md) | Signing key protection | C4.2.2 signing requires HSM/KMS-backed keys (C4.4.4). Signing key compromise undermines the entire artifact verification chain. |
+| [C06.1 Pretrained Model Vetting](C06-01-Pretrained-Model-Vetting.md) | Model artifact scanning | C6.1.2 scans imported models for malicious content; C4.2.3 admission control is the deployment-time enforcement that rejects unverified artifacts — both are needed in sequence. |
+| [C06.3 Dependency Pinning](C06-03-Dependency-Pinning-Verification.md) | Build reproducibility | C6.3.1 lockfile pinning and C6.3.5 reproducible-build checks complement C4.2.4 — pinned dependencies are a prerequisite for reproducible builds. |
+| [C06.7 AI BOM](C06-07-AI-BOM-Model-Artifacts.md) | SBOM/AI BOM generation | C4.2.1 SBOM generation feeds into C6.7 AI BOM lifecycle — CycloneDX ML-BOM and SPDX AI profile provide the format; C6.7 covers signing, completeness, and downstream queryability. |
+| [C09.3 Tool & Plugin Isolation](C09-03-Tool-and-Plugin-Isolation.md) | Sandboxed model loading | C4.2.3 admission control catches unverified artifacts at deployment; C9.3.1 sandbox isolation provides defense-in-depth for loading model files that pass admission but may contain novel evasion techniques. |
+| [C13 Monitoring & Logging](C13-Monitoring-and-Logging.md) | Build pipeline audit trails | C4.2 build signing and SBOM generation produce artifacts that feed into C13 audit infrastructure. CI/CD audit logs (pipeline execution, artifact promotions) should integrate with C13 SIEM. |
+
+---
+
 ## Key Incidents & Case Studies
 
 | Incident | Date | Impact | Relevance |
