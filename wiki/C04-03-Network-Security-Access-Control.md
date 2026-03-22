@@ -20,6 +20,29 @@ Implement zero-trust networking with default-deny policies and encrypted communi
 
 ---
 
+## Implementation Maturity
+
+| Requirement | Maturity | Notes |
+|-------------|:---:|-------|
+| 4.3.1 Default-deny network policies | Mature | Calico and Cilium provide production-grade Kubernetes NetworkPolicy enforcement. Global Network Policies cover non-namespaced resources. eBPF-based enforcement (Cilium) adds deep flow visibility via Hubble. Uber's microsegmentation limited breach impact to 3% of infrastructure. Gap: default Kubernetes does NOT enforce policies without a supporting CNI. |
+| 4.3.2 Environment isolation | Mature | Separate VPCs/VNets, distinct IAM roles per environment, and SPIFFE-based workload identity are well-established patterns. Gap: GPU clusters are often shared across environments due to cost — strong logical isolation is needed. Shadow AI in dev environments adds $670K to breach costs. |
+| 4.3.3 Admin access and metadata service restrictions | Mature | IMDSv2 enforcement, FIDO2 hardware auth, RBAC for Kubernetes API, and software-defined perimeters are all production-ready. Cloudflare zero-trust reduced attack surface by 95%. Microsoft re-verifies AI infrastructure access every 10 minutes, blocking 94% of lateral movement. |
+| 4.3.4 Mutual TLS with certificate rotation | Maturing | Istio, Linkerd, and Envoy provide mTLS for HTTP/gRPC inference APIs. cert-manager automates certificate lifecycle. Gap: NCCL and InfiniBand/RDMA interconnects for multi-GPU training don't support mTLS natively — network-level encryption (WireGuard, IPsec) is needed instead. See also C4.7.7 for hardware-level interconnect auth. |
+| 4.3.5 Egress filtering and logging | Maturing | Calico Egress Gateway, cloud-native VPC endpoints (AWS Private Link, Azure Private Link), and FQDN-based filtering are production-ready. AI-aware API gateways (GKE Inference Gateway, Azure GenAI Gateway) add token-level cost attribution. Gap: DNS-over-HTTPS from containers bypasses DNS-based filtering; RL-based autonomous exfiltration agents may evade request-based monitoring. |
+
+### Cross-Chapter Links
+
+| Related Chapter | Overlap Area | Notes |
+|-----------------|--------------|-------|
+| [C04.1 Runtime Environment Isolation](C04-01-Runtime-Environment-Isolation.md) | Container isolation | C4.1 provides OS-level isolation (seccomp, AppArmor); C4.3 provides network-level isolation. Both are needed — container escape without network access has limited blast radius, and network access without container isolation enables host-level attacks. |
+| [C04.7 AI Hardware Security](C04-07-Hardware-Security.md) | Interconnect encryption | C4.3.4 covers mTLS for application traffic; C4.7.7 covers authenticated accelerator interconnects (NVLink/PCIe/InfiniBand/RDMA). Training cluster traffic often uses hardware interconnects that bypass application-level mTLS. |
+| [C05 Access Control](C05-Access-Control.md) | Identity and authorization | C4.3.3 restricts admin access and metadata services; C05 covers broader identity and authorization policies for AI systems. SPIFFE workload identity spans both — cryptographic identity per workload independent of network location. |
+| [C09 Orchestration & Agents](C09-Orchestration-and-Agents.md) | Agent egress control | C4.3.5 egress filtering is the network-level enforcement for C09.3 tool sandbox network restrictions. Multi-modal AI agents can be tricked into exfiltrating data via prompt injection — egress controls are the last line of defense. |
+| [C10 MCP Security](C10-MCP-Security.md) | MCP transport security | C4.3.4 mTLS applies to MCP streamable HTTP transport. C10.3 covers MCP-specific transport protections including DNS rebinding prevention (CVE-2025-66414). |
+| [C13 Monitoring & Logging](C13-Monitoring-and-Logging.md) | Network traffic logging | C4.3.5 requires egress logging; C13 provides the logging infrastructure and SIEM integration. eBPF flow logs (Cilium Hubble) feed into C13 monitoring for anomalous AI workload communication patterns. |
+
+---
+
 ## Related Standards & References
 
 - [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/publications/detail/sp/800-207/final)
