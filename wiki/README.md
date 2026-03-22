@@ -21,7 +21,7 @@ The standard is organized into 14 chapters spanning the full AI application secu
 | C7 | Model Behavior & Output Control | 33 | [C07](C07-Model-Behavior.md) | [8 sections](#c7-model-behavior--output-control) | 2026-03-22 |
 | C8 | Memory, Embeddings & Vector DB Security | 25 | [C08](C08-Memory-and-Embeddings.md) | Single | 2026-03-22 |
 | C9 | Orchestration & Agentic Action Security | 36 | [C09](C09-Orchestration-and-Agents.md) | [8 sections](#c9-orchestration--agentic-action-security) | 2026-03-21 |
-| C10 | MCP Security | 34 | [C10](C10-MCP-Security.md) | [6 sections](#c10-mcp-security) | 2026-03-21 |
+| C10 | MCP Security | 34 | [C10](C10-MCP-Security.md) | [6 sections](#c10-mcp-security) | 2026-03-22 |
 | C11 | Adversarial Robustness | 41 | [C11](C11-Adversarial-Robustness.md) | [10 sections](#c11-adversarial-robustness) | 2026-03-21 |
 | C12 | Privacy Protection | 23 | [C12](C12-Privacy.md) | Single | 2026-03-22 |
 | C13 | Monitoring, Logging & Anomaly Detection | 47 | [C13](C13-Monitoring-and-Logging.md) | [8 sections](#c13-monitoring-logging--anomaly-detection) | 2026-03-21 |
