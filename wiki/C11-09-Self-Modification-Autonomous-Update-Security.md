@@ -51,13 +51,45 @@ The weaponization of safety systems as training signal is an emerging attack vec
 - **Integrity verification requirements**: ISACA recommends that feedback pipelines include audit trails for self-modifying triggers, real-time anomaly detection on feedback data distributions, and scenario-based risk assessments that model adversarial manipulation of the improvement mechanism.
 - **Human review bottleneck**: Human review gates (required by 11.9.5) create a throughput bottleneck if safety violation volume is high. Organizations are exploring tiered review where automated poisoning detection handles high-volume, low-risk violations while human reviewers focus on anomalous or high-impact feedback signals.
 
+### Real-World Incidents and Emerging Attack Patterns (2025--2026)
+
+Several incidents and research findings from late 2025 through early 2026 underscore the practical risks of self-modification in production systems:
+
+- **Sleeper agents in self-modifying pipelines**: As of late 2025, Microsoft Research published findings on "Sleeper Agents" -- backdoors hidden in model weights during training that behave normally 99.9% of the time and pass standard safety evaluations, but activate a hidden payload (e.g., injecting vulnerabilities into generated code, leaking data) upon encountering a specific trigger phrase. For self-modifying systems, the risk compounds: if the modification pipeline itself ingests poisoned data, sleeper behaviors can be introduced through the system's own improvement mechanism. This directly motivates the integrity verification requirements in 11.9.5.
+- **Cascading failures in multi-agent systems**: Galileo AI research (December 2025) found that in simulated multi-agent environments, a single compromised agent poisoned 87% of downstream decision-making within four hours. For agents with self-modification capabilities, a compromised modification can propagate through shared tools, memory, or coordination channels before containment mechanisms engage.
+- **Tool poisoning via MCP**: Researchers demonstrated that invisible instructions hidden in Model Context Protocol (MCP) tool descriptions could force models to follow attacker-planted directives when loading those tools. A self-modifying agent that autonomously updates its tool list (relevant to 11.9.1 boundary enforcement) could inadvertently import poisoned tools that subvert its own safety controls.
+- **Harmless input poisoning**: A late 2025 finding showed that backdoors can be injected using entirely benign-looking data by associating a trigger with a specific grammatical structure or affirmative prefix. This makes feedback-loop poisoning (11.9.5) harder to detect because the poisoned inputs do not look adversarial to conventional filters.
+- **Basilisk Venom attack**: Demonstrated how hidden prompts embedded in GitHub code comments created persistent backdoors in fine-tuned models. When developers trained on contaminated repositories, the malicious instructions persisted months later. This illustrates the risk when self-modifying systems incorporate external code or data into their improvement pipelines.
+
+### Agent Drift Detection and Monitoring Tooling
+
+As of early 2026, several categories of tools address the monitoring and detection aspects of self-modification security:
+
+- **Statistical drift detection**: Methods such as Population Stability Index (PSI), Kolmogorov-Smirnov tests, and Jensen-Shannon divergence can be applied to track behavioral drift in agent outputs over time. These statistical approaches detect when an agent's output distribution has shifted meaningfully from its baseline, which may indicate unauthorized or adversarial self-modification.
+- **Observability platforms**: Arize Phoenix (open source) provides embedded clustering and drift detection for production ML systems. Arize AI offers real-time performance monitoring with continuous drift checks across training, validation, and production stages. These tools support the cumulative drift tracking called for in 11.9.4.
+- **Autonomous drift remediation**: The CNCF's 2026 forecast describes a pattern where monitoring agents continuously compare the live environment against the desired state defined by a golden path, and upon detecting unauthorized configuration changes, autonomously revert or fix the misconfiguration. This approach is directly applicable to self-modification rollback (11.9.3), though organizations must ensure the remediation agent itself is not within the self-modification scope.
+- **Framework-level guardrails**: The Superagent framework (open source, released December 2025) provides a dedicated Safety Agent component that evaluates agent actions -- including tool calls, prompt modifications, and responses -- against declaratively defined security policies before execution. Actions that violate rules can be blocked, modified, or logged. AWS Bedrock Guardrails provides similar policy-based controls at the model inference layer. NVIDIA NeMo Guardrails offers open-source resources for implementing restriction enforcement across complex agent workflows.
+- **Stream processing for real-time monitoring**: Production deployments increasingly use stream processing infrastructure (Apache Kafka, Amazon Kinesis) paired with real-time analytics (Apache Spark) to detect modification events as they occur rather than in batch, enabling faster intervention against runaway self-modification.
+
+### MITRE ATLAS Techniques for Self-Modification Threats
+
+MITRE ATLAS expanded significantly in October 2025, adding 14 new techniques and sub-techniques specifically focused on AI agents and generative AI systems (developed in collaboration with Zenity Labs). Several are directly relevant to self-modification security:
+
+- **AML.T0018 (Backdoor ML Model)**: Remains the primary technique for backdoor insertion through training pipeline manipulation. For self-modifying systems, the model's own modification pipeline becomes the insertion vector.
+- **Tool-use manipulation**: ATLAS is introducing new primitives describing agent-specific behaviors including tool-use manipulation, recognizing that autonomous agents face risks beyond traditional data leak scenarios -- specifically the risk of unauthorized actions or loss of control alignment with the human operator. This maps to 11.9.1 (modification boundary enforcement) and 11.9.2 (pre-modification validation).
+- **AML.T0006 (Active Scanning)**: Adversaries may systematically probe an agent's self-modification boundaries to identify which parameters, prompts, or tools can be altered. This is a reconnaissance technique that precedes exploitation of self-modification capabilities.
+
+As of March 2026, the ATLAS framework contains 15 tactics, 66 techniques, 46 sub-techniques, 26 mitigations, and 33 real-world case studies.
+
 ### Governance and Audit Approaches
 
 Emerging governance patterns for self-modifying AI systems include:
 
 - **AI ethics committees with explicit decision trails**: Documenting not just what modifications were made but the decision rationale and authorization chain.
-- **Compliance alignment**: Mapping self-modification controls to existing regulatory frameworks (DORA, NIS2, ISO/IEC 42001) while acknowledging that traditional frameworks alone cannot address self-evolving systems.
+- **Compliance alignment**: Mapping self-modification controls to existing regulatory frameworks (DORA, NIS2, ISO/IEC 42001) while acknowledging that traditional frameworks alone cannot address self-evolving systems. As of 2026, Gartner predicts 40% of enterprise applications will integrate task-specific AI agents by end of 2026 (up from less than 5% in 2025), making governance of self-modifying agents an increasingly urgent operational concern.
 - **Explainable modification history**: Applying explainable AI techniques to document how and why the system evolved over time, enabling forensic investigation of behavioral changes.
+- **OWASP Top 10 for Agentic Applications**: Released December 2025 with input from over 100 security researchers and referenced by Microsoft, NVIDIA, AWS, and GoDaddy, this establishes the industry-standard threat taxonomy for agentic AI systems and should be cross-referenced when designing self-modification controls.
+- **Tiered human review**: For organizations implementing 11.9.5, a tiered review model is emerging where automated poisoning detection handles high-volume, low-risk feedback signals while human reviewers focus on anomalous or high-impact modifications. This addresses the throughput bottleneck without eliminating human oversight entirely.
 
 ---
 
@@ -70,6 +102,11 @@ Emerging governance patterns for self-modifying AI systems include:
 - [ISACA -- Inside the Risky Code of Self-Modifying AI (2025)](https://www.isaca.org/resources/news-and-trends/isaca-now-blog/2025/unseen-unchecked-unraveling-inside-the-risky-code-of-self-modifying-ai) -- Code drift, kill switches, and audit frameworks for self-modifying AI
 - [Future of Life Institute -- 2025 AI Safety Index](https://futureoflife.org/ai-safety-index-summer-2025/) -- Evaluation of goal misalignment and self-preservation behaviors across frontier models
 - [PurpleSec -- Top AI Security Risks 2026](https://purplesec.us/learn/ai-security-risks/) -- Overview of autonomous update and self-modification risks
+- [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/) -- Industry-standard threat taxonomy for agentic AI systems including self-modification risks
+- [Superagent -- Open-Source Agent Guardrails Framework](https://www.helpnetsecurity.com/2025/12/29/superagent-framework-guardrails-agentic-ai/) -- Runtime safety enforcement for AI agent self-modification and tool access
+- [Arize Phoenix -- Open-Source AI Observability](https://arize.com/blog/best-ai-observability-tools-for-autonomous-agents-in-2026/) -- Drift detection and production monitoring for autonomous agents
+- [Lakera -- Training Data Poisoning: A 2026 Perspective](https://www.lakera.ai/blog/training-data-poisoning) -- Feedback loop poisoning defenses including Basilisk Venom and harmless input poisoning attacks
+- [CNCF -- The Autonomous Enterprise and Platform Control (2026)](https://www.cncf.io/blog/2026/01/23/the-autonomous-enterprise-and-the-four-pillars-of-platform-control-2026-forecast/) -- Autonomous drift remediation and golden path enforcement patterns
 - AISVS C1 (Training Data) -- Training-time data integrity, complementary to inference-time feedback integrity
 - AISVS C9 (Orchestration and Agents) -- Agent architecture controls complementary to self-modification controls
 
@@ -85,5 +122,7 @@ Emerging governance patterns for self-modifying AI systems include:
 - Should self-modification capabilities be disabled entirely for safety-critical AI applications, or are there safe patterns that preserve adaptability?
 - How can organizations detect "efficiency-over-safety drift" in real time when individual modifications appear benign but cumulatively degrade safety properties?
 - What formal methods or invariant-checking approaches can verify that self-modifications preserve required safety properties across the modification history?
+- How should multi-agent systems handle cascading self-modification -- when one agent's modification affects downstream agents' behavior, what containment boundaries are needed?
+- Can sleeper agent detection methods be adapted to identify backdoors introduced through a system's own self-modification pipeline rather than during initial training?
 
 ---
