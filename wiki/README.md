@@ -2,33 +2,31 @@
 
 **OWASP AI Security Verification Standard — Research & Analysis Hub**
 
-This research wiki attaches structured research context to each set of requirements in the standard: what threats motivate them, what tools exist to implement them, where the gaps are, and what questions remain open. All content requires human review, validation, and ongoing refinement by the community.
-
-> **Standard source:** [`1.0/en/`](https://github.com/OWASP/AISVS/tree/main/1.0/en) in the main repository
+This wiki provides structured research context for every chapter and appendix in AISVS 1.0. Each requirement is mapped to the threats it mitigates, the tools and techniques available to implement it, verification approaches for auditors, and open questions where tooling or research is still maturing.
 
 ---
 
 ## Chapters
 
-Larger chapters are split into per-section pages linked from the chapter index. Smaller chapters (≤25 requirements) have all requirements on a single page.
+Larger chapters are split into per-section pages linked from the chapter index. Smaller chapters are covered on a single page.
 
 | # | Chapter | Reqs | Pages | Type |
 |---|---------|:----:|:-----:|------|
 | C1 | Training Data Integrity & Traceability | 24 | [C01](C01-Training-Data.md) | Single |
 | C2 | User Input Validation | 33 | [C02](C02-User-Input-Validation.md) | [8 sections](#c2-user-input-validation) |
-| C3 | Model Lifecycle Management | 23 | [C03](C03-Model-Lifecycle-Management.md) | Single |
+| C3 | Model Lifecycle Management | 24 | [C03](C03-Model-Lifecycle-Management.md) | Single |
 | C4 | Infrastructure & Deployment Security | 46 | [C04](C04-Infrastructure.md) | [8 sections](#c4-infrastructure--deployment-security) |
 | C5 | Access Control & Identity | 26 | [C05](C05-Access-Control.md) | Single |
 | C6 | Supply Chain Security | 33 | [C06](C06-Supply-Chain.md) | [7 sections](#c6-supply-chain-security) |
-| C7 | Model Behavior & Output Control | 30 | [C07](C07-Model-Behavior.md) | [8 sections](#c7-model-behavior--output-control) |
+| C7 | Model Behavior & Output Control | 33 | [C07](C07-Model-Behavior.md) | [8 sections](#c7-model-behavior--output-control) |
 | C8 | Memory, Embeddings & Vector DB Security | 25 | [C08](C08-Memory-and-Embeddings.md) | Single |
-| C9 | Orchestration & Agentic Action Security | 32 | [C09](C09-Orchestration-and-Agents.md) | [8 sections](#c9-orchestration--agentic-action-security) |
-| C10 | MCP Security | 33 | [C10](C10-MCP-Security.md) | [6 sections](#c10-mcp-security) |
-| C11 | Adversarial Robustness | 38 | [C11](C11-Adversarial-Robustness.md) | [9 sections](#c11-adversarial-robustness) |
+| C9 | Orchestration & Agentic Action Security | 36 | [C09](C09-Orchestration-and-Agents.md) | [8 sections](#c9-orchestration--agentic-action-security) |
+| C10 | MCP Security | 34 | [C10](C10-MCP-Security.md) | [6 sections](#c10-mcp-security) |
+| C11 | Adversarial Robustness | 41 | [C11](C11-Adversarial-Robustness.md) | [10 sections](#c11-adversarial-robustness) |
 | C12 | Privacy Protection | 23 | [C12](C12-Privacy.md) | Single |
 | C13 | Monitoring, Logging & Anomaly Detection | 47 | [C13](C13-Monitoring-and-Logging.md) | [8 sections](#c13-monitoring-logging--anomaly-detection) |
 | C14 | Human Oversight & Accountability | 25 | [C14](C14-Human-Oversight.md) | Single |
-| | **Total** | **438** | **81 pages** | |
+| | **Total** | **450** | **82 pages** | |
 
 ---
 
@@ -120,6 +118,7 @@ Larger chapters are split into per-section pages linked from the chapter index. 
 | C11.7 Security Policy Adaptation | [C11-07](C11-07-Security-Policy-Adaptation.md) |
 | C11.8 Agent Security Self-Assessment | [C11-08](C11-08-Agent-Security-Self-Assessment.md) |
 | C11.9 Self-Modification & Autonomous Update Security | [C11-09](C11-09-Self-Modification-Autonomous-Update-Security.md) |
+| C11.10 Adversarial Bias Exploitation Defense | [C11-10](C11-10-Adversarial-Bias-Exploitation-Defense.md) |
 
 ### C13: Monitoring, Logging & Anomaly Detection
 
@@ -149,7 +148,7 @@ Larger chapters are split into per-section pages linked from the chapter index. 
 
 ## Page Structure
 
-Every requirement page includes a research table for each requirement:
+Every wiki page includes a research table for each requirement:
 
 | Column | Purpose |
 |--------|---------|
@@ -160,7 +159,7 @@ Every requirement page includes a research table for each requirement:
 | **Verification Approach** | Concrete audit steps, tools, and checks |
 | **Gaps / Notes** | Tooling maturity, open issues, implementation caveats |
 
-Pages also include: threat landscape summaries, notable incidents, tooling with implementation maturity ratings, open research questions, related standards, and cross-chapter links.
+Pages also include threat landscape summaries, notable incidents, tooling with implementation maturity ratings, open research questions, related standards, and cross-chapter links.
 
 ---
 
