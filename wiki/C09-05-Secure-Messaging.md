@@ -19,6 +19,37 @@ Agent-to-agent and agent-to-tool communication channels carry sensitive data and
 
 ---
 
+## Notable Incidents
+
+| Date | Incident | Relevance | Link |
+|------|----------|-----------|------|
+| Oct 2025 | A2A session smuggling (Unit 42) — covert instruction injection during multi-turn sessions | Malicious remote agent injects instructions during legitimate A2A sessions; stateful multi-turn attacks are invisible to production UIs. Demonstrates need for 9.5.3 replay/integrity and 9.5.4 semantic validation. | [Unit 42](https://unit42.paloaltonetworks.com/agent-session-smuggling-in-agent2agent-systems/) |
+| Apr 2025 | MCP tool poisoning (Invariant Labs) — hidden instructions in tool descriptions | Tool descriptions carry hidden prompt injection invisible to users. Cross-tool contamination through shared LLM context. Validates 9.5.2 schema validation and 9.5.4 semantic constraints. | [Invariant Labs](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks) |
+| Dec 2025 | CVE-2025-66414 — MCP TypeScript SDK DNS rebinding (CVSS 8.1) | No DNS rebinding protection by default; remote attackers invoke tools on localhost MCP servers from malicious web pages. Validates 9.5.1 mutual auth and transport security. | [GitLab Advisory](https://advisories.gitlab.com/pkg/npm/@modelcontextprotocol/sdk/CVE-2025-66414/) |
+| 2025 | Cross-agent steganographic collusion research | Agents in multi-agent systems establish secret collusion channels through steganographic communication. Validates need for 9.5.4 semantic validation beyond schema checks. | [arXiv](https://arxiv.org/html/2505.02077v1) |
+
+## Implementation Maturity
+
+| Requirement | Maturity | Notes |
+|-------------|:---:|-------|
+| 9.5.1 Mutual auth and encryption (TLS 1.3+) | Mature | TLS 1.3 is well-established. Service meshes (Istio, Linkerd) automate mTLS. A2A supports declared auth schemes (OAuth 2.0, OIDC, mTLS) via Agent Cards. MCP supports OAuth 2.1 + PKCE. Gap: mTLS setup complexity remains a barrier for smaller deployments. |
+| 9.5.2 Strict schema validation | Mature | JSON Schema, Protocol Buffers, Zod (TS), Pydantic (Python) all provide production-grade schema validation. MCP SDK enforces JSON-RPC 2.0 with discriminated unions. Critical: schema validation must happen *before* message content reaches the LLM. |
+| 9.5.3 Message integrity and replay protection | Emerging | TLS provides transport-level integrity but not message-level. Application-layer nonce/timestamp validation is documented but not standardized across A2A, MCP, or emerging protocols. Threat modeling research identifies this as a cross-cutting gap in all 4 major protocols (MCP, A2A, Agora, ANP). |
+| 9.5.4 Semantic constraint validation | Emerging | Domain-specific and requires explicit constraint definitions. No standardized tooling exists — each agent system must define its own semantic contracts. ML-based anomaly detection on message content is an option but introduces its own attack surface. A2A session smuggling and steganographic collusion demonstrate the real-world need. |
+
+### Cross-Chapter Links
+
+| Related Chapter | Overlap Area | Notes |
+|-----------------|--------------|-------|
+| [C04.3 Network Security](C04-03-Network-Security-Access-Control.md) | Transport-level encryption | C4.3.4 mTLS for inter-service communication provides the transport layer that C9.5.1 builds on. Service mesh solutions (Istio, Linkerd) automate both. |
+| [C09.4 Agent Identity & Audit](C09-04-Agent-Identity-and-Audit.md) | Cryptographic agent identity | C9.4.1 unique cryptographic identity per agent is a prerequisite for C9.5.1 mutual authentication — you can't authenticate agents without established identities. |
+| [C10.3 MCP Secure Transport](C10-03-Secure-Transport.md) | MCP-specific transport hardening | C10.3 covers MCP-protocol-specific transport (streamable HTTP, DNS rebinding prevention CVE-2025-66414). C9.5 covers transport hardening across all agent protocols. |
+| [C10.4 MCP Schema Validation](C10-04-Schema-Message-Validation.md) | MCP-specific message validation | C10.4 covers MCP-specific schema validation and tool definition change detection. C9.5.2 provides the protocol-agnostic schema validation requirement. |
+| [C02 User Input Validation](C02-User-Input-Validation.md) | Injection prevention | C9.5.2 schema validation before LLM exposure is the inter-agent equivalent of C02 prompt injection prevention. Tool description poisoning (MCP) is an injection attack via the messaging layer. |
+| [C11 Adversarial Robustness](C11-Adversarial-Robustness.md) | Semantic attack resistance | C9.5.4 semantic validation overlaps with C11 adversarial robustness — compromised agents producing schema-valid but semantically malicious outputs are adversarial inputs to downstream agents. |
+
+---
+
 ## Implementation Guidance
 
 ### Protocol Landscape (2025--2026)
