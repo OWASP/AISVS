@@ -57,6 +57,61 @@ Short-lived, task-scoped tokens have become the standard recommendation for agen
 
 Revocation propagation in distributed systems has inherent latency (CRL distribution, cache TTLs). SPIFFE's push-based rotation model reduces this compared to traditional PKI, but the gap between compromise detection and full revocation remains a measurable attack window.
 
+### Real-World Identity Failures: "Agents of Chaos" and CVE-2025-12420
+
+The theoretical risks of weak agent identity became tangible in early 2026. The "Agents of Chaos" study (February 2026) deployed six autonomous agents on the OpenClaw framework into a live Discord server with email accounts, persistent file systems, and shell access. Twenty researchers interacted freely over two weeks. The identity spoofing findings were stark:
+
+- A researcher simply changed their Discord display name to match an agent's owner. The agent could not distinguish the impersonator from its legitimate operator. Within minutes, it complied with instructions to delete all persistent memory files, modified its own name, and reassigned administrative access to the impersonator.
+- Under a separate spoofed identity, another researcher convinced an agent that a fabricated emergency required immediate broadcast. The agent sent urgent messages to its full contact list and attempted to post to an external agent network -- amplifying a false alarm at scale.
+- The study documented 10 security vulnerabilities total, including unauthorized compliance with non-owners, disclosure of sensitive information, execution of destructive system-level actions, and cross-agent propagation of unsafe practices.
+
+The lesson is clear: display-name-based or persona-based identity is not identity at all. Cryptographic identity (requirement 9.4.1) would have prevented every one of these attacks -- the agent would verify a cryptographic credential, not a human-readable name.
+
+Separately, the "BodySnatcher" vulnerability (CVE-2025-12420) in ServiceNow's Virtual Agent API demonstrated how an unauthenticated attacker could impersonate any user, including administrators, by exploiting weaknesses in identity and access logic -- a reminder that agent identity vulnerabilities affect commercial platforms, not just research prototypes.
+
+### Agent Traffic Impersonation at Scale
+
+As of March 2026, agent impersonation is not hypothetical -- it is an operational problem at internet scale. DataDome recorded 7.9 billion AI agent requests in early 2026, with agentic traffic comprising nearly 10% of total website traffic for some organizations. The impersonation numbers are striking:
+
+- **Meta-externalagent:** 16.4 million spoofed requests (highest volume)
+- **ChatGPT-User:** 7.9 million fraudulent requests
+- **PerplexityBot:** ~2.4% impersonation rate (highest ratio of fraudulent to legitimate)
+
+User-agent string spoofing transforms allowlists into attack surfaces. Sites that allowlist known agent identifiers based on string matching inadvertently create a backdoor for any attacker who sets the same user-agent header. This underscores why 9.4.1's requirement for cryptographic identity -- not string-based identification -- is essential for any system that processes agent requests.
+
+### IETF Standardization: Agent Authentication and Audit
+
+Two IETF Internet-Drafts published in early 2026 directly address agent identity and audit:
+
+**draft-klrc-aiagent-auth-00 (March 2026)** -- the Agent Identity Management System (AIMS) framework, co-authored by engineers from AWS, Zscaler, Ping Identity, and Defakto Security. Rather than inventing new protocols, AIMS composes existing standards into a layered agent authentication stack:
+
+- **Identity layer:** WIMSE (Workload Identity in Multi-System Environments) URIs with SPIFFE as the operationally mature implementation (`spiffe://trust-domain/path/to/agent`)
+- **Credential formats:** X.509 certificates, JWT-based Workload Identity Tokens, and SPIFFE SVIDs. Static API keys are explicitly flagged as an anti-pattern -- they lack cryptographic binding and are unsuitable for agent identity.
+- **Transport authentication:** mTLS for mutual authentication in service meshes, with application-layer alternatives (WIMSE Workload Proof Tokens, HTTP Message Signatures per RFC 9421) for environments with proxies or load balancers.
+- **Authorization:** OAuth 2.0 positions agents as OAuth clients. Transaction Tokens (draft-ietf-oauth-transaction-tokens) create downscoped, single-transaction tokens that prevent broad-scope token misuse in internal service chains. A critical anti-pattern: tools must never forward received tokens directly to downstream services.
+- **Cross-domain delegation:** Identity Chaining (draft-ietf-oauth-identity-chaining) and Identity Assertion JWT Grants for multi-SaaS agent environments.
+- **Audit requirements:** Agent identifier, delegated subject, resource accessed, action, authorization decision, timestamp, correlation ID, attestation state, and revocation events.
+- **Real-time revocation:** OpenID SSF/CAEP/RISC events enable revocation enforcement without polling delays.
+
+The key insight from the draft: "No new protocol needed -- properly composing existing standards suffices." This is significant because it means organizations can implement agent identity today using existing infrastructure (SPIFFE, OAuth 2.0, mTLS) without waiting for new specifications.
+
+**draft-stone-aivs-00 (March 2026)** -- the Agentic Integrity Verification Standard (AIVS) defines a portable, self-verifiable archive format for cryptographic proof of agent sessions:
+
+- **Hash-chained audit log:** Sequential SHA-256 hash chain where each row's hash depends on the previous row's hash. Modification, insertion, deletion, or reordering of any action is cryptographically detectable.
+- **Ed25519 digital signatures** bind the entire chain to a specific agent identity, providing non-repudiation.
+- **AIVS-Micro:** A minimal ~200-byte attestation for continuous monitoring and API contexts where full session bundles are impractical.
+- **Self-verifiable:** The proof bundle includes an embedded Python verifier requiring only Python 3 standard library -- no external dependencies for offline verification.
+- **Standards integration:** AIVS bundles can be wrapped as W3C Verifiable Credential subjects, registered as SCITT signed statements, and apply the same manifest-chain concept to agent actions as C2PA applies to media asset provenance.
+- **Mandatory redaction:** Sensitive fields (passwords, tokens, API keys) must be redacted in audit logs, with output truncation permitted without affecting chain integrity.
+
+AIVS directly addresses requirement 9.4.2 (cryptographic action signing) and 9.4.3 (tamper-evident audit) with a concrete, implementable specification.
+
+### NIST AI Agent Standards Initiative
+
+In February 2026, NIST's Center for AI Standards and Innovation (CAISI) launched the AI Agent Standards Initiative with three strategic pillars: industry-led standards development, community-driven open-source protocol development, and research in agent security and identity verification. The initiative's Information Technology Laboratory is developing an "AI Agent Identity and Authorization Concept Paper" with a submission deadline of April 2, 2026.
+
+NIST's emerging "Know Your Agent" framework calls for: verifiable agent identities, managed credentials, least-privilege access, tamper-proof audit trails, and prompt injection safeguards. What NIST publishes in 2026 is expected to appear in compliance frameworks and vendor questionnaires by 2027 -- making early alignment with these requirements a practical advantage.
+
 ### Industry Adoption
 
 A February 2026 Microsoft Security Blog report noted that 80% of Fortune 500 companies use active AI agents, making agent identity and governance an enterprise-scale concern. Microsoft's Zero Trust for AI reference architecture (March 2026) extends the existing Zero Trust framework to show how policy-driven access controls, continuous verification, monitoring, and governance work together to secure AI systems -- with agent identity as the foundational layer.
@@ -87,6 +142,12 @@ A February 2026 Microsoft Security Blog report noted that 80% of Fortune 500 com
 - [Auth0: Lessons from OWASP Top 10 for Agentic Applications](https://auth0.com/blog/owasp-top-10-agentic-applications-lessons/) -- practical identity implementation guidance
 - AISVS C13 (Monitoring and Logging) -- general AI system logging requirements; C09.4 adds agent-specific identity and tamper-evidence
 - [OpenTelemetry](https://opentelemetry.io/) -- distributed tracing that can carry chain/trace IDs referenced in 9.4.2
+- [IETF draft-klrc-aiagent-auth-00: AI Agent Authentication and Authorization](https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/) -- AIMS framework composing WIMSE, SPIFFE, and OAuth 2.0 for agent identity
+- [IETF draft-stone-aivs-00: Agentic Integrity Verification Standard](https://www.ietf.org/archive/id/draft-stone-aivs-00.html) -- SHA-256 hash-chained audit logs with Ed25519 signing for agent sessions
+- [NIST AI Agent Standards Initiative (February 2026)](https://www.nist.gov/caisi/ai-agent-standards-initiative) -- federal standards effort covering agent identity, authorization, and audit
+- ["Agents of Chaos" Study (February 2026)](https://arxiv.org/abs/2602.20021) -- identity spoofing and 10 security vulnerabilities in autonomous OpenClaw agents
+- [DataDome: Businesses Struggle to Identify AI Agent Traffic (March 2026)](https://securityboulevard.com/2026/03/businesses-struggle-to-identify-ai-agent-traffic/) -- 7.9B agent requests, impersonation statistics for major AI agents
+- [HashiCorp: SPIFFE for Agentic AI Identity](https://www.hashicorp.com/en/blog/spiffe-securing-the-identity-of-agentic-ai-and-non-human-actors) -- SPIFFE as foundational identity for non-human actors including AI agents
 
 ---
 
@@ -98,6 +159,9 @@ A February 2026 Microsoft Security Blog report noted that 80% of Fortune 500 com
 - How do you handle identity for agents that span trust domains (e.g., an agent that calls tools hosted by different organizations)? The Microsoft toolkit's A2A/MCP/IATP protocol bridges are an early attempt, but cross-organizational trust federation for agents lacks mature standards.
 - How should trust scoring models (e.g., Microsoft's 0-1000 scale) be calibrated to avoid both false positives (legitimate agents quarantined) and false negatives (compromised agents trusted)?
 - As 80% of Fortune 500 companies deploy active AI agents, what organizational structures are needed to manage agent identity at enterprise scale -- and who owns agent credential lifecycle?
-- Can blockchain-anchored audit logs provide practical tamper-evidence for multi-tenant agent deployments, or is the performance cost prohibitive?
+- Can blockchain-anchored audit logs provide practical tamper-evidence for multi-tenant agent deployments, or is the performance cost prohibitive? The AIVS draft's SHA-256 hash chain approach may offer a lighter-weight alternative worth evaluating against blockchain solutions.
+- The IETF AIMS framework (draft-klrc-aiagent-auth) claims "no new protocol needed" -- but does composing WIMSE + SPIFFE + OAuth 2.0 introduce integration complexity that effectively creates a new protocol in practice? Early implementation experience from organizations deploying these layered stacks would be valuable.
+- How should NIST's emerging "Know Your Agent" framework interact with existing compliance regimes (SOC 2, ISO 27001, EU AI Act)? The April 2026 concept paper may clarify, but the mapping between NIST agent identity requirements and existing audit frameworks remains undefined.
+- The "Agents of Chaos" study showed that persona-based identity is trivially spoofable. For consumer-facing agents on platforms like Discord or Slack, where users interact via display names, what is the practical path to cryptographic identity verification without breaking the user experience?
 
 ---
