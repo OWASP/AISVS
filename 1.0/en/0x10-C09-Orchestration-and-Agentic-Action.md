@@ -27,7 +27,7 @@ Require explicit checkpoints for privileged or irreversible outcomes.
 | # | Description | Level | Role |
 | :--: | --- | :---: | :--: |
 | **9.2.1** | **Verify that** privileged or irreversible actions (e.g., code merges/deploys, financial transfers, user access changes, destructive deletes, external notifications) require explicit human-in-loop approval. | 1 | D/V |
-| **9.2.2** | **Verify that** approval requests present the exact action parameters (diff/command/recipient/amount/scope) and bind approvals to those parameters to prevent "approve one thing, execute another." | 2 | D/V |
+| **9.2.2** | **Verify that** approval requests present the exact action parameters (diff/command/recipient/amount/scope), that the resulting approval is integrity-protected and bound to those parameters, and that approvals expire quickly to prevent stale or substituted approvals ("approve one thing, execute another"). | 2 | D/V |
 | **9.2.3** | **Verify that** where rollback is feasible, compensating actions are defined and tested (transactional semantics), and failures trigger rollback or safe containment. | 3 | V |
 
 ---
@@ -93,9 +93,8 @@ Prevent "technically authorized but unintended" actions by binding execution to 
 | # | Description | Level | Role |
 | :--: | --- | :---: | :--: |
 | **9.7.1** | **Verify that** pre-execution gates evaluate proposed actions and parameters against hard policy constraints (deny rules, data handling constraints, allow-lists, side-effect budgets) and block execution on any violation. | 1 | D/V |
-| **9.7.2** | **Verify that** high-impact actions require explicit user intent confirmation that is integrity-protected and bound to the exact action parameters (and expires quickly) to prevent stale or substituted approvals. | 2 | D/V |
-| **9.7.3** | **Verify that** post-condition checks confirm the intended outcome and detect unintended side effects; any mismatch triggers containment (and compensating actions where supported). | 2 | V |
-| **9.7.4** | **Verify that** prompt templates and agent policy configurations are integrity-verified at load time against their approved versions (e.g., via hashes or signatures). | 3 | D/V |
+| **9.7.2** | **Verify that** post-condition checks confirm the intended outcome and detect unintended side effects; any mismatch triggers containment (and compensating actions where supported). | 2 | V |
+| **9.7.3** | **Verify that** prompt templates and agent policy configurations are integrity-verified at load time against their approved versions (e.g., via hashes or signatures). | 3 | D/V |
 
 ---
 
