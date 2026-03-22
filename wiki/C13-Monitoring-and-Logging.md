@@ -36,7 +36,7 @@ Known attacks, real-world incidents, and threat vectors relevant to this chapter
 - **Log poisoning and data integrity** — PoisonedRAG showed 5 documents corrupt 90% of RAG outputs. Medical training data poisoning (0.001% of tokens) produces harmful models undetectable by standard benchmarks. Virus Infection Attack (VIA) self-replicates through synthetic data pipelines.
 - **AI-powered attack automation** — GTG-1002 campaign (November 2025) targeted ~30 organizations with AI handling 80-90% of operations including reconnaissance, exploit development, and lateral movement. Only 4-6 human decision points per campaign. Traditional IR playbooks had no framework for this.
 - **Alert fatigue** — 59% of organizations are drowning in telemetry but cannot get answers when needed. 36% are buried in alert fatigue. 39% have integration gaps between monitoring tools and workflows.
-- **No AI-specific SIEM detection rules** — No SIEM vendor ships AI-attack-specific detection rule packs (e.g., "detect prompt injection in logs"). AI-in-SIEM capabilities are mostly AI-assisted investigation of traditional events, not detection of attacks on AI systems.
+- **Limited availability of standardized AI-specific detection rule packs in SIEM platforms** — Standard SIEM platforms have limited support for detecting AI-specific attack patterns (e.g., prompt injection, multi-turn jailbreaks). Most AI-in-SIEM features focus on assisting investigation of traditional events rather than detecting attacks targeting AI systems.
 
 ### Notable Incidents & Research
 
