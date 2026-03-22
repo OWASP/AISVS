@@ -24,7 +24,7 @@ The standard is organized into 14 chapters spanning the full AI application secu
 | C10 | MCP Security | 34 | [C10](C10-MCP-Security.md) | [6 sections](#c10-mcp-security) | 2026-03-22 |
 | C11 | Adversarial Robustness | 41 | [C11](C11-Adversarial-Robustness.md) | [10 sections](#c11-adversarial-robustness) | 2026-03-21 |
 | C12 | Privacy Protection | 23 | [C12](C12-Privacy.md) | Single | 2026-03-22 |
-| C13 | Monitoring, Logging & Anomaly Detection | 47 | [C13](C13-Monitoring-and-Logging.md) | [8 sections](#c13-monitoring-logging--anomaly-detection) | 2026-03-21 |
+| C13 | Monitoring, Logging & Anomaly Detection | 47 | [C13](C13-Monitoring-and-Logging.md) | [8 sections](#c13-monitoring-logging--anomaly-detection) | 2026-03-22 |
 | C14 | Human Oversight & Accountability | 25 | [C14](C14-Human-Oversight.md) | Single | 2026-03-22 |
 | | **Total** | **450** | **82 pages** | | |
 
