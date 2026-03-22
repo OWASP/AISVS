@@ -28,7 +28,8 @@ Require human approvals when stakes surpass predefined risk thresholds.
 | **14.2.1** | **Verify that** high-risk AI decisions require explicit human approval before execution. | 1 | D/V |
 | **14.2.2** | **Verify that** risk thresholds are clearly defined and automatically trigger human review workflows. | 1 | D |
 | **14.2.3** | **Verify that** time-sensitive decisions have fallback procedures when human approval cannot be obtained within required timeframes. | 2 | D |
-| **14.2.4** | **Verify that** escalation procedures define clear authority levels for different decision types or risk categories, if applicable. | 3 | D/V |
+| **14.2.4** | **Verify that** human oversight mechanisms are effective in practice by ensuring operators are trained, capable of correctly interpreting AI outputs and not subject to workload conditions that degrade decision quality. | 2 | D/V |
+| **14.2.5** | **Verify that** escalation procedures define clear authority levels for different decision types or risk categories, if applicable. | 3 | D/V |
 
 ---
 
