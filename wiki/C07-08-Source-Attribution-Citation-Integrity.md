@@ -20,6 +20,14 @@ Research into citation hallucination and grounded generation has advanced substa
 
 **Agentic and tool-augmented verification.** A comprehensive survey on hallucination mitigation (2025) highlights the emergence of agentic systems that incorporate retrieval verification as an explicit reasoning step -- the model is prompted or fine-tuned to verify its own citations against retrieved context before emitting a response, sometimes using separate verification tool calls. This connects to AISVS C7.2.5's requirement for tracking tool invocation history as a hallucination detection signal.
 
+**Production-grade token-level detection (HaluGate).** As of December 2025, the [HaluGate](https://vllm.ai/blog/halugate) framework — integrated into vLLM — brings real-time, token-level hallucination detection to production deployments. HaluGate uses a two-stage pipeline: a ModernBERT-based classifier (HaluGate Sentinel, 96.4% accuracy, ~12ms) first determines whether a query requires fact-checking, then a token-level detector pinpoints exactly which tokens are unsupported by retrieved context, followed by an NLI explainer that classifies flagged spans as CONTRADICTION, NEUTRAL, or ENTAILMENT. Total pipeline overhead is 76-162ms (P50-P99), negligible compared to typical LLM generation times. The system is implemented in native Rust/Candle with no Python runtime, eliminating cold-start delays. This represents a practical path toward satisfying 7.8.2's claim-level verification requirement without the multi-second latency of LLM-as-judge approaches.
+
+**Citation enforcement as a hard constraint.** A March 2026 study on [citation-enforced RAG for fiscal document intelligence](https://arxiv.org/html/2603.14170) demonstrated that treating citations as a generation constraint — not a stylistic suggestion — achieves 94.5% citation support accuracy with only 1.8% unsupported claims. The system uses source-first ingestion (only content directly extracted from original documents becomes retrievable), requires every generated paragraph to include at least one citation in a standardized document-page-chunk format, and rejects outputs that fail validation. Outputs failing citation requirements are regenerated with reinforced instructions; if citation constraints cannot be satisfied after multiple attempts, the system abstains rather than hallucinate. This "verifiability over abstraction" design philosophy is particularly relevant for regulated domains.
+
+**Span-level verification benchmarks (REFIND/SemEval 2025).** The [REFIND framework](https://aclanthology.org/2025.semeval-1.2/) (SemEval 2025 Task 3) introduced the Context Sensitivity Ratio (CSR) metric for quantifying how sensitive LLM outputs are to retrieved evidence at the span level. Evaluated across nine languages on the Mu-SHROOM dataset, REFIND significantly outperformed baseline token-level classifiers and FAVA on Intersection-over-Union (IoU) scores. This multilingual span-level approach suggests that citation verification can extend beyond English-only systems.
+
+**Spatial metadata for fine-grained citation.** As of March 2026, production RAG citation approaches increasingly leverage spatial document metadata — bounding box coordinates, page numbers, and reading order — to enable citations that link not just to a document but to a specific visual region on a specific page. [Tensorlake's citation-aware RAG approach](https://www.tensorlake.ai/blog/rag-citations) embeds lightweight anchors (e.g., `<c>2.1</c>` for page 2, reading order 1) into chunk text during indexing, maps each anchor to bounding box metadata stored separately in the vector database, and resolves citation IDs to clickable deep links or PDF highlights at serving time. Storage overhead is approximately 10-15%. This spatial traceability enables audit trails that satisfy both 7.8.1 (metadata-derived attribution) and regulatory requirements for document provenance.
+
 ### Notable Incidents
 
 | Date | Incident | Relevance | Link |
@@ -30,7 +38,12 @@ Research into citation hallucination and grounded generation has advanced substa
 | 2024 | Stanford RegLab: legal RAG tools hallucinate 17-33% | Lexis+ AI at 17%, Westlaw AI-Assisted Research at 33% — despite vendor "hallucination-free" claims | [Stanford HAI](https://hai.stanford.edu/news/ai-trial-legal-models-hallucinate-1-out-6-or-more-benchmarking-queries) |
 | Mar 2024 | NYC MyCity chatbot gave illegal business advice despite RAG grounding | Told landlords to refuse Section 8 tenants, employers to take worker tips — all from grounded responses over 2,000+ authoritative city pages. Shut down 2025. | [The Markup](https://themarkup.org/artificial-intelligence/2024/03/29/nycs-ai-chatbot-tells-businesses-to-break-the-law) |
 | Feb 2024 | Air Canada chatbot hallucinated bereavement fare policy — liable | Tribunal ruled airline responsible for chatbot's fabricated policy info, rejecting "chatbot as separate entity" defense. $812 + fees. | [ABA](https://www.americanbar.org/groups/business_law/resources/business-law-today/2024-february/bc-tribunal-confirms-companies-remain-liable-information-provided-ai-chatbot/) |
-| Mar 2026 | AI hallucination cases database reaches 1,170 entries | 446 lawyer cases, 695 pro se. Latest: Kenosha DA sanctioned Feb 2026 for undisclosed AI producing false legal citations. | [Database](https://www.damiencharlotin.com/hallucinations/) |
+| Jul 2025 | MyPillow attorneys fined $3,000 each for hallucinated citations | Attorneys used AI to prepare court filing filled with nonexistent case citations. Court imposed individual fines. | [NPR](https://www.npr.org/2025/07/10/nx-s1-5463512/ai-courts-lawyers-mypillow-fines) |
+| Dec 2025 | Oregon attorney fined $15,500 for AI-fabricated citations | Court cited lack of candor and inadequate apology as aggravating factors beyond the hallucinated citations themselves. | [Bloomberg Law](https://news.bloomberglaw.com/legal-ops-and-tech/ai-faked-cases-become-core-issue-irritating-overworked-judges) |
+| 2025 | Illinois law firm ordered to pay $59,500 for fake citations | Combined penalty against firm and partner for AI-generated fabricated citations discovered by opposing counsel. | [LawNext](https://www.lawnext.com/2025/05/ai-hallucinations-strike-again-two-more-cases-where-lawyers-face-judicial-wrath-for-fake-citations.html) |
+| Jan 2026 | Pennsylvania courts flag suspected AI hallucinations in filings | Commonwealth Court judges identified multiple filings with hallmarks of AI-generated fabricated legal citations. | [Spotlight PA](https://www.spotlightpa.org/news/2026/01/pennsylvania-commonwealth-court-ai-hallucinations-allegations-justice-system/) |
+| May 2026 | Butler Snow (major firm) submits fabricated AI citations | US District Judge Manasco in Alabama expressed "serious concerns" over the prominent firm's "lapse in diligence and judgment." | [Legal Prompts](https://thelegalprompts.com/blog/ai-hallucinations-legal-work-avoid-sanctions-2026) |
+| Mar 2026 | AI hallucination cases database reaches 1,170 entries | 446 lawyer cases, 695 pro se. ~90% of the 712 judicial decisions about hallucinated content written in 2025. Colorado Supreme Court established AI "does not relieve an attorney of the obligation to verify." | [Database](https://www.damiencharlotin.com/hallucinations/) |
 
 **Key statistics:** Best measured citation attribution F1 is only 58.9% (GaRAGe benchmark, ACL 2025). Deflection true positive rate (detecting when no grounding exists) peaks at 31%. ChatGPT fabricates 39-55% of citations (GPT-3.5) and 18-29% (GPT-4). None of the major platforms (Perplexity, ChatGPT, Google AI Overviews) disclose their citation verification architectures.
 
@@ -54,6 +67,12 @@ Research into citation hallucination and grounded generation has advanced substa
 - [Hallucination Mitigation for Retrieval-Augmented LLMs: A Review (2025)](https://www.mdpi.com/2227-7390/13/5/856) — systematic taxonomy of retrieval-failure and generation-deficiency hallucination sources
 - [Hallucination Detection and Mitigation in Large Language Models (January 2026)](https://arxiv.org/abs/2601.09929) — comprehensive survey covering agentic verification and tool-augmented hallucination mitigation
 - [MEGA-RAG: Multi-Evidence Guided Answer Refinement (2025)](https://pmc.ncbi.nlm.nih.gov/articles/PMC12540348/) — multi-evidence cross-checking for hallucination mitigation in high-stakes domains
+- [HaluGate: Token-Level Hallucination Detection for Production LLMs (December 2025)](https://vllm.ai/blog/halugate) — two-stage pipeline (ModernBERT classifier + token-level detector + NLI explainer) with 76-162ms latency, Rust-native, integrated into vLLM
+- [Citation-Enforced RAG for Fiscal Document Intelligence (March 2026)](https://arxiv.org/html/2603.14170) — hard-constraint citation enforcement achieving 94.5% citation support with source-first ingestion and abstention logic
+- [REFIND at SemEval 2025 Task 3](https://aclanthology.org/2025.semeval-1.2/) — span-level hallucination detection with Context Sensitivity Ratio (CSR) metric, multilingual evaluation across 9 languages
+- [NIST AI 600-1 GenAI Profile](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf) — content provenance requirements (GV 6.1-014) for generative AI systems
+- [EU AI Act Article 50 — Transparency Obligations](https://artificialintelligenceact.eu/article/50/) — machine-readable output marking, C2PA provenance metadata, effective August 2026
+- [Tensorlake Citation-Aware RAG](https://www.tensorlake.ai/blog/rag-citations) — spatial metadata approach for fine-grained citations with bounding box coordinates and audit trails
 - [OWASP LLM Top 10 — Overreliance](https://genai.owasp.org/) — risks from trusting model outputs including fabricated citations
 - [Attributed QA (Bohnet et al., 2022)](https://arxiv.org/abs/2212.08037) — research on attributable question answering and citation verification
 - AISVS C7.2 (Hallucination Detection & Mitigation) — complementary controls; C7.8 focuses specifically on RAG attribution while C7.2 addresses hallucination more broadly
@@ -76,6 +95,9 @@ Research into citation hallucination and grounded generation has advanced substa
 | **NLI entailment models** | [cross-encoder/nli-deberta-v3-base](https://huggingface.co/cross-encoder/nli-deberta-v3-base) (3-class entailment, CPU-capable, most widely used baseline), ModernCE-large-nli (stronger for demanding tasks) |
 | **Benchmarks** | [GaRAGe](https://arxiv.org/abs/2506.07671) (ACL 2025, 2,366 questions, 35K+ annotations — best F1 58.9%), [Vectara Hallucination Leaderboard](https://www.vectara.com/blog/introducing-the-next-generation-of-vectaras-hallucination-leaderboard) (7,700+ articles, ranks LLMs by hallucination propensity) |
 | **Mechanistic detection** | [FACTUM](https://arxiv.org/abs/2601.05866) (January 2026 — examines model internal states, 37.5% AUC improvement, but requires activation access — not available for API-based LLMs) |
+| **Production token-level detection** | [HaluGate](https://vllm.ai/blog/halugate) (vLLM, December 2025 — two-stage pipeline: ModernBERT classifier + token-level detector + NLI explainer, 76-162ms total latency, Rust/Candle native, no Python runtime) |
+| **Span-level verification** | [REFIND](https://aclanthology.org/2025.semeval-1.2/) (SemEval 2025 — Context Sensitivity Ratio metric, multilingual span-level hallucination detection across 9 languages, outperforms FAVA on IoU) |
+| **Citation-enforced RAG** | [Citation-Enforced RAG for Fiscal Documents](https://arxiv.org/html/2603.14170) (March 2026 — hard-constraint citation enforcement, 94.5% citation support, 1.8% hallucination rate, source-first ingestion with abstention logic) |
 
 ### Cross-Chapter Links
 
@@ -89,6 +111,51 @@ Research into citation hallucination and grounded generation has advanced substa
 
 ---
 
+## Regulatory & Standards Landscape
+
+Citation integrity intersects with several emerging regulatory frameworks that mandate provenance and transparency controls:
+
+| Framework | Relevant Requirements | Status |
+|-----------|----------------------|--------|
+| **EU AI Act Article 50** | Transparency obligations for generative AI: outputs must be marked in machine-readable format, detectable as AI-generated. Multi-layered approach prescribed: C2PA metadata embedding, imperceptible watermarking, and logging systems. | Effective August 2026. Second draft Code of Practice on Transparency published March 2026; final version expected June 2026. |
+| **NIST AI 600-1** (GenAI Profile) | GV 6.1-014: Maintain detailed records of content provenance including sources, timestamps, metadata, and third-party changes. Metadata tracking and content provenance controls required across all generative AI systems. Provenance referenced 151 times in the profile. | Published 2024, actively referenced by US agencies. |
+| **ISO 42001** (AI Management System) | Requires documentation of AI system outputs, traceability to data sources, and transparency about AI-generated content — all directly relevant to citation integrity. | Published 2023, adoption accelerating. |
+| **OWASP LLM Top 10 — LLM09: Overreliance** | Explicitly identifies fabricated citations as a risk vector. Recommends cross-checking AI-generated references and implementing output verification. | Updated annually. |
+
+The convergence of these frameworks creates a clear compliance imperative: systems that generate cited content must be able to demonstrate provenance from source document to user-facing citation, with audit trails suitable for regulatory review.
+
+---
+
+## Implementation Architecture Patterns
+
+Several distinct architectural approaches have emerged for implementing citation integrity, each with different tradeoff profiles:
+
+### Pattern 1: Metadata-Passthrough (Level 1, satisfies 7.8.1)
+
+The simplest approach separates citation generation from content generation entirely. The retrieval system returns structured metadata (document IDs, chunk IDs, page ranges, URLs) alongside retrieved content. The application layer attaches this metadata to the response template — the model never generates citation text. This eliminates citation fabrication by design but provides no claim-level verification.
+
+**Tools:** Any vector database (Pinecone, Qdrant, Weaviate, PgVector) with metadata storage. Function calling and structured output APIs naturally enforce this pattern.
+
+### Pattern 2: Source-First with Hard Constraints (Level 1-2, strengthens 7.8.1)
+
+As demonstrated by the citation-enforced RAG framework for fiscal documents (March 2026), this approach treats citation compliance as a hard constraint during generation. Only content directly extracted from original documents enters the retrieval corpus (no LLM-generated summaries). Each generated paragraph must include standardized citations (document-page-chunk format). Outputs failing validation are regenerated; persistent failures trigger abstention. Achieves 94.5% citation support and 1.8% hallucination in evaluation.
+
+**Key design choice:** Source-first ingestion eliminates a class of provenance errors that arise when embeddings are generated from LLM summaries rather than original text.
+
+### Pattern 3: Post-Generation NLI Verification (Level 3, satisfies 7.8.2)
+
+Decompose the generated response into atomic claims, map each claim to its cited chunk, and run natural language inference to verify entailment. This is the most thorough approach but also the most computationally expensive.
+
+**Tools:** Vectara HHEM-2.1 (~0.6s per check), cross-encoder/nli-deberta-v3-base (CPU-capable), RAGAS faithfulness metric (LLM-based), Google Vertex AI Check Grounding API (<500ms). HaluGate (vLLM) achieves 76-162ms for token-level detection via Rust-native inference, representing the current speed frontier.
+
+### Pattern 4: Spatial Citation with Audit Trail (Level 1-2, strengthens 7.8.1)
+
+For document-heavy domains (legal, financial, regulatory), preserve bounding box coordinates and page numbers during document parsing. Embed lightweight spatial anchors into chunks at indexing time. At serving time, resolve citation IDs to clickable deep links or highlighted PDF regions. Storage overhead ~10-15%. Enables both human verification (click-through to source) and automated audit trails.
+
+**Tools:** Tensorlake Document AI (fragment-level parsing with bounding boxes), any OCR pipeline that preserves spatial metadata.
+
+---
+
 ## Open Research Questions
 
 - How should attribution be presented for responses that synthesize information across multiple retrieved chunks? Should every sentence be individually attributed? MEGA-RAG's multi-evidence approach suggests cross-checking multiple sources is feasible, but the UX for multi-source attribution remains an open design question.
@@ -99,5 +166,9 @@ Research into citation hallucination and grounded generation has advanced substa
 - How do retrieval-failure vs. generation-deficiency hallucination modes (as taxonomized in 2025 review literature) map to different verification strategies? Should the system detect which failure mode is occurring and apply targeted mitigation?
 - Should users be able to click through citations to view the original source chunk, and what are the security implications of exposing retrieval internals?
 - As agentic RAG systems emerge (where the model can iteratively retrieve, verify, and refine), how should citation integrity controls adapt to multi-step retrieval workflows where the final response synthesizes across multiple retrieval rounds?
+- With EU AI Act Article 50 transparency obligations taking effect in August 2026, how should citation metadata interoperate with C2PA provenance standards? Should RAG citation metadata be embedded in the same provenance chain as content watermarking?
+- HaluGate demonstrates production-viable token-level detection at 76-162ms, but it only addresses extrinsic hallucinations (where grounding context exists). How should systems handle the complementary case of intrinsic hallucinations in responses that blend retrieved and parametric knowledge?
+- The citation-enforced RAG approach (March 2026) achieves 94.5% citation support through hard constraints and abstention. What is the practical tradeoff between citation strictness and system utility — how often does forced abstention prevent useful responses in different domains?
+- Legal sanctions for citation hallucination have escalated from $812 (Air Canada, 2024) to $59,500 (Illinois, 2025). At what point does citation verification shift from a quality concern to a liability-driven compliance requirement, and how should this affect the Level assignment of these controls?
 
 ---

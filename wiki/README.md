@@ -18,7 +18,7 @@ The standard is organized into 14 chapters spanning the full AI application secu
 | C4 | Infrastructure & Deployment Security | 46 | [C04](C04-Infrastructure.md) | [8 sections](#c4-infrastructure--deployment-security) | 2026-03-22 |
 | C5 | Access Control & Identity | 26 | [C05](C05-Access-Control.md) | Single | 2026-03-22 |
 | C6 | Supply Chain Security | 33 | [C06](C06-Supply-Chain.md) | [7 sections](#c6-supply-chain-security) | 2026-03-21 |
-| C7 | Model Behavior & Output Control | 33 | [C07](C07-Model-Behavior.md) | [8 sections](#c7-model-behavior--output-control) | 2026-03-21 |
+| C7 | Model Behavior & Output Control | 33 | [C07](C07-Model-Behavior.md) | [8 sections](#c7-model-behavior--output-control) | 2026-03-22 |
 | C8 | Memory, Embeddings & Vector DB Security | 25 | [C08](C08-Memory-and-Embeddings.md) | Single | 2026-03-20 |
 | C9 | Orchestration & Agentic Action Security | 36 | [C09](C09-Orchestration-and-Agents.md) | [8 sections](#c9-orchestration--agentic-action-security) | 2026-03-21 |
 | C10 | MCP Security | 34 | [C10](C10-MCP-Security.md) | [6 sections](#c10-mcp-security) | 2026-03-21 |
