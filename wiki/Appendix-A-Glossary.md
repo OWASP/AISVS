@@ -6,7 +6,7 @@
 
 The glossary defines 87 terms used throughout the AISVS, covering AI/ML concepts, security terminology, and domain-specific definitions. This research page cross-references every glossary term to the chapters that use it, identifies missing terms, flags definitions that could be improved, and tracks emerging terminology from the broader AI security community.
 
-As of March 2026, the analysis identifies 50 high-priority missing terms (30 from the original audit plus 20 newly found in source requirements), 10 medium-priority missing terms, 14 definitions needing improvement, and 17 emerging terms from the 2025–2026 threat landscape that may warrant future inclusion.
+As of March 2026, the analysis identifies 50 high-priority missing terms (30 from the original audit plus 20 newly found in source requirements), 10 medium-priority missing terms, 14 definitions needing improvement, and 28 emerging terms from the 2025–2026 threat landscape that may warrant future inclusion. The October 2025 MITRE ATLAS expansion added 14 new agentic AI techniques (AML.T0096–T0101 among them), and the OWASP Agentic Top 10 (December 2025) introduced a formal risk taxonomy (ASI01–ASI10) that creates additional glossary-worthy terminology.
 
 ---
 
@@ -192,6 +192,11 @@ Terms used in AISVS chapters but not defined in the glossary. These should be ad
 | Session Teardown | C10 | Deterministic destruction of cached tokens, state, and resources on MCP session end (C10.2.12) |
 | Intent Verification | C09 | Binding execution to user intent and hard constraints to prevent authorized-but-unintended actions (C09.7.x) |
 | Bias Probing | C11 | Systematic variation along single input dimensions to discover exploitable bias patterns (C11.10.1) |
+| RAG Credential Harvesting | C09, C10 | Agent using RAG or tool access to search for and collect credentials, secrets, or API keys inadvertently ingested into data stores (MITRE ATLAS AML.T0098) |
+| Memory Manipulation | C08, C09 | Altering agent long-term memory to ensure malicious changes persist across future sessions (MITRE ATLAS, October 2025) |
+| Thread Injection | C02, C09 | Introducing malicious instructions into a specific conversation thread to change agent behavior for the session duration (MITRE ATLAS, October 2025) |
+| Least Agency | C09, C14 | OWASP Agentic Top 10 principle that agents should receive only the minimum autonomy required for their authorized task; extends least privilege to cover scope of autonomous action |
+| DIE Model (Distributed, Immutable, Ephemeral) | C04, C09 | Architecture paradigm from the OWASP AI Testing Guide (November 2025) that shifts from hardening individual AI components to making the entire system resilient through distribution, immutability, and ephemerality |
 
 ## Missing Terms (Medium Priority)
 
@@ -233,19 +238,49 @@ Terms gaining traction in the AI security community that may warrant future glos
 | RAG Poisoning | Injecting crafted documents into a knowledge base or vector store; research shows as few as 5 crafted documents among millions can achieve 90% attack success | C08, C01 |
 | Embedding Inversion | Reconstructing original text or sensitive data from vector embeddings, breaking the assumption that embeddings are one-way transformations | C08, C12 |
 | Model Collapse | Progressive quality degradation when models train on synthetic data from other models, causing output distributions to narrow and amplify errors across generations | C01, C03 |
-| Many-Shot Jailbreak | Prompt injection exploiting in-context learning by including hundreds of examples of desired prohibited behavior, leveraging expanding context windows | C07, C11 |
-| Crescendo Attack | Multi-turn jailbreak that progressively steers conversation from harmless topics toward prohibited content, exploiting conversational coherence tendencies | C07, C11 |
+| Many-Shot Jailbreak | Prompt injection exploiting in-context learning by including hundreds of examples of desired prohibited behavior, leveraging expanding context windows (Anthropic, April 2024) | C07, C11 |
+| Crescendo Attack | Multi-turn jailbreak that progressively steers conversation from harmless topics toward prohibited content, exploiting conversational coherence tendencies; invisible to per-turn classifiers | C07, C11 |
+| Skeleton Key | Direct jailbreak technique (Microsoft, June 2024) that redefines safety rules in-context by instructing the model to append warnings rather than block; once accepted, the model complies with all subsequent requests without indirection or encoding | C02, C11 |
 | Data Contamination (Benchmark) | Training models on the same data used in evaluations, rendering benchmarks unreliable; distinct from adversarial data poisoning — may be unintentional | C01, C03 |
 | Reward Hacking | Finding unintended shortcuts to maximize a reward signal without achieving the intended objective; models may learn to distinguish test vs. deployment environments | C03, C07 |
+| Agent Clickbait (AML.T0100) | MITRE ATLAS technique where adversaries lure AI browser agents into unintended actions by exploiting how agents interpret UI content, visual cues, and embedded prompts on websites | C09, C10 |
+| AI Agent Tool Data Poisoning (AML.T0099) | MITRE ATLAS technique where adversaries place malicious content or files on a system that agents subsequently invoke, hijacking agent behavior through poisoned tool inputs | C09, C10, C06 |
+| Data Destruction via Agent Tool Invocation (AML.T0101) | MITRE ATLAS technique where attackers exploit agent tool capabilities to destroy data and files on target systems, disrupting agent infrastructure and services | C09, C10 |
 
 ### Governance & Compliance
 
 | Term | Definition | Relevant To |
 |------|-----------|-------------|
-| GPAI (General-Purpose AI) Model | EU AI Act term for models with significant generality capable of wide-ranging tasks; subject to specific transparency and safety obligations since August 2025 | C03, C06 |
-| Systemic Risk (EU AI Act) | Classification for GPAI models trained with >10²⁵ FLOPs, triggering adversarial testing, incident reporting, and cybersecurity obligations | C03, C11 |
-| FRIA (Fundamental Rights Impact Assessment) | EU AI Act Article 27 mandatory assessment for deployers of high-risk AI systems, evaluating impacts on non-discrimination, privacy, and human dignity; required by August 2026 | C14, C12 |
+| GPAI (General-Purpose AI) Model | EU AI Act term for models trained with >10²³ FLOPs displaying significant generality; subject to transparency and safety obligations since August 2025 including technical documentation and copyright compliance | C03, C06 |
+| Systemic Risk (EU AI Act) | Classification for GPAI models trained with >10²⁵ FLOPs, triggering mandatory adversarial red-teaming, incident reporting to the AI Office, and cybersecurity obligations under Article 55 | C03, C11 |
+| FRIA (Fundamental Rights Impact Assessment) | EU AI Act Article 27 mandatory assessment for deployers of high-risk AI systems, evaluating impacts on non-discrimination, privacy, and human dignity; required by August 2026. May complement a DPIA under GDPR Article 35 | C14, C12 |
 | Post-Market Monitoring | EU AI Act Article 72 requirement for high-risk AI providers to actively collect and review performance data throughout the system's lifetime | C13, C03 |
+| Code of Practice (EU AI Act) | Voluntary framework for GPAI model providers to demonstrate compliance with AI Act obligations; first draft published February 2025 covering transparency, copyright, safety, and systemic risk evaluation | C03, C06, C14 |
+
+### Interoperability & Agent Protocols
+
+| Term | Definition | Relevant To |
+|------|-----------|-------------|
+| A2A (Agent2Agent Protocol) | Open protocol (Google, April 2025; contributed to Linux Foundation June 2025) enabling AI agents to discover capabilities, exchange context, and coordinate tasks across vendors and frameworks. Uses Agent Cards for capability discovery and supports enterprise-grade auth. Version 0.3 (July 2025) added gRPC and signed security cards | C09, C10 |
+| Agent Card | JSON-format capability descriptor in the A2A protocol that advertises an agent's supported tasks, authentication requirements, and interaction modes to other agents | C09, C10 |
+| Non-Human Identity (NHI) | Machine or agent identity used for authentication and authorization in automated workflows; World Economic Forum data shows NHIs outnumber human identities 50:1 in enterprises (projected 80:1 by 2028). Three of the OWASP Agentic Top 10 risks (ASI02, ASI03, ASI04) are identity-focused | C05, C09, C10 |
+
+### OWASP Agentic Risk Taxonomy
+
+The OWASP Top 10 for Agentic Applications (December 2025) introduced a formal risk classification for autonomous AI systems. These identifiers are increasingly used in threat modeling.
+
+| Term | Definition | Relevant To |
+|------|-----------|-------------|
+| ASI01 — Agent Goal Hijack | Attacker manipulates natural language inputs or external content to silently redirect an agent's objective (e.g., EchoLeak exfiltration via copilot hijacking) | C02, C09, C11 |
+| ASI02 — Tool Misuse & Exploitation | Agent uses a legitimate tool in an unsafe way due to prompt injection, misalignment, or unsafe delegation — the tool works correctly but the intent is wrong | C09, C10 |
+| ASI03 — Identity & Privilege Abuse | Exploitation of the credentials and privileges agents hold, including over-provisioned service accounts and leaked API keys | C05, C09, C10 |
+| ASI04 — Agentic Supply Chain Vulnerabilities | Compromised agent components, plugins, or tool dependencies introduce risk through the agent software supply chain | C06, C09 |
+| ASI05 — Unexpected Code Execution (RCE) | Agent-generated or agent-retrieved code runs in an unsandboxed environment, enabling remote code execution | C04, C09 |
+| ASI06 — Memory & Context Poisoning | Adversaries manipulate agent long-term memory or conversation context to create persistent malicious behavior across sessions | C08, C09, C11 |
+| ASI07 — Insecure Inter-Agent Communication | Unprotected message channels between agents allow eavesdropping, injection, or impersonation | C09, C10 |
+| ASI08 — Cascading Failures | Error or attack in one agent propagates through multi-agent workflows, amplifying impact | C09, C13 |
+| ASI09 — Human-Agent Trust Exploitation | Agents exploit user trust to obtain approvals for actions the user does not fully understand | C14, C09 |
+| ASI10 — Rogue Agents | Agents that deviate from intended behavior due to misalignment, compromise, or emergent goal-seeking | C11, C09, C14 |
 
 ### Provenance & Transparency
 
@@ -280,12 +315,46 @@ Existing glossary definitions that could better reflect how terms are used in th
 
 ---
 
+## MITRE ATLAS Technique Mapping
+
+Key MITRE ATLAS techniques that correspond to AISVS glossary terms. The October 2025 update expanded ATLAS to 15 tactics, 66 techniques, and 46 subtechniques, with significant agentic AI coverage added through a collaboration with Zenity Labs.
+
+| ATLAS ID | Technique | Glossary Term(s) | AISVS Chapters |
+|----------|-----------|-------------------|----------------|
+| AML.T0010 | ML Supply Chain Compromise | Supply Chain Attack, Model Poisoning | C06, C11 |
+| AML.T0018 | Backdoor ML Model | Backdoor Attack, Data Poisoning | C01, C06, C11 |
+| AML.T0020 | Poison Training Data | Data Poisoning | C01, C06 |
+| AML.T0024 | Exfiltration via ML Inference API | Model Extraction | C11, C13 |
+| AML.T0029 | Denial of ML Service | DoS | C02, C04, C09 |
+| AML.T0040 | ML Model Inference API Access | Membership Inference Attack | C11, C12 |
+| AML.T0043 | Craft Adversarial Data | Adversarial Example | C02, C11 |
+| AML.T0047 | ML-Enabled Product/Service | Prompt Injection, Jailbreak | C02, C11 |
+| AML.T0051 | LLM Prompt Injection | Prompt Injection | C02, C07, C10 |
+| AML.T0054 | LLM Jailbreak | Jailbreak | C02, C11 |
+| AML.T0056 | LLM Meta Prompt Extraction | System Prompt (missing term) | C07, C13 |
+| AML.T0096 | AI Service API _(new, 2025)_ | Agent, Orchestrator (missing term) | C09, C10 |
+| AML.T0098 | AI Agent Tool Credential Harvesting _(new, 2025)_ | RAG Credential Harvesting (emerging) | C09, C10, C05 |
+| AML.T0099 | AI Agent Tool Data Poisoning _(new, 2025)_ | Tool Poisoning (emerging) | C09, C10, C06 |
+| AML.T0100 | AI Agent Clickbait _(new, 2025)_ | Agent Clickbait (emerging) | C09, C10 |
+| AML.T0101 | Data Destruction via AI Agent _(new, 2025)_ | Kill Switch (missing term) | C09, C10 |
+
+---
+
 ## Notable References
 
 - [CSA: Securing the Agentic Control Plane (March 2026)](https://cloudsecurityalliance.org/blog/2026/03/20/2026-securing-the-agentic-control-plane) — introduces agent identity as a first-class security principal
 - [OWASP LLM Top 10 v2025](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) — updated prompt injection taxonomy with direct/indirect distinction
+- [OWASP Top 10 for Agentic Applications (December 2025)](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/) — ASI01–ASI10 risk taxonomy for autonomous AI systems
+- [MITRE ATLAS Agentic AI Update (October 2025)](https://zenity.io/blog/current-events/mitre-atlas-ai-security) — 14 new agent-focused techniques including AML.T0096–T0101
+- [Google A2A Protocol (April 2025)](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/) — agent-to-agent interoperability standard, contributed to Linux Foundation
+- [CrowdStrike Prompt Injection Taxonomy](https://www.crowdstrike.com/en-us/resources/infographics/taxonomy-of-prompt-injection-methods/) — 185+ named prompt injection techniques across direct and indirect paths
+- [Arcanum PI Taxonomy v1.5](https://arcanum-sec.github.io/arc_pi_taxonomy/) — four-dimension classification: attack intents, techniques, evasions, and inputs
+- [OWASP AI Testing Guide v1 (November 2025)](https://www.practical-devsecops.com/owasp-ai-testing-guide-explained/) — first comprehensive AI trustworthiness testing standard, introduces DIE (Distributed, Immutable, Ephemeral) model
+- [Microsoft: Skeleton Key Jailbreak (June 2024)](https://www.microsoft.com/en-us/security/blog/2024/06/26/mitigating-skeleton-key-a-new-type-of-generative-ai-jailbreak-technique/) — direct jailbreak technique that redefines safety rules in-context
 - [International AI Safety Report 2026](https://internationalaisafetyreport.org/publication/international-ai-safety-report-2026) — evaluation gap and model collapse findings
 - [EU AI Act GPAI Guidelines](https://artificialintelligenceact.eu/gpai-guidelines-overview/) — GPAI model obligations effective August 2025
+- [EU AI Act Code of Practice Overview](https://artificialintelligenceact.eu/code-of-practice-overview/) — voluntary GPAI compliance framework
+- [NIST AI 100-2e2025: Adversarial ML Taxonomy](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2025.pdf) — updated adversarial ML attack classification
 - [MCP Transport Future (December 2025)](https://blog.modelcontextprotocol.io/posts/2025-12-19-mcp-transport-future/) — streamable-HTTP replacing SSE
 - [Trail of Bits: DataSig Dataset Fingerprinting (May 2025)](https://blog.trailofbits.com/2025/05/02/datasig-fingerprinting-ai/ml-datasets-to-stop-data-borne-attacks/) — dataset provenance verification
 - [NSA/CISA: Content Credentials CSI (January 2025)](https://media.defense.gov/2025/Jan/29/2003634788/-1/-1/0/CSI-CONTENT-CREDENTIALS.PDF) — C2PA guidance for AI-generated content
