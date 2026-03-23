@@ -44,6 +44,10 @@ The pace of real-world exploits targeting insufficient action limiting has accel
 - **PerplexedBrowser zero-click hijacking (March 2026):** Zenity Labs disclosed vulnerabilities in Perplexity Comet, an agentic browser that autonomously executes tasks within authenticated user sessions. Attackers could embed malicious instructions in routine content like calendar invites. The agent would autonomously access local files and exfiltrate data to attacker-controlled servers with no user interaction and no confirmation prompt — an evolution of ClickFix social engineering adapted for automated systems. A second exploit chain allowed credential theft by abusing the agent's authorized access to password management tools.
 - **MS-Agent shell injection (CVE-2026-2256):** A critical command injection vulnerability in the MS-Agent framework v1.5.2 where the Shell tool component executed commands without sanitization. Prompt-based attacks could escalate to full system compromise, demonstrating that tool-layer input validation is just as critical as prompt-layer defenses.
 - **Amazon Q Developer (CVE-2025-8217, July 2025):** A compromised VS Code extension contained injected prompts instructing the agent to delete file systems and destroy AWS resources — the incident that initially brought the Lethal Trifecta model into mainstream security discussion.
+- **GitHub Copilot RCE (CVE-2025-53773, CVSS 9.6, January 2025):** Prompt injection via code comments triggered "YOLO mode" in GitHub Copilot, enabling remote code execution on over 100,000 developer machines. The root cause was the absence of shell command execution restrictions and file write controls — the agent treated injected instructions in code comments as legitimate user intent.
+- **LangChain Core credential exfiltration (CVE-2025-68664, January 2025):** A serialization flaw in LangChain Core allowed credential exfiltration via HTTP headers across its 847 million downloads. Without sandbox controls on object instantiation and outbound request filtering, environment variables containing secrets could be leaked through agent tool calls.
+- **Cursor IDE CurXecute/MCPoison (CVE-2025-54135, CVE-2025-54136, January 2025):** Two related vulnerabilities in Cursor IDE demonstrated MCP configuration poisoning. Malicious README files could instruct the agent to create unauthorized MCP server connections with reverse shells (CurXecute), and a one-time trust mechanism bypass enabled persistent backdoor installation via MCP config modifications (MCPoison). These incidents highlighted that configuration file writes are high-impact actions requiring the same confirmation gates as code execution.
+- **Moltbook agent token exposure (February 2026):** An unsecured database in the Moltbook social platform exposed 1.5 million AI agent API tokens. Attackers leveraged this access to inject 506 prompt injection payloads that propagated through the compromised agent population, demonstrating how stolen agent credentials amplify the blast radius of action-limiting failures.
 
 ### Tool-Use Restriction Patterns
 
@@ -55,6 +59,41 @@ Modern agentic frameworks have converged on several defensive patterns for actio
 - **Separation of planning from execution**: Architecture should separate the agent's planning phase (deciding what to do) from the execution phase (actually doing it), with a validation gate between them. This prevents prompt injection from directly triggering tool invocations. LangGraph's architecture explicitly supports this pattern with sandboxed file I/O and human-in-the-loop confirmation on writes.
 - **Sandboxed execution environments**: High-impact actions (file writes, code execution, network calls) should run in isolated sandboxes with resource limits, preventing lateral movement even if an action is authorized. Nvidia's NemoClaw framework (early 2026) provides programmable system and network controls through its OpenShell intermediary, managing what agents can access and execute within isolated sandboxes. Agents should run with ephemeral environments for each run, short-lived credentials, least-privilege IAM, and network egress boundaries blocking unknown destinations by default. This is especially important given that MITRE ATLAS (updated October 2025 with 14 new agent-specific techniques) documents tool abuse as a core attack path.
 - **Safety agents as policy enforcement**: A dedicated safety agent layer evaluates proposed actions before execution, applying rules related to data sensitivity and tool usage. Actions that violate defined policies are blocked, modified, or logged for review — this creates an independent enforcement point that cannot be bypassed by prompt injection targeting the primary agent.
+- **OS-level enforcement beneath the application layer**: As of March 2026, NVIDIA's [practical sandboxing guidance](https://developer.nvidia.com/blog/practical-security-guidance-for-sandboxing-agentic-workflows-and-managing-execution-risk/) recommends enforcing restrictions at the operating system level using macOS Seatbelt, Linux Bubblewrap, or Windows AppContainer — below the application where agent code cannot override them. Key controls include blocking write operations to files outside the workspace, protecting agent configuration files (hooks, MCP servers, IDE settings) regardless of user approval, restricting DNS resolution to designated trusted resolvers to prevent DNS-based exfiltration, and applying sandbox restrictions to all spawned subprocesses including hooks and MCP initialization scripts. The guidance explicitly calls for "no cached approvals" — each potentially dangerous action should require fresh user confirmation rather than relying on blanket trust from a prior approval.
+
+### Runtime Policy Enforcement Tooling (2026 Landscape)
+
+The tooling landscape for runtime action governance matured significantly in early 2026. Two frameworks stand out for deterministic policy enforcement:
+
+**Microsoft Agent Governance Toolkit** (open-source, March 2026): Covers all 10 OWASP Agentic Top 10 risks with over 6,100 tests. The toolkit evaluates every agent action against defined policy rules before execution at sub-millisecond latency (<0.1 ms per action, scaling to 0.029 ms for 100 rules). Key capabilities include a 4-tier privilege ring model for isolated execution, zero-trust agent identity using Ed25519 cryptographic credentials with SPIFFE/SVID for inter-agent communication, OPA/Rego and Cedar policy language support, saga orchestration for distributed workflows, and kill switch mechanisms. The toolkit integrates with 12+ frameworks including LangChain, CrewAI, AutoGen, OpenAI Agents SDK, Google ADK, LlamaIndex, and Dify. Agent identifiers use a `did:mesh` format with trust scoring on a 0–1000 scale. Available via [GitHub](https://github.com/microsoft/agent-governance-toolkit) with SDKs for Python, TypeScript, and .NET.
+
+**NVIDIA OpenShell Runtime** (announced GTC 2026): A purpose-built runtime that creates hardware-isolated, ephemeral sandboxes for every agentic session. The core design principle is **out-of-process policy enforcement** — constraints are enforced on the agent's environment rather than through behavioral prompts, meaning the agent cannot override them even if fully compromised. OpenShell manages network egress controls (blocking arbitrary network access, allowing only known-good destinations), workspace-scoped file writes, credential isolation via secret injection (task-specific credentials only, never inheriting the full host environment), and subprocess containment for all spawned processes.
+
+### AWS Agentic AI Security Scoping Matrix
+
+AWS published the [Agentic AI Security Scoping Matrix](https://aws.amazon.com/ai/security/agentic-ai-scoping-matrix/) to help organizations classify their agent deployments and apply proportionate action-limiting controls. The matrix defines four scopes based on autonomy level:
+
+- **Scope 1 (No Agency):** Read-only, human-initiated systems with fixed workflow paths. Controls focus on identity context and input validation to prevent agents from exceeding operational boundaries.
+- **Scope 2 (Prescribed Agency):** Human approval required before every action. Controls require mandatory human-in-the-loop (HITL) workflows and secure communication channels.
+- **Scope 3 (Supervised Agency):** Autonomous execution within predefined bounded parameters, with human initiation. Controls include continuous behavioral monitoring, validation against expected patterns, and effective shut-off switches.
+- **Scope 4 (Full Agency):** Self-initiating systems with minimal human oversight. Controls require advanced behavioral monitoring, anomaly detection, and automated containment mechanisms.
+
+The matrix evaluates security across six critical dimensions: identity context, workflow integrity, input validation, output governance, tool and API access, and behavioral monitoring. Control sophistication increases significantly with each scope level, and organizations should classify each agent deployment individually rather than applying a single scope to all agents.
+
+### Execution Sandboxing: Isolation Technology Comparison
+
+For agents that execute code, write files, or make network requests, the choice of isolation technology directly determines the security boundary's strength. As of March 2026, three primary approaches are in production use:
+
+| Technology | Boot Time | Memory Overhead | Isolation Level | Best For |
+|-----------|-----------|----------------|----------------|----------|
+| **Firecracker microVMs** | ~125 ms | <5 MiB per VM | Hardware-level (dedicated kernel per workload) | Production untrusted code, multi-tenant environments |
+| **Kata Containers** | ~200 ms | Moderate | Hardware-level (VM-backed containers) | Kubernetes-native deployments requiring VM isolation |
+| **gVisor** | Milliseconds | Minimal | Syscall-level (user-space kernel) | Compute-heavy agents with limited I/O requirements |
+| **Docker containers** | Milliseconds | Minimal | Process-level (shared kernel) | Trusted, vetted code only |
+
+For production AI agents executing untrusted code, microVMs (Firecracker or Kata Containers) are the recommended choice because the hardware boundary prevents entire classes of kernel-based attacks — a kernel vulnerability in a standard container allows container escape and host access, while a microVM's dedicated kernel eliminates this attack surface. gVisor offers a middle ground, adding 10–30% overhead on I/O-heavy workloads but intercepting syscalls through a user-space kernel that significantly reduces the attack surface without full virtualization. Standard Docker containers share the host kernel and should only be used for pre-vetted, trusted agent code.
+
+The recommended practice is to combine isolation layers: ephemeral microVM per agent session, workspace-scoped file system access, restricted network egress with allowlisted destinations only, short-lived credentials injected per task, and periodic sandbox reset (weekly at minimum) to prevent accumulation of secrets and exploitable state.
 
 ### Rate Limiting and Cost Controls
 
@@ -86,6 +125,10 @@ The confirmation mechanism for high-impact actions must be implemented at the ap
 
 **Cisco AI Defense (February 2026):** Cisco expanded its AI Defense solution to add runtime protections against tool abuse and supply chain manipulation specifically at the MCP layer, reflecting the industry shift toward securing the agent-tool interface as a first-class security boundary.
 
+**NIST Request for Information on AI Agent Security (January 2026):** In January 2026, NIST published a [Request for Information](https://www.nist.gov/artificial-intelligence/ai-risk-management-framework) covering security considerations for AI agents including agent hijacking, backdoor attacks, and autonomous action risks. This RFI addresses many of the same threats the EU AI Act calls out in Article 15, signaling regulatory convergence across jurisdictions on agent action limiting.
+
+**Industry Readiness Gap:** As of early 2026, only 41% of organizations have runtime guardrails in place for agentic AI, and 30% rely on homegrown scripts or custom tooling rather than mature security solutions. This gap between deployment pace (83% of organizations planning agentic AI per Cisco) and security readiness (29% feeling prepared) makes action limiting one of the most urgent unsolved problems in enterprise AI security.
+
 ---
 
 ## Related Standards & References
@@ -114,6 +157,13 @@ The confirmation mechanism for high-impact actions must be implemented at the ap
 - [Token Security: Intent-Based AI Agent Security (March 2026)](https://www.helpnetsecurity.com/2026/03/18/token-security-intent-based-ai-agent-security/) — purpose-defined permission envelopes with runtime enforcement
 - [EU AI Act — Human Oversight (Article 14)](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai) — high-risk AI system oversight requirements effective August 2026
 - [Nvidia NemoClaw Security Guardrails (2026)](https://www.sdxcentral.com/news/nvidia-details-nemoclaw-security-guardrails-in-wake-of-ai-agent-concerns/) — programmable sandbox controls for agentic systems
+- [Microsoft Agent Governance Toolkit (2026)](https://github.com/microsoft/agent-governance-toolkit) — runtime policy enforcement, zero-trust agent identity, execution sandboxing covering all 10 OWASP Agentic risks
+- [NVIDIA Practical Sandboxing Guidance for Agentic Workflows (2026)](https://developer.nvidia.com/blog/practical-security-guidance-for-sandboxing-agentic-workflows-and-managing-execution-risk/) — OS-level enforcement, workspace-scoped writes, subprocess containment
+- [NVIDIA OpenShell Runtime (GTC 2026)](https://developer.nvidia.com/blog/run-autonomous-self-evolving-agents-more-safely-with-nvidia-openshell/) — out-of-process policy enforcement with hardware-isolated ephemeral sandboxes
+- [AWS Agentic AI Security Scoping Matrix](https://aws.amazon.com/ai/security/agentic-ai-scoping-matrix/) — four-scope framework for classifying agent autonomy and proportionate security controls
+- [How to Sandbox AI Agents in 2026 (Northflank)](https://northflank.com/blog/how-to-sandbox-ai-agents) — microVM, gVisor, and container isolation comparison with benchmarks
+- [AI Agent Security Incidents and CVEs (DataBahn, 2026)](https://www.databahn.ai/blog/ai-agents-security-incidents-and-related-cves-for-enterprise-security-teams) — catalog of agent-specific CVEs including Copilot RCE, LangChain credential exfiltration, and Cursor IDE poisoning
+- [Every OpenClaw CVE Explained (MintMCP, 2026)](https://www.mintmcp.com/blog/openclaw-cve-explained) — detailed breakdown of all nine OpenClaw CVEs with exploit analysis
 
 ---
 
@@ -129,5 +179,8 @@ The confirmation mechanism for high-impact actions must be implemented at the ap
 - How should the Lethal Trifecta be evaluated in multi-tenant environments where different users' data flows through the same agent infrastructure?
 - The OpenClaw crisis exposed the absence of skill/plugin vetting in AI agent marketplaces. What minimum security controls should agent skill registries enforce — code signing, sandboxed execution, permission declarations, behavioral analysis — and who should operate them?
 - Intent-based permission models (e.g., Token Security's March 2026 approach) represent a shift from static permissions to purpose-defined envelopes. How should intent be formally specified, and what happens when an agent's runtime behavior legitimately evolves beyond its declared intent during a long-running task?
+- How should organizations map their agent deployments to the AWS Agentic AI Security Scoping Matrix's four autonomy levels when a single agent pipeline spans multiple scopes (e.g., Scope 1 for data retrieval, Scope 3 for code execution)? Should the highest scope in the pipeline govern the entire system?
+- The Microsoft Agent Governance Toolkit's `did:mesh` agent identity format and Ed25519 credentials represent one approach to agent identity, while NIST's NCCoE proposes SPIFFE-based identity. Will the industry converge on a single agent identity standard, or will interoperability layers be needed?
+- With only 41% of organizations having runtime guardrails in place as of early 2026, what is the minimum viable action-limiting control set that organizations should deploy before their first agentic AI goes to production?
 
 ---
