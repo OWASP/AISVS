@@ -29,6 +29,8 @@ Adversarial training remains the most empirically validated hardening technique,
 
 **DiffuseDef** (ACL 2025) applies diffusion-based input purification to improve NLP model robustness against adversarial text attacks, reconstructing clean inputs from noisy adversarial perturbations without requiring adversarial training. This represents a shift toward purification-based defenses that decouple robustness from the training pipeline, reducing the 3-10x training cost overhead of classical adversarial training.
 
+**AdPO (Adversarial Preference Optimization)** reframes adversarial training as a preference optimization problem for VLMs. Rather than fine-tuning the entire model adversarially, AdPO modifies only the image encoder (e.g., CLIP ViT), training it to prefer normal outputs on clean inputs while rejecting misleading outputs from adversarial examples. This achieves competitive robustness on both clean and adversarial inputs while keeping computational cost manageable -- and training on smaller VLMs transfers effectively to larger ones, a practical advantage for organizations that cannot afford to adversarially fine-tune their largest models.
+
 ### Vision-Language Model Robustness
 
 The attack surface for vision-language models (VLMs) has expanded significantly. **Chain of Attack** (CVPR 2025) demonstrated cross-modal attack surfaces where adversarial perturbations in one modality (e.g., images) cascade to compromise outputs in the other modality (text), confirming that multi-modal systems require both modality-specific and cross-modal adversarial evaluation.
@@ -37,6 +39,16 @@ The attack surface for vision-language models (VLMs) has expanded significantly.
 
 **GLEAM** (ICCV 2025) further advanced transferable adversarial attacks by combining diversified local region transformations with cross-modal feature alignment exploitation, achieving higher transfer rates across VLM architectures. A March 2026 survey of adversarial attacks against modern VLMs confirms that the attack-defense arms race in multi-modal systems is accelerating, with new attack vectors emerging faster than defenses can adapt.
 
+### VLM Defense Paradigms: A Maturing Taxonomy
+
+A January 2026 survey (Fu et al.) organizes VLM adversarial defenses into three paradigms that are worth understanding for practical implementation:
+
+1. **Training-time defenses** modify the training or fine-tuning process -- adversarial fine-tuning, preference optimization (AdPO), and adversarial prompt tuning (Adversarial Mixture Prompt Tuning, or AMPT). These are effective but computationally expensive and may not generalize across attack types.
+2. **Test-time adaptation defenses** adapt models during inference on unlabeled adversarial examples. These offer flexibility without retraining but increase inference latency and computational overhead.
+3. **Training-free defenses** modify inputs or embeddings rather than the model itself. **MirrorCheck** exemplifies this approach: it uses text-to-image models to generate images from captions produced by the target VLM, then compares embedding similarity between the original input and the regenerated image. High divergence flags adversarial inputs. MirrorCheck is model-agnostic, requires no fine-tuning, and shows resilience against adaptive attacks designed to defeat it -- making it relevant for requirement 11.2.2's production detection requirement.
+
+For organizations evaluating which paradigm to adopt, training-free approaches like MirrorCheck have the lowest barrier to deployment (no model retraining), while training-time approaches like AdPO offer deeper robustness at higher cost. Most practical deployments will combine paradigms -- training-time hardening plus runtime detection.
+
 ### Autonomous Systems and Safety-Critical Deployments
 
 Adversarial attacks on safety-critical vision systems remain a pressing concern. As of 2025, systematic reviews of adversarial attacks on autonomous driving deep learning models document attack success rates of 52--67% against production object detection models (LLaVA-v1.5, Qwen2.5-VL) using gradient-based methods (BIM, PGD, CLIP-based spectral attacks). Physical-world adversarial patches placed on road surfaces have demonstrated the ability to cause lane detection failures, leading to incorrect steering decisions. These findings underscore requirement 11.2.2's emphasis on runtime detection -- adversarial inputs in safety-critical deployments cannot rely solely on pre-deployment hardening.
@@ -44,6 +56,8 @@ Adversarial attacks on safety-critical vision systems remain a pressing concern.
 ### Certified Robustness Progress
 
 Certified defense methods have advanced beyond Lp-norm bounds for classification. ICLR 2026 work on dissecting adversarial robustness of multi-modal models introduced certified robustness techniques applicable to transformer-based architectures, narrowing the gap between formal verification (requirement 11.2.5) and practical model sizes. However, certified bounds for production-scale LLMs remain out of reach -- current methods scale to models with hundreds of thousands of parameters but not billions.
+
+A NeurIPS 2024 paper ("On the Scalability of Certified Adversarial Robustness with Generated Data") demonstrated that generating additional training data using state-of-the-art diffusion models can substantially improve deterministic certified defenses. The key insight is that synthetic data generated by diffusion models provides a richer perturbation space for certified training methods like Interval Bound Propagation (IBP), and the scaling behavior of certified methods with additional data differs notably from empirical methods. This is a practical path forward for organizations seeking to improve certified bounds without architectural changes -- augment the training set with high-quality synthetic data. The approach is most applicable to smaller safety-critical classification components where certified training is already feasible.
 
 A notable breakthrough is the scaling of **randomized smoothing** to VLMs. Traditional randomized smoothing requires ~10^5 samples per input for certification, making it infeasible for large generative models. As of late 2025, researchers demonstrated that connecting generative outputs to oracle classification tasks (e.g., harmful vs. harmless classification) and applying improved scaling laws reduces the sample requirement by 2--3 orders of magnitude (EMNLP 2025). This makes certified robustness computationally feasible for state-of-the-art VLMs for the first time, though the certification scope is limited to specific output classification properties rather than full generative robustness.
 
@@ -62,6 +76,12 @@ The tooling landscape for adversarial robustness testing has matured considerabl
 - **Mindgard** has emerged as a commercial automated red-teaming platform (recognized in the Gartner Hype Cycle for Application Security 2025 and winner of the 2025 Cybersecurity Excellence Award). It simulates thousands of adversarial attack scenarios across text, image, audio, and multi-modal models, with CI/CD pipeline integration so adversarial tests run on every commit. The platform aligns its attack library to MITRE ATLAS and OWASP taxonomies, making it useful for organizations that need to demonstrate compliance with requirement 11.2.4's adaptive attack evaluation.
 
 - **Promptfoo** provides MITRE ATLAS-aligned red-teaming for LLM applications, enabling automated adversarial evaluation against the ATLAS technique taxonomy.
+
+- **MITRE ATLAS Arsenal + CALDERA** provides automated adversary emulation for AI systems. Arsenal implements ATLAS techniques as CALDERA Abilities, enabling security teams to simulate adversarial attack chains against ML pipelines using the same emulation framework they use for traditional cyber adversary simulation. As of late 2025, MITRE ATLAS expanded to 66 techniques across 14 tactics, including 14 new techniques focused specifically on AI agents and generative AI systems (developed in collaboration with Zenity Labs). This is particularly useful for organizations implementing requirement 11.2.4's adaptive attack evaluation -- Arsenal can automate attack sequences that test defenses against ATLAS-mapped threat scenarios.
+
+- **HiddenLayer AI Security Platform** offers an integrated approach combining AI discovery, supply chain security, attack simulation, and runtime defense. Its attack simulation module uses MITRE ATLAS tactics and techniques to automate adversarial testing, while the runtime defense module (AIDR) provides real-time adversarial attack detection without requiring access to training data or model internals. HiddenLayer's March 2026 AI Threat Landscape Report found that one in eight reported AI breaches is now linked to agentic systems, highlighting the expanding attack surface beyond traditional adversarial examples.
+
+- **Microsoft Counterfit** remains available as an environment-agnostic and model-agnostic command-line tool for orchestrating adversarial attacks against ML models, interfacing with ART, TextAttack, and AugLy. While not as actively maintained as ART, it provides a useful orchestration layer for teams that need to coordinate multiple attack frameworks.
 
 The growing availability of modality-specific and commercially supported evaluation toolkits reduces the barrier for organizations to implement requirements 11.2.1 and 11.2.4, though expertise in interpreting results and designing adaptive attacks remains a bottleneck.
 
@@ -93,6 +113,14 @@ This regulatory environment directly reinforces requirements 11.2.1 through 11.2
 - [Promptfoo MITRE ATLAS Red Teaming](https://www.promptfoo.dev/docs/red-team/mitre-atlas/) -- ATLAS-aligned automated adversarial evaluation for LLMs
 - [EU AI Act -- Adversarial Testing Requirements for GPAI and High-Risk Systems](https://artificialintelligenceact.eu/high-level-summary/) -- Regulatory mandates for adversarial evaluation (August 2025/2026 deadlines)
 - [Adversarial Attacks on Autonomous Driving DL Models: Systematic Review (ACM Computing Surveys, 2024)](https://dl.acm.org/doi/10.1145/3691625) -- Comprehensive survey of adversarial attacks and defenses in safety-critical vision systems
+- [AdPO: Adversarial Preference Optimization for VLM Robustness (2025)](https://arxiv.org/abs/2504.01735) -- Preference optimization approach to adversarial hardening of vision-language models
+- [MirrorCheck: Efficient Adversarial Defense for Vision-Language Models (2024)](https://arxiv.org/abs/2406.09250) -- Training-free adversarial detection using text-to-image regeneration and embedding comparison
+- [Adversarial Defense in Vision-Language Models: An Overview (Fu et al., January 2026)](https://arxiv.org/abs/2601.12443) -- Taxonomy of training-time, test-time, and training-free VLM defense paradigms
+- [Adversarial Attacks of Vision Tasks in the Past 10 Years: Survey (ACM Computing Surveys, 2025)](https://dl.acm.org/doi/full/10.1145/3743126) -- Decade-spanning survey of adversarial attacks across vision tasks
+- [On the Scalability of Certified Adversarial Robustness with Generated Data (NeurIPS 2024)](https://proceedings.neurips.cc/paper_files/paper/2024/file/b96ce7d38339874a8704e8895f743284-Paper-Conference.pdf) -- Using diffusion-generated synthetic data to improve certified training
+- [MITRE ATLAS Arsenal -- CALDERA Plugin for AI Adversary Emulation](https://github.com/mitre-atlas/arsenal) -- Automated adversarial attack emulation using ATLAS techniques
+- [HiddenLayer AI Security Platform](https://www.hiddenlayer.com) -- Integrated AI security with adversarial attack simulation, runtime defense, and model scanning
+- [Microsoft Counterfit](https://github.com/Azure/counterfit) -- Command-line orchestration tool for adversarial attacks against ML models
 
 ---
 
@@ -108,5 +136,8 @@ This regulatory environment directly reinforces requirements 11.2.1 through 11.2
 - How should organizations defend against self-supervised transfer attacks (e.g., AnyAttack) that require no target-model access and transfer across commercial systems?
 - As the EU AI Act mandates adversarial testing, what constitutes a "sufficient" evaluation methodology -- and who certifies the adequacy of red-team exercises?
 - Can randomized smoothing's recent scaling advances for VLMs extend to certifying robustness of full generative outputs, or will certification remain limited to classification-like properties?
+- How effective are training-free detection methods (MirrorCheck, feature squeezing) against adaptive adversaries who know the defense is deployed -- and what is the ceiling for detection without model modification?
+- As MITRE ATLAS expands to 66+ techniques covering agentic AI, how should adversarial evaluation scope be defined -- test all relevant techniques, or prioritize based on deployment context?
+- Can synthetic data generation (diffusion models) consistently improve certified robustness bounds across architectures, or is this limited to specific model families and perturbation types?
 
 ---
