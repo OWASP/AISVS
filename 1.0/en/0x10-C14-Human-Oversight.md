@@ -39,7 +39,6 @@ Log operator actions and model decisions.
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **14.3.1** | **Verify that** all AI system decisions and human interventions are logged with timestamps, user identities, and decision rationale. | 1 | D/V |
-| **14.3.2** | **Verify that** audit logs cannot be tampered with and include integrity verification mechanisms. | 2 | D |
 
 ---
 
