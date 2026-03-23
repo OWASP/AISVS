@@ -43,7 +43,7 @@ Ensure labeling and annotation processes are access-controlled, auditable, and p
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **1.3.1** | **Verify that** labeling interfaces and platforms enforce access controls and maintain audit logs of all labeling activities. | 1 | D/V |
+| **1.3.1** | **Verify that** labeling interfaces and platforms enforce access controls and maintain audit logs of all labeling activities, and that annotator identity metadata is exported and retained alongside the dataset so that every annotation or preference pair can be attributed to a specific, verified human annotator throughout the training pipeline, not only within the labeling platform. | 1 | D/V |
 | **1.3.2** | **Verify that** cryptographic hashes or digital signatures are applied to labeling artifacts, annotation data, and fine-tuning feedback records (including RLHF preference pairs) to ensure their integrity and authenticity. | 2 | D/V |
 | **1.3.3** | **Verify that** labeling audit logs are tamper-evident and that labeling platforms protect against unauthorized modifications. | 2 | D/V |
 | **1.3.4** | **Verify that** sensitive information in labels is redacted, anonymized, or encrypted using appropriate granularity at rest and in transit. | 2 | D/V |
@@ -74,17 +74,6 @@ Track the full journey of each dataset from source to model input for auditabili
 | **1.5.1** | **Verify that** the lineage of each dataset and its components, including all transformations, augmentations, and merges, is recorded and can be reconstructed. | 1 | D/V |
 | **1.5.2** | **Verify that** lineage records are immutable, securely stored, and accessible for audits. | 2 | D/V |
 | **1.5.3** | **Verify that** lineage tracking covers synthetic data generated via augmentation, synthesis, or privacy-preserving techniques and that all synthetic data is clearly labeled and distinguishable from real data throughout the pipeline. | 2 | D/V |
-
----
-
-## C1.6 RLHF & Fine-Tuning Feedback Data Integrity
-
-Reinforcement Learning from Human Feedback introduces preference pairs as a distinct training data class whose integrity cannot be guaranteed by general training data controls alone. Adversarial annotators or tampered preference records can steer policy model behavior in ways invisible to standard dataset validation.
-
-| # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **1.6.1** | **Verify that** annotator identity metadata is exported and retained alongside the preference dataset so that every preference pair can be attributed to a specific, verified human annotator throughout the training pipeline, not only within the labeling platform. | 2 | D/V |
-| **1.6.2** | **Verify that** statistical anomaly detection is applied to preference datasets prior to reward model training to identify patterns consistent with coordinated label manipulation, such as implausibly uniform annotator agreement, systematic bias toward specific response attributes, or submission velocity outliers. | 3 | D/V |
 
 ---
 
