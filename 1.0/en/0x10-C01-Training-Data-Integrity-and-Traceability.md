@@ -43,8 +43,8 @@ Ensure labeling and annotation processes are access-controlled, auditable, and p
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **1.3.1** | **Verify that** labeling interfaces and platforms enforce access controls and maintain audit logs of all labeling activities. | 1 | D/V |
-| **1.3.2** | **Verify that** cryptographic hashes or digital signatures are applied to labeling artifacts and annotation data to ensure their integrity and authenticity. | 2 | D/V |
+| **1.3.1** | **Verify that** labeling interfaces and platforms enforce access controls and maintain audit logs of all labeling activities, and that annotator identity metadata is exported and retained alongside the dataset so that every annotation or preference pair can be attributed to a specific, verified human annotator throughout the training pipeline, not only within the labeling platform. | 1 | D/V |
+| **1.3.2** | **Verify that** cryptographic hashes or digital signatures are applied to labeling artifacts, annotation data, and fine-tuning feedback records (including RLHF preference pairs) to ensure their integrity and authenticity. | 2 | D/V |
 | **1.3.3** | **Verify that** labeling audit logs are tamper-evident and that labeling platforms protect against unauthorized modifications. | 2 | D/V |
 | **1.3.4** | **Verify that** sensitive information in labels is redacted, anonymized, or encrypted using appropriate granularity at rest and in transit. | 2 | D/V |
 

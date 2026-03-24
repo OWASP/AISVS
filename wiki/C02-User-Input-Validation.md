@@ -38,6 +38,8 @@ Known attacks, real-world incidents, and threat vectors relevant to this chapter
 - **Physical-environment injection** — CHAI (Command Hijacking against embodied AI) demonstrated physical-world prompt injection against embodied AI agents (January 2026, UC Santa Cruz).
 - **Crescendo and multi-turn attacks** — gradually escalating benign prompts toward harmful outputs, exploiting context window accumulation to shift model behavior over multiple turns.
 - **Token smuggling** — bypassing input filters through non-standard encodings, emoji-based code payloads, and character obfuscation techniques that evade tokenizer-level safety checks.
+- **Zero-click indirect injection** — a particularly dangerous variant where the victim never interacts with the malicious payload directly. EchoLeak (CVE-2025-32711, CVSS 9.3) demonstrated this against Microsoft 365 Copilot: a single poisoned email triggers data exfiltration when the user queries Copilot about unrelated topics. The payload executes in natural language space, rendering traditional defenses (antivirus, firewalls, static scanning) ineffective.
+- **The "Lethal Trifecta"** — systems that combine (1) access to private data, (2) exposure to untrusted tokens from external sources, and (3) an exfiltration vector (ability to make external requests) are inherently vulnerable to indirect injection chains. As of early 2026, most enterprise AI copilot deployments exhibit all three characteristics.
 
 ---
 
@@ -50,6 +52,11 @@ Known attacks, real-world incidents, and threat vectors relevant to this chapter
 | 2025 | ChatGPT Windows license key exposure | Prompt injection used to extract sensitive data from model context |
 | Dec 2025 | Palo Alto Unit 42: indirect injection in ad review system | Real-world malicious indirect prompt injection designed to bypass an AI-based product advertisement review pipeline |
 | Sep 2025 | ASCII smuggling across multiple LLMs | Researchers demonstrated Unicode tag-based data exfiltration across multiple commercial LLMs; findings reported to Google |
+| Jun 2025 | EchoLeak — Microsoft 365 Copilot zero-click exfiltration (CVE-2025-32711, CVSS 9.3) | A single poisoned email triggered data exfiltration from Copilot without any user interaction; payload operated in natural language space, bypassing traditional defenses entirely |
+| 2025 | GeminiJack — Google Gemini Enterprise indirect injection | Malicious instructions hidden in shared docs, calendar invites, and emails triggered on routine employee queries; data exfiltrated via image URL requests |
+| 2025 | LangChain serialization injection (CVE-2025-68664, "LangGrinch") | Vulnerability in LangChain's `dumps()` and `dumpd()` serialization functions enabling code injection via crafted model artifacts |
+| 2025 | Cursor IDE agent RCE (CVE-2025-59944) | Case-sensitivity bug in protected file path allowed attacker to influence agentic behavior; hidden instructions escalated to remote code execution |
+| Feb 2026 | CrowdStrike 2026 Global Threat Report: prompt injection at scale | Adversaries exploited GenAI tools at 90+ organizations by injecting malicious prompts to steal credentials and cryptocurrency; AI-enabled attack operations up 89% YoY |
 | Jan 2026 | CHAI physical-environment prompt injection | UC Santa Cruz researchers demonstrated physical-world prompt injection against embodied AI agents |
 
 ---
@@ -69,7 +76,7 @@ A chapter-level view of tooling maturity and adoption status for C02 controls:
 | C2.7 | Multi-Modal Validation | Low-Medium | Image and audio adversarial detection remains largely research-grade. Steganography scanning tools exist but are not widely integrated into AI pipelines. Cross-modal correlation is nascent. |
 | C2.8 | Adaptive Threat Detection | Low-Medium | Real-time adaptive models are emerging. Continuous detection metric monitoring is operationally complex. Most organizations rely on static rule sets. |
 
-> **Overall:** As of March 2026, only ~20% of enterprises have mature AI governance models (Deloitte 2026 AI Report). Input validation tooling is strongest for text-based prompt injection and weakest for multi-modal and adaptive scenarios.
+> **Overall:** As of March 2026, only ~20% of enterprises have mature AI governance models (Deloitte 2026 AI Report). Cisco's State of AI Security 2026 report found that while 83% of organizations plan to deploy agentic AI, only 29% feel ready to secure it. Input validation tooling is strongest for text-based prompt injection and weakest for multi-modal and adaptive scenarios. Notably, HiddenLayer researchers bypassed OpenAI's guardrails framework using straightforward techniques in October 2025, and Cisco found multi-turn prompt attacks achieve ~60% success rates on average (one model: 92.78%), underscoring that no single guardrail layer is sufficient.
 
 ---
 
@@ -85,6 +92,8 @@ Key tools and frameworks relevant across C02 sections:
 | [Amazon Bedrock Guardrails](https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-security/best-practices-input-validation.html) | Cloud service | Content filtering, topic denial, PII redaction | Native AWS integration for Bedrock-hosted models. Supports custom word filters and managed policies. |
 | [Galileo Protect](https://galileo.ai/) | Commercial | Runtime guardrails for AI agents | Intercepts unsafe outputs in under 200ms. Enforces prompt injection blocking, PII redaction, hallucination prevention. |
 | [NVIDIA NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) | Open-source | Programmable guardrails for LLM applications | Colang-based rail definitions for topic control, jailbreak prevention, and output safety. |
+| [LlamaFirewall](https://github.com/meta-llama/PurpleLlama/tree/main/LlamaFirewall) | Open-source (Meta) | Prompt injection, agent alignment, insecure code detection | Three-layer defense: PromptGuard 2 (86M/22M param jailbreak detectors), AlignmentCheck (real-time chain-of-thought auditor for injection and goal misalignment), and CodeShield (static analysis for 8 languages). Combined system reduced attack success rates by 90% in benchmarks (from 17.6% to 1.75%). Production-tested at Meta. |
+| [OpenAI Guardrails](https://openai.github.io/openai-guardrails-python/) | Open-source SDK | Prompt injection detection, function call safety | Runs at two checkpoints (pre-execution, post-execution) to ensure agent actions remain aligned with user intent. Note: HiddenLayer bypassed both jailbreak and injection detection in October 2025 testing — treat as one layer in a defense-in-depth stack, not a standalone solution. |
 
 ---
 
@@ -102,6 +111,9 @@ Key tools and frameworks relevant across C02 sections:
 - [CSA: How to Build AI Prompt Guardrails (December 2025)](https://cloudsecurityalliance.org/blog/2025/12/10/how-to-build-ai-prompt-guardrails-an-in-depth-guide-for-securing-enterprise-genai) — Enterprise-focused guide for DLP-first guardrail strategy
 - [AWS Prescriptive Guidance: Input Validation for Agentic AI](https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-security/best-practices-input-validation.html) — Best practices for validating inputs in agentic AI systems on AWS
 - [Defending LLM Applications Against Unicode Character Smuggling (AWS, 2025)](https://aws.amazon.com/blogs/security/defending-llm-applications-against-unicode-character-smuggling/) — Practical defense patterns for encoding-based attacks
+- [CrowdStrike 2026 Global Threat Report](https://www.crowdstrike.com/en-us/global-threat-report/) — Documents prompt injection attacks against 90+ organizations and 89% YoY increase in AI-enabled adversary operations
+- [Cisco State of AI Security 2026](https://www.cisco.com/site/us/en/products/security/state-of-ai-security.html) — 83% of organizations planning agentic AI deployment, only 29% ready to secure it; multi-turn attack success rates averaging ~60%
+- [LlamaFirewall: An Open Source Guardrail System (Meta, May 2025)](https://arxiv.org/abs/2505.03574) — Three-layer defense architecture (PromptGuard 2, AlignmentCheck, CodeShield) achieving 90% reduction in attack success rates
 
 ### AISVS Cross-Chapter Links
 
@@ -124,14 +136,19 @@ Key tools and frameworks relevant across C02 sections:
 - Xie et al., "Chain of Attack," CVPR 2025 — showed compounding effectiveness when steganographic embedding is chained with semantic manipulation across modalities.
 - "Image-based Prompt Injection: Hijacking Multimodal LLMs through Visually Embedded Adversarial Instructions," arXiv:2603.03637 (March 2026) — latest work on imperceptible adversarial perturbations in images that hijack vision-language models.
 - Palo Alto Unit 42, "Fooling AI Agents: Web-Based Indirect Prompt Injection Observed in the Wild" (December 2025) — first documented in-the-wild indirect prompt injection against a production AI ad review system.
+- Schwartz et al., "EchoLeak: The First Real-World Zero-Click Prompt Injection Exploit in a Production LLM System," arXiv:2509.10540 (September 2025) — detailed technical analysis of CVE-2025-32711, demonstrating how chained bypasses (XPIA classifier evasion, reference-style Markdown link redaction circumvention, auto-fetched image abuse) enabled zero-click data exfiltration from Microsoft 365 Copilot.
+- Meta, "LlamaFirewall: An Open Source Guardrail System for Building Secure AI Agents," arXiv:2505.03574 (May 2025) — introduces PromptGuard 2, AlignmentCheck (first open-source chain-of-thought auditor for injection defense), and CodeShield; combined system achieves 90% ASR reduction in agentic scenarios.
+- Vectra AI, "Prompt Injection: Types, Real-World CVEs, and Enterprise Defenses" (2025) — practical catalog of prompt injection CVEs (including LangGrinch, Cursor RCE) with enterprise mitigation patterns.
 
 ## Community Notes
 
 _Space for contributor observations, discussion, and context that doesn't fit elsewhere._
 
 **Open questions worth tracking:**
-- No input validation tool guarantees complete prompt injection prevention. Defense-in-depth (combining multiple layers) remains the only viable strategy. How should auditors assess "sufficient" defense depth?
+- No input validation tool guarantees complete prompt injection prevention. Defense-in-depth (combining multiple layers) remains the only viable strategy. How should auditors assess "sufficient" defense depth? The HiddenLayer bypass of OpenAI's guardrails (October 2025) reinforces this — guardrail LLMs are themselves susceptible to the attacks they're meant to detect.
 - Multi-modal adversarial detection tooling is still largely research-grade. Organizations deploying vision or audio models should treat C2.7 requirements as aspirational L2/L3 targets until tooling matures.
 - The October 2025 MITRE ATLAS update added 14 agentic-specific techniques — these may drive future requirement additions to C2.1 (indirect injection via agent chains) and C2.4 (MCP argument validation).
+- As of March 2026, zero-click indirect injection (EchoLeak pattern) represents a step change in threat severity. Organizations using AI copilots with access to email, documents, and external communication should audit for the "Lethal Trifecta" (private data access + untrusted token exposure + exfiltration vector) and implement image/link fetching restrictions as an immediate mitigation.
+- The CrowdStrike 2026 report's finding of prompt injection at 90+ organizations suggests this is no longer a theoretical or red-team-only concern — it's an active adversary technique at scale. System prompt extraction was the most common objective in Q4 2025, giving attackers role definitions, tool descriptions, and workflow logic.
 
 ---

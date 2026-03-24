@@ -25,12 +25,25 @@ Prevent resource exhaustion attacks and ensure fair resource allocation through 
 Traditional Kubernetes ResourceQuotas limit GPU consumption per namespace, enabling fair sharing across teams. However, GPU-bound AI architectures need more advanced admission control. Two mature solutions have emerged by 2025-2026:
 
 - **Kueue** (Kubernetes-native): Admits entire workloads atomically only when quota allows, preventing partial allocations that waste GPU capacity. ClusterQueues implement quotas by ResourceFlavor (e.g., H100 vs. A100), preventing any single tenant from monopolizing GPU inventory. Each queue has a `nominalQuota` cap with explicit borrowing rules between cohorts.
-- **Volcano**: Uses PodGroup semantics with `minMember` thresholds and preemption plugins to enforce fair eviction across multi-GPU training jobs.
+- **Volcano**: Uses PodGroup semantics with `minMember` thresholds and preemption plugins to enforce fair eviction across multi-GPU training jobs. As of mid-2025, Volcano added Network Topology-Aware Scheduling (alpha), Dynamic MIG Partitioning for GPU virtualization, DRA support, and LeaderWorkerSet support for large model inference scenarios.
 - **NVIDIA KAI Scheduler**: An open-source Kubernetes-native scheduler for AI workloads that allows customization of quotas, over-quota weights, limits, and priorities per queue while ensuring equitable distribution using Dominant Resource Fairness (DRF) and resource reclamation across queues.
 
 LimitRanges should set both default and maximum GPU requests per pod. Defaults ensure pods without explicit GPU requests still receive appropriate allocations; maximums prevent individual pods from requesting excessive GPU capacity.
 
 For multi-tenant environments, use per-tenant LocalQueues bound to ClusterQueues with borrowing controls rather than a single shared production queue. Implement WorkloadPriorityClasses to ensure critical inference workloads are not starved by lower-priority batch training jobs.
+
+### Dynamic Resource Allocation (DRA) for GPUs
+
+As of Kubernetes v1.34 (2025), Dynamic Resource Allocation (DRA) reached GA, fundamentally changing how GPUs are consumed in Kubernetes. Under DRA, accelerators like GPUs are no longer exposed as static extended resources through device plugins. Instead, they are dynamically allocated through DeviceClasses and ResourceClaims, which unlocks richer scheduling semantics and better integration with virtualization technologies like NVIDIA vGPU and MIG.
+
+Key benefits for AI workload security and resource management:
+
+- **Fine-grained partitioning**: DRA enables requesting specific GPU slices (e.g., a single MIG partition) rather than whole GPUs, reducing resource waste and limiting the blast radius if a workload is compromised
+- **Vendor-neutral device classes**: Cluster administrators define DeviceClasses (e.g., `gpu-h100-mig-3g.20gb`) that abstract hardware details while enforcing security boundaries -- workloads request capabilities rather than raw device paths
+- **Dynamic reclamation**: Resources are released and reclaimed dynamically when pods complete, preventing GPU hoarding by long-idle workloads that would otherwise block legitimate jobs
+- **Integration with admission control**: DRA works alongside Kueue and Volcano, enabling quota enforcement at the ResourceClaim level rather than just pod-level resource requests
+
+Major cloud providers (GKE, AKS, EKS) now support DRA for GPU workloads as of early 2026. Organizations running Kubernetes 1.34+ should migrate from the legacy device plugin model to DRA for improved multi-tenant isolation and scheduling flexibility.
 
 ### GPU Partitioning and Multi-Tenant Isolation
 
@@ -48,7 +61,8 @@ GPU infrastructure is a high-value target for cryptojacking attacks because GPU 
 
 - **ShadowRay 2.0 (2024-2025)**: Exploits CVE-2023-48022 (CVSS 9.8) in the Ray framework, allowing unauthenticated remote code execution via the Jobs API on internet-exposed dashboards. Exposed Ray environments grew from a few thousand to approximately 230,000 by late 2025. Attackers (tracked as IronErn440) turned Ray's legitimate orchestration features into a self-propagating, globally distributed cryptojacking operation that spreads autonomously across exposed clusters.
 - **Dero Cryptojacking Campaign**: Targets Kubernetes clusters with anonymous access enabled on the Kubernetes API listening on non-standard ports. Attackers deploy a DaemonSet named "proxy-api" that places a malicious pod on every node, harnessing all GPU resources simultaneously for mining.
-- **Nvidia Container Escape (July 2025)**: Container-to-host GPU escape vulnerability enabling attackers to break out of containerized AI workloads and access the underlying host's GPU resources.
+- **NVIDIAScape / CVE-2025-23266 (July 2025)**: A critical (CVSS 9.0) container escape vulnerability in the NVIDIA Container Toolkit (versions up to 1.17.7) and GPU Operator (up to 25.3.0). Exploitable with a three-line Dockerfile -- attackers set `LD_PRELOAD` in their container image, causing the `nvidia-ctk` OCI hook to load a malicious shared library with root privileges on the host. Wiz Research estimated approximately 37% of cloud environments were susceptible, making this a systemic risk for any multi-tenant GPU infrastructure. Remediation: upgrade to Container Toolkit v1.17.8+ or GPU Operator v25.3.1+, or disable the `enable-cuda-compat-lib-hook` as an interim measure.
+- **GPUHammer (July 2025)**: Researchers at the University of Toronto demonstrated the first Rowhammer attack against NVIDIA GDDR6 GPU memory (RTX A6000). By inducing bit flips in GPU DRAM, a single bit flip in FP16 model weight exponents degraded model accuracy from 80% to 0.1% across five tested ImageNet DNN models. This is particularly dangerous in multi-tenant cloud GPU environments where attackers and victims share physical hardware. GPUs with HBM3 memory (H100) and GDDR7 (RTX 5090) feature on-die ECC that likely mitigates single-bit flips, but GDDR6 GPUs remain vulnerable.
 
 Detection indicators for cryptojacking on AI infrastructure:
 
@@ -59,6 +73,17 @@ Detection indicators for cryptojacking on AI infrastructure:
 - Unexplained increases in cloud compute bills (enterprises underestimate AI infrastructure costs by 30% on average, making cryptojacking charges easy to miss)
 
 Mitigations: enforce network policies with default-deny egress, require authentication on all orchestration APIs (Ray, Kubernetes), monitor accelerator telemetry for anomalous utilization patterns, and implement admission controllers that reject unsigned container images.
+
+### Agentic Resource Exhaustion
+
+As agentic AI systems become more prevalent, a distinct class of resource exhaustion attacks has emerged: infinite loop and recursive tool-call attacks. An attacker crafts inputs that cause an agent to enter expensive computational loops -- repeatedly invoking tools, spawning sub-agents, or generating unbounded chains of reasoning -- running up GPU and API costs without producing useful output. Industry surveys from late 2025 indicate that nearly half of security practitioners expect agentic AI to represent a top attack vector by the end of 2026.
+
+Defenses against agentic resource exhaustion should be architectural, not just reactive:
+
+- **Execution budgets**: Hard caps on total tokens generated, tool calls made, and wall-clock time per agent invocation. The system should assume the agent will get stuck and build guardrails to terminate it before costs spiral.
+- **Cost-per-request estimation**: Before dispatching to a GPU, estimate the compute cost of a request (based on input length, model size, and expected generation length) and reject requests exceeding a per-user or per-session budget.
+- **Recursive call depth limits**: Cap the number of nested tool invocations or sub-agent spawns. Log and alert when agents approach these limits, as it may indicate adversarial input.
+- **Circuit breakers with cooldown**: When an agent hits its budget cap, enforce a cooldown period before it can be re-invoked, preventing rapid retry loops.
 
 ### AI-Specific Cost Management
 
@@ -125,7 +150,7 @@ Organizations following structured recovery playbooks recover 63% faster than th
 
 ### Recovery Testing
 
-A critical gap: **41% of companies have not tested AI infrastructure recovery in over a year**. Recovery testing should include:
+A critical gap: as of early 2026, **fewer than 50% of organizations have verified their backup recovery procedures**, even though 98% report having ransomware playbooks. Meanwhile, **89% of organizations have had backup repositories directly targeted** by ransomware operators -- modern ransomware variants are specifically designed to locate and destroy backups before encrypting production data. The LockBit 3.0 Reborn campaign (February 2026) compromised 20+ victims, with the worst outcomes consistently linked to organizations that lacked immutable backups, resulting in multi-million-dollar payouts. Recovery testing should include:
 
 - Quarterly simulated regional outages with full end-to-end recovery
 - Validation that all artifacts load correctly together (not just that individual backups exist)
@@ -151,6 +176,11 @@ Use incremental backups to reduce storage costs (e.g., 200GB monthly vs. 6TB for
 - [CrowdStrike: Dero Cryptojacking Campaign Targeting Kubernetes](https://www.crowdstrike.com/en-us/blog/crowdstrike-discovers-first-ever-dero-cryptojacking-campaign-targeting-kubernetes/)
 - [Disaster Recovery for LLM Infrastructure: Backups and Failover](https://brics-econ.org/disaster-recovery-for-large-language-model-infrastructure-backups-and-failover)
 - [Securing GPU-Accelerated AI Workloads in Kubernetes (Oracle/Sysdig)](https://blogs.oracle.com/cloud-infrastructure/securing-gpu-accelerated-ai-workloads-kubernetes)
+- [NVIDIAScape: CVE-2025-23266 Container Escape Analysis (Wiz Research)](https://www.wiz.io/blog/nvidia-ai-vulnerability-cve-2025-23266-nvidiascape)
+- [GPUHammer: Rowhammer Attacks on GPU Memories (USENIX Security 2025)](https://www.usenix.org/conference/usenixsecurity25/presentation/lin-shaopeng)
+- [Kubernetes Dynamic Resource Allocation](https://kubernetes.io/docs/concepts/scheduling-eviction/dynamic-resource-allocation/)
+- [CNCF: Why Every AI Platform Is Converging on Kubernetes (March 2026)](https://www.cncf.io/blog/2026/03/05/the-great-migration-why-every-ai-platform-is-converging-on-kubernetes/)
+- [Navigating the Threat Landscape for Cloud-Based GPUs (Trend Micro)](https://www.trendmicro.com/vinfo/us/security/news/threat-landscape/navigating-the-threat-landscape-for-cloud-based-gpus)
 
 ---
 
@@ -162,5 +192,6 @@ Use incremental backups to reduce storage costs (e.g., 200GB monthly vs. 6TB for
 - [ ] Can accelerator telemetry (power draw, temperature, performance counters) reliably distinguish cryptojacking from legitimate high-utilization AI training workloads without unacceptable false positive rates?
 - [ ] As model sizes continue to grow (potentially multi-terabyte weights), how should disaster recovery strategies adapt when network transfer times dominate RTO? Pre-staged warm replicas across regions may become mandatory for critical inference services.
 - [ ] How should organizations handle backup and recovery for agentic AI systems where state includes not just model weights but also tool configurations, memory stores, and active execution context?
+- [ ] GPUHammer demonstrated that GDDR6 GPU memory is vulnerable to Rowhammer bit-flip attacks that can silently corrupt model weights. Should cloud providers mandate ECC-capable GPUs (HBM3, GDDR7) for multi-tenant AI inference, and how should integrity verification of in-memory model weights be performed at runtime without unacceptable latency overhead?
 
 ---

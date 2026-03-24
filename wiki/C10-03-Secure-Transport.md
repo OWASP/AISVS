@@ -32,6 +32,8 @@ The MCP transport landscape evolved significantly in 2025-2026. Streamable HTTP 
 | 2025-05 | MCP team formally deprecates HTTP+SSE | Legacy deployments must migrate; dual-transport period introduces attack surface |
 | 2025-06-18 | Streamable HTTP becomes sole standard HTTP transport | SSE retained only as optional streaming within Streamable HTTP responses |
 | 2025-2026 | MCP gateway products emerge (10+ commercial offerings by early 2026) | Centralized transport policy enforcement, TLS termination, protocol version pinning |
+| 2026-01 to 2026-02 | 30+ CVEs filed against MCP servers in 60 days (mcp-remote CVE-2025-6514 CVSS 9.6, Docker MCP Gateway CVE-2025-64443, multiple SSRF chains) | Transport-layer attack surface proven at scale; 82% of surveyed MCP implementations had exploitable file-operation paths |
+| 2026-04-01 | SSE transport hard-cutoff deadline announced by early adopters (e.g., Keboola) | Organizations running SSE in production must complete migration to streamable HTTP or lose connectivity |
 
 ## Known Vulnerabilities & Incidents
 
@@ -45,6 +47,25 @@ The MCP transport landscape evolved significantly in 2025-2026. Streamable HTTP 
 | — | Neo4j MCP Cypher Server | DNS rebinding enables unauthorized tool invocations | Complete database takeover of locally running Neo4j instances | Configuration mitigation |
 | — | Grafana MCP Server | Binds to `0.0.0.0:8000` by default with unauthenticated SSE interface | All network interfaces exposed; any host on the network can invoke MCP tools | Configuration change required |
 | — | GitHub "Everything" MCP Server | Demonstrated by Straiker researchers using DNS rebinding | Environment variables containing API keys (OpenAI, DeepSeek credentials) exfiltrated via `printEnv` tool | Configuration mitigation |
+| CVE-2025-64443 | Docker MCP Gateway | DNS rebinding vulnerability when running in SSE or streaming mode (CVSS 7.3 High) | Attackers trick users into visiting malicious websites to manipulate tools running inside the Docker MCP Gateway; default stdio mode unaffected | Gateway ≥ v0.28.0 |
+| CVE-2026-27826 | mcp-atlassian | Unauthenticated SSRF via manipulated `X-Atlassian-Jira-Url` headers in streamable-HTTP and SSE modes | Attackers force the MCP server to make arbitrary HTTP requests, exposing internal services and cloud metadata endpoints | ≥ 0.17.0 |
+| CVE-2026-26118 | Azure MCP Server | Server-side request forgery enabling privilege elevation (CVSS 8.8 High) | Attackers exploit SSRF to access Azure IMDS and escalate privileges within cloud environments | Patched by Microsoft (March 2026) |
+| CVE-2026-32111 | ha-mcp (Home Assistant) | SSRF via `ha_url` parameter in OAuth beta (CVSS 5.3 Medium) | Attackers redirect MCP server requests to internal services through crafted URL parameters | ≥ 7.0.0 |
+
+## SSRF as a Transport-Adjacent Threat
+
+As of early 2026, server-side request forgery (SSRF) has emerged as a major transport-layer threat for MCP servers exposed via streamable HTTP or SSE. The pattern is consistent: MCP servers that accept URLs or host identifiers in HTTP headers or tool parameters can be coerced into making requests to internal services, cloud metadata endpoints (e.g., `169.254.169.254`), or other network-internal resources the attacker cannot reach directly.
+
+The OWASP MCP Top 10 (published March 2026) calls this out under **MCP-07 (Inadequate Authentication & Authorization)** — the Azure MCP Server SSRF (CVE-2026-26118) exploited OAuth proxy trust where authentication existed but authorization boundaries did not. The mcp-atlassian SSRF (CVE-2026-27826) allowed unauthenticated attackers to manipulate `X-Atlassian-Jira-Url` headers to redirect server requests.
+
+**Mitigations for SSRF in MCP transport:**
+
+- Validate and allowlist all URLs and host values received in HTTP headers and tool parameters before the MCP server makes outbound requests.
+- Block requests to private IP ranges (`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, `169.254.0.0/16`) and link-local addresses from MCP server processes.
+- Deploy MCP servers with restrictive egress firewall rules — only permit outbound connections to known, required endpoints.
+- Use network policies (Kubernetes NetworkPolicy, AWS Security Groups) to limit what internal services MCP server pods can reach.
+
+---
 
 ## Defensive Tooling & Gateway Ecosystem
 
@@ -56,6 +77,8 @@ As of early 2026, several products provide centralized MCP transport policy enfo
 | **ContextForge** | Open-source (IBM ecosystem) | Supports HTTP(S), WebSocket, SSE, and stdio streams; configurable transport policies |
 | **Lasso Security** | Commercial | Threat detection for MCP traffic, transport anomaly monitoring |
 | **TLS MCP Server** | Open-source tool | Certificate analysis, cipher suite assessment, security grading for MCP endpoints |
+| **Docker MCP Gateway** | Open-source (Docker ecosystem) | Stdio-by-default transport isolation; SSE/streaming modes available but require explicit DNS rebinding mitigation (patched in v0.28.0) |
+| **SlowMist MCP Security Checklist** | Open-source audit framework | Structured security checklist covering transport, authentication, tool validation, and supply chain for MCP deployments |
 
 **Practical guidance for transport hardening:**
 
@@ -65,6 +88,21 @@ As of early 2026, several products provide centralized MCP transport policy enfo
 - **Gateway delegation:** For organizations running multiple MCP servers, centralize TLS termination and protocol version enforcement at the gateway layer rather than configuring each server individually.
 - **Network segmentation:** Place MCP servers in private subnets accessible only by authorized workloads. Front external endpoints with gateways that enforce rate limiting.
 - **Session hygiene:** Never place session IDs in URL query strings. Clear sensitive context data from memory when sessions terminate.
+- **SSRF egress controls:** Block MCP server outbound connections to private IP ranges and cloud metadata endpoints. Use Kubernetes NetworkPolicy or cloud security groups to enforce least-privilege egress.
+- **HSTS enforcement:** Set `Strict-Transport-Security` headers on all MCP HTTP endpoints to prevent protocol downgrade at the HTTP layer. Combine with `Mcp-Protocol-Version` header preservation for layered downgrade defense.
+- **mTLS for high-security deployments:** Deploy mutual TLS where both client and server present certificates. Configure with `ssl_verify_client on` (nginx) or equivalent. Classify MCP servers as OAuth Resource Servers per the 2025-06-18 spec and use Resource Indicators (RFC 8707) to prevent cross-server token misuse.
+
+## Cryptographic Agility & Post-Quantum Considerations
+
+As of early 2026, security researchers have begun evaluating MCP transport cryptography against quantum computing threats. The core concern is "harvest now, decrypt later" — adversaries capturing encrypted MCP traffic today for future decryption once quantum computers become practical. This is particularly relevant for MCP deployments handling sensitive data (healthcare, finance, government).
+
+Key considerations for MCP transport cryptographic agility (per [Gopher Security's analysis](https://www.gopher.security/blog/algorithmic-agility-mcp-server-client-cryptographic-negotiation)):
+
+- **Algorithm negotiation:** Clients should advertise supported algorithms (including post-quantum candidates like ML-KEM and ML-DSA) rather than assuming compatibility. Servers enforce mandatory-to-implement (MTI) algorithms based on deployment security requirements.
+- **Suite bundling:** Group compatible algorithms into named suites (e.g., `MCP_PQ_KEM_KYBER768_AES256_GCM`) to avoid combinatoric explosion during negotiation. Healthcare and financial deployments may enforce PQC-only policies while less sensitive environments use hybrid approaches.
+- **Hybrid signatures:** During the transition period, deploy dual signatures using both traditional (ECC) and post-quantum algorithms. This ensures backward compatibility while providing quantum resistance.
+- **Downgrade prevention at the cryptographic layer:** Post-quantum signatures can protect the entire negotiation handshake, including the list of supported algorithms. If an attacker strips PQC options from the client's advertised list, the signature verification fails, providing a stronger downgrade prevention mechanism than header-based approaches alone.
+- **RFC 7696 (Guidelines for Cryptographic Algorithm Agility)** provides the foundational framework — MCP implementations should design for algorithm replacement without requiring full stack rewrites.
 
 ## Related Standards & References
 
@@ -84,6 +122,15 @@ As of early 2026, several products provide centralized MCP transport policy enfo
 - [MCP-Protocol-Version Header Issue #854](https://github.com/modelcontextprotocol/modelcontextprotocol/issues/854) — spec inconsistency in version fallback behavior
 - [Aembit: Securing MCP Server Communications](https://aembit.io/blog/securing-mcp-server-communications-best-practices/) — mTLS and transport hardening guidance
 - [PgEdge: MCP Transport Architecture, Boundaries, and Failure Modes](https://www.pgedge.com/blog/mcp-transport-architecture-boundaries-and-failure-modes) — transport architecture analysis
+- [Docker MCP Gateway DNS Rebinding Advisory (GHSA-46gc-mwh4-cc5r)](https://github.com/docker/mcp-gateway/security/advisories/GHSA-46gc-mwh4-cc5r) — CVE-2025-64443 affecting SSE/streaming modes
+- [Gopher Security: Algorithmic Agility in MCP Cryptographic Negotiation](https://www.gopher.security/blog/algorithmic-agility-mcp-server-client-cryptographic-negotiation) — post-quantum considerations for MCP transport
+- [Securing MCP: OAuth, mTLS, and Zero Trust (dasroot.net, Feb 2026)](https://dasroot.net/posts/2026/02/securing-model-context-protocol-oauth-mtls-zero-trust/) — comprehensive mTLS and zero-trust guidance
+- [SlowMist MCP Security Checklist](https://github.com/slowmist/MCP-Security-Checklist) — structured security audit checklist for MCP deployments
+- [SSRF in Azure MCP Server (CVE-2026-26118)](https://blog.blueinfy.com/2026/03/ssrf-in-azure-mcp-server-tools.html) — SSRF privilege elevation via MCP transport
+- [Keboola SSE Deprecation Notice](https://changelog.keboola.com/sse-transport-deprecation-migration-to-streamable-http/) — April 2026 SSE hard-cutoff migration timeline
+- [RFC 7696: Guidelines for Cryptographic Algorithm Agility](https://datatracker.ietf.org/doc/html/rfc7696) — framework for algorithm replacement in protocols
+- [RFC 8707: Resource Indicators for OAuth 2.0](https://datatracker.ietf.org/doc/html/rfc8707) — token scoping to prevent cross-server misuse in MCP OAuth flows
+- [ContextForge mTLS Feature Request (IBM/mcp-context-forge #568)](https://github.com/ibm/mcp-context-forge/issues/568) — tracks mTLS support for MCP gateways
 
 ---
 
@@ -96,5 +143,8 @@ As of early 2026, several products provide centralized MCP transport policy enfo
 - [ ] As MCP gateways become standard infrastructure, should TLS termination and protocol version enforcement be delegated to the gateway layer, and what are the trust implications? Gateway products are proliferating (10+ commercial offerings by early 2026) but introduce a new trust boundary.
 - [ ] The cross-client data leak (CVE-2026-25536) when reusing `StreamableHTTPServerTransport` across clients suggests the need for stronger session isolation guarantees at the transport layer — should this be a spec-level requirement?
 - [ ] Should the MCP spec require servers to reject requests with missing `Origin` headers by default, given that DNS rebinding was the most exploited MCP transport vulnerability class in 2025?
+- [ ] SSRF emerged as a major MCP transport threat in early 2026 (CVE-2026-26118, CVE-2026-27826). Should the MCP spec define mandatory egress restrictions or URL validation requirements for servers that accept external URLs in tool parameters or headers?
+- [ ] As post-quantum cryptography matures (ML-KEM, ML-DSA), should the MCP specification define algorithm negotiation suites and mandate cryptographic agility per RFC 7696? The "harvest now, decrypt later" threat is particularly relevant for MCP deployments handling sensitive data.
+- [ ] The 30+ CVEs filed against MCP servers in January-February 2026 suggest the ecosystem lacks baseline security requirements. Should there be an MCP security certification or conformance program analogous to FIDO Alliance certification?
 
 ---
