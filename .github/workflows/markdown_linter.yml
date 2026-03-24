@@ -14,13 +14,38 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
-      - name: markdownlint-cli
-        uses: nosborn/github-action-markdown-cli@v2.0.0
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install markdownlint-cli
+        run: npm install -g markdownlint-cli
+
+      - name: Get changed markdown files
+        id: files
+        uses: tj-actions/changed-files@v46
         with:
           files: |
-            ./README.md
-            ./wiki/**/*.md
-            ./1.0/en/**/*.md
-          config_file: ".github/workflows/config/markdownlint.jsonc"
-          ignore_files: ""
+            README.md
+            wiki/**/*.md
+            1.0/en/**/*.md
+
+      - name: Run markdownlint on changed files
+        if: steps.files.outputs.any_changed == 'true'
+        run: |
+          files_string="${{ steps.files.outputs.all_changed_files }}"
+          files_string="${files_string//\\n/$'\n'}"
+          files=()
+          while IFS= read -r file; do
+            [ -n "$file" ] && files+=("$file")
+          done <<< "$files_string"
+
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No files to check."
+            exit 0
+          fi
+
+          markdownlint --config .github/workflows/config/markdownlint.jsonc "${files[@]}"
