@@ -1,6 +1,7 @@
 {
   "version": "0.2",
   "ignorePaths": [
+    "wiki/**",
     "**/0x94-Appendix-E_Contributors.md",
     "**/LICENSE.md",
     "**/SUPPORTERS.md"

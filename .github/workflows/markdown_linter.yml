@@ -30,7 +30,6 @@ jobs:
         with:
           files: |
             README.md
-            wiki/**/*.md
             1.0/en/**/*.md
 
       - name: Run markdownlint on changed files
