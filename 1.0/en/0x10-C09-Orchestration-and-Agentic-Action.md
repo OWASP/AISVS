@@ -27,7 +27,7 @@ Require explicit checkpoints for privileged or irreversible outcomes.
 | # | Description | Level | Role |
 | :--: | --- | :---: | :--: |
 | **9.2.1** | **Verify that** privileged or irreversible actions (e.g., code merges/deploys, financial transfers, user access changes, destructive deletes, external notifications) require explicit human-in-loop approval. | 1 | D/V |
-| **9.2.2** | **Verify that** approval requests present the exact action parameters (diff/command/recipient/amount/scope), that the resulting approval is integrity-protected and bound to those parameters, and that approvals expire quickly to prevent stale or substituted approvals ("approve one thing, execute another"). | 2 | D/V |
+| **9.2.2** | **Verify that** approval requests present the exact action parameters (diff/command/recipient/amount/scope), that the resulting approval is integrity-protected and bound to those parameters, and that approvals expire after a short time window to prevent stale or substituted approvals. | 2 | D/V |
 | **9.2.3** | **Verify that** where rollback is feasible, compensating actions are defined and tested (transactional semantics), and failures trigger rollback or safe containment. | 3 | V |
 
 ---
