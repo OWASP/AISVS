@@ -54,7 +54,7 @@ Deploy post-processing controls to prevent unauthorized data exposure in AI-gene
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **5.4.1** | **Verify that** post-inference filtering mechanisms scan and redact unauthorized PII, classified information, and proprietary data before delivering content to requestors. | 1 | D/V |
+| **5.4.1** | **Verify that** post-inference filtering mechanisms prevent responses from including classified information or proprietary data that the requestor is not authorized to receive. | 1 | D/V |
 | **5.4.2** | **Verify that** citations, references, and source attributions in model outputs are validated against caller entitlements and removed if unauthorized access is detected. | 2 | D/V |
 | **5.4.3** | **Verify that** output format restrictions (sanitized documents, metadata-stripped images, approved file types) are enforced based on user permission levels and data classifications. | 2 | D |
 
@@ -68,8 +68,9 @@ Ensure logical and cryptographic isolation between tenants in shared AI infrastr
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
 | **5.5.1** | **Verify that** network policies implement default-deny rules for cross-tenant communication. | 2 | D |
 | **5.5.2** | **Verify that** every API request includes an authenticated tenant identifier that is cryptographically validated against session context and user entitlements. | 1 | D/V |
-| **5.5.3** | **Verify that** memory spaces, embedding stores, cache entries, and temporary files are namespace-segregated per tenant with secure purging on tenant deletion or session termination. | 2 | D/V |
+| **5.5.3** | **Verify that** memory spaces, embedding stores, cache entries (e.g., result caches, embedding caches), and temporary files are namespace-segregated per tenant with secure purging on tenant deletion or session termination. | 2 | D/V |
 | **5.5.4** | **Verify that** encryption keys are unique per tenant with customer-managed key (CMK) support and cryptographic isolation between tenant data stores. | 3 | D |
+| **5.5.5** | **Verify that** inference-time KV-cache entries are partitioned by authenticated session or tenant identity and that automatic prefix caching does not share cached prefixes across distinct security principals, to prevent timing-based prompt reconstruction attacks. | 2 | D |
 
 ---
 
@@ -92,3 +93,4 @@ Control permissions for AI agents and autonomous systems through scoped capabili
 * [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final)
 * [NIST SP 800-63-3: Digital Identity Guidelines](https://csrc.nist.gov/pubs/sp/800/63/3/final)
 * [NIST IR 8360: Machine Learning for Access Control Policy Verification](https://csrc.nist.gov/pubs/ir/8360/final)
+* [I Know What You Asked: Prompt Leakage via KV-Cache Sharing in Multi-Tenant LLM Serving (NDSS 2025)](https://www.ndss-symposium.org/ndss-paper/i-know-what-you-asked-prompt-leakage-via-kv-cache-sharing-in-multi-tenant-llm-serving/)

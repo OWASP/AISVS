@@ -1,12 +1,14 @@
-# C1 Training Data Governance & Bias Management
+# C1 Training Data Integrity & Traceability
 
 ## Control Objective
 
-Training data must be sourced, handled, and maintained in a way that preserves provenance, security, quality, and fairness. Doing so fulfils legal duties and reduces risks of bias, poisoning, or privacy breaches that could affect the entire AI lifecycle.
+Training data must be sourced, handled, and maintained in a way that preserves origin traceability, integrity, and quality. The core security concern is ensuring data has not been tampered with, poisoned, or corrupted. Security-relevant bias (e.g., skewed abuse-detection training data that allows attackers to bypass controls) is treated as a possible consequence of compromised or unvalidated data, not as a standalone control category.
+
+> **Scope note — bias.** AISVS addresses bias only where it introduces security risk (e.g., bypass of abuse detection, authentication heuristics, or automated trust decisions). Broader fairness governance requirements are out of scope; see ISO/IEC 42001 or the NIST AI RMF for general fairness and ethics guidance.
 
 ---
 
-## C1.1 Training Data Provenance
+## C1.1 Training Data Origin & Traceability
 
 Maintain a verifiable inventory of all datasets, accept only trusted sources, and log every change for auditability.
 
@@ -41,8 +43,8 @@ Ensure labeling and annotation processes are access-controlled, auditable, and p
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **1.3.1** | **Verify that** labeling interfaces and platforms enforce access controls and maintain audit logs of all labeling activities. | 1 | D/V |
-| **1.3.2** | **Verify that** cryptographic hashes or digital signatures are applied to labeling artifacts and annotation data to ensure their integrity and authenticity. | 2 | D/V |
+| **1.3.1** | **Verify that** labeling interfaces and platforms enforce access controls and maintain audit logs of all labeling activities, and that annotator identity metadata is exported and retained alongside the dataset so that every annotation or preference pair can be attributed to a specific, verified human annotator throughout the training pipeline, not only within the labeling platform. | 1 | D/V |
+| **1.3.2** | **Verify that** cryptographic hashes or digital signatures are applied to labeling artifacts, annotation data, and fine-tuning feedback records (including RLHF preference pairs) to ensure their integrity and authenticity. | 2 | D/V |
 | **1.3.3** | **Verify that** labeling audit logs are tamper-evident and that labeling platforms protect against unauthorized modifications. | 2 | D/V |
 | **1.3.4** | **Verify that** sensitive information in labels is redacted, anonymized, or encrypted using appropriate granularity at rest and in transit. | 2 | D/V |
 
@@ -59,6 +61,7 @@ Combine automated validation, manual spot-checks, and logged remediation to guar
 | **1.4.3** | **Verify that** automatically generated labels (e.g., via models or weak supervision) are subject to confidence thresholds and consistency checks to detect misleading or low-confidence labels. | 2 | D/V |
 | **1.4.4** | **Verify that** appropriate defenses, such as adversarial training, data augmentation with perturbed inputs, or robust optimization techniques, are implemented and tuned for relevant models based on risk assessment. | 3 | D/V |
 | **1.4.5** | **Verify that** automated tests catch label skews on every ingest or significant data transformation. | 2 | D |
+| **1.4.6** | **Verify that** models used in security-relevant decisions (e.g., abuse detection, fraud scoring, automated trust decisions) are evaluated for systematic bias patterns that an adversary could exploit to evade controls (e.g., mimicking a trusted language style or demographic pattern to bypass detection). | 2 | D/V |
 
 ---
 
@@ -77,6 +80,6 @@ Track the full journey of each dataset from source to model input for auditabili
 ## References
 
 * [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
-* [EU AI Act – Article 10: Data & Data Governance](https://artificialintelligenceact.eu/article/10/)
+* [EU AI Act: Article 10: Data & Data Governance](https://artificialintelligenceact.eu/article/10/)
 * [CISA Advisory: Securing Data for AI Systems](https://www.cisa.gov/news-events/cybersecurity-advisories/aa25-142a)
-* [OpenAI Privacy Center – Data Deletion Controls](https://privacy.openai.com/policies?modal=take-control)
+* [OpenAI Privacy Center: Data Deletion Controls](https://privacy.openai.com/policies?modal=take-control)
