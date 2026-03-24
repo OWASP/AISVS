@@ -91,10 +91,10 @@ Fine-tuning pipelines are high-privilege operations that can alter deployed mode
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **3.7.1** | **Verify that** initiating a fine-tuning run requires authenticated authorization from a designated approver separate from the person requesting the run, with the approval identity, timestamp, and approved training configuration recorded in an immutable audit log before pipeline execution begins. | 2 | D/V |
-| **3.7.2** | **Verify that** the reward model used in any RLHF fine-tuning stage is treated as a versioned, signed artifact subject to the same integrity verification and validation gates required of policy model artifacts before it is used in a training run. | 2 | D/V |
-| **3.7.3** | **Verify that** reward hacking is evaluated after each RLHF training stage by measuring the policy model's reward scores on a held-out probe set and comparing them to human preference scores on the same set, with the run blocked from promotion if divergence exceeds a defined threshold. | 3 | D/V |
-| **3.7.4** | **Verify that** in multi-stage fine-tuning pipelines, each stage's output checkpoint is cryptographically signed and recorded as a distinct artifact in the model registry before the next stage begins, enabling isolation and rollback of any compromised intermediate stage. | 3 | D/V |
+| **3.7.1** | **Verify that** initiating a fine-tuning or retraining run requires authorization from a person who did not request the run (separation of duties). | 3 | D/V |
+| **3.7.2** | **Verify that** reward models used in RLHF fine-tuning are versioned, cryptographically signed, and integrity-verified before use in a training run. | 2 | D/V |
+| **3.7.3** | **Verify that** RLHF training stages include automated detection of reward hacking or reward model over-optimization (e.g., held-out human-preference probe sets, divergence thresholds, or KL penalty monitoring), with the run blocked from promotion if detection thresholds are exceeded. | 3 | D/V |
+| **3.7.4** | **Verify that** in multi-stage fine-tuning pipelines, each stage's output is integrity-verified before the next stage consumes it, and intermediate checkpoints are registered as distinct artifacts enabling per-stage rollback. | 3 | D/V |
 
 ---
 
