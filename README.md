@@ -82,7 +82,7 @@ We welcome contributions from the community. Please [open an issue](https://gith
 
 ## Project Leaders
 
-This project was founded by [Jim Manico](https://github.com/jmanico). Current project leadership includes [Jim Manico](https://github.com/jmanico), [Otto Sulin](https://github.com/ottosulin), and [Russ Memisyazici](https://github.com/vtknightmare).
+This project was founded by [Jim Manico](https://github.com/jmanico). Current project leadership includes [Jim Manico](https://github.com/jmanico), [Otto Sulin](https://github.com/ottosulin), [Rico Komenda](https://github.com/RicoKomenda), and [Russ Memisyazici](https://github.com/vtknightmare).
 
 ## License
 
