@@ -56,7 +56,6 @@ Make every action attributable and every mutation detectable.
 | **9.4.1** | **Verify that** each agent instance (and orchestrator/runtime) has a unique cryptographic identity and authenticates as a first-class principal to downstream systems (no reuse of end-user credentials). | 1 | D/V |
 | **9.4.2** | **Verify that** agent-initiated actions are cryptographically bound to the execution chain (chain ID) and are signed and timestamped for non-repudiation and traceability. | 2 | D/V |
 | **9.4.3** | **Verify that** audit logs are tamper-evident (via append-only/WORM/immutable log store, cryptographic hash chaining where each record includes the hash of the prior record, or equivalent integrity guarantees that can be independently verified), and include sufficient context to reconstruct who/what acted, initiating user identifier, delegation scope, authorization decision (policy/version), tool parameters, approvals (where applicable), and outcomes. | 2 | D/V |
-| **9.4.3** | **Verify that** agent action audit logs include sufficient context to reconstruct the full execution chain, including initiating user identifier, delegation scope, authorization decision with policy version, tool parameters, approval records where applicable, and outcomes, and are stored in an append-only or write-once log store. | 2 | D/V |
 | **9.4.4** | **Verify that** agent identity credentials (keys/certs/tokens) rotate on a defined schedule and on compromise indicators, with rapid revocation and quarantine on suspected compromise or spoofing attempts. | 3 | D/V |
 
 ---
