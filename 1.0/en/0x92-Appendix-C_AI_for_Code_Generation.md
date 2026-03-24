@@ -102,29 +102,29 @@ Ensure that autonomous AI agents involved in code or configuration generation ar
 
 ---
 
-## AC.9 AI Provenance-Aware Deployment Controls
+## AC.9 AI Artifact Origin Validation for Deployment
 
-Ensure that deployment and promotion pipelines incorporate provenance-aware validation for AI-generated artifacts.
+Ensure that deployment and promotion pipelines validate the origin and generation history of AI-generated artifacts before they are promoted.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **AC.9.1** | **Verify that** AI-generated artifacts include provenance metadata identifying the generating system, generation context, and associated traceability records. | 1 | D/V |
-| **AC.9.2** | **Verify that** deployment pipelines validate the presence and integrity of provenance metadata for AI-generated artifacts prior to promotion. | 2 | D |
-| **AC.9.3** | **Verify that** artifacts lacking required provenance information, or originating from untrusted generation environments, can be rejected during deployment. | 3 | D/V |
+| **AC.9.1** | **Verify that** AI-generated artifacts include origin and generation metadata identifying the AI system that produced them, the generation context, and associated audit records. | 1 | D/V |
+| **AC.9.2** | **Verify that** deployment pipelines validate the presence and integrity of origin and generation metadata for AI-generated artifacts prior to promotion. | 2 | D |
+| **AC.9.3** | **Verify that** artifacts lacking required origin and generation information, or produced by untrusted AI systems or environments, are rejected during deployment. | 3 | D/V |
 
 ---
 
-## AC.10 Provenance Completeness and Validation
+## AC.10 Generation Audit Trail Completeness and Validation
 
-Ensure that AI-generated artifacts include complete and consistent provenance metadata, and that this metadata is validated prior to integration or deployment.
+Ensure that AI-generated artifacts include complete and consistent origin and generation records, and that these records are validated prior to integration or deployment.
 
-In practice, policy-based enforcement depends on the availability and quality of provenance metadata. Incomplete or inconsistent metadata can lead to missed detections or enforcement gaps. These controls ensure that provenance is treated as a first-class requirement and validated prior to artifact acceptance.
+In practice, policy-based enforcement depends on the availability and quality of origin and generation records. Incomplete or inconsistent records can lead to missed detections or enforcement gaps. These controls ensure that origin tracking is treated as a first-class requirement and validated prior to artifact acceptance.
 
 | # | Description | Level | Role |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **AC.10.1** | **Verify that** AI-generated artifacts include required provenance fields (e.g., model identity, generation context, human involvement, and session identifiers). | 1 | D/V |
-| **AC.10.2** | **Verify that** provenance metadata is validated for completeness and consistency (e.g., no missing or ambiguous fields, normalized representations). | 2 | D |
-| **AC.10.3** | **Verify that** artifacts with incomplete, inconsistent, or unverifiable provenance metadata are rejected prior to merge or deployment. | 3 | D/V |
+| **AC.10.1** | **Verify that** AI-generated artifacts include required origin and generation fields (e.g., model identity, generation context, human involvement, and session identifiers). | 1 | D/V |
+| **AC.10.2** | **Verify that** origin and generation metadata is validated for completeness and consistency (e.g., no missing or ambiguous fields, normalized representations). | 2 | D |
+| **AC.10.3** | **Verify that** artifacts with incomplete, inconsistent, or unverifiable origin and generation metadata are rejected prior to merge or deployment. | 3 | D/V |
 
 ---
 
