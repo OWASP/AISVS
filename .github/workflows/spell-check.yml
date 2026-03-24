@@ -5,13 +5,19 @@ on:
     branches:
       - main
     paths:
+      - '*.md'
+      - 'wiki/**/*.md'
       - '**/en/*.md'
+      - 'wiki/**/*.markdown'
       - '**/en/*.markdown'
   pull_request:
     branches:
       - main
     paths:
+      - '*.md'
+      - 'wiki/**/*.md'
       - '**/en/*.md'
+      - 'wiki/**/*.markdown'
       - '**/en/*.markdown'
   workflow_dispatch:
 
@@ -39,6 +45,7 @@ jobs:
         with:
           files: |
             1.0/en/**/*.md
+            wiki/**/*.md
             *.md
           separator: '\n'
 
@@ -63,4 +70,4 @@ jobs:
       - name: Run cspell on all markdown files (push to main or manual)
         if: github.event_name != 'pull_request'
         run: |
-          cspell --config .github/workflows/config/cspell.json "1.0/en/**/*.md" "*.md"
+          cspell --config .github/workflows/config/cspell.json "1.0/en/**/*.md" "wiki/**/*.md" "*.md"
