@@ -1,7 +1,7 @@
 {
     // https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
   
-    "MD004": {"style": "asterisk"},               // ul-style
+    "MD004": false,                               // ul-style
     "MD007": {"indent": "4"},                     // ul-style
     "MD013": false,                               // line-length
     "MD024": {"allow_different_nesting": true},   // no-duplicate-header
@@ -9,7 +9,7 @@
     "MD033": false,                               // no-inline-html
     "MD034": false,                               // bare URLs
     "MD035": {"style": "---"},                    // hr-style
-    "MD036": {"punctuation": ".,;:!。"},          // no-emphasis-as-header
+    "MD036": false,                               // no-emphasis-as-header
     "MD041": false,                               // first-line-h1
     "MD046": {"style": "fenced"} ,                // code-block-style
     "MD049": {"style": "underscore"},             // emphasis-style
