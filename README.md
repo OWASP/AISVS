@@ -28,7 +28,8 @@ AISVS is modeled after the [OWASP Application Security Verification Standard (AS
 | Standard | Focus | AISVS relationship |
 |---|---|---|
 | OWASP ASVS | Web application security | AISVS extends ASVS concepts to AI-specific threats |
-| OWASP Top 10 for LLMs | Awareness of top LLM risks | AISVS provides the detailed controls to mitigate those risks |
+| [OWASP Top 10 for LLMs](https://owasp.org/www-project-top-10-for-large-language-model-applications/) | Awareness of top LLM risks | AISVS provides the detailed controls to mitigate those risks |
+| [OWASP Top 10 for Agentic Applications](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/) | Awareness of top agentic AI risks | AISVS provides the detailed controls to address agentic-specific threats |
 | NIST AI RMF | AI risk governance | AISVS supplies the testable technical controls that AI RMF references |
 | ISO/IEC 42001 | AI management systems | AISVS complements with implementation-level security verification |
 
