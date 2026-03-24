@@ -1,6 +1,7 @@
 aisvs
 AISVS
 Manico
+Komenda
 Memisyazici
 Lomuscio
 Zhao
