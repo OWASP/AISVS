@@ -18,6 +18,9 @@ jobs:
       - name: markdownlint-cli
         uses: nosborn/github-action-markdown-cli@v2.0.0
         with:
-          files: './1.0/en/*'
+          files: |
+            ./README.md
+            ./wiki/**/*.md
+            ./1.0/en/**/*.md
           config_file: ".github/workflows/config/markdownlint.jsonc"
           ignore_files: ""
