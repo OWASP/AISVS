@@ -112,6 +112,22 @@ Ensure that deployment and promotion pipelines incorporate provenance-aware vali
 | **AC.9.2** | **Verify that** deployment pipelines validate the presence and integrity of provenance metadata for AI-generated artifacts prior to promotion. | 2 | D |
 | **AC.9.3** | **Verify that** artifacts lacking required provenance information, or originating from untrusted generation environments, can be rejected during deployment. | 3 | D/V |
 
+---
+
+## AC.10 Provenance Completeness and Validation
+
+Ensure that AI-generated artifacts include complete and consistent provenance metadata, and that this metadata is validated prior to integration or deployment.
+
+In practice, policy-based enforcement depends on the availability and quality of provenance metadata. Incomplete or inconsistent metadata can lead to missed detections or enforcement gaps. These controls ensure that provenance is treated as a first-class requirement and validated prior to artifact acceptance.
+
+| # | Description | Level | Role |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
+| **AC.10.1** | **Verify that** AI-generated artifacts include required provenance fields (e.g., model identity, generation context, human involvement, and session identifiers). | 1 | D/V |
+| **AC.10.2** | **Verify that** provenance metadata is validated for completeness and consistency (e.g., no missing or ambiguous fields, normalized representations). | 2 | D |
+| **AC.10.3** | **Verify that** artifacts with incomplete, inconsistent, or unverifiable provenance metadata are rejected prior to merge or deployment. | 3 | D/V |
+
+---
+
 ## References
 
 * [NIST AI Risk Management Framework 1.0](https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf)
