@@ -154,6 +154,8 @@ Validate, normalize, and constrain all inputs before they reach models or downst
 | Unicode NFC normalization and homoglyph mapping | 2.2.1 |
 | Control / invisible character removal | 2.2.1, 2.2.5 |
 | Statistical and embedding-distance anomaly detection on inputs | 2.2.3 |
+| Structured-data injection validation for JSON, CSV, XML, and tool payloads | 2.1.1, 2.4.1, 10.4.1, 10.4.4 |
+| Context poisoning detection for RAG chunks, tool outputs, and memory inputs | 2.1.1, 8.1.5, 10.4.1 |
 | Character set allow-listing | 2.3.1, 2.3.2 |
 | Schema validation (JSON Schema, Protocol Buffers) | 2.4.1, 7.1.1 |
 | Token and byte limit enforcement | 2.4.2 |
@@ -288,6 +290,7 @@ Verify origin and authenticity, scan dependencies, and enforce integrity of mode
 | Approved source and internal registry enforcement | 6.4.1 |
 | Malicious layer and trojan trigger scanning | 6.1.2 |
 | External dataset poisoning assessment (fingerprinting, outlier detection) | 6.5.1 |
+| Training-time poisoning detection (e.g., RONI, influence scoring, gradient analysis, activation clustering) | 1.4.2, 6.5.1 |
 | Copyright and PII detection in external datasets | 6.5.2 |
 | Dataset origin and lineage documentation | 6.5.3 |
 | Automated AI BOM generation and signing in CI | 6.7.2 |
@@ -305,6 +308,7 @@ Manage model deployment, rollback, retirement, and emergency response.
 |---|---|
 | Automated security testing gates before deployment | 3.2.1 |
 | Agent workflow, tool, MCP, and RAG integration testing | 3.2.2 |
+| Third-party model behavioral acceptance testing (safety, alignment, capability boundaries) | 3.2.1, 3.2.2, 6.1.5 |
 | Immutable audit records for model changes | 3.2.3 |
 | Deployment validation with failure blocking and override approval | 3.2.4 |
 | Signature and integrity checksum verification at deployment | 3.3.1 |
@@ -337,7 +341,9 @@ Protect personal data and enforce data subject rights throughout the AI lifecycl
 | Machine unlearning with certified algorithms | 12.2.2 |
 | Shadow-model evaluation of unlearning effectiveness | 12.2.3 |
 | Privacy-loss accounting with epsilon budget tracking and alerts | 12.3.1 |
+| Differential privacy budget exhaustion enforcement (halt or block further training when limits are exceeded) | 12.3.1 |
 | Formal differential privacy proofs (including post-training and embeddings) | 12.3.3 |
+| PATE (Private Aggregation of Teacher Ensembles) and teacher-student privacy-preserving training | 11.3.2, 12.3.1, 12.3.3 |
 | Purpose tags with machine-readable alignment and runtime enforcement | 12.4.1, 12.4.2 |
 | Consent Management Platform (CMP) with opt-in tracking | 12.5.1 |
 | Consent withdrawal processing (< 24 hour SLA) | 12.5.3 |
@@ -360,9 +366,11 @@ Test for and defend against evasion, extraction, inversion, poisoning, and align
 | Automated harmful-content rate evaluation with regression detection | 11.1.3 |
 | RLHF / Constitutional AI alignment training | 11.1.4 |
 | Adversarial training and defensive distillation | 11.2.3, 2.2.4 |
+| Model ensemble disagreement analysis for evasion detection | 11.2.2, 11.6.1 |
+| Randomized input transformation with divergence or OOD detection | 11.2.2, 11.6.1 |
 | Formal robustness verification (certified bounds, interval-bound propagation) | 11.2.5 |
 | Adversarial-example detection with production alerting | 11.2.2 |
-| Output calibration and perturbation for privacy | 11.3.1 |
+| Output calibration, confidence obfuscation, and perturbation for privacy | 11.3.1 |
 | DP-SGD (differentially private training) with documented epsilon | 11.3.2 |
 | Membership inference attack simulation (shadow-model, likelihood-ratio) | 11.3.3 |
 | Model extraction detection (query-pattern analysis, diversity measurement) | 11.5.3 |
@@ -416,6 +424,7 @@ Detect anomalies, alert on threats, and respond to security incidents in AI syst
 | Performance metric monitoring (accuracy, latency, error rate) with alerting | 13.3.1, 13.3.2 |
 | Hallucination detection monitoring | 13.3.3 |
 | Data drift and concept drift detection | 13.6.2, 13.6.3 |
+| Runtime behavior drift detection (output entropy, confidence histograms, topic drift) | 13.6.2, 13.6.3 |
 | Model extraction alert generation with query metadata logging | 11.5.2 |
 | Emergent multi-agent behavior detection (oscillation, deadlock, broadcast storms) | 9.8.2 |
 | AI-specific incident response plans (model compromise, data poisoning, adversarial attack) | 13.5.1 |
