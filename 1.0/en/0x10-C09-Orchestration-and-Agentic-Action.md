@@ -27,8 +27,11 @@ Require explicit checkpoints for privileged or irreversible outcomes.
 | # | Description | Level | Role |
 | :--: | --- | :---: | :--: |
 | **9.2.1** | **Verify that** privileged or irreversible actions (e.g., code merges/deploys, financial transfers, user access changes, destructive deletes, external notifications) require explicit human-in-loop approval. | 1 | D/V |
-| **9.2.2** | **Verify that** approval requests present the exact action parameters (diff/command/recipient/amount/scope), that the resulting approval is integrity-protected and bound to those parameters, and that approvals expire after a short time window to prevent stale or substituted approvals. | 2 | D/V |
-| **9.2.3** | **Verify that** where rollback is feasible, compensating actions are defined and tested (transactional semantics), and failures trigger rollback or safe containment. | 3 | V |
+| **9.2.2** | **Verify that** approval requests display canonicalized and complete action parameters (diff, command, recipient, amount, scope) without truncation or transformation. | 2 | D/V |
+| **9.2.3** | **Verify that** approvals are cryptographically bound (e.g., signed or MACed) to the exact action parameters, requester identity, and execution context. | 2 | D/V |
+| **9.2.4** | **Verify that** approvals include a unique nonce and are single-use to prevent replay or substitution. | 2 | D/V |
+| **9.2.5** | **Verify that** approvals expire within a defined maximum time-to-live (TTL) and are rejected after expiration. | 2 | D/V |
+| **9.2.6** | **Verify that** where rollback is feasible, compensating actions are defined and tested (transactional semantics), and failures trigger rollback or safe containment. | 3 | V |
 
 ---
 
@@ -93,8 +96,10 @@ Prevent "technically authorized but unintended" actions by binding execution to 
 | # | Description | Level | Role |
 | :--: | --- | :---: | :--: |
 | **9.7.1** | **Verify that** pre-execution gates evaluate proposed actions and parameters against hard policy constraints (deny rules, data handling constraints, allow-lists, side-effect budgets) and block execution on any violation. | 1 | D/V |
-| **9.7.2** | **Verify that** post-condition checks confirm the intended outcome and detect unintended side effects; any mismatch triggers containment (and compensating actions where supported). | 2 | V |
-| **9.7.3** | **Verify that** prompt templates and agent policy configurations are integrity-verified at load time against their approved versions (e.g., via hashes or signatures). | 3 | D/V |
+| **9.7.2** | **Verify that** post-execution checks confirm the intended outcome was achieved. | 2 | V |
+| **9.7.3** | **Verify that** post-execution checks detect unintended side effects. | 2 | V |
+| **9.7.4** | **Verify that** any mismatch between intended outcome and actual results triggers containment and, where supported, compensating actions. | 2 | V |
+| **9.7.5** | **Verify that** prompt templates and agent policy configurations are integrity-verified at load time against their approved versions (e.g., via hashes or signatures). | 3 | D/V |
 
 ---
 
