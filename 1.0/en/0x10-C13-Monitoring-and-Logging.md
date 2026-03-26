@@ -31,7 +31,7 @@ This section provides requirements for delivering real-time and forensic visibil
 | **13.2.6** | **Verify that** custom rules are included to detect AI-specific threat patterns including coordinated jailbreak attempts, prompt injection campaigns, and model extraction attacks. | 2 | D/V |
 | **13.2.7** | **Verify that** automated incident response workflows can isolate compromised models, block malicious users, and escalate critical security events. | 3 | D/V |
 | **13.2.8** | **Verify that** session-level conversation trajectory analysis detects multi-turn jailbreak patterns where no individual turn is overtly malicious in isolation but the aggregate conversation exhibits attack indicators. | 3 | D/V |
-| **13.2.9** | **Verify that** per-user and per-session token consumption is tracked, with anomaly detection alerting when consumption exceeds defined thresholds. | 2 | D/V |
+| **13.2.9** | **Verify that** per-user and per-session token consumption triggers an alert when consumption exceeds defined thresholds. | 2 | D/V |
 | **13.2.10** | **Verify that** LLM API traffic is monitored for covert channel indicators, including Base64-encoded payloads, structured non-human query patterns, and communication signatures consistent with malware command-and-control activity using LLM endpoints. | 3 | D/V |
 
 ---
