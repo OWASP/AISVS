@@ -103,3 +103,5 @@ Rego
 unvalidated
 Cylance
 NDSS
+RONI
+PATE
