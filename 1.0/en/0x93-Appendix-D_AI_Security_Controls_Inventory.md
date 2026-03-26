@@ -11,7 +11,7 @@ This appendix provides a concise inventory of every security control and defense
 Verify the identity of users, agents, services, MCP clients/servers, and edge devices before granting access.
 
 | Control / Technique | Requirement IDs |
-|---|---|
+| --- | --- |
 | Centralized identity provider (OIDC, SAML) | 5.1.1 |
 | Multi-factor authentication for high-risk operations | 5.1.2 |
 | Signed JWT tokens for identity proof | 5.1.3 |
@@ -35,7 +35,7 @@ Verify the identity of users, agents, services, MCP clients/servers, and edge de
 Enforce access decisions across users, agents, tools, data, and MCP resources using policy-based controls.
 
 | Control / Technique | Requirement IDs |
-|---|---|
+| --- | --- |
 | RBAC / ABAC / zero-trust authorization models | 5.2.1, 5.2.7 |
 | Policy decision engines (OPA, Cedar) | 5.2.6 |
 | Least-privilege resource access | 5.2.1, 5.6.2 |
@@ -63,7 +63,7 @@ Enforce access decisions across users, agents, tools, data, and MCP resources us
 Protect stored data, models, secrets, logs, and backups through encryption.
 
 | Control / Technique | Requirement IDs |
-|---|---|
+| --- | --- |
 | Training data encryption at rest | 1.2.3 |
 | Labeled data encryption | 1.3.4 |
 | Secrets encryption at rest in secrets management system | 4.4.1 |
@@ -83,7 +83,7 @@ Protect stored data, models, secrets, logs, and backups through encryption.
 Protect data moving between services, agents, tools, and edge devices.
 
 | Control / Technique | Requirement IDs |
-|---|---|
+| --- | --- |
 | Mutual TLS with certificate validation for inter-service communication | 4.3.4 |
 | Mutual TLS for agent-to-agent and agent-to-tool communication (TLS 1.3+) | 9.5.1 |
 | Authenticated streamable-HTTP transport with TLS 1.3 for MCP | 10.3.1, 10.3.2 |
@@ -102,7 +102,7 @@ Protect data moving between services, agents, tools, and edge devices.
 Manage cryptographic keys, secrets, and credentials throughout their lifecycle.
 
 | Control / Technique | Requirement IDs |
-|---|---|
+| --- | --- |
 | Hardware-backed key storage (HSM, KMS, FIPS 140-3 Level 3) | 4.4.4, 4.7.6 |
 | Secrets isolation from application workloads | 4.4.1 |
 | Runtime secret injection (removed from code, config, images) | 4.4.3 |
@@ -122,7 +122,7 @@ Manage cryptographic keys, secrets, and credentials throughout their lifecycle.
 Verify authenticity and detect tampering of models, artifacts, messages, logs, and tool definitions.
 
 | Control / Technique | Requirement IDs |
-|---|---|
+| --- | --- |
 | Cryptographic hashes for training data integrity | 1.2.4, 1.3.2 |
 | Cryptographic model signing with verification at deployment and load | 3.1.2 |
 | Signed build artifacts with build-origin metadata | 4.2.2 |
@@ -147,7 +147,7 @@ Verify authenticity and detect tampering of models, artifacts, messages, logs, a
 Validate, normalize, and constrain all inputs before they reach models or downstream systems.
 
 | Control / Technique | Requirement IDs |
-|---|---|
+| --- | --- |
 | Prompt injection detection ruleset / service | 2.1.1 |
 | Instruction hierarchy enforcement (system > developer > user) | 2.1.2 |
 | Third-party content sanitization | 2.1.3 |
@@ -180,7 +180,7 @@ Validate, normalize, and constrain all inputs before they reach models or downst
 Constrain, filter, and validate model outputs before they reach users or downstream systems.
 
 | Control / Technique | Requirement IDs |
-|---|---|
+| --- | --- |
 | Output format schema validation | 7.1.1 |
 | Stop sequences and token limits | 7.1.2 |
 | Parameterized queries and safe deserializers for output processing | 7.1.3 |
@@ -205,7 +205,7 @@ Constrain, filter, and validate model outputs before they reach users or downstr
 Enforce consumption bounds to prevent abuse, runaway execution, and denial-of-service.
 
 | Control / Technique | Requirement IDs |
-|---|---|
+| --- | --- |
 | Per-user, per-IP, per-API-key rate limits | 2.6.1 |
 | Burst and sustained rate limiting | 2.6.2 |
 | Per-agent token, cost, and tool-call budgets | 2.6.2, 9.1.1 |
@@ -229,7 +229,7 @@ Enforce consumption bounds to prevent abuse, runaway execution, and denial-of-se
 Isolate workloads, tools, models, and agents to contain failures and prevent lateral movement.
 
 | Control / Technique | Requirement IDs |
-|---|---|
+| --- | --- |
 | Minimal OS permissions and Linux capabilities | 4.1.1 |
 | Mandatory access control (seccomp, AppArmor, SELinux) | 4.1.2 |
 | Read-only root filesystem with restrictive mount options | 4.1.3 |
@@ -253,7 +253,7 @@ Isolate workloads, tools, models, and agents to contain failures and prevent lat
 Control network boundaries, traffic flow, and outbound access for AI workloads.
 
 | Control / Technique | Requirement IDs |
-|---|---|
+| --- | --- |
 | Default-deny network policies with explicit allow-lists | 4.3.1 |
 | Network segmentation across dev / test / prod environments | 4.3.2, 3.4.1 |
 | Restricted administrative access and cloud metadata service blocking | 4.3.3 |
@@ -274,7 +274,7 @@ Control network boundaries, traffic flow, and outbound access for AI workloads.
 Verify origin and authenticity, scan dependencies, and enforce integrity of models, frameworks, datasets, and build artifacts.
 
 | Control / Technique | Requirement IDs |
-|---|---|
+| --- | --- |
 | Model registry with AI BOM (SPDX, CycloneDX) | 3.1.1, 6.7.1 |
 | Model dependency graph tracking (services, agents, environments) | 3.1.3 |
 | Model origin records (source, training data checksums, authorship) | 3.1.4, 6.1.1 |
@@ -302,7 +302,7 @@ Verify origin and authenticity, scan dependencies, and enforce integrity of mode
 Manage model deployment, rollback, retirement, and emergency response.
 
 | Control / Technique | Requirement IDs |
-|---|---|
+| --- | --- |
 | Automated security testing gates before deployment | 3.2.1 |
 | Agent workflow, tool, MCP, and RAG integration testing | 3.2.2 |
 | Immutable audit records for model changes | 3.2.3 |
@@ -327,7 +327,7 @@ Manage model deployment, rollback, retirement, and emergency response.
 Protect personal data and enforce data subject rights throughout the AI lifecycle.
 
 | Control / Technique | Requirement IDs |
-|---|---|
+| --- | --- |
 | Training data minimization (exclude unnecessary features, PII, leaked test data) | 1.1.2 |
 | Labeled data anonymization and granular redaction | 1.3.4 |
 | Direct and quasi-identifier removal | 12.1.1 |
@@ -354,16 +354,20 @@ Protect personal data and enforce data subject rights throughout the AI lifecycl
 Test for and defend against evasion, extraction, inversion, poisoning, and alignment bypass attacks.
 
 | Control / Technique | Requirement IDs |
-|---|---|
+| --- | --- |
 | Refusal and safe-completion guardrails | 11.1.1 |
 | Red-team and jailbreak test suites (version-controlled) | 11.1.2 |
 | Automated harmful-content rate evaluation with regression detection | 11.1.3 |
 | RLHF / Constitutional AI alignment training | 11.1.4 |
 | Adversarial training and defensive distillation | 11.2.3, 2.2.4 |
+| Adversarially robust distillation — distill teacher into student using adversarial training so the student inherits robustness as well as accuracy (implementation example for 11.2.3) | 11.2.3 |
 | Formal robustness verification (certified bounds, interval-bound propagation) | 11.2.5 |
 | Adversarial-example detection with production alerting | 11.2.2 |
+| Model ensemble as evasion containment — route queries through independently trained models and flag disagreement beyond a threshold (implementation example for 11.2.2) | 11.2.2 |
 | Output calibration and perturbation for privacy | 11.3.1 |
+| Confidence obfuscation / output perturbation — return calibrated but deliberately imprecise confidence scores to impede model extraction and membership inference (implementation example for 11.3.1) | 11.3.1 |
 | DP-SGD (differentially private training) with documented epsilon | 11.3.2 |
+| PATE (Private Aggregation of Teacher Ensembles) — train student model using noisy aggregation of teacher outputs so no individual training record is exposed (implementation example for 11.3.2) | 11.3.2 |
 | Membership inference attack simulation (shadow-model, likelihood-ratio) | 11.3.3 |
 | Model extraction detection (query-pattern analysis, diversity measurement) | 11.5.3 |
 | Statistical outlier and consistency scoring on external inputs | 11.6.1 |
@@ -371,6 +375,9 @@ Test for and defend against evasion, extraction, inversion, poisoning, and align
 | Security-focused secondary review mechanisms (second model, rule-based) | 11.8.1 |
 | Self-modification restriction with scope bounds and rate limits | 11.9.1, 11.9.4 |
 | Data augmentation with perturbed inputs for training robustness | 1.4.4 |
+| RONI (Reject On Negative Influence) filtering — influence-score each training sample and reject those that degrade held-out performance beyond a threshold (implementation example for 1.4.2) | 1.4.2 |
+| Gradient fingerprinting / per-sample gradient analysis — detect abnormal gradient norms or directions indicating poisoned samples during training (implementation example for 1.4.2) | 1.4.2 |
+| Activation clustering — cluster intermediate activations to detect backdoor-associated subpopulations (implementation example for 1.4.2) | 1.4.2 |
 
 **Common pitfalls:** testing only known jailbreak patterns without adaptive attacks; not updating red-team suites after model updates; relying on a single defense without defense-in-depth.
 
@@ -381,7 +388,7 @@ Test for and defend against evasion, extraction, inversion, poisoning, and align
 Capture security-relevant events with integrity protection for forensic analysis and compliance.
 
 | Control / Technique | Requirement IDs |
-|---|---|
+| --- | --- |
 | Prompt and response logging with metadata (timestamp, user ID, session, model version) | 13.1.1 |
 | Secure, access-controlled log repositories with retention policies | 13.1.2 |
 | Log encryption at rest and in transit | 13.1.3 |
@@ -406,7 +413,7 @@ Capture security-relevant events with integrity protection for forensic analysis
 Detect anomalies, alert on threats, and respond to security incidents in AI systems.
 
 | Control / Technique | Requirement IDs |
-|---|---|
+| --- | --- |
 | Jailbreak and prompt injection attempt detection (signature-based) | 13.2.1 |
 | SIEM integration with standard log formats | 13.2.2 |
 | AI-specific event enrichment (model ID, confidence, filter decisions) | 13.2.3 |
@@ -434,7 +441,7 @@ Detect anomalies, alert on threats, and respond to security incidents in AI syst
 Enable human understanding of model decisions through interpretability, documentation, and uncertainty quantification.
 
 | Control / Technique | Requirement IDs |
-|---|---|
+| --- | --- |
 | Human-readable decision explanations | 14.4.1 |
 | Explanation quality validation (human evaluation studies) | 14.4.2 |
 | SHAP, LIME, and feature importance scores | 14.4.3 |
@@ -458,7 +465,7 @@ Enable human understanding of model decisions through interpretability, document
 Require human review and approval for high-impact, irreversible, or safety-critical actions.
 
 | Control / Technique | Requirement IDs |
-|---|---|
+| --- | --- |
 | High-impact action approval gates (deploy, delete, financial, notify) | 9.2.1 |
 | Approval parameter binding (prevent approve-one-execute-another) | 9.2.2 |
 | High-impact intent confirmation with exact parameter binding and quick expiration | 9.7.2 |
@@ -481,7 +488,7 @@ Require human review and approval for high-impact, irreversible, or safety-criti
 Secure AI accelerator hardware, firmware, memory, interconnects, and edge devices.
 
 | Control / Technique | Requirement IDs |
-|---|---|
+| --- | --- |
 | GPU/TPU integrity validation with hardware attestation (TPM, DRTM) | 4.7.1 |
 | GPU memory isolation and sanitization between workloads and tenants | 4.7.2 |
 | Signed GPU firmware with version pinning and attestation | 4.7.3 |
