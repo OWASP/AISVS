@@ -99,7 +99,7 @@ Prevent "technically authorized but unintended" actions by binding execution to 
 | **9.7.2** | **Verify that** post-execution checks confirm the intended outcome was achieved. | 2 | V |
 | **9.7.3** | **Verify that** post-execution checks detect unintended side effects. | 2 | V |
 | **9.7.4** | **Verify that** any mismatch between intended outcome and actual results triggers containment and, where supported, compensating actions. | 2 | V |
-| **9.7.5** | **Verify that** prompt templates and agent policy configurations are integrity-verified at load time against their approved versions (e.g., via hashes or signatures). | 3 | D/V |
+| **9.7.5** | **Verify that** prompt templates and agent policy configurations retrieved from a remote source are integrity-verified at load time against their approved versions (e.g., via hashes or signatures). | 3 | D/V |
 
 ---
 
