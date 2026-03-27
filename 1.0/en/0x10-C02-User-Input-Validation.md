@@ -12,7 +12,7 @@ Prompt injection is one of the top risks for AI systems. Defenses against this t
 
 | # | Description | Level | Role |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: | :---: |
-| **2.1.1** | **Verify that** any external or derived input that may steer behavior, including user prompts, RAG results, tool integration or MCP outputs, agent to agent messages, API or webhook responses, configuration or policy files, memory reads and memory writes, is treated as untrusted, made inert by quoting or tagging and active content removal, and screened by a maintained prompt injection detection ruleset or service before concatenation into prompts or execution of actions. | 1 | D/V |
+| **2.1.1** | **Verify that** all external or derived inputs that may steer model behavior are treated as untrusted and screened by a prompt injection detection ruleset or classifier before being included in prompts or used to trigger actions. | 1 | D/V |
 | **2.1.2** | **Verify that** the system enforces an instruction hierarchy in which system and developer messages override user instructions and other untrusted inputs, even after processing user instructions. | 1 | D/V |
 | **2.1.3** | **Verify that** prompts originating from third-party content (web pages, PDFs, emails) are sanitized in isolation (for example, stripping instruction-like directives and neutralizing HTML, Markdown, and script content) before being concatenated into the main prompt. | 2 | D |
 | **2.1.4** | **Verify that** input length controls account for context window limits and that the system prevents user-supplied content from exceeding a proportion of the total context window that would displace system instructions or safety directives from the model's effective attention. | 1 | D/V |
@@ -26,8 +26,8 @@ AI models are vulnerable to subtle input perturbations that humans often miss bu
 | # | Description | Level | Role |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: | :---: |
 | **2.2.1** | **Verify that** basic input normalization steps (Unicode NFC, homoglyph mapping, whitespace trimming, removal of control and invisible Unicode characters) are run before tokenization or embedding and before parsing into tool or MCP arguments. | 1 | D |
-| **2.2.2** | **Verify that** suspected adversarial inputs are quarantined, and logged with payload snippets and trace metadata (source, tool or MCP server, agent ID, session). | 1 | V |
-| **2.2.3** | **Verify that** statistical anomaly detection flags inputs with unusually high edit distance to language norms or abnormal embedding distances and that flagged inputs are gated before concatenation into prompts or execution of actions. | 2 | D/V |
+| **2.2.2** | **Verify that** suspected adversarial inputs are quarantined and logged. | 1 | V |
+| **2.2.3** | **Verify that** inputs that deviate from expected input patterns, as determined by statistical or semantic anomaly detection, are gated prior to inclusion in prompts or execution of actions. | 2 | D/V |
 | **2.2.4** | **Verify that** the inference pipeline supports adversarial-training-hardened model variants or defense layers (e.g., randomization, defensive distillation, alignment checks) for high-risk endpoints. | 2 | D |
 | **2.2.5** | **Verify that** encoding and representation smuggling in both inputs and outputs (e.g., invisible Unicode/control characters, homoglyph swaps, or mixed-direction text) are detected and mitigated. Approved mitigations include canonicalization, strict schema validation, policy-based rejection, or explicit marking. | 3 | D/V |
 
@@ -52,7 +52,7 @@ AI attacks featuring malformed or oversized inputs can cause parsing errors, pro
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: | :---: |
 | **2.4.1** | **Verify that** every API, tool or MCP endpoint defines an explicit input schema (e.g., JSON Schema, Protocol Buffers, or multimodal equivalent), rejects extra or unknown fields and implicit type coercion, and validates inputs server-side before prompt assembly or tool execution. | 1 | D |
 | **2.4.2** | **Verify that** inputs exceeding maximum token or byte limits are rejected with a safe error and never silently truncated. | 1 | D/V |
-| **2.4.3** | **Verify that** type checks (e.g., numeric ranges, enum values, MIME types for images/audio) are enforced server-side including for tool or MCP arguments. | 1 | D/V |
+| **2.4.3** | **Verify that** type checks (e.g., numeric ranges, enumerated values, and MIME types for images or audio) are enforced for all server-side inputs, including tool or MCP arguments. | 1 | D/V |
 | **2.4.4** | **Verify that** semantic validators run in constant time and avoid external network calls to prevent algorithmic DoS. | 2 | D |
 | **2.4.5** | **Verify that** validation failures are logged with redacted payload snippets and unambiguous error codes and include trace metadata (source, tool or MCP server, agent ID, session) to aid security triage. | 3 | V |
 
@@ -66,7 +66,7 @@ Developers should be able to detect syntactically valid prompts that request dis
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: | :---: |
 | **2.5.1** | **Verify that** a content classifier scores every input and output for violence, self-harm, hate, sexual content and illegal requests, with configurable thresholds. | 1 | D |
 | **2.5.2** | **Verify that** inputs which violate policies will be rejected so they will not propagate to downstream model or tool/MCP calls. | 1 | D/V |
-| **2.5.3** | **Verify that** screening respects user-specific policies (age and regional legal constraints) via attribute-based rules resolved at request time, including agent-role attributes. | 2 | D |
+| **2.5.3** | **Verify that** screening respects user-specific policies (age and regional legal constraints) via attribute-based rules resolved at request time, including the role or permission level of the calling agent. | 2 | D |
 | **2.5.4** | **Verify that** screening logs include classifier confidence scores and policy category tags with applied stage (pre-prompt or post-response) and trace metadata (source, tool or MCP server, agent ID, session) for SOC correlation and future red-team replay. | 3 | V |
 
 ---
