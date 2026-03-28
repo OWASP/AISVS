@@ -32,6 +32,7 @@ Pre-screen content before vectorization; treat memory writes as untrusted inputs
 | **8.2.3** | **Verify that** vectors that fall outside normal clustering patterns are flagged and quarantined before entering production indices. | 2 | D/V |
 | **8.2.4** | **Verify that** an agent's own outputs are not automatically written back into its trusted memory without explicit validation (such as content-origin checks or write-authorization controls that verify the content's source before committing writes). | 2 | D/V |
 | **8.2.5** | **Verify that** new content written to memory is checked for contradictions with what is already stored and that conflicts trigger alerts. | 3 | D/V |
+| **8.2.6** | **Verify that** conversation summarization pipelines apply the same prompt injection detection and PII redaction policies as primary inference, and that the summarized output is treated as untrusted input and re-validated before being re-injected into the model context. | 3 | D/V |
 
 ---
 
