@@ -10,12 +10,12 @@ This control category ensures that model outputs are technically constrained, va
 
 Ensure the model outputs data in a way that helps prevent injection.
 
-| # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **7.1.1** | **Verify that** the application validates all model outputs against a strict schema (like JSON Schema) and rejects any output that does not match. | 1 | D/V |
-| **7.1.2** | **Verify that** the system uses "stop sequences" or token limits to strictly cut off generation before it can overflow buffers or executes unintended commands. | 1 | D/V |
-| **7.1.3** | **Verify that** components processing model output treat it as untrusted input (e.g., using parameterized queries or safe de-serializers). | 1 | D/V |
-| **7.1.4** | **Verify that** the system logs the specific error type when an output is rejected for bad formatting. | 2 | D/V |
+| # | Description | Level |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:
+| **7.1.1** | **Verify that** the application validates all model outputs against a strict schema (like JSON Schema) and rejects any output that does not match. | 1 
+| **7.1.2** | **Verify that** the system uses "stop sequences" or token limits to strictly cut off generation before it can overflow buffers or executes unintended commands. | 1 
+| **7.1.3** | **Verify that** components processing model output treat it as untrusted input (e.g., using parameterized queries or safe de-serializers). | 1 
+| **7.1.4** | **Verify that** the system logs the specific error type when an output is rejected for bad formatting. | 2 
 
 ---
 
@@ -23,13 +23,13 @@ Ensure the model outputs data in a way that helps prevent injection.
 
 Detect when the model produces potentially inaccurate or fabricated content and prevent unreliable outputs from reaching users or downstream systems.
 
-| # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **7.2.1** | **Verify that** the system assesses the reliability of generated answers using a confidence or uncertainty estimation method (e.g., confidence scoring, retrieval-based verification, or model uncertainty estimation). | 1 | D/V |
-| **7.2.2** | **Verify that** the application automatically blocks answers or switches to a fallback message if the confidence score drops below a defined threshold. | 2 | D/V |
-| **7.2.3** | **Verify that** hallucination events (low-confidence responses) are logged with input/output metadata for analysis. | 2 | D/V |
-| **7.2.4** | **Verify that** for responses classified as high-risk or high-impact by policy, the system performs an additional verification step through an independent mechanism, such as retrieval-based grounding against authoritative sources, deterministic rule-based validation, tool-based fact-checking, or consensus review by a separately provisioned model. | 3 | D/V |
-| **7.2.5** | **Verify that** the system tracks tool and function invocation history within a request chain and flags high-confidence factual assertions that were not preceded by relevant verification tool usage, as a practical hallucination detection signal independent of confidence scoring. | 2 | D/V |
+| # | Description | Level |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:
+| **7.2.1** | **Verify that** the system assesses the reliability of generated answers using a confidence or uncertainty estimation method (e.g., confidence scoring, retrieval-based verification, or model uncertainty estimation). | 1 
+| **7.2.2** | **Verify that** the application automatically blocks answers or switches to a fallback message if the confidence score drops below a defined threshold. | 2 
+| **7.2.3** | **Verify that** hallucination events (low-confidence responses) are logged with input/output metadata for analysis. | 2 
+| **7.2.4** | **Verify that** for responses classified as high-risk or high-impact by policy, the system performs an additional verification step through an independent mechanism, such as retrieval-based grounding against authoritative sources, deterministic rule-based validation, tool-based fact-checking, or consensus review by a separately provisioned model. | 3 
+| **7.2.5** | **Verify that** the system tracks tool and function invocation history within a request chain and flags high-confidence factual assertions that were not preceded by relevant verification tool usage, as a practical hallucination detection signal independent of confidence scoring. | 2 
 
 ---
 
@@ -37,16 +37,16 @@ Detect when the model produces potentially inaccurate or fabricated content and 
 
 Technical controls to detect and scrub bad content before it is shown to the user.
 
-| # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **7.3.1** | **Verify that** automated classifiers scan every response and block content that matches hate, harassment, or sexual violence categories. | 1 | D/V |
-| **7.3.2** | **Verify that** the system scans every response for PII (like credit cards or emails) and automatically redacts it before display. | 1 | D/V |
-| **7.3.3** | **Verify that** PII detection and redaction events are logged without including the redacted PII values themselves, to maintain an audit trail without creating secondary PII exposure. | 1 | D/V |
-| **7.3.4** | **Verify that** data labeled as "confidential" in the system remains blocked or redacted. | 2 | D |
-| **7.3.5** | **Verify that** safety filters can be configured differently based on the user's role or location (e.g., stricter filters for minors) as appropriate. | 2 | D/V |
-| **7.3.6** | **Verify that** the system requires a human approval step or re-authentication if the model generates high-risk content. | 3 | D/V |
-| **7.3.7** | **Verify that** output filters detect and block responses that reproduce verbatim segments of system prompt content. | 2 | D/V |
-| **7.3.8** | **Verify that** LLM client applications prevent model-generated output from triggering automatic outbound requests (e.g., auto-rendered images, iframes, or link prefetching) to attacker-controlled endpoints, for example by disabling automatic external resource loading or restricting it to explicitly allowlisted origins as appropriate. | 2 | D/V |
+| # | Description | Level |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:
+| **7.3.1** | **Verify that** automated classifiers scan every response and block content that matches hate, harassment, or sexual violence categories. | 1 
+| **7.3.2** | **Verify that** the system scans every response for PII (like credit cards or emails) and automatically redacts it before display. | 1 
+| **7.3.3** | **Verify that** PII detection and redaction events are logged without including the redacted PII values themselves, to maintain an audit trail without creating secondary PII exposure. | 1 
+| **7.3.4** | **Verify that** data labeled as "confidential" in the system remains blocked or redacted. | 2 
+| **7.3.5** | **Verify that** safety filters can be configured differently based on the user's role or location (e.g., stricter filters for minors) as appropriate. | 2 
+| **7.3.6** | **Verify that** the system requires a human approval step or re-authentication if the model generates high-risk content. | 3 
+| **7.3.7** | **Verify that** output filters detect and block responses that reproduce verbatim segments of system prompt content. | 2 
+| **7.3.8** | **Verify that** LLM client applications prevent model-generated output from triggering automatic outbound requests (e.g., auto-rendered images, iframes, or link prefetching) to attacker-controlled endpoints, for example by disabling automatic external resource loading or restricting it to explicitly allowlisted origins as appropriate. | 2 
 
 ---
 
@@ -54,11 +54,11 @@ Technical controls to detect and scrub bad content before it is shown to the use
 
 Prevent the model from doing too much, too fast, or accessing things it should not.
 
-| # | Description | Level | Role |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|:---:|
-| **7.4.1** | **Verify that** the system enforces hard limits on requests and tokens per user to prevent cost spikes and denial of service. | 1 | D |
-| **7.4.2** | **Verify that** the model cannot execute high-impact actions (like writing files, sending emails, or executing code) without explicit user confirmation. | 1 | D/V |
-| **7.4.3** | **Verify that** the application or orchestration framework explicitly configures and enforces the maximum depth of recursive calls, delegation limits, and the list of allowed external tools. | 2 | D |
+| # | Description | Level |
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:
+| **7.4.1** | **Verify that** the system enforces hard limits on requests and tokens per user to prevent cost spikes and denial of service. | 1 
+| **7.4.2** | **Verify that** the model cannot execute high-impact actions (like writing files, sending emails, or executing code) without explicit user confirmation. | 1 
+| **7.4.3** | **Verify that** the application or orchestration framework explicitly configures and enforces the maximum depth of recursive calls, delegation limits, and the list of allowed external tools. | 2 
 
 ---
 
@@ -66,11 +66,11 @@ Prevent the model from doing too much, too fast, or accessing things it should n
 
 Ensure the user knows why a decision was made.
 
-| # | Description | Level | Role |
-| :-------: | ------------------------------------------------------------------------------------------------------------------------------ | :---: | :--: |
-| **7.5.1** | **Verify that** explanations provided to the user are sanitized to remove system prompts or backend data. | 1 | D/V |
-| **7.5.2** | **Verify that** the UI displays a confidence score or "reasoning summary" to the user for critical decisions. | 2 | D/V |
-| **7.5.3** | **Verify that** technical evidence of the model's decision, such as model interpretability artifacts (e.g., attention maps, feature attributions), are logged.| 3 | D |
+| # | Description | Level |
+| :-------: | ------------------------------------------------------------------------------------------------------------------------------ | :---: 
+| **7.5.1** | **Verify that** explanations provided to the user are sanitized to remove system prompts or backend data. | 1 
+| **7.5.2** | **Verify that** the UI displays a confidence score or "reasoning summary" to the user for critical decisions. | 2 
+| **7.5.3** | **Verify that** technical evidence of the model's decision, such as model interpretability artifacts (e.g., attention maps, feature attributions), are logged.| 3 
 
 ---
 
@@ -78,11 +78,11 @@ Ensure the user knows why a decision was made.
 
 Ensure the application sends the right signals for security teams to watch.
 
-| # | Description | Level | Role |
-| :-------: | -------------------------------------------------------------------------------------------------------------------------------------------- | :---: | :--: |
-| **7.6.1** | **Verify that** the system logs real-time metrics for safety violations (e.g., "Hallucination Detected", "PII Blocked").| 1 | D |
-| **7.6.2** | **Verify that** the system triggers an alert if safety violation rates exceed a defined threshold within a specific time window. | 2 | D/V |
-| **7.6.3** | **Verify that** logs include the specific model version and other details necessary to investigate potential abuse. | 2 | V |
+| # | Description | Level |
+| :-------: | -------------------------------------------------------------------------------------------------------------------------------------------- | :---: 
+| **7.6.1** | **Verify that** the system logs real-time metrics for safety violations (e.g., "Hallucination Detected", "PII Blocked").| 1 
+| **7.6.2** | **Verify that** the system triggers an alert if safety violation rates exceed a defined threshold within a specific time window. | 2 
+| **7.6.3** | **Verify that** logs include the specific model version and other details necessary to investigate potential abuse. | 2 
 
 ---
 
@@ -90,13 +90,13 @@ Ensure the application sends the right signals for security teams to watch.
 
 Prevent the creation of illegal or fake media.
 
-| # | Description | Level | Role |
-| :-------: | -------------------------------------------------------------------------------------------------------------------------------------------- | :---: | :--: |
-| **7.7.1** | **Verify that** input filters block prompts requesting explicit or non-consensual synthetic content before the model processes them. | 1 | D/V |
-| **7.7.2** | **Verify that** the system refuses to generate media (images/audio) that depicts real people without verified consent. | 2 | D/V |
-| **7.7.3** | **Verify that** the system checks generated content for copyright violations before releasing it. | 2 | V |
-| **7.7.4** | **Verify that** attempts to bypass filters are detected and logged as security events. | 2 | D/V |
-| **7.7.5** | **Verify that** all generated media includes an invisible watermark or cryptographic signature to prove it was AI-generated. | 3 | D/V  |
+| # | Description | Level |
+| :-------: | -------------------------------------------------------------------------------------------------------------------------------------------- | :---: 
+| **7.7.1** | **Verify that** input filters block prompts requesting explicit or non-consensual synthetic content before the model processes them. | 1 
+| **7.7.2** | **Verify that** the system refuses to generate media (images/audio) that depicts real people without verified consent. | 2 
+| **7.7.3** | **Verify that** the system checks generated content for copyright violations before releasing it. | 2 
+| **7.7.4** | **Verify that** attempts to bypass filters are detected and logged as security events. | 2 
+| **7.7.5** | **Verify that** all generated media includes an invisible watermark or cryptographic signature to prove it was AI-generated. | 3 
 
 ---
 
@@ -104,10 +104,10 @@ Prevent the creation of illegal or fake media.
 
 Ensure RAG-grounded outputs are traceable to their source documents and that cited claims are verifiably supported by retrieved content.
 
-| # | Description | Level | Role |
-| :-------: | -------------------------------------------------------------------------------------------------------------------------------------------- | :---: | :--: |
-| **7.8.1** | **Verify that** responses generated using retrieval-augmented generation (RAG) include attribution to the source documents that grounded the response, and that attributions are derived from retrieval metadata rather than generated by the model. | 1 | D/V |
-| **7.8.2** | **Verify that** each sourced claim in a RAG-grounded response can be traced to a specific retrieved chunk, and that the system detects and flags responses where claims are not supported by any retrieved content before the response is served. | 3 | V |
+| # | Description | Level |
+| :-------: | -------------------------------------------------------------------------------------------------------------------------------------------- | :---: 
+| **7.8.1** | **Verify that** responses generated using retrieval-augmented generation (RAG) include attribution to the source documents that grounded the response, and that attributions are derived from retrieval metadata rather than generated by the model. | 1 
+| **7.8.2** | **Verify that** each sourced claim in a RAG-grounded response can be traced to a specific retrieved chunk, and that the system detects and flags responses where claims are not supported by any retrieved content before the response is served. | 3 
 
 ---
 

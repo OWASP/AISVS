@@ -172,7 +172,6 @@ Every wiki page follows a consistent format to make research easy to navigate. E
 |--------|---------|
 | **Requirement** | Full text from the AISVS standard |
 | **Level** | Verification level (1, 2, or 3) |
-| **Role** | Developer (D), Verifier (V), or both (D/V) |
 | **Threat Mitigated** | Specific attack technique, failure mode, or risk |
 | **Verification Approach** | Concrete audit steps, tools, and checks |
 | **Gaps / Notes** | Tooling maturity, open issues, implementation caveats |

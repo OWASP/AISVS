@@ -26,10 +26,4 @@ Level 2 addresses more advanced or less common attacks, as well as layered defen
 
 Level 3 includes controls that are typically harder to implement or situational in applicability. These often represent defense-in-depth mechanisms or mitigations against niche, targeted, or high-complexity attacks.
 
-### Role (D/V)
 
-Each AISVS requirement is marked according to the primary audience:
-
-* D – Developer-focused requirements
-* V – Verifier/auditor-focused requirements
-* D/V – Relevant to both developers and verifiers

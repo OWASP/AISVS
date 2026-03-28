@@ -32,7 +32,6 @@ Each of the 14 requirement chapters follows the same format:
 | **#** | Unique requirement identifier (e.g., 1.1.1, 9.3.2). |
 | **Description** | The requirement text, always beginning with "Verify that" to emphasize testability. |
 | **Level** | The verification level (1, 2, or 3) indicating the depth of assurance required. |
-| **Role** | Who is responsible: **D** (developer/builder), **V** (verifier/auditor), or **D/V** (both). |
 
 ### Appendices
 
