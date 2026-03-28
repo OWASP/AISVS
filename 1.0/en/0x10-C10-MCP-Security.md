@@ -44,7 +44,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **10.3.3** | **Verify that** SSE-based MCP transports are used only within private, authenticated internal channels and enforce TLS, authentication, schema validation, payload size limits, and rate limiting; SSE endpoints must not be exposed to the public internet. | 2 | D/V |
 | **10.3.4** | **Verify that** MCP servers validate the `Origin` and `Host` headers on all HTTP-based transports (including SSE and streamable-HTTP) to prevent DNS rebinding attacks and reject requests from untrusted, mismatched, or missing origins. | 2 | D/V |
 | **10.3.5** | **Verify that** intermediaries do not alter or remove the `Mcp-Protocol-Version` header on streamable-HTTP transports unless explicitly required by the protocol specification, preventing protocol downgrade via header stripping. | 2 | D/V |
-| **10.3.6** | **Verify that** MCP messages carry a cryptographic signature over the canonicalized payload, enabling end-to-end integrity verification independent of transport security, particularly for deployments involving intermediaries, proxies, or gateways that terminate TLS. | 3 | D/V |
+| **10.3.6** | **Verify that** MCP messages carry a cryptographic signature over the canonicalized payload, enabling end-to-end integrity verification independent of transport security, particularly for deployments involving intermediaries, proxies, or gateways that terminate TLS. *Note: C9.5.3 covers message integrity for agentic channels broadly; this control specifies the same requirement at the MCP layer and applies in particular to deployments where TLS is terminated by intermediaries.* | 3 | D/V |
 
 ---
 
@@ -60,7 +60,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **10.4.6** | **Verify that** MCP server error and exception responses do not expose stack traces, internal file paths, tokens, or tool implementation details to the client or model context. | 1 | D/V |
 | **10.4.7** | **Verify that** MCP implementations reject JSON-RPC messages containing duplicate keys at any nesting level, preventing parser disagreement where different components resolve the same message to different values. | 2 | D/V |
 | **10.4.8** | **Verify that** intermediaries evaluating message content either forward the canonicalized representation they evaluated or reject messages where multiple byte representations could produce different parsed structures. | 3 | D/V |
-| **10.4.9** | **Verify that** MCP servers enforce application-layer replay protection by requiring a unique nonce and timestamp per message and rejecting duplicate or expired messages, preventing replay attacks within sessions or across server restarts. | 2 | D/V |
+| **10.4.9** | **Verify that** MCP servers enforce application-layer replay protection by requiring a unique nonce and timestamp per message and rejecting duplicate or expired messages, preventing replay attacks within sessions or across server restarts. *Note: C9.5.3 covers replay protection for agentic channels broadly; this control specifies the same requirement at the MCP layer with the additional requirement for persistent nonce storage that survives server restarts.* | 2 | D/V |
 | **10.4.10** | **Verify that** MCP tool responses include a cryptographic signature or integrity proof bound to the originating server identity, so that clients can detect modification by intermediaries before injecting results into the model context. | 3 | D/V |
 
 ---
