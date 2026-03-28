@@ -11,11 +11,11 @@ This chapter provides requirements for maintaining human oversight and clear acc
 Provide shutdown or rollback paths when unsafe behavior of the AI system is observed.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:
-| **14.1.1** | **Verify that** a manual kill-switch mechanism exists to immediately halt AI model inference and outputs. | 1 
-| **14.1.2** | **Verify that** override controls are accessible to only to authorized personnel. | 1 
-| **14.1.3** | **Verify that** rollback procedures can revert to previous model versions or safe-mode operations. | 3 
-| **14.1.4** | **Verify that** override mechanisms are tested regularly. | 3 
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| **14.1.1** | **Verify that** a manual kill-switch mechanism exists to immediately halt AI model inference and outputs. | 1 |
+| **14.1.2** | **Verify that** override controls are accessible to only to authorized personnel. | 1 |
+| **14.1.3** | **Verify that** rollback procedures can revert to previous model versions or safe-mode operations. | 3 |
+| **14.1.4** | **Verify that** override mechanisms are tested regularly. | 3 |
 
 ---
 
@@ -24,11 +24,11 @@ Provide shutdown or rollback paths when unsafe behavior of the AI system is obse
 Require human approvals when stakes surpass predefined risk thresholds.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:
-| **14.2.1** | **Verify that** high-risk AI decisions require explicit human approval before execution. | 1 
-| **14.2.2** | **Verify that** risk thresholds are clearly defined and automatically trigger human review workflows. | 1 
-| **14.2.3** | **Verify that** time-sensitive decisions have fallback procedures when human approval cannot be obtained within required timeframes. | 2 
-| **14.2.4** | **Verify that** escalation procedures define clear authority levels for different decision types or risk categories, if applicable. | 3 
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| **14.2.1** | **Verify that** high-risk AI decisions require explicit human approval before execution. | 1 |
+| **14.2.2** | **Verify that** risk thresholds are clearly defined and automatically trigger human review workflows. | 1 |
+| **14.2.3** | **Verify that** time-sensitive decisions have fallback procedures when human approval cannot be obtained within required timeframes. | 2 |
+| **14.2.4** | **Verify that** escalation procedures define clear authority levels for different decision types or risk categories, if applicable. | 3 |
 
 ---
 
@@ -37,19 +37,19 @@ Require human approvals when stakes surpass predefined risk thresholds.
 Log operator actions and model decisions.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:
-| **14.3.1** | **Verify that** all AI system decisions and human interventions are logged with timestamps, user identities, and decision rationale. | 1 
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| **14.3.1** | **Verify that** all AI system decisions and human interventions are logged with timestamps, user identities, and decision rationale. | 1 |
 
 ---
 
 ## C14.4 Explainable-AI Techniques
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:
-| **14.4.1** | **Verify that** AI systems provide basic explanations for their decisions in human-readable format. | 1 
-| **14.4.2** | **Verify that** explanation quality is validated through human evaluation studies and metrics. | 2 
-| **14.4.3** | **Verify that** feature importance scores or attribution methods (SHAP, LIME, etc.) are available for critical decisions. | 3 
-| **14.4.4** | **Verify that** counterfactual explanations show how inputs could be modified to change outcomes, if applicable to the use case and domain. | 3 
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| **14.4.1** | **Verify that** AI systems provide basic explanations for their decisions in human-readable format. | 1 |
+| **14.4.2** | **Verify that** explanation quality is validated through human evaluation studies and metrics. | 2 |
+| **14.4.3** | **Verify that** feature importance scores or attribution methods (SHAP, LIME, etc.) are available for critical decisions. | 3 |
+| **14.4.4** | **Verify that** counterfactual explanations show how inputs could be modified to change outcomes, if applicable to the use case and domain. | 3 |
 
 ---
 
@@ -58,11 +58,11 @@ Log operator actions and model decisions.
 Maintain model cards for intended use, performance metrics, and ethical considerations.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:
-| **14.5.1** | **Verify that** model cards document intended use cases, limitations, and known failure modes. | 1 
-| **14.5.2** | **Verify that** performance metrics across different applicable use cases are disclosed. | 1 
-| **14.5.3** | **Verify that** ethical considerations, bias assessments, fairness evaluations, training data characteristics, and known training data limitations are documented and updated regularly. | 2 
-| **14.5.4** | **Verify that** model cards are version-controlled and maintained throughout the model lifecycle with change tracking. | 2 
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| **14.5.1** | **Verify that** model cards document intended use cases, limitations, and known failure modes. | 1 |
+| **14.5.2** | **Verify that** performance metrics across different applicable use cases are disclosed. | 1 |
+| **14.5.3** | **Verify that** ethical considerations, bias assessments, fairness evaluations, training data characteristics, and known training data limitations are documented and updated regularly. | 2 |
+| **14.5.4** | **Verify that** model cards are version-controlled and maintained throughout the model lifecycle with change tracking. | 2 |
 
 ---
 
@@ -71,11 +71,11 @@ Maintain model cards for intended use, performance metrics, and ethical consider
 Propagate confidence scores or entropy measures in responses.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:
-| **14.6.1** | **Verify that** AI systems provide confidence scores or uncertainty measures with their outputs. | 1 
-| **14.6.2** | **Verify that** uncertainty thresholds trigger additional human review or alternative decision pathways. | 2 
-| **14.6.3** | **Verify that** uncertainty quantification methods are calibrated and validated against ground truth data. | 2 
-| **14.6.4** | **Verify that** uncertainty propagation is maintained through multi-step AI workflows. | 3 
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| **14.6.1** | **Verify that** AI systems provide confidence scores or uncertainty measures with their outputs. | 1 |
+| **14.6.2** | **Verify that** uncertainty thresholds trigger additional human review or alternative decision pathways. | 2 |
+| **14.6.3** | **Verify that** uncertainty quantification methods are calibrated and validated against ground truth data. | 2 |
+| **14.6.4** | **Verify that** uncertainty propagation is maintained through multi-step AI workflows. | 3 |
 
 ---
 
@@ -84,9 +84,9 @@ Propagate confidence scores or entropy measures in responses.
 Provide periodic disclosures on incidents, drift, and data usage.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:
-| **14.7.1** | **Verify that** data usage policies and user consent management practices are clearly communicated to stakeholders. | 1 
-| **14.7.2** | **Verify that** AI impact assessments are conducted and results are included in reporting. | 2 
-| **14.7.3** | **Verify that** transparency reports published regularly disclose AI incidents and operational metrics in reasonable detail. | 2 
+|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| **14.7.1** | **Verify that** data usage policies and user consent management practices are clearly communicated to stakeholders. | 1 |
+| **14.7.2** | **Verify that** AI impact assessments are conducted and results are included in reporting. | 2 |
+| **14.7.3** | **Verify that** transparency reports published regularly disclose AI incidents and operational metrics in reasonable detail. | 2 |
 
 ## References
