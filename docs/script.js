@@ -61,6 +61,7 @@ function buildGraph(root) {
       depth,
       sectorIndex,
       totalSectors,
+      parentId:    parent ? parent.id : null,
       children:    node.children || [],
       // Will be set by D3
       x: undefined,
@@ -343,13 +344,19 @@ function selectNode(d, pushHistory = false) {
     .select('circle')
     .attr('stroke-width', 3);
 
-  updateBackButton();
+  updateBackButton(d);
   showDetail(d);
 }
 
 function navigateBack() {
-  if (!navHistory.length) return;
-  const prev = navHistory.pop();
+  const btn = document.getElementById('back-detail');
+  const target = btn._target;
+  if (!target) return;
+
+  // Pop explicit history if that's where we're going, otherwise just navigate to parent
+  if (navHistory.length > 0 && navHistory[navHistory.length - 1].id === target.id) {
+    navHistory.pop();
+  }
 
   if (activeNode) {
     gNode.filter(n => n.id === activeNode.id)
@@ -358,24 +365,30 @@ function navigateBack() {
       .attr('stroke-width', 1.2);
   }
 
-  activeNode = prev;
-  gNode.filter(n => n.id === prev.id)
+  activeNode = target;
+  gNode.filter(n => n.id === target.id)
     .classed('active', true)
     .select('circle')
     .attr('stroke-width', 3);
 
-  updateBackButton();
-  showDetail(prev);
+  updateBackButton(target);
+  showDetail(target);
 }
 
-function updateBackButton() {
+function updateBackButton(node) {
   const btn = document.getElementById('back-detail');
-  if (navHistory.length > 0) {
+  // Show back if there's explicit history OR the node has a navigable parent
+  const historyTarget = navHistory.length > 0 ? navHistory[navHistory.length - 1] : null;
+  const parentNode = node && node.parentId ? nodeById.get(node.parentId) : null;
+  const target = historyTarget || parentNode;
+
+  if (target && target.type !== 'root') {
     btn.removeAttribute('hidden');
-    const prev = navHistory[navHistory.length - 1];
-    btn.textContent = `← ${prev.id}`;
+    btn.textContent = `← ${target.id}`;
+    btn._target = target;
   } else {
     btn.setAttribute('hidden', '');
+    btn._target = null;
   }
 }
 
@@ -388,7 +401,7 @@ function deselectNode() {
     activeNode = null;
   }
   navHistory = [];
-  updateBackButton();
+  updateBackButton(null);
   hideDetail();
 }
 
