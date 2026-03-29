@@ -70,17 +70,17 @@ How the 20 AD categories map to major external AI security frameworks. As of Mar
 
 | Category | MITRE ATLAS Technique/Mitigation | NIST IR 8596 (Cyber AI Profile) | CSA AICM Domain | OWASP LLM Top 10 (2025) | OWASP Agentic Top 10 (2026) | EU AI Act |
 |----------|--------------------------------|-------------------------------|-----------------|------------------------|-----------------------------|-----------|
-| AD.1 Authentication | Mitigations for AML.T0061 (AI Agent Tools) | PR.AA (Identity Management) | Identity & Access Management | — | ASI03 (Identity & Privilege Abuse) | — |
-| AD.2 Authorization | Mitigations for AML.T0062 (Exfil via Agent Tool) | PR.AA | Identity & Access Management | LLM08 (Excessive Agency) | ASI03, ASI04 (Excessive Agency) | — |
+| AD.1 Authentication | Mitigations for AML.T0061 (AI Agent Tools), AML.T0098 (Agent Tool Credential Harvesting) | PR.AA (Identity Management) | Identity & Access Management | — | ASI03 (Identity & Privilege Abuse) | — |
+| AD.2 Authorization | Mitigations for AML.T0062 (Exfil via Agent Tool), AML.T0096 (AI Service API) | PR.AA | Identity & Access Management | LLM08 (Excessive Agency) | ASI03, ASI04 (Excessive Agency) | — |
 | AD.3–4 Encryption | — | PR.DS (Data Security) | Data Security & Privacy | — | — | — |
 | AD.5 Key Management | — | PR.DS | Data Security & Privacy | — | — | — |
 | AD.6 Integrity & Signing | Mitigations for AML.T0020 (Poison Training Data) | PR.DS, ID.AM | Supply Chain Mgmt | LLM05 (Supply Chain) | ASI05 (Improper Multi-Agent Orchestration) | Annex IV §6 |
 | AD.7 Input Validation | AML.T0051 (Prompt Injection) | PR.DS | Model Security | LLM01 (Prompt Injection) | ASI01 (Agent Goal Hijacking) | Art. 15 §5 |
 | AD.8 Output Filtering | — | PR.DS | Model Security | LLM02 (Sensitive Info Disclosure) | ASI06 (Memory & Context Manipulation) | Art. 15 |
 | AD.9 Rate Limiting | AML.T0029 (Denial of ML Service), AML.T0034 (Cost Harvesting) | PR.IR | Model Security | LLM10 (Unbounded Consumption) | ASI08 (Resource & Service Abuse) | Art. 15 §4 |
-| AD.10 Sandboxing | AML.T0058 (AI Agent Context Poisoning) | PR.PS | — | LLM08 (Excessive Agency) | ASI02 (Tool Misuse & Exploitation) | — |
+| AD.10 Sandboxing | AML.T0058 (AI Agent Context Poisoning), AML.T0101 (Data Destruction via Agent Tool) | PR.PS | — | LLM08 (Excessive Agency) | ASI02 (Tool Misuse & Exploitation) | — |
 | AD.11 Network Seg. | — | PR.IR | — | — | — | — |
-| AD.12 Supply Chain | AML.T0020, AML.T0059 (Activation Triggers) | ID.SC (Supply Chain) | Supply Chain Mgmt | LLM05 (Supply Chain) | ASI09 (Supply Chain Vulnerabilities) | Annex IV §2 |
+| AD.12 Supply Chain | AML.T0020, AML.T0059 (Activation Triggers), AML.T0099 (Agent Tool Data Poisoning) | ID.SC (Supply Chain) | Supply Chain Mgmt | LLM05 (Supply Chain) | ASI09 (Supply Chain Vulnerabilities) | Annex IV §2 |
 | AD.13 Deployment | AML.T0020 | PR.PS (Platform Security) | — | — | — | Annex IV §6, §9 |
 | AD.14 Privacy | AML.T0046 (Chaff Data) | PR.DS | Data Security & Privacy | LLM06 (Excessive Agency) | ASI07 (Uncontrolled Chaining & Cascading) | Art. 10, Annex IV §2 |
 | AD.15 Adversarial Testing | AML.T0020, AML.T0051, AML.T0059 | DE.CM, DE.AE | Model Security | LLM01, LLM09 (Misinformation) | ASI01, ASI10 (Rogue Agents) | Art. 15 §5, Annex IV §5 |
@@ -92,7 +92,7 @@ How the 20 AD categories map to major external AI security frameworks. As of Mar
 
 **Key external frameworks referenced:**
 - **NIST IR 8596** (Cyber AI Profile, draft December 2025) — maps AI concerns to all 106 CSF 2.0 subcategories with priority ratings. Identified gap: limited coverage of agentic AI patterns.
-- **MITRE ATLAS** (October 2025 update, 2026 execution-layer refresh) — 15 tactics, 66 techniques, 46 sub-techniques, 26 mitigations. Added 14 agentic AI techniques via Zenity Labs collaboration. Approximately 70% of ATLAS mitigations map to existing security controls, making SOC integration practical; the remaining 30% require AI-specific governance.
+- **MITRE ATLAS** (v5.4.0, February 2026) — now 16 tactics, 84 techniques, 56 sub-techniques, 32 mitigations, and 42 case studies. The February 2026 release added agentic-specific techniques including AML.T0096 (AI Service API exploitation), AML.T0098 (Agent Tool Credential Harvesting), AML.T0099 (Agent Tool Data Poisoning), AML.T0100 (AI Agent Clickbait), and AML.T0101 (Data Destruction via Agent Tool Invocation). The accompanying OpenClaw investigation mapped adversary patterns in autonomous agent systems to identify chokepoint techniques. Approximately 70% of ATLAS mitigations map to existing security controls; the remaining 30% require AI-specific governance.
 - **MITRE SAFE-AI** — maps ATLAS threats × 4 system elements (Environment, AI Platform, AI Model, AI Data) → 100 identified NIST SP 800-53 controls. The most granular threat-to-control mapping available.
 - **CSA AI Controls Matrix** (AICM) — 243 control objectives across 18 security domains with ISO 42001, EU AI Act, and NIST AI RMF mappings completed August 2025.
 - **OWASP AI Maturity Assessment** (AIMA, v1.0 August 2025) — integrates with OWASP SAMM and ISO/IEC AI standards for organizational security maturity assessment.
@@ -121,6 +121,9 @@ Which commercial and open-source platforms address which control categories. Ref
 | Azure AI Content Safety | | | X | X | | | | | | Prompt Shields; Groundedness Detection (preview); detection-oriented |
 | Datadog LLM Obs | | | X | X | | | | X | | Auto-instrumentation; prompt injection scanning; PII leak detection; $8/10K requests |
 | Langfuse (OSS) | | | | | | | | X | | 19K+ GitHub stars; multi-turn tracing; prompt versioning |
+| F5 AI Guardrails + Red Team | | | X | X | | | X | X | X | CalypsoAI acquisition; model-agnostic runtime guardrails; autonomous red-team agent swarms with 10K+ attack techniques/month; Fortune 500 deployments (Jan 2026) |
+| Varonis Atlas | | X | | | | | | X | X | AI Gateway for real-time prompt/response inspection; data-aware posture management; shadow AI discovery; full lifecycle (discovery → runtime → compliance); launched March 2026 |
+| SandboxAQ AQtive Guard | | | X | X | | | | | X | AI security posture management; MCP server discovery and monitoring; runtime guardrails for prompt injection and data leakage; announced ahead of RSAC 2026 |
 | Arize Phoenix (OSS) | | | | | | | | X | X | OpenTelemetry-native; drift detection; 7.8K+ GitHub stars |
 
 ---
@@ -133,7 +136,7 @@ Which commercial and open-source platforms address which control categories. Ref
 - [ ] **Model Fairness & Bias Testing** — Referenced in C1 (1.4.6), C6 (6.5.4), C14 (14.5.3) but doesn't have its own AD category; currently folded into AD.15 and AD.18
 - [ ] **Incident Forensics** — AD.17 covers incident response but forensic-specific controls (C13.5.2 AI forensic tools) could warrant their own category as the field matures
 - [ ] **Multi-Agent Coordination Security** — C9.8 covers multi-agent isolation but agent coordination patterns (consensus, conflict resolution, swarm safety) are emerging concerns. As of March 2026, 25.5% of deployed agents can create and task other agents autonomously
-- [ ] **MCP-Specific Controls** — C10 has 34 requirements spanning authentication, transport, validation, and boundary enforcement for MCP. As MCP adoption grows (60% of LLMjacking attack traffic targeted MCP endpoints in Operation Bizarre Bazaar), a dedicated AD category for MCP security may be warranted. As of March 2026, over 10,000 active public MCP servers have been deployed within roughly a year of the protocol's introduction, with 53% relying on static secrets for authentication (Astrix). Qualys reports MCP services evade traditional monitoring by binding to localhost, using random high ports, or hiding behind proxies — effectively becoming "the new shadow IT for AI"
+- [ ] **MCP-Specific Controls** — C10 has 34 requirements spanning authentication, transport, validation, and boundary enforcement for MCP. As MCP adoption grows (60% of LLMjacking attack traffic targeted MCP endpoints in Operation Bizarre Bazaar), a dedicated AD category for MCP security may be warranted. As of March 2026, over 10,000 active public MCP servers have been deployed within roughly a year of the protocol's introduction, with 53% relying on static secrets for authentication (Astrix). MITRE ATLAS v5.4.0 now includes "Publish Poisoned AI Agent Tool" as a named technique, and SandboxAQ AQtive Guard added MCP server discovery and risk analysis as a product capability (March 2026). Qualys reports MCP services evade traditional monitoring by binding to localhost, using random high ports, or hiding behind proxies — effectively becoming "the new shadow IT for AI"
 - [ ] **Agentic Coordination & Identity** — The OWASP Agentic AI Top 10 (2026) introduces 10 distinct risk categories (ASI01–ASI10) that cut across multiple AD categories. Agent identity, delegation chains, and inter-agent trust relationships are not fully captured by existing AD.1/AD.2 categories. The EY February 2026 survey found 52% of department-level AI initiatives operate without formal approval or oversight, and 78% of leaders say AI adoption outpaces their ability to manage it
 
 ### Controls Appearing in Multiple Categories
@@ -174,10 +177,13 @@ Overall adoption remains low — 94% of enterprises use AI in production, yet on
 | Confirmed/suspected proprietary IP leak via unauthorized GenAI | 39% | EY (Feb 2026) |
 | Orgs with formal GenAI governance reducing data leakage | up to 46% reduction | Practical DevSecOps (March 2026) |
 | Cybersecurity pros identifying agentic AI as #1 attack vector | 48% | Dark Reading poll (2026) |
+| Enterprises with at least one AI workload in production | 72% | Cybersecurity Insiders AI Risk Report (Q1 2026) |
+| Orgs describing AI adoption as "mature" across functions | 28% | Cybersecurity Insiders AI Risk Report (Q1 2026) |
+| Orgs with comprehensive AI security governance policies | 26% | CSA/Google Cloud AI Governance Study (2026) |
 
 **Maturity distribution** (CyberSecFeed 5-level model): Level 0 (Unaware) 34%, Level 1 (Initial) 28%, Level 2 (Developing) 23%, Level 3 (Managed) 12%, Level 4 (Optimized) 3%.
 
-**The velocity paradox:** EY describes the structural mismatch where 73% of orgs deploy AI tools while only 7% govern them in real time. Gartner forecasts 40% of enterprise applications will feature task-specific AI agents by 2026, but only 6% of organizations have an advanced AI security strategy. Organizations with formal GenAI governance policies reduce data leakage incidents by up to 46% compared to those without controls, suggesting the gap is both measurable and remediable.
+**The velocity paradox:** EY describes the structural mismatch where 73% of orgs deploy AI tools while only 7% govern them in real time. Gartner forecasts 40% of enterprise applications will feature task-specific AI agents by 2026, but only 6% of organizations have an advanced AI security strategy. Organizations with formal GenAI governance policies reduce data leakage incidents by up to 46% compared to those without controls, suggesting the gap is both measurable and remediable. A CSA/Google Cloud study (December 2025) found governance maturity is the strongest predictor of AI readiness — organizations with comprehensive policies are nearly twice as likely to report early agentic AI adoption (46%) compared to those with partial guidelines (25%).
 
 ---
 
@@ -212,6 +218,11 @@ _Discussion about control inventory completeness and organization._
 * [EY Survey: Autonomous AI Adoption Surges as Oversight Falls Behind (February 2026)](https://www.ey.com/en_us/newsroom/2026/03/ey-survey-autonomous-ai-adoption-surges-at-tech-companies-as-oversight-falls-behind)
 * [Qualys TotalAI: MCP Servers as Shadow IT (March 2026)](https://blog.qualys.com/product-tech/2026/03/19/mcp-servers-shadow-it-ai-qualys-totalai-2026)
 * [Straiker: Agentic AI Security Platform](https://www.straiker.ai/)
+* [MITRE ATLAS OpenClaw Investigation (February 2026)](https://ctid.mitre.org/blog/2026/02/09/mitre-atlas-openclaw-investigation/)
+* [Zenity Labs: Contributions to MITRE ATLAS First 2026 Release](https://zenity.io/blog/current-events/zenitys-contributions-to-mitre-atlas-first-2026-update)
+* [F5 AI Guardrails and AI Red Team (January 2026)](https://www.f5.com/company/news/press-releases/f5-accelerates-ai-security-with-integrated-runtime-protection-for-enterprise-ai-at-scale)
+* [Varonis Atlas: AI Security Platform (March 2026)](https://www.varonis.com/blog/atlas-ai-security)
+* [Cybersecurity Insiders: AI Risk and Readiness Report 2026](https://www.cybersecurity-insiders.com/ai-risk-and-readiness-report-2026/)
 
 ---
 
