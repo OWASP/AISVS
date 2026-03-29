@@ -1,0 +1,3591 @@
+{
+  "name": "AISVS",
+  "type": "root",
+  "description": "AI Security Verification Standard — verifiable controls for AI-driven applications.",
+  "children": [
+    {
+      "type": "chapter",
+      "children": [
+        {
+          "name": "C1.1",
+          "title": "Training Data Origin & Traceability",
+          "description": "Maintain a verifiable inventory of all datasets, accept only trusted sources, and log every change for auditability.",
+          "type": "section",
+          "children": [
+            {
+              "name": "1.1.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that an up-to-date inventory of every training-data source (origin, responsible party, license, collection method, intended use constraints, and processing history) is maintained."
+            },
+            {
+              "name": "1.1.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that training data processes exclude unnecessary features, attributes, or fields (e.g., unused metadata, sensitive PII, leaked test data)."
+            },
+            {
+              "name": "1.1.3",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that all dataset changes are subject to a logged approval workflow."
+            },
+            {
+              "name": "1.1.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that datasets or subsets are watermarked or fingerprinted where feasible."
+            }
+          ]
+        },
+        {
+          "name": "C1.2",
+          "title": "Training Data Security & Integrity",
+          "description": "Restrict access to training data, encrypt it at rest and in transit, and validate its integrity to prevent tampering, theft, or data poisoning.",
+          "type": "section",
+          "children": [
+            {
+              "name": "1.2.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that access controls protect training data storage and pipelines."
+            },
+            {
+              "name": "1.2.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that all access to training data is logged, including user, time, and action."
+            },
+            {
+              "name": "1.2.3",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that training datasets are encrypted in transit and at rest, using current recommended cryptographic algorithms and key management practices."
+            },
+            {
+              "name": "1.2.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that cryptographic hashes or digital signatures are used to ensure data integrity during training data storage and transfer."
+            },
+            {
+              "name": "1.2.5",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that automated integrity monitoring is applied to guard against unauthorized modifications or corruption of training data."
+            },
+            {
+              "name": "1.2.6",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that obsolete training data is securely purged or anonymized."
+            },
+            {
+              "name": "1.2.7",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that all training dataset versions are uniquely identified, stored immutably, and auditable to support rollback and forensic analysis."
+            }
+          ]
+        },
+        {
+          "name": "C1.3",
+          "title": "Data Labeling and Annotation Security",
+          "description": "Ensure labeling and annotation processes are access-controlled, auditable, and protect sensitive information.",
+          "type": "section",
+          "children": [
+            {
+              "name": "1.3.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that labeling interfaces and platforms enforce access controls and maintain audit logs of all labeling activities, and that annotator identity metadata is exported and retained alongside the dataset so that every annotation or preference pair can be attributed to a specific, verified human annotator throughout the training pipeline, not only within the labeling platform."
+            },
+            {
+              "name": "1.3.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that cryptographic hashes or digital signatures are applied to labeling artifacts, annotation data, and fine-tuning feedback records (including RLHF preference pairs) to ensure their integrity and authenticity."
+            },
+            {
+              "name": "1.3.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that labeling audit logs are tamper-evident and that labeling platforms protect against unauthorized modifications."
+            },
+            {
+              "name": "1.3.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that sensitive information in labels is redacted, anonymized, or encrypted using appropriate granularity at rest and in transit."
+            }
+          ]
+        },
+        {
+          "name": "C1.4",
+          "title": "Training Data Quality and Security Assurance",
+          "description": "Combine automated validation, manual spot-checks, and logged remediation to guarantee dataset reliability.",
+          "type": "section",
+          "children": [
+            {
+              "name": "1.4.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that automated tests catch format errors and nulls on every ingest or significant data transformation."
+            },
+            {
+              "name": "1.4.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that training and fine-tuning pipelines implement data integrity validation and poisoning detection techniques (e.g., statistical analysis, outlier detection, embedding analysis) to identify potential data poisoning or unintentional corruption in training data."
+            },
+            {
+              "name": "1.4.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that automatically generated labels (e.g., via models or weak supervision) are subject to confidence thresholds and consistency checks to detect misleading or low-confidence labels."
+            },
+            {
+              "name": "1.4.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that appropriate defenses, such as adversarial training, data augmentation with perturbed inputs, or robust optimization techniques, are implemented and tuned for relevant models based on risk assessment."
+            },
+            {
+              "name": "1.4.5",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that automated tests catch label skews on every ingest or significant data transformation."
+            },
+            {
+              "name": "1.4.6",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that models used in security-relevant decisions (e.g., abuse detection, fraud scoring, automated trust decisions) are evaluated for systematic bias patterns that an adversary could exploit to evade controls (e.g., mimicking a trusted language style or demographic pattern to bypass detection)."
+            }
+          ]
+        },
+        {
+          "name": "C1.5",
+          "title": "Data Lineage and Traceability",
+          "description": "Track the full journey of each dataset from source to model input for auditability and incident response.",
+          "type": "section",
+          "children": [
+            {
+              "name": "1.5.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that the lineage of each dataset and its components, including all transformations, augmentations, and merges, is recorded and can be reconstructed."
+            },
+            {
+              "name": "1.5.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that lineage records are immutable, securely stored, and accessible for audits."
+            },
+            {
+              "name": "1.5.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that lineage tracking covers synthetic data generated via augmentation, synthesis, or privacy-preserving techniques and that all synthetic data is clearly labeled and distinguishable from real data throughout the pipeline."
+            }
+          ]
+        }
+      ],
+      "name": "C1 Training Data Integrity & Traceability"
+    },
+    {
+      "type": "chapter",
+      "children": [
+        {
+          "name": "C2.1",
+          "title": "Prompt Injection Defense",
+          "description": "Prompt injection is one of the top risks for AI systems. Defenses against this tactic employ a combination of pattern filters, data classifiers and instruction hierarchy enforcement.",
+          "type": "section",
+          "children": [
+            {
+              "name": "2.1.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that all external or derived inputs that may steer model behavior are treated as untrusted and screened by a prompt injection detection ruleset or classifier before being included in prompts or used to trigger actions."
+            },
+            {
+              "name": "2.1.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that the system enforces an instruction hierarchy in which system and developer messages override user instructions and other untrusted inputs, even after processing user instructions."
+            },
+            {
+              "name": "2.1.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that prompts originating from third-party content (web pages, PDFs, emails) are sanitized in isolation (for example, stripping instruction-like directives and neutralizing HTML, Markdown, and script content) before being concatenated into the main prompt."
+            },
+            {
+              "name": "2.1.4",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that input length controls account for context window limits and that the system prevents user-supplied content from exceeding a proportion of the total context window that would displace system instructions or safety directives from the model's effective attention."
+            }
+          ]
+        },
+        {
+          "name": "C2.2",
+          "title": "Adversarial-Example Resistance",
+          "description": "AI models are vulnerable to subtle input perturbations that humans often miss but models tend to misclassify.",
+          "type": "section",
+          "children": [
+            {
+              "name": "2.2.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that basic input normalization steps (Unicode NFC, homoglyph mapping, whitespace trimming, removal of control and invisible Unicode characters) are run before tokenization or embedding and before parsing into tool or MCP arguments."
+            },
+            {
+              "name": "2.2.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that suspected adversarial inputs are quarantined and logged."
+            },
+            {
+              "name": "2.2.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that inputs that deviate from expected input patterns, as determined by statistical or semantic anomaly detection, are gated prior to inclusion in prompts or execution of actions."
+            },
+            {
+              "name": "2.2.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that the inference pipeline supports adversarial-training-hardened model variants or defense layers (e.g., randomization, defensive distillation, alignment checks) for high-risk endpoints."
+            },
+            {
+              "name": "2.2.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that encoding and representation smuggling in both inputs and outputs (e.g., invisible Unicode/control characters, homoglyph swaps, or mixed-direction text) are detected and mitigated. Approved mitigations include canonicalization, strict schema validation, policy-based rejection, or explicit marking."
+            }
+          ]
+        },
+        {
+          "name": "C2.3",
+          "title": "Prompt Character Set",
+          "description": "Restricting the character set of user inputs to only allow characters that are necessary for business requirements can help prevent various types of attacks.",
+          "type": "section",
+          "children": [
+            {
+              "name": "2.3.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that the system implements a character set limitation for user inputs, allowing only characters that are explicitly required for business purposes using an allow-list approach."
+            },
+            {
+              "name": "2.3.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that inputs containing characters outside of the allowed set are rejected and logged with trace metadata (source, tool or MCP server, agent ID, session)."
+            }
+          ]
+        },
+        {
+          "name": "C2.4",
+          "title": "Schema, Type & Length Validation",
+          "description": "AI attacks featuring malformed or oversized inputs can cause parsing errors, prompt spillage across fields, and resource exhaustion.  Strict schema enforcement is also a prerequisite when performing deterministic tool calls.",
+          "type": "section",
+          "children": [
+            {
+              "name": "2.4.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that every API, tool or MCP endpoint defines an explicit input schema (e.g., JSON Schema, Protocol Buffers, or multimodal equivalent), rejects extra or unknown fields and implicit type coercion, and validates inputs server-side before prompt assembly or tool execution."
+            },
+            {
+              "name": "2.4.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that inputs exceeding maximum token or byte limits are rejected with a safe error and never silently truncated."
+            },
+            {
+              "name": "2.4.3",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that type checks (e.g., numeric ranges, enumerated values, and MIME types for images or audio) are enforced for all server-side inputs, including tool or MCP arguments."
+            },
+            {
+              "name": "2.4.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that semantic validators run in constant time and avoid external network calls to prevent algorithmic DoS."
+            },
+            {
+              "name": "2.4.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that validation failures are logged with redacted payload snippets and unambiguous error codes and include trace metadata (source, tool or MCP server, agent ID, session) to aid security triage."
+            }
+          ]
+        },
+        {
+          "name": "C2.5",
+          "title": "Content & Policy Screening",
+          "description": "Developers should be able to detect syntactically valid prompts that request disallowed content (such as policy-violating instructions, harmful content, or restricted material) then prevent them from propagating.",
+          "type": "section",
+          "children": [
+            {
+              "name": "2.5.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that a content classifier scores every input and output for violence, self-harm, hate, sexual content and illegal requests, with configurable thresholds."
+            },
+            {
+              "name": "2.5.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that inputs which violate policies will be rejected so they will not propagate to downstream model or tool/MCP calls."
+            },
+            {
+              "name": "2.5.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that screening respects user-specific policies (age and regional legal constraints) via attribute-based rules resolved at request time, including the role or permission level of the calling agent."
+            },
+            {
+              "name": "2.5.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that screening logs include classifier confidence scores and policy category tags with applied stage (pre-prompt or post-response) and trace metadata (source, tool or MCP server, agent ID, session) for SOC correlation and future red-team replay."
+            }
+          ]
+        },
+        {
+          "name": "C2.6",
+          "title": "Input Rate Limiting & Abuse Prevention",
+          "description": "Developers should prevent abuse, resource exhaustion, and automated attacks against AI systems by limiting input rates and detecting anomalous usage patterns.",
+          "type": "section",
+          "children": [
+            {
+              "name": "2.6.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that per-user, per-IP, per-API-key, and per-agent and per-session/task rate limits are enforced for all input and tool/MCP endpoints."
+            },
+            {
+              "name": "2.6.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that burst and sustained rate limits are tuned to prevent DoS and brute force attacks, and that per-task budgets (for example tokens, tool/MCP calls, and cost) are enforced for agent planning loops."
+            },
+            {
+              "name": "2.6.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that anomalous usage patterns (e.g., rapid-fire requests, input flooding, repetitive failing tool/MCP calls or recursive agent loops) trigger automated blocks or escalations."
+            },
+            {
+              "name": "2.6.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that abuse prevention logs are retained and reviewed for emerging attack patterns, with trace metadata (source, tool or MCP server, agent ID, session)."
+            }
+          ]
+        },
+        {
+          "name": "C2.7",
+          "title": "Multi-Modal Input Validation",
+          "description": "AI systems should include robust validation for non-textual inputs (images, audio, files) to prevent injection, evasion, or resource abuse.",
+          "type": "section",
+          "children": [
+            {
+              "name": "2.7.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that all non-text inputs (images, audio, files) are validated for type, size, and format before processing, and that any extracted text (image-to-text or speech-to-text) and any hidden or embedded instructions (metadata, layers, alt text, comments) are treated as untrusted per 2.1.1."
+            },
+            {
+              "name": "2.7.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that files are scanned for malware and steganographic payloads before ingestion, and that any active content (like scripts or macros) is removed or the file is quarantined."
+            },
+            {
+              "name": "2.7.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that image/audio inputs are checked for adversarial perturbations or known attack patterns, and detections trigger gating (block or degrade capabilities) before model use."
+            },
+            {
+              "name": "2.7.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that multi-modal input validation failures trigger detailed logging including all input modalities, validation results, threat scores, and trace metadata (source, tool or MCP server, agent ID, session as applicable), and generate alerts for investigation."
+            },
+            {
+              "name": "2.7.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that cross-modal attack detection identifies coordinated attacks spanning multiple input types (e.g., steganographic payloads in images combined with prompt injection in text) with correlation rules and alert generation, and that confirmed detections are blocked or require HITL (human-in-the-loop) approval."
+            }
+          ]
+        },
+        {
+          "name": "C2.8",
+          "title": "Real-Time Adaptive Threat Detection",
+          "description": "Developers should employ advanced threat detection systems for AI that adapt to new attack patterns and provide real-time protection.",
+          "type": "section",
+          "children": [
+            {
+              "name": "2.8.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that pattern matching (e.g., compiled regular expressions) runs on all inputs and outputs (including tool/MCP surfaces)."
+            },
+            {
+              "name": "2.8.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that adaptive detection models adjust sensitivity based on recent attack activity and are updated with new patterns in real time, and trigger risk-adaptive responses (for example disable tools, shrink context, or require HITL approval)."
+            },
+            {
+              "name": "2.8.3",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that detection accuracy is improved via contextual analysis of user history, source, and session behavior, including trace metadata (source, tool or MCP server, agent ID, session)."
+            },
+            {
+              "name": "2.8.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that detection performance metrics (detection rate, false positive rate, processing latency) are continuously monitored and optimized, including time-to-block and stage (pre-prompt/post-response)."
+            }
+          ]
+        }
+      ],
+      "name": "C2 User Input Validation"
+    },
+    {
+      "type": "chapter",
+      "children": [
+        {
+          "name": "C3.1",
+          "title": "Model Authorization & Integrity",
+          "description": "Only authorized models with verified integrity reach production environments.",
+          "type": "section",
+          "children": [
+            {
+              "name": "3.1.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that a model registry maintains an inventory of all deployed model artifacts and produces a machine-readable Model/AI Bill of Materials (MBOM/AIBOM) (e.g., SPDX or CycloneDX)."
+            },
+            {
+              "name": "3.1.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that all model artifacts (weights, configurations, tokenizers, base models, fine-tunes, adapters, and safety/policy models) are cryptographically signed by authorized entities and verified at deployment admission (and on load), blocking any unsigned or tampered artifact."
+            },
+            {
+              "name": "3.1.3",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that lineage and dependency tracking maintains a dependency graph that enables identification of all consuming services and agents per environment (e.g., dev, staging, prod)."
+            },
+            {
+              "name": "3.1.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that model origin integrity and trace records include an authorizing entity's identity, training data checksums, validation test results with pass/fail status, signature fingerprint/certificate chain ID, a creation timestamp, and approved deployment environments."
+            }
+          ]
+        },
+        {
+          "name": "C3.2",
+          "title": "Model Validation & Testing",
+          "description": "Models must pass defined security and safety validations before deployment.",
+          "type": "section",
+          "children": [
+            {
+              "name": "3.2.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that models undergo automated security testing that includes input validation, output sanitization, and safety evaluations with pass/fail thresholds before deployment."
+            },
+            {
+              "name": "3.2.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that security testing covers agent workflows, tool and MCP integrations, RAG and memory interactions, multimodal inputs, and guardrails (safety models or detection services) using a versioned evaluation harness."
+            },
+            {
+              "name": "3.2.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that all model changes (deployment, configuration, retirement) generate immutable audit records including a timestamp, an authenticated actor identity, a change type, and before/after states, with trace metadata (environment and consuming services/agents) and a model identifier (version/digest/signature)."
+            },
+            {
+              "name": "3.2.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that validation failures automatically block model deployment unless an explicit override approval from pre-designated authorized personnel with documented business justifications."
+            },
+            {
+              "name": "3.2.5",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that models subjected to post-training quantization, pruning, or distillation are re-evaluated against the same safety and alignment test suite on the compressed artifact before deployment, and that evaluation results are retained as distinct records linked to the compressed artifact's version or digest."
+            }
+          ]
+        },
+        {
+          "name": "C3.3",
+          "title": "Controlled Deployment & Rollback",
+          "description": "Model deployments must be controlled, monitored, and reversible.",
+          "type": "section",
+          "children": [
+            {
+              "name": "3.3.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that deployment processes validate cryptographic signatures and compute integrity checksums before model activation or load, failing deployment on any mismatch."
+            },
+            {
+              "name": "3.3.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that production deployments implement gradual rollout mechanisms (e.g., canary or blue-green deployments) with automated rollback triggers based on pre-agreed error rates, latency thresholds, guardrail alerts, or tool/MCP failure rates."
+            },
+            {
+              "name": "3.3.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that rollback capabilities restore the complete model state (weights, configurations, dependencies including adapters and safety/policy models) atomically."
+            },
+            {
+              "name": "3.3.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that emergency model shutdown capabilities can disable model endpoints within a pre-defined response time."
+            },
+            {
+              "name": "3.3.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that emergency shutdown cascades to all parts of the system including e.g. deactivating agent tool and MCP access, RAG connectors, database and API credentials, and memory-store bindings."
+            }
+          ]
+        },
+        {
+          "name": "C3.4",
+          "title": "Secure Development Practices",
+          "description": "Model development and training processes must follow secure practices to prevent compromise.",
+          "type": "section",
+          "children": [
+            {
+              "name": "3.4.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that model development, testing, and production environments are physically or logically separated. They have no shared infrastructure, distinct access controls, and isolated data stores, and agent orchestration and tool or MCP servers are also isolated."
+            },
+            {
+              "name": "3.4.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that model development artifacts (such as hyperparameters, training scripts, configuration files, prompt templates, agent policies/routing graphs, tool or MCP contracts/schemas, and action catalogs or capability allow-lists) are stored in version control and require peer review approval before use in training."
+            },
+            {
+              "name": "3.4.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that model training and fine-tuning occur in isolated environments with controlled network access using egress allow-lists and no access to production tools or MCP resources."
+            },
+            {
+              "name": "3.4.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that training data sources are validated through integrity checks and authenticated via trusted sources with documented chain of custody before use in model development, including RAG indexes, tool logs, and agent-generated data used for fine-tuning."
+            }
+          ]
+        },
+        {
+          "name": "C3.5",
+          "title": "Hosted and Provider-Managed Model Controls",
+          "description": "Hosted and provider-managed models may change behavior without notice. These controls help ensure visibility, reassessment, and safe operation when the organization does not control the model weights.",
+          "type": "section",
+          "children": [
+            {
+              "name": "3.5.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that hosted model dependencies are inventoried with provider, endpoint, provider-exposed model identifier, version or release identifier when available, and fallback or routing relationships."
+            },
+            {
+              "name": "3.5.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that provider model, version, or routing changes trigger security re-evaluation before continued use in high-risk workflows."
+            },
+            {
+              "name": "3.5.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that logs record the exact hosted model identifier returned by the provider, or explicitly record that no such identifier was exposed."
+            },
+            {
+              "name": "3.5.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that high-assurance deployments fail closed or require explicit approval when the provider does not expose sufficient model identity or change notification information for verification."
+            }
+          ]
+        },
+        {
+          "name": "C3.7",
+          "title": "Fine-Tuning Pipeline Authorization & Reward Model Integrity",
+          "description": "Fine-tuning pipelines are high-privilege operations that can alter deployed model behavior at scale. Multi-stage pipelines compound this risk because a compromise at any intermediate stage produces a subtly altered artifact that subsequent stages accept. Reward models used in RLHF are ML artifacts subject to tampering yet often treated as static infrastructure rather than versioned, validated components.",
+          "type": "section",
+          "children": [
+            {
+              "name": "3.7.1",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that initiating a fine-tuning or retraining run requires authorization from a person who did not request the run (separation of duties)."
+            },
+            {
+              "name": "3.7.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that reward models used in RLHF fine-tuning are versioned, cryptographically signed, and integrity-verified before use in a training run."
+            },
+            {
+              "name": "3.7.3",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that RLHF training stages include automated detection of reward hacking or reward model over-optimization (e.g., held-out human-preference probe sets, divergence thresholds, or KL penalty monitoring), with the run blocked from promotion if detection thresholds are exceeded."
+            },
+            {
+              "name": "3.7.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that in multi-stage fine-tuning pipelines, each stage's output is integrity-verified before the next stage consumes it, and intermediate checkpoints are registered as distinct artifacts enabling per-stage rollback."
+            }
+          ]
+        }
+      ],
+      "name": "C3 Model Lifecycle Management & Change Control"
+    },
+    {
+      "type": "chapter",
+      "children": [
+        {
+          "name": "C4.1",
+          "title": "Runtime Environment Isolation",
+          "description": "Prevent container escapes and privilege escalation through OS-level isolation primitives.",
+          "type": "section",
+          "children": [
+            {
+              "name": "4.1.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that all AI workloads run with minimal permissions needed on the operating system, by e.g. dropping unnecessary Linux capabilities in case of a container."
+            },
+            {
+              "name": "4.1.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that workloads are protected by technologies limiting exploitation such as sandboxing, seccomp profiles, AppArmor, SELinux or similar, and that the configuration is appropriate."
+            },
+            {
+              "name": "4.1.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that workloads run with a read-only root filesystem, and that any writable mounts are explicitly defined and hardened with restrictive options that prevent execution and privilege escalation (e.g., noexec, nosuid, nodev)."
+            },
+            {
+              "name": "4.1.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that runtime monitoring detects privilege-escalation and container-escape behaviors and automatically terminates offending processes."
+            },
+            {
+              "name": "4.1.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that high-risk AI workloads run in hardware-isolated environments (e.g., TEEs, trusted hypervisors, or bare-metal nodes) only after successful remote attestation."
+            }
+          ]
+        },
+        {
+          "name": "C4.2",
+          "title": "Secure Build & Deployment Pipelines",
+          "description": "Ensure cryptographic integrity and supply chain security through reproducible builds and signed artifacts.",
+          "type": "section",
+          "children": [
+            {
+              "name": "4.2.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that builds are completely automated and produce a software bill of materials (SBOM)."
+            },
+            {
+              "name": "4.2.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that build artifacts are cryptographically signed with build-origin metadata (source repository, build pipeline, commit hash) that can be independently verified."
+            },
+            {
+              "name": "4.2.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that build artifact signatures and build-origin metadata are validated at deployment admission, and unverified artifacts are rejected."
+            },
+            {
+              "name": "4.2.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that builds are reproducible, producing identical output from identical source inputs, enabling independent verification of build integrity."
+            }
+          ]
+        },
+        {
+          "name": "C4.3",
+          "title": "Network Security & Access Control",
+          "description": "Implement zero-trust networking with default-deny policies and encrypted communications.",
+          "type": "section",
+          "children": [
+            {
+              "name": "4.3.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that network policies enforce default-deny ingress and egress, with only required services explicitly allowed."
+            },
+            {
+              "name": "4.3.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that AI workloads across environments (development, testing, production) run in isolated network segments with no direct internet access and no shared identity roles, security groups, or cross-environment connectivity."
+            },
+            {
+              "name": "4.3.3",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that administrative and remote access protocols and access to cloud metadata services are restricted and require strong authentication."
+            },
+            {
+              "name": "4.3.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that inter-service communication uses mutual TLS with certificate validation and regular automated rotation."
+            },
+            {
+              "name": "4.3.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that egress traffic is restricted to approved destinations and all requests are logged."
+            }
+          ]
+        },
+        {
+          "name": "C4.4",
+          "title": "Secrets & Cryptographic Key Management",
+          "description": "Protect secrets and cryptographic keys with secure storage, automated rotation, and strong access controls.",
+          "type": "section",
+          "children": [
+            {
+              "name": "4.4.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that secrets are stored in a dedicated secrets management system with encryption at rest and isolated from application workloads."
+            },
+            {
+              "name": "4.4.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that access to production secrets requires strong authentication."
+            },
+            {
+              "name": "4.4.3",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that secrets are deployed to applications at runtime through a dedicated secrets management system. Secrets must never be embedded in source code, configuration files, build artifacts, container images, or environment variables."
+            },
+            {
+              "name": "4.4.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that cryptographic keys are generated and stored in hardware-backed modules (e.g., HSMs, cloud KMS)."
+            },
+            {
+              "name": "4.4.5",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that secrets rotation is automated."
+            }
+          ]
+        },
+        {
+          "name": "C4.5",
+          "title": "AI Workload Sandboxing & Validation",
+          "description": "Isolate untrusted AI models in secure sandboxes and protect sensitive AI workloads using trusted execution environments (TEEs) and confidential computing technologies.",
+          "type": "section",
+          "children": [
+            {
+              "name": "4.5.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that external or untrusted AI models execute in isolated sandboxes."
+            },
+            {
+              "name": "4.5.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that sandboxed workloads have no outbound network connectivity by default, with any required access explicitly defined."
+            },
+            {
+              "name": "4.5.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that workload attestation is performed before model loading, ensuring cryptographic proof that the execution environment has not been tampered with."
+            },
+            {
+              "name": "4.5.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that confidential workloads execute within a trusted execution environment (TEE) that provides hardware-enforced isolation, memory encryption, and integrity protection."
+            },
+            {
+              "name": "4.5.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that confidential inference services prevent model extraction through encrypted computation with sealed model weights and protected execution."
+            },
+            {
+              "name": "4.5.6",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that orchestration of trusted execution environments includes lifecycle management, remote attestation, and encrypted communication channels."
+            },
+            {
+              "name": "4.5.7",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that secure multi-party computation (SMPC) enables collaborative AI training without exposing individual datasets or model parameters."
+            }
+          ]
+        },
+        {
+          "name": "C4.6",
+          "title": "AI Infrastructure Resource Management, Backup and Recovery",
+          "description": "Prevent resource exhaustion attacks and ensure fair resource allocation through quotas and monitoring. Maintain infrastructure resilience through secure backups, tested recovery procedures, and disaster recovery capabilities.",
+          "type": "section",
+          "children": [
+            {
+              "name": "4.6.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that workload resource consumption is limited through quotas and limits (e.g., CPU, memory, GPU) to mitigate denial-of-service attacks."
+            },
+            {
+              "name": "4.6.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that resource exhaustion triggers automated protections (e.g., rate limiting or workload isolation) once defined CPU, memory, or request thresholds are exceeded."
+            },
+            {
+              "name": "4.6.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that backup systems run in isolated networks with separate credentials, and the storage system is either run in an air-gapped network or implements WORM (write-once-read-many) protection against unauthorized modification."
+            }
+          ]
+        },
+        {
+          "name": "C4.7",
+          "title": "AI Hardware Security",
+          "description": "Secure AI-specific hardware components including GPUs, TPUs, and specialized AI accelerators.",
+          "type": "section",
+          "children": [
+            {
+              "name": "4.7.1",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that before workload execution, AI accelerator integrity is validated using hardware-based attestation mechanisms (e.g., TPM, DRTM, or equivalent)."
+            },
+            {
+              "name": "4.7.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that accelerator (GPU) memory is isolated between workloads through partitioning mechanisms with memory sanitization between jobs."
+            },
+            {
+              "name": "4.7.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that AI accelerator firmware is version-pinned, signed, and attested at boot; unsigned or debug firmware is blocked."
+            },
+            {
+              "name": "4.7.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that VRAM and on-package memory are zeroed between jobs/tenants and that device reset policies prevent cross-tenant data remanence."
+            },
+            {
+              "name": "4.7.5",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that partitioning/isolation features (e.g., MIG/VM partitioning) are enforced per tenant and prevent peer-to-peer memory access across partitions."
+            },
+            {
+              "name": "4.7.6",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that hardware security modules (HSMs) or equivalent tamper-resistant hardware protect AI model weights and cryptographic keys, with certification to an appropriate assurance level (e.g., FIPS 140-3 Level 3 or Common Criteria EAL4+)."
+            },
+            {
+              "name": "4.7.7",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that accelerator interconnects (NVLink/PCIe/InfiniBand/RDMA/NCCL) are restricted to approved topologies and authenticated endpoints; plaintext cross-tenant links are disallowed."
+            },
+            {
+              "name": "4.7.8",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that accelerator telemetry (power draw, temperature, error correction, performance counters) is exported to centralized security monitoring and alerts on anomalies indicative of side-channels or covert channels."
+            }
+          ]
+        },
+        {
+          "name": "C4.8",
+          "title": "Edge & Distributed AI Security",
+          "description": "Secure distributed AI deployments including edge computing, federated learning, and multi-site architectures.",
+          "type": "section",
+          "children": [
+            {
+              "name": "4.8.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that edge AI devices authenticate to central infrastructure using mutual authentication with certificate validation (e.g., mutual TLS)."
+            },
+            {
+              "name": "4.8.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that models deployed to edge or mobile devices are cryptographically signed during packaging, and that the on-device runtime validates these signatures or checksums before loading or inference; unverified or altered models must be rejected."
+            },
+            {
+              "name": "4.8.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that edge devices implement secure boot with verified signatures and rollback protection to prevent firmware downgrade attacks."
+            },
+            {
+              "name": "4.8.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that mobile or edge inference applications implement platform-level anti-tampering protections (e.g., code signing, verified boot, runtime integrity checks) that detect and block modified binaries, repackaged applications, or attached instrumentation frameworks."
+            },
+            {
+              "name": "4.8.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that distributed AI coordination uses Byzantine fault-tolerant consensus mechanisms with participant validation and malicious node detection."
+            },
+            {
+              "name": "4.8.6",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that edge-to-cloud communication supports bandwidth throttling, data compression, and secure offline operation with encrypted local storage."
+            },
+            {
+              "name": "4.8.7",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that on-device inference runtimes enforce process, memory, and file access isolation to prevent model dumping, debugging, or extraction of intermediate embeddings and activations."
+            },
+            {
+              "name": "4.8.8",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that model weights and sensitive parameters stored locally are encrypted using hardware-backed key stores or secure enclaves (e.g., Android Keystore, iOS Secure Enclave, TPM/TEE), with keys inaccessible to user space."
+            },
+            {
+              "name": "4.8.9",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that models packaged within mobile, IoT, or embedded applications are encrypted or obfuscated at rest, and decrypted only inside a trusted runtime or secure enclave, preventing direct extraction from the app package or filesystem."
+            }
+          ]
+        }
+      ],
+      "name": "C4 Infrastructure, Configuration & Deployment Security"
+    },
+    {
+      "type": "chapter",
+      "children": [
+        {
+          "name": "C5.1",
+          "title": "Identity Management & Authentication",
+          "description": "Establish verified identities for all entities interacting with AI systems, with authentication strength appropriate to the risk level.",
+          "type": "section",
+          "children": [
+            {
+              "name": "5.1.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that all human users and service principals authenticate through a centralized identity provider using industry-standard federation protocols (e.g., OIDC, SAML)."
+            },
+            {
+              "name": "5.1.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that high-risk operations (model deployment, weight export, training data access, production configuration changes) require multi-factor authentication or step-up authentication with session re-validation."
+            },
+            {
+              "name": "5.1.3",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that AI agents in federated or multi-system deployments authenticate via short-lived, cryptographically signed authentication tokens (e.g., signed JWT assertions) with a maximum lifetime appropriate to the risk level and including cryptographic proof of origin."
+            }
+          ]
+        },
+        {
+          "name": "C5.2",
+          "title": "Authorization & Policy",
+          "description": "Implement access controls for all AI resources with explicit permission models and audit trails.",
+          "type": "section",
+          "children": [
+            {
+              "name": "5.2.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that every AI resource (datasets, models, endpoints, vector collections, embedding indices, compute instances) enforces access controls (e.g., RBAC, ABAC) with explicit allow-lists and default-deny policies."
+            },
+            {
+              "name": "5.2.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that all access control modifications are logged with timestamps, actor identities, resource identifiers, and permission changes."
+            },
+            {
+              "name": "5.2.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that access control audit logs are stored immutably and are tamper-evident."
+            },
+            {
+              "name": "5.2.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that data classification labels (PII, PHI, proprietary, etc.) automatically propagate to derived resources (embeddings, prompt caches, model outputs)."
+            },
+            {
+              "name": "5.2.5",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that unauthorized access attempts and privilege escalation events trigger real-time alerts with contextual metadata."
+            },
+            {
+              "name": "5.2.6",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that authorization decisions are externalized to a dedicated policy decision point (e.g., OPA, Cedar, or equivalent)."
+            },
+            {
+              "name": "5.2.7",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that policies evaluate dynamic attributes at runtime including user role or group, resource classification, request context, tenant isolation, and temporal constraints."
+            },
+            {
+              "name": "5.2.8",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that policy cache TTL values are defined based on resource sensitivity, with shorter TTLs for high-sensitivity resources, and that cache invalidation capabilities are available."
+            }
+          ]
+        },
+        {
+          "name": "C5.3",
+          "title": "Query-Time Security Enforcement",
+          "description": "Enforce authorization at the data access layer to prevent unauthorized data retrieval through AI queries.",
+          "type": "section",
+          "children": [
+            {
+              "name": "5.3.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that all data store queries (e.g., vector databases, SQL databases, search indices) include mandatory security filters (tenant ID, sensitivity labels, user scope) enforced at the data access layer."
+            },
+            {
+              "name": "5.3.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that failed authorization evaluations immediately abort queries and return explicit authorization error codes."
+            },
+            {
+              "name": "5.3.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that row-level security policies and field-level masking are enabled with policy inheritance for all data stores containing sensitive data used by AI systems."
+            },
+            {
+              "name": "5.3.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that query retry mechanisms re-evaluate authorization policies to account for dynamic permission changes within active sessions."
+            }
+          ]
+        },
+        {
+          "name": "C5.4",
+          "title": "Output Filtering & Data Loss Prevention",
+          "description": "Deploy post-processing controls to prevent unauthorized data exposure in AI-generated content.",
+          "type": "section",
+          "children": [
+            {
+              "name": "5.4.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that post-inference filtering mechanisms prevent responses from including classified information or proprietary data that the requestor is not authorized to receive."
+            },
+            {
+              "name": "5.4.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that citations, references, and source attributions in model outputs are validated against caller entitlements and removed if unauthorized access is detected."
+            },
+            {
+              "name": "5.4.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that output format restrictions (sanitized documents, metadata-stripped images, approved file types) are enforced based on user permission levels and data classifications."
+            }
+          ]
+        },
+        {
+          "name": "C5.5",
+          "title": "Multi-Tenant Isolation",
+          "description": "Ensure logical and cryptographic isolation between tenants in shared AI infrastructure.",
+          "type": "section",
+          "children": [
+            {
+              "name": "5.5.1",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that network policies implement default-deny rules for cross-tenant communication."
+            },
+            {
+              "name": "5.5.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that every API request includes an authenticated tenant identifier that is cryptographically validated against session context and user entitlements."
+            },
+            {
+              "name": "5.5.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that memory spaces, embedding stores, cache entries (e.g., result caches, embedding caches), and temporary files are namespace-segregated per tenant with secure purging on tenant deletion or session termination."
+            },
+            {
+              "name": "5.5.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that encryption keys are unique per tenant with customer-managed key (CMK) support and cryptographic isolation between tenant data stores."
+            },
+            {
+              "name": "5.5.5",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that inference-time KV-cache entries are partitioned by authenticated session or tenant identity and that automatic prefix caching does not share cached prefixes across distinct security principals, to prevent timing-based prompt reconstruction attacks."
+            }
+          ]
+        },
+        {
+          "name": "C5.6",
+          "title": "Autonomous Agent Authorization",
+          "description": "Control permissions for AI agents and autonomous systems through scoped capability tokens and continuous authorization.",
+          "type": "section",
+          "children": [
+            {
+              "name": "5.6.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that autonomous agents receive scoped capability tokens that explicitly enumerate permitted actions, accessible resources, time boundaries, and operational constraints."
+            },
+            {
+              "name": "5.6.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that high-risk capabilities (file system access, code execution, external API calls, financial transactions) are disabled by default and require explicit authorization."
+            },
+            {
+              "name": "5.6.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that capability tokens are bound to user sessions, include cryptographic integrity protection, and cannot be persisted or reused across sessions."
+            },
+            {
+              "name": "5.6.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that agent-initiated actions undergo authorization through a policy decision point that evaluates contextual attributes (e.g., user identity, resource sensitivity, action type, environmental context)."
+            }
+          ]
+        }
+      ],
+      "name": "C5 Access Control & Identity for AI Components & Users"
+    },
+    {
+      "type": "chapter",
+      "children": [
+        {
+          "name": "C6.1",
+          "title": "Pretrained Model Vetting & Origin Integrity",
+          "description": "Assess and authenticate third-party model origins, licenses, and hidden behaviors before any fine-tuning or deployment.",
+          "type": "section",
+          "children": [
+            {
+              "name": "6.1.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that every third-party model artifact includes a signed origin-and-integrity record identifying its source, version, and integrity checksum."
+            },
+            {
+              "name": "6.1.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that models are scanned for malicious layers or Trojan triggers using automated tools before import."
+            },
+            {
+              "name": "6.1.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that model licenses, export-control tags, and data-origin statements are recorded in an AI BOM entry."
+            },
+            {
+              "name": "6.1.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that high-risk models (e.g., publicly uploaded weights, unverified creators) remain quarantined until human review and sign-off."
+            },
+            {
+              "name": "6.1.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that transfer-learning fine-tunes pass adversarial evaluation to detect hidden behaviors."
+            },
+            {
+              "name": "6.1.6",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that third-party or open-source models pass a defined behavioral acceptance test suite (covering safety, alignment, and capability boundaries relevant to the deployment context) before being imported or promoted to any non-development environment."
+            }
+          ]
+        },
+        {
+          "name": "C6.2",
+          "title": "Framework & Library Scanning",
+          "description": "Continuously scan AI frameworks and libraries for vulnerabilities and malicious code to keep the runtime stack secure.",
+          "type": "section",
+          "children": [
+            {
+              "name": "6.2.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that CI pipelines run dependency scanners on AI frameworks and critical libraries."
+            },
+            {
+              "name": "6.2.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that critical and high-severity vulnerabilities block promotion to production images."
+            },
+            {
+              "name": "6.2.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that static code analysis runs on forked or vendored AI libraries."
+            },
+            {
+              "name": "6.2.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that framework upgrade proposals include a security impact assessment referencing public vulnerability feeds."
+            },
+            {
+              "name": "6.2.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that runtime sensors alert on unexpected dynamic library loads that deviate from the signed SBOM."
+            }
+          ]
+        },
+        {
+          "name": "C6.3",
+          "title": "Dependency Pinning & Verification",
+          "description": "Pin every dependency to immutable digests and verify builds to guarantee tamper-free artifacts.",
+          "type": "section",
+          "children": [
+            {
+              "name": "6.3.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that all package managers enforce version pinning via lockfiles."
+            },
+            {
+              "name": "6.3.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that immutable digests are used instead of mutable tags in container references."
+            },
+            {
+              "name": "6.3.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that expired or unmaintained dependencies trigger automated notifications to update or replace pinned versions."
+            },
+            {
+              "name": "6.3.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that build attestations are retained for a period defined by organizational policy for audit traceability."
+            },
+            {
+              "name": "6.3.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that reproducible-build checks compare hashes across CI runs to ensure identical outputs."
+            }
+          ]
+        },
+        {
+          "name": "C6.4",
+          "title": "Trusted Source Enforcement",
+          "description": "Allow artifact downloads only from cryptographically verified, organization-approved sources and block everything else.",
+          "type": "section",
+          "children": [
+            {
+              "name": "6.4.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that model weights, datasets, and containers are downloaded only from approved sources or internal registries."
+            },
+            {
+              "name": "6.4.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that cryptographic signatures validate publisher identity before artifacts are cached locally."
+            },
+            {
+              "name": "6.4.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that egress controls block unauthenticated artifact downloads to enforce trusted-source policy."
+            },
+            {
+              "name": "6.4.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that repository allow-lists are reviewed periodically with evidence of business justification for each entry."
+            },
+            {
+              "name": "6.4.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that policy violations trigger quarantining of artifacts and rollback of dependent pipeline runs."
+            }
+          ]
+        },
+        {
+          "name": "C6.5",
+          "title": "Third-Party Dataset Risk Assessment",
+          "description": "Evaluate external datasets for poisoning, bias, and legal compliance, and monitor them throughout their lifecycle.",
+          "type": "section",
+          "children": [
+            {
+              "name": "6.5.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that external datasets undergo poisoning risk assessment (e.g., data fingerprinting, outlier detection)."
+            },
+            {
+              "name": "6.5.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that disallowed content (e.g., copyrighted material, PII) is detected and removed via automated scrubbing prior to training."
+            },
+            {
+              "name": "6.5.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that origin, lineage, and license terms for datasets are captured in AI BOM entries."
+            },
+            {
+              "name": "6.5.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that bias metrics (e.g., demographic parity, equal opportunity) are calculated before dataset approval."
+            },
+            {
+              "name": "6.5.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that periodic monitoring detects drift or corruption in hosted datasets."
+            }
+          ]
+        },
+        {
+          "name": "C6.6",
+          "title": "Supply Chain Attack Monitoring",
+          "description": "Detect supply-chain threats early through vulnerability feeds, audit-log analytics, and incident response readiness.",
+          "type": "section",
+          "children": [
+            {
+              "name": "6.6.1",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that incident response playbooks include rollback procedures for compromised models or libraries."
+            },
+            {
+              "name": "6.6.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that CI/CD audit logs are streamed to centralized security monitoring with detections for anomalous package pulls or tampered build steps."
+            },
+            {
+              "name": "6.6.3",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that threat-intelligence enrichment tags AI-specific indicators (e.g., model-poisoning indicators of compromise) in alert triage."
+            }
+          ]
+        },
+        {
+          "name": "C6.7",
+          "title": "AI BOM for Model Artifacts",
+          "description": "Generate and sign detailed AI-specific bills of materials (AI BOMs) so downstream consumers can verify component integrity at deploy time.",
+          "type": "section",
+          "children": [
+            {
+              "name": "6.7.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that every model artifact publishes an AI BOM that lists datasets, weights, hyperparameters, and licenses."
+            },
+            {
+              "name": "6.7.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that AI BOM generation and cryptographic signing are automated in CI and required for merge."
+            },
+            {
+              "name": "6.7.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that AI BOM completeness checks fail the build if any component metadata (hash and license) is missing."
+            },
+            {
+              "name": "6.7.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that downstream consumers can query AI BOMs via API to validate imported models at deploy time."
+            },
+            {
+              "name": "6.7.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that AI BOMs are version-controlled and diffed to detect unauthorized modifications."
+            }
+          ]
+        }
+      ],
+      "name": "C6 Supply Chain Security for Models, Frameworks & Data"
+    },
+    {
+      "type": "chapter",
+      "children": [
+        {
+          "name": "C7.1",
+          "title": "Output Format Enforcement",
+          "description": "Ensure the model outputs data in a way that helps prevent injection.",
+          "type": "section",
+          "children": [
+            {
+              "name": "7.1.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that the application validates all model outputs against a strict schema (like JSON Schema) and rejects any output that does not match."
+            },
+            {
+              "name": "7.1.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that the system uses \"stop sequences\" or token limits to strictly cut off generation before it can overflow buffers or executes unintended commands."
+            },
+            {
+              "name": "7.1.3",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that components processing model output treat it as untrusted input (e.g., using parameterized queries or safe de-serializers)."
+            },
+            {
+              "name": "7.1.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that the system logs the specific error type when an output is rejected for bad formatting."
+            }
+          ]
+        },
+        {
+          "name": "C7.2",
+          "title": "Hallucination Detection & Mitigation",
+          "description": "Detect when the model produces potentially inaccurate or fabricated content and prevent unreliable outputs from reaching users or downstream systems.",
+          "type": "section",
+          "children": [
+            {
+              "name": "7.2.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that the system assesses the reliability of generated answers using a confidence or uncertainty estimation method (e.g., confidence scoring, retrieval-based verification, or model uncertainty estimation)."
+            },
+            {
+              "name": "7.2.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that the application automatically blocks answers or switches to a fallback message if the confidence score drops below a defined threshold."
+            },
+            {
+              "name": "7.2.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that hallucination events (low-confidence responses) are logged with input/output metadata for analysis."
+            },
+            {
+              "name": "7.2.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that for responses classified as high-risk or high-impact by policy, the system performs an additional verification step through an independent mechanism, such as retrieval-based grounding against authoritative sources, deterministic rule-based validation, tool-based fact-checking, or consensus review by a separately provisioned model."
+            },
+            {
+              "name": "7.2.5",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that the system tracks tool and function invocation history within a request chain and flags high-confidence factual assertions that were not preceded by relevant verification tool usage, as a practical hallucination detection signal independent of confidence scoring."
+            }
+          ]
+        },
+        {
+          "name": "C7.3",
+          "title": "Output Safety & Privacy Filtering",
+          "description": "Technical controls to detect and scrub bad content before it is shown to the user.",
+          "type": "section",
+          "children": [
+            {
+              "name": "7.3.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that automated classifiers scan every response and block content that matches hate, harassment, or sexual violence categories."
+            },
+            {
+              "name": "7.3.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that the system scans every response for PII (like credit cards or emails) and automatically redacts it before display."
+            },
+            {
+              "name": "7.3.3",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that PII detection and redaction events are logged without including the redacted PII values themselves, to maintain an audit trail without creating secondary PII exposure."
+            },
+            {
+              "name": "7.3.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that data labeled as \"confidential\" in the system remains blocked or redacted."
+            },
+            {
+              "name": "7.3.5",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that safety filters can be configured differently based on the user's role or location (e.g., stricter filters for minors) as appropriate."
+            },
+            {
+              "name": "7.3.6",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that the system requires a human approval step or re-authentication if the model generates high-risk content."
+            },
+            {
+              "name": "7.3.7",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that output filters detect and block responses that reproduce verbatim segments of system prompt content."
+            },
+            {
+              "name": "7.3.8",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that LLM client applications prevent model-generated output from triggering automatic outbound requests (e.g., auto-rendered images, iframes, or link prefetching) to attacker-controlled endpoints, for example by disabling automatic external resource loading or restricting it to explicitly allowlisted origins as appropriate."
+            }
+          ]
+        },
+        {
+          "name": "C7.4",
+          "title": "Output & Action Limiting",
+          "description": "Prevent the model from doing too much, too fast, or accessing things it should not.",
+          "type": "section",
+          "children": [
+            {
+              "name": "7.4.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that the system enforces hard limits on requests and tokens per user to prevent cost spikes and denial of service."
+            },
+            {
+              "name": "7.4.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that the model cannot execute high-impact actions (like writing files, sending emails, or executing code) without explicit user confirmation."
+            },
+            {
+              "name": "7.4.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that the application or orchestration framework explicitly configures and enforces the maximum depth of recursive calls, delegation limits, and the list of allowed external tools."
+            }
+          ]
+        },
+        {
+          "name": "C7.5",
+          "title": "Explainability & Transparency",
+          "description": "Ensure the user knows why a decision was made.",
+          "type": "section",
+          "children": [
+            {
+              "name": "7.5.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that explanations provided to the user are sanitized to remove system prompts or backend data."
+            },
+            {
+              "name": "7.5.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that the UI displays a confidence score or \"reasoning summary\" to the user for critical decisions."
+            },
+            {
+              "name": "7.5.3",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that technical evidence of the model's decision, such as model interpretability artifacts (e.g., attention maps, feature attributions), are logged."
+            }
+          ]
+        },
+        {
+          "name": "C7.6",
+          "title": "Monitoring Integration",
+          "description": "Ensure the application sends the right signals for security teams to watch.",
+          "type": "section",
+          "children": [
+            {
+              "name": "7.6.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that the system logs real-time metrics for safety violations (e.g., \"Hallucination Detected\", \"PII Blocked\")."
+            },
+            {
+              "name": "7.6.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that the system triggers an alert if safety violation rates exceed a defined threshold within a specific time window."
+            },
+            {
+              "name": "7.6.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that logs include the specific model version and other details necessary to investigate potential abuse."
+            }
+          ]
+        },
+        {
+          "name": "C7.7",
+          "title": "Generative Media Safeguards",
+          "description": "Prevent the creation of illegal or fake media.",
+          "type": "section",
+          "children": [
+            {
+              "name": "7.7.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that input filters block prompts requesting explicit or non-consensual synthetic content before the model processes them."
+            },
+            {
+              "name": "7.7.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that the system refuses to generate media (images/audio) that depicts real people without verified consent."
+            },
+            {
+              "name": "7.7.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that the system checks generated content for copyright violations before releasing it."
+            },
+            {
+              "name": "7.7.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that attempts to bypass filters are detected and logged as security events."
+            },
+            {
+              "name": "7.7.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that all generated media includes an invisible watermark or cryptographic signature to prove it was AI-generated."
+            }
+          ]
+        },
+        {
+          "name": "C7.8",
+          "title": "Source Attribution & Citation Integrity",
+          "description": "Ensure RAG-grounded outputs are traceable to their source documents and that cited claims are verifiably supported by retrieved content.",
+          "type": "section",
+          "children": [
+            {
+              "name": "7.8.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that responses generated using retrieval-augmented generation (RAG) include attribution to the source documents that grounded the response, and that attributions are derived from retrieval metadata rather than generated by the model."
+            },
+            {
+              "name": "7.8.2",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that each sourced claim in a RAG-grounded response can be traced to a specific retrieved chunk, and that the system detects and flags responses where claims are not supported by any retrieved content before the response is served."
+            }
+          ]
+        }
+      ],
+      "name": "C7 Model Behavior, Output Control & Safety Assurance"
+    },
+    {
+      "type": "chapter",
+      "children": [
+        {
+          "name": "C8.1",
+          "title": "Access Controls on Memory & RAG Indices",
+          "description": "Enforce fine-grained access controls and query-time scope enforcement for every vector collection.",
+          "type": "section",
+          "children": [
+            {
+              "name": "8.1.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that vector insert, update, delete, and query operations are enforced with namespace/collection/document-tag scope controls (e.g., tenant ID, user ID, data classification labels) with default-deny."
+            },
+            {
+              "name": "8.1.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that API credentials used for vector operations carry scoped claims (e.g., permitted collections, allowed verbs, tenant binding)."
+            },
+            {
+              "name": "8.1.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that cross-scope access attempts (e.g., cross-tenant similarity queries, namespace traversal, tag bypass) are detected and rejected."
+            },
+            {
+              "name": "8.1.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that every ingested document is tagged at write time with source, writer identity (authenticated user or system principal), timestamp, batch ID, and embedding model version, and that these tags are immutable after initial write."
+            },
+            {
+              "name": "8.1.5",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that RAG pipeline retrieval events log the query issued, the documents or chunks retrieved, similarity scores, the knowledge source, and whether retrieved content passed prompt injection scanning before being incorporated into model context."
+            },
+            {
+              "name": "8.1.6",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that retrieval anomaly detection identifies embedding density outliers, repeated dominance of specific documents in similarity results, and sudden shifts in retrieval bias distribution that may indicate vector database poisoning."
+            }
+          ]
+        },
+        {
+          "name": "C8.2",
+          "title": "Embedding Sanitization & Validation",
+          "description": "Pre-screen content before vectorization; treat memory writes as untrusted inputs; prevent ingestion of unsafe payloads.",
+          "type": "section",
+          "children": [
+            {
+              "name": "8.2.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that regulated data and sensitive fields are detected prior to embedding and are masked, tokenized, transformed, or dropped based on policy."
+            },
+            {
+              "name": "8.2.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that embedding ingestion rejects or quarantines inputs that violate required content constraints (e.g., non-UTF-8, malformed encodings, oversized payloads, invisible Unicode characters, or executable content intended to poison retrieval)."
+            },
+            {
+              "name": "8.2.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that vectors that fall outside normal clustering patterns are flagged and quarantined before entering production indices."
+            },
+            {
+              "name": "8.2.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that an agent's own outputs are not automatically written back into its trusted memory without explicit validation (such as content-origin checks or write-authorization controls that verify the content's source before committing writes)."
+            },
+            {
+              "name": "8.2.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that new content written to memory is checked for contradictions with what is already stored and that conflicts trigger alerts."
+            }
+          ]
+        },
+        {
+          "name": "C8.3",
+          "title": "Memory Expiry, Revocation & Deletion",
+          "description": "Retention must be explicit and enforceable; deletions must propagate to derived indices and caches.",
+          "type": "section",
+          "children": [
+            {
+              "name": "8.3.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that retention times are applied to every stored vector and related metadata across memory storage."
+            },
+            {
+              "name": "8.3.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that only information required for the system's defined function is persisted in memory (such as user preferences and conversation decisions, not credentials or full conversation transcripts), and that context not needed beyond the current session is discarded at session end."
+            },
+            {
+              "name": "8.3.3",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that deletion requests purge vectors, metadata, cache copies, and derivative indices within an organization-defined maximum time."
+            },
+            {
+              "name": "8.3.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that deleted or expired vectors are removed reliably and are unrecoverable."
+            },
+            {
+              "name": "8.3.5",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that expired vectors are excluded from retrieval results within a measured and monitored propagation window."
+            },
+            {
+              "name": "8.3.6",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that memory can be reset for security reasons (quarantine, selective purge, full reset) separately from retention deletion, and that quarantined content is kept for investigation but excluded from retrieval."
+            }
+          ]
+        },
+        {
+          "name": "C8.4",
+          "title": "Prevent Embedding Inversion & Leakage",
+          "description": "Address inversion, membership inference, and attribute inference with explicit threat modeling, mitigations, and regression testing gates.",
+          "type": "section",
+          "children": [
+            {
+              "name": "8.4.1",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that sensitive vector collections are protected against direct read access by infrastructure administrators via technical controls such as application-layer encryption, envelope encryption with strict KMS policies, or equivalent compensating controls."
+            },
+            {
+              "name": "8.4.2",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that privacy/utility targets for embedding leakage resistance are defined and measured, and that changes to embedding models, tokenizers, retrieval settings, or privacy transforms are gated by regression tests against those targets."
+            }
+          ]
+        },
+        {
+          "name": "C8.5",
+          "title": "Scope Enforcement for User-Specific Memory",
+          "description": "Prevent cross-tenant and cross-user leakage in retrieval and prompt assembly.",
+          "type": "section",
+          "children": [
+            {
+              "name": "8.5.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that every retrieval operation enforces scope constraints (tenant/user/classification) in the vector engine query and verifies them again before prompt assembly (post-filter)."
+            },
+            {
+              "name": "8.5.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that vector identifiers, namespaces, and metadata indexing prevent cross-scope collisions and enforce uniqueness per tenant."
+            },
+            {
+              "name": "8.5.3",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that retrieval results that match similarity criteria but fail scope checks are discarded."
+            },
+            {
+              "name": "8.5.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that multi-tenant tests simulate adversarial retrieval attempts (prompt-based and query-based) and demonstrate zero out-of-scope document inclusion in prompts and outputs."
+            },
+            {
+              "name": "8.5.5",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that in multi-agent systems, each agent's memory namespace is isolated and enforced through access control, not just organizational naming conventions."
+            },
+            {
+              "name": "8.5.6",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that encryption keys and access policies are segregated per tenant for memory/vector storage, providing cryptographic isolation in shared infrastructure."
+            }
+          ]
+        }
+      ],
+      "name": "C8 Memory, Embeddings & Vector Database Security"
+    },
+    {
+      "type": "chapter",
+      "children": [
+        {
+          "name": "C9.1",
+          "title": "Execution Budgets, Loop Control, and Circuit Breakers",
+          "description": "Bound runtime expansion (recursion, concurrency, cost) and halt safely on runaway behavior.",
+          "type": "section",
+          "children": [
+            {
+              "name": "9.1.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that per-execution budgets (max recursion depth, max fan-out/concurrency, wall-clock time, tokens, and monetary spend) are configured and enforced by the orchestration runtime."
+            },
+            {
+              "name": "9.1.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that cumulative resource/spend counters are tracked per request chain and hard-stop the chain when thresholds are exceeded."
+            },
+            {
+              "name": "9.1.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that circuit breakers terminate execution on budget violations."
+            },
+            {
+              "name": "9.1.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that security testing covers runaway loops, budget exhaustion, and partial-failure scenarios, confirming safe termination and consistent state."
+            },
+            {
+              "name": "9.1.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that budget and circuit-breaker policies are expressed as policy-as-code and are validated in CI/CD to prevent drift and unsafe configuration changes."
+            }
+          ]
+        },
+        {
+          "name": "C9.2",
+          "title": "High-Impact Action Approval and Irreversibility Controls",
+          "description": "Require explicit checkpoints for privileged or irreversible outcomes.",
+          "type": "section",
+          "children": [
+            {
+              "name": "9.2.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that privileged or irreversible actions (e.g., code merges/deploys, financial transfers, user access changes, destructive deletes, external notifications) require explicit human-in-loop approval."
+            },
+            {
+              "name": "9.2.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that approval requests display canonicalized and complete action parameters (diff, command, recipient, amount, scope) without truncation or transformation."
+            },
+            {
+              "name": "9.2.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that approvals are cryptographically bound (e.g., signed or MACed) to the exact action parameters, requester identity, and execution context."
+            },
+            {
+              "name": "9.2.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that approvals include a unique nonce and are single-use to prevent replay or substitution."
+            },
+            {
+              "name": "9.2.5",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that approvals expire within a defined maximum time-to-live (TTL) and are rejected after expiration."
+            },
+            {
+              "name": "9.2.6",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that where rollback is feasible, compensating actions are defined and tested (transactional semantics), and failures trigger rollback or safe containment."
+            }
+          ]
+        },
+        {
+          "name": "C9.3",
+          "title": "Tool and Plugin Isolation and Safe Integration",
+          "description": "Constrain tool execution, loading, and outputs to prevent unauthorized system access and unsafe side effects.",
+          "type": "section",
+          "children": [
+            {
+              "name": "9.3.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that each tool/plugin executes in an isolated sandbox (container/VM/WASM/OS sandbox) with least-privilege filesystem, network egress, and syscall permissions appropriate to the tool's function."
+            },
+            {
+              "name": "9.3.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that per-tool quotas and timeouts (CPU, memory, disk, egress, execution time) are enforced and logged, and that quota breaches fail closed."
+            },
+            {
+              "name": "9.3.3",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that tool outputs are validated against strict schemas and security policies before being incorporated into downstream reasoning or follow-on actions."
+            },
+            {
+              "name": "9.3.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that tool binaries or packages are integrity-verified (e.g., signatures, checksums) prior to loading."
+            },
+            {
+              "name": "9.3.5",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that tool manifests declare required privileges, side-effect level, resource limits, and output validation requirements, and that the runtime enforces these declarations."
+            },
+            {
+              "name": "9.3.6",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that sandbox escape indicators or policy violations trigger automated containment (tool disabled/quarantined)."
+            }
+          ]
+        },
+        {
+          "name": "C9.4",
+          "title": "Agent and Orchestrator Identity, Signing, and Tamper-Evident Audit",
+          "description": "Make every action attributable and every mutation detectable.",
+          "type": "section",
+          "children": [
+            {
+              "name": "9.4.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that each agent instance (and orchestrator/runtime) has a unique cryptographic identity and authenticates as a first-class principal to downstream systems (no reuse of end-user credentials)."
+            },
+            {
+              "name": "9.4.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that agent-initiated actions are cryptographically bound to the execution chain (chain ID) and are signed and timestamped for non-repudiation and traceability."
+            },
+            {
+              "name": "9.4.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that audit logs are tamper-evident (via append-only/WORM/immutable log store, cryptographic hash chaining where each record includes the hash of the prior record, or equivalent integrity guarantees that can be independently verified), and include sufficient context to reconstruct who/what acted, initiating user identifier, delegation scope, authorization decision (policy/version), tool parameters, approvals (where applicable), and outcomes."
+            },
+            {
+              "name": "9.4.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that agent identity credentials (keys/certs/tokens) rotate on a defined schedule and on compromise indicators, with rapid revocation and quarantine on suspected compromise or spoofing attempts."
+            }
+          ]
+        },
+        {
+          "name": "C9.5",
+          "title": "Secure Messaging and Protocol Hardening",
+          "description": "Protect agent-to-agent and agent-to-tool communications from hijacking, injection, replay, and desynchronization.",
+          "type": "section",
+          "children": [
+            {
+              "name": "9.5.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that agent-to-agent and agent-to-tool channels enforce mutual authentication and encryption using current recommended protocols (e.g., TLS 1.3 or later) with strong certificate/token validation."
+            },
+            {
+              "name": "9.5.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that all messages are strictly schema-validated; unknown fields, malformed payloads, and oversized frames are rejected."
+            },
+            {
+              "name": "9.5.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that message integrity covers the full payload including tool parameters, and that replay protections (nonces/sequence numbers/timestamp windows) are enforced."
+            },
+            {
+              "name": "9.5.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that agent outputs propagated to downstream agents are validated against semantic constraints (e.g., value ranges, logical consistency) in addition to schema validation."
+            }
+          ]
+        },
+        {
+          "name": "C9.6",
+          "title": "Authorization, Delegation, and Continuous Enforcement",
+          "description": "Ensure every action is authorized at execution time and constrained by scope.",
+          "type": "section",
+          "children": [
+            {
+              "name": "9.6.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that agent actions are authorized against fine-grained policies enforced by the runtime that restrict which tools an agent may invoke, which parameter values it may supply (e.g., allowed resources, data scopes, action types), and that policy violations are blocked."
+            },
+            {
+              "name": "9.6.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that when an agent acts on a user's behalf, the runtime propagates an integrity-protected delegation context (user ID, tenant, session, scopes) and enforces that context at every downstream call without using the user's credentials."
+            },
+            {
+              "name": "9.6.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that authorization is re-evaluated on every call (continuous authorization) using current context (user, tenant, environment, data classification, time, risk)."
+            },
+            {
+              "name": "9.6.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that all access control decisions are enforced by application logic or a policy engine, never by the AI model itself, and that model-generated output (e.g., \"the user is allowed to do this\") cannot override or bypass access control checks."
+            }
+          ]
+        },
+        {
+          "name": "C9.7",
+          "title": "Intent Verification and Constraint Gates",
+          "description": "Prevent \"technically authorized but unintended\" actions by binding execution to user intent and hard constraints.",
+          "type": "section",
+          "children": [
+            {
+              "name": "9.7.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that pre-execution gates evaluate proposed actions and parameters against hard policy constraints (deny rules, data handling constraints, allow-lists, side-effect budgets) and block execution on any violation."
+            },
+            {
+              "name": "9.7.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that post-execution checks confirm the intended outcome was achieved."
+            },
+            {
+              "name": "9.7.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that post-execution checks detect unintended side effects."
+            },
+            {
+              "name": "9.7.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that any mismatch between intended outcome and actual results triggers containment and, where supported, compensating actions."
+            },
+            {
+              "name": "9.7.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that prompt templates and agent policy configurations retrieved from a remote source are integrity-verified at load time against their approved versions (e.g., via hashes or signatures)."
+            }
+          ]
+        },
+        {
+          "name": "C9.8",
+          "title": "Multi-Agent Domain Isolation and Swarm Risk Controls",
+          "description": "Reduce cross-domain interference and emergent unsafe collective behavior.",
+          "type": "section",
+          "children": [
+            {
+              "name": "9.8.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that agents in different tenants, security domains, or environments (dev/test/prod) run in isolated runtimes and network segments, with default-deny controls that prevent cross-domain discovery and calls."
+            },
+            {
+              "name": "9.8.2",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that runtime monitoring detects unsafe emergent behavior (oscillation, deadlocks, uncontrolled broadcast, abnormal call graphs) and automatically applies corrective actions (throttle, isolate, terminate)."
+            },
+            {
+              "name": "9.8.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that each agent is restricted to its own memory namespace and is technically prevented from reading or modifying peer agent state, preventing unauthorized cross-agent access within the same swarm."
+            },
+            {
+              "name": "9.8.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that each agent operates with an isolated context window and dedicated credentials scoped to its role, preventing peer agents from accessing or influencing another agent's context or credential scope to prevent unauthorized cross-agent access within the same swarm."
+            },
+            {
+              "name": "9.8.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that swarm-level aggregate action rate limits (e.g., total external API calls, file writes, or network requests per time window across all agents) are enforced to prevent bursts that cause denial-of-service or abuse of external systems."
+            },
+            {
+              "name": "9.8.6",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that a swarm-level shutdown capability exists that can halt all active agent instances or selected problematic instances in an organized fashion and prevents new agent spawning, with shutdown completable within a pre-defined response time."
+            }
+          ]
+        }
+      ],
+      "name": "C9 Autonomous Orchestration & Agentic Action Security"
+    },
+    {
+      "type": "chapter",
+      "children": [
+        {
+          "name": "C10.1",
+          "title": "Component Integrity & Supply Chain Hygiene",
+          "description": "* [Model Context Protocol (MCP) Specification](https://modelcontextprotocol.io/)",
+          "type": "section",
+          "children": [
+            {
+              "name": "10.1.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that MCP server and client components are obtained only from trusted sources and verified using signatures, checksums, or secure package metadata, rejecting tampered or unsigned builds."
+            },
+            {
+              "name": "10.1.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that only allowlisted MCP server identifiers (name, version, and registry) are permitted in production and that the runtime rejects connections to unlisted or unregistered servers at load time."
+            }
+          ]
+        },
+        {
+          "name": "C10.2",
+          "title": "Authentication & Authorization",
+          "description": "* [Model Context Protocol (MCP) Specification](https://modelcontextprotocol.io/)",
+          "type": "section",
+          "children": [
+            {
+              "name": "10.2.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that MCP clients authenticate to MCP servers using the OAuth 2.1 authorization framework and present a valid OAuth access token for each request, and that the MCP server validates the token according to OAuth 2.1 resource server requirements."
+            },
+            {
+              "name": "10.2.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that MCP servers validate OAuth access tokens including issuer, audience, expiration, and scope claims, ensuring that tokens were issued for the specific MCP server before allowing tool invocation."
+            },
+            {
+              "name": "10.2.3",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that MCP servers are registered through a controlled technical onboarding mechanism requiring explicit owner, environment, and resource definitions; unregistered or undiscoverable servers must not be callable in production."
+            },
+            {
+              "name": "10.2.4",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that authorization decisions at the MCP layer are enforced by the MCP server's policy logic, and that model-generated output cannot influence, override, or bypass access control checks."
+            },
+            {
+              "name": "10.2.5",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that MCP servers act as OAuth 2.1 resource servers only by validating tokens issued by external authorization servers and by not storing tokens or user credentials."
+            },
+            {
+              "name": "10.2.6",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that MCP `tools/list` and resource discovery responses are filtered based on the end-user's authorized scopes so that agents receive only the tool and resource definitions the user is permitted to invoke."
+            },
+            {
+              "name": "10.2.7",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that MCP servers enforce access control on every tool invocation, validating that the user's access token authorizes both the requested tool and the specific argument values supplied."
+            },
+            {
+              "name": "10.2.8",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that MCP session identifiers are treated as state, not identity: generated using cryptographically secure random values, bound to the authenticated user, and never relied on for authentication or authorization decisions."
+            },
+            {
+              "name": "10.2.9",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that MCP servers do not pass through access tokens received from clients to downstream APIs and instead obtain a separate token scoped to the server's own identity (e.g., via on-behalf-of or client credentials flow)."
+            },
+            {
+              "name": "10.2.10",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that MCP servers acting as OAuth proxies to third-party APIs enforce per-client consent before forwarding authorization requests, preventing cached approvals from being reused across dynamically registered clients."
+            },
+            {
+              "name": "10.2.11",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that MCP clients request only the minimum scopes needed for the current operation, elevate progressively via step-up authorization, and that servers reject wildcard or overly broad scopes."
+            },
+            {
+              "name": "10.2.12",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that MCP servers enforce deterministic session teardown, destroying cached tokens, in-memory state, temporary storage, and file handles when a session terminates, disconnects, or times out."
+            }
+          ]
+        },
+        {
+          "name": "C10.3",
+          "title": "Secure Transport & Network Boundary Protection",
+          "description": "* [Model Context Protocol (MCP) Specification](https://modelcontextprotocol.io/)",
+          "type": "section",
+          "children": [
+            {
+              "name": "10.3.1",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that authenticated, encrypted streamable-HTTP is used as the primary MCP transport in production environments and that alternate transports (e.g., stdio or SSE) are restricted to local or tightly controlled environments with explicit justification."
+            },
+            {
+              "name": "10.3.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that streamable-HTTP MCP transports use authenticated, encrypted channels (TLS 1.3 or later) with certificate validation."
+            },
+            {
+              "name": "10.3.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that SSE-based MCP transports are used only within private, authenticated internal channels and enforce TLS, authentication, schema validation, payload size limits, and rate limiting; SSE endpoints must not be exposed to the public internet."
+            },
+            {
+              "name": "10.3.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that MCP servers validate the `Origin` and `Host` headers on all HTTP-based transports (including SSE and streamable-HTTP) to prevent DNS rebinding attacks and reject requests from untrusted, mismatched, or missing origins."
+            },
+            {
+              "name": "10.3.5",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that intermediaries do not alter or remove the `Mcp-Protocol-Version` header on streamable-HTTP transports unless explicitly required by the protocol specification, preventing protocol downgrade via header stripping."
+            }
+          ]
+        },
+        {
+          "name": "C10.4",
+          "title": "Schema, Message, and Input Validation",
+          "description": "* [Model Context Protocol (MCP) Specification](https://modelcontextprotocol.io/)",
+          "type": "section",
+          "children": [
+            {
+              "name": "10.4.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that MCP tool responses are validated before being injected into the model context to prevent prompt injection, malicious tool output, or context manipulation."
+            },
+            {
+              "name": "10.4.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that MCP tool and resource schemas (e.g., JSON schemas or capability descriptors) are validated for authenticity and integrity using signatures to prevent schema tampering or malicious parameter modification."
+            },
+            {
+              "name": "10.4.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that all MCP transports enforce message-framing integrity, strict schema validation, maximum payload sizes, and rejection of malformed, truncated, or interleaved frames to prevent desynchronization or injection attacks."
+            },
+            {
+              "name": "10.4.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that MCP servers perform strict input validation for all function calls, including type checking, boundary validation, enumeration enforcement, and rejection of unrecognized or oversized parameters."
+            },
+            {
+              "name": "10.4.5",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that MCP clients maintain a hash or versioned snapshot of tool definitions and that any change to a tool definition (via `notifications/tools/list_changed` or between sessions) triggers re-approval before the modified tool can be invoked."
+            },
+            {
+              "name": "10.4.6",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that MCP server error and exception responses do not expose stack traces, internal file paths, tokens, or tool implementation details to the client or model context."
+            },
+            {
+              "name": "10.4.7",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that MCP implementations reject JSON-RPC messages containing duplicate keys at any nesting level, preventing parser disagreement where different components resolve the same message to different values."
+            },
+            {
+              "name": "10.4.8",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that intermediaries evaluating message content either forward the canonicalized representation they evaluated or reject messages where multiple byte representations could produce different parsed structures."
+            }
+          ]
+        },
+        {
+          "name": "C10.5",
+          "title": "Outbound Access & Agent Execution Safety",
+          "description": "* [Model Context Protocol (MCP) Specification](https://modelcontextprotocol.io/)",
+          "type": "section",
+          "children": [
+            {
+              "name": "10.5.1",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that MCP servers may only initiate outbound requests to approved internal or external destinations following least-privilege egress policies and cannot access arbitrary network targets or internal cloud metadata services."
+            },
+            {
+              "name": "10.5.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that outbound MCP actions implement execution limits (e.g., timeouts, recursion limits, concurrency caps, or circuit breakers) to prevent unbounded agent-driven tool invocation or chained side effects."
+            },
+            {
+              "name": "10.5.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that MCP tool invocations classified as high-risk or destructive (e.g., data deletion, financial transactions, system configuration changes) require explicit user confirmation before execution."
+            }
+          ]
+        },
+        {
+          "name": "C10.6",
+          "title": "Transport Restrictions & High-Risk Boundary Controls",
+          "description": "* [Model Context Protocol (MCP) Specification](https://modelcontextprotocol.io/)",
+          "type": "section",
+          "children": [
+            {
+              "name": "10.6.1",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that stdio-based MCP transports are limited to co-located, single-process development scenarios and isolated from shell execution, terminal injection, and process-spawning capabilities; stdio must not cross network or multi-tenant boundaries."
+            },
+            {
+              "name": "10.6.2",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that MCP servers expose only allow-listed functions and resources and prohibit dynamic dispatch, reflective invocation, or execution of function names influenced by user or model-provided input."
+            },
+            {
+              "name": "10.6.3",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that tenant boundaries, environment boundaries (e.g., dev/test/prod), and data domain boundaries are enforced at the MCP layer to prevent cross-tenant or cross-environment server or resource discovery."
+            }
+          ]
+        }
+      ],
+      "name": "C10 Model Context Protocol (MCP) Security"
+    },
+    {
+      "type": "chapter",
+      "children": [
+        {
+          "name": "C11.1",
+          "title": "Model Alignment & Safety",
+          "description": "Guard against harmful or policy-breaking outputs through systematic testing and guardrails.",
+          "type": "section",
+          "children": [
+            {
+              "name": "11.1.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that refusal and safe-completion guardrails are enforced to prevent the model from generating disallowed content categories."
+            },
+            {
+              "name": "11.1.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that an alignment test suite (red-team prompts, jailbreak probes, disallowed-content checks) is version-controlled and run on every model update or release."
+            },
+            {
+              "name": "11.1.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that an automated evaluator measures harmful-content rate and flags regressions beyond a defined threshold."
+            },
+            {
+              "name": "11.1.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that alignment and safety training procedures (e.g., RLHF, constitutional AI, or equivalent) are documented and reproducible."
+            },
+            {
+              "name": "11.1.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that alignment evaluation includes assessments for evaluation awareness, where the model may behave differently when it detects it is being tested versus deployed."
+            }
+          ]
+        },
+        {
+          "name": "C11.2",
+          "title": "Adversarial-Example Hardening",
+          "description": "Increase resilience to manipulated inputs designed to cause misclassification or policy bypass. Adversarial testing and robustness benchmarking are the current best practices.",
+          "type": "section",
+          "children": [
+            {
+              "name": "11.2.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that models serving high-risk functions are evaluated against known adversarial attack techniques relevant to their modality (e.g., perturbation attacks for vision, token-manipulation attacks for text)."
+            },
+            {
+              "name": "11.2.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that adversarial-example detection raises alerts in production pipelines, with blocking or degraded-capability responses for high-risk endpoints or use cases."
+            },
+            {
+              "name": "11.2.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that adversarial training or equivalent hardening techniques are applied where feasible, with documented configurations and reproducible procedures."
+            },
+            {
+              "name": "11.2.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that robustness evaluations use adaptive attacks (attacks specifically designed to defeat the deployed defenses) to confirm no measurable robustness loss across releases."
+            },
+            {
+              "name": "11.2.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that formal robustness verification methods (e.g., certified bounds, interval-bound propagation) are applied to safety-critical model components where the model architecture supports them."
+            }
+          ]
+        },
+        {
+          "name": "C11.3",
+          "title": "Membership-Inference Mitigation",
+          "description": "Limit the ability to determine whether a specific record was in the training data. Differential privacy and output calibration are the most effective known defenses.",
+          "type": "section",
+          "children": [
+            {
+              "name": "11.3.1",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that model outputs are calibrated (e.g., via temperature scaling or output perturbation) to reduce overconfident predictions that facilitate membership-inference attacks."
+            },
+            {
+              "name": "11.3.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that training on sensitive datasets employs differentially-private optimization (e.g., DP-SGD) with a documented privacy budget (epsilon)."
+            },
+            {
+              "name": "11.3.3",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that membership-inference attack simulations (e.g., shadow-model, likelihood-ratio, or label-only attacks) demonstrate that attack accuracy does not meaningfully exceed random guessing on held-out data."
+            }
+          ]
+        },
+        {
+          "name": "C11.4",
+          "title": "Model-Inversion Resistance",
+          "description": "Prevent reconstruction of private training data or sensitive attributes from model outputs.",
+          "type": "section",
+          "children": [
+            {
+              "name": "11.4.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that sensitive attributes are never directly output; where needed, outputs use generalized categories (e.g., ranges, buckets) or one-way transforms."
+            },
+            {
+              "name": "11.4.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that query-rate limits throttle repeated adaptive queries from the same principal to raise the cost of inversion attacks."
+            },
+            {
+              "name": "11.4.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that models handling sensitive data are trained with privacy-preserving techniques (e.g., differential privacy, gradient clipping) to limit information leakage through outputs."
+            }
+          ]
+        },
+        {
+          "name": "C11.5",
+          "title": "Model-Extraction Defense",
+          "description": "Detect and deter unauthorized model cloning through API abuse. Rate limiting, query-pattern analysis, and watermarking are recommended defenses.",
+          "type": "section",
+          "children": [
+            {
+              "name": "11.5.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that inference endpoints enforce per-principal and global rate limits designed to make large-scale query harvesting impractical."
+            },
+            {
+              "name": "11.5.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that extraction-alert events include offending query metadata and are integrated with incident-response playbooks."
+            },
+            {
+              "name": "11.5.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that query-pattern analysis (e.g., query diversity, input distribution anomalies) feeds an automated extraction-attempt detector."
+            },
+            {
+              "name": "11.5.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that model watermarking or fingerprinting techniques are applied so that unauthorized copies can be identified."
+            },
+            {
+              "name": "11.5.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that watermark verification keys and trigger sets are protected with access controls equivalent to other critical cryptographic material."
+            }
+          ]
+        },
+        {
+          "name": "C11.6",
+          "title": "Inference-Time Poisoned-Data Detection",
+          "description": "Identify and neutralize backdoored or poisoned inputs at inference time, particularly in systems that consume external data (e.g., RAG pipelines, tool outputs).",
+          "type": "section",
+          "children": [
+            {
+              "name": "11.6.1",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that inputs from external or untrusted sources pass through anomaly detection (e.g., statistical outlier detection, consistency scoring) before model inference."
+            },
+            {
+              "name": "11.6.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that anomaly-detection thresholds are tuned on representative clean and adversarial validation sets and that the false-positive rate is measured and documented."
+            },
+            {
+              "name": "11.6.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that inputs flagged as anomalous trigger gating actions (blocking, capability degradation, or human review) appropriate to the risk level."
+            },
+            {
+              "name": "11.6.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that detection methods are periodically stress-tested with current adversarial techniques, including adaptive attacks designed to evade the specific detectors in use."
+            },
+            {
+              "name": "11.6.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that detection efficacy metrics are logged and periodically re-evaluated against updated threat intelligence."
+            }
+          ]
+        },
+        {
+          "name": "C11.7",
+          "title": "Security Policy Adaptation",
+          "description": "Real-time security policy updates based on threat intelligence and behavioral analysis.",
+          "type": "section",
+          "children": [
+            {
+              "name": "11.7.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that security policies (e.g., content filters, rate-limit thresholds, guardrail configurations) can be updated without full system redeployment, and that policy versions are tracked."
+            },
+            {
+              "name": "11.7.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that policy updates are authorized, integrity-protected (e.g., cryptographically signed), and validated before application."
+            },
+            {
+              "name": "11.7.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that policy changes are logged with audit trails including timestamp, author, justification, and rollback procedures."
+            },
+            {
+              "name": "11.7.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that threat-detection sensitivity can be adjusted based on risk context (e.g., elevated threat level, incident response) with appropriate authorization."
+            }
+          ]
+        },
+        {
+          "name": "C11.8",
+          "title": "Agent Security Self-Assessment",
+          "description": "For agentic AI systems, validate that the agent's reasoning and actions are subject to security-focused review mechanisms.",
+          "type": "section",
+          "children": [
+            {
+              "name": "11.8.1",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that agentic systems include a mechanism to review planned high-risk actions against security policy before execution (e.g., a secondary model, rule-based checker, or structured self-review step)."
+            },
+            {
+              "name": "11.8.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that security review mechanisms are protected against manipulation by adversarial inputs (e.g., the review step cannot be overridden or bypassed through prompt injection)."
+            },
+            {
+              "name": "11.8.3",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that security review warnings trigger enhanced monitoring or human intervention workflows for the affected session or task."
+            }
+          ]
+        },
+        {
+          "name": "C11.9",
+          "title": "Self-Modification & Autonomous Update Security",
+          "description": "Security controls for systems where the AI can modify its own configuration, prompts, tool access, or learned behaviors.",
+          "type": "section",
+          "children": [
+            {
+              "name": "11.9.1",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that any self-modification capability (e.g., prompt rewriting, tool-list changes, parameter updates) is restricted to explicitly designated areas with enforced boundaries."
+            },
+            {
+              "name": "11.9.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that proposed self-modifications undergo security impact assessment or policy validation before taking effect."
+            },
+            {
+              "name": "11.9.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that all self-modifications are logged, reversible, and subject to integrity verification, enabling rollback to a known-good state."
+            },
+            {
+              "name": "11.9.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that self-modification scope is bounded (e.g., maximum change magnitude, rate limits on updates, prohibited modification targets) to prevent runaway or adversarially induced changes."
+            },
+            {
+              "name": "11.9.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that when safety violation data (blocked inputs, filtered outputs, flagged hallucinations) is used as training signal for model improvement, the feedback pipeline includes integrity verification, poisoning detection, and human review gates to prevent adversarial manipulation of the improvement mechanism."
+            }
+          ]
+        },
+        {
+          "name": "C11.10",
+          "title": "Adversarial Bias Exploitation Defense",
+          "description": "Protect security-relevant classifiers against adversaries who systematically probe for exploitable bias patterns and weaponize discovered disparities as an evasion vector.",
+          "type": "section",
+          "children": [
+            {
+              "name": "11.10.1",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that inference endpoints for security-relevant classifiers (e.g., abuse detection, fraud scoring) include monitoring that accounts for query patterns indicative of bias probing, such as systematic variation along a single input dimension (e.g., demographic, linguistic, stylistic) while other dimensions remain constant, and alert when such patterns are detected."
+            },
+            {
+              "name": "11.10.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that adversarial robustness evaluations for security-relevant classifiers are stratified by meaningful input subgroups (e.g., language register, content category), with per-subgroup false-negative rates under adversarial conditions measured and flagged when deviating from aggregate rates beyond a defined threshold."
+            },
+            {
+              "name": "11.10.3",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that where bias-based evasion is identified as a material threat, adversarial hardening (e.g., adversarial training with per-subgroup loss constraints, ensemble diversity across training distributions) incorporates explicit subgroup robustness requirements, and that per-subgroup robustness metrics are verified not to regress across model releases."
+            }
+          ]
+        }
+      ],
+      "name": "C11 Adversarial Robustness & Attack Resistance"
+    },
+    {
+      "type": "chapter",
+      "children": [
+        {
+          "name": "C12.1",
+          "title": "Anonymization & Data Minimization",
+          "description": "Remove or transform personal identifiers before training to prevent re-identification and minimize privacy exposure.",
+          "type": "section",
+          "children": [
+            {
+              "name": "12.1.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that direct and quasi-identifiers are removed, hashed."
+            },
+            {
+              "name": "12.1.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that automated audits measure k-anonymity/l-diversity and alert when thresholds drop below policy."
+            },
+            {
+              "name": "12.1.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that model feature-importance reports prove no identifier leakage beyond ε = 0.01 mutual information."
+            },
+            {
+              "name": "12.1.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that formal proofs or synthetic-data certification show re-identification risk ≤ 0.05 even under linkage attacks."
+            }
+          ]
+        },
+        {
+          "name": "C12.2",
+          "title": "Right-to-be-Forgotten & Deletion Enforcement",
+          "description": "Ensure data-subject deletion requests propagate across all AI artifacts and that model unlearning is verifiable.",
+          "type": "section",
+          "children": [
+            {
+              "name": "12.2.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that data-subject deletion requests propagate to raw datasets, checkpoints, embeddings, logs, and backups within service level agreements of less than 30 days."
+            },
+            {
+              "name": "12.2.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that \"machine-unlearning\" routines physically re-train or approximate removal using certified unlearning algorithms."
+            },
+            {
+              "name": "12.2.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that shadow-model evaluation proves forgotten records influence less than 1% of outputs after unlearning."
+            },
+            {
+              "name": "12.2.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that deletion events are immutably logged and auditable for regulators."
+            }
+          ]
+        },
+        {
+          "name": "C12.3",
+          "title": "Differential-Privacy Safeguards",
+          "description": "Track and enforce privacy budgets to provide formal guarantees against individual data leakage.",
+          "type": "section",
+          "children": [
+            {
+              "name": "12.3.1",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that differential privacy budget consumption is tracked per training round (both ε and δ values) and that cumulative budget dashboards alert when ε exceeds policy thresholds."
+            },
+            {
+              "name": "12.3.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that black-box privacy audits estimate ε̂ within 10% of declared value."
+            },
+            {
+              "name": "12.3.3",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that formal proofs cover all post-training fine-tunes and embeddings."
+            },
+            {
+              "name": "12.3.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that federated learning systems implement canary-based privacy auditing to empirically bound privacy leakage, with audit results logged and reviewed per training cycle."
+            }
+          ]
+        },
+        {
+          "name": "C12.4",
+          "title": "Purpose-Limitation & Scope-Creep Protection",
+          "description": "Prevent models and datasets from being used beyond their originally consented purpose.",
+          "type": "section",
+          "children": [
+            {
+              "name": "12.4.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that every dataset and model checkpoint carries a machine-readable purpose tag aligned to the original consent."
+            },
+            {
+              "name": "12.4.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that runtime monitors detect queries inconsistent with declared purpose and trigger soft refusal."
+            },
+            {
+              "name": "12.4.3",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that policy-as-code gates block redeployment of models to new domains without DPIA review."
+            },
+            {
+              "name": "12.4.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that formal traceability proofs show every personal data lifecycle remains within consented scope."
+            }
+          ]
+        },
+        {
+          "name": "C12.5",
+          "title": "Consent Management & Lawful-Basis Tracking",
+          "description": "Record, enforce, and revoke consent across AI processing pipelines.",
+          "type": "section",
+          "children": [
+            {
+              "name": "12.5.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that a Consent-Management Platform (CMP) records opt-in status, purpose, and retention period per data-subject."
+            },
+            {
+              "name": "12.5.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that APIs expose consent tokens; models must validate token scope before inference."
+            },
+            {
+              "name": "12.5.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that denied or withdrawn consent halts processing pipelines within 24 hours."
+            }
+          ]
+        },
+        {
+          "name": "C12.6",
+          "title": "Federated Learning with Privacy Controls",
+          "description": "Apply differential privacy and poisoning-resistant aggregation to federated learning to protect individual participant data.",
+          "type": "section",
+          "children": [
+            {
+              "name": "12.6.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that client updates employ local differential privacy noise addition before aggregation."
+            },
+            {
+              "name": "12.6.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that training metrics are differentially private and never reveal single-client loss."
+            },
+            {
+              "name": "12.6.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that poisoning-resistant aggregation (e.g., Krum/Trimmed-Mean) is enabled."
+            },
+            {
+              "name": "12.6.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that formal proofs demonstrate overall ε budget with less than 5 utility loss."
+            }
+          ]
+        }
+      ],
+      "name": "C12 Privacy Protection & Personal Data Management"
+    },
+    {
+      "type": "chapter",
+      "children": [
+        {
+          "name": "C13.1",
+          "title": "Request & Response Logging",
+          "description": "Monitor and detect drift and degradation across model outputs, input distributions, and data schemas to identify quality regressions and security-relevant behavioral shifts.",
+          "type": "section",
+          "children": [
+            {
+              "name": "13.1.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that AI interactions are logged with security-relevant metadata (e.g. timestamp, user ID, session ID, model version, token count, input hash, system prompt version, confidence score, safety filter outcome, and safety filter decisions) without logging prompt or response content by default."
+            },
+            {
+              "name": "13.1.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that logs are stored in secure, access-controlled repositories with appropriate retention policies and backup procedures."
+            },
+            {
+              "name": "13.1.3",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that log storage systems implement encryption at rest and in transit to protect sensitive information contained in logs."
+            },
+            {
+              "name": "13.1.4",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that sensitive data in prompts and outputs is automatically redacted or masked before logging, with configurable redaction rules for PII, credentials, and proprietary information."
+            },
+            {
+              "name": "13.1.5",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that policy decisions and safety filtering actions are logged with sufficient detail to enable audit and debugging of content moderation systems."
+            },
+            {
+              "name": "13.1.6",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that log integrity is protected through e.g. cryptographic signatures or write-only storage."
+            },
+            {
+              "name": "13.1.7",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that log entries for AI inference events capture a structured, interoperable schema that includes at minimum model identifier, token usage (input and output), provider name, and operation type, to enable consistent AI observability across tools and platforms."
+            },
+            {
+              "name": "13.1.8",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that full prompt and response content is logged only when a security-relevant event is detected (e.g., safety filter trigger, prompt injection detection, anomaly flag), or when required by explicit user consent and a documented legal basis."
+            }
+          ]
+        },
+        {
+          "name": "C13.2",
+          "title": "Abuse Detection and Alerting",
+          "description": "Monitor and detect drift and degradation across model outputs, input distributions, and data schemas to identify quality regressions and security-relevant behavioral shifts.",
+          "type": "section",
+          "children": [
+            {
+              "name": "13.2.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that the system detects and alerts on known jailbreak patterns, prompt injection attempts, and adversarial inputs using signature-based detection."
+            },
+            {
+              "name": "13.2.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that the system integrates with existing Security Information and Event Management (SIEM) platforms using standard log formats and protocols."
+            },
+            {
+              "name": "13.2.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that enriched security events include AI-specific context such as model identifiers, confidence scores, and safety filter decisions."
+            },
+            {
+              "name": "13.2.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that behavioral anomaly detection identifies unusual conversation patterns, excessive retry attempts, or systematic probing behaviors."
+            },
+            {
+              "name": "13.2.5",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that real-time alerting mechanisms notify security teams when potential policy violations or attack attempts are detected."
+            },
+            {
+              "name": "13.2.6",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that custom rules are included to detect AI-specific threat patterns including coordinated jailbreak attempts, prompt injection campaigns, and model extraction attacks."
+            },
+            {
+              "name": "13.2.7",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that automated incident response workflows can isolate compromised models, block malicious users, and escalate critical security events."
+            },
+            {
+              "name": "13.2.8",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that session-level conversation trajectory analysis detects multi-turn jailbreak patterns where no individual turn is overtly malicious in isolation but the aggregate conversation exhibits attack indicators."
+            },
+            {
+              "name": "13.2.9",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that per-user and per-session token consumption triggers an alert when consumption exceeds defined thresholds."
+            },
+            {
+              "name": "13.2.10",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that LLM API traffic is monitored for covert channel indicators, including Base64-encoded payloads, structured non-human query patterns, and communication signatures consistent with malware command-and-control activity using LLM endpoints."
+            }
+          ]
+        },
+        {
+          "name": "C13.3",
+          "title": "Model, Data, and Performance Drift Detection",
+          "description": "Monitor and detect drift and degradation across model outputs, input distributions, and data schemas to identify quality regressions and security-relevant behavioral shifts.",
+          "type": "section",
+          "children": [
+            {
+              "name": "13.3.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that model performance metrics (accuracy, precision, recall, F1 score, confidence scores, latency, and error rates) are continuously monitored across model versions and time periods and compared against documented baselines."
+            },
+            {
+              "name": "13.3.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that baseline performance profiles are formally documented and version-controlled, and are reviewed at a defined frequency or after any model or data pipeline change."
+            },
+            {
+              "name": "13.3.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that automated alerting triggers when performance metrics exceed predefined degradation thresholds or deviate significantly from baselines, and that alerts initiate model retraining or replacement workflows."
+            },
+            {
+              "name": "13.3.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that hallucination detection monitors identify and flag instances when model outputs contain factually incorrect, inconsistent, or fabricated information, and that hallucination rates are tracked as continuous time-series metrics to enable trend analysis and detection of sustained model degradation."
+            },
+            {
+              "name": "13.3.5",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that data drift detection monitors input distribution changes that may impact model performance, using statistically validated methods appropriate to the data type."
+            },
+            {
+              "name": "13.3.6",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that schema drift in incoming data (unexpected field additions, removals, type changes, or format variations) is detected and triggers alerting."
+            },
+            {
+              "name": "13.3.7",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that concept drift detection identifies changes in the relationship between inputs and expected outputs."
+            },
+            {
+              "name": "13.3.8",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that degradation root cause analysis correlates performance drops with data changes, infrastructure issues, or external factors."
+            },
+            {
+              "name": "13.3.9",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that sudden unexplained behavioral shifts are distinguished from gradual expected operational drift, with a security escalation path defined for unexplained sudden drift."
+            }
+          ]
+        },
+        {
+          "name": "C13.4",
+          "title": "Performance & Behavior Telemetry",
+          "description": "Protect workflow visualization systems from information leakage and manipulation attacks.",
+          "type": "section",
+          "children": [
+            {
+              "name": "13.4.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that operational metrics including request latency, token consumption, memory usage, and throughput are continuously collected and monitored."
+            },
+            {
+              "name": "13.4.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that success and failure rates are tracked with categorization of error types and their root causes."
+            },
+            {
+              "name": "13.4.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that resource utilization monitoring includes GPU/CPU usage, memory consumption, and storage requirements with alerting on threshold breaches."
+            },
+            {
+              "name": "13.4.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that token usage is tracked at granular attribution levels including per user, per session, per feature endpoint, and per team or workspace."
+            },
+            {
+              "name": "13.4.5",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that output-to-input token ratio anomalies are detected and alerted."
+            }
+          ]
+        },
+        {
+          "name": "C13.5",
+          "title": "AI Incident Response Planning & Execution",
+          "description": "Protect workflow visualization systems from information leakage and manipulation attacks.",
+          "type": "section",
+          "children": [
+            {
+              "name": "13.5.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that incident response plans specifically address AI-related security events including model compromise, data poisoning, adversarial attacks, model inversion, prompt injection campaigns, and model extraction, with specific containment and investigation steps for each scenario."
+            },
+            {
+              "name": "13.5.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that incident response teams have access to AI-specific forensic tools and expertise to investigate model behavior and attack vectors."
+            },
+            {
+              "name": "13.5.3",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that post-incident analysis includes model retraining considerations, safety filter updates, and lessons learned integration into security controls."
+            }
+          ]
+        },
+        {
+          "name": "C13.6",
+          "title": "DAG Visualization & Workflow Security",
+          "description": "Protect workflow visualization systems from information leakage and manipulation attacks.",
+          "type": "section",
+          "children": [
+            {
+              "name": "13.6.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that DAG visualization data is sanitized to remove sensitive information before storage or transmission."
+            },
+            {
+              "name": "13.6.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that workflow visualization access controls ensure only authorized users can view agent decision paths and reasoning traces."
+            },
+            {
+              "name": "13.6.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that DAG data integrity is protected through cryptographic signatures and tamper-evident storage mechanisms."
+            },
+            {
+              "name": "13.6.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that workflow visualization systems implement input validation to prevent injection attacks through crafted node or edge data."
+            },
+            {
+              "name": "13.6.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that real-time DAG updates are rate-limited and validated to prevent denial-of-service attacks on visualization systems."
+            }
+          ]
+        },
+        {
+          "name": "C13.7",
+          "title": "Proactive Security Behavior Monitoring",
+          "description": "Detection and prevention of security threats through proactive agent behavior analysis.",
+          "type": "section",
+          "children": [
+            {
+              "name": "13.7.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that proactive agent behaviors are security-validated before execution with risk assessment integration."
+            },
+            {
+              "name": "13.7.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that autonomous initiative triggers include security context evaluation and threat landscape assessment."
+            },
+            {
+              "name": "13.7.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that proactive behavior patterns are analyzed for potential security implications and unintended consequences."
+            },
+            {
+              "name": "13.7.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that security-critical proactive actions require explicit approval chains with audit trails."
+            },
+            {
+              "name": "13.7.5",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that behavioral anomaly detection identifies deviations in proactive agent patterns that may indicate compromise."
+            }
+          ]
+        }
+      ],
+      "name": "C13 Monitoring, Logging & Anomaly Detection"
+    },
+    {
+      "type": "chapter",
+      "children": [
+        {
+          "name": "C14.1",
+          "title": "Kill-Switch & Override Mechanisms",
+          "description": "Provide shutdown or rollback paths when unsafe behavior of the AI system is observed.",
+          "type": "section",
+          "children": [
+            {
+              "name": "14.1.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that a manual kill-switch mechanism exists to immediately halt AI model inference and outputs."
+            },
+            {
+              "name": "14.1.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that override controls are accessible to only to authorized personnel."
+            },
+            {
+              "name": "14.1.3",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that rollback procedures can revert to previous model versions or safe-mode operations."
+            },
+            {
+              "name": "14.1.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that override mechanisms are tested regularly."
+            }
+          ]
+        },
+        {
+          "name": "C14.2",
+          "title": "Human-in-the-Loop Decision Checkpoints",
+          "description": "Require human approvals when stakes surpass predefined risk thresholds.",
+          "type": "section",
+          "children": [
+            {
+              "name": "14.2.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that high-risk AI decisions require explicit human approval before execution."
+            },
+            {
+              "name": "14.2.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that risk thresholds are clearly defined and automatically trigger human review workflows."
+            },
+            {
+              "name": "14.2.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that time-sensitive decisions have fallback procedures when human approval cannot be obtained within required timeframes."
+            },
+            {
+              "name": "14.2.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that escalation procedures define clear authority levels for different decision types or risk categories, if applicable."
+            }
+          ]
+        },
+        {
+          "name": "C14.3",
+          "title": "Chain of Responsibility & Auditability",
+          "description": "Log operator actions and model decisions.",
+          "type": "section",
+          "children": [
+            {
+              "name": "14.3.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that all AI system decisions and human interventions are logged with timestamps, user identities, and decision rationale."
+            }
+          ]
+        },
+        {
+          "name": "C14.4",
+          "title": "Explainable-AI Techniques",
+          "description": "Maintain model cards for intended use, performance metrics, and ethical considerations.",
+          "type": "section",
+          "children": [
+            {
+              "name": "14.4.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that AI systems provide basic explanations for their decisions in human-readable format."
+            },
+            {
+              "name": "14.4.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that explanation quality is validated through human evaluation studies and metrics."
+            },
+            {
+              "name": "14.4.3",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that feature importance scores or attribution methods (SHAP, LIME, etc.) are available for critical decisions."
+            },
+            {
+              "name": "14.4.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that counterfactual explanations show how inputs could be modified to change outcomes, if applicable to the use case and domain."
+            }
+          ]
+        },
+        {
+          "name": "C14.5",
+          "title": "Model Cards & Usage Disclosures",
+          "description": "Maintain model cards for intended use, performance metrics, and ethical considerations.",
+          "type": "section",
+          "children": [
+            {
+              "name": "14.5.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that model cards document intended use cases, limitations, and known failure modes."
+            },
+            {
+              "name": "14.5.2",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that performance metrics across different applicable use cases are disclosed."
+            },
+            {
+              "name": "14.5.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that ethical considerations, bias assessments, fairness evaluations, training data characteristics, and known training data limitations are documented and updated regularly."
+            },
+            {
+              "name": "14.5.4",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that model cards are version-controlled and maintained throughout the model lifecycle with change tracking."
+            }
+          ]
+        },
+        {
+          "name": "C14.6",
+          "title": "Uncertainty Quantification",
+          "description": "Propagate confidence scores or entropy measures in responses.",
+          "type": "section",
+          "children": [
+            {
+              "name": "14.6.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that AI systems provide confidence scores or uncertainty measures with their outputs."
+            },
+            {
+              "name": "14.6.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that uncertainty thresholds trigger additional human review or alternative decision pathways."
+            },
+            {
+              "name": "14.6.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that uncertainty quantification methods are calibrated and validated against ground truth data."
+            },
+            {
+              "name": "14.6.4",
+              "type": "control-l3",
+              "level": 3,
+              "description": "Verify that uncertainty propagation is maintained through multi-step AI workflows."
+            }
+          ]
+        },
+        {
+          "name": "C14.7",
+          "title": "User-Facing Transparency Reports",
+          "description": "Provide periodic disclosures on incidents, drift, and data usage.",
+          "type": "section",
+          "children": [
+            {
+              "name": "14.7.1",
+              "type": "control-l1",
+              "level": 1,
+              "description": "Verify that data usage policies and user consent management practices are clearly communicated to stakeholders."
+            },
+            {
+              "name": "14.7.2",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that AI impact assessments are conducted and results are included in reporting."
+            },
+            {
+              "name": "14.7.3",
+              "type": "control-l2",
+              "level": 2,
+              "description": "Verify that transparency reports published regularly disclose AI incidents and operational metrics in reasonable detail."
+            }
+          ]
+        }
+      ],
+      "name": "C14 Human Oversight, Accountability & Governance"
+    }
+  ]
+}
