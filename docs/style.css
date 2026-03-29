@@ -196,8 +196,27 @@ main {
 }
 #detail-panel[hidden] { display: none; }
 
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#back-detail {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 0.8rem;
+  line-height: 1;
+  padding: 4px 8px;
+  transition: all var(--trans-fast);
+}
+#back-detail:hover { background: var(--bg-hover); }
+#back-detail[hidden] { display: none; }
+
 #close-detail {
-  align-self: flex-end;
   background: none;
   border: 1px solid var(--border);
   border-radius: 4px;

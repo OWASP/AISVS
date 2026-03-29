@@ -22,10 +22,9 @@ const RADIUS = {
 
 // Which filter chip key corresponds to which node types
 const FILTER_TYPES = {
-  l1:      ['control-l1'],
-  l2:      ['control-l2'],
-  l3:      ['control-l3'],
-  section: ['section'],
+  l1: ['control-l1'],
+  l2: ['control-l2'],
+  l3: ['control-l3'],
 };
 
 // ── State ───────────────────────────────────────────────────────────────────
@@ -35,8 +34,11 @@ let allLinks = [];
 let simulation;
 let gNode, gLink;
 let activeNode = null;
-let activeFilters = new Set(['l1', 'l2', 'l3', 'section']);
+let activeFilters = new Set(['l1', 'l2', 'l3']);
 let searchTerm = '';
+
+// Navigation history for back button
+let navHistory = [];
 
 // Map nodeId -> node object for fast lookup
 const nodeById = new Map();
@@ -229,6 +231,7 @@ function render(svg, width, height) {
     )
     .on('click', (event, d) => {
       event.stopPropagation();
+      navHistory = [];
       selectNode(d);
     })
     .on('mouseenter', (event, d) => showTooltip(event, d))
@@ -288,11 +291,8 @@ function dragEnd(event, d) {
 // ── Visibility (filters + search) ────────────────────────────────────────────
 
 function isVisible(n) {
-  // Root and chapters always visible
-  if (n.type === 'root' || n.type === 'chapter') return true;
-
-  // Section filter
-  if (n.type === 'section' && !activeFilters.has('section')) return false;
+  // Root, chapters, and sections always visible
+  if (n.type === 'root' || n.type === 'chapter' || n.type === 'section') return true;
 
   // Level filters
   if (n.type === 'control-l1' && !activeFilters.has('l1')) return false;
@@ -322,7 +322,12 @@ function applyVisibility() {
 
 // ── Selection & detail panel ──────────────────────────────────────────────────
 
-function selectNode(d) {
+function selectNode(d, pushHistory = false) {
+  // Optionally push current node to history before switching
+  if (pushHistory && activeNode) {
+    navHistory.push(activeNode);
+  }
+
   // Clear previous active
   if (activeNode) {
     gNode.filter(n => n.id === activeNode.id)
@@ -338,7 +343,40 @@ function selectNode(d) {
     .select('circle')
     .attr('stroke-width', 3);
 
+  updateBackButton();
   showDetail(d);
+}
+
+function navigateBack() {
+  if (!navHistory.length) return;
+  const prev = navHistory.pop();
+
+  if (activeNode) {
+    gNode.filter(n => n.id === activeNode.id)
+      .classed('active', false)
+      .select('circle')
+      .attr('stroke-width', 1.2);
+  }
+
+  activeNode = prev;
+  gNode.filter(n => n.id === prev.id)
+    .classed('active', true)
+    .select('circle')
+    .attr('stroke-width', 3);
+
+  updateBackButton();
+  showDetail(prev);
+}
+
+function updateBackButton() {
+  const btn = document.getElementById('back-detail');
+  if (navHistory.length > 0) {
+    btn.removeAttribute('hidden');
+    const prev = navHistory[navHistory.length - 1];
+    btn.textContent = `← ${prev.id}`;
+  } else {
+    btn.setAttribute('hidden', '');
+  }
 }
 
 function deselectNode() {
@@ -349,6 +387,8 @@ function deselectNode() {
       .attr('stroke-width', 1.2);
     activeNode = null;
   }
+  navHistory = [];
+  updateBackButton();
   hideDetail();
 }
 
@@ -418,7 +458,7 @@ function showDetail(d) {
       }
       li.addEventListener('click', () => {
         const n = nodeById.get(child.name);
-        if (n) selectNode(n);
+        if (n) selectNode(n, true);
       });
       list.appendChild(li);
     });
@@ -497,8 +537,9 @@ searchInput.addEventListener('input', () => {
   }, 180);
 });
 
-// ── Close detail panel ────────────────────────────────────────────────────────
+// ── Back / close detail panel ────────────────────────────────────────────────
 
+document.getElementById('back-detail').addEventListener('click', navigateBack);
 document.getElementById('close-detail').addEventListener('click', deselectNode);
 
 // ── Resize ────────────────────────────────────────────────────────────────────

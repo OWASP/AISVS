@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AISVS Requirements Visualizer</title>
+  <title>OWASP AISVS</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <div class="header-left">
-      <h1>AISVS Requirements</h1>
-      <span class="subtitle">AI Security Verification Standard — interactive controls explorer</span>
+      <h1>OWASP AISVS</h1>
+      <span class="subtitle">interactive controls explorer</span>
     </div>
     <div class="header-controls">
       <input type="search" id="search" placeholder="Search controls…" aria-label="Search controls" />
@@ -18,7 +18,6 @@
         <button class="chip active" data-filter="l1">L1</button>
         <button class="chip active" data-filter="l2">L2</button>
         <button class="chip active" data-filter="l3">L3</button>
-        <button class="chip active" data-filter="section">Sections</button>
       </div>
     </div>
     <a class="gh-link" href="https://github.com/OWASP/AISVS" target="_blank" rel="noopener" aria-label="AISVS on GitHub">
@@ -53,7 +52,10 @@
     </div>
 
     <aside id="detail-panel" aria-label="Control detail" hidden>
-      <button id="close-detail" aria-label="Close detail panel">✕</button>
+      <div class="detail-header">
+        <button id="back-detail" aria-label="Go back" hidden>← Back</button>
+        <button id="close-detail" aria-label="Close detail panel">✕</button>
+      </div>
       <span id="detail-badge"></span>
       <h2 id="detail-title"></h2>
       <p id="detail-desc"></p>
