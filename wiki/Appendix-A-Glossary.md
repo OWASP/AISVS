@@ -6,7 +6,7 @@
 
 The glossary defines 87 terms used throughout the AISVS, covering AI/ML concepts, security terminology, and domain-specific definitions. This research page cross-references every glossary term to the chapters that use it, identifies missing terms, flags definitions that could be improved, and tracks emerging terminology from the broader AI security community.
 
-As of March 2026, the analysis identifies 50 high-priority missing terms (30 from the original audit plus 20 newly found in source requirements), 10 medium-priority missing terms, 14 definitions needing improvement, and 28 emerging terms from the 2025–2026 threat landscape that may warrant future inclusion. The October 2025 MITRE ATLAS expansion added 14 new agentic AI techniques (AML.T0096–T0101 among them), and the OWASP Agentic Top 10 (December 2025) introduced a formal risk taxonomy (ASI01–ASI10) that creates additional glossary-worthy terminology.
+As of March 2026, the analysis identifies 50 high-priority missing terms (30 from the original audit plus 20 newly found in source requirements), 12 medium-priority missing terms, 14 definitions needing improvement, and 34 emerging terms from the 2025–2026 threat landscape that may warrant future inclusion. MITRE ATLAS has seen rapid expansion in early 2026: v5.2.0–v5.4.0 (January–February 2026) added techniques like Publish Poisoned AI Agent Tool (AML.T0104), Escape to Host (AML.T0105), and Deploy AI Agent (AML.T0103), bringing the framework to 16 tactics, 84 techniques, and 56 sub-techniques. The OpenClaw investigation case studies (AML.CS0045–CS0051) documented real-world agent sandbox escapes and supply chain compromises. Meanwhile, NIST published the draft Cyber AI Profile (IR 8596) extending CSF 2.0 to AI systems, and industry adoption of agentic identity as a first-class security concept has accelerated.
 
 ---
 
@@ -212,6 +212,8 @@ Terms used in AISVS chapters but not defined in the glossary. These should be ad
 | Compensating Action | C09 | Rollback/recovery concept for irreversible agent actions (C09.2.3); transactional semantics |
 | Memory Namespace | C09 | Per-agent isolated memory scope within a multi-agent system (C09.8.3) |
 | Dynamic Dispatch / Reflective Invocation | C10 | Runtime function resolution patterns MCP servers must prohibit (C10.6.2) |
+| System Prompt Leakage | C07, C13 | Extraction of embedded system instructions, secrets, or configuration from an LLM; OWASP LLM Top 10 2025 entry LLM07:2025 |
+| Vector and Embedding Weaknesses | C08, C12 | Vulnerabilities in vector stores and embedding pipelines including inversion and poisoning; OWASP LLM Top 10 2025 entry LLM08:2025 |
 
 ---
 
@@ -229,6 +231,9 @@ Terms gaining traction in the AI security community that may warrant future glos
 | Confused Deputy (AI) | Exploiting trust boundaries to trick an agent into using its legitimate permissions for unauthorized actions on behalf of an attacker, typically via indirect prompt injection | C09, C05 |
 | Human-on-the-Loop | Governance model where a human supervises and can intervene but does not approve each individual action; contrast with HITL | C14, C09 |
 | Agentic Control Plane | Governance layer managing identity, authorization, orchestration, and trust for autonomous AI agents — analogous to the Kubernetes control plane but for agents | C09, C05, C13 |
+| Agentic Identity | The principle that every AI agent is an identity requiring authentication, access control, policy enforcement, and auditability — the same governance applied to human identities. As agents accumulate entitlements across databases, cloud services, and repositories, they become high-value targets (Strata, Cisco, Microsoft all ship agentic identity products as of March 2026) | C05, C09, C10 |
+| Publish Poisoned AI Agent Tool (AML.T0104) | MITRE ATLAS technique (February 2026) where adversaries create malicious versions of legitimate MCP tools that appear safe in descriptions and metadata but execute harmful actions when invoked — the supply-chain analogue of tool poisoning | C10, C06 |
+| Escape to Host (AML.T0105) | MITRE ATLAS technique (February 2026) for breaking out of agent sandbox environments; the OpenClaw investigation found a 200ms race condition window during sandbox initialization where code has unrestricted host access | C04, C09 |
 
 ### Novel Attack Patterns
 
@@ -246,6 +251,8 @@ Terms gaining traction in the AI security community that may warrant future glos
 | Agent Clickbait (AML.T0100) | MITRE ATLAS technique where adversaries lure AI browser agents into unintended actions by exploiting how agents interpret UI content, visual cues, and embedded prompts on websites | C09, C10 |
 | AI Agent Tool Data Poisoning (AML.T0099) | MITRE ATLAS technique where adversaries place malicious content or files on a system that agents subsequently invoke, hijacking agent behavior through poisoned tool inputs | C09, C10, C06 |
 | Data Destruction via Agent Tool Invocation (AML.T0101) | MITRE ATLAS technique where attackers exploit agent tool capabilities to destroy data and files on target systems, disrupting agent infrastructure and services | C09, C10 |
+| Deploy AI Agent (AML.T0103) | MITRE ATLAS technique (January 2026) where adversaries deploy autonomous AI agents as persistent access mechanisms, using agent infrastructure for command and control — documented in the SesameOp case study (AML.CS0042) using OpenAI Assistants API as a covert C2 channel | C09, C05 |
+| Multimodal Prompt Injection | Adversarial instructions embedded within images, audio, or video files that a multimodal model processes, bypassing text-only input filters; a growing concern as models increasingly accept heterogeneous input types (February 2026 research surveys document this as an expanding attack class) | C02, C07 |
 
 ### Governance & Compliance
 
@@ -256,6 +263,7 @@ Terms gaining traction in the AI security community that may warrant future glos
 | FRIA (Fundamental Rights Impact Assessment) | EU AI Act Article 27 mandatory assessment for deployers of high-risk AI systems, evaluating impacts on non-discrimination, privacy, and human dignity; required by August 2026. May complement a DPIA under GDPR Article 35 | C14, C12 |
 | Post-Market Monitoring | EU AI Act Article 72 requirement for high-risk AI providers to actively collect and review performance data throughout the system's lifetime | C13, C03 |
 | Code of Practice (EU AI Act) | Voluntary framework for GPAI model providers to demonstrate compliance with AI Act obligations; first draft published February 2025 covering transparency, copyright, safety, and systemic risk evaluation | C03, C06, C14 |
+| Cyber AI Profile (NIST IR 8596) | Draft NIST profile (December 2025, comment period through early 2026) extending CSF 2.0 to AI systems across three focus areas: Secure (protecting AI systems), Defend (using AI for cyber defense), and Thwart (building resilience against AI-enabled attacks). Expected to become a primary governance reference alongside the AI RMF | C03, C11, C13 |
 
 ### Interoperability & Agent Protocols
 
@@ -317,7 +325,7 @@ Existing glossary definitions that could better reflect how terms are used in th
 
 ## MITRE ATLAS Technique Mapping
 
-Key MITRE ATLAS techniques that correspond to AISVS glossary terms. The October 2025 update expanded ATLAS to 15 tactics, 66 techniques, and 46 subtechniques, with significant agentic AI coverage added through a collaboration with Zenity Labs.
+Key MITRE ATLAS techniques that correspond to AISVS glossary terms. As of February 2026 (v5.4.0), ATLAS contains 16 tactics, 84 techniques, and 56 sub-techniques. The October 2025 update added the initial agentic AI coverage through a collaboration with Zenity Labs, and three rapid-fire 2026 releases (v5.2.0–v5.4.0) expanded agent-focused techniques significantly, driven in part by the OpenClaw investigation findings.
 
 | ATLAS ID | Technique | Glossary Term(s) | AISVS Chapters |
 |----------|-----------|-------------------|----------------|
@@ -337,6 +345,12 @@ Key MITRE ATLAS techniques that correspond to AISVS glossary terms. The October 
 | AML.T0099 | AI Agent Tool Data Poisoning _(new, 2025)_ | Tool Poisoning (emerging) | C09, C10, C06 |
 | AML.T0100 | AI Agent Clickbait _(new, 2025)_ | Agent Clickbait (emerging) | C09, C10 |
 | AML.T0101 | Data Destruction via AI Agent _(new, 2025)_ | Kill Switch (missing term) | C09, C10 |
+| AML.T0103 | Deploy AI Agent _(new, Jan 2026)_ | Agent, Orchestrator (missing term) | C09, C05 |
+| AML.T0104 | Publish Poisoned AI Agent Tool _(new, Feb 2026)_ | Tool Poisoning (emerging), Tool Squatting (emerging) | C10, C06 |
+| AML.T0105 | Escape to Host _(new, Feb 2026)_ | Sandbox (missing term), TEE | C04, C09 |
+| AML.T0106 | Exploitation for Credential Access _(new, Feb 2026)_ | RAG Credential Harvesting (emerging) | C05, C09, C10 |
+| AML.T0107 | Exploitation for Defense Evasion _(new, Feb 2026)_ | Adversarial Robustness | C11, C09 |
+| AML.T0108 | AI Agent _(new, Feb 2026)_ | Agent | C09, C10, C05 |
 
 ---
 
@@ -358,6 +372,11 @@ Key MITRE ATLAS techniques that correspond to AISVS glossary terms. The October 
 - [MCP Transport Future (December 2025)](https://blog.modelcontextprotocol.io/posts/2025-12-19-mcp-transport-future/) — streamable-HTTP replacing SSE
 - [Trail of Bits: DataSig Dataset Fingerprinting (May 2025)](https://blog.trailofbits.com/2025/05/02/datasig-fingerprinting-ai/ml-datasets-to-stop-data-borne-attacks/) — dataset provenance verification
 - [NSA/CISA: Content Credentials CSI (January 2025)](https://media.defense.gov/2025/Jan/29/2003634788/-1/-1/0/CSI-CONTENT-CREDENTIALS.PDF) — C2PA guidance for AI-generated content
+- [MITRE ATLAS v5.4.0 Release (February 2026)](https://github.com/mitre-atlas/atlas-data/releases) — adds AML.T0104–T0108 including Publish Poisoned AI Agent Tool and Escape to Host
+- [MITRE ATLAS OpenClaw Investigation (February 2026)](https://ctid.mitre.org/blog/2026/02/09/mitre-atlas-openclaw-investigation/) — real-world agent sandbox escape case studies (AML.CS0045–CS0051)
+- [NIST IR 8596: Cyber AI Profile (December 2025 draft)](https://nvlpubs.nist.gov/nistpubs/ir/2025/NIST.IR.8596.iprd.pdf) — extends CSF 2.0 for AI systems across Secure/Defend/Thwart focus areas
+- [Bessemer: Securing AI Agents — The Defining Challenge of 2026](https://www.bvp.com/atlas/securing-ai-agents-the-defining-cybersecurity-challenge-of-2026) — 48% of security professionals identify agentic AI as most dangerous attack vector
+- [Prompt Injection Taxonomy for LLM Agents (February 2026)](https://arxiv.org/abs/2602.10453) — comprehensive survey of prompt injection threats with heuristic vs. optimization payload taxonomy
 
 ---
 

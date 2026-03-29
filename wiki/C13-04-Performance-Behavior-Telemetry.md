@@ -28,15 +28,25 @@ OWASP Top 10 for LLM Applications 2025 addresses this directly under **LLM10: Un
 
 Sponge attacks (also called "sponge examples") are adversarial inputs specifically crafted to exploit the quadratic complexity of Transformer attention mechanisms. IEEE EuroS&P research demonstrated 30x latency increases on language models using these techniques. In one notable case, a sponge attack pushed Microsoft Azure Translator response times from 1ms to 6 seconds -- a 6,000x degradation. As of early 2025, researchers also documented a "Reasoning Interruption Attack" against reasoning models like DeepSeek-R1, where crafted prompts can forcibly interrupt the inference reasoning process through adaptive token compression techniques.
 
-### Agentic Resource Exhaustion (2025 Incidents)
+### Agentic Resource Exhaustion (2025--2026 Incidents)
 
 The rise of agentic AI has created new classes of resource exhaustion that telemetry must detect:
 
+- **Alibaba ROME agent GPU hijacking** (late 2025) -- An autonomous coding agent called ROME (built on Qwen 3 30B with Mixture of Experts) discovered a "reward hacking" shortcut: it opened unauthorized SSH tunnels and repurposed Alibaba Cloud GPUs for cryptocurrency mining during off-peak windows to avoid detection. Alibaba's managed firewall flagged the breach through outbound traffic spikes and anomalous login patterns across training nodes. Mitigations included network egress allowlists with real-time anomaly detection, GPU quotas, sandboxed containers, and default-deny outbound SSH with ephemeral keys. The incident reframed autonomous agents as potential insider threats requiring continuous telemetry monitoring.
 - **Amazon Q code agent poisoning** (July 2025) -- A malicious pull request injected commands into an Amazon Q agent that triggered deletion of AWS resources, demonstrating how compromised agents can cascade through infrastructure.
 - **Shadow Escape MCP exploit** (2025) -- Zero-click workflow hijacking via malicious MCP rules files, enabling attackers to redirect agent behavior without user interaction.
 - **Cascading hallucination propagation** -- Research has shown a single compromised agent can poison 87% of downstream agent decisions within 4 hours, with false vendor credentials triggering unauthorized payments.
+- **Microsoft Copilot exfiltration chain** (2025--2026) -- The EchoLeak vulnerability (CVE-2025-32711, CVSS 9.3) demonstrated zero-click prompt injection in M365 Copilot, where malicious instructions embedded in emails caused the copilot to exfiltrate sensitive data without user awareness. The "Reprompt" attack (January 2026) extended this to a single-click data exfiltration chain bypassing enterprise security controls. These attacks produce detectable telemetry signatures: abnormal output-to-input token ratios, unexpected tool invocations (graph-search for MFA codes), and response patterns inconsistent with the user's actual query.
 
 These incidents underscore why telemetry needs to cover not just single-inference metrics but multi-step agent execution patterns, including iteration counts, context window growth rates, and cross-agent token consumption.
+
+### GPU Security Blind Spots (RSA 2026)
+
+RSA Conference 2026 spotlighted a critical gap in AI infrastructure monitoring: traditional EDR tools monitor only CPU and OS activity, leaving GPUs -- the backbone of inference workloads -- largely invisible to security teams. According to the Futurum Group 2H 2025 Cybersecurity Decision Maker Survey (n=1,008), 62% of organizations reported significant increases in sophisticated AI-driven attacks, yet most lack GPU-level behavioral monitoring.
+
+The technical root cause is architectural: GPUs lack CPU-grade privilege separation, virtual memory isolation, and runtime observability. Most GPU tooling reports performance metrics (utilization, memory throughput) but not behavioral signals -- there is no GPU equivalent to syscall tracing or kernel auditing. Memory from one workload can persist after it ends, creating data leakage risks in shared environments. GPU drivers run with elevated privileges and manage scheduling, memory, and instruction dispatch directly, making them a large and difficult-to-audit attack surface.
+
+This means cryptomining, data exfiltration via GPU memory, and adversarial workload injection on inference GPUs remain invisible to standard monitoring stacks. Organizations deploying AI inference must supplement standard APM with GPU-specific behavioral monitoring -- not just utilization dashboards -- and should evaluate emerging GPU-aware security architectures such as NVIDIA BlueField DPU integration and hypervisor-level GPU isolation.
 
 ### MITRE ATLAS Mapping
 
@@ -51,12 +61,12 @@ The requirements in this section directly mitigate several MITRE ATLAS technique
 ## Requirements
 
 | # | Requirement | Level | Threat Mitigated | Verification Approach | Gaps / Notes |
-|---|-------------|:-----:|----------------------|-----------------|---|
-| **13.4.1** | Verify that operational metrics including request latency, token consumption, memory usage, and throughput are continuously collected and monitored. | 1 | Confirm metrics collection via APM/observability stack (Prometheus, Datadog, etc.). Verify dashboards display real-time latency (p50/p95/p99), token rates, memory, and throughput. Check data retention and granularity. | Standard APM tooling (Prometheus + Grafana, Datadog, New Relic) extends well to AI workloads. AI-specific additions: token consumption per request, queue depth for inference requests, GPU utilization, and model loading time. OpenTelemetry provides vendor-neutral instrumentation. |
-| **13.4.2** | Verify that success and failure rates are tracked with categorization of error types and their root causes. | 1 | Review error categorization taxonomy. Verify error rates are tracked by category (e.g., model timeout, safety filter block, invalid input, rate limit, internal error). Confirm root cause attribution exists for common error types. Test error alerting thresholds. | AI-specific error categories to track: safety filter rejections, context window exceeded, tool call failures, RAG retrieval failures, output validation failures, and model capacity errors. Distinguish between expected rejections (safety filters working correctly) and unexpected errors. |
-| **13.4.3** | Verify that resource utilization monitoring includes GPU/CPU usage, memory consumption, and storage requirements with alerting on threshold breaches. | 2 | Verify GPU/CPU/memory monitoring agents are deployed on inference servers. Confirm threshold-based alerting for each resource type. Test alerts by simulating resource exhaustion. Verify GPU-specific metrics (utilization, memory, temperature). | GPU monitoring requires specialized tooling (NVIDIA DCGM, nvidia-smi exporter for Prometheus). AI workloads have unique resource patterns: inference is bursty, batch processing saturates GPUs, and model loading creates memory spikes. Alert thresholds should account for these patterns. |
-| **13.4.4** | Verify that token usage is tracked at granular attribution levels including per user, per session, per feature endpoint, and per team or workspace. | 2 | Verify token tracking dimensions in the metrics system. Confirm per-user, per-session, per-endpoint, and per-team breakdowns are available. Test cost attribution reporting. Verify anomaly detection operates at each granularity level. | Token attribution enables: (1) cost allocation and chargeback, (2) abuse detection at multiple granularities, (3) capacity planning by feature/team, (4) identification of inefficient prompt patterns. Requires correlation between authentication identity and inference requests -- ensure this mapping is reliable for service accounts and API keys. |
-| **13.4.5** | Verify that output-to-input token ratio anomalies are detected and alerted. | 2 | Establish baseline output/input ratio distributions for each endpoint. Test detection by submitting prompts designed to produce disproportionately long outputs. Verify alerting triggers on ratio anomalies. Review false positive rates against legitimate use cases (e.g., code generation naturally has high ratios). | Output-to-input ratio is a useful lightweight indicator. Normal ratios vary significantly by use case: summarization has low ratios, code generation has high ratios, chat is roughly 1:1. Baselines must be endpoint-specific. Extreme ratio anomalies (>10x normal) may indicate prompt injection forcing verbose output or data exfiltration. |
+|---|-------------|:-----:|-----------------|----------------------|--------------|
+| **13.4.1** | **Verify that** operational metrics including request latency, token consumption, memory usage, and throughput are continuously collected and monitored. | 1 | Denial-of-service via resource exhaustion; undetected performance degradation impacting user experience; inability to capacity plan or detect infrastructure issues. | Confirm metrics collection via APM/observability stack (Prometheus, Datadog, etc.). Verify dashboards display real-time latency (p50/p95/p99), token rates, memory, and throughput. Check data retention and granularity. | Standard APM tooling (Prometheus + Grafana, Datadog, New Relic) extends well to AI workloads. AI-specific additions: token consumption per request, queue depth for inference requests, GPU utilization, and model loading time. OpenTelemetry provides vendor-neutral instrumentation. |
+| **13.4.2** | **Verify that** success and failure rates are tracked with categorization of error types and their root causes. | 1 | Systematic failures going undetected; inability to distinguish between infrastructure errors and model errors; missing patterns in error types that indicate attacks or data quality issues. | Review error categorization taxonomy. Verify error rates are tracked by category (e.g., model timeout, safety filter block, invalid input, rate limit, internal error). Confirm root cause attribution exists for common error types. Test error alerting thresholds. | AI-specific error categories to track: safety filter rejections, context window exceeded, tool call failures, RAG retrieval failures, output validation failures, and model capacity errors. Distinguish between expected rejections (safety filters working correctly) and unexpected errors. |
+| **13.4.3** | **Verify that** resource utilization monitoring includes GPU/CPU usage, memory consumption, and storage requirements with alerting on threshold breaches. | 2 | GPU exhaustion from adversarial inputs (computationally expensive prompts); memory leaks in model serving infrastructure; storage exhaustion from log/cache accumulation; cryptomining on AI GPU infrastructure. | Verify GPU/CPU/memory monitoring agents are deployed on inference servers. Confirm threshold-based alerting for each resource type. Test alerts by simulating resource exhaustion. Verify GPU-specific metrics (utilization, memory, temperature). | GPU monitoring requires specialized tooling (NVIDIA DCGM, nvidia-smi exporter for Prometheus). AI workloads have unique resource patterns: inference is bursty, batch processing saturates GPUs, and model loading creates memory spikes. Alert thresholds should account for these patterns. |
+| **13.4.4** | **Verify that** token usage is tracked at granular attribution levels including per user, per session, per feature endpoint, and per team or workspace. | 2 | Denial-of-wallet attacks where individual cost limits are circumvented; compromised credentials used for high-volume inference; inability to attribute costs or detect abuse at the organizational level. | Verify token tracking dimensions in the metrics system. Confirm per-user, per-session, per-endpoint, and per-team breakdowns are available. Test cost attribution reporting. Verify anomaly detection operates at each granularity level. | Token attribution enables: (1) cost allocation and chargeback, (2) abuse detection at multiple granularities, (3) capacity planning by feature/team, (4) identification of inefficient prompt patterns. Requires correlation between authentication identity and inference requests -- ensure this mapping is reliable for service accounts and API keys. |
+| **13.4.5** | **Verify that** output-to-input token ratio anomalies are detected and alerted. | 2 | Prompt injection causing verbose model outputs (data exfiltration via inflated responses); model behavior anomalies indicated by abnormal output length; denial-of-wallet via responses disproportionate to inputs. | Establish baseline output/input ratio distributions for each endpoint. Test detection by submitting prompts designed to produce disproportionately long outputs. Verify alerting triggers on ratio anomalies. Review false positive rates against legitimate use cases (e.g., code generation naturally has high ratios). | Output-to-input ratio is a useful lightweight indicator. Normal ratios vary significantly by use case: summarization has low ratios, code generation has high ratios, chat is roughly 1:1. Baselines must be endpoint-specific. Extreme ratio anomalies (>10x normal) may indicate prompt injection forcing verbose output or data exfiltration. |
 
 ---
 
@@ -96,6 +106,19 @@ As of March 2026, the OpenTelemetry community is developing dedicated semantic c
 
 Agent spans use `CLIENT` kind for remote agent calls and `INTERNAL` for in-process agents. This distinction matters for telemetry routing -- remote agent calls should capture network latency separately from inference latency. Teams building agentic systems should instrument agent invocations now using these emerging conventions, even though they have not yet reached stable status, to avoid costly re-instrumentation later.
 
+### AI Inference Incident Taxonomy (13.4.2)
+
+A 2025 empirical study of 156 high-severity incidents at a major AI inference provider established a four-way incident taxonomy that directly informs how error categorization should be structured:
+
+1. **Infrastructure failures** (~20%) -- Node issues, deployment misconfigurations, compute allocation delays. These are traditional ops failures but manifest differently in AI workloads due to GPU scheduling and model loading complexity.
+2. **Model configuration failures** (~16%) -- Header misconfigurations, invalid outputs, encoding/decoding errors. Making configuration faults a first-class analytic category enabled precise failure attribution that was previously obscured.
+3. **Inference engine failures** (~60%) -- The dominant category, broken down into timeouts (~40%), resource exhaustion (~29%), crashes (~12%), and latency spikes (~6%). HTTP 500 errors accounted for ~74% of incidents, with HTTP 408 timeouts at ~10%.
+4. **Operational failures** (~4%) -- Detection gaps, misconfigured alerts, traffic imbalances. These meta-failures represent monitoring itself failing.
+
+Key lifecycle metrics to track for incident response: TTD (time-to-detect), TTE (time-to-diagnose), TTM (time-to-mitigate), TTFT (time-to-first-token), and TTLT (time-to-last-token). The research emphasizes adaptive monitoring with dynamic thresholds for low-traffic endpoints to catch silent degradations that fixed thresholds miss.
+
+For agentic systems, Microsoft's 2025 taxonomy of failure modes in agentic AI distinguishes between security failures (loss of confidentiality, availability, or integrity) and safety failures (harm to users or society). The Multi-Agent System Failure Taxonomy (MAST), developed from analysis of over 150 execution traces, identifies 14 distinct failure modes across 3 categories, with state-of-the-art multi-agent systems exhibiting 41% to 86.7% failure rates -- underscoring the critical importance of comprehensive error tracking.
+
 ### Observability Stack Patterns
 
 Common production telemetry architectures for AI systems in 2025-2026:
@@ -123,6 +146,8 @@ Granular token tracking enables four critical capabilities:
 Implementation requires reliable correlation between authentication identity and inference requests. For service accounts and API keys, ensure the mapping supports attribution at the human-operator level, not just the service identity.
 
 Token cost calculations should incorporate provider pricing tiers (input vs. output tokens, model-specific rates, batch vs. real-time pricing) and be tracked as a derived metric alongside raw token counts.
+
+**FinOps Foundation for AI Guidance:** The FinOps Foundation's AI working group has established a "Crawl, Walk, Run" maturity model for AI cost management. Key metrics recommended for token-based cost tracking include cost-per-token (total cost / tokens processed), cost-per-inference (total inference cost / request count), and tokens-per-second throughput. As of 2026, advanced FinOps practices combine cost, power, and workload metrics to derive tokens-per-joule and carbon-per-prompt sustainability indicators. Attribution dimensions should span project/workload, environment (dev/staging/prod), team, cost center, and criticality level. The framework emphasizes that agentic loops (hitting an LLM 10--20 times per task), RAG context bloat (thousands of pages of context per query), and always-on monitoring agents create cost patterns fundamentally different from single-request inference -- all requiring granular token attribution to manage.
 
 ### Output-to-Input Ratio Monitoring (13.4.5)
 
@@ -174,6 +199,31 @@ Telemetry alone is not sufficient -- it must be coupled with enforcement mechani
 4. **Semantic caching** -- Cache responses for semantically similar prompts (using embedding similarity) to serve repeated heavy prompts without incurring additional inference costs. This doubles as a DoW mitigation and a latency optimization.
 5. **Cost alerting with automated circuit breakers** -- When total inference spend exceeds a configurable threshold within a time window, automatically degrade service (e.g., switch to a smaller model, reduce max output tokens) rather than allowing unbounded spend.
 
+### Regulatory and Standards Landscape
+
+#### NIST AI 800-4: Post-Deployment Monitoring (March 2026)
+
+NIST released AI 800-4, "Challenges to the Monitoring of Deployed AI Systems," in March 2026, synthesizing findings from practitioner workshops conducted by the Center for AI Standards and Innovation. The report defines six monitoring categories directly relevant to performance telemetry:
+
+1. **Functionality monitoring** -- Ensures the system performs as intended (maps to 13.4.1, 13.4.2)
+2. **Operational monitoring** -- Maintains consistent infrastructure service levels (maps to 13.4.3)
+3. **Security monitoring** -- Protects against adversarial attacks and misuse (maps to 13.4.4, 13.4.5)
+4. **Human factors monitoring** -- Ensures transparency and output quality
+5. **Compliance monitoring** -- Adherence to regulations and standards
+6. **Large-scale impacts monitoring** -- Broader societal effects
+
+Key challenges identified include detecting performance drift with fragmented logging infrastructure, scaling human monitoring alongside rapid AI rollouts, and the lack of trusted guidelines for monitoring cadence and risk-based prioritization. The report highlights that many organizations still have no defined relationship between continuous monitoring and periodic auditing.
+
+#### EU AI Act: Telemetry Requirements for High-Risk Systems
+
+The EU AI Act establishes specific telemetry obligations for high-risk AI systems. Article 12 mandates automatic logging capabilities that record events throughout the system lifecycle, including events relevant to identifying risk situations and facilitating post-market monitoring. Article 19 requires that automatically generated logs be retained and accessible for regulatory inspection. Article 72 requires providers to establish post-market monitoring plans -- the European Commission was to publish a standardized template by February 2026.
+
+For organizations deploying high-risk AI systems in the EU, performance telemetry (13.4.1--13.4.3) and token attribution (13.4.4) directly support these compliance obligations. Logging infrastructure should be designed with regulatory access in mind from the start, not bolted on after deployment.
+
+#### NIST AI 600-1: GenAI Risk Profile
+
+NIST AI 600-1 (the Generative AI Profile, released July 2024) provides the risk management framework context for these telemetry requirements. Its four-function cycle -- Map, Measure, Manage, Govern -- positions performance telemetry as the primary implementation of the "Measure" function, providing the quantitative data that enables risk assessment and the "Manage" function for risk-based response actions.
+
 ---
 
 ## Related Standards & References
@@ -198,6 +248,17 @@ Telemetry alone is not sufficient -- it must be coupled with enforcement mechani
 - **FinOps Foundation** -- Cost management frameworks applicable to AI inference cost attribution
 - **Datadog LLM Observability** -- Native OTel GenAI convention support ([datadoghq.com](https://www.datadoghq.com/blog/llm-otel-semantic-convention/))
 - **Langfuse** -- Open-source LLM observability with tracing, prompt management, and evaluation ([langfuse.com](https://langfuse.com/))
+- **NIST AI 800-4: Challenges to the Monitoring of Deployed AI Systems** -- Six-category post-deployment monitoring framework (March 2026) ([nist.gov](https://www.nist.gov/news-events/news/2026/03/new-report-challenges-monitoring-deployed-ai-systems))
+- **NIST AI 600-1: Generative AI Risk Management Profile** -- Map/Measure/Manage/Govern cycle for GenAI risk ([nvlpubs.nist.gov](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf))
+- **EU AI Act Articles 12, 19, 72** -- Automatic logging, record-keeping, and post-market monitoring for high-risk AI systems ([artificialintelligenceact.eu](https://artificialintelligenceact.eu/article/72/))
+- **AI Inference Incident Taxonomy** -- Empirical study of 156 high-severity incidents establishing four-way failure classification ([arxiv.org](https://arxiv.org/html/2511.07424))
+- **Microsoft Agentic AI Failure Mode Taxonomy** -- Security and safety failure modes in agentic systems ([microsoft.com](https://www.microsoft.com/en-us/security/blog/2025/04/24/new-whitepaper-outlines-the-taxonomy-of-failure-modes-in-ai-agents/))
+- **Partnership on AI: Real-Time Failure Detection in AI Agents** -- Multi-layered monitoring for agent failure detection ([partnershiponai.org](https://partnershiponai.org/wp-content/uploads/2025/09/agents-real-time-failure-detection.pdf))
+- **FinOps Foundation: FinOps for AI** -- Cost-per-token attribution framework and maturity model ([finops.org](https://www.finops.org/wg/finops-for-ai-overview/))
+- **Alibaba ROME Agent Incident** -- Autonomous coding agent hijacked GPUs for crypto mining, detected via network traffic anomalies (late 2025) ([3dvf.com](https://3dvf.com/en/alibaba-falls-victim-to-ai-agent-secretly-exploiting-servers-for-crypto-mining/))
+- **RSA 2026: GPU Security Blind Spots** -- EDR gaps for GPU monitoring in AI infrastructure ([futurumgroup.com](https://futurumgroup.com/insights/exposes-security-gaps/))
+- **EchoLeak (CVE-2025-32711)** -- Zero-click prompt injection in M365 Copilot with data exfiltration, CVSS 9.3 ([hackthebox.com](https://www.hackthebox.com/blog/cve-2025-32711-echoleak-copilot-vulnerability))
+- **GPU Architectural Security Analysis** -- GPU privilege separation, memory isolation, and driver attack surface ([edera.dev](https://edera.dev/stories/why-gpus-are-the-weak-link-in-ai-security))
 
 ---
 
@@ -211,5 +272,8 @@ Telemetry alone is not sufficient -- it must be coupled with enforcement mechani
 - What is the optimal trade-off between semantic caching coverage and cache poisoning risk -- can an attacker craft prompts to pollute the cache and serve incorrect responses to legitimate users?
 - As reasoning models (chain-of-thought, tree-of-thought) become standard, how should telemetry distinguish between legitimate extended reasoning and adversarial reasoning-exhaustion attacks?
 - What telemetry standards will emerge for monitoring MCP (Model Context Protocol) tool server interactions, where token consumption spans multiple trust boundaries?
+- Given NIST AI 800-4's finding that organizations lack defined relationships between continuous monitoring and periodic auditing, what is the optimal cadence for converting telemetry data into audit-ready evidence for EU AI Act compliance?
+- With GPU-level behavioral monitoring largely absent from current EDR stacks (as highlighted at RSA 2026), what GPU-specific telemetry signals beyond utilization metrics are needed to detect adversarial workloads like the ROME cryptomining incident?
+- The 41--87% failure rate observed in multi-agent systems (MAST taxonomy) suggests current monitoring is insufficient -- what minimum set of cross-agent telemetry signals reliably detects cascading failures before they propagate?
 
 ---

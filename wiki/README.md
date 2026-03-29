@@ -12,21 +12,21 @@ The standard is organized into 14 chapters spanning the full AI application secu
 
 | # | Chapter | Reqs | Pages | Type | Updated |
 |---|---------|:----:|:-----:|------|:-------:|
-| C1 | Training Data Integrity & Traceability | 24 | [C01](C01-Training-Data.md) | Single | 2026-03-22 |
-| C2 | User Input Validation | 33 | [C02](C02-User-Input-Validation.md) | [8 sections](#c2-user-input-validation) | 2026-03-22 |
-| C3 | Model Lifecycle Management | 24 | [C03](C03-Model-Lifecycle-Management.md) | Single | 2026-03-22 |
-| C4 | Infrastructure & Deployment Security | 46 | [C04](C04-Infrastructure.md) | [8 sections](#c4-infrastructure--deployment-security) | 2026-03-22 |
-| C5 | Access Control & Identity | 26 | [C05](C05-Access-Control.md) | Single | 2026-03-22 |
-| C6 | Supply Chain Security | 33 | [C06](C06-Supply-Chain.md) | [7 sections](#c6-supply-chain-security) | 2026-03-22 |
-| C7 | Model Behavior & Output Control | 33 | [C07](C07-Model-Behavior.md) | [8 sections](#c7-model-behavior--output-control) | 2026-03-22 |
-| C8 | Memory, Embeddings & Vector DB Security | 25 | [C08](C08-Memory-and-Embeddings.md) | Single | 2026-03-22 |
-| C9 | Orchestration & Agentic Action Security | 36 | [C09](C09-Orchestration-and-Agents.md) | [8 sections](#c9-orchestration--agentic-action-security) | 2026-03-22 |
-| C10 | MCP Security | 34 | [C10](C10-MCP-Security.md) | [6 sections](#c10-mcp-security) | 2026-03-22 |
-| C11 | Adversarial Robustness | 41 | [C11](C11-Adversarial-Robustness.md) | [10 sections](#c11-adversarial-robustness) | 2026-03-22 |
-| C12 | Privacy Protection | 23 | [C12](C12-Privacy.md) | Single | 2026-03-22 |
-| C13 | Monitoring, Logging & Anomaly Detection | 47 | [C13](C13-Monitoring-and-Logging.md) | [8 sections](#c13-monitoring-logging--anomaly-detection) | 2026-03-22 |
-| C14 | Human Oversight & Accountability | 25 | [C14](C14-Human-Oversight.md) | Single | 2026-03-22 |
-| | **Total** | **450** | **82 pages** | | |
+| C1 | Training Data Integrity & Traceability | 24 | [C01](C01-Training-Data.md) | Single | 2026-03-28 |
+| C2 | User Input Validation | 33 | [C02](C02-User-Input-Validation.md) | [8 sections](#c2-user-input-validation) | 2026-03-27 |
+| C3 | Model Lifecycle Management | 26 | [C03](C03-Model-Lifecycle-Management.md) | Single | 2026-03-27 |
+| C4 | Infrastructure & Deployment Security | 46 | [C04](C04-Infrastructure.md) | [8 sections](#c4-infrastructure--deployment-security) | 2026-03-28 |
+| C5 | Access Control & Identity | 27 | [C05](C05-Access-Control.md) | Single | 2026-03-27 |
+| C6 | Supply Chain Security | 34 | [C06](C06-Supply-Chain.md) | [7 sections](#c6-supply-chain-security) | 2026-03-27 |
+| C7 | Model Behavior & Output Control | 33 | [C07](C07-Model-Behavior.md) | [8 sections](#c7-model-behavior--output-control) | 2026-03-28 |
+| C8 | Memory, Embeddings & Vector DB Security | 25 | [C08](C08-Memory-and-Embeddings.md) | Single | 2026-03-28 |
+| C9 | Orchestration & Agentic Action Security | 40 | [C09](C09-Orchestration-and-Agents.md) | [8 sections](#c9-orchestration--agentic-action-security) | 2026-03-28 |
+| C10 | MCP Security | 33 | [C10](C10-MCP-Security.md) | [6 sections](#c10-mcp-security) | 2026-03-28 |
+| C11 | Adversarial Robustness | 41 | [C11](C11-Adversarial-Robustness.md) | [10 sections](#c11-adversarial-robustness) | 2026-03-27 |
+| C12 | Privacy Protection | 23 | [C12](C12-Privacy.md) | Single | 2026-03-28 |
+| C13 | Monitoring, Logging & Anomaly Detection | 45 | [C13](C13-Monitoring-and-Logging.md) | [7 sections](#c13-monitoring-logging--anomaly-detection) | 2026-03-28 |
+| C14 | Human Oversight & Accountability | 24 | [C14](C14-Human-Oversight.md) | Single | 2026-03-28 |
+| | **Total** | **454** | **82 pages** | | |
 
 ---
 
@@ -136,7 +136,7 @@ Covers model alignment, adversarial example hardening, membership inference and 
 
 ### C13: Monitoring, Logging & Anomaly Detection
 
-Covers request and response logging, abuse detection, model drift detection, performance telemetry, incident response, performance degradation detection, workflow visualization, and proactive security monitoring.
+Covers request and response logging, abuse detection, model drift detection, performance telemetry, incident response, DAG visualization and workflow security, and proactive security monitoring.
 
 | Section | Page |
 |---------|------|
@@ -145,9 +145,8 @@ Covers request and response logging, abuse detection, model drift detection, per
 | C13.3 Model Drift Detection | [C13-03](C13-03-Model-Drift-Detection.md) |
 | C13.4 Performance & Behavior Telemetry | [C13-04](C13-04-Performance-Behavior-Telemetry.md) |
 | C13.5 Incident Response | [C13-05](C13-05-Incident-Response.md) |
-| C13.6 Performance Degradation Detection | [C13-06](C13-06-Performance-Degradation-Detection.md) |
-| C13.7 DAG Visualization & Workflow Security | [C13-07](C13-07-DAG-Visualization-Workflow-Security.md) |
-| C13.8 Proactive Security Behavior Monitoring | [C13-08](C13-08-Proactive-Security-Behavior-Monitoring.md) |
+| C13.6 DAG Visualization & Workflow Security | [C13-06](C13-06-DAG-Visualization-Workflow-Security.md) |
+| C13.7 Proactive Security Behavior Monitoring | [C13-07](C13-07-Proactive-Security-Behavior-Monitoring.md) |
 
 ---
 
@@ -157,10 +156,10 @@ The appendices provide supporting material including a glossary of AI security t
 
 | Appendix | Page | Updated |
 |----------|------|:-------:|
-| A: Glossary | [Appendix A Glossary](Appendix-A-Glossary.md) | 2026-03-21 |
-| B: References | [Appendix B References](Appendix-B-References.md) | 2026-03-22 |
-| C: AI-Assisted Secure Coding (27 reqs) | [Appendix C AI Secure Coding](Appendix-C-AI-Secure-Coding.md) | 2026-03-22 |
-| D: AI Security Controls Inventory | [Appendix D Controls Inventory](Appendix-D-Controls-Inventory.md) | 2026-03-22 |
+| A: Glossary | [Appendix A Glossary](Appendix-A-Glossary.md) | 2026-03-28 |
+| B: References | [Appendix B References](Appendix-B-References.md) | 2026-03-28 |
+| C: AI-Assisted Secure Coding (30 reqs) | [Appendix C AI Secure Coding](Appendix-C-AI-Secure-Coding.md) | 2026-03-28 |
+| D: AI Security Controls Inventory | [Appendix D Controls Inventory](Appendix-D-Controls-Inventory.md) | 2026-03-28 |
 
 ---
 
@@ -172,6 +171,7 @@ Every wiki page follows a consistent format to make research easy to navigate. E
 |--------|---------|
 | **Requirement** | Full text from the AISVS standard |
 | **Level** | Verification level (1, 2, or 3) |
+| **Role** | Developer (D), Verifier (V), or both (D/V) |
 | **Threat Mitigated** | Specific attack technique, failure mode, or risk |
 | **Verification Approach** | Concrete audit steps, tools, and checks |
 | **Gaps / Notes** | Tooling maturity, open issues, implementation caveats |

@@ -7,7 +7,7 @@
 
 Robust validation of user input is a first-line defense against some of the most damaging attacks on AI systems. Prompt injection attacks can override system instructions, leak sensitive data, or steer the model toward behavior that is not allowed. Unless dedicated filters and other validation is in place, research shows that jailbreaks that exploit context windows will continue to be effective.
 
-> **2025-2026 Highlights:** Requirements expanded to cover agentic input surfaces (MCP tool arguments, agent-to-agent messages, memory reads/writes) alongside traditional user prompts. Multi-modal injection and cross-modal coordinated attacks are now explicitly addressed across C2.1 and C2.7.
+> **2025-2026 Highlights:** Requirements expanded to cover agentic input surfaces (MCP tool arguments, agent-to-agent messages, memory reads/writes) alongside traditional user prompts. Multi-modal injection and cross-modal coordinated attacks are now explicitly addressed across C2.1 and C2.7. As of March 2026, AI framework zero-days (Langflow CVE-2026-33017, Semantic Kernel CVE-2026-26030) are being exploited within hours of disclosure, and the first independent AI firewall vendor validation is underway.
 
 ---
 
@@ -35,11 +35,14 @@ Known attacks, real-world incidents, and threat vectors relevant to this chapter
 - **Second-order prompt injection** — exploiting privilege hierarchies in multi-agent systems, where a low-privilege agent is tricked into escalating requests to a higher-privilege agent (demonstrated against ServiceNow Now Assist in 2025).
 - **Unicode and encoding smuggling** — invisible characters (zero-width joiners, Unicode tags), homoglyphs, mixed-script payloads, Base64 encoding, mathematical symbol substitution, and "glitch tokens" that bypass production guardrails from major vendors while remaining interpretable by LLMs. ASCII smuggling attacks tested across multiple LLMs in September 2025 showed broad susceptibility.
 - **Multi-modal injection** — instructions hidden in images (adversarial perturbations invisible to humans), audio (AudioJailbreak achieving 87-88% success even over speakers with room reverb, ACM CCS 2025), and documents. Cross-modal chaining (steganographic embedding + semantic manipulation) compounds attack effectiveness (Chain of Attack, CVPR 2025).
-- **Physical-environment injection** — CHAI (Command Hijacking against embodied AI) demonstrated physical-world prompt injection against embodied AI agents (January 2026, UC Santa Cruz).
+- **Cross-modal prompt injection** — CrossInject (ACM MM 2025) demonstrated that embedding aligned adversarial signals across both vision and text modalities boosts attack success by at least 30.1% over single-modality attacks. Embedding-space attacks that target only the vision encoder (e.g., CLIP) reduce attacker requirements — no direct LLM access needed.
+- **Physical-environment injection** — CHAI (Command Hijacking against embodied AI) demonstrated physical-world prompt injection against embodied AI agents (January 2026, UC Santa Cruz). Related work showed typographic adversarial instructions on physical objects can hijack camera-equipped autonomous agents.
 - **Crescendo and multi-turn attacks** — gradually escalating benign prompts toward harmful outputs, exploiting context window accumulation to shift model behavior over multiple turns.
 - **Token smuggling** — bypassing input filters through non-standard encodings, emoji-based code payloads, and character obfuscation techniques that evade tokenizer-level safety checks.
 - **Zero-click indirect injection** — a particularly dangerous variant where the victim never interacts with the malicious payload directly. EchoLeak (CVE-2025-32711, CVSS 9.3) demonstrated this against Microsoft 365 Copilot: a single poisoned email triggers data exfiltration when the user queries Copilot about unrelated topics. The payload executes in natural language space, rendering traditional defenses (antivirus, firewalls, static scanning) ineffective.
+- **AI framework code injection** — vulnerabilities in AI development frameworks (Langflow, Semantic Kernel, LangChain) are increasingly exploited as entry points. CVE-2026-33017 (Langflow, CVSS 9.8) was exploited within 20 hours of disclosure in March 2026 — attackers built working exploits from the advisory alone, with no PoC required.
 - **The "Lethal Trifecta"** — systems that combine (1) access to private data, (2) exposure to untrusted tokens from external sources, and (3) an exfiltration vector (ability to make external requests) are inherently vulnerable to indirect injection chains. As of early 2026, most enterprise AI copilot deployments exhibit all three characteristics.
+- **Scale of the problem** — a meta-analysis of 78 recent studies (2021–2026) found that attack success rates against state-of-the-art defenses exceed 85% when adaptive strategies are employed, and 73% of tested platforms fail to adequately enforce boundaries between agents, tools, and sessions.
 
 ---
 
@@ -58,6 +61,8 @@ Known attacks, real-world incidents, and threat vectors relevant to this chapter
 | 2025 | Cursor IDE agent RCE (CVE-2025-59944) | Case-sensitivity bug in protected file path allowed attacker to influence agentic behavior; hidden instructions escalated to remote code execution |
 | Feb 2026 | CrowdStrike 2026 Global Threat Report: prompt injection at scale | Adversaries exploited GenAI tools at 90+ organizations by injecting malicious prompts to steal credentials and cryptocurrency; AI-enabled attack operations up 89% YoY |
 | Jan 2026 | CHAI physical-environment prompt injection | UC Santa Cruz researchers demonstrated physical-world prompt injection against embodied AI agents |
+| Mar 2026 | Langflow RCE (CVE-2026-33017, CVSS 9.8) | Unauthenticated code injection in Langflow's public flow build endpoint; exploited in the wild within 20 hours of disclosure — no PoC needed. CISA added to KEV catalog. All versions ≤ 1.8.1 affected. |
+| Mar 2026 | Microsoft Semantic Kernel RCE (CVE-2026-26030) | Code injection via InMemoryVectorStore filter expressions in the Python SDK; allows remote code execution with low privileges. Fixed in python-1.39.4. |
 
 ---
 
@@ -76,7 +81,7 @@ A chapter-level view of tooling maturity and adoption status for C02 controls:
 | C2.7 | Multi-Modal Validation | Low-Medium | Image and audio adversarial detection remains largely research-grade. Steganography scanning tools exist but are not widely integrated into AI pipelines. Cross-modal correlation is nascent. |
 | C2.8 | Adaptive Threat Detection | Low-Medium | Real-time adaptive models are emerging. Continuous detection metric monitoring is operationally complex. Most organizations rely on static rule sets. |
 
-> **Overall:** As of March 2026, only ~20% of enterprises have mature AI governance models (Deloitte 2026 AI Report). Cisco's State of AI Security 2026 report found that while 83% of organizations plan to deploy agentic AI, only 29% feel ready to secure it. Input validation tooling is strongest for text-based prompt injection and weakest for multi-modal and adaptive scenarios. Notably, HiddenLayer researchers bypassed OpenAI's guardrails framework using straightforward techniques in October 2025, and Cisco found multi-turn prompt attacks achieve ~60% success rates on average (one model: 92.78%), underscoring that no single guardrail layer is sufficient.
+> **Overall:** As of March 2026, only ~20% of enterprises have mature AI governance models (Deloitte 2026 AI Report). Cisco's State of AI Security 2026 report found that while 83% of organizations plan to deploy agentic AI, only 29% feel ready to secure it. Input validation tooling is strongest for text-based prompt injection and weakest for multi-modal and adaptive scenarios. Notably, HiddenLayer researchers bypassed OpenAI's guardrails framework using straightforward techniques in October 2025, and Cisco found multi-turn prompt attacks achieve ~60% success rates on average (one model: 92.78%), underscoring that no single guardrail layer is sufficient. The first independent validation of AI firewall vendors (SecureIQLab, 32 scenarios across input/output/retrieval layers, OWASP- and MITRE ATLAS-aligned) begins April 2026 with results expected at Black Hat USA 2026 — this should provide the first empirical, vendor-independent efficacy data for the market.
 
 ---
 
@@ -94,6 +99,8 @@ Key tools and frameworks relevant across C02 sections:
 | [NVIDIA NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) | Open-source | Programmable guardrails for LLM applications | Colang-based rail definitions for topic control, jailbreak prevention, and output safety. |
 | [LlamaFirewall](https://github.com/meta-llama/PurpleLlama/tree/main/LlamaFirewall) | Open-source (Meta) | Prompt injection, agent alignment, insecure code detection | Three-layer defense: PromptGuard 2 (86M/22M param jailbreak detectors), AlignmentCheck (real-time chain-of-thought auditor for injection and goal misalignment), and CodeShield (static analysis for 8 languages). Combined system reduced attack success rates by 90% in benchmarks (from 17.6% to 1.75%). Production-tested at Meta. |
 | [OpenAI Guardrails](https://openai.github.io/openai-guardrails-python/) | Open-source SDK | Prompt injection detection, function call safety | Runs at two checkpoints (pre-execution, post-execution) to ensure agent actions remain aligned with user intent. Note: HiddenLayer bypassed both jailbreak and injection detection in October 2025 testing — treat as one layer in a defense-in-depth stack, not a standalone solution. |
+| [Patronus AI](https://www.patronus.ai/) | Commercial | Hallucination detection, agentic debugging, safety evaluation | Lynx model outperforms GPT-4 on HaluBench benchmarks. Percival debugger provides visibility into agent decision chains. Primarily post-generation evaluation. |
+| [Robust Intelligence (Cisco)](https://www.robustintelligence.com/) | Commercial | AI firewall, continuous validation, adversarial testing | Uses Tree of Attacks with Pruning (TAP) methodology backed by Cisco security research. Handles NLP, computer vision, and structured data. Combines runtime firewall with pre-deployment validation. |
 
 ---
 
@@ -114,6 +121,8 @@ Key tools and frameworks relevant across C02 sections:
 - [CrowdStrike 2026 Global Threat Report](https://www.crowdstrike.com/en-us/global-threat-report/) — Documents prompt injection attacks against 90+ organizations and 89% YoY increase in AI-enabled adversary operations
 - [Cisco State of AI Security 2026](https://www.cisco.com/site/us/en/products/security/state-of-ai-security.html) — 83% of organizations planning agentic AI deployment, only 29% ready to secure it; multi-turn attack success rates averaging ~60%
 - [LlamaFirewall: An Open Source Guardrail System (Meta, May 2025)](https://arxiv.org/abs/2505.03574) — Three-layer defense architecture (PromptGuard 2, AlignmentCheck, CodeShield) achieving 90% reduction in attack success rates
+- [SecureIQLab AI Security CyberRisk Validation](https://www.prnewswire.com/news-releases/up-to-20-ai-firewall-vendors-face-first-independent-security-validation-302724473.html) — First independent validation of up to 20 AI firewall vendors across 32 scenarios (input, output, retrieval layers), OWASP/MITRE ATLAS-aligned; results expected Black Hat USA 2026
+- [CSA Research Note: Image-Based Prompt Injection in Multimodal LLMs (March 2026)](https://labs.cloudsecurityalliance.org/research/csa-research-note-image-prompt-injection-multimodal-llm-2026/) — Cloud Security Alliance analysis of visually embedded adversarial instructions that hijack vision-language models
 
 ### AISVS Cross-Chapter Links
 
@@ -139,6 +148,8 @@ Key tools and frameworks relevant across C02 sections:
 - Schwartz et al., "EchoLeak: The First Real-World Zero-Click Prompt Injection Exploit in a Production LLM System," arXiv:2509.10540 (September 2025) — detailed technical analysis of CVE-2025-32711, demonstrating how chained bypasses (XPIA classifier evasion, reference-style Markdown link redaction circumvention, auto-fetched image abuse) enabled zero-click data exfiltration from Microsoft 365 Copilot.
 - Meta, "LlamaFirewall: An Open Source Guardrail System for Building Secure AI Agents," arXiv:2505.03574 (May 2025) — introduces PromptGuard 2, AlignmentCheck (first open-source chain-of-thought auditor for injection defense), and CodeShield; combined system achieves 90% ASR reduction in agentic scenarios.
 - Vectra AI, "Prompt Injection: Types, Real-World CVEs, and Enterprise Defenses" (2025) — practical catalog of prompt injection CVEs (including LangGrinch, Cursor RCE) with enterprise mitigation patterns.
+- Liang et al., "CrossInject: Manipulating Multimodal Agents via Cross-Modal Prompt Injection," ACM MM 2025 (arXiv:2504.14348) — demonstrated +30.1% attack success increase by embedding aligned adversarial signals across vision and text modalities simultaneously.
+- Comprehensive survey of 78 recent prompt injection studies (2021–2026), published in Information (MDPI), 2026 — meta-analysis finding 85%+ attack success with adaptive strategies and 73% platform boundary enforcement failures.
 
 ## Community Notes
 
@@ -150,5 +161,8 @@ _Space for contributor observations, discussion, and context that doesn't fit el
 - The October 2025 MITRE ATLAS update added 14 agentic-specific techniques — these may drive future requirement additions to C2.1 (indirect injection via agent chains) and C2.4 (MCP argument validation).
 - As of March 2026, zero-click indirect injection (EchoLeak pattern) represents a step change in threat severity. Organizations using AI copilots with access to email, documents, and external communication should audit for the "Lethal Trifecta" (private data access + untrusted token exposure + exfiltration vector) and implement image/link fetching restrictions as an immediate mitigation.
 - The CrowdStrike 2026 report's finding of prompt injection at 90+ organizations suggests this is no longer a theoretical or red-team-only concern — it's an active adversary technique at scale. System prompt extraction was the most common objective in Q4 2025, giving attackers role definitions, tool descriptions, and workflow logic.
+- Langflow CVE-2026-33017 (exploited in 20 hours, March 2026) is a watershed moment for AI framework security — it demonstrates that vulnerabilities in AI pipeline tooling are now targeted with the same speed as traditional web application zero-days. Organizations running AI orchestration frameworks should treat them with the same patching urgency as internet-facing web servers.
+- The SecureIQLab independent validation initiative (April 2026) will be the first empirical, vendor-neutral assessment of AI firewall efficacy. Until those results land, organizations should remain skeptical of vendor detection-rate claims and test products against their own threat models.
+- Cross-modal attacks (CrossInject achieving +30.1% success) and embedding-space attacks that require only vision encoder access (not full LLM access) are lowering the bar for multimodal exploitation. C2.7 controls are becoming more urgent, not less.
 
 ---
