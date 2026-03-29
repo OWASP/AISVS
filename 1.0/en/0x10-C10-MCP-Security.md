@@ -31,6 +31,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **10.2.10** | **Verify that** MCP servers acting as OAuth proxies to third-party APIs enforce per-client consent before forwarding authorization requests, preventing cached approvals from being reused across dynamically registered clients. | 2 |
 | **10.2.11** | **Verify that** MCP clients request only the minimum scopes needed for the current operation, elevate progressively via step-up authorization, and that servers reject wildcard or overly broad scopes. | 2 |
 | **10.2.12** | **Verify that** MCP servers enforce deterministic session teardown, destroying cached tokens, in-memory state, temporary storage, and file handles when a session terminates, disconnects, or times out. | 2 |
+| **10.2.13** | **Verify that** autonomous agents authenticate using cryptographically bound identity credentials (e.g., key-based proof-of-possession) rather than bearer-only tokens, ensuring that agent identity cannot be transferred, replayed, or impersonated by forwarding a shared secret. | 2 |
 
 ---
 
@@ -58,6 +59,9 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **10.4.6** | **Verify that** MCP server error and exception responses do not expose stack traces, internal file paths, tokens, or tool implementation details to the client or model context. | 1 |
 | **10.4.7** | **Verify that** MCP implementations reject JSON-RPC messages containing duplicate keys at any nesting level, preventing parser disagreement where different components resolve the same message to different values. | 2 |
 | **10.4.8** | **Verify that** intermediaries evaluating message content either forward the canonicalized representation they evaluated or reject messages where multiple byte representations could produce different parsed structures. | 3 |
+| **10.4.9** | **Verify that** MCP implementations support per-message cryptographic signing using asymmetric algorithms (e.g., ECDSA) so that each tool call and response carries a verifiable signature binding the message content to the sender's identity, preventing undetected message modification between MCP endpoints. | 2 |
+| **10.4.10** | **Verify that** MCP implementations enforce application-layer replay protection by requiring a unique nonce and a timestamp within a bounded time window for each signed message, and that the receiver rejects messages with duplicate nonces or timestamps outside the permitted window. | 2 |
+| **10.4.11** | **Verify that** MCP servers sign tool responses so that the calling agent can verify that the response originated from the expected server and was not modified in transit, preventing tool response spoofing or tampering by intermediaries. | 2 |
 
 ---
 
@@ -78,10 +82,12 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **10.6.1** | **Verify that** stdio-based MCP transports are limited to co-located, single-process development scenarios and isolated from shell execution, terminal injection, and process-spawning capabilities; stdio must not cross network or multi-tenant boundaries. | 3 |
 | **10.6.2** | **Verify that** MCP servers expose only allow-listed functions and resources and prohibit dynamic dispatch, reflective invocation, or execution of function names influenced by user or model-provided input. | 3 |
 | **10.6.3** | **Verify that** tenant boundaries, environment boundaries (e.g., dev/test/prod), and data domain boundaries are enforced at the MCP layer to prevent cross-tenant or cross-environment server or resource discovery. | 3 |
+| **10.6.4** | **Verify that** MCP security controls enforce fail-closed semantics: if a signature verification, authentication check, or policy evaluation fails or cannot be completed, the default action is to deny the request rather than permit it. | 2 |
 
 ---
 
 ## References
 
 * [Model Context Protocol (MCP) Specification](https://modelcontextprotocol.io/)
+* [OWASP MCP Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/MCP_Security_Cheat_Sheet.html)
 * [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/pubs/detail/sp/800-207/final)
