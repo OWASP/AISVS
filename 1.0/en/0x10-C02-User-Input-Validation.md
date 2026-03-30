@@ -49,7 +49,7 @@ Restricting the character set of user inputs to only allow characters that are n
 AI attacks featuring malformed or oversized inputs can cause parsing errors, prompt spillage across fields, and resource exhaustion. Strict schema enforcement is also a prerequisite when performing deterministic tool calls.
 
 | # | Description | Level |
-| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---:|
+| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **2.4.1** | **Verify that** every API, tool, or MCP endpoint defines an explicit input schema (e.g., JSON Schema, Protocol Buffers, or multimodal equivalent). | 1 |
 | **2.4.2** | **Verify that** input validation rejects extra or unknown fields and implicit type coercion (strict schema enforcement). | 1 |
 | **2.4.3** | **Verify that** all input validation occurs server-side before prompt assembly or tool execution. | 1 |
@@ -93,7 +93,7 @@ Developers should prevent abuse, resource exhaustion, and automated attacks agai
 AI systems should include robust validation for non-textual inputs (images, audio, files) to prevent injection, evasion, or resource abuse.
 
 | # | Description | Level |
-| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---:|
+| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **2.7.1** | **Verify that** all non-text inputs (images, audio, files) are validated for type, size, and format before processing. | 1 |
 | **2.7.2** | **Verify that** text extracted from non-text inputs (e.g., image-to-text, speech-to-text) and hidden or embedded content (metadata, layers, alt text, comments) is treated as untrusted and screened per 2.1.1. | 1 |
 | **2.7.3** | **Verify that** files are scanned for malware and steganographic payloads before ingestion, and that any active content (like scripts or macros) is removed or the file is quarantined. | 2 |
