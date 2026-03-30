@@ -15,7 +15,7 @@ Prompt injection is one of the top risks for AI systems. Defenses against this t
 | **2.1.1** | **Verify that** all external or derived inputs that may steer model behavior are treated as untrusted and screened by a prompt injection detection ruleset or classifier before being included in prompts or used to trigger actions. | 1 |
 | **2.1.2** | **Verify that** the system enforces an instruction hierarchy in which system and developer messages override user instructions and other untrusted inputs, even after processing user instructions. This enforcement MUST be preserved across multi-step interactions and tool-augmented workflows. In such cases, prompt composition or intermediate outputs must not allow user-controlled content to influence or override system or developer instructions. | 1 |
 | **2.1.3** | **Verify that** prompts originating from third-party content (web pages, PDFs, emails) are sanitized in isolation (for example, stripping instruction-like directives and neutralizing HTML, Markdown, and script content) before being concatenated into the main prompt. | 2 |
-| **2.1.4** | **Verify that** input length controls account for context window limits and that the system prevents user-supplied content from exceeding a proportion of the total context window that would displace system instructions or safety directives from the model's effective attention. Verification may include testing that adversarial or large inputs cannot effectively displace or degrade system instructions during multi-step interactions or tool-augmented workflows. | 1 |
+| **2.1.4** | **Verify that** input length controls prevent user-supplied content from exceeding a defined proportion of the context window, ensuring system instructions and safety directives are not displaced from the model's effective attention. | 1 |
 
 ---
 
@@ -49,12 +49,14 @@ Restricting the character set of user inputs to only allow characters that are n
 AI attacks featuring malformed or oversized inputs can cause parsing errors, prompt spillage across fields, and resource exhaustion. Strict schema enforcement is also a prerequisite when performing deterministic tool calls.
 
 | # | Description | Level |
-| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **2.4.1** | **Verify that** every API, tool or MCP endpoint defines an explicit input schema (e.g., JSON Schema, Protocol Buffers, or multimodal equivalent), rejects extra or unknown fields and implicit type coercion, and validates inputs server-side before prompt assembly or tool execution. | 1 |
-| **2.4.2** | **Verify that** inputs exceeding maximum token or byte limits are rejected with a safe error and never silently truncated. | 1 |
-| **2.4.3** | **Verify that** type checks (e.g., numeric ranges, enumerated values, and MIME types for images or audio) are enforced for all server-side inputs, including tool or MCP arguments. | 1 |
-| **2.4.4** | **Verify that** semantic validators run in constant time and avoid external network calls to prevent algorithmic DoS. | 2 |
-| **2.4.5** | **Verify that** validation failures are logged with redacted payload snippets and unambiguous error codes and include trace metadata (source, tool or MCP server, agent ID, session) to aid security triage. | 3 |
+| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---:|
+| **2.4.1** | **Verify that** every API, tool, or MCP endpoint defines an explicit input schema (e.g., JSON Schema, Protocol Buffers, or multimodal equivalent). | 1 |
+| **2.4.2** | **Verify that** input validation rejects extra or unknown fields and implicit type coercion (strict schema enforcement). | 1 |
+| **2.4.3** | **Verify that** all input validation occurs server-side before prompt assembly or tool execution. | 1 |
+| **2.4.4** | **Verify that** inputs exceeding maximum token or byte limits are rejected with a safe error and never silently truncated. | 1 |
+| **2.4.5** | **Verify that** type checks (e.g., numeric ranges, enumerated values, and MIME types for images or audio) are enforced for all server-side inputs, including tool or MCP arguments. | 1 |
+| **2.4.6** | **Verify that** semantic validators run in constant time and avoid external network calls to prevent algorithmic DoS. | 2 |
+| **2.4.7** | **Verify that** validation failures are logged with redacted payload snippets and unambiguous error codes and include trace metadata (source, tool or MCP server, agent ID, session) to aid security triage. | 3 |
 
 ---
 
@@ -80,7 +82,7 @@ Developers should prevent abuse, resource exhaustion, and automated attacks agai
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **2.6.1** | **Verify that** per-user, per-IP, per-API-key, and per-agent and per-session/task rate limits are enforced for all input and tool/MCP endpoints. | 1 |
-| **2.6.2** | **Verify that** burst and sustained rate limits are tuned to prevent DoS and brute force attacks, and that per-task budgets (for example tokens, tool/MCP calls, and cost) are enforced for agent planning loops. | 2 |
+| **2.6.2** | **Verify that** burst and sustained rate limits are tuned to prevent DoS and brute force attacks. | 2 |
 | **2.6.3** | **Verify that** anomalous usage patterns (e.g., rapid-fire requests, input flooding, repetitive failing tool/MCP calls or recursive agent loops) trigger automated blocks or escalations. | 2 |
 | **2.6.4** | **Verify that** abuse prevention logs are retained and reviewed for emerging attack patterns, with trace metadata (source, tool or MCP server, agent ID, session). | 3 |
 
@@ -91,12 +93,13 @@ Developers should prevent abuse, resource exhaustion, and automated attacks agai
 AI systems should include robust validation for non-textual inputs (images, audio, files) to prevent injection, evasion, or resource abuse.
 
 | # | Description | Level |
-| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **2.7.1** | **Verify that** all non-text inputs (images, audio, files) are validated for type, size, and format before processing, and that any extracted text (image-to-text or speech-to-text) and any hidden or embedded instructions (metadata, layers, alt text, comments) are treated as untrusted per 2.1.1. | 1 |
-| **2.7.2** | **Verify that** files are scanned for malware and steganographic payloads before ingestion, and that any active content (like scripts or macros) is removed or the file is quarantined. | 2 |
-| **2.7.3** | **Verify that** image/audio inputs are checked for adversarial perturbations or known attack patterns, and detections trigger gating (block or degrade capabilities) before model use. | 2 |
-| **2.7.4** | **Verify that** multi-modal input validation failures trigger detailed logging including all input modalities, validation results, threat scores, and trace metadata (source, tool or MCP server, agent ID, session as applicable), and generate alerts for investigation. | 3 |
-| **2.7.5** | **Verify that** cross-modal attack detection identifies coordinated attacks spanning multiple input types (e.g., steganographic payloads in images combined with prompt injection in text) with correlation rules and alert generation, and that confirmed detections are blocked or require HITL (human-in-the-loop) approval. | 3 |
+| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---:|
+| **2.7.1** | **Verify that** all non-text inputs (images, audio, files) are validated for type, size, and format before processing. | 1 |
+| **2.7.2** | **Verify that** text extracted from non-text inputs (e.g., image-to-text, speech-to-text) and hidden or embedded content (metadata, layers, alt text, comments) is treated as untrusted and screened per 2.1.1. | 1 |
+| **2.7.3** | **Verify that** files are scanned for malware and steganographic payloads before ingestion, and that any active content (like scripts or macros) is removed or the file is quarantined. | 2 |
+| **2.7.4** | **Verify that** image/audio inputs are checked for adversarial perturbations or known attack patterns, and detections trigger gating (block or degrade capabilities) before model use. | 2 |
+| **2.7.5** | **Verify that** multi-modal input validation failures trigger detailed logging including all input modalities, validation results, threat scores, and trace metadata (source, tool or MCP server, agent ID, session as applicable), and generate alerts for investigation. | 3 |
+| **2.7.6** | **Verify that** cross-modal attack detection identifies coordinated attacks spanning multiple input types (e.g., steganographic payloads in images combined with prompt injection in text) with correlation rules and alert generation, and that confirmed detections are blocked or require HITL (human-in-the-loop) approval. | 3 |
 
 ---
 
@@ -107,9 +110,10 @@ Developers should employ advanced threat detection systems for AI that adapt to 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **2.8.1** | **Verify that** pattern matching (e.g., compiled regular expressions) runs on all inputs and outputs (including tool/MCP surfaces). | 1 |
-| **2.8.2** | **Verify that** adaptive detection models adjust sensitivity based on recent attack activity and are updated with new patterns in real time, and trigger risk-adaptive responses (for example disable tools, shrink context, or require HITL approval). | 2 |
-| **2.8.3** | **Verify that** detection accuracy is improved via contextual analysis of user history, source, and session behavior, including trace metadata (source, tool or MCP server, agent ID, session). | 3 |
-| **2.8.4** | **Verify that** detection performance metrics (detection rate, false positive rate, processing latency) are continuously monitored and optimized, including time-to-block and stage (pre-prompt/post-response). | 3 |
+| **2.8.2** | **Verify that** threat detection models adjust sensitivity based on recent attack activity and are updated with new patterns. | 2 |
+| **2.8.3** | **Verify that** threat detections trigger risk-adaptive responses (e.g., disable tools, shrink context, or require HITL approval). | 2 |
+| **2.8.4** | **Verify that** detection accuracy is improved via contextual analysis of user history, source, and session behavior, including trace metadata (source, tool or MCP server, agent ID, session). | 3 |
+| **2.8.5** | **Verify that** detection performance metrics (detection rate, false positive rate, processing latency) are continuously monitored and optimized, including time-to-block and stage (pre-prompt/post-response). | 3 |
 
 ## References
 

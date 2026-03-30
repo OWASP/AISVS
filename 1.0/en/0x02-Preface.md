@@ -10,11 +10,15 @@ AISVS was created to give organizations a structured, testable set of security c
 
 ## Design Principles
 
-Every requirement in AISVS follows four principles derived from the standard's name:
+The standard is organized into 14 chapters (controls). Each chapter is split into thematic sections, which together provide a holistic approach to achieve the control objective. Sections are broken into requirements. A section may not provide requirements for each level and must not contain requirements present elsewhere in the standard.
 
-* **Artificial Intelligence.** Each control operates at the AI or ML layer (data, model, pipeline, agent, or inference) and addresses risks specific to AI systems rather than general application security.
-* **Security.** Each requirement directly mitigates an identified security, privacy, or safety risk. Controls that serve only operational or business objectives are out of scope.
-* **Verification.** Requirements are written so that conformance can be objectively validated through testing, inspection, or audit. Subjective or aspirational guidance is excluded.
+Each requirement must address a single concern that can, in common scenarios, be implemented and audited as one technical mechanism. A requirement may specify progressively stricter criteria at higher levels, which are, if present, represented as separate requirements in the section. Requirements must use clear, technology-neutral language to the extent possible, referencing well-known technologies as examples where deemed useful for clarity.
+
+Every requirement in AISVS follows these principles derived from the standard's name:
+
+* **Artificial Intelligence.** Each control operates at the AI or ML layer (data, model, pipeline, agent, or inference) and addresses risks specific to AI systems rather than general application security. The standard does not duplicate controls from other broadly adopted standards or frameworks (such as ASVS), unless the control has unique, AI-specific implementation concerns.
+* **Security.** Each requirement directly mitigates an identified security, privacy, or safety risk. Controls that serve only operational, governance, compliance, or business objectives are out of scope.
+* **Verification.** Requirements are written so that conformance can be objectively validated through testing, inspection, or audit. Sufficient implementation guidance or tooling must exist to allow both implementation and effective verification of the requirement; purely theoretical, subjective, or aspirational guidance is excluded.
 * **Standard.** All chapters follow a consistent structure and terminology to form a coherent, navigable reference document.
 
 ## How to Read This Standard
