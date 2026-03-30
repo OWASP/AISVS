@@ -17,6 +17,12 @@ The **Artificial Intelligence Security Verification Standard (AISVS)** is a comm
 
 AISVS is modeled after the [OWASP Application Security Verification Standard (ASVS)](https://owasp.org/www-project-application-security-verification-standard/) and follows the same philosophy: every requirement should be **verifiable, testable, and implementable**.
 
+## Project Leaders
+
+This project was founded by [Jim Manico](https://github.com/jmanico). Current project leadership includes [Jim Manico](https://github.com/jmanico), [Otto Sulin](https://github.com/ottosulin), [Rico Komenda](https://github.com/RicoKomenda), and [Russ Memisyazici](https://github.com/vtknightmare).
+
+---
+
 ### What AISVS is NOT
 
 * **Not a governance framework.** Governance is well-covered by [NIST AI RMF](https://www.nist.gov/artificial-intelligence/risk-management-framework), [ISO/IEC 42001](https://www.iso.org/standard/81230.html), and EU AI Act compliance guides.
@@ -33,12 +39,16 @@ AISVS is modeled after the [OWASP Application Security Verification Standard (AS
 | NIST AI RMF | AI risk governance | AISVS supplies the testable technical controls that AI RMF references |
 | ISO/IEC 42001 | AI management systems | AISVS complements with implementation-level security verification |
 
-## Download AISVS 1.0
+---
+
+## Latest Stable Version
+
+The latest stable version is **AISVS 1.0**, which can be found:
 
 | Format | Link |
 |--------|------|
 | PDF | [GitHub Releases](https://github.com/OWASP/AISVS/releases/latest) |
-| HTML | Available via [GitHub Releases](https://github.com/OWASP/AISVS/releases/latest) |
+| HTML | *(pending for 1.0 release)* |
 | Markdown (source) | [Browse online](https://github.com/OWASP/AISVS/tree/main/1.0/en) |
 
 ---
@@ -86,31 +96,35 @@ Organizations should select a target level based on the risk profile of their AI
 * [Appendix C: AI-Assisted Secure Coding](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x92-Appendix-C_AI_for_Code_Generation.md)
 * [Appendix D: AI Security Controls Inventory](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x93-Appendix-D_AI_Security_Controls_Inventory.md)
 
-## Versioning
+---
 
-Each stable release of AISVS is published as a numbered folder in this repository. Once a version is released its folder is locked; all future work happens in a new folder.
+## How to Reference AISVS Requirements
 
-```
-/
-├── 1.0/        <- current stable release
-├── 1.01-dev/   <- next minor release (work in progress)
-```
+Each requirement has an identifier in the format `C<chapter>.<section>.<requirement>`, where each element is a number, for example `C9.4.3`.
 
-Individual requirements are referenced as `Cx.y.z` — chapter, section, requirement number (e.g., `C9.4.3`).
+- The `C<chapter>` value corresponds to the chapter from which the requirement comes; for example, all `C9.#.#` requirements are from the 'Autonomous Orchestration & Agentic Action Security' chapter.
+- The `<section>` value corresponds to the section within that chapter where the requirement appears; for example, all `C9.4.#` requirements are in the 'Identity & Audit' section.
+- The `<requirement>` value identifies the specific requirement within the chapter and section; for example, `C9.4.3` which as of version 1.0 of this standard is:
 
-This mirrors the approach used by [OWASP ASVS](https://github.com/OWASP/ASVS) across its major releases.
+> Verify that audit logs are tamper-evident via append-only/WORM/immutable log store, cryptographic hash chaining where each record includes the hash of the prior record, or equivalent integrity guarantees that can be independently verified.
+
+Since identifiers may change between versions of the standard, it is preferable for other documents, reports, or tools to use the following format: `v<version>-C<chapter>.<section>.<requirement>`, where 'version' is the AISVS version tag. For example: `v1.0-C9.4.3`.
+
+Note: The `v` preceding the version number should always be lowercase.
+
+If identifiers are used without including the `v<version>` element they should be assumed to refer to the latest AISVS content. As the standard grows and changes this becomes problematic, which is why writers or developers should include the version element.
 
 ---
 
-## Citing AISVS
+## Versioning
 
-When referencing AISVS in security assessments, procurement documents, or academic work, use the following format:
+Each stable release of AISVS is published as a numbered folder in this repository. Once a version is released its folder is locked; all future work happens in a new folder. This mirrors the approach used by [OWASP ASVS](https://github.com/OWASP/ASVS).
 
-> OWASP Foundation. (2025). *OWASP Artificial Intelligence Security Verification Standard (AISVS) 1.0*. https://github.com/OWASP/AISVS/releases/latest
-
-For individual requirements, cite them as:
-
-> AISVS 1.0, C9.6.5 — Verify that secrets and credentials required by an agent at runtime are not exposed within the model's observable context...
+```
+/
+├── 1.0/        <- current stable release (locked after release)
+├── 1.01-dev/   <- next minor release (pending)
+```
 
 ---
 
@@ -119,10 +133,6 @@ For individual requirements, cite them as:
 We welcome contributions from the community. Please [open an issue](https://github.com/OWASP/AISVS/issues) to report bugs or suggest improvements. We may ask you to [submit a pull request](https://github.com/OWASP/AISVS/pulls) based on the discussion.
 
 To report a security issue with the AISVS project itself, please follow the [Security Policy](SECURITY.md).
-
-## Project Leaders
-
-This project was founded by [Jim Manico](https://github.com/jmanico). Current project leadership includes [Jim Manico](https://github.com/jmanico), [Otto Sulin](https://github.com/ottosulin), [Rico Komenda](https://github.com/RicoKomenda), and [Russ Memisyazici](https://github.com/vtknightmare).
 
 ## License
 
