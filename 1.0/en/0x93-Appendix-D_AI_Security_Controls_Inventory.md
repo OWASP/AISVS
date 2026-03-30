@@ -214,6 +214,7 @@ Enforce consumption bounds to prevent abuse, runaway execution, and denial-of-se
 | Cumulative resource counters with hard-stop thresholds | 9.1.2 |
 | Circuit breaker enforcement | 9.1.3 |
 | Per-tool CPU, memory, disk, egress, and execution time limits | 9.3.2 |
+| Quota and timeout breach fail-closed termination | 9.3.7 |
 | Query-rate limiting for model extraction and inversion defense | 11.4.2, 11.5.1 |
 | MCP outbound execution limits, timeouts, recursion limits, and circuit breakers | 10.5.2 |
 | Anomalous usage pattern detection and blocking | 2.6.3 |
@@ -395,7 +396,7 @@ Capture security-relevant events with integrity protection for forensic analysis
 | PII, credential, and proprietary information redaction in logs | 13.1.4 |
 | Policy decision and safety filtering action logging | 13.1.5 |
 | Cryptographic log signatures with write-only storage | 13.1.6 |
-| Tamper-evident audit logs with full reconstruction context (who, what, when) | 9.4.3 |
+| Tamper-evident audit logs with full reconstruction context (who, what, when) | 9.4.3, 9.4.5 |
 | Agent action signing with chain ID binding and timestamps | 9.4.2 |
 | Immutable audit records for model changes (actor, change type, before/after) | 3.2.3 |
 | Immutable deletion logging for regulatory audit trails | 12.2.4 |
