@@ -9,7 +9,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 ## C10.1 Component Integrity & Supply Chain Hygiene
 
 | # | Description | Level |
-| :--: | --- | :---:|
+| :--: | --- | :---: |
 | **10.1.1** | **Verify that** MCP server and client components are obtained only from trusted sources and verified using signatures, checksums, or secure package metadata, rejecting tampered or unsigned builds. | 1 |
 | **10.1.2** | **Verify that** only allowlisted MCP server identifiers (name, version, and registry) are permitted in production and that the runtime rejects connections to unlisted or unregistered servers at load time. | 1 |
 
@@ -18,7 +18,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 ## C10.2 Authentication & Authorization
 
 | # | Description | Level |
-| :--: | --- | :---:|
+| :--: | --- | :---: |
 | **10.2.1** | **Verify that** MCP clients authenticate to MCP servers using the OAuth 2.1 authorization framework and present a valid OAuth access token for each request, and that the MCP server validates the token according to OAuth 2.1 resource server requirements. | 1 |
 | **10.2.2** | **Verify that** MCP servers validate OAuth access tokens including issuer, audience, expiration, and scope claims, ensuring that tokens were issued for the specific MCP server before allowing tool invocation. | 1 |
 | **10.2.3** | **Verify that** MCP servers are registered through a controlled technical onboarding mechanism requiring explicit owner, environment, and resource definitions; unregistered or undiscoverable servers must not be callable in production. | 1 |
@@ -38,7 +38,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 ## C10.3 Secure Transport & Network Boundary Protection
 
 | # | Description | Level |
-| :--: | --- | :---:|
+| :--: | --- | :---: |
 | **10.3.1** | **Verify that** authenticated, encrypted streamable-HTTP is used as the primary MCP transport in production environments and that alternate transports (e.g., stdio or SSE) are restricted to local or tightly controlled environments with explicit justification. | 2 |
 | **10.3.2** | **Verify that** streamable-HTTP MCP transports use authenticated, encrypted channels (TLS 1.3 or later) with certificate validation. | 2 |
 | **10.3.3** | **Verify that** SSE-based MCP transports are used only within private, authenticated internal channels and enforce TLS, authentication, schema validation, payload size limits, and rate limiting; SSE endpoints must not be exposed to the public internet. | 2 |
@@ -50,7 +50,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 ## C10.4 Schema, Message, and Input Validation
 
 | # | Description | Level |
-| :--: | --- | :---:|
+| :--: | --- | :---: |
 | **10.4.1** | **Verify that** MCP tool responses are validated before being injected into the model context to prevent prompt injection, malicious tool output, or context manipulation. | 1 |
 | **10.4.2** | **Verify that** MCP tool and resource schemas (e.g., JSON schemas or capability descriptors) are validated for authenticity and integrity using signatures to prevent schema tampering or malicious parameter modification. | 2 |
 | **10.4.3** | **Verify that** all MCP transports enforce message-framing integrity, strict schema validation, maximum payload sizes, and rejection of malformed, truncated, or interleaved frames to prevent desynchronization or injection attacks. | 2 |
@@ -68,7 +68,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 ## C10.5 Outbound Access & Agent Execution Safety
 
 | # | Description | Level |
-| :--: | --- | :---:|
+| :--: | --- | :---: |
 | **10.5.1** | **Verify that** MCP servers may only initiate outbound requests to approved internal or external destinations following least-privilege egress policies and cannot access arbitrary network targets or internal cloud metadata services. | 2 |
 | **10.5.2** | **Verify that** outbound MCP actions implement execution limits (e.g., timeouts, recursion limits, concurrency caps, or circuit breakers) to prevent unbounded agent-driven tool invocation or chained side effects. | 2 |
 | **10.5.3** | **Verify that** MCP tool invocations classified as high-risk or destructive (e.g., data deletion, financial transactions, system configuration changes) require explicit user confirmation before execution. | 2 |
@@ -78,7 +78,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 ## C10.6 Transport Restrictions & High-Risk Boundary Controls
 
 | # | Description | Level |
-| :--: | --- | :---:|
+| :--: | --- | :---: |
 | **10.6.1** | **Verify that** stdio-based MCP transports are limited to co-located, single-process development scenarios and isolated from shell execution, terminal injection, and process-spawning capabilities; stdio must not cross network or multi-tenant boundaries. | 3 |
 | **10.6.2** | **Verify that** MCP servers expose only allow-listed functions and resources and prohibit dynamic dispatch, reflective invocation, or execution of function names influenced by user or model-provided input. | 3 |
 | **10.6.3** | **Verify that** tenant boundaries, environment boundaries (e.g., dev/test/prod), and data domain boundaries are enforced at the MCP layer to prevent cross-tenant or cross-environment server or resource discovery. | 3 |
