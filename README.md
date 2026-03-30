@@ -32,7 +32,7 @@ This project was founded by [Jim Manico](https://github.com/jmanico). Current pr
 ### How AISVS complements other standards
 
 | Standard | Focus | AISVS relationship |
-|---|---|---|
+| --- | --- | --- |
 | OWASP ASVS | Web application security | AISVS extends ASVS concepts to AI-specific threats |
 | [OWASP Top 10 for LLMs](https://owasp.org/www-project-top-10-for-large-language-model-applications/) | Awareness of top LLM risks | AISVS provides the detailed controls to mitigate those risks |
 | [OWASP Top 10 for Agentic Applications](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/) | Awareness of top agentic AI risks | AISVS provides the detailed controls to address agentic-specific threats |
@@ -46,9 +46,9 @@ This project was founded by [Jim Manico](https://github.com/jmanico). Current pr
 The latest stable version is **AISVS 1.0**, which can be found:
 
 | Format | Link |
-|--------|------|
-| PDF | [GitHub Releases](https://github.com/OWASP/AISVS/releases/latest) |
-| HTML | *(pending for 1.0 release)* |
+| --- | --- |
+| PDF | _(pending for 1.0 release)_ |
+| HTML | _(pending for 1.0 release)_ |
 | Markdown (source) | [Browse online](https://github.com/OWASP/AISVS/tree/main/1.0/en) |
 
 ---
@@ -58,7 +58,7 @@ The latest stable version is **AISVS 1.0**, which can be found:
 Each AISVS requirement is assigned a verification level (1, 2, or 3) indicating the depth of security assurance:
 
 | Level | Description | When to use |
-|:---:|---|---|
+| :---: | --- | --- |
 | **1** | Essential baseline controls that every AI system should implement. | All AI applications, including internal tools and low-risk systems. |
 | **2** | Standard controls for systems handling sensitive data or making consequential decisions. | Production systems, customer-facing AI, systems processing personal data. |
 | **3** | Advanced controls for high-assurance environments requiring defense against sophisticated attacks. | Critical infrastructure, safety-critical AI, high-value targets, regulated industries. |
@@ -120,7 +120,7 @@ If identifiers are used without including the `v<version>` element they should b
 
 Each stable release of AISVS is published as a numbered folder in this repository. Once a version is released its folder is locked; all future work happens in a new folder. This mirrors the approach used by [OWASP ASVS](https://github.com/OWASP/ASVS).
 
-```
+```text
 /
 ├── 1.0/        <- current stable release (locked after release)
 ├── 1.01-dev/   <- next minor release (pending)
