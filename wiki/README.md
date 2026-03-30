@@ -8,27 +8,39 @@ Welcome to the AISVS research wiki. This wiki provides structured research conte
 
 ## Chapters
 
-The standard is organized into 14 chapters spanning the full AI application security lifecycle, from training data through deployment, monitoring, and human oversight. Larger chapters are split into per-section pages for easier navigation, while smaller chapters are covered on a single page.
+The standard is organized into 14 chapters spanning the full AI application security lifecycle, from training data through deployment, monitoring, and human oversight. Every chapter has per-section sub-pages for focused navigation, plus a hub page with cross-cutting threat landscape, tooling, and research context.
 
 | # | Chapter | Reqs | Pages | Type | Updated |
 |---|---------|:----:|:-----:|------|:-------:|
-| C1 | Training Data Integrity & Traceability | 24 | [C01](C01-Training-Data.md) | Single | 2026-03-28 |
+| C1 | Training Data Integrity & Traceability | 24 | [C01](C01-Training-Data.md) | [5 sections](#c1-training-data-integrity--traceability) | 2026-03-29 |
 | C2 | User Input Validation | 33 | [C02](C02-User-Input-Validation.md) | [8 sections](#c2-user-input-validation) | 2026-03-27 |
-| C3 | Model Lifecycle Management | 26 | [C03](C03-Model-Lifecycle-Management.md) | Single | 2026-03-27 |
+| C3 | Model Lifecycle Management | 26 | [C03](C03-Model-Lifecycle-Management.md) | [6 sections](#c3-model-lifecycle-management) | 2026-03-29 |
 | C4 | Infrastructure & Deployment Security | 46 | [C04](C04-Infrastructure.md) | [8 sections](#c4-infrastructure--deployment-security) | 2026-03-28 |
-| C5 | Access Control & Identity | 27 | [C05](C05-Access-Control.md) | Single | 2026-03-27 |
+| C5 | Access Control & Identity | 27 | [C05](C05-Access-Control.md) | [6 sections](#c5-access-control--identity) | 2026-03-29 |
 | C6 | Supply Chain Security | 34 | [C06](C06-Supply-Chain.md) | [7 sections](#c6-supply-chain-security) | 2026-03-27 |
 | C7 | Model Behavior & Output Control | 33 | [C07](C07-Model-Behavior.md) | [8 sections](#c7-model-behavior--output-control) | 2026-03-28 |
-| C8 | Memory, Embeddings & Vector DB Security | 25 | [C08](C08-Memory-and-Embeddings.md) | Single | 2026-03-28 |
-| C9 | Orchestration & Agentic Action Security | 40 | [C09](C09-Orchestration-and-Agents.md) | [8 sections](#c9-orchestration--agentic-action-security) | 2026-03-28 |
-| C10 | MCP Security | 33 | [C10](C10-MCP-Security.md) | [6 sections](#c10-mcp-security) | 2026-03-28 |
+| C8 | Memory, Embeddings & Vector DB Security | 25 | [C08](C08-Memory-and-Embeddings.md) | [5 sections](#c8-memory-embeddings--vector-db-security) | 2026-03-29 |
+| C9 | Orchestration & Agentic Action Security | 41 | [C09](C09-Orchestration-and-Agents.md) | [8 sections](#c9-orchestration--agentic-action-security) | 2026-03-29 |
+| C10 | MCP Security | 38 | [C10](C10-MCP-Security.md) | [6 sections](#c10-mcp-security) | 2026-03-29 |
 | C11 | Adversarial Robustness | 41 | [C11](C11-Adversarial-Robustness.md) | [10 sections](#c11-adversarial-robustness) | 2026-03-27 |
-| C12 | Privacy Protection | 23 | [C12](C12-Privacy.md) | Single | 2026-03-28 |
+| C12 | Privacy Protection | 23 | [C12](C12-Privacy.md) | [6 sections](#c12-privacy-protection) | 2026-03-29 |
 | C13 | Monitoring, Logging & Anomaly Detection | 45 | [C13](C13-Monitoring-and-Logging.md) | [7 sections](#c13-monitoring-logging--anomaly-detection) | 2026-03-28 |
-| C14 | Human Oversight & Accountability | 24 | [C14](C14-Human-Oversight.md) | Single | 2026-03-28 |
-| | **Total** | **454** | **82 pages** | | |
+| C14 | Human Oversight & Accountability | 24 | [C14](C14-Human-Oversight.md) | [7 sections](#c14-human-oversight--accountability) | 2026-03-29 |
+| | **Total** | **460** | **115 pages** | | |
 
 ---
+
+### C1: Training Data Integrity & Traceability
+
+Covers training data origin and traceability, data security and integrity, labeling and annotation security, quality assurance, and data lineage.
+
+| Section | Page |
+|---------|------|
+| C1.1 Training Data Origin & Traceability | [C01-01](C01-01-Training-Data-Origin-Traceability.md) |
+| C1.2 Training Data Security & Integrity | [C01-02](C01-02-Training-Data-Security-Integrity.md) |
+| C1.3 Data Labeling and Annotation Security | [C01-03](C01-03-Data-Labeling-Annotation-Security.md) |
+| C1.4 Training Data Quality and Security Assurance | [C01-04](C01-04-Training-Data-Quality-Security-Assurance.md) |
+| C1.5 Data Lineage and Traceability | [C01-05](C01-05-Data-Lineage-Traceability.md) |
 
 ### C2: User Input Validation
 
@@ -45,6 +57,19 @@ Covers prompt injection defense, adversarial input resistance, schema validation
 | C2.7 Multi-Modal Input Validation | [C02-07](C02-07-Multi-Modal-Input-Validation.md) |
 | C2.8 Real-Time Adaptive Threat Detection | [C02-08](C02-08-Real-Time-Adaptive-Threat-Detection.md) |
 
+### C3: Model Lifecycle Management
+
+Covers model authorization and integrity, validation and testing, controlled deployment and rollback, secure development practices, hosted/provider-managed controls, and fine-tuning pipeline security. Note: C3.6 is intentionally absent in the standard.
+
+| Section | Page |
+|---------|------|
+| C3.1 Model Authorization & Integrity | [C03-01](C03-01-Model-Authorization-Integrity.md) |
+| C3.2 Model Validation & Testing | [C03-02](C03-02-Model-Validation-Testing.md) |
+| C3.3 Controlled Deployment & Rollback | [C03-03](C03-03-Controlled-Deployment-Rollback.md) |
+| C3.4 Secure Development Practices | [C03-04](C03-04-Secure-Development-Practices.md) |
+| C3.5 Hosted and Provider-Managed Model Controls | [C03-05](C03-05-Hosted-Provider-Managed-Controls.md) |
+| C3.7 Fine-Tuning Pipeline Authorization & Reward Model Integrity | [C03-07](C03-07-Fine-Tuning-Pipeline-Security.md) |
+
 ### C4: Infrastructure & Deployment Security
 
 Addresses runtime isolation, secure build pipelines, network controls, secrets management, workload sandboxing, resource management, hardware security, and edge deployment.
@@ -59,6 +84,19 @@ Addresses runtime isolation, secure build pipelines, network controls, secrets m
 | C4.6 Resource Management, Backup & Recovery | [C04-06](C04-06-Resource-Management-Backup-Recovery.md) |
 | C4.7 Hardware Security | [C04-07](C04-07-Hardware-Security.md) |
 | C4.8 Edge & Distributed Security | [C04-08](C04-08-Edge-Distributed-Security.md) |
+
+### C5: Access Control & Identity
+
+Covers identity management and authentication, authorization and policy, query-time security enforcement, output filtering and DLP, multi-tenant isolation, and autonomous agent authorization.
+
+| Section | Page |
+|---------|------|
+| C5.1 Identity Management & Authentication | [C05-01](C05-01-Identity-Management-Authentication.md) |
+| C5.2 Authorization & Policy | [C05-02](C05-02-Authorization-Policy.md) |
+| C5.3 Query-Time Security Enforcement | [C05-03](C05-03-Query-Time-Security-Enforcement.md) |
+| C5.4 Output Filtering & Data Loss Prevention | [C05-04](C05-04-Output-Filtering-DLP.md) |
+| C5.5 Multi-Tenant Isolation | [C05-05](C05-05-Multi-Tenant-Isolation.md) |
+| C5.6 Autonomous Agent Authorization | [C05-06](C05-06-Autonomous-Agent-Authorization.md) |
 
 ### C6: Supply Chain Security
 
@@ -88,6 +126,18 @@ Addresses output format enforcement, hallucination detection, safety and privacy
 | C7.6 Monitoring Integration | [C07-06](C07-06-Monitoring-Integration.md) |
 | C7.7 Generative Media Safeguards | [C07-07](C07-07-Generative-Media-Safeguards.md) |
 | C7.8 Source Attribution & Citation Integrity | [C07-08](C07-08-Source-Attribution-Citation-Integrity.md) |
+
+### C8: Memory, Embeddings & Vector DB Security
+
+Covers access controls on memory and RAG indices, embedding sanitization, memory expiry and deletion, embedding inversion prevention, and scope enforcement for user-specific memory.
+
+| Section | Page |
+|---------|------|
+| C8.1 Access Controls on Memory & RAG Indices | [C08-01](C08-01-Access-Controls-Memory-RAG.md) |
+| C8.2 Embedding Sanitization & Validation | [C08-02](C08-02-Embedding-Sanitization-Validation.md) |
+| C8.3 Memory Expiry, Revocation & Deletion | [C08-03](C08-03-Memory-Expiry-Revocation-Deletion.md) |
+| C8.4 Prevent Embedding Inversion & Leakage | [C08-04](C08-04-Embedding-Inversion-Leakage-Prevention.md) |
+| C8.5 Scope Enforcement for User-Specific Memory | [C08-05](C08-05-Scope-Enforcement-User-Memory.md) |
 
 ### C9: Orchestration & Agentic Action Security
 
@@ -134,6 +184,19 @@ Covers model alignment, adversarial example hardening, membership inference and 
 | C11.9 Self-Modification & Autonomous Update Security | [C11-09](C11-09-Self-Modification-Autonomous-Update-Security.md) |
 | C11.10 Adversarial Bias Exploitation Defense | [C11-10](C11-10-Adversarial-Bias-Exploitation-Defense.md) |
 
+### C12: Privacy Protection
+
+Covers anonymization and data minimization, right-to-be-forgotten enforcement, differential privacy safeguards, purpose limitation, consent management, and federated learning with privacy controls.
+
+| Section | Page |
+|---------|------|
+| C12.1 Anonymization & Data Minimization | [C12-01](C12-01-Anonymization-Data-Minimization.md) |
+| C12.2 Right-to-be-Forgotten & Deletion Enforcement | [C12-02](C12-02-Right-to-be-Forgotten-Deletion.md) |
+| C12.3 Differential-Privacy Safeguards | [C12-03](C12-03-Differential-Privacy-Safeguards.md) |
+| C12.4 Purpose-Limitation & Scope-Creep Protection | [C12-04](C12-04-Purpose-Limitation-Scope-Creep.md) |
+| C12.5 Consent Management & Lawful-Basis Tracking | [C12-05](C12-05-Consent-Management-Lawful-Basis.md) |
+| C12.6 Federated Learning with Privacy Controls | [C12-06](C12-06-Federated-Learning-Privacy-Controls.md) |
+
 ### C13: Monitoring, Logging & Anomaly Detection
 
 Covers request and response logging, abuse detection, model drift detection, performance telemetry, incident response, DAG visualization and workflow security, and proactive security monitoring.
@@ -147,6 +210,20 @@ Covers request and response logging, abuse detection, model drift detection, per
 | C13.5 Incident Response | [C13-05](C13-05-Incident-Response.md) |
 | C13.6 DAG Visualization & Workflow Security | [C13-06](C13-06-DAG-Visualization-Workflow-Security.md) |
 | C13.7 Proactive Security Behavior Monitoring | [C13-07](C13-07-Proactive-Security-Behavior-Monitoring.md) |
+
+### C14: Human Oversight & Accountability
+
+Covers kill-switch and override mechanisms, human-in-the-loop decision checkpoints, chain of responsibility and auditability, explainable-AI techniques, model cards and usage disclosures, uncertainty quantification, and user-facing transparency reports.
+
+| Section | Page |
+|---------|------|
+| C14.1 Kill-Switch & Override Mechanisms | [C14-01](C14-01-Kill-Switch-Override-Mechanisms.md) |
+| C14.2 Human-in-the-Loop Decision Checkpoints | [C14-02](C14-02-Human-in-the-Loop-Checkpoints.md) |
+| C14.3 Chain of Responsibility & Auditability | [C14-03](C14-03-Chain-of-Responsibility-Auditability.md) |
+| C14.4 Explainable-AI Techniques | [C14-04](C14-04-Explainable-AI-Techniques.md) |
+| C14.5 Model Cards & Usage Disclosures | [C14-05](C14-05-Model-Cards-Usage-Disclosures.md) |
+| C14.6 Uncertainty Quantification | [C14-06](C14-06-Uncertainty-Quantification.md) |
+| C14.7 User-Facing Transparency Reports | [C14-07](C14-07-User-Facing-Transparency-Reports.md) |
 
 ---
 

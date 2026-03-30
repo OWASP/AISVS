@@ -1,0 +1,26 @@
+# C12.5: Consent Management & Lawful-Basis Tracking
+
+> [Back to C12 Index](C12-Privacy.md)
+> **Last Researched:** 2026-03-29
+
+## Purpose
+
+Record, enforce, and revoke consent across AI processing pipelines. GDPR Articles 6-7 require valid legal basis for all personal data processing. Without centralized consent tracking, organizations cannot demonstrate lawful basis for AI training data, leading to regulatory exposure. The Italian Garante fined OpenAI EUR 15M (2024) for lack of lawful basis (violating GDPR Articles 5(1)(a), 5(2), 6, 12, 13, 24, 25) and imposed a six-month mandatory information campaign. The EDPB's 2024 opinion clarified that legitimate interest requires controllers to articulate sufficiently clear purposes and ensure processing remains within reasonable data subject expectations. Most Consent-Management Platforms (CMPs) were designed for web cookie consent and are poorly integrated with ML pipelines — no standard exists for consent tokens in inference APIs. The European Commission's proposed GDPR amendments (Q4 2025) may reshape consent requirements for AI. Brazil's ANPD is extending GDPR-style enforcement to Latin America, targeting AI training data collection without proper consent.
+
+---
+
+## Requirements
+
+| # | Requirement | Level | Threat Mitigated | Verification Approach | Gaps / Notes |
+|---|-------------|:-----:|-----------------|----------------------|--------------|
+| **12.5.1** | **Verify that** a Consent-Management Platform (CMP) records opt-in status, purpose, and retention period per data-subject. | 1 | Processing personal data without valid legal basis, violating GDPR Articles 6-7. Without centralized consent tracking, organizations cannot demonstrate lawful basis for AI training data, leading to regulatory exposure. The Italian Garante fined OpenAI EUR 15M (2024) for lack of lawful basis (violating GDPR Articles 5(1)(a), 5(2), 6, 12, 13, 24, 25) and imposed a six-month mandatory information campaign. The EDPB's 2024 opinion clarified that legitimate interest requires controllers to articulate sufficiently clear purposes and ensure processing remains within reasonable data subject expectations. | Inspect CMP implementation (OneTrust, TrustArc, Cookiebot, or custom). Verify it records: consent timestamp, specific purposes consented to, retention period, withdrawal mechanism. Sample consent records and cross-reference with data processing activities. Test consent withdrawal flow end-to-end. Verify CMP tracks lawful basis type (consent vs. legitimate interest) per processing purpose, as the EDPB opinion makes this distinction critical. | Most CMPs were designed for web cookie consent, not ML training pipelines. Integrating consent status checks into data loading pipelines requires custom development. The EDPB's 2024 opinion emphasized that supervisory authority determinations of GDPR violations — particularly formalized through sanctions — should factor into deployment assessments, potentially undermining legitimate interest justifications for controllers who deploy models developed with unlawfully processed data. The European Commission's proposed GDPR amendments (Q4 2025) may reshape consent requirements for AI. |
+| **12.5.2** | **Verify that** APIs expose consent tokens; models must validate token scope before inference. | 2 | Inference on data where consent has been withdrawn or was never granted for the specific processing purpose. Without runtime consent validation, models continue to process data even after subjects revoke consent. | Review API specifications for consent token endpoints. Test that inference requests without valid consent tokens are rejected. Verify token scope validation logic checks both the data subject's consent status and the specific purpose. Test with expired, revoked, and scope-mismatched tokens. | Real-time consent token validation adds latency to inference. Token architecture must handle scale (millions of subjects) without becoming a bottleneck. Consent token revocation propagation across distributed systems requires careful cache invalidation design. No industry standard exists for AI-specific consent token formats. |
+| **12.5.3** | **Verify that** denied or withdrawn consent halts processing pipelines within 24 hours. | 2 | Continued processing after consent withdrawal, violating GDPR Article 7(3) which requires withdrawal to be as easy as giving consent. Delayed processing halt means data continues to be used without lawful basis. | Withdraw consent via the CMP and measure time until all processing pipelines halt for that data subject. Verify across training pipelines, inference endpoints, batch jobs, and analytics. Check that 24-hour SLA is monitored and alerting is configured for breaches. | The 24-hour window is tighter than many batch processing schedules. Long-running training jobs may need to be interrupted and restarted. Streaming pipelines can halt quickly, but batch ETL jobs and scheduled retraining may not check consent status frequently enough. Coordination across microservices and data platforms adds complexity. |
+
+---
+
+## Tooling
+
+- **Consent management:** OneTrust, TrustArc, Cookiebot (integrated with ML pipelines via custom connectors)
+
+---
