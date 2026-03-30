@@ -132,7 +132,7 @@ Each stable release of AISVS is published as a numbered folder in this repositor
 
 We welcome contributions from the community. Please [open an issue](https://github.com/OWASP/AISVS/issues) to report bugs or suggest improvements. We may ask you to [submit a pull request](https://github.com/OWASP/AISVS/pulls) based on the discussion.
 
-To report a security issue with the AISVS project itself, please follow the [Security Policy](SECURITY.md).
+To report a security issue with the AISVS project itself, please follow the [Security Policy](Security.md).
 
 ## License
 
