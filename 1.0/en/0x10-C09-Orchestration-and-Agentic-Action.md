@@ -26,9 +26,11 @@ Bound runtime expansion (recursion, concurrency, cost) and halt safely on runawa
 
 Require explicit checkpoints for privileged or irreversible outcomes.
 
+> **Scope note:** C9.2 governs the runtime execution gate: the mechanism by which the agent system blocks a privileged or irreversible action and waits for an explicit approval signal before proceeding. Organizational policy that defines which decisions qualify as high-risk and what approval authority is required is in C14.2. Logging and auditing of approval events is in C13.7.4. All three controls address different aspects of the same workflow and require separate evidence.
+
 | # | Description | Level |
 | :--: | --- | :---: |
-| **9.2.1** | **Verify that** privileged or irreversible actions (e.g., code merges/deploys, financial transfers, user access changes, destructive deletes, external notifications) require explicit human-in-loop approval. | 1 |
+| **9.2.1** | **Verify that** the agent runtime enforces an execution gate that blocks privileged or irreversible actions (e.g., code merges/deploys, financial transfers, user access changes, destructive deletes, external notifications) until an explicit human approval is received and verified. | 1 |
 | **9.2.2** | **Verify that** approval requests display canonicalized and complete action parameters (diff, command, recipient, amount, scope) without truncation or transformation. | 2 |
 | **9.2.3** | **Verify that** approvals are cryptographically bound (e.g., signed or MACed) to the exact action parameters, requester identity, and execution context. | 2 |
 | **9.2.4** | **Verify that** approvals include a unique nonce and are single-use to prevent replay or substitution. | 2 |
