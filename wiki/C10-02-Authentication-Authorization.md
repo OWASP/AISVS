@@ -1,8 +1,8 @@
 # C10.2: Authentication & Authorization
 
 > **Parent:** [C10 MCP Security](C10-MCP-Security.md)
-> **Requirements:** 12 | **IDs:** 10.2.1–10.2.12
-> **Last Researched:** 2026-03-27
+> **Requirements:** 13 | **IDs:** 10.2.1–10.2.13
+> **Last Researched:** 2026-03-29
 
 ## Purpose
 
@@ -32,6 +32,7 @@ A fundamental gap in the MCP OAuth 2.1 model is worth highlighting: **PKCE secur
 | **10.2.10** | **Verify that** MCP servers acting as OAuth proxies to third-party APIs enforce per-client consent before forwarding authorization requests, preventing cached approvals from being reused across dynamically registered clients. | 2 | **Consent bypass via dynamic client registration.** Obsidian Security demonstrated one-click account takeover against Square MCP via shared `client_id`. Only 4% of MCP authorization server endpoints support Dynamic Client Registration; fewer than 4% support CIMD (Client ID Metadata Documents). | Register a new MCP client dynamically and verify it cannot access tokens previously approved for a different client. Verify the consent UI identifies the requesting client. Review consent storage for per-client isolation. | The MCP spec introduced CIMD (SEP-991) as the preferred registration mechanism but adoption is ~3-4%. Dynamic Client Registration (RFC 7591) remains the backwards-compat fallback. |
 | **10.2.11** | **Verify that** MCP clients request only the minimum scopes needed for the current operation, elevate progressively via step-up authorization, and that servers reject wildcard or overly broad scopes. | 2 | **Over-scoped tokens enabling lateral movement.** 67% of enterprise teams still rely on static, broadly-scoped credentials for AI systems (Teleport 2026 survey). Over-privileged AI systems experience 4.5x higher incident rates. GitGuardian analysis (March 2026) notes OAuth scopes authorize access to the MCP server, not individual tools — creating a tool-level authorization gap. | Review MCP client OAuth configuration for requested scopes. Verify scopes are minimal. Test requesting a wildcard scope and confirm rejection. Verify high-privilege operations trigger step-up authorization. | The MCP spec does not define standard scope names or a scope hierarchy. Scope naming is left to individual implementations, making cross-server least-privilege difficult. The emerging enterprise pattern is mTLS at transport layer + OAuth 2.1 at authorization layer + RFC 8707 for token scoping + RFC 8693 for delegation chains. |
 | **10.2.12** | **Verify that** MCP servers enforce deterministic session teardown, destroying cached tokens, in-memory state, temporary storage, and file handles when a session terminates, disconnects, or times out. | 2 | **Stale session exploitation / resource leakage.** CVE-2025-53109/53110 (Anthropic Filesystem MCP Server, August 2025) — sandbox escape + symlink bypass enabled arbitrary file access, potentially via stale file handles from improperly torn-down sessions. | Terminate an MCP session and verify: (1) cached tokens are invalidated, (2) temporary files are deleted, (3) file handles are closed, (4) the session ID is rejected on subsequent requests. Test with abrupt disconnection and verify cleanup via timeout. | The MCP spec defines session lifecycle but does not prescribe cleanup behavior. Implementations must handle both graceful termination (`HTTP DELETE`) and ungraceful disconnection (timeout-based cleanup). |
+| **10.2.13** | **Verify that** autonomous agents authenticate using cryptographically bound identity credentials (e.g., key-based proof-of-possession) rather than bearer-only tokens, ensuring that agent identity cannot be transferred, replayed, or impersonated by forwarding a shared secret. | 2 | **Bearer token theft and agent impersonation.** Token theft accounted for 31% of Microsoft 365 breaches in 2025 — nearly 40,000 incidents daily (Obsidian Security). The ShinyHunters group replayed stolen OAuth bearer tokens across 700+ Salesforce environments without triggering any auth alerts (Salesloft-Drift incident). In MCP ecosystems, agents pass bearer tokens thousands of times per second across tool invocations; each handoff is a theft/replay opportunity. SANDWORM_MODE (February 2026) exfiltrated SSH keys and AWS credentials from agent pipelines — bearer tokens in those environments would be equally replayable. The IETF draft-klrc-aiagent-auth-00 (March 2026) explicitly rejects static API keys and bearer-only tokens as unsuitable for agent authentication. | Verify agent credentials use proof-of-possession (DPoP per RFC 9449, mTLS, or SPIFFE SVIDs) rather than bearer-only tokens. Confirm that each request includes a cryptographic proof signed by the agent's private key. Attempt to replay a captured token from a different client and verify rejection. Check for `cnf.jkt` (confirmation thumbprint) claims in JWTs. Review whether agent keys are hardware-backed (TPM, Secure Enclave) or software-only. Inspect SPIFFE/WIMSE identifier assignment — each agent should have exactly one WIMSE identifier. Test token binding by intercepting an access token and presenting it without the corresponding DPoP proof header. | SEP-1932 (DPoP Profile for MCP) is under active review — it adopts RFC 9449 DPoP for sender-constrained tokens without requiring full-payload signing. SEP-1461 (Attested Client Registration with hardware-backed keys) was closed March 2026 for lack of sponsorship — hardware attestation may move to an auth extension. The IETF draft-klrc-aiagent-auth-00 (March 2026) composes WIMSE, SPIFFE, and OAuth 2.0 into the AIMS framework for agent identity without new protocols. The Agent Identity Protocol (AIP) paper (March 2026, arXiv 2603.24775) proposes Invocation-Bound Capability Tokens using Ed25519 signatures with append-only delegation chains — 100% adversarial rejection across 600 test attacks. As of March 2026, no MCP implementation ships DPoP support; this remains the largest gap in agent auth. Aembit's workload IAM and Teleport's machine identity are the closest production solutions for infrastructure-asserted agent identity. |
 
 ---
 
@@ -119,7 +120,7 @@ Key changes in the **November 25, 2025** spec revision:
 | MCP04 | Software Supply Chain Attacks | 10.1.1 |
 | MCP05 | Command Injection & Execution | 10.4.4, 10.5.1 |
 | MCP06 | Intent Flow Subversion | 10.2.4, 10.4.1 |
-| MCP07 | Insufficient Authentication & Authorization | 10.2.1, 10.2.2, 10.2.7 |
+| MCP07 | Insufficient Authentication & Authorization | 10.2.1, 10.2.2, 10.2.7, 10.2.13 |
 | MCP08 | Lack of Audit and Telemetry | C13.1, C13.2 |
 | MCP09 | Shadow MCP Servers | 10.2.3 |
 | MCP10 | Context Injection & Over-Sharing | 10.4.1, 10.2.6 |
@@ -166,6 +167,12 @@ A recurring theme across MCP auth vulnerabilities is the conflation of human ide
 4. **Policy layer:** Okta XAA or Azure Entra ID for centralized agent policy enforcement
 5. **Attestation layer:** Workload identity federation (SEP-1933) or platform-native identity
 
+**IETF standardization.** The IETF published **draft-klrc-aiagent-auth-00** (March 2, 2026), a 26-page framework composing WIMSE, SPIFFE, and OAuth 2.0 into the AIMS (Agent Identity Management System) model. Key principles: every agent gets exactly one WIMSE identifier (which may be a SPIFFE ID in the form `spiffe://<trust-domain>/<path>`), credentials must be short-lived with explicit expiration, and static API keys are explicitly rejected. The framework defines two application-layer proof mechanisms — Workload Proof Tokens (WPT) for proof-of-possession JWTs bound to message context, and HTTP Message Signatures (RFC 9421) for request/response integrity. A companion draft, **draft-ietf-oauth-spiffe-client-auth-01**, defines OAuth SPIFFE Client Authentication for workload-to-authorization-server flows. These drafts signal that the IETF OAuth WG considers agent identity a first-class concern.
+
+**Agent Identity Protocol (AIP).** A March 2026 paper (arXiv 2603.24775) proposes Invocation-Bound Capability Tokens (IBCTs) using Ed25519 signatures with append-only delegation chains. Compact mode produces a 356-byte signed JWT for single-hop calls (verified in 0.049ms in Rust). Chained mode uses Biscuit tokens with Datalog policies where each intermediary appends a signed block that can only *narrow* granted scope — any attempt to widen capabilities fails cryptographic verification. In adversarial testing across 600 attacks, AIP achieved 100% rejection, catching depth-violation and audit-evasion attacks that standard JWT deployments missed.
+
+**RSAC 2026 announcements.** IBM, Auth0, and Yubico demonstrated a Human-in-the-Loop framework combining CIBA-based identity flows with hardware-backed YubiKey authentication for high-stakes agent actions. Yubico and Delinea partnered on hardware-attested Role Delegation Tokens (RDTs) — agents reaching sensitive decision points require a human sponsor to sign an RDT envelope with a YubiKey before proceeding. The consensus emerging from RSAC: agents need "digital passports" — Ed25519 keypairs, DIDs, and trust graphs that work across platforms and organizational boundaries.
+
 **NIST AI Agent Standards Initiative** (launched February 17, 2026) is the first federal effort to standardize agent identity. Their recommended approach: assign each agent a unique identifier and capability declaration, implement JWT-based delegation chains with diminishing permissions, and deploy unified audit logs integrating A2A communication and MCP tool call records. The companion NCCoE concept paper calls for cryptographic bindings at each delegation step and transitively-limited trust boundaries. CAISI's RFI on AI agent security closed March 9, 2026; the NCCoE concept paper comment period remains open through **April 2, 2026** — community input will inform whether NCCoE launches a formal demonstration project. The concept paper specifically calls out OAuth and OpenID Connect as candidate protocols for agent identity, alongside SCIM for identity lifecycle management. Formal guidance is expected mid-2026.
 
 ---
@@ -183,7 +190,8 @@ A recurring theme across MCP auth vulnerabilities is the conflation of human ide
 | Dynamic client registration (CIMD) | **Low** | ~3–4% adoption. SEP-991 making progress. |
 | Multi-agent delegation (RFC 8693) | **Low** | Token Exchange is the recommended pattern but production implementations are rare. |
 | Security scanning | **Medium** | Cisco MCP Scanner (854 stars), CSA mcpserver-audit, VulnerableMCP.info tracking CVEs. |
-| Non-human identity management | **Low** | Aembit is the first workload IAM platform targeting MCP. NIST AI Agent Standards Initiative (Feb 2026) expected to formalize agent identity requirements mid-2026. |
+| Non-human identity management | **Low** | Aembit is the first workload IAM platform targeting MCP. NIST AI Agent Standards Initiative (Feb 2026) expected to formalize agent identity requirements mid-2026. IETF draft-klrc-aiagent-auth-00 (March 2026) provides a composable framework. |
+| Proof-of-possession (DPoP/mTLS) | **Very Low** | SEP-1932 (DPoP for MCP) is under review but no MCP implementation ships DPoP yet. mTLS is available at transport layer but breaks through intermediaries. AIP paper proposes Ed25519-based IBCTs with 100% adversarial rejection but is pre-implementation. |
 | Drop-in OAuth gateways | **Medium** | MCP OAuth Gateway (OSS), Auth0 MCP, Gopher Security, and Bifrost provide turnkey OAuth 2.1 for servers without code changes. Adoption growing rapidly. |
 
 ---
@@ -238,6 +246,15 @@ A recurring theme across MCP auth vulnerabilities is the conflation of human ide
 - [AWS Bedrock AgentCore Gateway — Fine-Grained Access Control with Interceptors](https://aws.amazon.com/blogs/machine-learning/apply-fine-grained-access-control-with-bedrock-agentcore-gateway-interceptors/)
 - [CVE-2026-32111: ha-mcp OAuth Beta SSRF](https://dailycve.com/ha-mcp-oauth-beta-server-side-request-forgery-ssrf-cve-2026-32111-medium/)
 - [NCCoE: Software and AI Agent Identity and Authorization Project](https://www.nccoe.nist.gov/projects/software-and-ai-agent-identity-and-authorization)
+- [RFC 9449: OAuth 2.0 Demonstrating Proof of Possession (DPoP)](https://datatracker.ietf.org/doc/html/rfc9449)
+- [SEP-1932: DPoP Profile for MCP (PR)](https://github.com/modelcontextprotocol/modelcontextprotocol/pull/1932)
+- [SEP-1461: Attested Client Registration and Proof-of-Possession (closed)](https://github.com/modelcontextprotocol/modelcontextprotocol/issues/1461)
+- [IETF draft-klrc-aiagent-auth-00: AI Agent Authentication and Authorization (March 2026)](https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/)
+- [IETF draft-ietf-oauth-spiffe-client-auth-01: OAuth SPIFFE Client Authentication](https://datatracker.ietf.org/doc/draft-ietf-oauth-spiffe-client-auth/)
+- [Agent Identity Protocol (AIP): Verifiable Delegation Across MCP and A2A (arXiv 2603.24775)](https://arxiv.org/html/2603.24775)
+- [Obsidian Security: The Bearer Token Problem Inside Your AI Agent Strategy](https://www.obsidiansecurity.com/blog/the-bearer-token-problem-hidden-inside-your-ai-agent-strategy)
+- [Strata.io: Agent Credential Replay — Why Bearer Tokens Are Digital Cash in a Tornado](https://www.strata.io/blog/agentic-identity/agent-credential-replay/)
+- [Teleport: Machine & Workload Identity Solution](https://goteleport.com/platform/machine-and-workload-identity/)
 
 ---
 
@@ -256,6 +273,8 @@ A recurring theme across MCP auth vulnerabilities is the conflation of human ide
 - As CVE-2026-26118 and CVE-2026-32111 demonstrate, SSRF remains the dominant auth-adjacent vulnerability class in MCP servers — should MCP servers run with minimal cloud IAM permissions, or should managed identity tokens be bound to specific request contexts?
 - AWS AgentCore Gateway interceptors offer tool-level and argument-level access control — will the interceptor pattern (gateway-side policy enforcement) emerge as the standard architecture, or will per-server embedded authorization remain necessary for edge deployments?
 - The Trivy and litellm supply chain compromises (March 2026) exposed CI/CD credentials at scale — how should MCP servers deployed in pipeline environments handle credential isolation given that build-time secrets are routinely available to running processes?
+- With SEP-1932 (DPoP) still in review and SEP-1461 (hardware attestation) closed, what is the realistic path to proof-of-possession in MCP? Will DPoP adoption require gateway-level enforcement (as with OAuth 2.1), or can it be embedded in MCP SDKs?
+- The IETF AIMS framework (draft-klrc-aiagent-auth-00) composes WIMSE/SPIFFE/OAuth without new protocols — is this composable approach sufficient, or do multi-agent delegation chains need purpose-built tokens like AIP's Invocation-Bound Capability Tokens?
 
 ---
 
