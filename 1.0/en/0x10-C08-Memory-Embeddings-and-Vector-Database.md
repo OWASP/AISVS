@@ -11,11 +11,12 @@ Embeddings and vector stores act as semi-persistent and persistent "memory" for 
 Enforce fine-grained access controls and query-time scope enforcement for every vector collection.
 
 | # | Description | Level |
-| :--: | --- | :---:|
+| :--: | --- | :---: |
 | **8.1.1** | **Verify that** vector insert, update, delete, and query operations are enforced with namespace/collection/document-tag scope controls (e.g., tenant ID, user ID, data classification labels) with default-deny. | 1 |
 | **8.1.2** | **Verify that** API credentials used for vector operations carry **scoped claims** (e.g., permitted collections, allowed verbs, tenant binding). | 1 |
 | **8.1.3** | **Verify that** cross-scope access attempts (e.g., cross-tenant similarity queries, namespace traversal, tag bypass) are detected and rejected. | 2 |
-| **8.1.4** | **Verify that** every ingested document is tagged at write time with source, writer identity (authenticated user or system principal), timestamp, batch ID, and embedding model version, and that these tags are immutable after initial write. | 2 |
+| **8.1.4** | **Verify that** every ingested document is tagged at write time with source, writer identity (authenticated user or system principal), timestamp, batch ID, and embedding model version. | 2 |
+| **8.1.7** | **Verify that** document metadata tags applied at ingestion are immutable after initial write and cannot be modified by subsequent pipeline stages or user operations. | 2 |
 | **8.1.5** | **Verify that** RAG pipeline retrieval events log the query issued, the documents or chunks retrieved, similarity scores, the knowledge source, and whether retrieved content passed prompt injection scanning before being incorporated into model context. | 2 |
 | **8.1.6** | **Verify that** retrieval anomaly detection identifies embedding density outliers, repeated dominance of specific documents in similarity results, and sudden shifts in retrieval bias distribution that may indicate vector database poisoning. | 3 |
 
@@ -26,7 +27,7 @@ Enforce fine-grained access controls and query-time scope enforcement for every 
 Pre-screen content before vectorization; treat memory writes as untrusted inputs; prevent ingestion of unsafe payloads.
 
 | # | Description | Level |
-| :--: | --- | :---:|
+| :--: | --- | :---: |
 | **8.2.1** | **Verify that** regulated data and sensitive fields are detected prior to embedding and are masked, tokenized, transformed, or dropped based on policy. | 1 |
 | **8.2.2** | **Verify that** embedding ingestion rejects or quarantines inputs that violate required content constraints (e.g., non-UTF-8, malformed encodings, oversized payloads, invisible Unicode characters, or executable content intended to poison retrieval). | 1 |
 | **8.2.3** | **Verify that** vectors that fall outside normal clustering patterns are flagged and quarantined before entering production indices. | 2 |
@@ -40,13 +41,15 @@ Pre-screen content before vectorization; treat memory writes as untrusted inputs
 Retention must be explicit and enforceable; deletions must propagate to derived indices and caches.
 
 | # | Description | Level |
-| :--: | --- | :---:|
+| :--: | --- | :---: |
 | **8.3.1** | **Verify that** retention times are applied to every stored vector and related metadata across memory storage. | 1 |
-| **8.3.2** | **Verify that** only information required for the system's defined function is persisted in memory (such as user preferences and conversation decisions, not credentials or full conversation transcripts), and that context not needed beyond the current session is discarded at session end. | 1 |
+| **8.3.2** | **Verify that** only information required for the system's defined function is persisted in memory (such as user preferences and conversation decisions, not credentials or full conversation transcripts). | 1 |
+| **8.3.7** | **Verify that** context not needed beyond the current session is discarded at session end and is not accessible in subsequent sessions. | 1 |
 | **8.3.3** | **Verify that** deletion requests purge vectors, metadata, cache copies, and derivative indices within an organization-defined maximum time. | 1 |
 | **8.3.4** | **Verify that** deleted or expired vectors are removed reliably and are unrecoverable. | 2 |
 | **8.3.5** | **Verify that** expired vectors are excluded from retrieval results within a measured and monitored propagation window. | 2 |
-| **8.3.6** | **Verify that** memory can be reset for security reasons (quarantine, selective purge, full reset) separately from retention deletion, and that quarantined content is kept for investigation but excluded from retrieval. | 2 |
+| **8.3.6** | **Verify that** memory can be reset for security reasons (quarantine, selective purge, full reset) through an operation that is separate and independent from the retention deletion process. | 2 |
+| **8.3.8** | **Verify that** quarantined content is retained for investigation but is excluded from all retrieval results while under quarantine. | 2 |
 
 ---
 
@@ -55,7 +58,7 @@ Retention must be explicit and enforceable; deletions must propagate to derived 
 Address inversion, membership inference, and attribute inference with explicit threat modeling, mitigations, and regression testing gates.
 
 | # | Description | Level |
-| :--: | --- | :---:|
+| :--: | --- | :---: |
 | **8.4.1** | **Verify that** sensitive vector collections are protected against direct read access by infrastructure administrators via technical controls such as application-layer encryption, envelope encryption with strict KMS policies, or equivalent compensating controls. | 2 |
 | **8.4.2** | **Verify that** privacy/utility targets for embedding leakage resistance are **defined and measured**, and that changes to embedding models, tokenizers, retrieval settings, or privacy transforms are gated by regression tests against those targets. | 3 |
 
@@ -66,7 +69,7 @@ Address inversion, membership inference, and attribute inference with explicit t
 Prevent cross-tenant and cross-user leakage in retrieval and prompt assembly.
 
 | # | Description | Level |
-| :--: | --- | :---:|
+| :--: | --- | :---: |
 | **8.5.1** | **Verify that** every retrieval operation enforces scope constraints (tenant/user/classification) **in the vector engine query** and verifies them again **before prompt assembly** (post-filter). | 1 |
 | **8.5.2** | **Verify that** vector identifiers, namespaces, and metadata indexing prevent cross-scope collisions and enforce uniqueness per tenant. | 1 |
 | **8.5.3** | **Verify that** retrieval results that match similarity criteria but fail scope checks are discarded. | 1 |
