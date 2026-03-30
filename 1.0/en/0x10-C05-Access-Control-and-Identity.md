@@ -43,8 +43,10 @@ Enforce authorization at the data access layer to prevent unauthorized data retr
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
 | **5.3.1** | **Verify that** all data store queries (e.g., vector databases, SQL databases, search indices) include mandatory security filters (tenant ID, sensitivity labels, user scope) enforced at the data access layer. | 1 |
 | **5.3.2** | **Verify that** failed authorization evaluations immediately abort queries and return explicit authorization error codes. | 1 |
-| **5.3.3** | **Verify that** row-level security policies and field-level masking are enabled with policy inheritance for all data stores containing sensitive data used by AI systems. | 2 |
+| **5.3.3** | **Verify that** row-level security policies are enabled for all data stores containing sensitive data used by AI systems. | 2 |
 | **5.3.4** | **Verify that** query retry mechanisms re-evaluate authorization policies to account for dynamic permission changes within active sessions. | 3 |
+| **5.3.5** | **Verify that** field-level masking is applied to sensitive fields in all data stores used by AI systems, restricting access to only authorized principals. | 2 |
+| **5.3.6** | **Verify that** row-level security and field-level masking policies are inherited by derived or replicated data stores and are not bypassed by replication or ETL processes. | 2 |
 
 ---
 
@@ -68,7 +70,8 @@ Ensure logical and cryptographic isolation between tenants in shared AI infrastr
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
 | **5.5.1** | **Verify that** network policies implement default-deny rules for cross-tenant communication. | 2 |
 | **5.5.2** | **Verify that** every API request includes an authenticated tenant identifier that is cryptographically validated against session context and user entitlements. | 1 |
-| **5.5.3** | **Verify that** memory spaces, embedding stores, cache entries (e.g., result caches, embedding caches), and temporary files are namespace-segregated per tenant with secure purging on tenant deletion or session termination. | 2 |
+| **5.5.3** | **Verify that** memory spaces, embedding stores, cache entries (e.g., result caches, embedding caches), and temporary files are namespace-segregated per tenant so that one tenant cannot access another tenant's data. | 2 |
+| **5.5.6** | **Verify that** per-tenant memory spaces, embedding stores, cache entries, and temporary files are securely purged on tenant deletion or session termination. | 2 |
 | **5.5.4** | **Verify that** encryption keys are unique per tenant with customer-managed key (CMK) support and cryptographic isolation between tenant data stores. | 3 |
 | **5.5.5** | **Verify that** inference-time KV-cache entries are partitioned by authenticated session or tenant identity and that automatic prefix caching does not share cached prefixes across distinct security principals, to prevent timing-based prompt reconstruction attacks. | 2 |
 
