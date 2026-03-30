@@ -33,6 +33,16 @@ AISVS is modeled after the [OWASP Application Security Verification Standard (AS
 | NIST AI RMF | AI risk governance | AISVS supplies the testable technical controls that AI RMF references |
 | ISO/IEC 42001 | AI management systems | AISVS complements with implementation-level security verification |
 
+## Download AISVS 1.0
+
+| Format | Link |
+|--------|------|
+| PDF | [GitHub Releases](https://github.com/OWASP/AISVS/releases/latest) |
+| HTML | Available via [GitHub Releases](https://github.com/OWASP/AISVS/releases/latest) |
+| Markdown (source) | [Browse online](https://github.com/OWASP/AISVS/tree/main/1.0/en) |
+
+---
+
 ## Verification Levels
 
 Each AISVS requirement is assigned a verification level (1, 2, or 3) indicating the depth of security assurance:
@@ -76,9 +86,39 @@ Organizations should select a target level based on the risk profile of their AI
 * [Appendix C: AI-Assisted Secure Coding](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x92-Appendix-C_AI_for_Code_Generation.md)
 * [Appendix D: AI Security Controls Inventory](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x93-Appendix-D_AI_Security_Controls_Inventory.md)
 
+## Versioning
+
+Each stable release of AISVS is published as a numbered folder in this repository. Once a version is released its folder is locked; all future work happens in a new folder.
+
+```
+/
+├── 1.0/        <- current stable release
+├── 1.01-dev/   <- next minor release (work in progress)
+```
+
+Individual requirements are referenced as `Cx.y.z` — chapter, section, requirement number (e.g., `C9.4.3`).
+
+This mirrors the approach used by [OWASP ASVS](https://github.com/OWASP/ASVS) across its major releases.
+
+---
+
+## Citing AISVS
+
+When referencing AISVS in security assessments, procurement documents, or academic work, use the following format:
+
+> OWASP Foundation. (2025). *OWASP Artificial Intelligence Security Verification Standard (AISVS) 1.0*. https://github.com/OWASP/AISVS/releases/latest
+
+For individual requirements, cite them as:
+
+> AISVS 1.0, C9.6.5 — Verify that secrets and credentials required by an agent at runtime are not exposed within the model's observable context...
+
+---
+
 ## Contributing
 
 We welcome contributions from the community. Please [open an issue](https://github.com/OWASP/AISVS/issues) to report bugs or suggest improvements. We may ask you to [submit a pull request](https://github.com/OWASP/AISVS/pulls) based on the discussion.
+
+To report a security issue with the AISVS project itself, please follow the [Security Policy](SECURITY.md).
 
 ## Project Leaders
 
