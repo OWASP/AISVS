@@ -84,8 +84,9 @@ Detect supply-chain threats early through vulnerability feeds, audit-log analyti
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---:|
 | **6.6.1** | **Verify that** incident response playbooks include rollback procedures for compromised models or libraries. | 2 |
-| **6.6.2** | **Verify that** CI/CD audit logs are streamed to centralized security monitoring with detections for anomalous package pulls or tampered build steps. | 2 |
+| **6.6.2** | **Verify that** CI/CD audit logs are streamed to centralized security monitoring in real time. | 2 |
 | **6.6.3** | **Verify that** threat-intelligence enrichment tags AI-specific indicators (e.g., model-poisoning indicators of compromise) in alert triage. | 3 |
+| **6.6.4** | **Verify that** security monitoring includes detection rules for anomalous package pulls and tampered or unexpected build steps in the CI/CD pipeline. | 2 |
 
 ---
 
