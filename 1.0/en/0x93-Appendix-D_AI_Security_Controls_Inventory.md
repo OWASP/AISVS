@@ -376,6 +376,7 @@ Test for and defend against evasion, extraction, inversion, poisoning, and align
 | Adaptive attack evasion testing | 11.6.4 |
 | Security-focused secondary review mechanisms (second model, rule-based) | 11.8.1 |
 | Self-modification restriction with scope bounds and rate limits | 11.9.1, 11.9.4 |
+| Self-modification reversibility and integrity verification enabling rollback to known-good state | 11.9.6 |
 | Data augmentation with perturbed inputs for training robustness | 1.4.4 |
 | RONI (Reject On Negative Influence) filtering — influence-score each training sample and reject those that degrade held-out performance beyond a threshold (implementation example for 1.4.2) | 1.4.2 |
 | Gradient fingerprinting / per-sample gradient analysis — detect abnormal gradient norms or directions indicating poisoned samples during training (implementation example for 1.4.2) | 1.4.2 |
@@ -406,6 +407,7 @@ Capture security-relevant events with integrity protection for forensic analysis
 | Safety violation metrics logging | 7.6.1 |
 | MCP policy change audit logging (timestamp, author, justification) | 11.7.3 |
 | Policy change rollback procedures and testing | 11.7.5 |
+| Self-modification detailed logging (what changed, when, under what authorization) | 11.9.3 |
 
 **Common pitfalls:** logging prompts without redacting PII; using mutable log storage without integrity protection; not including sufficient context for forensic reconstruction.
 
