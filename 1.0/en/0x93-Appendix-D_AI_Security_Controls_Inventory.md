@@ -419,7 +419,7 @@ Detect anomalies, alert on threats, and respond to security incidents in AI syst
 | AI-specific event enrichment (model ID, confidence, filter decisions) | 13.2.3 |
 | Behavioral anomaly detection (unusual patterns, excessive retries, systematic probing) | 13.2.4, 13.2.5 |
 | Real-time alerting on policy violations and coordinated attack campaigns | 13.2.6 |
-| Automated incident response (isolation, blocking, escalation) | 13.2.7, 13.2.11 |
+| Automated incident response (isolation and blocking of compromised models and malicious users) | 13.2.7 |
 | Performance metric monitoring (accuracy, latency, error rate) with alerting | 13.3.1, 13.3.2, 13.3.3 |
 | Performance degradation retraining and replacement workflow triggers | 13.3.10 |
 | Hallucination detection monitoring | 13.3.4 |
