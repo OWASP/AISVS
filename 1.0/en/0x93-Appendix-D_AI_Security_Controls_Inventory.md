@@ -292,6 +292,7 @@ Verify origin and authenticity, scan dependencies, and enforce integrity of mode
 | Expired and unmaintained dependency detection | 6.3.3 |
 | Approved source and internal registry enforcement | 6.4.1 |
 | Malicious layer and trojan trigger scanning | 6.1.2 |
+| Unsafe deserialization format prohibition and format-aware scanning at load time | 4.5.10 |
 | External dataset poisoning assessment (fingerprinting, outlier detection) | 6.5.1 |
 | Copyright and PII detection in external datasets | 6.5.2 |
 | Dataset origin and lineage documentation | 6.5.3 |
