@@ -39,7 +39,9 @@ Enforce access decisions across users, agents, tools, data, and MCP resources us
 | RBAC / ABAC / zero-trust authorization models | 5.2.1, 5.2.7 |
 | Policy decision engines (OPA, Cedar) | 5.2.6 |
 | Least-privilege resource access | 5.2.1, 5.6.2 |
-| Row-level security and field-level masking | 5.3.3 |
+| Row-level security | 5.3.3 |
+| Field-level masking for sensitive fields | 5.3.5 |
+| Row-level and field-level policy inheritance by derived data stores | 5.3.6 |
 | Classification label propagation on outputs | 5.2.4 |
 | Session-based authorization binding | 5.5.2 |
 | Scoped capability tokens for agents | 5.6.1 |
@@ -70,7 +72,8 @@ Protect stored data, models, secrets, logs, and backups through encryption.
 | Log encryption at rest | 13.1.3 |
 | TEE memory encryption and integrity protection | 4.5.4 |
 | Confidential inference (sealed model weights in protected execution) | 4.5.5 |
-| Air-gapped / WORM backup storage | 4.6.3 |
+| Backup network isolation with separate credentials | 4.6.3 |
+| Air-gapped / WORM backup storage | 4.6.4 |
 | Model encryption at rest on mobile with trusted runtime decryption | 4.8.9 |
 | Hardware-backed key stores (Secure Enclave, Android Keystore, TPM) | 4.8.8 |
 
@@ -88,7 +91,7 @@ Protect data moving between services, agents, tools, and edge devices.
 | Mutual TLS for agent-to-agent and agent-to-tool communication (TLS 1.3+) | 9.5.1 |
 | Authenticated streamable-HTTP transport with TLS 1.3 for MCP | 10.3.1, 10.3.2 |
 | SSE private channel with TLS enforcement | 10.3.3 |
-| Encrypted TEE communication channels | 4.5.6 |
+| Encrypted TEE communication channels | 4.5.9 |
 | Authenticated accelerator interconnects (NVLink, PCIe, InfiniBand) | 4.7.7 |
 | Encrypted edge-to-cloud communication with bandwidth throttling | 4.8.6 |
 | Log encryption in transit | 13.1.3 |
@@ -239,7 +242,7 @@ Isolate workloads, tools, models, and agents to contain failures and prevent lat
 | Mandatory access control (seccomp, AppArmor, SELinux) | 4.1.2 |
 | Read-only root filesystem with restrictive mount options | 4.1.3 |
 | Runtime privilege escalation and container escape detection | 4.1.4 |
-| TEE / confidential computing with remote attestation | 4.1.5, 4.5.4, 4.5.6 |
+| TEE / confidential computing with remote attestation | 4.1.5, 4.5.4, 4.5.6, 4.5.8 |
 | Untrusted AI model sandboxing with network isolation | 4.5.1, 4.5.2 |
 | Tool and plugin sandboxing (container, VM, WASM, OS sandbox) | 9.3.1 |
 | Sandbox escape detection with automated tool quarantine | 9.3.6 |
@@ -261,6 +264,7 @@ Control network boundaries, traffic flow, and outbound access for AI workloads.
 | --- | --- |
 | Default-deny network policies with explicit allow-lists | 4.3.1 |
 | Network segmentation across dev / test / prod environments | 4.3.2, 3.4.1 |
+| Separate IAM roles and security groups per environment with no shared principals | 4.3.6 |
 | Restricted administrative access and cloud metadata service blocking | 4.3.3 |
 | Egress traffic restriction to approved destinations with logging | 4.3.5 |
 | Egress allow-lists for training environments | 3.4.4 |
@@ -283,7 +287,8 @@ Verify origin and authenticity, scan dependencies, and enforce integrity of mode
 | Model registry with AI BOM (SPDX, CycloneDX) | 3.1.1, 6.7.1 |
 | Model dependency graph tracking (services, agents, environments) | 3.1.4 |
 | Model origin records (source, training data checksums, authorship) | 3.1.5, 6.1.1 |
-| Automated reproducible builds with SBOM | 4.2.1 |
+| Automated reproducible builds | 4.2.1 |
+| SBOM production from automated builds | 4.2.5 |
 | Reproducible build hash comparison | 6.3.5 |
 | CI pipeline dependency scanning (AI frameworks, critical libraries) | 6.2.1 |
 | Critical / high-severity vulnerability blocking in CI | 6.2.2 |
@@ -407,6 +412,7 @@ Capture security-relevant events with integrity protection for forensic analysis
 | Immutable audit records for model changes (actor, change type, before/after) | 3.2.5 |
 | Immutable deletion logging for regulatory audit trails | 12.2.4 |
 | CI/CD audit log streaming to SIEM | 6.6.2 |
+| Detection rules for anomalous package pulls and tampered build steps | 6.6.4 |
 | DAG visualization with access controls and tamper evidence | 13.7.1, 13.7.2, 13.7.3 |
 | Safety violation metrics logging | 7.6.1 |
 | MCP policy change audit logging (timestamp, author, justification) | 11.7.3 |
@@ -510,6 +516,7 @@ Secure AI accelerator hardware, firmware, memory, interconnects, and edge device
 | Byzantine fault-tolerant consensus for distributed AI | 4.8.5 |
 | On-device process, memory, and file access isolation | 4.8.7 |
 | Model obfuscation and decryption inside trusted runtime | 4.8.9 |
+| Secure offline edge operation with hardware-backed encrypted local storage | 4.8.10 |
 
 **Common pitfalls:** not zeroing VRAM between tenant workloads; running debug firmware in production; allowing unencrypted interconnects in multi-tenant GPU clusters; neglecting firmware update attestation.
 
