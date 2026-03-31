@@ -200,6 +200,7 @@ Constrain, filter, and validate model outputs before they reach users or downstr
 | Explicit / non-consensual content filters | 7.7.1 |
 | Citation and attribution validation | 5.4.2 |
 | MCP error response sanitization (no stack traces, tokens, internal paths) | 10.4.6 |
+| Steganographic covert channel detection in generated text and structured outputs | 7.3.9 |
 
 **Common pitfalls:** redacting PII in text but not in structured data fields; not enforcing stop sequences on streaming outputs; leaking internal architecture through error messages.
 
