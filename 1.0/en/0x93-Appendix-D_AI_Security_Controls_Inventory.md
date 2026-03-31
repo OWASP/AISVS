@@ -293,6 +293,7 @@ Verify origin and authenticity, scan dependencies, and enforce integrity of mode
 | Approved source and internal registry enforcement | 6.4.1 |
 | Malicious layer and trojan trigger scanning | 6.1.2 |
 | External dataset poisoning assessment (fingerprinting, outlier detection) | 6.5.1 |
+| Distributed data collection endpoint mutual authentication and source integrity verification | 1.2.8 |
 | Copyright and PII detection in external datasets | 6.5.2 |
 | Dataset origin and lineage documentation | 6.5.3 |
 | Automated AI BOM generation and signing in CI | 6.7.2 |
