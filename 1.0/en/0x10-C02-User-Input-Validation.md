@@ -16,6 +16,7 @@ Prompt injection is one of the top risks for AI systems. Defenses against this t
 | **2.1.2** | **Verify that** the system enforces an instruction hierarchy in which system and developer messages override user instructions and other untrusted inputs, even after processing user instructions. This enforcement must be preserved across multi-step interactions and tool-augmented workflows. In such cases, prompt composition or intermediate outputs must not allow user-controlled content to influence or override system or developer instructions. | 1 |
 | **2.1.3** | **Verify that** prompts originating from third-party content (web pages, PDFs, emails) are sanitized in isolation (for example, stripping instruction-like directives and neutralizing HTML, Markdown, and script content) before being concatenated into the main prompt. | 2 |
 | **2.1.4** | **Verify that** input length controls prevent user-supplied content from exceeding a defined proportion of the context window, ensuring system instructions and safety directives are not displaced from the model's effective attention. | 1 |
+| **2.1.5** | **Verify that** the system implements defenses against many-shot jailbreaking, where a high volume of user-supplied demonstrations within a single context window is used to override model safety training through in-context learning, by enforcing per-request demonstration count limits and flagging systematic in-context behavioral override patterns as prompt injection events. | 2 |
 
 ---
 

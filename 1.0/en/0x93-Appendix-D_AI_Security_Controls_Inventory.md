@@ -151,6 +151,7 @@ Validate, normalize, and constrain all inputs before they reach models or downst
 | --- | --- |
 | Prompt injection detection ruleset / service | 2.1.1 |
 | Instruction hierarchy enforcement (system > developer > user) | 2.1.2 |
+| Many-shot jailbreaking detection (demonstration count limits, in-context override pattern detection) | 2.1.5 |
 | Third-party content sanitization | 2.1.3 |
 | Unicode NFC normalization and homoglyph mapping | 2.2.1 |
 | Control / invisible character removal | 2.2.1, 2.2.5 |
