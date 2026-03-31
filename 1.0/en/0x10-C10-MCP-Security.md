@@ -83,6 +83,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **10.6.2** | **Verify that** MCP servers expose only allow-listed functions and resources and prohibit dynamic dispatch, reflective invocation, or execution of function names influenced by user or model-provided input. | 3 |
 | **10.6.3** | **Verify that** tenant boundaries, environment boundaries (e.g., dev/test/prod), and data domain boundaries are enforced at the MCP layer to prevent cross-tenant or cross-environment server or resource discovery. | 3 |
 | **10.6.4** | **Verify that** MCP security controls enforce fail-closed semantics: if a signature verification, authentication check, or policy evaluation fails or cannot be completed, the default action is to deny the request rather than permit it. | 2 |
+| **10.6.5** | **Verify that** when multiple MCP servers are connected simultaneously, the client or orchestration layer maintains an authoritative tool namespace mapping that detects tool name collisions and prevents a lower-trust or newly registered server from shadowing or overriding tool definitions from a higher-trust server. | 2 |
 
 ---
 

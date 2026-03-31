@@ -53,6 +53,7 @@ Enforce access decisions across users, agents, tools, data, and MCP resources us
 | Minimum scope requests with wildcard and overly broad scope rejection | 10.2.11 |
 | MCP policy enforcement that model output cannot bypass | 10.2.4 |
 | Output format restriction by permission level | 5.4.3 |
+| MCP tool namespace collision detection and trust-ranked shadowing prevention | 10.6.5 |
 
 **Common pitfalls:** granting broad OAuth scopes instead of minimal required; not re-evaluating authorization when context changes mid-session; allowing model-generated output to override hard policy decisions.
 
