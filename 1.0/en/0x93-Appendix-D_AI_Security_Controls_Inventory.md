@@ -53,6 +53,7 @@ Enforce access decisions across users, agents, tools, data, and MCP resources us
 | Minimum scope requests with wildcard and overly broad scope rejection | 10.2.11 |
 | MCP policy enforcement that model output cannot bypass | 10.2.4 |
 | Output format restriction by permission level | 5.4.3 |
+| Dedicated scoped credentials per agent, not shared across swarm peers | 9.8.7 |
 
 **Common pitfalls:** granting broad OAuth scopes instead of minimal required; not re-evaluating authorization when context changes mid-session; allowing model-generated output to override hard policy decisions.
 
@@ -137,6 +138,7 @@ Verify authenticity and detect tampering of models, artifacts, messages, logs, a
 | MCP component signature and checksum verification | 10.1.1 |
 | MCP schema integrity signing and tool definition hash tracking | 10.4.2, 10.4.5 |
 | DAG cryptographic signatures and tamper-evident storage | 13.7.3 |
+| Document metadata tag immutability after initial ingestion write | 8.1.7 |
 
 **Common pitfalls:** using mutable `:latest` tags instead of immutable digests; not re-verifying tool definition hashes between MCP invocations; missing replay protection on agent messages.
 
@@ -195,6 +197,7 @@ Constrain, filter, and validate model outputs before they reach users or downstr
 | Explicit / non-consensual content filters | 7.7.1 |
 | Citation and attribution validation | 5.4.2 |
 | MCP error response sanitization (no stack traces, tokens, internal paths) | 10.4.6 |
+| RAG attribution derived from retrieval metadata, not model-generated | 7.8.3 |
 
 **Common pitfalls:** redacting PII in text but not in structured data fields; not enforcing stop sequences on streaming outputs; leaking internal architecture through error messages.
 
@@ -215,6 +218,7 @@ Enforce consumption bounds to prevent abuse, runaway execution, and denial-of-se
 | Circuit breaker enforcement | 9.1.3 |
 | Per-tool CPU, memory, disk, egress, and execution time limits | 9.3.2 |
 | Quota and timeout breach fail-closed termination | 9.3.7 |
+| Sub-task delegation chain depth limit per execution | 7.4.4 |
 | Query-rate limiting for model extraction and inversion defense | 11.4.2, 11.5.1 |
 | MCP outbound execution limits, timeouts, recursion limits, and circuit breakers | 10.5.2 |
 | Anomalous usage pattern detection and blocking | 2.6.3 |
@@ -345,6 +349,8 @@ Protect personal data and enforce data subject rights throughout the AI lifecycl
 | Local differential privacy in federated learning (client-side noise) | 12.6.1 |
 | Poisoning-resistant aggregation (Krum, Trimmed-Mean) | 12.6.3 |
 | PII detection and removal in external datasets | 6.5.2 |
+| Session context discard at session end (not accessible in subsequent sessions) | 8.3.7 |
+| Quarantined content excluded from retrieval results while under quarantine | 8.3.8 |
 
 **Common pitfalls:** deleting records from the database but not from model checkpoints or embeddings; not accounting for epsilon budget accumulation across queries; treating anonymization as a one-time step.
 
@@ -396,7 +402,8 @@ Capture security-relevant events with integrity protection for forensic analysis
 | PII, credential, and proprietary information redaction in logs | 13.1.4 |
 | Policy decision and safety filtering action logging | 13.1.5 |
 | Cryptographic log signatures with write-only storage | 13.1.6 |
-| Tamper-evident audit logs with full reconstruction context (who, what, when) | 9.4.3, 9.4.5 |
+| Tamper-evident audit log storage (append-only, WORM, hash chaining) | 9.4.3 |
+| Audit log context fields sufficient for forensic reconstruction (actor, delegation, policy, parameters, outcomes) | 9.4.5 |
 | Agent action signing with chain ID binding and timestamps | 9.4.2 |
 | Immutable audit records for model changes (actor, change type, before/after) | 3.2.3 |
 | Immutable deletion logging for regulatory audit trails | 12.2.4 |
