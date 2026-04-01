@@ -23,9 +23,11 @@ Provide shutdown or rollback paths when unsafe behavior of the AI system is obse
 
 Require human approvals when stakes surpass predefined risk thresholds.
 
+> **Scope note:** C14.2 governs human oversight policy: defining which AI decisions or actions are classified as high-risk, the criteria and thresholds that trigger approval requirements, and the authority structure for granting approval. The runtime enforcement mechanism that blocks agent execution until approval is received is in C9.2. Logging and auditing of approval decisions is in C13.7.4. Compliance with C14.2 requires demonstrating that a documented policy exists, not merely that approvals occur.
+
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **14.2.1** | **Verify that** high-risk AI decisions require explicit human approval before execution. | 1 |
+| **14.2.1** | **Verify that** a documented human oversight policy defines which AI decisions and agent actions are classified as high-risk, the criteria used to make that determination, and the approval authority required before execution. | 1 |
 | **14.2.2** | **Verify that** risk thresholds are clearly defined and automatically trigger human review workflows. | 1 |
 | **14.2.3** | **Verify that** time-sensitive decisions have fallback procedures when human approval cannot be obtained within required timeframes. | 2 |
 | **14.2.4** | **Verify that** escalation procedures define clear authority levels for different decision types or risk categories, if applicable. | 3 |

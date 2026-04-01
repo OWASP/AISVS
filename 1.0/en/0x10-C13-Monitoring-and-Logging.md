@@ -96,12 +96,14 @@ Protect workflow visualization systems from information leakage and manipulation
 
 Detection and prevention of security threats through proactive agent behavior analysis.
 
+> **Scope note:** C13.7 addresses monitoring and logging of proactive agent behaviors. 13.7.4 requires audit trail coverage for approval events on security-critical actions. The requirement to obtain approval before executing such actions is governed by C9.2 (runtime execution gate) and C14.2 (oversight policy). Satisfying 13.7.4 requires evidence that approval events are logged with sufficient detail — not merely that approvals occur.
+
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **13.7.1** | **Verify that** proactive agent behaviors are security-validated before execution with risk assessment integration. | 1 |
 | **13.7.2** | **Verify that** autonomous initiative triggers include security context evaluation and threat landscape assessment. | 2 |
 | **13.7.3** | **Verify that** proactive behavior patterns are analyzed for potential security implications and unintended consequences. | 2 |
-| **13.7.4** | **Verify that** security-critical proactive actions require explicit approval chains with audit trails. | 3 |
+| **13.7.4** | **Verify that** audit logs capture the complete approval chain for security-critical proactive actions, including approver identity, timestamp, action parameters, and decision outcome. | 3 |
 | **13.7.5** | **Verify that** behavioral anomaly detection identifies deviations in proactive agent patterns that may indicate compromise. | 3 |
 
 ---
