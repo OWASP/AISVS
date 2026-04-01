@@ -11,7 +11,7 @@ This control category ensures that model outputs are technically constrained, va
 Ensure the model outputs data in a way that helps prevent injection.
 
 | # | Description | Level |
-| :--------: | --------------------------------------------------------------------------------------------- | :---: |
+| :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
 | **7.1.1** | **Verify that** the application validates all model outputs against a strict schema (like JSON Schema) and rejects any output that does not match. | 1 |
 | **7.1.2** | **Verify that** the system uses "stop sequences" or token limits to strictly cut off generation before it can overflow buffers or executes unintended commands. | 1 |
 | **7.1.3** | **Verify that** components processing model output treat it as untrusted input (e.g., using parameterized queries or safe de-serializers). | 1 |
@@ -24,7 +24,7 @@ Ensure the model outputs data in a way that helps prevent injection.
 Detect when the model produces potentially inaccurate or fabricated content and prevent unreliable outputs from reaching users or downstream systems.
 
 | # | Description | Level |
-| :--------: | --------------------------------------------------------------------------------------------- | :---: |
+| :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
 | **7.2.1** | **Verify that** the system assesses the reliability of generated answers using a confidence or uncertainty estimation method (e.g., confidence scoring, retrieval-based verification, or model uncertainty estimation). | 1 |
 | **7.2.2** | **Verify that** the application automatically blocks answers or switches to a fallback message if the confidence score drops below a defined threshold. | 2 |
 | **7.2.3** | **Verify that** hallucination events (low-confidence responses) are logged with input/output metadata for analysis. | 2 |
@@ -38,7 +38,7 @@ Detect when the model produces potentially inaccurate or fabricated content and 
 Technical controls to detect and scrub bad content before it is shown to the user.
 
 | # | Description | Level |
-| :--------: | --------------------------------------------------------------------------------------------- | :---: |
+| :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
 | **7.3.1** | **Verify that** automated classifiers scan every response and block content that matches hate, harassment, or sexual violence categories. | 1 |
 | **7.3.2** | **Verify that** the system scans every response for PII (like credit cards or emails) and automatically redacts it before display. | 1 |
 | **7.3.3** | **Verify that** PII detection and redaction events are logged without including the redacted PII values themselves, to maintain an audit trail without creating secondary PII exposure. | 1 |
@@ -47,7 +47,7 @@ Technical controls to detect and scrub bad content before it is shown to the use
 | **7.3.6** | **Verify that** the system requires a human approval step or re-authentication if the model generates high-risk content. | 3 |
 | **7.3.7** | **Verify that** output filters detect and block responses that reproduce verbatim segments of system prompt content. | 2 |
 | **7.3.8** | **Verify that** LLM client applications prevent model-generated output from triggering automatic outbound requests (e.g., auto-rendered images, iframes, or link prefetching) to attacker-controlled endpoints, for example by disabling automatic external resource loading or restricting it to explicitly allowlisted origins as appropriate. | 2 |
-| **7.3.9** | **Verify that** generated text and structured outputs are scanned for steganographic covert channels (e.g., whitespace encoding, Unicode homoglyph substitution, unusual token-choice patterns) that could be used to exfiltrate data or communicate with external parties without user awareness, and that detections block or flag the response for review. | 3 |
+| **7.3.9** | **Verify that** generated outputs are analyzed for statistical steganographic covert channels (e.g., biased token-choice patterns or output distribution anomalies) that could encode hidden data across the model's valid output space, and that detections are flagged for review. | 3 |
 
 ---
 
@@ -56,10 +56,11 @@ Technical controls to detect and scrub bad content before it is shown to the use
 Prevent the model from doing too much, too fast, or accessing things it should not.
 
 | # | Description | Level |
-| :--------: | --------------------------------------------------------------------------------------------- | :---: |
+| :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
 | **7.4.1** | **Verify that** the system enforces hard limits on requests and tokens per user to prevent cost spikes and denial of service. | 1 |
 | **7.4.2** | **Verify that** the model cannot execute high-impact actions (like writing files, sending emails, or executing code) without explicit user confirmation. | 1 |
-| **7.4.3** | **Verify that** the application or orchestration framework explicitly configures and enforces the maximum depth of recursive calls, delegation limits, and the list of allowed external tools. | 2 |
+| **7.4.3** | **Verify that** the application or orchestration framework explicitly configures and enforces a maximum depth for recursive calls to prevent unbounded recursion. | 2 |
+| **7.4.4** | **Verify that** the application or orchestration framework explicitly configures and enforces a maximum number of sequential or nested sub-task delegations within a single execution chain, and that chains exceeding this limit are halted. For agent-specific tool and action authorization, see C9.6. | 2 |
 
 ---
 
@@ -107,8 +108,9 @@ Ensure RAG-grounded outputs are traceable to their source documents and that cit
 
 | # | Description | Level |
 | :-------: | -------------------------------------------------------------------------------------------------------------------------------------------- | :---: |
-| **7.8.1** | **Verify that** responses generated using retrieval-augmented generation (RAG) include attribution to the source documents that grounded the response, and that attributions are derived from retrieval metadata rather than generated by the model. | 1 |
+| **7.8.1** | **Verify that** responses generated using retrieval-augmented generation (RAG) include attribution to the source documents that grounded the response. | 1 |
 | **7.8.2** | **Verify that** each sourced claim in a RAG-grounded response can be traced to a specific retrieved chunk, and that the system detects and flags responses where claims are not supported by any retrieved content before the response is served. | 3 |
+| **7.8.3** | **Verify that** RAG attributions are derived from retrieval metadata and are not generated by the model, ensuring provenance cannot be fabricated. | 1 |
 
 ---
 
