@@ -52,7 +52,8 @@ Enforce access decisions across users, agents, tools, data, and MCP resources us
 | Pre-execution policy constraint gates (deny rules, allow-lists, budgets) | 9.7.1 |
 | Scope-filtered MCP tool discovery (tools/list) | 10.2.6 |
 | Per-tool MCP invocation access control (argument, token scope) | 10.2.7 |
-| Minimum scope requests with wildcard and overly broad scope rejection | 10.2.11 |
+| Minimum scope requests with step-up authorization | 10.2.11 |
+| Wildcard and overly broad scope rejection | 10.2.14 |
 | MCP policy enforcement that model output cannot bypass | 10.2.4 |
 | Output format restriction by permission level | 5.4.3 |
 | Dedicated scoped credentials per agent, not shared across swarm peers | 9.8.7 |
@@ -353,10 +354,11 @@ Protect personal data and enforce data subject rights throughout the AI lifecycl
 | Data deletion propagation (datasets, checkpoints, embeddings, logs, backups) | 12.2.1 |
 | Machine unlearning with certified algorithms | 12.2.2 |
 | Shadow-model evaluation of unlearning effectiveness | 12.2.3 |
-| Privacy-loss accounting with epsilon budget tracking and alerts | 12.3.1 |
+| Privacy-loss accounting with epsilon budget tracking and alerts | 12.3.1, 12.3.5 |
 | Formal differential privacy proofs (including post-training and embeddings) | 12.3.3 |
-| Purpose tags with machine-readable alignment and runtime enforcement | 12.4.1, 12.4.2 |
+| Purpose tags with machine-readable alignment and runtime enforcement | 12.4.1, 12.4.2, 12.4.5 |
 | Consent Management Platform (CMP) with opt-in tracking | 12.5.1 |
+| Consent token API exposure and model-side scope validation | 12.5.2, 12.5.4 |
 | Consent withdrawal processing (< 24 hour SLA) | 12.5.3 |
 | Local differential privacy in federated learning (client-side noise) | 12.6.1 |
 | Poisoning-resistant aggregation (Krum, Trimmed-Mean) | 12.6.3 |
@@ -393,6 +395,7 @@ Test for and defend against evasion, extraction, inversion, poisoning, and align
 | Adaptive attack evasion testing | 11.6.4 |
 | Security-focused secondary review mechanisms (second model, rule-based) | 11.8.1 |
 | Self-modification restriction with scope bounds and rate limits | 11.9.1, 11.9.4 |
+| Self-modification reversibility and integrity verification enabling rollback to known-good state | 11.9.6 |
 | Data augmentation with perturbed inputs for training robustness | 1.4.4 |
 | RONI (Reject On Negative Influence) filtering — influence-score each training sample and reject those that degrade held-out performance beyond a threshold (implementation example for 1.4.2) | 1.4.2 |
 | Gradient fingerprinting / per-sample gradient analysis — detect abnormal gradient norms or directions indicating poisoned samples during training (implementation example for 1.4.2) | 1.4.2 |
@@ -424,6 +427,8 @@ Capture security-relevant events with integrity protection for forensic analysis
 | DAG visualization with access controls and tamper evidence | 13.7.1, 13.7.2, 13.7.3 |
 | Safety violation metrics logging | 7.6.1 |
 | MCP policy change audit logging (timestamp, author, justification) | 11.7.3 |
+| Policy change rollback procedures and testing | 11.7.5 |
+| Self-modification detailed logging (what changed, when, under what authorization) | 11.9.3 |
 
 **Common pitfalls:** logging prompts without redacting PII; using mutable log storage without integrity protection; not including sufficient context for forensic reconstruction.
 
@@ -447,6 +452,7 @@ Detect anomalies, alert on threats, and respond to security incidents in AI syst
 | Hallucination rate time-series tracking | 13.3.11 |
 | Data drift and concept drift detection | 13.6.2, 13.6.3 |
 | Model extraction alert generation with query metadata logging | 11.5.2 |
+| Model extraction alert IR playbook integration | 11.5.6 |
 | Emergent multi-agent behavior detection (oscillation, deadlock, broadcast storms) | 9.8.2 |
 | AI-specific incident response plans (model compromise, data poisoning, adversarial attack) | 13.5.1 |
 | AI-specific forensic tools for model behavior investigation | 13.5.2 |
