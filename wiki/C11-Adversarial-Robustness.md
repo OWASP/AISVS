@@ -1,7 +1,7 @@
 # C11: Adversarial Robustness & Attack Resistance
 
 > **Source:** [`1.0/en/0x10-C11-Adversarial-Robustness.md`](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C11-Adversarial-Robustness.md)
-> **Requirements:** 41 | **Sections:** 10
+> **Requirements:** 44 | **Sections:** 10
 
 ## Control Objective
 
@@ -19,11 +19,11 @@ Ensure that AI systems remain reliable, privacy-preserving, and abuse-resistant 
 | C11.2 | Adversarial-Example Hardening | 5 | [C11-02-Adversarial-Example-Hardening](C11-02-Adversarial-Example-Hardening) |
 | C11.3 | Membership-Inference Mitigation | 3 | [C11-03-Membership-Inference-Mitigation](C11-03-Membership-Inference-Mitigation) |
 | C11.4 | Model-Inversion Resistance | 3 | [C11-04-Model-Inversion-Resistance](C11-04-Model-Inversion-Resistance) |
-| C11.5 | Model-Extraction Defense | 5 | [C11-05-Model-Extraction-Defense](C11-05-Model-Extraction-Defense) |
+| C11.5 | Model-Extraction Defense | 6 | [C11-05-Model-Extraction-Defense](C11-05-Model-Extraction-Defense) |
 | C11.6 | Inference-Time Poisoned-Data Detection | 5 | [C11-06-Inference-Time-Poisoned-Data-Detection](C11-06-Inference-Time-Poisoned-Data-Detection) |
-| C11.7 | Security Policy Adaptation | 4 | [C11-07-Security-Policy-Adaptation](C11-07-Security-Policy-Adaptation) |
+| C11.7 | Security Policy Adaptation | 5 | [C11-07-Security-Policy-Adaptation](C11-07-Security-Policy-Adaptation) |
 | C11.8 | Agent Security Self-Assessment | 3 | [C11-08-Agent-Security-Self-Assessment](C11-08-Agent-Security-Self-Assessment) |
-| C11.9 | Self-Modification & Autonomous Update Security | 5 | [C11-09-Self-Modification-Autonomous-Update-Security](C11-09-Self-Modification-Autonomous-Update-Security) |
+| C11.9 | Self-Modification & Autonomous Update Security | 6 | [C11-09-Self-Modification-Autonomous-Update-Security](C11-09-Self-Modification-Autonomous-Update-Security) |
 | C11.10 | Adversarial Bias Exploitation Defense | 3 | [C11-10-Adversarial-Bias-Exploitation-Defense](C11-10-Adversarial-Bias-Exploitation-Defense) |
 
 ---

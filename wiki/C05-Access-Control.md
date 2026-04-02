@@ -1,7 +1,7 @@
 # C05: Access Control & Identity for AI Components & Users
 
 > **Source:** [`1.0/en/0x10-C05-Access-Control-and-Identity.md`](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C05-Access-Control-and-Identity.md)
-> **Requirements:** 27 | **Sections:** 6
+> **Requirements:** 30 | **Sections:** 6
 
 ## Control Objective
 
@@ -15,9 +15,9 @@ Effective access control for AI systems requires robust identity management, con
 |---------|-------|:----:|------|
 | C5.1 | Identity Management & Authentication | 3 | [C05-01-Identity-Management-Authentication](C05-01-Identity-Management-Authentication.md) |
 | C5.2 | Authorization & Policy | 8 | [C05-02-Authorization-Policy](C05-02-Authorization-Policy.md) |
-| C5.3 | Query-Time Security Enforcement | 4 | [C05-03-Query-Time-Security-Enforcement](C05-03-Query-Time-Security-Enforcement.md) |
+| C5.3 | Query-Time Security Enforcement | 6 | [C05-03-Query-Time-Security-Enforcement](C05-03-Query-Time-Security-Enforcement.md) |
 | C5.4 | Output Filtering & Data Loss Prevention | 3 | [C05-04-Output-Filtering-DLP](C05-04-Output-Filtering-DLP.md) |
-| C5.5 | Multi-Tenant Isolation | 5 | [C05-05-Multi-Tenant-Isolation](C05-05-Multi-Tenant-Isolation.md) |
+| C5.5 | Multi-Tenant Isolation | 6 | [C05-05-Multi-Tenant-Isolation](C05-05-Multi-Tenant-Isolation.md) |
 | C5.6 | Autonomous Agent Authorization | 4 | [C05-06-Autonomous-Agent-Authorization](C05-06-Autonomous-Agent-Authorization.md) |
 
 ---
