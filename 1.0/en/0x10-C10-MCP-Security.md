@@ -29,7 +29,8 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **10.2.8** | **Verify that** MCP session identifiers are treated as state, not identity: generated using cryptographically secure random values, bound to the authenticated user, and never relied on for authentication or authorization decisions. | 1 |
 | **10.2.9** | **Verify that** MCP servers do not pass through access tokens received from clients to downstream APIs and instead obtain a separate token scoped to the server's own identity (e.g., via on-behalf-of or client credentials flow). | 2 |
 | **10.2.10** | **Verify that** MCP servers acting as OAuth proxies to third-party APIs enforce per-client consent before forwarding authorization requests, preventing cached approvals from being reused across dynamically registered clients. | 2 |
-| **10.2.11** | **Verify that** MCP clients request only the minimum scopes needed for the current operation, elevate progressively via step-up authorization, and that servers reject wildcard or overly broad scopes. | 2 |
+| **10.2.11** | **Verify that** MCP clients request only the minimum scopes needed for the current operation and elevate progressively via step-up authorization for higher-privilege operations. | 2 |
+| **10.2.14** | **Verify that** MCP servers reject wildcard or overly broad scope requests, enforcing that granted scopes are limited to those explicitly required for the requested operation. | 2 |
 | **10.2.12** | **Verify that** MCP servers enforce deterministic session teardown, destroying cached tokens, in-memory state, temporary storage, and file handles when a session terminates, disconnects, or times out. | 2 |
 | **10.2.13** | **Verify that** autonomous agents authenticate using cryptographically bound identity credentials (e.g., key-based proof-of-possession) rather than bearer-only tokens, ensuring that agent identity cannot be transferred, replayed, or impersonated by forwarding a shared secret. | 2 |
 
@@ -41,7 +42,8 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | :--: | --- | :---: |
 | **10.3.1** | **Verify that** authenticated, encrypted streamable-HTTP is used as the primary MCP transport in production environments and that alternate transports (e.g., stdio or SSE) are restricted to local or tightly controlled environments with explicit justification. | 2 |
 | **10.3.2** | **Verify that** streamable-HTTP MCP transports use authenticated, encrypted channels (TLS 1.3 or later) with certificate validation. | 2 |
-| **10.3.3** | **Verify that** SSE-based MCP transports are used only within private, authenticated internal channels and enforce TLS, authentication, schema validation, payload size limits, and rate limiting; SSE endpoints must not be exposed to the public internet. | 2 |
+| **10.3.3** | **Verify that** SSE-based MCP transports are used only within private, authenticated internal channels and are not exposed to the public internet. | 2 |
+| **10.3.6** | **Verify that** SSE-based MCP transport endpoints enforce TLS, authentication, schema validation, payload size limits, and rate limiting. | 2 |
 | **10.3.4** | **Verify that** MCP servers validate the `Origin` and `Host` headers on all HTTP-based transports (including SSE and streamable-HTTP) to prevent DNS rebinding attacks and reject requests from untrusted, mismatched, or missing origins. | 2 |
 | **10.3.5** | **Verify that** intermediaries do not alter or remove the `Mcp-Protocol-Version` header on streamable-HTTP transports unless explicitly required by the protocol specification, preventing protocol downgrade via header stripping. | 2 |
 

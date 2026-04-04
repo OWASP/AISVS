@@ -1,7 +1,7 @@
 # C04: Infrastructure, Configuration & Deployment Security
 
 > **Source:** [`1.0/en/0x10-C04-Infrastructure.md`](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C04-Infrastructure.md)
-> **Requirements:** 46 | **Sections:** 8
+> **Requirements:** 52 | **Sections:** 8
 
 ## Control Objective
 
@@ -16,13 +16,13 @@ AI infrastructure must be hardened against privilege escalation, supply chain ta
 | Section | Title | Reqs | IDs |
 |---------|-------|:----:|-----|
 | C4.1 | [Runtime Environment Isolation](C04-01-Runtime-Environment-Isolation.md) | 5 | 4.1.1–4.1.5 |
-| C4.2 | [Secure Build & Deployment Pipelines](C04-02-Secure-Build-Deployment.md) | 4 | 4.2.1–4.2.4 |
-| C4.3 | [Network Security & Access Control](C04-03-Network-Security-Access-Control.md) | 5 | 4.3.1–4.3.5 |
+| C4.2 | [Secure Build & Deployment Pipelines](C04-02-Secure-Build-Deployment.md) | 5 | 4.2.1–4.2.5 |
+| C4.3 | [Network Security & Access Control](C04-03-Network-Security-Access-Control.md) | 6 | 4.3.1–4.3.6 |
 | C4.4 | [Secrets & Cryptographic Key Management](C04-04-Secrets-Key-Management.md) | 5 | 4.4.1–4.4.5 |
-| C4.5 | [AI Workload Sandboxing & Validation](C04-05-Workload-Sandboxing-Validation.md) | 7 | 4.5.1–4.5.7 |
-| C4.6 | [Resource Management, Backup & Recovery](C04-06-Resource-Management-Backup-Recovery.md) | 3 | 4.6.1–4.6.3 |
+| C4.5 | [AI Workload Sandboxing & Validation](C04-05-Workload-Sandboxing-Validation.md) | 9 | 4.5.1–4.5.9 |
+| C4.6 | [Resource Management, Backup & Recovery](C04-06-Resource-Management-Backup-Recovery.md) | 4 | 4.6.1–4.6.4 |
 | C4.7 | [AI Hardware Security](C04-07-Hardware-Security.md) | 8 | 4.7.1–4.7.8 |
-| C4.8 | [Edge & Distributed AI Security](C04-08-Edge-Distributed-Security.md) | 9 | 4.8.1–4.8.9 |
+| C4.8 | [Edge & Distributed AI Security](C04-08-Edge-Distributed-Security.md) | 10 | 4.8.1–4.8.10 |
 
 ---
 
