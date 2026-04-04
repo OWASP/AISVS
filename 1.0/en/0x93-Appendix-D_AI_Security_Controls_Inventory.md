@@ -56,6 +56,7 @@ Enforce access decisions across users, agents, tools, data, and MCP resources us
 | Wildcard and overly broad scope rejection | 10.2.14 |
 | MCP policy enforcement that model output cannot bypass | 10.2.4 |
 | Output format restriction by permission level | 5.4.3 |
+| Peer authorization policy (approved agent registry) for agent-to-agent task delegation | 9.6.7 |
 | Dedicated scoped credentials per agent, not shared across swarm peers | 9.8.7 |
 
 **Common pitfalls:** granting broad OAuth scopes instead of minimal required; not re-evaluating authorization when context changes mid-session; allowing model-generated output to override hard policy decisions.
