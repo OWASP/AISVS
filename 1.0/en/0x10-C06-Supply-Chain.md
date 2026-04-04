@@ -60,7 +60,7 @@ Allow artifact downloads only from cryptographically verified, organization-appr
 | **6.4.3** | **Verify that** egress controls block unauthenticated artifact downloads to enforce trusted-source policy. | 2 |
 | **6.4.4** | **Verify that** repository allow-lists are reviewed periodically with evidence of business justification for each entry. | 3 |
 | **6.4.5** | **Verify that** policy violations trigger quarantining of artifacts and rollback of dependent pipeline runs. | 3 |
-| **6.4.6** | **Verify that** cryptographic signing keys used to authenticate model publishers are pinned per source (e.g., Hugging Face, internal registry), that key rotation events require explicit re-approval before updated keys are trusted, and that artifacts signed by unknown or revoked keys are rejected. | 2 |
+| **6.4.6** | **Verify that** cryptographic signing keys used to authenticate model publishers are pinned per source registry (e.g., Hugging Face, internal registry), and that key rotation events require explicit re-approval before updated keys are trusted. | 3 |
 
 ---
 

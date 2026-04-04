@@ -1,7 +1,7 @@
 # C03: Model Lifecycle Management & Change Control
 
 > **Source:** [`1.0/en/0x10-C03-Model-Lifecycle-Management.md`](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C03-Model-Lifecycle-Management.md)
-> **Requirements:** 26 | **Sections:** 6
+> **Requirements:** 29 | **Sections:** 6
 
 ## Control Objective
 
@@ -15,13 +15,12 @@ AI systems must implement change control processes that prevent unauthorized or 
 
 | Section | Title | Reqs | Page |
 |---------|-------|:----:|------|
-| C3.1 | Model Authorization & Integrity | 4 | [C03-01-Model-Authorization-Integrity](C03-01-Model-Authorization-Integrity.md) |
-| C3.2 | Model Validation & Testing | 5 | [C03-02-Model-Validation-Testing](C03-02-Model-Validation-Testing.md) |
-| C3.3 | Controlled Deployment & Rollback | 5 | [C03-03-Controlled-Deployment-Rollback](C03-03-Controlled-Deployment-Rollback.md) |
-| C3.4 | Secure Development Practices | 4 | [C03-04-Secure-Development-Practices](C03-04-Secure-Development-Practices.md) |
+| C3.1 | Model Authorization & Integrity | 5 | [C03-01-Model-Authorization-Integrity](C03-01-Model-Authorization-Integrity.md) |
+| C3.2 | Model Validation & Testing | 7 | [C03-02-Model-Validation-Testing](C03-02-Model-Validation-Testing.md) |
+| C3.3 | Controlled Deployment & Rollback | 4 | [C03-03-Controlled-Deployment-Rollback](C03-03-Controlled-Deployment-Rollback.md) |
+| C3.4 | Secure Development Practices | 5 | [C03-04-Secure-Development-Practices](C03-04-Secure-Development-Practices.md) |
 | C3.5 | Hosted and Provider-Managed Model Controls | 4 | [C03-05-Hosted-Provider-Managed-Controls](C03-05-Hosted-Provider-Managed-Controls.md) |
-| C3.6 | *(intentionally absent in the standard)* | — | — |
-| C3.7 | Fine-Tuning Pipeline Authorization & Reward Model Integrity | 4 | [C03-07-Fine-Tuning-Pipeline-Security](C03-07-Fine-Tuning-Pipeline-Security.md) |
+| C3.6 | Fine-Tuning Pipeline Authorization & Reward Model Integrity | 4 | [C03-06-Fine-Tuning-Pipeline-Security](C03-06-Fine-Tuning-Pipeline-Security.md) |
 
 ---
 
