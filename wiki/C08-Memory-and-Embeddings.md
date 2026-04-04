@@ -1,7 +1,7 @@
 # C08: Memory, Embeddings & Vector Database Security
 
 > **Source:** [`1.0/en/0x10-C08-Memory-Embeddings-and-Vector-Database.md`](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C08-Memory-Embeddings-and-Vector-Database.md)
-> **Requirements:** 25 | **Sections:** 5
+> **Requirements:** 28 | **Sections:** 5
 
 ## Control Objective
 
@@ -13,9 +13,9 @@ Embeddings and vector stores act as semi-persistent and persistent 'memory' for 
 
 | Section | Title | Reqs | Page |
 |---------|-------|:----:|------|
-| C8.1 | Access Controls on Memory & RAG Indices | 6 | [C08-01-Access-Controls-Memory-RAG](C08-01-Access-Controls-Memory-RAG.md) |
+| C8.1 | Access Controls on Memory & RAG Indices | 7 | [C08-01-Access-Controls-Memory-RAG](C08-01-Access-Controls-Memory-RAG.md) |
 | C8.2 | Embedding Sanitization & Validation | 5 | [C08-02-Embedding-Sanitization-Validation](C08-02-Embedding-Sanitization-Validation.md) |
-| C8.3 | Memory Expiry, Revocation & Deletion | 6 | [C08-03-Memory-Expiry-Revocation-Deletion](C08-03-Memory-Expiry-Revocation-Deletion.md) |
+| C8.3 | Memory Expiry, Revocation & Deletion | 8 | [C08-03-Memory-Expiry-Revocation-Deletion](C08-03-Memory-Expiry-Revocation-Deletion.md) |
 | C8.4 | Prevent Embedding Inversion & Leakage | 2 | [C08-04-Embedding-Inversion-Leakage-Prevention](C08-04-Embedding-Inversion-Leakage-Prevention.md) |
 | C8.5 | Scope Enforcement for User-Specific Memory | 6 | [C08-05-Scope-Enforcement-User-Memory](C08-05-Scope-Enforcement-User-Memory.md) |
 

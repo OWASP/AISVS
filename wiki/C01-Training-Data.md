@@ -1,7 +1,7 @@
 # C01: Training Data Integrity & Traceability
 
 > **Source:** [`1.0/en/0x10-C01-Training-Data-Integrity-and-Traceability.md`](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C01-Training-Data-Integrity-and-Traceability.md)
-> **Requirements:** 24 | **Sections:** 5
+> **Requirements:** 27 | **Sections:** 5
 
 ## Control Objective
 
@@ -19,9 +19,9 @@ Training data must be sourced, handled, and maintained in a way that preserves o
 |---------|-------|:----:|------|
 | C1.1 | Training Data Origin & Traceability | 4 | [C01-01-Training-Data-Origin-Traceability](C01-01-Training-Data-Origin-Traceability.md) |
 | C1.2 | Training Data Security & Integrity | 7 | [C01-02-Training-Data-Security-Integrity](C01-02-Training-Data-Security-Integrity.md) |
-| C1.3 | Data Labeling and Annotation Security | 4 | [C01-03-Data-Labeling-Annotation-Security](C01-03-Data-Labeling-Annotation-Security.md) |
+| C1.3 | Data Labeling and Annotation Security | 6 | [C01-03-Data-Labeling-Annotation-Security](C01-03-Data-Labeling-Annotation-Security.md) |
 | C1.4 | Training Data Quality and Security Assurance | 6 | [C01-04-Training-Data-Quality-Security-Assurance](C01-04-Training-Data-Quality-Security-Assurance.md) |
-| C1.5 | Data Lineage and Traceability | 3 | [C01-05-Data-Lineage-Traceability](C01-05-Data-Lineage-Traceability.md) |
+| C1.5 | Data Lineage and Traceability | 4 | [C01-05-Data-Lineage-Traceability](C01-05-Data-Lineage-Traceability.md) |
 
 ---
 

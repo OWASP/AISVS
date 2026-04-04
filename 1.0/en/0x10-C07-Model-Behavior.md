@@ -47,6 +47,7 @@ Technical controls to detect and scrub bad content before it is shown to the use
 | **7.3.6** | **Verify that** the system requires a human approval step or re-authentication if the model generates high-risk content. | 3 |
 | **7.3.7** | **Verify that** output filters detect and block responses that reproduce verbatim segments of system prompt content. | 2 |
 | **7.3.8** | **Verify that** LLM client applications prevent model-generated output from triggering automatic outbound requests (e.g., auto-rendered images, iframes, or link prefetching) to attacker-controlled endpoints, for example by disabling automatic external resource loading or restricting it to explicitly allowlisted origins as appropriate. | 2 |
+| **7.3.9** | **Verify that** generated outputs are analyzed for statistical steganographic covert channels (e.g., biased token-choice patterns or output distribution anomalies) that could encode hidden data across the model's valid output space, and that detections are flagged for review. | 3 |
 
 ---
 

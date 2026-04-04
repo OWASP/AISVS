@@ -1,7 +1,7 @@
 # C13: Monitoring, Logging & Anomaly Detection
 
 > **Source:** [`1.0/en/0x10-C13-Monitoring-and-Logging.md`](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C13-Monitoring-and-Logging.md)
-> **Requirements:** 45 | **Sections:** 7
+> **Requirements:** 47 | **Sections:** 7
 
 ## Control Objective
 
@@ -17,7 +17,7 @@ This section provides requirements for delivering real-time and forensic visibil
 |---------|-------|:----:|------|
 | C13.1 | Request & Response Logging | 8 | [C13-01-Request-Response-Logging](C13-01-Request-Response-Logging) |
 | C13.2 | Abuse Detection and Alerting | 10 | [C13-02-Abuse-Detection-Alerting](C13-02-Abuse-Detection-Alerting) |
-| C13.3 | Model, Data, and Performance Drift Detection | 9 | [C13-03-Model-Drift-Detection](C13-03-Model-Drift-Detection) |
+| C13.3 | Model, Data, and Performance Drift Detection | 11 | [C13-03-Model-Drift-Detection](C13-03-Model-Drift-Detection) |
 | C13.4 | Performance & Behavior Telemetry | 5 | [C13-04-Performance-Behavior-Telemetry](C13-04-Performance-Behavior-Telemetry) |
 | C13.5 | AI Incident Response Planning & Execution | 3 | [C13-05-Incident-Response](C13-05-Incident-Response) |
 | C13.6 | DAG Visualization & Workflow Security | 5 | [C13-06-DAG-Visualization-Workflow-Security](C13-06-DAG-Visualization-Workflow-Security) |

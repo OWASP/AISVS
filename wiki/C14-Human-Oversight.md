@@ -1,7 +1,7 @@
 # C14: Human Oversight, Accountability & Governance
 
 > **Source:** [`1.0/en/0x10-C14-Human-Oversight.md`](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C14-Human-Oversight.md)
-> **Requirements:** 24 | **Sections:** 7
+> **Requirements:** 25 | **Sections:** 7
 
 ## Control Objective
 
@@ -21,7 +21,7 @@ This chapter provides requirements for maintaining human oversight and clear acc
 | C14.4 | Explainable-AI Techniques | 4 | [C14-04-Explainable-AI-Techniques](C14-04-Explainable-AI-Techniques.md) |
 | C14.5 | Model Cards & Usage Disclosures | 4 | [C14-05-Model-Cards-Usage-Disclosures](C14-05-Model-Cards-Usage-Disclosures.md) |
 | C14.6 | Uncertainty Quantification | 4 | [C14-06-Uncertainty-Quantification](C14-06-Uncertainty-Quantification.md) |
-| C14.7 | User-Facing Transparency Reports | 3 | [C14-07-User-Facing-Transparency-Reports](C14-07-User-Facing-Transparency-Reports.md) |
+| C14.7 | User-Facing Transparency Reports | 4 | [C14-07-User-Facing-Transparency-Reports](C14-07-User-Facing-Transparency-Reports.md) |
 
 ---
 
