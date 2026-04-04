@@ -1,7 +1,7 @@
 # C10: Model Context Protocol (MCP) Security
 
 > **Source:** [`1.0/en/0x10-C10-MCP-Security.md`](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C10-MCP-Security.md)
-> **Requirements:** 38 | **Sections:** 6
+> **Requirements:** 40 | **Sections:** 6
 
 ## Control Objective
 
@@ -16,8 +16,8 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | Section | Title | Reqs | IDs | Page |
 |---------|-------|:----:|-----|------|
 | C10.1 | Component Integrity & Supply Chain Hygiene | 2 | 10.1.1–10.1.2 | [C10-01-Component-Integrity](C10-01-Component-Integrity) |
-| C10.2 | Authentication & Authorization | 13 | 10.2.1–10.2.13 | [C10-02-Authentication-Authorization](C10-02-Authentication-Authorization) |
-| C10.3 | Secure Transport & Network Boundary Protection | 5 | 10.3.1–10.3.5 | [C10-03-Secure-Transport](C10-03-Secure-Transport) |
+| C10.2 | Authentication & Authorization | 14 | 10.2.1–10.2.14 | [C10-02-Authentication-Authorization](C10-02-Authentication-Authorization) |
+| C10.3 | Secure Transport & Network Boundary Protection | 6 | 10.3.1–10.3.6 | [C10-03-Secure-Transport](C10-03-Secure-Transport) |
 | C10.4 | Schema, Message, and Input Validation | 11 | 10.4.1–10.4.11 | [C10-04-Schema-Message-Validation](C10-04-Schema-Message-Validation) |
 | C10.5 | Outbound Access & Agent Execution Safety | 3 | 10.5.1–10.5.3 | [C10-05-Outbound-Access-Agent-Safety](C10-05-Outbound-Access-Agent-Safety) |
 | C10.6 | Transport Restrictions & High-Risk Boundary Controls | 4 | 10.6.1–10.6.4 | [C10-06-Transport-Restrictions-Boundary-Controls](C10-06-Transport-Restrictions-Boundary-Controls) |

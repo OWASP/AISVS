@@ -11,7 +11,7 @@ Maintain rigorous privacy assurances across the entire AI lifecycle (collection,
 Remove or transform personal identifiers before training to prevent re-identification and minimize privacy exposure.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
 | **12.1.1** | **Verify that** direct and quasi-identifiers are removed, hashed. | 1 |
 | **12.1.2** | **Verify that** automated audits measure k-anonymity/l-diversity and alert when thresholds drop below policy. | 2 |
 | **12.1.3** | **Verify that** model feature-importance reports prove no identifier leakage beyond ε = 0.01 mutual information. | 2 |
@@ -24,7 +24,7 @@ Remove or transform personal identifiers before training to prevent re-identific
 Ensure data-subject deletion requests propagate across all AI artifacts and that model unlearning is verifiable.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
 | **12.2.1** | **Verify that** data-subject deletion requests propagate to raw datasets, checkpoints, embeddings, logs, and backups within service level agreements of less than 30 days. | 1 |
 | **12.2.2** | **Verify that** "machine-unlearning" routines physically re-train or approximate removal using certified unlearning algorithms. | 2 |
 | **12.2.3** | **Verify that** shadow-model evaluation proves forgotten records influence less than 1% of outputs after unlearning. | 2 |
@@ -37,8 +37,9 @@ Ensure data-subject deletion requests propagate across all AI artifacts and that
 Track and enforce privacy budgets to provide formal guarantees against individual data leakage.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
-| **12.3.1** | **Verify that** differential privacy budget consumption is tracked per training round (both ε and δ values) and that cumulative budget dashboards alert when ε exceeds policy thresholds. | 2 |
+| :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
+| **12.3.1** | **Verify that** differential privacy budget consumption (both ε and δ values) is tracked and recorded per training round. | 2 |
+| **12.3.5** | **Verify that** cumulative differential privacy budget dashboards alert when ε exceeds defined policy thresholds. | 2 |
 | **12.3.2** | **Verify that** black-box privacy audits estimate ε̂ within 10% of declared value. | 2 |
 | **12.3.3** | **Verify that** formal proofs cover all post-training fine-tunes and embeddings. | 3 |
 | **12.3.4** | **Verify that** federated learning systems implement canary-based privacy auditing to empirically bound privacy leakage, with audit results logged and reviewed per training cycle. | 3 |
@@ -50,9 +51,10 @@ Track and enforce privacy budgets to provide formal guarantees against individua
 Prevent models and datasets from being used beyond their originally consented purpose.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
 | **12.4.1** | **Verify that** every dataset and model checkpoint carries a machine-readable purpose tag aligned to the original consent. | 1 |
-| **12.4.2** | **Verify that** runtime monitors detect queries inconsistent with declared purpose and trigger soft refusal. | 1 |
+| **12.4.2** | **Verify that** runtime monitors detect queries inconsistent with the declared purpose of the dataset or model. | 1 |
+| **12.4.5** | **Verify that** queries detected as inconsistent with declared purpose trigger a soft refusal or are blocked pending review. | 1 |
 | **12.4.3** | **Verify that** policy-as-code gates block redeployment of models to new domains without DPIA review. | 3 |
 | **12.4.4** | **Verify that** formal traceability proofs show every personal data lifecycle remains within consented scope. | 3 |
 
@@ -63,9 +65,10 @@ Prevent models and datasets from being used beyond their originally consented pu
 Record, enforce, and revoke consent across AI processing pipelines.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
 | **12.5.1** | **Verify that** a Consent-Management Platform (CMP) records opt-in status, purpose, and retention period per data-subject. | 1 |
-| **12.5.2** | **Verify that** APIs expose consent tokens; models must validate token scope before inference. | 2 |
+| **12.5.2** | **Verify that** APIs expose consent tokens that encode the data subject's opt-in status, purpose, and retention period. | 2 |
+| **12.5.4** | **Verify that** models validate consent token scope before inference and refuse processing when the token is absent, invalid, or does not cover the requested operation. | 2 |
 | **12.5.3** | **Verify that** denied or withdrawn consent halts processing pipelines within 24 hours. | 2 |
 
 ---
@@ -75,7 +78,7 @@ Record, enforce, and revoke consent across AI processing pipelines.
 Apply differential privacy and poisoning-resistant aggregation to federated learning to protect individual participant data.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
 | **12.6.1** | **Verify that** client updates employ local differential privacy noise addition before aggregation. | 1 |
 | **12.6.2** | **Verify that** training metrics are differentially private and never reveal single-client loss. | 2 |
 | **12.6.3** | **Verify that** poisoning-resistant aggregation (e.g., Krum/Trimmed-Mean) is enabled. | 2 |

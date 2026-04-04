@@ -1,7 +1,7 @@
 # C12: Privacy Protection & Personal Data Management
 
 > **Source:** [`1.0/en/0x10-C12-Privacy.md`](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C12-Privacy.md)
-> **Requirements:** 23 | **Sections:** 6
+> **Requirements:** 26 | **Sections:** 6
 
 ## Control Objective
 
@@ -17,9 +17,9 @@ Maintain rigorous privacy assurances across the entire AI lifecycle (collection,
 |---------|-------|:----:|------|
 | C12.1 | Anonymization & Data Minimization | 4 | [C12-01-Anonymization-Data-Minimization](C12-01-Anonymization-Data-Minimization.md) |
 | C12.2 | Right-to-be-Forgotten & Deletion Enforcement | 4 | [C12-02-Right-to-be-Forgotten-Deletion](C12-02-Right-to-be-Forgotten-Deletion.md) |
-| C12.3 | Differential-Privacy Safeguards | 4 | [C12-03-Differential-Privacy-Safeguards](C12-03-Differential-Privacy-Safeguards.md) |
-| C12.4 | Purpose-Limitation & Scope-Creep Protection | 4 | [C12-04-Purpose-Limitation-Scope-Creep](C12-04-Purpose-Limitation-Scope-Creep.md) |
-| C12.5 | Consent Management & Lawful-Basis Tracking | 3 | [C12-05-Consent-Management-Lawful-Basis](C12-05-Consent-Management-Lawful-Basis.md) |
+| C12.3 | Differential-Privacy Safeguards | 5 | [C12-03-Differential-Privacy-Safeguards](C12-03-Differential-Privacy-Safeguards.md) |
+| C12.4 | Purpose-Limitation & Scope-Creep Protection | 5 | [C12-04-Purpose-Limitation-Scope-Creep](C12-04-Purpose-Limitation-Scope-Creep.md) |
+| C12.5 | Consent Management & Lawful-Basis Tracking | 4 | [C12-05-Consent-Management-Lawful-Basis](C12-05-Consent-Management-Lawful-Basis.md) |
 | C12.6 | Federated Learning with Privacy Controls | 4 | [C12-06-Federated-Learning-Privacy-Controls](C12-06-Federated-Learning-Privacy-Controls.md) |
 
 ---

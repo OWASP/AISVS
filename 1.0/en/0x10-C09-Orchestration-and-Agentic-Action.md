@@ -26,9 +26,11 @@ Bound runtime expansion (recursion, concurrency, cost) and halt safely on runawa
 
 Require explicit checkpoints for privileged or irreversible outcomes.
 
+> **Scope note:** C9.2 governs the runtime execution gate: the mechanism by which the agent system blocks a privileged or irreversible action and waits for an explicit approval signal before proceeding. Organizational policy that defines which decisions qualify as high-risk and what approval authority is required is in C14.2. Logging and auditing of approval events is in C13.7.4. All three controls address different aspects of the same workflow and require separate evidence.
+
 | # | Description | Level |
 | :--: | --- | :---: |
-| **9.2.1** | **Verify that** privileged or irreversible actions (e.g., code merges/deploys, financial transfers, user access changes, destructive deletes, external notifications) require explicit human-in-loop approval. | 1 |
+| **9.2.1** | **Verify that** the agent runtime enforces an execution gate that blocks privileged or irreversible actions (e.g., code merges/deploys, financial transfers, user access changes, destructive deletes, external notifications) until an explicit human approval is received and verified. | 1 |
 | **9.2.2** | **Verify that** approval requests display canonicalized and complete action parameters (diff, command, recipient, amount, scope) without truncation or transformation. | 2 |
 | **9.2.3** | **Verify that** approvals are cryptographically bound (e.g., signed or MACed) to the exact action parameters, requester identity, and execution context. | 2 |
 | **9.2.4** | **Verify that** approvals include a unique nonce and are single-use to prevent replay or substitution. | 2 |
@@ -44,7 +46,8 @@ Constrain tool execution, loading, and outputs to prevent unauthorized system ac
 | # | Description | Level |
 | :--: | --- | :---: |
 | **9.3.1** | **Verify that** each tool/plugin executes in an isolated sandbox (container/VM/WASM/OS sandbox) with least-privilege filesystem, network egress, and syscall permissions appropriate to the tool's function. | 1 |
-| **9.3.2** | **Verify that** per-tool quotas and timeouts (CPU, memory, disk, egress, execution time) are enforced and logged, and that quota breaches fail closed. | 1 |
+| **9.3.2** | **Verify that** per-tool quotas and timeouts (CPU, memory, disk, egress, execution time) are enforced and logged. | 1 |
+| **9.3.7** | **Verify that** quota or timeout breaches fail closed, terminating the tool execution rather than continuing with degraded or uncontrolled behavior. | 1 |
 | **9.3.3** | **Verify that** tool outputs are validated against strict schemas and security policies before being incorporated into downstream reasoning or follow-on actions. | 1 |
 | **9.3.4** | **Verify that** tool binaries or packages are integrity-verified (e.g., signatures, checksums) prior to loading. | 2 |
 | **9.3.5** | **Verify that** tool manifests declare required privileges, side-effect level, resource limits, and output validation requirements, and that the runtime enforces these declarations. | 2 |
@@ -60,8 +63,10 @@ Make every action attributable and every mutation detectable.
 | :--: | --- | :---: |
 | **9.4.1** | **Verify that** each agent instance (and orchestrator/runtime) has a unique cryptographic identity and authenticates as a first-class principal to downstream systems (no reuse of end-user credentials). | 1 |
 | **9.4.2** | **Verify that** agent-initiated actions are cryptographically bound to the execution chain (chain ID) and are signed and timestamped for non-repudiation and traceability. | 2 |
-| **9.4.3** | **Verify that** audit logs are tamper-evident (via append-only/WORM/immutable log store, cryptographic hash chaining where each record includes the hash of the prior record, or equivalent integrity guarantees that can be independently verified), and include sufficient context to reconstruct who/what acted, initiating user identifier, delegation scope, authorization decision (policy/version), tool parameters, approvals (where applicable), and outcomes. | 2 |
+| **9.4.3** | **Verify that** audit logs are tamper-evident via append-only/WORM/immutable log store, cryptographic hash chaining where each record includes the hash of the prior record, or equivalent integrity guarantees that can be independently verified. | 2 |
+| **9.4.5** | **Verify that** audit log records include sufficient context to reconstruct who/what acted, the initiating user identifier, delegation scope, authorization decision (policy/version), tool parameters, approvals (where applicable), and outcomes. | 2 |
 | **9.4.4** | **Verify that** agent identity credentials (keys/certs/tokens) rotate on a defined schedule and on compromise indicators, with rapid revocation and quarantine on suspected compromise or spoofing attempts. | 3 |
+| **9.4.6** | **Verify that** agent state persisted between invocations (including memory, task context, goals, and partial results) is integrity-protected (e.g., via cryptographic MACs or signatures), and that the runtime rejects or quarantines state that fails integrity verification before resuming execution. | 3 |
 
 ---
 
@@ -75,7 +80,6 @@ Protect agent-to-agent and agent-to-tool communications from hijacking, injectio
 | **9.5.2** | **Verify that** all messages are strictly schema-validated; unknown fields, malformed payloads, and oversized frames are rejected. | 1 |
 | **9.5.3** | **Verify that** message integrity covers the full payload including tool parameters, and that replay protections (nonces/sequence numbers/timestamp windows) are enforced. | 2 |
 | **9.5.4** | **Verify that** agent outputs propagated to downstream agents are validated against semantic constraints (e.g., value ranges, logical consistency) in addition to schema validation. | 2 |
-| **9.5.5** | **Verify that** when agents accept structured task handoffs from peer agents (e.g., via A2A or equivalent delegation protocol), the receiving agent validates the sending agent's identity and authorized scope against an approved agent registry before accepting the task, and rejects handoffs from agents not present in or explicitly excluded from that registry. | 2 |
 
 ---
 
@@ -91,6 +95,7 @@ Ensure every action is authorized at execution time and constrained by scope.
 | **9.6.4** | **Verify that** all access control decisions are enforced by application logic or a policy engine, never by the AI model itself, and that model-generated output (e.g., "the user is allowed to do this") cannot override or bypass access control checks. | 2 |
 | **9.6.5** | **Verify that** secrets and credentials required by an agent at runtime are not exposed within the model's observable context, including the context window, system prompts, or tool call parameters, and are instead provided via out-of-band mechanisms such as credential proxies, secrets manager injection, runtime sidecar authentication, or short-lived scoped tokens. | 2 |
 | **9.6.6** | **Verify that** when an agent acts under delegated authority, the policy decision point evaluates both the agent's own granted permissions and the initiating principal's delegated scope as independent constraints, denying the action if either is insufficient for the requested operation. | 2 |
+| **9.6.7** | **Verify that** agent-to-agent task delegation is restricted by an explicit peer authorization policy (e.g., an approved agent registry or allowlist) so that even authenticated agents can only delegate to or accept delegations from pre-approved peers, with delegation attempts from unlisted agents rejected by default. | 2 |
 
 ---
 
@@ -117,7 +122,8 @@ Reduce cross-domain interference and emergent unsafe collective behavior.
 | **9.8.1** | **Verify that** agents in different tenants, security domains, or environments (dev/test/prod) run in isolated runtimes and network segments, with default-deny controls that prevent cross-domain discovery and calls. | 1 |
 | **9.8.2** | **Verify that** runtime monitoring detects unsafe emergent behavior (oscillation, deadlocks, uncontrolled broadcast, abnormal call graphs) and automatically applies corrective actions (throttle, isolate, terminate). | 3 |
 | **9.8.3** | **Verify that** each agent is restricted to its own memory namespace and is technically prevented from reading or modifying peer agent state, preventing unauthorized cross-agent access within the same swarm. | 2 |
-| **9.8.4** | **Verify that** each agent operates with an isolated context window and dedicated credentials scoped to its role, preventing peer agents from accessing or influencing another agent's context or credential scope to prevent unauthorized cross-agent access within the same swarm. | 3 |
+| **9.8.4** | **Verify that** each agent operates with an isolated context window that peer agents cannot read or influence, preventing unauthorized cross-agent context access within the same swarm. | 3 |
+| **9.8.7** | **Verify that** each agent is issued dedicated credentials scoped to its role that are not shared with or accessible to peer agents within the same swarm. | 3 |
 | **9.8.5** | **Verify that** swarm-level aggregate action rate limits (e.g., total external API calls, file writes, or network requests per time window across all agents) are enforced to prevent bursts that cause denial-of-service or abuse of external systems. | 3 |
 | **9.8.6** | **Verify that** a swarm-level shutdown capability exists that can halt all active agent instances or selected problematic instances in an organized fashion and prevents new agent spawning, with shutdown completable within a pre-defined response time. | 3 |
 

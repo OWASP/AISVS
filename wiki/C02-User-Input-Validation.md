@@ -1,7 +1,7 @@
 # C02: User Input Validation
 
 > **Source:** [`1.0/en/0x10-C02-User-Input-Validation.md`](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C02-User-Input-Validation.md)
-> **Requirements:** 33 | **Sections:** 8
+> **Requirements:** 37 | **Sections:** 8
 
 ## Control Objective
 
@@ -18,11 +18,11 @@ Robust validation of user input is a first-line defense against some of the most
 | C2.1 | Prompt Injection Defense | 4 | [C02-01-Prompt-Injection-Defense](C02-01-Prompt-Injection-Defense) |
 | C2.2 | Adversarial-Example Resistance | 5 | [C02-02-Adversarial-Example-Resistance](C02-02-Adversarial-Example-Resistance) |
 | C2.3 | Prompt Character Set | 2 | [C02-03-Prompt-Character-Set](C02-03-Prompt-Character-Set) |
-| C2.4 | Schema, Type & Length Validation | 5 | [C02-04-Schema-Type-Length-Validation](C02-04-Schema-Type-Length-Validation) |
+| C2.4 | Schema, Type & Length Validation | 7 | [C02-04-Schema-Type-Length-Validation](C02-04-Schema-Type-Length-Validation) |
 | C2.5 | Content & Policy Screening | 4 | [C02-05-Content-Policy-Screening](C02-05-Content-Policy-Screening) |
 | C2.6 | Input Rate Limiting & Abuse Prevention | 4 | [C02-06-Input-Rate-Limiting-Abuse-Prevention](C02-06-Input-Rate-Limiting-Abuse-Prevention) |
-| C2.7 | Multi-Modal Input Validation | 5 | [C02-07-Multi-Modal-Input-Validation](C02-07-Multi-Modal-Input-Validation) |
-| C2.8 | Real-Time Adaptive Threat Detection | 4 | [C02-08-Real-Time-Adaptive-Threat-Detection](C02-08-Real-Time-Adaptive-Threat-Detection) |
+| C2.7 | Multi-Modal Input Validation | 6 | [C02-07-Multi-Modal-Input-Validation](C02-07-Multi-Modal-Input-Validation) |
+| C2.8 | Real-Time Adaptive Threat Detection | 5 | [C02-08-Real-Time-Adaptive-Threat-Detection](C02-08-Real-Time-Adaptive-Threat-Detection) |
 
 ---
 
