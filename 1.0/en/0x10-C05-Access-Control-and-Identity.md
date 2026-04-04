@@ -11,7 +11,7 @@ Effective access control for AI systems requires robust identity management, con
 Establish verified identities for all entities interacting with AI systems, with authentication strength appropriate to the risk level.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| :--------: | --------------------------------------------------------------------------------------------- | :---: |
 | **5.1.1** | **Verify that** all human users and service principals authenticate through a centralized identity provider using industry-standard federation protocols (e.g., OIDC, SAML). | 1 |
 | **5.1.2** | **Verify that** high-risk operations (model deployment, weight export, training data access, production configuration changes) require multi-factor authentication or step-up authentication with session re-validation. | 2 |
 | **5.1.3** | **Verify that** AI agents in federated or multi-system deployments authenticate via short-lived, cryptographically signed authentication tokens (e.g., signed JWT assertions) with a maximum lifetime appropriate to the risk level and including cryptographic proof of origin. | 3 |
@@ -23,7 +23,7 @@ Establish verified identities for all entities interacting with AI systems, with
 Implement access controls for all AI resources with explicit permission models and audit trails.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| :--------: | --------------------------------------------------------------------------------------------- | :---: |
 | **5.2.1** | **Verify that** every AI resource (datasets, models, endpoints, vector collections, embedding indices, compute instances) enforces access controls (e.g., RBAC, ABAC) with explicit allow-lists and default-deny policies. | 1 |
 | **5.2.2** | **Verify that** all access control modifications are logged with timestamps, actor identities, resource identifiers, and permission changes. | 1 |
 | **5.2.3** | **Verify that** access control audit logs are stored immutably and are tamper-evident. | 2 |
@@ -32,6 +32,7 @@ Implement access controls for all AI resources with explicit permission models a
 | **5.2.6** | **Verify that** authorization decisions are externalized to a dedicated policy decision point (e.g., OPA, Cedar, or equivalent). | 3 |
 | **5.2.7** | **Verify that** policies evaluate dynamic attributes at runtime including user role or group, resource classification, request context, tenant isolation, and temporal constraints. | 3 |
 | **5.2.8** | **Verify that** policy cache TTL values are defined based on resource sensitivity, with shorter TTLs for high-sensitivity resources, and that cache invalidation capabilities are available. | 3 |
+| **5.2.9** | **Verify that** privileged access to model weights, training pipelines, and production AI configuration is provisioned on a just-in-time basis with a defined maximum session duration and automatic expiry, and permanent standing privileged access to these resources is not permitted. | 2 |
 
 ---
 
@@ -40,7 +41,7 @@ Implement access controls for all AI resources with explicit permission models a
 Enforce authorization at the data access layer to prevent unauthorized data retrieval through AI queries.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| :--------: | --------------------------------------------------------------------------------------------- | :---: |
 | **5.3.1** | **Verify that** all data store queries (e.g., vector databases, SQL databases, search indices) include mandatory security filters (tenant ID, sensitivity labels, user scope) enforced at the data access layer. | 1 |
 | **5.3.2** | **Verify that** failed authorization evaluations immediately abort queries and return explicit authorization error codes. | 1 |
 | **5.3.3** | **Verify that** row-level security policies are enabled for all data stores containing sensitive data used by AI systems. | 2 |
@@ -55,7 +56,7 @@ Enforce authorization at the data access layer to prevent unauthorized data retr
 Deploy post-processing controls to prevent unauthorized data exposure in AI-generated content.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| :--------: | --------------------------------------------------------------------------------------------- | :---: |
 | **5.4.1** | **Verify that** post-inference filtering mechanisms prevent responses from including classified information or proprietary data that the requestor is not authorized to receive. | 1 |
 | **5.4.2** | **Verify that** citations, references, and source attributions in model outputs are validated against caller entitlements and removed if unauthorized access is detected. | 2 |
 | **5.4.3** | **Verify that** output format restrictions (sanitized documents, metadata-stripped images, approved file types) are enforced based on user permission levels and data classifications. | 2 |
@@ -67,7 +68,7 @@ Deploy post-processing controls to prevent unauthorized data exposure in AI-gene
 Ensure logical and cryptographic isolation between tenants in shared AI infrastructure.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| :--------: | --------------------------------------------------------------------------------------------- | :---: |
 | **5.5.1** | **Verify that** network policies implement default-deny rules for cross-tenant communication. | 2 |
 | **5.5.2** | **Verify that** every API request includes an authenticated tenant identifier that is cryptographically validated against session context and user entitlements. | 1 |
 | **5.5.3** | **Verify that** memory spaces, embedding stores, cache entries (e.g., result caches, embedding caches), and temporary files are namespace-segregated per tenant so that one tenant cannot access another tenant's data. | 2 |
@@ -82,7 +83,7 @@ Ensure logical and cryptographic isolation between tenants in shared AI infrastr
 Control permissions for AI agents and autonomous systems through scoped capability tokens and continuous authorization.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| :--------: | --------------------------------------------------------------------------------------------- | :---: |
 | **5.6.1** | **Verify that** autonomous agents receive scoped capability tokens that explicitly enumerate permitted actions, accessible resources, time boundaries, and operational constraints. | 1 |
 | **5.6.2** | **Verify that** high-risk capabilities (file system access, code execution, external API calls, financial transactions) are disabled by default and require explicit authorization. | 1 |
 | **5.6.3** | **Verify that** capability tokens are bound to user sessions, include cryptographic integrity protection, and cannot be persisted or reused across sessions. | 2 |
