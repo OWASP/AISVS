@@ -145,6 +145,7 @@ Verify authenticity and detect tampering of models, artifacts, messages, logs, a
 | DAG cryptographic signatures and tamper-evident storage | 13.7.3 |
 | Publisher key pinning per source registry with rotation re-approval | 6.4.6 |
 | Document metadata tag immutability after initial ingestion write | 8.1.7 |
+| Agent persisted state integrity protection (MAC/signature, rejection on failure) | 9.4.6 |
 
 **Common pitfalls:** using mutable `:latest` tags instead of immutable digests; not re-verifying tool definition hashes between MCP invocations; missing replay protection on agent messages.
 
