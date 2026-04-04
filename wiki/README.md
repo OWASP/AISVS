@@ -13,7 +13,7 @@ The standard is organized into 14 chapters spanning the full AI application secu
 | # | Chapter | Reqs | Pages | Type | Updated |
 |---|---------|:----:|:-----:|------|:-------:|
 | C1 | Training Data Integrity & Traceability | 24 | [C01](C01-Training-Data.md) | [5 sections](#c1-training-data-integrity--traceability) | 2026-03-29 |
-| C2 | User Input Validation | 33 | [C02](C02-User-Input-Validation.md) | [8 sections](#c2-user-input-validation) | 2026-03-27 |
+| C2 | User Input Validation | 33 | [C02](C02-User-Input-Validation.md) | [8 sections](#c2-user-input-validation) | 2026-04-01 |
 | C3 | Model Lifecycle Management | 26 | [C03](C03-Model-Lifecycle-Management.md) | [6 sections](#c3-model-lifecycle-management) | 2026-03-29 |
 | C4 | Infrastructure & Deployment Security | 46 | [C04](C04-Infrastructure.md) | [8 sections](#c4-infrastructure--deployment-security) | 2026-03-28 |
 | C5 | Access Control & Identity | 27 | [C05](C05-Access-Control.md) | [6 sections](#c5-access-control--identity) | 2026-03-29 |
@@ -59,7 +59,7 @@ Covers prompt injection defense, adversarial input resistance, schema validation
 
 ### C3: Model Lifecycle Management
 
-Covers model authorization and integrity, validation and testing, controlled deployment and rollback, secure development practices, hosted/provider-managed controls, and fine-tuning pipeline security. Note: C3.6 is intentionally absent in the standard.
+Covers model authorization and integrity, validation and testing, controlled deployment and rollback, secure development practices, hosted/provider-managed controls, and fine-tuning pipeline security.
 
 | Section | Page |
 |---------|------|
@@ -68,7 +68,7 @@ Covers model authorization and integrity, validation and testing, controlled dep
 | C3.3 Controlled Deployment & Rollback | [C03-03](C03-03-Controlled-Deployment-Rollback.md) |
 | C3.4 Secure Development Practices | [C03-04](C03-04-Secure-Development-Practices.md) |
 | C3.5 Hosted and Provider-Managed Model Controls | [C03-05](C03-05-Hosted-Provider-Managed-Controls.md) |
-| C3.7 Fine-Tuning Pipeline Authorization & Reward Model Integrity | [C03-07](C03-07-Fine-Tuning-Pipeline-Security.md) |
+| C3.6 Fine-Tuning Pipeline Authorization & Reward Model Integrity | [C03-06](C03-06-Fine-Tuning-Pipeline-Security.md) |
 
 ### C4: Infrastructure & Deployment Security
 

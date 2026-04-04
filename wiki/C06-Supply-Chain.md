@@ -1,7 +1,7 @@
 # C06: Supply Chain Security for Models, Frameworks & Data
 
 > **Source:** [`1.0/en/0x10-C06-Supply-Chain.md`](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C06-Supply-Chain.md)
-> **Requirements:** 34 | **Sections:** 7
+> **Requirements:** 35 | **Sections:** 7
 
 ## Control Objective
 
@@ -20,7 +20,7 @@ AI supply-chain attacks exploit third-party models, frameworks, or datasets to e
 | C6.3 | Dependency Pinning & Verification | 5 | 6.3.1–6.3.5 | [C06-03-Dependency-Pinning-Verification](C06-03-Dependency-Pinning-Verification.md) |
 | C6.4 | Trusted Source Enforcement | 5 | 6.4.1–6.4.5 | [C06-04-Trusted-Source-Enforcement](C06-04-Trusted-Source-Enforcement.md) |
 | C6.5 | Third-Party Dataset Risk Assessment | 5 | 6.5.1–6.5.5 | [C06-05-Third-Party-Dataset-Risk](C06-05-Third-Party-Dataset-Risk.md) |
-| C6.6 | Supply Chain Attack Monitoring | 3 | 6.6.1–6.6.3 | [C06-06-Supply-Chain-Attack-Monitoring](C06-06-Supply-Chain-Attack-Monitoring.md) |
+| C6.6 | Supply Chain Attack Monitoring | 4 | 6.6.1–6.6.4 | [C06-06-Supply-Chain-Attack-Monitoring](C06-06-Supply-Chain-Attack-Monitoring.md) |
 | C6.7 | AI BOM for Model Artifacts | 5 | 6.7.1–6.7.5 | [C06-07-AI-BOM-Model-Artifacts](C06-07-AI-BOM-Model-Artifacts.md) |
 
 ---

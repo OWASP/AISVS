@@ -1,7 +1,7 @@
 # C07: Model Behavior, Output Control & Safety Assurance
 
 > **Source:** [`1.0/en/0x10-C07-Model-Behavior.md`](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C07-Model-Behavior.md)
-> **Requirements:** 33 | **Sections:** 8
+> **Requirements:** 36 | **Sections:** 8
 
 ## Control Objective
 
@@ -17,12 +17,12 @@ This control category ensures that model outputs are technically constrained, va
 |---------|-------|:----:|------|
 | C7.1 | Output Format Enforcement | 4 | [C07-01-Output-Format-Enforcement](C07-01-Output-Format-Enforcement) |
 | C7.2 | Hallucination Detection & Mitigation | 5 | [C07-02-Hallucination-Detection](C07-02-Hallucination-Detection) |
-| C7.3 | Output Safety & Privacy Filtering | 8 | [C07-03-Output-Safety-Privacy-Filtering](C07-03-Output-Safety-Privacy-Filtering) |
-| C7.4 | Output & Action Limiting | 3 | [C07-04-Output-Action-Limiting](C07-04-Output-Action-Limiting) |
+| C7.3 | Output Safety & Privacy Filtering | 9 | [C07-03-Output-Safety-Privacy-Filtering](C07-03-Output-Safety-Privacy-Filtering) |
+| C7.4 | Output & Action Limiting | 4 | [C07-04-Output-Action-Limiting](C07-04-Output-Action-Limiting) |
 | C7.5 | Explainability & Transparency | 3 | [C07-05-Explainability-Transparency](C07-05-Explainability-Transparency) |
 | C7.6 | Monitoring Integration | 3 | [C07-06-Monitoring-Integration](C07-06-Monitoring-Integration) |
 | C7.7 | Generative Media Safeguards | 5 | [C07-07-Generative-Media-Safeguards](C07-07-Generative-Media-Safeguards) |
-| C7.8 | Source Attribution & Citation Integrity | 2 | [C07-08-Source-Attribution-Citation-Integrity](C07-08-Source-Attribution-Citation-Integrity) |
+| C7.8 | Source Attribution & Citation Integrity | 3 | [C07-08-Source-Attribution-Citation-Integrity](C07-08-Source-Attribution-Citation-Integrity) |
 
 ---
 
