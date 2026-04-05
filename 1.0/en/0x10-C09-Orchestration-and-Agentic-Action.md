@@ -126,6 +126,7 @@ Reduce cross-domain interference and emergent unsafe collective behavior.
 | **9.8.7** | **Verify that** each agent is issued dedicated credentials scoped to its role that are not shared with or accessible to peer agents within the same swarm. | 3 |
 | **9.8.5** | **Verify that** swarm-level aggregate action rate limits (e.g., total external API calls, file writes, or network requests per time window across all agents) are enforced to prevent bursts that cause denial-of-service or abuse of external systems. | 3 |
 | **9.8.6** | **Verify that** a swarm-level shutdown capability exists that can halt all active agent instances or selected problematic instances in an organized fashion and prevents new agent spawning, with shutdown completable within a pre-defined response time. | 3 |
+| **9.8.8** | **Verify that** when multiple agents concurrently access shared mutable state, authorization checks and the state mutations they gate are executed atomically (e.g., via transactions, optimistic locking, or compare-and-swap) to prevent TOCTOU vulnerabilities where a concurrent state change invalidates a prior authorization decision before the guarded action completes. | 2 |
 
 ---
 
