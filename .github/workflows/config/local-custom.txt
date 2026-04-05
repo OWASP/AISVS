@@ -108,3 +108,5 @@ Cylance
 NDSS
 RONI
 PATE
+jailbreaking
+jailbreak
