@@ -30,7 +30,7 @@ The following individuals have contributed to the AISVS through requirements aut
 * [Josh Beck](https://github.com/Josh-Beck)
 * [Blake Gatto](https://github.com/BlakeGatto)
 * [Khalid Walid Alamri](https://github.com/khalidwalidalamri)
-* [Setotet](https://github.com/Setotet)
+* [Tetsuo Seto](https://github.com/tetsuoseto)
 * [Jim Schwoebel](https://github.com/jim-schwoebel)
 * [Vineeth Sai](https://github.com/vineethsai)
 * [Almog](https://github.com/almogbhl)
