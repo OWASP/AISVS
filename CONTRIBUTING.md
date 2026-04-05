@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="images/logo.png" alt="OWASP AISVS Logo" width="400"/>
+</p>
+
 # Contributing
 
 ## Introduction
