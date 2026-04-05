@@ -56,6 +56,7 @@ Enforce access decisions across users, agents, tools, data, and MCP resources us
 | Wildcard and overly broad scope rejection | 10.2.14 |
 | MCP policy enforcement that model output cannot bypass | 10.2.4 |
 | Output format restriction by permission level | 5.4.3 |
+| Just-in-time access provisioning for model weights, training pipelines, and production AI configuration | 5.2.9 |
 | Peer authorization policy (approved agent registry) for agent-to-agent task delegation | 9.6.7 |
 | Dedicated scoped credentials per agent, not shared across swarm peers | 9.8.7 |
 
@@ -98,6 +99,7 @@ Protect data moving between services, agents, tools, and edge devices.
 | Authenticated accelerator interconnects (NVLink, PCIe, InfiniBand) | 4.7.7 |
 | Encrypted edge-to-cloud communication with bandwidth throttling | 4.8.6 |
 | Log encryption in transit | 13.1.3 |
+| MCP client minimum protocol version enforcement against downgrade negotiation | 10.3.6 |
 
 **Common pitfalls:** allowing plaintext interconnects in multi-tenant GPU clusters; using SSE over public internet without TLS; not validating certificates on internal service calls.
 
@@ -160,6 +162,9 @@ Validate, normalize, and constrain all inputs before they reach models or downst
 | --- | --- |
 | Prompt injection detection ruleset / service | 2.1.1 |
 | Instruction hierarchy enforcement (system > developer > user) | 2.1.2 |
+| Per-request demonstration count limits in context window | 2.1.5 |
+| Many-shot jailbreaking pattern detection (systematic in-context behavioral override) | 2.1.6 |
+| In-context behavioral override attempts classified as prompt injection events | 2.1.7 |
 | Third-party content sanitization | 2.1.3 |
 | Unicode NFC normalization and homoglyph mapping | 2.2.1 |
 | Control / invisible character removal | 2.2.1, 2.2.5 |
@@ -307,6 +312,7 @@ Verify origin and authenticity, scan dependencies, and enforce integrity of mode
 | Expired and unmaintained dependency detection | 6.3.3 |
 | Approved source and internal registry enforcement | 6.4.1 |
 | Malicious layer and trojan trigger scanning | 6.1.2 |
+| Unsafe deserialization format prohibition and format-aware scanning at load time | 4.5.10 |
 | External dataset poisoning assessment (fingerprinting, outlier detection) | 6.5.1 |
 | Copyright and PII detection in external datasets | 6.5.2 |
 | Dataset origin and lineage documentation | 6.5.3 |
@@ -330,6 +336,7 @@ Manage model deployment, rollback, retirement, and emergency response.
 | Immutable audit records for model changes | 3.2.5 |
 | Deployment validation with failure blocking and override approval | 3.2.6 |
 | Canary / blue-green deployments with automated rollback triggers | 3.3.1 |
+| Parallel deployment cohort isolation (A/B, canary, shadow) | 3.3.5 |
 | Atomic state restoration on rollback (weights, config, adapters, safety models) | 3.3.2 |
 | Emergency model shutdown capability with pre-defined response time | 3.3.3 |
 | Shutdown cascade to tools, MCP, RAG, credentials, memory stores | 3.3.4 |
