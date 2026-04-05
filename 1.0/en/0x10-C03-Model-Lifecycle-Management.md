@@ -48,7 +48,7 @@ Model deployments must be controlled, monitored, and reversible.
 | **3.3.2** | **Verify that** rollback capabilities restore the complete model state (weights, configurations, dependencies including adapters and safety/policy models) atomically. | 2 |
 | **3.3.3** | **Verify that** emergency model shutdown capabilities can disable model endpoints within a pre-defined response time. | 3 |
 | **3.3.4** | **Verify that** emergency shutdown cascades to all parts of the system including e.g. deactivating agent tool and MCP access, RAG connectors, database and API credentials, and memory-store bindings. | 3 |
-| **3.3.5** | **Verify that** model versions running in parallel (e.g., A/B tests, canary deployments, shadow deployments) are isolated such that prompt caches, session state, and retrieval context are not shared across cohorts, preventing cross-version data contamination and behavioral inference across deployment groups. | 2 |
+| **3.3.5** | **Verify that** model versions running in parallel (e.g., A/B tests, canary, shadow deployments) use isolated runtime state so that AI-specific shared resources (e.g., KV caches, prompt caches, session state, retrieval indices) are not shared across deployment cohorts. | 2 |
 
 ---
 
