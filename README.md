@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="images/logo.png" alt="OWASP AISVS Logo" width="400"/>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="images/aisvs-logo-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="images/aisvs-logo-light.png">
+    <img alt="OWASP AISVS Logo" src="images/aisvs-logo-light.png" width="520">
+  </picture>
 </p>
 
 # OWASP Artificial Intelligence Security Verification Standard (AISVS)
