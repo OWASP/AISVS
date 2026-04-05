@@ -14,6 +14,10 @@ The OWASP Artificial Intelligence Security Verification Standard (AISVS) focuses
 
 **We are in the final stretch before the v1.0 requirement freeze.**
 
+**Requirements freeze: April 30, 2026.** After this date, no new requirements will be accepted for v1.0. We will continue to accept editorial fixes, clarifications, and improvements to existing requirement language.
+
+**Target release: June 2026** at the OWASP Global AppSec conference in Vienna.
+
 This is the most important moment to contribute. We are actively refining the control set to ensure every requirement is independently testable, clearly scoped, and useful to both implementers and auditors. Once the freeze lands, the control text is locked for the 1.0 release.
 
 If you have security expertise in any of the 14 chapters and want to leave a mark on the first stable release of AISVS, now is the time.
