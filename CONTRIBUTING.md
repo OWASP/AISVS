@@ -8,24 +8,39 @@ The Open Worldwide Application Security Project (OWASP) is a nonprofit organizat
 
 ### What is the [AISVS](https://github.com/OWASP/www-project-artificial-intelligence-security-verification-standard-aisvs-docs)?
 
-The OWASP Artificial Intelligence Security Verification Standard (AISVS) focuses on providing developers, architects, and security professionals with a structured framework to evaluate and verify the security and ethical considerations of AI-driven applications. Modeled after existing OWASP standards (such as the ASVS for web applications), AISVS will define categories of requirements for areas including:
+The OWASP Artificial Intelligence Security Verification Standard (AISVS) focuses on providing developers, architects, and security professionals with a structured framework to evaluate and verify the security and ethical considerations of AI-driven applications. Modeled after existing OWASP standards (such as the ASVS for web applications), AISVS defines categories of requirements across 14 chapters covering areas including model behavior, supply chain integrity, agentic orchestration, privacy, adversarial robustness, and human oversight.
 
 ### What is the Current Status of AISVS development?
 
-🎉🎉🎉 **We are just getting started deciding categories for AISVS v1.0** 🎉🎉🎉
+**We are in the final stretch before the v1.0 requirement freeze.**
+
+This is the most important moment to contribute. We are actively refining the control set to ensure every requirement is independently testable, clearly scoped, and useful to both implementers and auditors. Once the freeze lands, the control text is locked for the 1.0 release.
+
+If you have security expertise in any of the 14 chapters and want to leave a mark on the first stable release of AISVS, now is the time.
 
 ## How can I help?
 
-Reading through the categories and helping us solidify them would be a great help.
+### High-priority contributions for the 1.0 release
 
-A few questions to ask yourself as you review the document:
+The most valuable thing you can do right now is review the existing controls and ask:
 
-* If I was a developer or a security tester, would this category be understandable to me?
-* Can I think of a way of improving the category choices to add clarity?
+- Is this requirement independently testable? Can a single auditor verify it with a single, specific piece of evidence?
+- Is the scope clear? Could this control be confused with a control in a different chapter?
+- Is anything missing? Are there attack surfaces, failure modes, or real-world AI security concerns that are not covered?
+- Is anything duplicated? Do two controls in the same or different chapters say the same thing?
 
-Please first log ideas, issues or questions here: <https://github.com/OWASP/AISVS/issues>. 
+If you find issues, please open a GitHub issue first before submitting a pull request. Good issues describing the problem are just as valuable as PRs.
 
-We may also ask you to open a pull request, <https://github.com/OWASP/AISVS/pulls>, based on the discussion in the issue. 
+### Other ways to contribute
+
+- **Review open PRs**: Help us catch scope overlap, wording ambiguity, or controls that are hard to test in practice.
+- **Add missing controls**: If you know of a concrete, testable requirement that belongs in the standard and is not there yet, propose it.
+- **Fix compound requirements**: Controls that bundle two distinct testable concerns into one should be split. See our existing split PRs for examples of the expected format.
+- **Improve references**: Each chapter should reference the best available standards, frameworks, and research for its topic area.
+
+Please first log ideas, issues, or questions here: <https://github.com/OWASP/AISVS/issues>.
+
+We may also ask you to open a pull request, <https://github.com/OWASP/AISVS/pulls>, based on the discussion in the issue.
 
 ### Translations
 
