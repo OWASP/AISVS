@@ -19,8 +19,8 @@ For any reuse or distribution, you must clearly communicate the license terms of
 
 ## Project Leads
 
-|                         |                             |                    |                            |
-|-------------------------|-----------------------------|--------------------|----------------------------|
+|                         |                             |                    |                             |
+|-------------------------|-----------------------------|--------------------|-----------------------------|
 | **Jim Manico**          | **Otto Sulin**              | **Rico Komenda**   | **Aras "Russ" Memisyazici** |
 
 ## Contributors and Reviewers
