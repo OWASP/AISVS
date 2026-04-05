@@ -34,7 +34,6 @@ Restrict access to training data, encrypt it at rest and in transit, and validat
 | **1.2.5** | **Verify that** automated integrity monitoring is applied to guard against unauthorized modifications or corruption of training data. | 2 |
 | **1.2.6** | **Verify that** obsolete training data is securely purged or anonymized. | 1 |
 | **1.2.7** | **Verify that** all training dataset versions are uniquely identified, stored immutably, and auditable to support rollback and forensic analysis. | 3 |
-| **1.2.8** | **Verify that** distributed training data collection endpoints authenticate to the central aggregation system using mutual authentication, and that data received from those endpoints is integrity-verified (e.g., via cryptographic checksums or digital signatures generated at source) before being accepted into training pipelines. | 2 |
 
 ---
 
