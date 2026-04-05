@@ -12,20 +12,23 @@ The OWASP Artificial Intelligence Security Verification Standard (AISVS) focuses
 
 ### What is the Current Status of AISVS development?
 
-🎉🎉🎉 **We are just getting started deciding categories for AISVS v1.0** 🎉🎉🎉
+The AISVS has 14 chapters covering AI security requirements across areas such as data governance, model security, prompt injection defense, supply chain integrity, and more.
+
+**Requirements freeze: April 30, 2026.** After this date, no new requirements will be accepted for v1.0. We will continue to accept editorial fixes, clarifications, and improvements to existing requirement language.
+
+**Target release: June 2026** at the OWASP Global AppSec conference in Vienna.
 
 ## How can I help?
 
-Reading through the categories and helping us solidify them would be a great help.
+We are in the final stretch before the requirements freeze. The most valuable contributions right now are:
 
-A few questions to ask yourself as you review the document:
+* **Review existing requirements** — Are they clear, testable, and actionable for developers and security testers? Open an issue if something is ambiguous or could be improved.
+* **Identify gaps** — Is there an AI security concern that the current chapters don't cover? File an issue before the April 30 freeze.
+* **Editorial improvements** — Typos, grammar, consistency, and formatting fixes are always welcome and will continue to be accepted after the freeze.
 
-* If I was a developer or a security tester, would this category be understandable to me?
-* Can I think of a way of improving the category choices to add clarity?
+Please first log ideas, issues, or questions here: <https://github.com/OWASP/AISVS/issues>.
 
-Please first log ideas, issues or questions here: <https://github.com/OWASP/AISVS/issues>. 
-
-We may also ask you to open a pull request, <https://github.com/OWASP/AISVS/pulls>, based on the discussion in the issue. 
+We may also ask you to open a pull request, <https://github.com/OWASP/AISVS/pulls>, based on the discussion in the issue.
 
 ### Translations
 
