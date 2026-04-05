@@ -332,6 +332,7 @@ Manage model deployment, rollback, retirement, and emergency response.
 | Immutable audit records for model changes | 3.2.5 |
 | Deployment validation with failure blocking and override approval | 3.2.6 |
 | Canary / blue-green deployments with automated rollback triggers | 3.3.1 |
+| Parallel deployment cohort isolation (A/B, canary, shadow) | 3.3.5 |
 | Atomic state restoration on rollback (weights, config, adapters, safety models) | 3.3.2 |
 | Emergency model shutdown capability with pre-defined response time | 3.3.3 |
 | Shutdown cascade to tools, MCP, RAG, credentials, memory stores | 3.3.4 |

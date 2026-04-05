@@ -13,7 +13,7 @@ AI systems must implement change control processes that prevent unauthorized or 
 Only authorized models with verified integrity reach production environments.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **3.1.1** | **Verify that** a model registry maintains an inventory of all deployed model artifacts and produces a machine-readable Model/AI Bill of Materials (MBOM/AIBOM) (e.g., SPDX or CycloneDX). | 1 |
 | **3.1.2** | **Verify that** all model artifacts (weights, configurations, tokenizers, base models, fine-tunes, adapters, and safety/policy models) are cryptographically signed by authorized entities. | 1 |
 | **3.1.3** | **Verify that** model artifact signatures and integrity checksums are verified at deployment admission and on load, and unsigned, tampered, or mismatched artifacts are rejected. | 1 |
@@ -27,7 +27,7 @@ Only authorized models with verified integrity reach production environments.
 Models must pass defined security and safety validations before deployment.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **3.2.1** | **Verify that** models undergo automated input validation testing before deployment. | 1 |
 | **3.2.2** | **Verify that** models undergo automated output sanitization testing before deployment. | 1 |
 | **3.2.3** | **Verify that** models undergo safety evaluations with defined pass/fail thresholds before deployment. | 1 |
@@ -43,11 +43,12 @@ Models must pass defined security and safety validations before deployment.
 Model deployments must be controlled, monitored, and reversible.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **3.3.1** | **Verify that** production deployments implement gradual rollout mechanisms (e.g., canary or blue-green deployments) with automated rollback triggers based on pre-agreed error rates, latency thresholds, guardrail alerts, or tool/MCP failure rates. | 2 |
 | **3.3.2** | **Verify that** rollback capabilities restore the complete model state (weights, configurations, dependencies including adapters and safety/policy models) atomically. | 2 |
 | **3.3.3** | **Verify that** emergency model shutdown capabilities can disable model endpoints within a pre-defined response time. | 3 |
 | **3.3.4** | **Verify that** emergency shutdown cascades to all parts of the system including e.g. deactivating agent tool and MCP access, RAG connectors, database and API credentials, and memory-store bindings. | 3 |
+| **3.3.5** | **Verify that** model versions running in parallel (e.g., A/B tests, canary, shadow deployments) use isolated runtime state so that AI-specific shared resources (e.g., KV caches, prompt caches, session state, retrieval indices) are not shared across deployment cohorts. | 2 |
 
 ---
 
@@ -56,7 +57,7 @@ Model deployments must be controlled, monitored, and reversible.
 Model development and training processes must follow secure practices to prevent compromise.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **3.4.1** | **Verify that** model development, testing, and production environments are logically or physically separated with distinct access controls. | 1 |
 | **3.4.2** | **Verify that** separated environments do not share infrastructure, data stores, agent orchestration runtimes, or tool/MCP servers across environment boundaries. | 1 |
 | **3.4.3** | **Verify that** model development artifacts (such as hyperparameters, training scripts, configuration files, prompt templates, agent policies/routing graphs, tool or MCP contracts/schemas, and action catalogs or capability allow-lists) are stored in version control and require peer review approval before use in training. | 1 |
@@ -70,7 +71,7 @@ Model development and training processes must follow secure practices to prevent
 Hosted and provider-managed models may change behavior without notice. These controls help ensure visibility, reassessment, and safe operation when the organization does not control the model weights.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **3.5.1** | **Verify that** hosted model dependencies are inventoried with provider, endpoint, provider-exposed model identifier, version or release identifier when available, and fallback or routing relationships. | 1 |
 | **3.5.2** | **Verify that** provider model, version, or routing changes trigger security re-evaluation before continued use in high-risk workflows. | 2 |
 | **3.5.3** | **Verify that** logs record the exact hosted model identifier returned by the provider, or explicitly record that no such identifier was exposed. | 2 |
@@ -83,7 +84,7 @@ Hosted and provider-managed models may change behavior without notice. These con
 Fine-tuning pipelines are high-privilege operations that can alter deployed model behavior at scale. Multi-stage pipelines compound this risk because a compromise at any intermediate stage produces a subtly altered artifact that subsequent stages accept. Reward models used in RLHF are ML artifacts subject to tampering yet often treated as static infrastructure rather than versioned, validated components.
 
 | # | Description | Level |
-|:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
+| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **3.6.1** | **Verify that** initiating a fine-tuning or retraining run requires authorization from a person who did not request the run (separation of duties). | 3 |
 | **3.6.2** | **Verify that** reward models used in RLHF fine-tuning are versioned, cryptographically signed, and integrity-verified before use in a training run. | 2 |
 | **3.6.3** | **Verify that** RLHF training stages include automated detection of reward hacking or reward model over-optimization (e.g., held-out human-preference probe sets, divergence thresholds, or KL penalty monitoring), with the run blocked from promotion if detection thresholds are exceeded. | 3 |
