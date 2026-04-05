@@ -78,7 +78,7 @@ Isolate untrusted AI models in secure sandboxes and protect sensitive AI workloa
 | **4.5.7** | **Verify that** secure multi-party computation (SMPC) enables collaborative AI training without exposing individual datasets or model parameters. | 3 |
 | **4.5.8** | **Verify that** TEE orchestration performs remote attestation before each workload placement to confirm the execution environment has not been tampered with. | 3 |
 | **4.5.9** | **Verify that** communication channels between TEE orchestration components and execution environments are encrypted and mutually authenticated. | 3 |
-| **4.5.10** | **Verify that** model artifact loading prohibits or restricts serialization formats that permit arbitrary code execution at deserialization time (e.g., Python pickle with unrestricted globals), and that model files are scanned using format-aware tools before loading in any environment. | 1 |
+| **4.5.10** | **Verify that** model artifact loading enforces an explicit allowlist of serialization formats that do not permit arbitrary code execution during deserialization, and that formats capable of arbitrary code execution (e.g., Python pickle with unrestricted globals) are rejected by default. | 1 |
 
 ---
 
