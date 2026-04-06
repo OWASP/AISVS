@@ -22,7 +22,7 @@ The original audit identified 39 references cited across chapters but absent fro
 | NIST IR 8596: Cybersecurity Framework Profile for AI (draft) | Dec 2025 | C04, C13, C11 | https://csrc.nist.gov/pubs/ir/8596/iprd |
 | NIST COSAiS: SP 800-53 Control Overlays for AI | Aug 2025 | C04, C05, C09, C06 | https://csrc.nist.gov/projects/cosais |
 | NIST Cybersecurity Framework 2.0 | Feb 2024 | C4 | https://www.nist.gov/cyberframework |
-| NIST SP 800-207: Zero Trust Architecture | Aug 2020 | C5, C9, C10 | https://csrc.nist.gov/pubs/detail/sp/800-207/final |
+| NIST SP 800-207: Zero Trust Architecture | Aug 2020 | C5, C9, C10 | https://csrc.nist.gov/pubs/sp/800/207/final |
 | NIST SP 800-162: Guide to ABAC | Jan 2014 | C5 | https://csrc.nist.gov/pubs/sp/800/162/final |
 | NIST SP 800-63-3: Digital Identity Guidelines | Jun 2017 | C5 | https://csrc.nist.gov/pubs/sp/800/63/3/final |
 | NIST IR 8360: ML for Access Control Policy Verification | Nov 2021 | C5 | https://csrc.nist.gov/pubs/ir/8360/final |
@@ -161,7 +161,7 @@ The same document is referenced with different URLs across chapters:
 | Document | URLs Used | Recommendation |
 |----------|-----------|----------------|
 | NIST AI RMF 1.0 | `nist.gov/itl/ai-risk-management-framework` (C1, C4, C12), `nist.gov/system/files/documents/...` (C13), `doi.org/10.6028/NIST.AI.100-1` (C13), `nvlpubs.nist.gov/...` (Appendix B) | Standardize on `nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf` |
-| ~~NIST SP 800-207~~ | ~~`csrc.nist.gov/pubs/sp/800/207/final` (C5) vs `csrc.nist.gov/pubs/detail/sp/800-207/final` (C9, C10)~~ | ~~Standardized on `/pubs/detail/` form~~ — **Resolved** |
+| NIST SP 800-207 | `csrc.nist.gov/pubs/sp/800/207/final` (C5) vs `csrc.nist.gov/pubs/detail/sp/800-207/final` (C9, C10) | Standardize on `/pubs/sp/` form |
 | MITRE ATLAS AML.T0024.001 | "Invert AI Model" (C8) vs "Invert ML Model" (C11) | Use consistent title "Invert ML Model" (ATLAS canonical) |
 | OAuth 2.1 | `draft-ietf-oauth-v2-1-11` in Appendix B source vs `draft-ietf-oauth-v2-1-15` (current as of March 2026) | Update to latest draft number |
 | MCP Specification | `modelcontextprotocol.io` (Appendix B) — needs versioned links to authorization spec and November 2025 revision | Add versioned spec links |
