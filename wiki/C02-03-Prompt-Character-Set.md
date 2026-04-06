@@ -165,13 +165,13 @@ The Unicode Consortium defines six restriction levels that provide a ready-made 
 
 | Requirement | Related | Relationship |
 |-------------|---------|-------------|
-| **2.3.1** (Character allow-list) | **C2.2.1** (Unicode normalization) | Character stripping operates upstream of normalization — strip first, then normalize remaining characters. Different layers: rejection vs. transformation |
-| **2.3.1** (Character allow-list) | **C2.1.1** (Prompt injection defense) | Character filtering removes encoding-based evasion vectors before prompt injection classifiers run. Without it, classifiers are blind to invisible payloads |
-| **2.3.2** (Rejection logging) | **C13.1** (Security event logging) | Rejection events should flow into the same structured logging pipeline and SIEM as other security events |
-| **2.3.2** (Rejection logging) | **C2.6** (Rate limiting) | High-volume rejection events from a single source should trigger rate-limiting thresholds |
-| **2.3.1** (Character allow-list) | **C2.7.1** (Multi-modal input validation) | Extracted text from images, audio, and documents (OCR, STT) must pass through the same character allow-list before prompt assembly |
-| **2.3.1** (Character allow-list) | **C11.1** (Model alignment safety) | Character-level filtering is a defense-in-depth layer for adversarial robustness — restricts the input alphabet available to adversaries |
-| **2.3.1** (Character allow-list) | **C6** (Supply chain) | Invisible Unicode in code dependencies (Glassworm, March 2026) can inject payloads into AI coding assistants — character filtering must extend to code inputs |
+| 2.3.1 (Character allow-list) | **C2.2.1** (Unicode normalization) | Character stripping operates upstream of normalization — strip first, then normalize remaining characters. Different layers: rejection vs. transformation |
+| 2.3.1 (Character allow-list) | **C2.1.1** (Prompt injection defense) | Character filtering removes encoding-based evasion vectors before prompt injection classifiers run. Without it, classifiers are blind to invisible payloads |
+| 2.3.2 (Rejection logging) | **C13.1** (Security event logging) | Rejection events should flow into the same structured logging pipeline and SIEM as other security events |
+| 2.3.2 (Rejection logging) | **C2.6** (Rate limiting) | High-volume rejection events from a single source should trigger rate-limiting thresholds |
+| 2.3.1 (Character allow-list) | **C2.7.1** (Multi-modal input validation) | Extracted text from images, audio, and documents (OCR, STT) must pass through the same character allow-list before prompt assembly |
+| 2.3.1 (Character allow-list) | **C11.1** (Model alignment safety) | Character-level filtering is a defense-in-depth layer for adversarial robustness — restricts the input alphabet available to adversaries |
+| 2.3.1 (Character allow-list) | **C6** (Supply chain) | Invisible Unicode in code dependencies (Glassworm, March 2026) can inject payloads into AI coding assistants — character filtering must extend to code inputs |
 
 ---
 

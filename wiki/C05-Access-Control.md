@@ -118,7 +118,7 @@ Current tools, frameworks, and libraries that help implement these controls:
 ## Related Standards & Cross-References
 
 - [NIST SP 800-162: Guide to ABAC](https://csrc.nist.gov/pubs/sp/800/162/final)
-- [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/pubs/detail/sp/800-207/final)
+- [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final)
 - [NIST SP 800-63-3: Digital Identity Guidelines](https://csrc.nist.gov/pubs/sp/800/63/3/final)
 - [NIST IR 8360: ML for Access Control Policy Verification](https://csrc.nist.gov/pubs/ir/8360/final)
 - [NIST NCCoE: Accelerating Adoption of Software and AI Agent Identity and Authorization (Feb 2026)](https://www.nccoe.nist.gov/sites/default/files/2026-02/accelerating-the-adoption-of-software-and-ai-agent-identity-and-authorization-concept-paper.pdf)

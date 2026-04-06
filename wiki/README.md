@@ -12,21 +12,21 @@ The standard is organized into 14 chapters spanning the full AI application secu
 
 | # | Chapter | Reqs | Pages | Type | Updated |
 |---|---------|:----:|:-----:|------|:-------:|
-| C1 | Training Data Integrity & Traceability | 24 | [C01](C01-Training-Data.md) | [5 sections](#c1-training-data-integrity--traceability) | 2026-03-29 |
-| C2 | User Input Validation | 33 | [C02](C02-User-Input-Validation.md) | [8 sections](#c2-user-input-validation) | 2026-04-01 |
-| C3 | Model Lifecycle Management | 26 | [C03](C03-Model-Lifecycle-Management.md) | [6 sections](#c3-model-lifecycle-management) | 2026-03-29 |
-| C4 | Infrastructure & Deployment Security | 46 | [C04](C04-Infrastructure.md) | [8 sections](#c4-infrastructure--deployment-security) | 2026-03-28 |
-| C5 | Access Control & Identity | 27 | [C05](C05-Access-Control.md) | [6 sections](#c5-access-control--identity) | 2026-03-29 |
-| C6 | Supply Chain Security | 34 | [C06](C06-Supply-Chain.md) | [7 sections](#c6-supply-chain-security) | 2026-03-27 |
-| C7 | Model Behavior & Output Control | 33 | [C07](C07-Model-Behavior.md) | [8 sections](#c7-model-behavior--output-control) | 2026-03-28 |
-| C8 | Memory, Embeddings & Vector DB Security | 25 | [C08](C08-Memory-and-Embeddings.md) | [5 sections](#c8-memory-embeddings--vector-db-security) | 2026-03-29 |
-| C9 | Orchestration & Agentic Action Security | 41 | [C09](C09-Orchestration-and-Agents.md) | [8 sections](#c9-orchestration--agentic-action-security) | 2026-03-29 |
-| C10 | MCP Security | 38 | [C10](C10-MCP-Security.md) | [6 sections](#c10-mcp-security) | 2026-03-29 |
-| C11 | Adversarial Robustness | 41 | [C11](C11-Adversarial-Robustness.md) | [10 sections](#c11-adversarial-robustness) | 2026-03-27 |
-| C12 | Privacy Protection | 23 | [C12](C12-Privacy.md) | [6 sections](#c12-privacy-protection) | 2026-03-29 |
-| C13 | Monitoring, Logging & Anomaly Detection | 45 | [C13](C13-Monitoring-and-Logging.md) | [7 sections](#c13-monitoring-logging--anomaly-detection) | 2026-03-28 |
-| C14 | Human Oversight & Accountability | 24 | [C14](C14-Human-Oversight.md) | [7 sections](#c14-human-oversight--accountability) | 2026-03-29 |
-| | **Total** | **460** | **115 pages** | | |
+| C1 | Training Data Integrity & Traceability | 27 | [C01](C01-Training-Data.md) | [5 sections](#c1-training-data-integrity--traceability) | 2026-03-29 |
+| C2 | User Input Validation | 40 | [C02](C02-User-Input-Validation.md) | [8 sections](#c2-user-input-validation) | 2026-04-01 |
+| C3 | Model Lifecycle Management | 30 | [C03](C03-Model-Lifecycle-Management.md) | [6 sections](#c3-model-lifecycle-management) | 2026-03-29 |
+| C4 | Infrastructure & Deployment Security | 53 | [C04](C04-Infrastructure.md) | [8 sections](#c4-infrastructure--deployment-security) | 2026-03-28 |
+| C5 | Access Control & Identity | 31 | [C05](C05-Access-Control.md) | [6 sections](#c5-access-control--identity) | 2026-03-29 |
+| C6 | Supply Chain Security | 36 | [C06](C06-Supply-Chain.md) | [7 sections](#c6-supply-chain-security) | 2026-03-27 |
+| C7 | Model Behavior & Output Control | 36 | [C07](C07-Model-Behavior.md) | [8 sections](#c7-model-behavior--output-control) | 2026-03-28 |
+| C8 | Memory, Embeddings & Vector DB Security | 28 | [C08](C08-Memory-and-Embeddings.md) | [5 sections](#c8-memory-embeddings--vector-db-security) | 2026-03-29 |
+| C9 | Orchestration & Agentic Action Security | 48 | [C09](C09-Orchestration-and-Agents.md) | [8 sections](#c9-orchestration--agentic-action-security) | 2026-03-29 |
+| C10 | MCP Security | 42 | [C10](C10-MCP-Security.md) | [6 sections](#c10-mcp-security) | 2026-03-29 |
+| C11 | Adversarial Robustness | 44 | [C11](C11-Adversarial-Robustness.md) | [10 sections](#c11-adversarial-robustness) | 2026-03-27 |
+| C12 | Privacy Protection | 26 | [C12](C12-Privacy.md) | [6 sections](#c12-privacy-protection) | 2026-03-29 |
+| C13 | Monitoring, Logging & Anomaly Detection | 47 | [C13](C13-Monitoring-and-Logging.md) | [7 sections](#c13-monitoring-logging--anomaly-detection) | 2026-03-28 |
+| C14 | Human Oversight & Accountability | 26 | [C14](C14-Human-Oversight.md) | [7 sections](#c14-human-oversight--accountability) | 2026-03-29 |
+| | **Total** | **514** | **115 pages** | | |
 
 ---
 
