@@ -94,14 +94,14 @@ As of March 2026, the industry is converging on stricter validation paradigms. O
 
 | Requirement | Related Chapters | Relationship |
 |-------------|-----------------|--------------|
-| 2.4.1 (Schema enforcement) | [C10: MCP Security](C10-MCP-Security) | MCP tool `inputSchema` enforcement is a specific instance of this requirement. See C10.1 for MCP-specific schema controls. |
-| 2.4.1 (Schema enforcement) | [C09: Orchestration & Agents](C09-Orchestration-and-Agents) | Agent tool-calling requires schema validation of model-generated arguments before execution. See C9.3 for tool authorization controls. |
-| 2.4.2 (Token limits) | [C13: Monitoring & Logging](C13-Monitoring-and-Logging) | Token consumption metrics feed into C13 monitoring requirements for resource usage tracking. |
-| 2.4.4 (Constant-time validation) | [C04: Infrastructure](C04-Infrastructure) | ReDoS and algorithmic DoS protections align with C4.2 resource isolation requirements. |
-| 2.4.5 (Validation logging) | [C13: Monitoring & Logging](C13-Monitoring-and-Logging) | Validation failure logs are a primary input for C13 security event correlation and anomaly detection. |
-| 2.4.1–2.4.3 | [C02.1: Prompt Injection Defense](C02-01-Prompt-Injection-Defense) | Schema validation is a deterministic pre-filter complementing the probabilistic defenses in C2.1. The OWASP Prompt Injection Prevention Cheat Sheet identifies schema validation as layer 1 of a five-layer defense model. |
-| 2.4.6 (Constant-time validation) | [C06: Supply Chain](C06-Supply-Chain) | Validator libraries themselves can be vulnerable — CVE-2025-69873 in ajv demonstrates supply chain risk in validation dependencies. C6.2 framework/library scanning should cover schema validation libraries. |
-| 2.4.7 (Validation logging) | [C13: Monitoring & Logging](C13-Monitoring-and-Logging) | Validation failure logs are a primary input for C13 security event correlation. OpenTelemetry GenAI semantic conventions provide the common instrumentation framework. |
+| **2.4.1** (Schema enforcement) | [C10: MCP Security](C10-MCP-Security) | MCP tool `inputSchema` enforcement is a specific instance of this requirement. See C10.1 for MCP-specific schema controls. |
+| **2.4.1** (Schema enforcement) | [C09: Orchestration & Agents](C09-Orchestration-and-Agents) | Agent tool-calling requires schema validation of model-generated arguments before execution. See C9.3 for tool authorization controls. |
+| **2.4.2** (Token limits) | [C13: Monitoring & Logging](C13-Monitoring-and-Logging) | Token consumption metrics feed into C13 monitoring requirements for resource usage tracking. |
+| **2.4.4** (Constant-time validation) | [C04: Infrastructure](C04-Infrastructure) | ReDoS and algorithmic DoS protections align with C4.2 resource isolation requirements. |
+| **2.4.5** (Validation logging) | [C13: Monitoring & Logging](C13-Monitoring-and-Logging) | Validation failure logs are a primary input for C13 security event correlation and anomaly detection. |
+| **2.4.1–2.4.3** | [C02.1: Prompt Injection Defense](C02-01-Prompt-Injection-Defense) | Schema validation is a deterministic pre-filter complementing the probabilistic defenses in C2.1. The OWASP Prompt Injection Prevention Cheat Sheet identifies schema validation as layer 1 of a five-layer defense model. |
+| **2.4.6** (Constant-time validation) | [C06: Supply Chain](C06-Supply-Chain) | Validator libraries themselves can be vulnerable — CVE-2025-69873 in ajv demonstrates supply chain risk in validation dependencies. C6.2 framework/library scanning should cover schema validation libraries. |
+| **2.4.7** (Validation logging) | [C13: Monitoring & Logging](C13-Monitoring-and-Logging) | Validation failure logs are a primary input for C13 security event correlation. OpenTelemetry GenAI semantic conventions provide the common instrumentation framework. |
 
 ---
 

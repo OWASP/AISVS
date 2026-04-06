@@ -145,10 +145,10 @@ Some requirement IDs appear across multiple AD categories, which is expected for
 
 | Requirement | Categories | Why |
 |------------|------------|-----|
-| 4.5.4 (TEE/confidential computing) | AD.3, AD.10 | Both encryption and isolation |
-| 9.4.2 (execution chain signing) | AD.6, AD.16 | Both integrity and audit |
-| 7.3.2 (PII redaction) | AD.8, AD.14 | Both output filtering and privacy |
-| 11.5.4 (model watermarking) | AD.6, AD.15 | Both integrity and adversarial defense |
+| **4.5.4** (TEE/confidential computing) | AD.3, AD.10 | Both encryption and isolation |
+| **9.4.2** (execution chain signing) | AD.6, AD.16 | Both integrity and audit |
+| **7.3.2** (PII redaction) | AD.8, AD.14 | Both output filtering and privacy |
+| **11.5.4** (model watermarking) | AD.6, AD.15 | Both integrity and adversarial defense |
 
 ---
 
