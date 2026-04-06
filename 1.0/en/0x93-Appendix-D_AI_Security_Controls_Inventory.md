@@ -100,7 +100,7 @@ Protect data moving between services, agents, tools, and edge devices.
 | Authenticated accelerator interconnects (NVLink, PCIe, InfiniBand) | 4.7.7 |
 | Encrypted edge-to-cloud communication with bandwidth throttling | 4.8.6 |
 | Log encryption in transit | 13.1.3 |
-| MCP client minimum protocol version enforcement against downgrade negotiation | 10.3.6 |
+| MCP client minimum protocol version enforcement against downgrade negotiation | 10.3.7 |
 
 **Common pitfalls:** allowing plaintext interconnects in multi-tenant GPU clusters; using SSE over public internet without TLS; not validating certificates on internal service calls.
 
