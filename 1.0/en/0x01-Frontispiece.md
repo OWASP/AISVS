@@ -47,3 +47,4 @@ The following individuals have contributed to the AISVS through requirements aut
 * [mbhatt1](https://github.com/mbhatt1)
 * [cciprofm](https://github.com/cciprofm)
 * [thornshadow99](https://github.com/thornshadow99)
+* [Rakesh Sharma](https://github.com/rakeshcorp)
