@@ -4,7 +4,9 @@
 
 Training data must be sourced, handled, and maintained in a way that preserves origin traceability, integrity, and quality. The core security concern is ensuring data has not been tampered with, poisoned, or corrupted. Security-relevant bias (e.g., skewed abuse-detection training data that allows attackers to bypass controls) is treated as a possible consequence of compromised or unvalidated data, not as a standalone control category.
 
-> **Scope note — bias.** AISVS addresses bias only where it introduces security risk (e.g., bypass of abuse detection, authentication heuristics, or automated trust decisions). Broader fairness governance requirements are out of scope; see ISO/IEC 42001 or the NIST AI RMF for general fairness and ethics guidance.
+> **Scope note -- bias.** AISVS addresses bias only where it introduces security risk (e.g., bypass of abuse detection, authentication heuristics, or automated trust decisions). Broader fairness governance requirements are out of scope; see e.g. ISO/IEC 42001 or the NIST AI RMF for general fairness and ethics guidance.
+
+> **Scope note -- general data security.** Generic data security control details for access control, logging, encryption at rest and in transit, and data retention/purging are covered by ASVS v5 (V8, V11, V12, V14, V16) and apply to training data storage and labeling systems. This section sets on higher level requirements with levels that are specific to AI.
 
 ---
 
@@ -39,7 +41,7 @@ Restrict access to training data, encrypt it at rest and in transit, and validat
 
 ## C1.3 Data Labeling and Annotation Security
 
-Ensure labeling and annotation processes are access-controlled, auditable, and protect sensitive information.
+Ensure labeling and annotation processes are access-controlled and auditable.
 
 | # | Description | Level |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
@@ -47,8 +49,7 @@ Ensure labeling and annotation processes are access-controlled, auditable, and p
 | **1.3.2** | **Verify that** all labeling activities are recorded in audit logs, including the annotator identity, timestamp, and action performed. | 1 |
 | **1.3.3** | **Verify that** annotator identity metadata is exported and retained alongside the dataset so that every annotation or preference pair can be attributed to a specific, verified human annotator throughout the training pipeline. | 1 |
 | **1.3.4** | **Verify that** cryptographic hashes or digital signatures are applied to labeling artifacts, annotation data, and fine-tuning feedback records (including RLHF preference pairs) to ensure their integrity and authenticity. | 2 |
-| **1.3.5** | **Verify that** labeling audit logs are tamper-evident. | 2 |
-| **1.3.6** | **Verify that** sensitive information in labels is redacted, anonymized, or encrypted using appropriate granularity at rest and in transit. | 2 |
+| **1.3.5** | **Verify that** sensitive information in labels is redacted, anonymized, or encrypted using appropriate granularity at rest and in transit. | 2 |
 
 ---
 
