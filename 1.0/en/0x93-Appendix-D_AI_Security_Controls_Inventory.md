@@ -72,7 +72,7 @@ Protect stored data, models, secrets, logs, and backups through encryption.
 | Control / Technique | Requirement IDs |
 | --- | --- |
 | Training data encryption at rest | 1.2.3 |
-| Labeled data encryption | 1.3.6 |
+| Labeled data encryption | 1.3.5 |
 | Secrets encryption at rest in secrets management system | 4.4.1 |
 | Log encryption at rest | 13.1.3 |
 | TEE memory encryption and integrity protection | 4.5.4 |
@@ -359,7 +359,7 @@ Protect personal data and enforce data subject rights throughout the AI lifecycl
 | Control / Technique | Requirement IDs |
 | --- | --- |
 | Training data minimization (exclude unnecessary features, PII, leaked test data) | 1.1.2 |
-| Labeled data anonymization and granular redaction | 1.3.6 |
+| Labeled data anonymization and granular redaction | 1.3.5 |
 | Direct and quasi-identifier removal | 12.1.1 |
 | k-anonymity and l-diversity measurement with automated audits | 12.1.2 |
 | Synthetic data with formal re-identification risk bounds | 12.1.4 |
@@ -409,7 +409,7 @@ Test for and defend against evasion, extraction, inversion, poisoning, and align
 | Self-modification restriction with scope bounds and rate limits | 11.9.1, 11.9.4 |
 | Self-modification reversibility and integrity verification enabling rollback to known-good state | 11.9.6 |
 | Data augmentation with perturbed inputs for training robustness | 1.4.4 |
-| RONI (Reject On Negative Influence) filtering — influence-score each training sample and reject those that degrade held-out performance beyond a threshold (implementation example for 1.4.2) | 1.4.2 |
+| RONI (Reject On Negative Influence) filtering -- influence-score each training sample and reject those that degrade held-out performance beyond a threshold (implementation example for 1.4.2) | 1.4.2 |
 | Gradient fingerprinting / per-sample gradient analysis — detect abnormal gradient norms or directions indicating poisoned samples during training (implementation example for 1.4.2) | 1.4.2 |
 | Activation clustering — cluster intermediate activations to detect backdoor-associated subpopulations (implementation example for 1.4.2) | 1.4.2 |
 
