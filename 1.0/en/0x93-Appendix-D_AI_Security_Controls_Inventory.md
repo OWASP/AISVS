@@ -56,6 +56,9 @@ Enforce access decisions across users, agents, tools, data, and MCP resources us
 | Wildcard and overly broad scope rejection | 10.2.14 |
 | MCP policy enforcement that model output cannot bypass | 10.2.4 |
 | Output format restriction by permission level | 5.4.3 |
+| MCP tool namespace collision detection and trust-ranked shadowing prevention | 10.6.5 |
+| Just-in-time access provisioning for model weights, training pipelines, and production AI configuration | 5.2.9 |
+| Peer authorization policy (approved agent registry) for agent-to-agent task delegation | 9.6.7 |
 | Dedicated scoped credentials per agent, not shared across swarm peers | 9.8.7 |
 
 **Common pitfalls:** granting broad OAuth scopes instead of minimal required; not re-evaluating authorization when context changes mid-session; allowing model-generated output to override hard policy decisions.
@@ -69,7 +72,7 @@ Protect stored data, models, secrets, logs, and backups through encryption.
 | Control / Technique | Requirement IDs |
 | --- | --- |
 | Training data encryption at rest | 1.2.3 |
-| Labeled data encryption | 1.3.6 |
+| Labeled data encryption | 1.3.5 |
 | Secrets encryption at rest in secrets management system | 4.4.1 |
 | Log encryption at rest | 13.1.3 |
 | TEE memory encryption and integrity protection | 4.5.4 |
@@ -97,6 +100,7 @@ Protect data moving between services, agents, tools, and edge devices.
 | Authenticated accelerator interconnects (NVLink, PCIe, InfiniBand) | 4.7.7 |
 | Encrypted edge-to-cloud communication with bandwidth throttling | 4.8.6 |
 | Log encryption in transit | 13.1.3 |
+| MCP client minimum protocol version enforcement against downgrade negotiation | 10.3.7 |
 
 **Common pitfalls:** allowing plaintext interconnects in multi-tenant GPU clusters; using SSE over public internet without TLS; not validating certificates on internal service calls.
 
@@ -143,7 +147,9 @@ Verify authenticity and detect tampering of models, artifacts, messages, logs, a
 | MCP component signature and checksum verification | 10.1.1 |
 | MCP schema integrity signing and tool definition hash tracking | 10.4.2, 10.4.5 |
 | DAG cryptographic signatures and tamper-evident storage | 13.7.3 |
+| Publisher key pinning per source registry with rotation re-approval | 6.4.6 |
 | Document metadata tag immutability after initial ingestion write | 8.1.7 |
+| Agent persisted state integrity protection (MAC/signature, rejection on failure) | 9.4.6 |
 
 **Common pitfalls:** using mutable `:latest` tags instead of immutable digests; not re-verifying tool definition hashes between MCP invocations; missing replay protection on agent messages.
 
@@ -157,6 +163,9 @@ Validate, normalize, and constrain all inputs before they reach models or downst
 | --- | --- |
 | Prompt injection detection ruleset / service | 2.1.1 |
 | Instruction hierarchy enforcement (system > developer > user) | 2.1.2 |
+| Per-request demonstration count limits in context window | 2.1.5 |
+| Many-shot jailbreaking pattern detection (systematic in-context behavioral override) | 2.1.6 |
+| In-context behavioral override attempts classified as prompt injection events | 2.1.7 |
 | Third-party content sanitization | 2.1.3 |
 | Unicode NFC normalization and homoglyph mapping | 2.2.1 |
 | Control / invisible character removal | 2.2.1, 2.2.5 |
@@ -304,6 +313,7 @@ Verify origin and authenticity, scan dependencies, and enforce integrity of mode
 | Expired and unmaintained dependency detection | 6.3.3 |
 | Approved source and internal registry enforcement | 6.4.1 |
 | Malicious layer and trojan trigger scanning | 6.1.2 |
+| Unsafe deserialization format prohibition and format-aware scanning at load time | 4.5.10 |
 | External dataset poisoning assessment (fingerprinting, outlier detection) | 6.5.1 |
 | Copyright and PII detection in external datasets | 6.5.2 |
 | Dataset origin and lineage documentation | 6.5.3 |
@@ -327,6 +337,7 @@ Manage model deployment, rollback, retirement, and emergency response.
 | Immutable audit records for model changes | 3.2.5 |
 | Deployment validation with failure blocking and override approval | 3.2.6 |
 | Canary / blue-green deployments with automated rollback triggers | 3.3.1 |
+| Parallel deployment cohort isolation (A/B, canary, shadow) | 3.3.5 |
 | Atomic state restoration on rollback (weights, config, adapters, safety models) | 3.3.2 |
 | Emergency model shutdown capability with pre-defined response time | 3.3.3 |
 | Shutdown cascade to tools, MCP, RAG, credentials, memory stores | 3.3.4 |
@@ -348,7 +359,7 @@ Protect personal data and enforce data subject rights throughout the AI lifecycl
 | Control / Technique | Requirement IDs |
 | --- | --- |
 | Training data minimization (exclude unnecessary features, PII, leaked test data) | 1.1.2 |
-| Labeled data anonymization and granular redaction | 1.3.6 |
+| Labeled data anonymization and granular redaction | 1.3.5 |
 | Direct and quasi-identifier removal | 12.1.1 |
 | k-anonymity and l-diversity measurement with automated audits | 12.1.2 |
 | Synthetic data with formal re-identification risk bounds | 12.1.4 |
@@ -398,7 +409,7 @@ Test for and defend against evasion, extraction, inversion, poisoning, and align
 | Self-modification restriction with scope bounds and rate limits | 11.9.1, 11.9.4 |
 | Self-modification reversibility and integrity verification enabling rollback to known-good state | 11.9.6 |
 | Data augmentation with perturbed inputs for training robustness | 1.4.4 |
-| RONI (Reject On Negative Influence) filtering — influence-score each training sample and reject those that degrade held-out performance beyond a threshold (implementation example for 1.4.2) | 1.4.2 |
+| RONI (Reject On Negative Influence) filtering -- influence-score each training sample and reject those that degrade held-out performance beyond a threshold (implementation example for 1.4.2) | 1.4.2 |
 | Gradient fingerprinting / per-sample gradient analysis — detect abnormal gradient norms or directions indicating poisoned samples during training (implementation example for 1.4.2) | 1.4.2 |
 | Activation clustering — cluster intermediate activations to detect backdoor-associated subpopulations (implementation example for 1.4.2) | 1.4.2 |
 
@@ -508,6 +519,7 @@ Require human review and approval for high-impact, irreversible, or safety-criti
 | High-risk model quarantine with human review and sign-off | 6.1.4 |
 | Post-condition outcome checking with containment on mismatch | 9.7.3 |
 | Compensating actions and transactional rollback on failure | 9.2.3 |
+| Intermediate operational degradation states (tool disable, model swap, read-only, source removal) | 14.1.5 |
 
 **Common pitfalls:** not binding approval to exact parameters allowing bait-and-switch; confirmation tokens without quick expiration; missing post-condition checks after approved actions execute.
 

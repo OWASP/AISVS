@@ -1,3 +1,11 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="images/aisvs-logo-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="images/aisvs-logo-light.png">
+    <img alt="OWASP AISVS Logo" src="images/aisvs-logo-light.png" width="520">
+  </picture>
+</p>
+
 # OWASP Artificial Intelligence Security Verification Standard (AISVS)
 
 [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
