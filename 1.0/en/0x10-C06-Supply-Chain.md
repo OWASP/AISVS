@@ -4,6 +4,8 @@
 
 AI supply-chain attacks exploit third-party models, frameworks, or datasets to embed backdoors, bias, or exploitable code. These controls provide end-to-end traceability, vulnerability management, and monitoring to protect the entire model lifecycle.
 
+> **Scope note:** General software supply chain controls — including CVE-based promotion gates, lockfile version pinning, immutable container digests, and CI/CD audit log streaming — are governed by [OWASP ASVS v5](https://owasp.org/www-project-application-security-verification-standard/) (V15, V16). This chapter focuses on AI-specific supply chain concerns including model origin integrity, AI framework scanning, third-party dataset risk, and AI BOM generation.
+
 ---
 
 ## C6.1 Pretrained Model Vetting & Origin Integrity
@@ -28,7 +30,6 @@ Continuously scan AI frameworks and libraries for vulnerabilities and malicious 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **6.2.1** | **Verify that** CI pipelines run dependency scanners on AI frameworks and critical libraries. | 1 |
-| **6.2.2** | **Verify that** critical and high-severity vulnerabilities block promotion to production images. | 2 |
 | **6.2.3** | **Verify that** static code analysis runs on forked or vendored AI libraries. | 2 |
 | **6.2.4** | **Verify that** framework upgrade proposals include a security impact assessment referencing public vulnerability feeds. | 2 |
 | **6.2.5** | **Verify that** runtime sensors alert on unexpected dynamic library loads that deviate from the signed SBOM. | 3 |
@@ -41,8 +42,6 @@ Pin every dependency to immutable digests and verify builds to guarantee tamper-
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **6.3.1** | **Verify that** all package managers enforce version pinning via lockfiles. | 1 |
-| **6.3.2** | **Verify that** immutable digests are used instead of mutable tags in container references. | 1 |
 | **6.3.3** | **Verify that** expired or unmaintained dependencies trigger automated notifications to update or replace pinned versions. | 2 |
 | **6.3.4** | **Verify that** build attestations are retained for a period defined by organizational policy for audit traceability. | 3 |
 | **6.3.5** | **Verify that** reproducible-build checks compare hashes across CI runs to ensure identical outputs. | 3 |
@@ -85,7 +84,6 @@ Detect supply-chain threats early through vulnerability feeds, audit-log analyti
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **6.6.1** | **Verify that** incident response playbooks include rollback procedures for compromised models or libraries. | 2 |
-| **6.6.2** | **Verify that** CI/CD audit logs are streamed to centralized security monitoring in real time. | 2 |
 | **6.6.3** | **Verify that** threat-intelligence enrichment tags AI-specific indicators (e.g., model-poisoning indicators of compromise) in alert triage. | 3 |
 | **6.6.4** | **Verify that** security monitoring includes detection rules for anomalous package pulls and tampered or unexpected build steps in the CI/CD pipeline. | 2 |
 

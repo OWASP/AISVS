@@ -4,13 +4,13 @@
 
 This section provides requirements for delivering real-time and forensic visibility into what the model and other AI components see, do, and return, so threats can be detected, triaged, and learned from.
 
+> **Scope note:** General logging infrastructure controls — including secure log storage with retention policies, log encryption at rest and in transit, SIEM integration using standard formats, and success/failure rate tracking — are governed by [OWASP ASVS v5](https://owasp.org/www-project-application-security-verification-standard/) (V11, V12, V16). This chapter focuses on AI-specific monitoring concerns including AI interaction metadata logging, abuse detection, drift monitoring, hallucination detection, and agent behavior analysis.
+
 ## C13.1 Request & Response Logging
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **13.1.1** | **Verify that** AI interactions are logged with security-relevant metadata (e.g. timestamp, user ID, session ID, model version, token count, input hash, system prompt version, confidence score, safety filter outcome, and safety filter decisions) without logging prompt or response content by default. | 1 |
-| **13.1.2** | **Verify that** logs are stored in secure, access-controlled repositories with appropriate retention policies and backup procedures. | 1 |
-| **13.1.3** | **Verify that** log storage systems implement encryption at rest and in transit to protect sensitive information contained in logs. | 1 |
 | **13.1.4** | **Verify that** sensitive data in prompts and outputs is automatically redacted or masked before logging, with configurable redaction rules for PII, credentials, and proprietary information. | 1 |
 | **13.1.5** | **Verify that** policy decisions and safety filtering actions are logged with sufficient detail to enable audit and debugging of content moderation systems. | 2 |
 | **13.1.6** | **Verify that** log integrity is protected through e.g. cryptographic signatures or write-only storage. | 2 |
@@ -24,7 +24,6 @@ This section provides requirements for delivering real-time and forensic visibil
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **13.2.1** | **Verify that** the system detects and alerts on known jailbreak patterns, prompt injection attempts, and adversarial inputs using signature-based detection. | 1 |
-| **13.2.2** | **Verify that** the system integrates with existing Security Information and Event Management (SIEM) platforms using standard log formats and protocols. | 1 |
 | **13.2.3** | **Verify that** enriched security events include AI-specific context such as model identifiers, confidence scores, and safety filter decisions. | 2 |
 | **13.2.4** | **Verify that** behavioral anomaly detection identifies unusual conversation patterns, excessive retry attempts, or systematic probing behaviors. | 2 |
 | **13.2.5** | **Verify that** real-time alerting mechanisms notify security teams when potential policy violations or attack attempts are detected. | 2 |
@@ -61,7 +60,6 @@ Monitor and detect drift and degradation across model outputs, input distributio
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **13.4.1** | **Verify that** operational metrics including request latency, token consumption, memory usage, and throughput are continuously collected and monitored. | 1 |
-| **13.4.2** | **Verify that** success and failure rates are tracked with categorization of error types and their root causes. | 1 |
 | **13.4.3** | **Verify that** resource utilization monitoring includes GPU/CPU usage, memory consumption, and storage requirements with alerting on threshold breaches. | 2 |
 | **13.4.4** | **Verify that** token usage is tracked at granular attribution levels including per user, per session, per feature endpoint, and per team or workspace. | 2 |
 | **13.4.5** | **Verify that** output-to-input token ratio anomalies are detected and alerted. | 2 |

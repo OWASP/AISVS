@@ -4,6 +4,8 @@
 
 AI infrastructure must be hardened against privilege escalation, supply chain tampering, and lateral movement through secure configuration, runtime isolation, trusted deployment pipelines, and comprehensive monitoring. Only validated and authorized infrastructure components reach production through controlled processes that ensure security, integrity, and auditability.
 
+> **Scope note:** General infrastructure hardening controls — including OS-level least-privilege, seccomp/AppArmor/SELinux sandboxing, read-only filesystems, default-deny network policies, mTLS, secrets management, secret rotation, and backup isolation — are governed by [OWASP ASVS v5](https://owasp.org/www-project-application-security-verification-standard/) (V6, V8, V11, V12, V13, V14). This chapter extends those requirements where AI-specific implementation concerns apply. Implementers should satisfy both ASVS and AISVS infrastructure controls.
+
 ---
 
 ## C4.1 Runtime Environment Isolation
@@ -12,9 +14,6 @@ Prevent container escapes and privilege escalation through OS-level isolation pr
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------ | :---: |
-| **4.1.1** | **Verify that** all AI workloads run with minimal permissions needed on the operating system, by e.g. dropping unnecessary Linux capabilities in case of a container. | 1 |
-| **4.1.2** | **Verify that** workloads are protected by technologies limiting exploitation such as sandboxing, seccomp profiles, AppArmor, SELinux or similar, and that the configuration is appropriate. | 1 |
-| **4.1.3** | **Verify that** workloads run with a read-only root filesystem, and that any writable mounts are explicitly defined and hardened with restrictive options that prevent execution and privilege escalation (e.g., noexec, nosuid, nodev). | 2 |
 | **4.1.4** | **Verify that** runtime monitoring detects privilege-escalation and container-escape behaviors and automatically terminates offending processes. | 3 |
 | **4.1.5** | **Verify that** high-risk AI workloads run in hardware-isolated environments (e.g., TEEs, trusted hypervisors, or bare-metal nodes) only after successful remote attestation. | 3 |
 
@@ -40,13 +39,8 @@ Implement zero-trust networking with default-deny policies and encrypted communi
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------ | :---: |
-| **4.3.1** | **Verify that** network policies enforce default-deny ingress and egress, with only required services explicitly allowed. | 1 |
 | **4.3.2** | **Verify that** AI workloads across environments (development, testing, production) run in isolated network segments with no direct internet access and no cross-environment network connectivity. | 1 |
-| **4.3.3** | **Verify that** administrative and remote access protocols and access to cloud metadata services are restricted and require strong authentication. | 1 |
-| **4.3.4** | **Verify that** inter-service communication uses mutual TLS with certificate validation and regular automated rotation. | 2 |
 | **4.3.5** | **Verify that** egress traffic is restricted to approved destinations and all requests are logged. | 3 |
-| **4.3.6** | **Verify that** environments (development, testing, production) use separate identity roles and security groups with no shared principals or credentials across environment boundaries. | 1 |
-
 ---
 
 ## C4.4 Secrets & Cryptographic Key Management
@@ -55,12 +49,7 @@ Protect secrets and cryptographic keys with secure storage, automated rotation, 
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------ | :---: |
-| **4.4.1** | **Verify that** secrets are stored in a dedicated secrets management system with encryption at rest and isolated from application workloads. | 1 |
-| **4.4.2** | **Verify that** access to production secrets requires strong authentication. | 1 |
-| **4.4.3** | **Verify that** secrets are deployed to applications at runtime through a dedicated secrets management system. Secrets must never be embedded in source code, configuration files, build artifacts, container images, or environment variables. | 1 |
 | **4.4.4** | **Verify that** cryptographic keys are generated and stored in hardware-backed modules (e.g., HSMs, cloud KMS). | 2 |
-| **4.4.5** | **Verify that** secrets rotation is automated. | 2 |
-
 ---
 
 ## C4.5 AI Workload Sandboxing & Validation
@@ -90,9 +79,6 @@ Prevent resource exhaustion attacks and ensure fair resource allocation through 
 | :--------: | ------------------------------------------------------------------------------------------ | :---: |
 | **4.6.1** | **Verify that** workload resource consumption is limited through quotas and limits (e.g., CPU, memory, GPU) to mitigate denial-of-service attacks. | 1 |
 | **4.6.2** | **Verify that** resource exhaustion triggers automated protections (e.g., rate limiting or workload isolation) once defined CPU, memory, or request thresholds are exceeded. | 2 |
-| **4.6.3** | **Verify that** backup systems run in isolated networks with separate credentials that are not shared with production workloads. | 2 |
-| **4.6.4** | **Verify that** backup storage is either air-gapped or implements WORM (write-once-read-many) protection to prevent unauthorized modification or deletion. | 2 |
-
 ---
 
 ## C4.7 AI Hardware Security

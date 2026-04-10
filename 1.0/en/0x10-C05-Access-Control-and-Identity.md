@@ -4,6 +4,8 @@
 
 Effective access control for AI systems requires robust identity management, context-aware authorization, and runtime enforcement following zero-trust principles. These controls ensure that humans, services, and autonomous agents only interact with models, data, and computational resources within explicitly granted scopes, with continuous verification and audit capabilities.
 
+> **Scope note:** General identity management controls — including centralized IdP federation (OIDC/SAML), access control audit logging, tamper-evident log storage, and real-time alerting on unauthorized access — are governed by [OWASP ASVS v5](https://owasp.org/www-project-application-security-verification-standard/) (V6, V16). This chapter focuses on AI-specific access control concerns including query-time enforcement, output DLP, multi-tenant isolation, and autonomous agent authorization.
+
 ---
 
 ## C5.1 Identity Management & Authentication
@@ -12,7 +14,6 @@ Establish verified identities for all entities interacting with AI systems, with
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
-| **5.1.1** | **Verify that** all human users and service principals authenticate through a centralized identity provider using industry-standard federation protocols (e.g., OIDC, SAML). | 1 |
 | **5.1.2** | **Verify that** high-risk operations (model deployment, weight export, training data access, production configuration changes) require multi-factor authentication or step-up authentication with session re-validation. | 2 |
 | **5.1.3** | **Verify that** AI agents in federated or multi-system deployments authenticate via short-lived, cryptographically signed authentication tokens (e.g., signed JWT assertions) with a maximum lifetime appropriate to the risk level and including cryptographic proof of origin. | 3 |
 
@@ -25,10 +26,7 @@ Implement access controls for all AI resources with explicit permission models a
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
 | **5.2.1** | **Verify that** every AI resource (datasets, models, endpoints, vector collections, embedding indices, compute instances) enforces access controls (e.g., RBAC, ABAC) with explicit allow-lists and default-deny policies. | 1 |
-| **5.2.2** | **Verify that** all access control modifications are logged with timestamps, actor identities, resource identifiers, and permission changes. | 1 |
-| **5.2.3** | **Verify that** access control audit logs are stored immutably and are tamper-evident. | 2 |
 | **5.2.4** | **Verify that** data classification labels (PII, PHI, proprietary, etc.) automatically propagate to derived resources (embeddings, prompt caches, model outputs). | 2 |
-| **5.2.5** | **Verify that** unauthorized access attempts and privilege escalation events trigger real-time alerts with contextual metadata. | 2 |
 | **5.2.6** | **Verify that** authorization decisions are externalized to a dedicated policy decision point (e.g., OPA, Cedar, or equivalent). | 3 |
 | **5.2.7** | **Verify that** policies evaluate dynamic attributes at runtime including user role or group, resource classification, request context, tenant isolation, and temporal constraints. | 3 |
 | **5.2.8** | **Verify that** policy cache TTL values are defined based on resource sensitivity, with shorter TTLs for high-sensitivity resources, and that cache invalidation capabilities are available. | 3 |
