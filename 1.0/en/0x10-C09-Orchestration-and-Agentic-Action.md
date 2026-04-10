@@ -110,7 +110,7 @@ Prevent "technically authorized but unintended" actions by binding execution to 
 | **9.7.3** | **Verify that** post-execution checks detect unintended side effects. | 2 |
 | **9.7.4** | **Verify that** any mismatch between intended outcome and actual results triggers containment and, where supported, compensating actions. | 2 |
 | **9.7.5** | **Verify that** prompt templates and agent policy configurations retrieved from a remote source are integrity-verified at load time against their approved versions (e.g., via hashes or signatures). | 3 |
-| **9.7.6** | **Verify that** agent-generated outputs cannot serve as the sole authorization signal or parameter source for write operations to persistent external state (e.g., file systems, databases, code repositories, configuration stores, or external APIs), and that such writes require either explicit human authorization or an independent policy-based authorization check that evaluates the write against the original user intent rather than the model's output. | 2 |
+| **9.7.6** | **Verify that** all write operations to persistent external state are authorized by either explicit human approval or an independent policy-based authorization mechanism that evaluates the operation against the original user intent, and not solely on agent-generated output. | 2 |
 
 ---
 
