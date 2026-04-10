@@ -166,25 +166,18 @@ Validate, normalize, and constrain all inputs before they reach models or downst
 | Per-request demonstration count limits in context window | 2.1.5 |
 | Many-shot jailbreaking pattern detection (systematic in-context behavioral override) | 2.1.6 |
 | In-context behavioral override attempts classified as prompt injection events | 2.1.7 |
-| Third-party content sanitization | 2.1.3 |
-| Unicode NFC normalization and homoglyph mapping | 2.2.1 |
-| Control / invisible character removal | 2.2.1, 2.2.5 |
-| Statistical and embedding-distance anomaly detection on inputs | 2.2.3 |
-| Character set allow-listing | 2.3.1, 2.3.2 |
-| Schema validation (JSON Schema, Protocol Buffers) | 2.4.1, 7.1.1 |
-| Strict schema enforcement (reject unknown fields, type coercion) | 2.4.2 |
-| Server-side input validation before prompt assembly | 2.4.3 |
-| Token and byte limit enforcement | 2.4.4 |
-| Constant-time validation | 2.4.6 |
-| Content classifiers (hate, violence, sexual, illegal) | 2.5.1 |
-| Multi-modal input validation (images, audio, files) | 2.7.1 |
-| Extracted and hidden content from non-text inputs treated as untrusted | 2.7.2 |
-| Malware and steganography scanning | 2.7.3 |
-| Adversarial perturbation detection | 2.7.4 |
-| Cross-modal attack detection | 2.7.6 |
-| Pattern matching (regex) on inputs and outputs | 2.8.1 |
-| Adaptive detection models | 2.8.2 |
-| Risk-adaptive threat responses | 2.8.3 |
+| Context window proportion limits and token limit enforcement (reject, not truncate) | 2.1.3 |
+| Third-party content sanitization | 2.1.4 |
+| Character set allow-listing for model prompt inputs | 2.1.9 |
+| Pre-tokenization input normalization (Unicode NFC, homoglyph mapping, control/invisible character removal, bidirectional text neutralization) | 2.2.1 |
+| Adversarial input quarantine and logging | 2.2.2 |
+| Encoding and representation smuggling detection and mitigation | 2.2.3 |
+| Content classifiers for inbound prompts (hate, violence, sexual, illegal) | 2.3.1 |
+| Policy-violating input rejection before model propagation | 2.3.2 |
+| User-specific and agent-aware policy screening | 2.1.8 |
+| Extracted and hidden content from non-text inputs treated as untrusted | 2.4.1 |
+| Adversarial perturbation detection on image/audio inputs | 2.4.2 |
+| Cross-modal attack detection | 2.4.3 |
 | MCP input type checking, boundary validation, and enumeration enforcement | 10.4.4 |
 | MCP message-framing integrity and payload size limits | 10.4.3 |
 | MCP schema validation for tool and resource integrity | 10.4.2 |
@@ -228,8 +221,8 @@ Enforce consumption bounds to prevent abuse, runaway execution, and denial-of-se
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Per-user, per-IP, per-API-key rate limits | 2.6.1 |
-| Burst and sustained rate limiting | 2.6.2 |
+| Per-user, per-IP, per-API-key rate limits | ASVS v5 V2.4 |
+| Burst and sustained rate limiting | ASVS v5 V2.4 |
 | Per-agent token, cost, and tool-call budgets | 9.1.1 |
 | Recursion depth and max concurrency / fan-out limits | 9.1.1 |
 | Wall-clock time and monetary spend caps | 9.1.1 |
@@ -240,7 +233,7 @@ Enforce consumption bounds to prevent abuse, runaway execution, and denial-of-se
 | Sub-task delegation chain depth limit per execution | 7.4.4 |
 | Query-rate limiting for model extraction and inversion defense | 11.4.2, 11.5.1 |
 | MCP outbound execution limits, timeouts, recursion limits, and circuit breakers | 10.5.2 |
-| Anomalous usage pattern detection and blocking | 2.6.3 |
+| Anomalous usage pattern detection and blocking | 13.2.4, ASVS v5 V2.4 |
 | Resource quotas (CPU, memory, GPU) for infrastructure | 4.6.1 |
 | Threshold-based protection triggers on resource exhaustion | 4.6.2 |
 
@@ -392,7 +385,7 @@ Test for and defend against evasion, extraction, inversion, poisoning, and align
 | Red-team and jailbreak test suites (version-controlled) | 11.1.2 |
 | Automated harmful-content rate evaluation with regression detection | 11.1.3 |
 | RLHF / Constitutional AI alignment training | 11.1.4 |
-| Adversarial training and defensive distillation | 11.2.3, 2.2.4 |
+| Adversarial training and defensive distillation | 11.2.3 |
 | Adversarially robust distillation — distill teacher into student using adversarial training so the student inherits robustness as well as accuracy (implementation example for 11.2.3) | 11.2.3 |
 | Formal robustness verification (certified bounds, interval-bound propagation) | 11.2.5 |
 | Adversarial-example detection with production alerting | 11.2.2 |

@@ -10,7 +10,7 @@ Autonomous and multi-agent systems must execute only **authorized, intended, and
 
 Bound runtime expansion (recursion, concurrency, cost) and halt safely on runaway behavior.
 
-> **Scope note:** Controls in this section govern internal orchestration runtime budgets: per-task recursion depth, concurrency, wall-clock time, token spend, and monetary limits. They apply inside the agentic execution layer, not at the API ingress edge (C2.6) and not in response to adversarial probing patterns (C11.4, C11.5). A single token-spend cap at the API gateway does not satisfy C9.1 budget enforcement, which requires enforcement within the orchestration runtime itself.
+> **Scope note:** Controls in this section govern internal orchestration runtime budgets: per-task recursion depth, concurrency, wall-clock time, token spend, and monetary limits. They apply inside the agentic execution layer, not at the API ingress edge (see ASVS v5 V2.4 for generic rate limiting) and not in response to adversarial probing patterns (C11.4, C11.5). A single token-spend cap at the API gateway does not satisfy C9.1 budget enforcement, which requires enforcement within the orchestration runtime itself.
 
 | # | Description | Level |
 | :--: | --- | :---: |
