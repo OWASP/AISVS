@@ -50,7 +50,7 @@ Limit the ability to determine whether a specific record was in the training dat
 
 Prevent reconstruction of private training data or sensitive attributes from model outputs.
 
-> **Scope note:** Rate limiting in C11.4 is scoped specifically to inversion attack resistance: throttling repeated adaptive queries from the same principal to raise the cost of reconstructing training data or sensitive attributes. It is not a substitute for generic API rate limiting (C2.6) or orchestration execution budgets (C9.1). Both C2.6 and C11.4 may be satisfied simultaneously, but require distinct evidence — general abuse prevention cannot double-count as inversion resistance.
+> **Scope note:** Rate limiting in C11.4 is scoped specifically to inversion attack resistance: throttling repeated adaptive queries from the same principal to raise the cost of reconstructing training data or sensitive attributes. It is not a substitute for generic API rate limiting (see ASVS v5 V2.4) or orchestration execution budgets (C9.1). Generic abuse prevention cannot double-count as inversion resistance.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -64,7 +64,7 @@ Prevent reconstruction of private training data or sensitive attributes from mod
 
 Detect and deter unauthorized model cloning through API abuse. Rate limiting, query-pattern analysis, and watermarking are recommended defenses.
 
-> **Scope note:** Rate limits in C11.5 are calibrated specifically to make large-scale query harvesting for model cloning impractical — they are not general-purpose API throttles (C2.6). Satisfying C11.5.1 requires demonstrating that limits are sized to the extraction threat model (e.g., number of queries required to approximate the model), not merely that any rate limit is present.
+> **Scope note:** Rate limits in C11.5 are calibrated specifically to make large-scale query harvesting for model cloning impractical -- they are not general-purpose API throttles (see ASVS v5 V2.4). Satisfying C11.5.1 requires demonstrating that limits are sized to the extraction threat model (e.g., number of queries required to approximate the model), not merely that any rate limit is present.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
