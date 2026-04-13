@@ -60,7 +60,7 @@ Combine automated validation, manual spot-checks, and logged remediation to guar
 | # | Description | Level |
 |:--------:|---------------------------------------------------------------------------------------------------------------------|:---:|
 | **1.4.1** | **Verify that** automated tests catch format errors and nulls on every ingest or significant data transformation. | 1 |
-| **1.4.2** | **Verify that** training and fine-tuning pipelines implement data integrity validation and poisoning detection techniques (e.g., statistical analysis, outlier detection, embedding analysis) to identify potential data poisoning or unintentional corruption in training data. | 2 |
+| **1.4.2** | **Verify that** training and fine-tuning pipelines implement data integrity validation and poisoning detection techniques (e.g., statistical analysis, outlier detection, embedding analysis) to identify potential data poisoning or unintentional corruption in training data, including detection of poisoned RLHF/DPO preference pairs designed to train the model to comply with harmful instructions or bypass safety alignment. | 2 |
 | **1.4.3** | **Verify that** automatically generated labels (e.g., via models or weak supervision) are subject to confidence thresholds and consistency checks to detect misleading or low-confidence labels. | 2 |
 | **1.4.4** | **Verify that** appropriate defenses, such as adversarial training, data augmentation with perturbed inputs, or robust optimization techniques, are implemented and tuned for relevant models based on risk assessment. | 3 |
 | **1.4.5** | **Verify that** automated tests catch label skews on every ingest or significant data transformation. | 2 |
