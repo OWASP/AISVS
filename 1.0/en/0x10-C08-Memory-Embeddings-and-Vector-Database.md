@@ -10,6 +10,8 @@ Embeddings and vector stores act as semi-persistent and persistent "memory" for 
 
 Enforce fine-grained access controls and query-time scope enforcement for every vector collection.
 
+> **Scope note -- RAG ingestion and ACL inheritance.** The RAG document chunking and embedding pipeline is an ETL process for the purposes of C5.3.6, which requires row-level security and field-level masking policies to be inherited by derived data stores and not bypassed by replication or ETL. Source document access policies (permitted roles, permitted tenants) must be propagated to derived chunks as metadata during ingestion. Chunks for which source ACL cannot be determined must be treated as maximally restricted by default. Common vector databases (Azure AI Search, Pinecone, Qdrant, Weaviate, pgvector) support metadata filtering at query time; the gap is typically in the ingestion step where ACL fields from source systems must be explicitly attached before chunking.
+
 | # | Description | Level |
 | :--: | --- | :---: |
 | **8.1.1** | **Verify that** vector insert, update, delete, and query operations are enforced with namespace/collection/document-tag scope controls (e.g., tenant ID, user ID, data classification labels) with default-deny. | 1 |
