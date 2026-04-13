@@ -33,6 +33,7 @@ Implement access controls for all AI resources with explicit permission models a
 | **5.2.7** | **Verify that** policies evaluate dynamic attributes at runtime including user role or group, resource classification, request context, tenant isolation, and temporal constraints. | 3 |
 | **5.2.8** | **Verify that** policy cache TTL values are defined based on resource sensitivity, with shorter TTLs for high-sensitivity resources, and that cache invalidation capabilities are available. | 3 |
 | **5.2.9** | **Verify that** privileged access to model weights, training pipelines, and production AI configuration is provisioned on a just-in-time basis with a defined maximum session duration and automatic expiry, and permanent standing privileged access to these resources is not permitted. | 2 |
+| **5.2.10** | **Verify that** authorization policies governing AI agent tool access and action permissions include defined validity periods, and that expired policies are automatically revoked or excluded from evaluation rather than persisting as default-allow, ensuring that permission scope remains bounded as available tools and capabilities evolve. | 3 |
 
 ---
 
