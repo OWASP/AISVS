@@ -87,6 +87,8 @@ Protect agent-to-agent and agent-to-tool communications from hijacking, injectio
 
 Ensure every action is authorized at execution time and constrained by scope.
 
+> **Architectural note -- evaluation-only policy components.** Policy decision components used for agent authorization (C9.6.4, C5.6.4, C5.2.6) should be evaluation-only: they evaluate proposed actions against policy rules and return permit/deny decisions, but do not themselves execute actions, invoke tools, or modify external resources. This separation follows the NIST SP 800-207 control-plane/data-plane principle. Standard purpose-built policy engines (e.g., OPA, Cedar) are evaluation-only by design.
+
 | # | Description | Level |
 | :--: | --- | :---: |
 | **9.6.1** | **Verify that** agent actions are authorized against fine-grained policies enforced by the runtime that restrict which tools an agent may invoke, which parameter values it may supply (e.g., allowed resources, data scopes, action types), and that policy violations are blocked. | 1 |
