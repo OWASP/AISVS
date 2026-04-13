@@ -34,6 +34,8 @@ This section provides requirements for delivering real-time and forensic visibil
 | **13.2.9** | **Verify that** per-user and per-session token consumption triggers an alert when consumption exceeds defined thresholds. | 2 |
 | **13.2.10** | **Verify that** LLM API traffic is monitored for covert channel indicators, including Base64-encoded payloads, structured non-human query patterns, and communication signatures consistent with malware command-and-control activity using LLM endpoints. | 3 |
 
+> **Scope note -- C13.2.10 token-level metadata.** Monitoring under C13.2.10 should include token-level metadata access patterns (e.g., high-frequency logprob API requests, systematic enumeration of token probabilities) as a signal for data exfiltration via timing or token-probability side channels. Anomalous logprob access patterns fall within the "structured non-human query patterns" indicator. C4.7.8 covers accelerator-level side-channel telemetry; C13.2.4 covers behavioral anomaly detection for systematic probing.
+
 ---
 
 ## C13.3 Model, Data, and Performance Drift Detection
