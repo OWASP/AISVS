@@ -87,7 +87,9 @@ Control permissions for AI agents and autonomous systems through scoped capabili
 | **5.6.1** | **Verify that** autonomous agents receive scoped capability tokens that explicitly enumerate permitted actions, accessible resources, time boundaries, and operational constraints. | 1 |
 | **5.6.2** | **Verify that** high-risk capabilities (file system access, code execution, external API calls, financial transactions) are disabled by default and require explicit authorization. | 1 |
 | **5.6.3** | **Verify that** capability tokens are bound to user sessions, include cryptographic integrity protection, and cannot be persisted or reused across sessions. | 2 |
-| **5.6.4** | **Verify that** agent-initiated actions undergo authorization through a policy decision point that evaluates contextual attributes (e.g., user identity, resource sensitivity, action type, environmental context). | 3 |
+| **5.6.4** | **Verify that** agent-initiated actions undergo authorization through a policy decision point that is isolated from the agent's execution environment such that a compromised or manipulated agent runtime cannot influence or bypass the evaluation, and that evaluates contextual attributes (e.g., user identity, resource sensitivity, action type, environmental context) based on a structured action description rather than the agent's raw reasoning context. | 3 |
+
+> **Scope note -- C5.6.4 runtime isolation.** The policy decision point must receive a sanitized, structured representation of the proposed action (action type, target resource, parameters) rather than the agent's full context window, which may contain injected content that could influence the evaluation. This isolation requirement complements C14.1 (human oversight gates) and C9.6.4 (model cannot make access control decisions). For high-risk actions, C14.2 defines the escalation path from automated governance evaluation to human approval.
 
 ---
 
