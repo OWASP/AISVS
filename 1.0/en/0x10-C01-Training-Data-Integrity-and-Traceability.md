@@ -67,8 +67,6 @@ Combine automated validation, manual spot-checks, and logged remediation to guar
 | **1.4.6** | **Verify that** models used in security-relevant decisions (e.g., abuse detection, fraud scoring, automated trust decisions) are evaluated for systematic bias patterns that an adversary could exploit to evade controls (e.g., mimicking a trusted language style or demographic pattern to bypass detection). | 2 |
 | **1.4.7** | **Verify that** synthetic data used as a training input is validated for privacy leakage before ingestion into the training pipeline, using quantitative metrics (e.g., Distance to Closest Record, Nearest Neighbor Distance Ratio) and membership inference testing, to confirm that re-identification risk remains within defined thresholds. | 2 |
 
-> **Cross-reference:** C12.1.4 addresses re-identification risk for anonymized data broadly via formal proofs at Level 3. C1.4.7 establishes a pre-training gate specifically for synthetic data artifacts at Level 2, using standard tooling (e.g., SDMetrics, NIST SP 800-188 methods) rather than requiring formal proofs.
-
 ---
 
 ## C1.5 Data Lineage and Traceability
