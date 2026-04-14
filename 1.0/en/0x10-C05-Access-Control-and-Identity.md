@@ -22,6 +22,8 @@ Establish verified identities for all entities interacting with AI systems, with
 
 Implement access controls for all AI resources with explicit permission models and audit trails.
 
+> **Scope note:** ASVS v5 14.1.1 requires all sensitive data to be identified and classified into protection levels. C5.2.11 extends this to AI-specific data types not enumerated in ASVS. C5.2.4 and C5.2.7 assume a classification scheme exists but do not require it to be defined for AI-specific data types.
+
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
 | **5.2.1** | **Verify that** every AI resource (datasets, models, endpoints, vector collections, embedding indices, compute instances) enforces access controls (e.g., RBAC, ABAC) with explicit allow-lists and default-deny policies. | 1 |
@@ -34,6 +36,7 @@ Implement access controls for all AI resources with explicit permission models a
 | **5.2.8** | **Verify that** policy cache TTL values are defined based on resource sensitivity, with shorter TTLs for high-sensitivity resources, and that cache invalidation capabilities are available. | 3 |
 | **5.2.9** | **Verify that** privileged access to model weights, training pipelines, and production AI configuration is provisioned on a just-in-time basis with a defined maximum session duration and automatic expiry, and permanent standing privileged access to these resources is not permitted. | 2 |
 | **5.2.10** | **Verify that** authorization policies governing AI agent tool access and action permissions include defined validity periods, and that expired policies are automatically revoked or excluded from evaluation rather than persisting as default-allow, ensuring that permission scope remains bounded as available tools and capabilities evolve. | 3 |
+| **5.2.11** | **Verify that** a documented data classification taxonomy covering AI-specific data types (embeddings, model weights, prompt templates, RAG context assemblies, fine-tuning datasets, agent tool schemas) is defined, and that AI assets are labeled in accordance with this taxonomy. | 2 |
 
 ---
 
