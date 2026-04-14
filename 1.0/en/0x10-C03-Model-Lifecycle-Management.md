@@ -59,8 +59,8 @@ Model development and training processes must follow secure practices to prevent
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **3.4.1** | **Verify that** AI-specific runtime components (agent orchestration services, tool/MCP servers, model registries, and prompt/policy stores) are not shared across environment boundaries (e.g., development, staging, production). | 1 |
-| **3.4.2** | **Verify that** AI-specific configuration artifacts (prompt templates, agent policies and routing graphs, tool or MCP contracts and schemas, and action catalogs or capability allow-lists) are subject to the same version control and peer review requirements as application code. | 1 |
-| **3.4.3** | **Verify that** model training and fine-tuning environments do not have access to production model endpoints, agent orchestration services, tool/MCP servers, or live RAG data sources. | 2 |
+| **3.4.2** | **Verify that** AI-specific configuration artifacts (prompt templates, agent policies and routing graphs, tool or MCP contracts and schemas, and action catalogs or capability allow-lists) are stored in version control with change history and require approved review before deployment. | 1 |
+| **3.4.3** | **Verify that** model training and fine-tuning environments are isolated from production model endpoints, agent orchestration services, tool/MCP servers, and live RAG data sources. | 2 |
 
 ---
 
