@@ -90,8 +90,6 @@ Fine-tuning pipelines are high-privilege operations that can alter deployed mode
 | **3.6.3** | **Verify that** RLHF training stages include automated detection of reward hacking or reward model over-optimization (e.g., held-out human-preference probe sets, divergence thresholds, or KL penalty monitoring), with the run blocked from promotion if detection thresholds are exceeded. | 3 |
 | **3.6.4** | **Verify that** in multi-stage fine-tuning pipelines, each stage's output is integrity-verified before the next stage consumes it, and intermediate checkpoints are registered as distinct artifacts enabling per-stage rollback. | 3 |
 
-> **Cross-reference -- fine-tuning data security.** Fine-tuning data (including RLHF preference pairs and DPO data) is explicitly covered by existing controls: C1.3.4 (integrity of fine-tuning feedback records including RLHF preference pairs), C1.4.2 (poisoning detection in fine-tuning pipelines), C3.4.5 (integrity checks on data used for fine-tuning), C5.2.1 (access controls on datasets), C12.5 (consent for user data), and C12.2.1 (deletion propagation to raw datasets). These controls apply to fine-tuning data with the same force as to initial training data.
-
 ---
 
 ## References
