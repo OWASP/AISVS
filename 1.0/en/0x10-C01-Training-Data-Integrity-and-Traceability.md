@@ -5,7 +5,7 @@
 Training data must be sourced, handled, and maintained in a way that preserves origin traceability, integrity, and quality. The core security concern is ensuring data has not been tampered with, poisoned, or corrupted. Security-relevant bias (e.g., skewed abuse-detection training data that allows attackers to bypass controls) is treated as a possible consequence of compromised or unvalidated data, not as a standalone control category.
 
 > **Scope note -- bias.** AISVS addresses bias only where it introduces security risk (e.g., bypass of abuse detection, authentication heuristics, or automated trust decisions). Broader fairness governance requirements are out of scope; see e.g. ISO/IEC 42001 or the NIST AI RMF for general fairness and ethics guidance.
-
+>
 > **Scope note -- general data security.** Generic data security control details for access control, logging, encryption at rest and in transit, and data retention/purging are covered by ASVS v5 (V8, V11, V12, V14, V16) and apply to training data storage and labeling systems. This section sets on higher level requirements with levels that are specific to AI.
 
 ---
