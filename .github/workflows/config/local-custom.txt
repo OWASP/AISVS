@@ -111,3 +111,5 @@ PATE
 TOCTOU
 jailbreaking
 jailbreak
+logprob
+logprobs

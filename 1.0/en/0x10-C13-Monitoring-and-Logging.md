@@ -21,6 +21,8 @@ This section provides requirements for delivering real-time and forensic visibil
 
 ## C13.2 Abuse Detection and Alerting
 
+> **Scope note:** Monitoring under C13.2.10 should include token-level metadata access patterns (e.g., high-frequency logprob API requests, systematic enumeration of token probabilities) as a signal for data exfiltration via timing or token-probability side channels. Anomalous logprob access patterns fall within the "structured non-human query patterns" indicator. C4.7.8 covers accelerator-level side-channel telemetry; C13.2.4 covers behavioral anomaly detection for systematic probing.
+
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **13.2.1** | **Verify that** the system detects and alerts on known jailbreak patterns, prompt injection attempts, and adversarial inputs using signature-based detection. | 1 |
