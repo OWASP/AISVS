@@ -135,10 +135,10 @@ Verify authenticity and detect tampering of models, artifacts, messages, logs, a
 | Cryptographic hashes for training data integrity | 1.2.4, 1.3.4 |
 | Cryptographic model signing | 3.1.2 |
 | Model signature and checksum verification at deployment and load | 3.1.3 |
-| Signed build artifacts with build-origin metadata | 4.2.2 |
-| Build signature validation at deployment | 4.2.3 |
+| Signed build artifacts with build-origin metadata | ASVS v5 V15 / SLSA |
+| Build signature validation at deployment | ASVS v5 V15 / SLSA |
 | Third-party model origin and integrity verification (signed records) | 6.1.1 |
-| Cryptographic signature validation for packages and publishers | 6.4.2 |
+| Cryptographic signature validation for model publishers | 6.2.1, 6.2.2 |
 | Model watermarking and fingerprinting | 7.7.5, 11.5.4 |
 | Execution chain cryptographic signing with non-repudiation timestamps | 9.4.2 |
 | Message integrity with nonce / sequence / timestamp replay protection | 9.5.3 |
@@ -147,7 +147,7 @@ Verify authenticity and detect tampering of models, artifacts, messages, logs, a
 | MCP component signature and checksum verification | 10.1.1 |
 | MCP schema integrity signing and tool definition hash tracking | 10.4.2, 10.4.5 |
 | DAG cryptographic signatures and tamper-evident storage | 13.7.3 |
-| Publisher key pinning per source registry with rotation re-approval | 6.4.6 |
+| Publisher key pinning per source registry with rotation re-approval | 6.2.2 |
 | Document metadata tag immutability after initial ingestion write | 8.1.7 |
 | Agent persisted state integrity protection (MAC/signature, rejection on failure) | 9.4.6 |
 
@@ -293,27 +293,27 @@ Verify origin and authenticity, scan dependencies, and enforce integrity of mode
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Model registry with AI BOM (SPDX, CycloneDX) | 3.1.1, 6.7.1 |
+| Model registry with AI BOM (SPDX, CycloneDX) | 3.1.1, 6.5.1 |
 | Model dependency graph tracking (services, agents, environments) | 3.1.4 |
 | Model origin records (source, training data checksums, authorship) | 3.1.5, 6.1.1 |
-| Automated reproducible builds | 4.2.1 |
-| SBOM production from automated builds | 4.2.5 |
-| Reproducible build hash comparison | 6.3.5 |
-| CI pipeline dependency scanning (AI frameworks, critical libraries) | 6.2.1 |
-| Critical / high-severity vulnerability blocking in CI | 6.2.2 |
-| Dependency version pinning with lockfile enforcement | 6.3.1 |
-| Immutable digest references for containers (no mutable tags) | 6.3.2 |
-| Expired and unmaintained dependency detection | 6.3.3 |
-| Approved source and internal registry enforcement | 6.4.1 |
+| Automated reproducible builds | ASVS v5 V15 / SLSA |
+| SBOM production from automated builds | ASVS v5 V15.1.2 / SCVS |
+| Reproducible build hash comparison | SLSA Build L3 |
+| CI pipeline dependency scanning | ASVS v5 V15.2.1 / SCVS V5 |
+| Critical / high-severity vulnerability blocking in CI | ASVS v5 V15.1.1 / SCVS V5 |
+| Dependency version pinning with lockfile enforcement | SCVS V4 / CIS Guide |
+| Immutable digest references for containers (no mutable tags) | SCVS / CIS Guide |
+| Expired and unmaintained dependency detection | ASVS v5 V15.1.1, V15.2.1 |
+| Approved source enforcement for AI artifacts | 6.2.1 |
 | Malicious layer and trojan trigger scanning | 6.1.2 |
-| Unsafe deserialization format prohibition and format-aware scanning at load time | 4.5.10 |
-| External dataset poisoning assessment (fingerprinting, outlier detection) | 6.5.1 |
-| Copyright and PII detection in external datasets | 6.5.2 |
-| Dataset origin and lineage documentation | 6.5.3 |
-| Automated AI BOM generation and signing in CI | 6.7.2 |
-| Build attestation retention | 6.3.4 |
+| Unsafe deserialization format prohibition and format-aware scanning at load time | 4.1.3 |
+| External dataset poisoning assessment (fingerprinting, outlier detection) | 6.3.1 |
+| Copyright and PII detection in external datasets | 6.3.2 |
+| Dataset origin and lineage documentation | 6.3.3 |
+| Automated AI BOM generation and signing in CI | 6.5.2 |
+| Build attestation retention | SLSA Build Track |
 
-**Common pitfalls:** using mutable `:latest` tags in production; not scanning fine-tuning datasets for poisoning; lacking rollback procedures when a compromised dependency is detected.
+**Common pitfalls:** not scanning fine-tuning datasets for poisoning; lacking rollback procedures when a compromised model is detected; treating AI BOMs as static documents rather than version-controlled artifacts.
 
 ---
 
@@ -339,7 +339,7 @@ Manage model deployment, rollback, retirement, and emergency response.
 | Version control for all development artifacts (hyperparams, scripts, prompts, policies) | 3.4.3 |
 | Secure model artifact wiping and cryptographic erasure on retirement | 3.5.1 |
 | Model signature revocation and registry deny-list on retirement | 3.5.2 |
-| Supply chain incident response playbooks (model and library rollback) | 6.6.1 |
+| AI-specific supply chain incident response (model rollback, signature revocation) | 6.4.1 |
 
 **Common pitfalls:** not testing rollback procedures before they are needed; leaving retired model artifacts in serving caches; missing shutdown cascade to downstream tool and MCP connections.
 
@@ -367,7 +367,7 @@ Protect personal data and enforce data subject rights throughout the AI lifecycl
 | Consent withdrawal processing (< 24 hour SLA) | 12.5.3 |
 | Local differential privacy in federated learning (client-side noise) | 12.6.1 |
 | Poisoning-resistant aggregation (Krum, Trimmed-Mean) | 12.6.3 |
-| PII detection and removal in external datasets | 6.5.2 |
+| PII detection and removal in external datasets | 6.3.2 |
 | Session context discard at session end (not accessible in subsequent sessions) | 8.3.7 |
 | Quarantined content excluded from retrieval results while under quarantine | 8.3.8 |
 
@@ -427,8 +427,8 @@ Capture security-relevant events with integrity protection for forensic analysis
 | Agent action signing with chain ID binding and timestamps | 9.4.2 |
 | Immutable audit records for model changes (actor, change type, before/after) | 3.2.5 |
 | Immutable deletion logging for regulatory audit trails | 12.2.4 |
-| CI/CD audit log streaming to SIEM | 6.6.2 |
-| Detection rules for anomalous package pulls and tampered build steps | 6.6.4 |
+| CI/CD audit log streaming to SIEM | ASVS v5 V16.4.3 |
+| Detection rules for anomalous package pulls and tampered build steps | ASVS v5 V16.3.3 |
 | DAG visualization with access controls and tamper evidence | 13.7.1, 13.7.2, 13.7.3 |
 | Safety violation metrics logging | 7.6.1 |
 | MCP policy change audit logging (timestamp, author, justification) | 11.7.3 |
@@ -509,7 +509,7 @@ Require human review and approval for high-impact, irreversible, or safety-criti
 | Human review on anomaly detection | 11.6.3 |
 | Enhanced monitoring and human intervention on security warnings | 11.8.3 |
 | Security-critical proactive action approval with approval chain logging | 13.8.4 |
-| High-risk model quarantine with human review and sign-off | 6.1.4 |
+| High-risk model quarantine with human review and sign-off | 6.1.3 |
 | Post-condition outcome checking with containment on mismatch | 9.7.3 |
 | Compensating actions and transactional rollback on failure | 9.2.3 |
 | Intermediate operational degradation states (tool disable, model swap, read-only, source removal) | 14.1.5 |
