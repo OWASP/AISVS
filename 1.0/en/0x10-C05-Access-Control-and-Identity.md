@@ -82,6 +82,8 @@ Ensure logical and cryptographic isolation between tenants in shared AI infrastr
 
 Control permissions for AI agents and autonomous systems through scoped capability tokens and continuous authorization.
 
+> **Scope note:** Runtime isolation of the policy decision point from the agent execution environment complements C9.6.4 (model cannot make access control decisions) and C14.2 (human oversight escalation for high-risk actions).
+
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
 | **5.6.1** | **Verify that** autonomous agents receive scoped capability tokens that explicitly enumerate permitted actions, accessible resources, time boundaries, and operational constraints. | 1 |
