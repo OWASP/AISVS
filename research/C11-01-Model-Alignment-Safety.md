@@ -132,7 +132,7 @@ AISVS treats alignment as defense-in-depth — no single control is sufficient.
 | Related Section | Overlap |
 |----------------|---------|
 | [C02-01 Prompt Injection Defense](C02-01-Prompt-Injection-Defense.md) | Jailbreak attacks as injection vectors; instruction hierarchy |
-| [C02-02 Adversarial Example Resistance](C02-02-Adversarial-Example-Resistance.md) | Adversarial training, SmoothLLM, perplexity detection |
+| [C02-02 Pre-Tokenization Input Normalization](C02-02-Pre-Tokenization-Input-Normalization.md) | Input normalization, encoding smuggling defense |
 | [C07-03 Output Safety & Privacy Filtering](C07-03-Output-Safety-Privacy-Filtering.md) | Output-side guardrails complementing alignment |
 | [C09-01 Execution Budgets](C09-01-Execution-Budgets.md) | Agent runaway as alignment failure mode |
 | [C11-02 Adversarial Example Hardening](C11-02-Adversarial-Example-Hardening.md) | Adversarial training techniques |

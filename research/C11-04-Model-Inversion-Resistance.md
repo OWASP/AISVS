@@ -7,7 +7,7 @@
 
 Prevent reconstruction of private training data or sensitive attributes from model outputs. Model inversion attacks exploit the information a model reveals through its predictions to reconstruct inputs or infer sensitive features of the training data. First demonstrated by Fredrikson et al. (2015) on facial recognition models, these attacks have since been extended to reconstruct text, tabular data, and other modalities. The risk is highest for models trained on sensitive data (medical records, biometric data, PII) where even partial reconstruction can violate privacy.
 
-> **Scope note:** Rate limiting in C11.4 is scoped specifically to inversion attack resistance: throttling repeated adaptive queries from the same principal to raise the cost of reconstructing training data or sensitive attributes. It is not a substitute for generic API rate limiting (C2.6) or orchestration execution budgets (C9.1). Both C2.6 and C11.4 may be satisfied simultaneously, but require distinct evidence — general abuse prevention cannot double-count as inversion resistance.
+> **Scope note:** Rate limiting in C11.4 is scoped specifically to inversion attack resistance: throttling repeated adaptive queries from the same principal to raise the cost of reconstructing training data or sensitive attributes. It is not a substitute for generic API rate limiting (covered by OWASP ASVS) or orchestration execution budgets (C9.1). Both generic rate limiting and C11.4 may be satisfied simultaneously, but require distinct evidence — general abuse prevention cannot double-count as inversion resistance.
 
 ---
 
