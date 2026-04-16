@@ -9,7 +9,7 @@ Autonomous agents can enter runaway states — recursive loops, unbounded fan-ou
 
 This section requires hard limits on runtime expansion (recursion depth, concurrency, wall-clock time, token usage, monetary spend) enforced by the orchestration runtime, not by the model itself.
 
-> **Scope note:** Controls in this section govern *internal orchestration runtime* budgets: per-task recursion depth, concurrency, wall-clock time, token spend, and monetary limits. They apply inside the agentic execution layer — not at the API ingress edge (C2.6) and not in response to adversarial probing patterns (C11.4, C11.5). A single token-spend cap at the API gateway does not satisfy C9.1 budget enforcement, which requires enforcement within the orchestration runtime itself.
+> **Scope note:** Controls in this section govern *internal orchestration runtime* budgets: per-task recursion depth, concurrency, wall-clock time, token spend, and monetary limits. They apply inside the agentic execution layer — not at the API ingress edge (covered by OWASP ASVS) and not in response to adversarial probing patterns (C11.4, C11.5). A single token-spend cap at the API gateway does not satisfy C9.1 budget enforcement, which requires enforcement within the orchestration runtime itself.
 
 ---
 
@@ -171,7 +171,7 @@ In multi-agent pipelines, failure probability compounds multiplicatively. A sing
 
 | Related Section | Overlap |
 |----------------|---------|
-| [C02-06 Input Rate Limiting & Abuse Prevention](C02-06-Input-Rate-Limiting-Abuse-Prevention.md) | Per-user/agent rate limits, token-aware throttling |
+| [C02-01 Prompt Injection Defense](C02-01-Prompt-Injection-Defense.md) | Input-side rate limits and abuse prevention controls |
 | [C04-06 Resource Management & Backup](C04-06-Resource-Management-Backup-Recovery.md) | Infrastructure-level resource quotas, autoscaling controls |
 | [C09-02 High-Impact Action Approval](C09-02-High-Impact-Action-Approval.md) | Human approval gates for costly operations |
 | [C09-03 Tool and Plugin Isolation](C09-03-Tool-and-Plugin-Isolation.md) | Per-tool CPU/memory/execution time limits |

@@ -1,13 +1,13 @@
 # C02: User Input Validation
 
 > **Source:** [`1.0/en/0x10-C02-User-Input-Validation.md`](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C02-User-Input-Validation.md)
-> **Requirements:** 37 | **Sections:** 8
+> **Requirements:** 18 | **Sections:** 4
 
 ## Control Objective
 
 Robust validation of user input is a first-line defense against some of the most damaging attacks on AI systems. Prompt injection attacks can override system instructions, leak sensitive data, or steer the model toward behavior that is not allowed. Unless dedicated filters and other validation is in place, research shows that jailbreaks that exploit context windows will continue to be effective.
 
-> **2025-2026 Highlights:** Requirements expanded to cover agentic input surfaces (MCP tool arguments, agent-to-agent messages, memory reads/writes) alongside traditional user prompts. Multi-modal injection and cross-modal coordinated attacks are now explicitly addressed across C2.1 and C2.7. As of March 2026, AI framework zero-days (Langflow CVE-2026-33017, Semantic Kernel CVE-2026-26030) are being exploited within hours of disclosure, and the first independent AI firewall vendor validation is underway.
+> **2025-2026 Highlights:** Major restructuring from 8 sections to 4, consolidating related controls. Requirements expanded to cover agentic input surfaces (MCP tool arguments, agent-to-agent messages, memory reads/writes) alongside traditional user prompts. Multi-modal injection and cross-modal coordinated attacks are now explicitly addressed across C2.1 and C2.4. As of March 2026, AI framework zero-days (Langflow CVE-2026-33017, Semantic Kernel CVE-2026-26030) are being exploited within hours of disclosure, and the first independent AI firewall vendor validation is underway.
 
 ---
 
@@ -15,14 +15,10 @@ Robust validation of user input is a first-line defense against some of the most
 
 | Section | Title | Reqs | Page |
 |---------|-------|:----:|------|
-| C2.1 | Prompt Injection Defense | 4 | [C02-01-Prompt-Injection-Defense](C02-01-Prompt-Injection-Defense) |
-| C2.2 | Adversarial-Example Resistance | 5 | [C02-02-Adversarial-Example-Resistance](C02-02-Adversarial-Example-Resistance) |
-| C2.3 | Prompt Character Set | 2 | [C02-03-Prompt-Character-Set](C02-03-Prompt-Character-Set) |
-| C2.4 | Schema, Type & Length Validation | 7 | [C02-04-Schema-Type-Length-Validation](C02-04-Schema-Type-Length-Validation) |
-| C2.5 | Content & Policy Screening | 4 | [C02-05-Content-Policy-Screening](C02-05-Content-Policy-Screening) |
-| C2.6 | Input Rate Limiting & Abuse Prevention | 4 | [C02-06-Input-Rate-Limiting-Abuse-Prevention](C02-06-Input-Rate-Limiting-Abuse-Prevention) |
-| C2.7 | Multi-Modal Input Validation | 6 | [C02-07-Multi-Modal-Input-Validation](C02-07-Multi-Modal-Input-Validation) |
-| C2.8 | Real-Time Adaptive Threat Detection | 5 | [C02-08-Real-Time-Adaptive-Threat-Detection](C02-08-Real-Time-Adaptive-Threat-Detection) |
+| C2.1 | Prompt Injection Defense | 9 | [C02-01-Prompt-Injection-Defense](C02-01-Prompt-Injection-Defense) |
+| C2.2 | Pre-Tokenization Input Normalization | 3 | [C02-02-Pre-Tokenization-Input-Normalization](C02-02-Pre-Tokenization-Input-Normalization) |
+| C2.3 | Content & Policy Screening | 3 | [C02-03-Content-Policy-Screening](C02-03-Content-Policy-Screening) |
+| C2.4 | Multi-Modal Input Validation | 3 | [C02-04-Multi-Modal-Input-Validation](C02-04-Multi-Modal-Input-Validation) |
 
 ---
 
@@ -73,13 +69,9 @@ A chapter-level view of tooling maturity and adoption status for C02 controls:
 | Section | Area | Maturity | Notes |
 |---------|------|:--------:|-------|
 | C2.1 | Prompt Injection Defense | Medium-High | Commercial solutions (Lakera Guard, AWS Bedrock Guardrails) offer 98%+ detection at sub-50ms latency, but no tool guarantees complete prevention. Instruction hierarchy enforcement is provider-dependent. |
-| C2.2 | Adversarial Example Resistance | Medium | Unicode normalization is straightforward; statistical anomaly detection and adversarial training are research-grade. Zero-width character and homoglyph attacks still bypass production guardrails from major vendors. |
-| C2.3 | Prompt Character Set | High | Allow-list character filtering is well-understood and easy to implement. Logging integration varies. |
-| C2.4 | Schema & Type Validation | High | JSON Schema and Protocol Buffer validation are mature. MCP-specific schema enforcement is emerging but supported by the MCP specification. |
-| C2.5 | Content & Policy Screening | Medium-High | Content classifiers (OpenAI Moderation, Perspective API, Lakera Guard) are production-ready. Attribute-based per-user policy resolution is less mature. |
-| C2.6 | Rate Limiting & Abuse | High | Standard API gateway capabilities. Per-agent and per-task token budgets are newer but increasingly supported by orchestration frameworks. |
-| C2.7 | Multi-Modal Validation | Low-Medium | Image and audio adversarial detection remains largely research-grade. Steganography scanning tools exist but are not widely integrated into AI pipelines. Cross-modal correlation is nascent. |
-| C2.8 | Adaptive Threat Detection | Low-Medium | Real-time adaptive models are emerging. Continuous detection metric monitoring is operationally complex. Most organizations rely on static rule sets. |
+| C2.2 | Pre-Tokenization Input Normalization | Medium | Unicode normalization is straightforward; statistical anomaly detection and adversarial training are research-grade. Zero-width character and homoglyph attacks still bypass production guardrails from major vendors. |
+| C2.3 | Content & Policy Screening | Medium-High | Content classifiers (OpenAI Moderation, Perspective API, Lakera Guard) are production-ready. Attribute-based per-user policy resolution is less mature. |
+| C2.4 | Multi-Modal Validation | Low-Medium | Image and audio adversarial detection remains largely research-grade. Steganography scanning tools exist but are not widely integrated into AI pipelines. Cross-modal correlation is nascent. |
 
 > **Overall:** As of March 2026, only ~20% of enterprises have mature AI governance models (Deloitte 2026 AI Report). Cisco's State of AI Security 2026 report found that while 83% of organizations plan to deploy agentic AI, only 29% feel ready to secure it. Input validation tooling is strongest for text-based prompt injection and weakest for multi-modal and adaptive scenarios. Notably, HiddenLayer researchers bypassed OpenAI's guardrails framework using straightforward techniques in October 2025, and Cisco found multi-turn prompt attacks achieve ~60% success rates on average (one model: 92.78%), underscoring that no single guardrail layer is sufficient. The first independent validation of AI firewall vendors (SecureIQLab, 32 scenarios across input/output/retrieval layers, OWASP- and MITRE ATLAS-aligned) begins April 2026 with results expected at Black Hat USA 2026 — this should provide the first empirical, vendor-independent efficacy data for the market.
 
@@ -106,7 +98,7 @@ Key tools and frameworks relevant across C02 sections:
 
 ## Related Standards & Cross-References
 
-- [OWASP LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) — Top risk for LLM applications; directly maps to C2.1 and C2.5
+- [OWASP LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) — Top risk for LLM applications; directly maps to C2.1 and C2.3
 - [LLM Prompt Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html) — Practical defense patterns for developers
 - [OWASP AI Exchange (2026)](https://owaspai.org/) — Comprehensive AI security guidance; input validation covered across multiple threat categories
 - [OWASP AI Testing Guide v1 (November 2025)](https://owasp.org/www-project-ai-testing-guide/) — First comprehensive standard for AI trustworthiness testing, including input validation test cases
@@ -130,11 +122,11 @@ Key tools and frameworks relevant across C02 sections:
 |-----------------|--------------|-------|
 | C7 Model Behavior | Output validation, guardrails | C2 handles input-side; C7 handles output-side enforcement |
 | C9 Orchestration & Agents | Agent input surfaces, tool call validation | Agent chains amplify prompt injection risk across hops |
-| C10 MCP Security | MCP tool argument validation | MCP surfaces are explicit input vectors covered by C2.4 |
-| C11 Adversarial Robustness | Adversarial perturbation defense | C2.2 focuses on input-layer detection; C11 covers model-level robustness |
+| C10 MCP Security | MCP tool argument validation | MCP surfaces are explicit input vectors |
+| C11 Adversarial Robustness | Adversarial perturbation defense | C2.2 focuses on input-layer normalization; C11 covers model-level robustness |
 | C12 Privacy | PII detection in inputs, data leakage prevention | C2 input screening should catch PII before it reaches the model; C12 governs retention and consent |
 | C13 Monitoring & Logging | Logging requirements for input validation events | C2 specifies what to log; C13 specifies how to store and alert |
-| C14 Human Oversight | HITL approval for flagged inputs | C2.7.5 and C2.8.2 require HITL escalation; C14 defines oversight governance |
+| C14 Human Oversight | HITL approval for flagged inputs | C2.4.3 requires HITL escalation for cross-modal attacks; C14 defines oversight governance |
 
 ---
 
@@ -157,12 +149,12 @@ _Space for contributor observations, discussion, and context that doesn't fit el
 
 **Open questions worth tracking:**
 - No input validation tool guarantees complete prompt injection prevention. Defense-in-depth (combining multiple layers) remains the only viable strategy. How should auditors assess "sufficient" defense depth? The HiddenLayer bypass of OpenAI's guardrails (October 2025) reinforces this — guardrail LLMs are themselves susceptible to the attacks they're meant to detect.
-- Multi-modal adversarial detection tooling is still largely research-grade. Organizations deploying vision or audio models should treat C2.7 requirements as aspirational L2/L3 targets until tooling matures.
+- Multi-modal adversarial detection tooling is still largely research-grade. Organizations deploying vision or audio models should treat C2.4 requirements as aspirational L2/L3 targets until tooling matures.
 - The October 2025 MITRE ATLAS update added 14 agentic-specific techniques — these may drive future requirement additions to C2.1 (indirect injection via agent chains) and C2.4 (MCP argument validation).
 - As of March 2026, zero-click indirect injection (EchoLeak pattern) represents a step change in threat severity. Organizations using AI copilots with access to email, documents, and external communication should audit for the "Lethal Trifecta" (private data access + untrusted token exposure + exfiltration vector) and implement image/link fetching restrictions as an immediate mitigation.
 - The CrowdStrike 2026 report's finding of prompt injection at 90+ organizations suggests this is no longer a theoretical or red-team-only concern — it's an active adversary technique at scale. System prompt extraction was the most common objective in Q4 2025, giving attackers role definitions, tool descriptions, and workflow logic.
 - Langflow CVE-2026-33017 (exploited in 20 hours, March 2026) is a watershed moment for AI framework security — it demonstrates that vulnerabilities in AI pipeline tooling are now targeted with the same speed as traditional web application zero-days. Organizations running AI orchestration frameworks should treat them with the same patching urgency as internet-facing web servers.
 - The SecureIQLab independent validation initiative (April 2026) will be the first empirical, vendor-neutral assessment of AI firewall efficacy. Until those results land, organizations should remain skeptical of vendor detection-rate claims and test products against their own threat models.
-- Cross-modal attacks (CrossInject achieving +30.1% success) and embedding-space attacks that require only vision encoder access (not full LLM access) are lowering the bar for multimodal exploitation. C2.7 controls are becoming more urgent, not less.
+- Cross-modal attacks (CrossInject achieving +30.1% success) and embedding-space attacks that require only vision encoder access (not full LLM access) are lowering the bar for multimodal exploitation. C2.4 controls are becoming more urgent, not less.
 
 ---

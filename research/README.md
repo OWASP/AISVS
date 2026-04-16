@@ -12,21 +12,21 @@ The standard is organized into 14 chapters spanning the full AI application secu
 
 | # | Chapter | Reqs | Pages | Type | Updated |
 |---|---------|:----:|:-----:|------|:-------:|
-| C1 | Training Data Integrity & Traceability | 27 | [C01](C01-Training-Data.md) | [5 sections](#c1-training-data-integrity--traceability) | 2026-03-29 |
-| C2 | User Input Validation | 40 | [C02](C02-User-Input-Validation.md) | [8 sections](#c2-user-input-validation) | 2026-04-01 |
-| C3 | Model Lifecycle Management | 30 | [C03](C03-Model-Lifecycle-Management.md) | [6 sections](#c3-model-lifecycle-management) | 2026-03-29 |
-| C4 | Infrastructure & Deployment Security | 53 | [C04](C04-Infrastructure.md) | [8 sections](#c4-infrastructure--deployment-security) | 2026-03-28 |
-| C5 | Access Control & Identity | 31 | [C05](C05-Access-Control.md) | [6 sections](#c5-access-control--identity) | 2026-03-29 |
-| C6 | Supply Chain Security | 36 | [C06](C06-Supply-Chain.md) | [7 sections](#c6-supply-chain-security) | 2026-03-27 |
-| C7 | Model Behavior & Output Control | 36 | [C07](C07-Model-Behavior.md) | [8 sections](#c7-model-behavior--output-control) | 2026-03-28 |
-| C8 | Memory, Embeddings & Vector DB Security | 28 | [C08](C08-Memory-and-Embeddings.md) | [5 sections](#c8-memory-embeddings--vector-db-security) | 2026-03-29 |
-| C9 | Orchestration & Agentic Action Security | 48 | [C09](C09-Orchestration-and-Agents.md) | [8 sections](#c9-orchestration--agentic-action-security) | 2026-03-29 |
-| C10 | MCP Security | 42 | [C10](C10-MCP-Security.md) | [6 sections](#c10-mcp-security) | 2026-03-29 |
-| C11 | Adversarial Robustness | 44 | [C11](C11-Adversarial-Robustness.md) | [10 sections](#c11-adversarial-robustness) | 2026-03-27 |
-| C12 | Privacy Protection | 26 | [C12](C12-Privacy.md) | [6 sections](#c12-privacy-protection) | 2026-03-29 |
-| C13 | Monitoring, Logging & Anomaly Detection | 47 | [C13](C13-Monitoring-and-Logging.md) | [7 sections](#c13-monitoring-logging--anomaly-detection) | 2026-03-28 |
-| C14 | Human Oversight & Accountability | 26 | [C14](C14-Human-Oversight.md) | [7 sections](#c14-human-oversight--accountability) | 2026-03-29 |
-| | **Total** | **514** | **115 pages** | | |
+| C1 | Training Data Integrity & Traceability | 26 | [C01](C01-Training-Data.md) | [5 sections](#c1-training-data-integrity--traceability) | 2026-04-15 |
+| C2 | User Input Validation | 18 | [C02](C02-User-Input-Validation.md) | [4 sections](#c2-user-input-validation) | 2026-04-15 |
+| C3 | Model Lifecycle Management | 30 | [C03](C03-Model-Lifecycle-Management.md) | [6 sections](#c3-model-lifecycle-management) | 2026-04-15 |
+| C4 | Infrastructure & Deployment Security | 53 | [C04](C04-Infrastructure.md) | [8 sections](#c4-infrastructure--deployment-security) | 2026-04-15 |
+| C5 | Access Control & Identity | 33 | [C05](C05-Access-Control.md) | [6 sections](#c5-access-control--identity) | 2026-04-15 |
+| C6 | Supply Chain Security | 36 | [C06](C06-Supply-Chain.md) | [7 sections](#c6-supply-chain-security) | 2026-04-15 |
+| C7 | Model Behavior & Output Control | 36 | [C07](C07-Model-Behavior.md) | [8 sections](#c7-model-behavior--output-control) | 2026-04-15 |
+| C8 | Memory, Embeddings & Vector DB Security | 28 | [C08](C08-Memory-and-Embeddings.md) | [5 sections](#c8-memory-embeddings--vector-db-security) | 2026-04-15 |
+| C9 | Orchestration & Agentic Action Security | 50 | [C09](C09-Orchestration-and-Agents.md) | [8 sections](#c9-orchestration--agentic-action-security) | 2026-04-15 |
+| C10 | MCP Security | 28 | [C10](C10-MCP-Security.md) | [6 sections](#c10-mcp-security) | 2026-04-15 |
+| C11 | Adversarial Robustness | 44 | [C11](C11-Adversarial-Robustness.md) | [10 sections](#c11-adversarial-robustness) | 2026-04-15 |
+| C12 | Privacy Protection | 26 | [C12](C12-Privacy.md) | [6 sections](#c12-privacy-protection) | 2026-04-15 |
+| C13 | Monitoring, Logging & Anomaly Detection | 47 | [C13](C13-Monitoring-and-Logging.md) | [7 sections](#c13-monitoring-logging--anomaly-detection) | 2026-04-15 |
+| C14 | Human Oversight & Accountability | 27 | [C14](C14-Human-Oversight.md) | [7 sections](#c14-human-oversight--accountability) | 2026-04-15 |
+| | **Total** | **482** | **111 pages** | | |
 
 ---
 
@@ -44,18 +44,14 @@ Covers training data origin and traceability, data security and integrity, label
 
 ### C2: User Input Validation
 
-Covers prompt injection defense, adversarial input resistance, schema validation, content screening, rate limiting, multi-modal input handling, and adaptive threat detection.
+Covers prompt injection defense, pre-tokenization input normalization, content and policy screening, and multi-modal input validation.
 
 | Section | Page |
 |---------|------|
 | C2.1 Prompt Injection Defense | [C02-01](C02-01-Prompt-Injection-Defense.md) |
-| C2.2 Adversarial-Example Resistance | [C02-02](C02-02-Adversarial-Example-Resistance.md) |
-| C2.3 Prompt Character Set | [C02-03](C02-03-Prompt-Character-Set.md) |
-| C2.4 Schema, Type & Length Validation | [C02-04](C02-04-Schema-Type-Length-Validation.md) |
-| C2.5 Content & Policy Screening | [C02-05](C02-05-Content-Policy-Screening.md) |
-| C2.6 Input Rate Limiting & Abuse Prevention | [C02-06](C02-06-Input-Rate-Limiting-Abuse-Prevention.md) |
-| C2.7 Multi-Modal Input Validation | [C02-07](C02-07-Multi-Modal-Input-Validation.md) |
-| C2.8 Real-Time Adaptive Threat Detection | [C02-08](C02-08-Real-Time-Adaptive-Threat-Detection.md) |
+| C2.2 Pre-Tokenization Input Normalization | [C02-02](C02-02-Pre-Tokenization-Input-Normalization.md) |
+| C2.3 Content & Policy Screening | [C02-03](C02-03-Content-Policy-Screening.md) |
+| C2.4 Multi-Modal Input Validation | [C02-04](C02-04-Multi-Modal-Input-Validation.md) |
 
 ### C3: Model Lifecycle Management
 
