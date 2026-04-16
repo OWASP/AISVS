@@ -86,12 +86,16 @@ Ensure logical and cryptographic isolation between tenants in shared AI infrastr
 
 Control permissions for AI agents and autonomous systems through scoped capability tokens and continuous authorization.
 
+> **Scope note:** Runtime isolation of the policy decision point from the agent execution environment complements C9.6.4 (model cannot make access control decisions) and C14.2 (human oversight escalation for high-risk actions).
+
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
 | **5.6.1** | **Verify that** autonomous agents receive scoped capability tokens that explicitly enumerate permitted actions, accessible resources, time boundaries, and operational constraints. | 1 |
 | **5.6.2** | **Verify that** high-risk capabilities (file system access, code execution, external API calls, financial transactions) are disabled by default and require explicit authorization. | 1 |
 | **5.6.3** | **Verify that** capability tokens are bound to user sessions, include cryptographic integrity protection, and cannot be persisted or reused across sessions. | 2 |
 | **5.6.4** | **Verify that** agent-initiated actions undergo authorization through a policy decision point that evaluates contextual attributes (e.g., user identity, resource sensitivity, action type, environmental context). | 3 |
+| **5.6.5** | **Verify that** the policy decision point for agent authorization is isolated from the agent's execution environment such that a compromised agent runtime cannot influence or bypass evaluation. | 3 |
+| **5.6.6** | **Verify that** the policy decision point receives structured action descriptions (e.g., action type, target resource, parameters) rather than the agent's raw reasoning context. | 3 |
 
 ---
 
