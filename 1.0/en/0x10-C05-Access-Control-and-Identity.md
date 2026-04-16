@@ -2,107 +2,79 @@
 
 ## Control Objective
 
-Effective access control for AI systems requires robust identity management, context-aware authorization, and runtime enforcement following zero-trust principles. These controls ensure that humans, services, and autonomous agents only interact with models, data, and computational resources within explicitly granted scopes, with continuous verification and audit capabilities.
+AI systems introduce access control challenges beyond traditional application security: classification labels must follow data through AI-specific transformations (embeddings, caches, model outputs), multi-tenant inference infrastructure creates novel side channels, and retrieval-augmented pipelines must enforce caller entitlements at every stage. 
+
+This chapter addresses AI-specific access control and identity concerns only. General identity management and authentication (centralized IdP, federation, MFA, step-up authentication) are covered by ASVS v5 V6. General authorization patterns (RBAC/ABAC design, externalized PDP, dynamic attribute evaluation, policy caching), access control audit logging, and multi-tenant networking are covered by ASVS v5 V8, V14, and V16. 
+
+Agent-specific authorization policies and delegation are covered in C9.6; single-system agent identity is in C9.4.1; this chapter covers runtime isolation of the policy decision point from agent execution (complementing C9.6.4). Vector database scope enforcement is in C8.1 and C8.5. General output safety filtering (PII redaction, content moderation, confidential data blocking) is in C7.3; this chapter covers authorization-aware output filtering where entitlements vary per caller.
 
 ---
 
-## C5.1 Identity Management & Authentication
-
-Establish verified identities for all entities interacting with AI systems, with authentication strength appropriate to the risk level.
+## C5.1 Authentication
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
-| **5.1.1** | **Verify that** all human users and service principals authenticate through a centralized identity provider using industry-standard federation protocols (e.g., OIDC, SAML). | 1 |
-| **5.1.2** | **Verify that** high-risk operations (model deployment, weight export, training data access, production configuration changes) require multi-factor authentication or step-up authentication with session re-validation. | 2 |
-| **5.1.3** | **Verify that** AI agents in federated or multi-system deployments authenticate via short-lived, cryptographically signed authentication tokens (e.g., signed JWT assertions) with a maximum lifetime appropriate to the risk level and including cryptographic proof of origin. | 3 |
+| **5.1.1** | **Verify that** high-risk AI operations (model deployment, weight export, training data access, production configuration changes) require step-up authentication with session re-validation. | 2 |
+| **5.1.2** | **Verify that** AI agents in federated or multi-system deployments authenticate via short-lived, cryptographically signed authentication tokens (e.g., signed JWT assertions) with a maximum lifetime appropriate to the risk level and including cryptographic proof of origin. | 3 |
 
 ---
 
-## C5.2 Authorization & Policy
-
-Implement access controls for all AI resources with explicit permission models and audit trails.
-
-> **Scope note:** ASVS v5 14.1.1 requires all sensitive data to be identified and classified into protection levels. C5.2.11 extends this to AI-specific data types not enumerated in ASVS. C5.2.4 and C5.2.7 assume a classification scheme exists but do not require it to be defined for AI-specific data types.
+## C5.2 AI Resource Authorization & Classification
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
 | **5.2.1** | **Verify that** every AI resource (datasets, models, endpoints, vector collections, embedding indices, compute instances) enforces access controls (e.g., RBAC, ABAC) with explicit allow-lists and default-deny policies. | 1 |
-| **5.2.2** | **Verify that** all access control modifications are logged with timestamps, actor identities, resource identifiers, and permission changes. | 1 |
-| **5.2.3** | **Verify that** access control audit logs are stored immutably and are tamper-evident. | 2 |
-| **5.2.4** | **Verify that** data classification labels (PII, PHI, proprietary, etc.) automatically propagate to derived resources (embeddings, prompt caches, model outputs). | 2 |
-| **5.2.5** | **Verify that** unauthorized access attempts and privilege escalation events trigger real-time alerts with contextual metadata. | 2 |
-| **5.2.6** | **Verify that** authorization decisions are externalized to a dedicated policy decision point (e.g., OPA, Cedar, or equivalent). | 3 |
-| **5.2.7** | **Verify that** policies evaluate dynamic attributes at runtime including user role or group, resource classification, request context, tenant isolation, and temporal constraints. | 3 |
-| **5.2.8** | **Verify that** policy cache TTL values are defined based on resource sensitivity, with shorter TTLs for high-sensitivity resources, and that cache invalidation capabilities are available. | 3 |
-| **5.2.9** | **Verify that** privileged access to model weights, training pipelines, and production AI configuration is provisioned on a just-in-time basis with a defined maximum session duration and automatic expiry, and permanent standing privileged access to these resources is not permitted. | 2 |
-| **5.2.10** | **Verify that** authorization policies governing AI agent tool access and action permissions include defined validity periods, and that expired policies are automatically revoked or excluded from evaluation rather than persisting as default-allow, ensuring that permission scope remains bounded as available tools and capabilities evolve. | 3 |
-| **5.2.11** | **Verify that** a documented data classification taxonomy covering AI-specific data types (embeddings, model weights, prompt templates, RAG context assemblies, fine-tuning datasets, agent tool schemas) is defined, and that AI assets are labeled in accordance with this taxonomy. | 2 |
+| **5.2.2** | **Verify that** privileged access to model weights, training pipelines, and production AI configuration is provisioned on a just-in-time basis with a defined maximum session duration and automatic expiry, and permanent standing privileged access to these resources is not permitted. | 2 |
+| **5.2.3** | **Verify that** data classification labels (PII, PHI, proprietary, etc.) automatically propagate to derived resources (embeddings, prompt caches, model outputs). | 3 |
+| **5.2.4** | **Verify that** a documented data classification taxonomy covering AI-specific data types (embeddings, model weights, prompt templates, RAG context assemblies, fine-tuning datasets, agent tool schemas) is defined, and that AI assets are labeled in accordance with this taxonomy. | 2 |
 
 ---
 
-## C5.3 Query-Time Security Enforcement
+## C5.3 Query-Time Authorization
 
-Enforce authorization at the data access layer to prevent unauthorized data retrieval through AI queries.
+Enforce the caller's authorization context through AI-specific query pipelines (RAG retrieval, embedding lookups, inference chains) so that the AI system does not return data the caller is not entitled to access.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
-| **5.3.1** | **Verify that** all data store queries (e.g., vector databases, SQL databases, search indices) include mandatory security filters (tenant ID, sensitivity labels, user scope) enforced at the data access layer. | 1 |
-| **5.3.2** | **Verify that** failed authorization evaluations immediately abort queries and return explicit authorization error codes. | 1 |
-| **5.3.3** | **Verify that** row-level security policies are enabled for all data stores containing sensitive data used by AI systems. | 2 |
-| **5.3.4** | **Verify that** query retry mechanisms re-evaluate authorization policies to account for dynamic permission changes within active sessions. | 3 |
-| **5.3.5** | **Verify that** field-level masking is applied to sensitive fields in all data stores used by AI systems, restricting access to only authorized principals. | 2 |
-| **5.3.6** | **Verify that** row-level security and field-level masking policies are inherited by derived or replicated data stores and are not bypassed by replication or ETL processes. | 2 |
+| **5.3.1** | **Verify that** AI inference and retrieval pipelines (e.g., RAG queries, embedding lookups) enforce the end-user's authorization context at each retrieval and assembly stage, rather than relying solely on the service account's permissions. | 1 |
 
 ---
 
-## C5.4 Output Filtering & Data Loss Prevention
+## C5.4 Output Entitlement Enforcement
 
-Deploy post-processing controls to prevent unauthorized data exposure in AI-generated content.
+Ensure that AI-generated outputs, including citations and source attributions, respect the caller's data entitlements.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
 | **5.4.1** | **Verify that** post-inference filtering mechanisms prevent responses from including classified information or proprietary data that the requestor is not authorized to receive. | 1 |
 | **5.4.2** | **Verify that** citations, references, and source attributions in model outputs are validated against caller entitlements and removed if unauthorized access is detected. | 2 |
-| **5.4.3** | **Verify that** output format restrictions (sanitized documents, metadata-stripped images, approved file types) are enforced based on user permission levels and data classifications. | 2 |
 
 ---
 
-## C5.5 Multi-Tenant Isolation
+## C5.5 Policy Decision Point Isolation
 
-Ensure logical and cryptographic isolation between tenants in shared AI infrastructure.
+Ensure that authorization decision infrastructure for AI agents is protected from compromise and manipulation by the agents it governs.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
-| **5.5.1** | **Verify that** network policies implement default-deny rules for cross-tenant communication. | 2 |
-| **5.5.2** | **Verify that** every API request includes an authenticated tenant identifier that is cryptographically validated against session context and user entitlements. | 1 |
-| **5.5.3** | **Verify that** memory spaces, embedding stores, cache entries (e.g., result caches, embedding caches), and temporary files are namespace-segregated per tenant so that one tenant cannot access another tenant's data. | 2 |
-| **5.5.6** | **Verify that** per-tenant memory spaces, embedding stores, cache entries, and temporary files are securely purged on tenant deletion or session termination. | 2 |
-| **5.5.4** | **Verify that** encryption keys are unique per tenant with customer-managed key (CMK) support and cryptographic isolation between tenant data stores. | 3 |
-| **5.5.5** | **Verify that** inference-time KV-cache entries are partitioned by authenticated session or tenant identity and that automatic prefix caching does not share cached prefixes across distinct security principals, to prevent timing-based prompt reconstruction attacks. | 2 |
+| **5.5.1** | **Verify that** the policy decision point for agent authorization is isolated from the agent's execution environment such that a compromised agent runtime cannot influence or bypass evaluation. | 3 |
+| **5.5.2** | **Verify that** the policy decision point receives structured action descriptions (e.g., action type, target resource, parameters) rather than the agent's raw reasoning context. | 3 |
 
 ---
 
-## C5.6 Autonomous Agent Authorization
+## C5.6 Multi-Tenant Isolation
 
-Control permissions for AI agents and autonomous systems through scoped capability tokens and continuous authorization.
-
-> **Scope note:** Runtime isolation of the policy decision point from the agent execution environment complements C9.6.4 (model cannot make access control decisions) and C14.2 (human oversight escalation for high-risk actions).
+Prevent cross-tenant information leakage through AI-specific shared infrastructure components such as inference caches and shared model state.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
-| **5.6.1** | **Verify that** autonomous agents receive scoped capability tokens that explicitly enumerate permitted actions, accessible resources, time boundaries, and operational constraints. | 1 |
-| **5.6.2** | **Verify that** high-risk capabilities (file system access, code execution, external API calls, financial transactions) are disabled by default and require explicit authorization. | 1 |
-| **5.6.3** | **Verify that** capability tokens are bound to user sessions, include cryptographic integrity protection, and cannot be persisted or reused across sessions. | 2 |
-| **5.6.4** | **Verify that** agent-initiated actions undergo authorization through a policy decision point that evaluates contextual attributes (e.g., user identity, resource sensitivity, action type, environmental context). | 3 |
-| **5.6.5** | **Verify that** the policy decision point for agent authorization is isolated from the agent's execution environment such that a compromised agent runtime cannot influence or bypass evaluation. | 3 |
-| **5.6.6** | **Verify that** the policy decision point receives structured action descriptions (e.g., action type, target resource, parameters) rather than the agent's raw reasoning context. | 3 |
+| **5.6.1** | **Verify that** inference-time KV-cache entries are partitioned by authenticated session or tenant identity and that automatic prefix caching does not share cached prefixes across distinct security principals, to prevent timing-based prompt reconstruction attacks. | 2 |
+| **5.6.2** | **Verify that** shared model serving infrastructure prevents one tenant's fine-tuning, inference, or embedding operations from influencing or observing another tenant's operations through shared model state, adapter weights, or compute resources. | 2 |
 
 ---
 
 ## References
 
-* [NIST SP 800-162: Guide to Attribute Based Access Control (ABAC)](https://csrc.nist.gov/pubs/sp/800/162/final)
 * [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/pubs/detail/sp/800-207/final)
 * [NIST SP 800-63-3: Digital Identity Guidelines](https://csrc.nist.gov/pubs/sp/800/63/3/final)
-* [NIST IR 8360: Machine Learning for Access Control Policy Verification](https://csrc.nist.gov/pubs/ir/8360/final)
 * [I Know What You Asked: Prompt Leakage via KV-Cache Sharing in Multi-Tenant LLM Serving (NDSS 2025)](https://www.ndss-symposium.org/ndss-paper/i-know-what-you-asked-prompt-leakage-via-kv-cache-sharing-in-multi-tenant-llm-serving/)

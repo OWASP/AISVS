@@ -12,9 +12,8 @@ Verify the identity of users, agents, services, MCP clients/servers, and edge de
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Centralized identity provider (OIDC, SAML) | 5.1.1 |
-| Multi-factor authentication for high-risk operations | 5.1.2 |
-| Signed JWT tokens for identity proof | 5.1.3 |
+| Step-up authentication for high-risk AI operations (model deployment, weight export, training data access) | 5.1.1 |
+| Short-lived signed tokens for federated AI agent authentication | 5.1.2 |
 | Unique cryptographic agent and orchestrator identity | 9.4.1 |
 | First-class principal authentication (no end-user credential reuse) | 9.4.1 |
 | Agent identity credential rotation and rapid revocation | 9.4.4 |
@@ -36,15 +35,11 @@ Enforce access decisions across users, agents, tools, data, and MCP resources us
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| RBAC / ABAC / zero-trust authorization models | 5.2.1, 5.2.7 |
-| Policy decision engines (OPA, Cedar) | 5.2.6 |
-| Least-privilege resource access | 5.2.1, 5.6.2 |
-| Row-level security | 5.3.3 |
-| Field-level masking for sensitive fields | 5.3.5 |
-| Row-level and field-level policy inheritance by derived data stores | 5.3.6 |
-| Classification label propagation on outputs | 5.2.4 |
-| Session-based authorization binding | 5.5.2 |
-| Scoped capability tokens for agents | 5.6.1 |
+| Access controls on AI resources (datasets, models, endpoints, vector collections, compute) | 5.2.1 |
+| Just-in-time privileged access for AI resources (model weights, training pipelines) | 5.2.2 |
+| Classification label propagation to derived AI resources (embeddings, caches, outputs) | 5.2.3 |
+| AI-specific data classification taxonomy | 5.2.4 |
+| Caller authorization context enforcement through AI query pipelines | 5.3.1 |
 | Fine-grained agent action authorization (tool, parameters, resources, data scope) | 9.6.1 |
 | Delegation context propagation with integrity protection (user, tenant, scopes) | 9.6.2 |
 | Continuous authorization re-evaluation (context, time, risk) | 9.6.3 |
@@ -55,9 +50,13 @@ Enforce access decisions across users, agents, tools, data, and MCP resources us
 | Minimum scope requests with step-up authorization | 10.2.11 |
 | Wildcard and overly broad scope rejection | 10.2.14 |
 | MCP policy enforcement that model output cannot bypass | 10.2.4 |
-| Output format restriction by permission level | 5.4.3 |
+| Authorization-aware post-inference filtering (per-caller entitlement enforcement) | 5.4.1 |
+| Citation and attribution validation against caller entitlements | 5.4.2 |
+| Agent PDP runtime isolation from agent execution environment | 5.5.1 |
+| Structured action descriptions to PDP (not raw agent reasoning context) | 5.5.2 |
+| KV-cache partitioning by session/tenant to prevent prompt reconstruction | 5.6.1 |
+| Shared model serving tenant isolation (fine-tuning, inference, embeddings) | 5.6.2 |
 | MCP tool namespace collision detection and trust-ranked shadowing prevention | 10.6.5 |
-| Just-in-time access provisioning for model weights, training pipelines, and production AI configuration | 5.2.9 |
 | Peer authorization policy (approved agent registry) for agent-to-agent task delegation | 9.6.7 |
 | Dedicated scoped credentials per agent, not shared across swarm peers | 9.8.7 |
 
@@ -200,13 +199,14 @@ Constrain, filter, and validate model outputs before they reach users or downstr
 | Confidence scoring and uncertainty estimation | 7.2.1 |
 | Confidence threshold gating with fallback messages | 7.2.2 |
 | Output safety classifiers (hate, harassment, violence) | 7.3.1 |
-| PII detection and redaction (post-inference filtering) | 7.3.2, 7.3.3, 5.4.1 |
+| PII detection and redaction (post-inference filtering) | 7.3.2, 7.3.3 |
 | Human approval for high-risk content | 7.3.5 |
 | System prompt and backend data removal from explanations | 7.5.1 |
 | AI-generated media watermarking | 7.7.5 |
 | Copyright violation detection | 7.7.3 |
 | Explicit / non-consensual content filters | 7.7.1 |
-| Citation and attribution validation | 5.4.2 |
+| Authorization-aware post-inference filtering (per-caller entitlement enforcement) | 5.4.1 |
+| Citation and attribution validation against caller entitlements | 5.4.2 |
 | MCP error response sanitization (no stack traces, tokens, internal paths) | 10.4.6 |
 | Statistical steganographic covert channel detection in generated outputs | 7.3.9 |
 | RAG attribution derived from retrieval metadata, not model-generated | 7.8.3 |
