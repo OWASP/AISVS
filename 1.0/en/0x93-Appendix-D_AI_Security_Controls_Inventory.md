@@ -310,7 +310,7 @@ Verify origin and authenticity, scan dependencies, and enforce integrity of mode
 | External dataset poisoning assessment (fingerprinting, outlier detection) | 6.3.1 |
 | Copyright and PII detection in external datasets | 6.3.2 |
 | Dataset origin and lineage documentation | 6.3.3 |
-| Automated AI BOM generation and signing in CI | 6.5.2 |
+| AI BOM cryptographic signing | 6.5.2 |
 | Build attestation retention | SLSA Build Track |
 
 **Common pitfalls:** not scanning fine-tuning datasets for poisoning; lacking rollback procedures when a compromised model is detected; treating AI BOMs as static documents rather than version-controlled artifacts.

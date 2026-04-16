@@ -35,15 +35,14 @@ Allow AI artifact downloads only from organization-approved sources and verify m
 
 ## C6.3 Third-Party Dataset Risk Assessment
 
-Evaluate external datasets for poisoning, bias, and legal compliance, and monitor them throughout their lifecycle.
+Evaluate external datasets for poisoning and legal compliance, and monitor them throughout their lifecycle.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **6.3.1** | **Verify that** disallowed content (e.g., copyrighted material, PII) is detected and removed via automated scrubbing prior to training. | 1 |
 | **6.3.2** | **Verify that** external datasets undergo poisoning risk assessment (e.g., data fingerprinting, outlier detection). | 2 |
 | **6.3.3** | **Verify that** origin, lineage, and license terms for datasets are captured in AI BOM entries. | 2 |
-| **6.3.4** | **Verify that** bias metrics (e.g., demographic parity, equal opportunity) are calculated before dataset approval. | 2 |
-| **6.3.5** | **Verify that** periodic monitoring detects drift or corruption in hosted datasets. | 3 |
+| **6.3.4** | **Verify that** periodic monitoring detects drift or corruption in hosted datasets. | 3 |
 
 ---
 
@@ -65,7 +64,7 @@ Generate and sign detailed AI-specific bills of materials (AI BOMs) so downstrea
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **6.5.1** | **Verify that** every model artifact publishes a version-controlled AI BOM that lists datasets, weights, hyperparameters, licenses, export-control tags, and data-origin statements. | 1 |
-| **6.5.2** | **Verify that** AI BOM generation and cryptographic signing are automated in CI and required for merge. | 2 |
+| **6.5.2** | **Verify that** AI BOMs are cryptographically signed before deployment. | 2 |
 | **6.5.3** | **Verify that** AI BOM completeness checks fail the build if any component metadata (hash and license) is missing. | 2 |
 | **6.5.4** | **Verify that** downstream consumers can query AI BOMs via API to validate imported models at deploy time. | 2 |
 
