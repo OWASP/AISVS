@@ -2,9 +2,9 @@
 
 ## Control Objective
 
-This control category ensures that model outputs are technically constrained, validated, and monitored so that unsafe, malformed, or high-risk responses cannot reach users or downstream systems.
+This control category ensures that model outputs are technically constrained, validated, and monitored so that unsafe, malformed, or high-risk responses cannot reach users or downstream systems. The chapter focuses on AI-specific output handling concerns and intentionally avoids duplicating controls that already exist in OWASP ASVS v5 or in other AISVS chapters.
 
-This chapter covers AI-specific output handling concerns. General application output controls (output encoding and escaping, parameterized queries, safe deserialization, anti-automation, security event logging, error handling) are addressed by OWASP ASVS v5 chapters V1, V2, V14, and V16. Per-execution and per-agent budgets, human-approval gates for high-impact actions, and recursion/fan-out limits for orchestrated or agentic workflows are covered in C9 (Autonomous Orchestration & Agentic Action Security). Logging and SIEM integration for AI events, alerting on safety-violation rates, and model-version metadata in logs are covered in C13 (Monitoring, Logging & Anomaly Detection).
+General application output controls such as output encoding and escaping, parameterized queries, safe deserialization, anti-automation, security event logging, and error handling are addressed by ASVS v5 chapters V1, V2, V14, and V16.
 
 ---
 
@@ -38,8 +38,6 @@ Detect when the model produces potentially inaccurate or fabricated content and 
 
 Technical controls to detect and scrub bad content before it is shown to the user.
 
-> **Scope note:** Authorization-based filtering of outputs against the caller's data entitlements is covered by C5.4. Generic minimum-disclosure of sensitive data on the request path is covered by ASVS V14.2.6. Privacy-driven personal data handling obligations (data minimization, lawful basis, consent) are covered by C12 and by external privacy regimes (GDPR, CCPA).
-
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
 | **7.3.1** | **Verify that** automated classifiers scan every response and block content that matches hate, harassment, or sexual violence categories. | 1 |
@@ -63,8 +61,6 @@ Ensure the user knows why a decision was made.
 ## C7.5 Generative Media Safeguards
 
 Provide cryptographic provenance for synthetic media so that downstream consumers can distinguish AI-generated content from authentic content.
-
-> **Scope note:** Input-side content screening (blocking prompts that request explicit, non-consensual, or illegal content) is covered by C2.3.1. Approval gates for sensitive generation actions are covered by C9.2. Logging of filter-bypass attempts is covered by C13.2.1 and ASVS V16.3.3.
 
 | # | Description | Level |
 | :-------: | -------------------------------------------------------------------------------------------------------------------------------------------- | :---: |
