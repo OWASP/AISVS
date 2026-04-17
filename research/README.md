@@ -12,21 +12,21 @@ The standard is organized into 14 chapters spanning the full AI application secu
 
 | # | Chapter | Reqs | Pages | Type | Updated |
 |---|---------|:----:|:-----:|------|:-------:|
-| C1 | Training Data Integrity & Traceability | 26 | [C01](C01-Training-Data.md) | [5 sections](#c1-training-data-integrity--traceability) | 2026-04-15 |
-| C2 | User Input Validation | 18 | [C02](C02-User-Input-Validation.md) | [4 sections](#c2-user-input-validation) | 2026-04-15 |
-| C3 | Model Lifecycle Management | 30 | [C03](C03-Model-Lifecycle-Management.md) | [6 sections](#c3-model-lifecycle-management) | 2026-04-15 |
-| C4 | Infrastructure & Deployment Security | 53 | [C04](C04-Infrastructure.md) | [8 sections](#c4-infrastructure--deployment-security) | 2026-04-15 |
-| C5 | Access Control & Identity | 33 | [C05](C05-Access-Control.md) | [6 sections](#c5-access-control--identity) | 2026-04-15 |
-| C6 | Supply Chain Security | 36 | [C06](C06-Supply-Chain.md) | [7 sections](#c6-supply-chain-security) | 2026-04-15 |
-| C7 | Model Behavior & Output Control | 36 | [C07](C07-Model-Behavior.md) | [8 sections](#c7-model-behavior--output-control) | 2026-04-15 |
-| C8 | Memory, Embeddings & Vector DB Security | 28 | [C08](C08-Memory-and-Embeddings.md) | [5 sections](#c8-memory-embeddings--vector-db-security) | 2026-04-15 |
-| C9 | Orchestration & Agentic Action Security | 50 | [C09](C09-Orchestration-and-Agents.md) | [8 sections](#c9-orchestration--agentic-action-security) | 2026-04-15 |
-| C10 | MCP Security | 28 | [C10](C10-MCP-Security.md) | [6 sections](#c10-mcp-security) | 2026-04-15 |
-| C11 | Adversarial Robustness | 44 | [C11](C11-Adversarial-Robustness.md) | [10 sections](#c11-adversarial-robustness) | 2026-04-15 |
-| C12 | Privacy Protection | 26 | [C12](C12-Privacy.md) | [6 sections](#c12-privacy-protection) | 2026-04-15 |
-| C13 | Monitoring, Logging & Anomaly Detection | 47 | [C13](C13-Monitoring-and-Logging.md) | [7 sections](#c13-monitoring-logging--anomaly-detection) | 2026-04-15 |
-| C14 | Human Oversight & Accountability | 27 | [C14](C14-Human-Oversight.md) | [7 sections](#c14-human-oversight--accountability) | 2026-04-15 |
-| | **Total** | **482** | **111 pages** | | |
+| C1 | Training Data Integrity & Traceability | 26 | [C01](C01-Training-Data.md) | [5 sections](#c1-training-data-integrity--traceability) | 2026-04-16 |
+| C2 | User Input Validation | 18 | [C02](C02-User-Input-Validation.md) | [4 sections](#c2-user-input-validation) | 2026-04-16 |
+| C3 | Model Lifecycle Management | 28 | [C03](C03-Model-Lifecycle-Management.md) | [6 sections](#c3-model-lifecycle-management) | 2026-04-17 |
+| C4 | Infrastructure, Configuration & Deployment Security | 21 | [C04](C04-Infrastructure.md) | [3 sections](#c4-infrastructure-configuration--deployment-security) | 2026-04-16 |
+| C5 | Access Control & Identity | 12 | [C05](C05-Access-Control.md) | [6 sections](#c5-access-control--identity) | 2026-04-16 |
+| C6 | Supply Chain Security | 17 | [C06](C06-Supply-Chain.md) | [5 sections](#c6-supply-chain-security) | 2026-04-16 |
+| C7 | Model Behavior & Output Control | 36 | [C07](C07-Model-Behavior.md) | [8 sections](#c7-model-behavior--output-control) | 2026-04-17 |
+| C8 | Memory, Embeddings & Vector DB Security | 28 | [C08](C08-Memory-and-Embeddings.md) | [5 sections](#c8-memory-embeddings--vector-db-security) | 2026-04-16 |
+| C9 | Orchestration & Agentic Action Security | 51 | [C09](C09-Orchestration-and-Agents.md) | [8 sections](#c9-orchestration--agentic-action-security) | 2026-04-16 |
+| C10 | MCP Security | 28 | [C10](C10-MCP-Security.md) | [6 sections](#c10-mcp-security) | 2026-04-16 |
+| C11 | Adversarial Robustness | 44 | [C11](C11-Adversarial-Robustness.md) | [10 sections](#c11-adversarial-robustness) | 2026-04-16 |
+| C12 | Privacy Protection | 26 | [C12](C12-Privacy.md) | [6 sections](#c12-privacy-protection) | 2026-04-16 |
+| C13 | Monitoring, Logging & Anomaly Detection | 47 | [C13](C13-Monitoring-and-Logging.md) | [7 sections](#c13-monitoring-logging--anomaly-detection) | 2026-04-16 |
+| C14 | Human Oversight & Accountability | 27 | [C14](C14-Human-Oversight.md) | [7 sections](#c14-human-oversight--accountability) | 2026-04-16 |
+| | **Total** | **411** | **104 pages** | | |
 
 ---
 
@@ -66,47 +66,40 @@ Covers model authorization and integrity, validation and testing, controlled dep
 | C3.5 Hosted and Provider-Managed Model Controls | [C03-05](C03-05-Hosted-Provider-Managed-Controls.md) |
 | C3.6 Fine-Tuning Pipeline Authorization & Reward Model Integrity | [C03-06](C03-06-Fine-Tuning-Pipeline-Security.md) |
 
-### C4: Infrastructure & Deployment Security
+### C4: Infrastructure, Configuration & Deployment Security
 
-Addresses runtime isolation, secure build pipelines, network controls, secrets management, workload sandboxing, resource management, hardware security, and edge deployment.
+Covers AI-specific workload sandboxing and confidential computing, hardware security for AI accelerators, and edge/distributed AI deployment security. General infrastructure hardening (containers, networks, secrets, CI/CD) is covered by ASVS and is not repeated here.
 
 | Section | Page |
 |---------|------|
-| C4.1 Runtime Environment Isolation | [C04-01](C04-01-Runtime-Environment-Isolation.md) |
-| C4.2 Secure Build & Deployment | [C04-02](C04-02-Secure-Build-Deployment.md) |
-| C4.3 Network Security & Access Control | [C04-03](C04-03-Network-Security-Access-Control.md) |
-| C4.4 Secrets & Key Management | [C04-04](C04-04-Secrets-Key-Management.md) |
-| C4.5 Workload Sandboxing & Validation | [C04-05](C04-05-Workload-Sandboxing-Validation.md) |
-| C4.6 Resource Management, Backup & Recovery | [C04-06](C04-06-Resource-Management-Backup-Recovery.md) |
-| C4.7 Hardware Security | [C04-07](C04-07-Hardware-Security.md) |
-| C4.8 Edge & Distributed Security | [C04-08](C04-08-Edge-Distributed-Security.md) |
+| C4.1 AI Workload Sandboxing & Validation | [C04-01](C04-01-Workload-Sandboxing-Validation.md) |
+| C4.2 AI Hardware Security | [C04-02](C04-02-Hardware-Security.md) |
+| C4.3 Edge & Distributed AI Security | [C04-03](C04-03-Edge-Distributed-Security.md) |
 
 ### C5: Access Control & Identity
 
-Covers identity management and authentication, authorization and policy, query-time security enforcement, output filtering and DLP, multi-tenant isolation, and autonomous agent authorization.
+Covers AI-specific authentication for high-risk operations and federated agents, resource authorization and classification, query-time authorization through AI pipelines, output entitlement enforcement, runtime isolation of the agent policy decision point, and multi-tenant isolation in shared AI infrastructure.
 
 | Section | Page |
 |---------|------|
-| C5.1 Identity Management & Authentication | [C05-01](C05-01-Identity-Management-Authentication.md) |
-| C5.2 Authorization & Policy | [C05-02](C05-02-Authorization-Policy.md) |
-| C5.3 Query-Time Security Enforcement | [C05-03](C05-03-Query-Time-Security-Enforcement.md) |
-| C5.4 Output Filtering & Data Loss Prevention | [C05-04](C05-04-Output-Filtering-DLP.md) |
-| C5.5 Multi-Tenant Isolation | [C05-05](C05-05-Multi-Tenant-Isolation.md) |
-| C5.6 Autonomous Agent Authorization | [C05-06](C05-06-Autonomous-Agent-Authorization.md) |
+| C5.1 Authentication | [C05-01](C05-01-Identity-Management-Authentication.md) |
+| C5.2 AI Resource Authorization & Classification | [C05-02](C05-02-Authorization-Policy.md) |
+| C5.3 Query-Time Authorization | [C05-03](C05-03-Query-Time-Security-Enforcement.md) |
+| C5.4 Output Entitlement Enforcement | [C05-04](C05-04-Output-Filtering-DLP.md) |
+| C5.5 Policy Decision Point Isolation | [C05-05](C05-05-Policy-Decision-Point-Isolation.md) |
+| C5.6 Multi-Tenant Isolation | [C05-06](C05-06-Multi-Tenant-Isolation.md) |
 
 ### C6: Supply Chain Security
 
-Covers vetting pretrained models, scanning frameworks and libraries, pinning dependencies, enforcing trusted sources, managing third-party dataset risk, monitoring for supply chain attacks, and maintaining AI bills of materials.
+Covers AI-specific supply chain controls: vetting pretrained models, enforcing trusted sources for AI artifacts, managing third-party dataset risk, monitoring for supply chain attacks, and maintaining AI bills of materials for model artifacts. Generic software supply chain controls (dependency scanning, version pinning, SBOM generation, CI/CD audit logging) are covered by ASVS and OWASP SCVS and are not repeated here.
 
 | Section | Page |
 |---------|------|
-| C6.1 Pretrained Model Vetting | [C06-01](C06-01-Pretrained-Model-Vetting.md) |
-| C6.2 Framework & Library Scanning | [C06-02](C06-02-Framework-Library-Scanning.md) |
-| C6.3 Dependency Pinning & Verification | [C06-03](C06-03-Dependency-Pinning-Verification.md) |
-| C6.4 Trusted Source Enforcement | [C06-04](C06-04-Trusted-Source-Enforcement.md) |
-| C6.5 Third-Party Dataset Risk | [C06-05](C06-05-Third-Party-Dataset-Risk.md) |
-| C6.6 Supply Chain Attack Monitoring | [C06-06](C06-06-Supply-Chain-Attack-Monitoring.md) |
-| C6.7 AI BOM for Model Artifacts | [C06-07](C06-07-AI-BOM-Model-Artifacts.md) |
+| C6.1 Pretrained Model Vetting & Origin Integrity | [C06-01](C06-01-Pretrained-Model-Vetting.md) |
+| C6.2 Trusted Source Enforcement for AI Artifacts | [C06-02](C06-02-Trusted-Source-Enforcement.md) |
+| C6.3 Third-Party Dataset Risk Assessment | [C06-03](C06-03-Third-Party-Dataset-Risk.md) |
+| C6.4 Supply Chain Attack Monitoring | [C06-04](C06-04-Supply-Chain-Attack-Monitoring.md) |
+| C6.5 AI BOM for Model Artifacts | [C06-05](C06-05-AI-BOM-Model-Artifacts.md) |
 
 ### C7: Model Behavior & Output Control
 
@@ -231,8 +224,8 @@ The appendices provide supporting material including a glossary of AI security t
 |----------|------|:-------:|
 | A: Glossary | [Appendix A Glossary](Appendix-A-Glossary.md) | 2026-03-28 |
 | B: References | [Appendix B References](Appendix-B-References.md) | 2026-03-28 |
-| C: AI-Assisted Secure Coding (30 reqs) | [Appendix C AI Secure Coding](Appendix-C-AI-Secure-Coding.md) | 2026-03-28 |
-| D: AI Security Controls Inventory | [Appendix D Controls Inventory](Appendix-D-Controls-Inventory.md) | 2026-03-28 |
+| C: AI-Assisted Secure Coding (30 reqs) | [Appendix C AI Secure Coding](Appendix-C-AI-Secure-Coding.md) | 2026-04-16 |
+| D: AI Security Controls Inventory | [Appendix D Controls Inventory](Appendix-D-Controls-Inventory.md) | 2026-04-16 |
 
 ---
 

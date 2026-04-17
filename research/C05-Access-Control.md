@@ -1,7 +1,7 @@
 # C05: Access Control & Identity for AI Components & Users
 
 > **Source:** [`1.0/en/0x10-C05-Access-Control-and-Identity.md`](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C05-Access-Control-and-Identity.md)
-> **Requirements:** 33 | **Sections:** 6
+> **Requirements:** 12 | **Sections:** 6
 
 ## Control Objective
 
@@ -13,12 +13,12 @@ Effective access control for AI systems requires robust identity management, con
 
 | Section | Title | Reqs | Page |
 |---------|-------|:----:|------|
-| C5.1 | Identity Management & Authentication | 3 | [C05-01-Identity-Management-Authentication](C05-01-Identity-Management-Authentication.md) |
-| C5.2 | Authorization & Policy | 11 | [C05-02-Authorization-Policy](C05-02-Authorization-Policy.md) |
-| C5.3 | Query-Time Security Enforcement | 6 | [C05-03-Query-Time-Security-Enforcement](C05-03-Query-Time-Security-Enforcement.md) |
-| C5.4 | Output Filtering & Data Loss Prevention | 3 | [C05-04-Output-Filtering-DLP](C05-04-Output-Filtering-DLP.md) |
-| C5.5 | Multi-Tenant Isolation | 6 | [C05-05-Multi-Tenant-Isolation](C05-05-Multi-Tenant-Isolation.md) |
-| C5.6 | Autonomous Agent Authorization | 4 | [C05-06-Autonomous-Agent-Authorization](C05-06-Autonomous-Agent-Authorization.md) |
+| C5.1 | Authentication | 2 | [C05-01-Identity-Management-Authentication](C05-01-Identity-Management-Authentication.md) |
+| C5.2 | AI Resource Authorization & Classification | 4 | [C05-02-Authorization-Policy](C05-02-Authorization-Policy.md) |
+| C5.3 | Query-Time Authorization | 1 | [C05-03-Query-Time-Security-Enforcement](C05-03-Query-Time-Security-Enforcement.md) |
+| C5.4 | Output Entitlement Enforcement | 2 | [C05-04-Output-Filtering-DLP](C05-04-Output-Filtering-DLP.md) |
+| C5.5 | Policy Decision Point Isolation | 2 | [C05-05-Policy-Decision-Point-Isolation](C05-05-Policy-Decision-Point-Isolation.md) |
+| C5.6 | Multi-Tenant Isolation | 2 | [C05-06-Multi-Tenant-Isolation](C05-06-Multi-Tenant-Isolation.md) |
 
 ---
 
@@ -61,6 +61,11 @@ Known attacks, real-world incidents, and threat vectors relevant to this chapter
 - **[2026-04]** Colorado AI Act establishes "reasonable care" standard for high-risk AI systems effective June 30, 2026 — widely adopted identity and authorization standards (WIMSE/SPIFFE, OAuth agent profiles) become evidence of compliance in court
 - **[2026-04]** Nutanix Agentic AI multi-tenancy framework (.NEXT 2026): per-tenant GPU resource allocation, tenant-specific security/networking policies, and independent AI environments with dynamic isolation across GPU-aaS, K8s-aaS, VectorDB-aaS, and Models-aaS
 - **[2026-04]** Amazon Bedrock AgentCore integrates Cedar policy engine for fine-grained agent authorization: model AI tools, RAG datasets, and operations as Cedar resources/actions with static analysis to understand policy changes before deployment
+- **[2026-04]** Microsoft Agent Governance Toolkit (open-source, Apr 2 2026): seven-package runtime security framework with sub-millisecond policy enforcement (<0.1ms p99), supporting OPA Rego, Cedar, and YAML policy languages; addresses all 10 OWASP agentic AI risks; integrates LangChain, AutoGen, CrewAI, and Azure AI Foundry — first multi-engine policy framework purpose-built for autonomous agents
+- **[2026-04]** CVE-2025-59536 (CVSS 8.7) and CVE-2026-21852 (CVSS 5.3): Claude Code configuration injection via repository-controlled `.claude/settings.json` enables MCP consent bypass and silent RCE on developer endpoints — `enableAllProjectMcpServers` auto-approves all MCP servers without user confirmation (Check Point Research, patched Sep 2025)
+- **[2026-04]** Flowise CVE-2025-59528 under active exploitation: attack traffic targeting 12,000+ internet-exposed instances; third Flowise RCE in the wild after CVE-2025-8943 (CVSS 9.8) and CVE-2025-26319 (CVSS 8.9) — a pattern of AI workflow tools deployed without access controls
+- **[2026-04]** Shadow AI breach cost premium: IBM 2025 Cost of a Data Breach reports shadow AI incidents average $4.63M per breach — $670K more than standard breaches; Bessemer Venture Partners names AI agent security "the defining cybersecurity challenge of 2026"
+- **[2026-04]** NIST NCCoE AI Agent Identity Project listening sessions began April 2026: sector-specific workshops (healthcare, finance, education) collecting concrete implementation barriers and success factors; comment period on concept paper closed Apr 2
 
 ### Notable Incidents & Research
 
@@ -107,6 +112,10 @@ Known attacks, real-world incidents, and threat vectors relevant to this chapter
 | 2026 | CVE-2025-59528: Flowise AI CustomMCP node RCE (CVSS 10.0) | Attacker-controlled config data in MCP node yields full system compromise; pattern of AI workflow tools deployed without access controls (5.2.1, 5.6.2) | [Security Online](https://securityonline.info/vulnerability-digest-april-2026-ai-security-gaps/) |
 | Apr 2026 | Nutanix Agentic AI multi-tenancy framework (.NEXT 2026) | Per-tenant GPU allocation, tenant-specific security policies, independent AI environments across GPU-aaS, K8s-aaS, VectorDB-aaS (5.5.1, 5.5.3) | [Nutanix](https://www.nutanix.com/press-releases/2026/nutanix-to-extend-nutanix-agentic-ai-empowering-neoclouds-to-deliver-higher-value-ai-services) |
 | Mar 2026 | Amazon Bedrock AgentCore + Cedar for agent authorization | Cedar policy engine integrated for fine-grained AI agent access control with static analysis of policy changes before deployment (5.2.6, 5.6.4) | [Medium](https://medium.com/@tolghn/amazon-bedrock-agentcore-policy-cedar-control-what-your-ai-agents-can-do-3313e6f3a2db) |
+| Apr 2026 | Microsoft Agent Governance Toolkit (open-source) | Seven-package runtime security framework: sub-millisecond policy enforcement, OPA Rego + Cedar + YAML, addresses all 10 OWASP agentic AI risks; integrates LangChain, AutoGen, CrewAI (5.2.6, 5.6.4) | [Microsoft Open Source](https://opensource.microsoft.com/blog/2026/04/02/introducing-the-agent-governance-toolkit-open-source-runtime-security-for-ai-agents/) |
+| Feb 2026 | CVE-2025-59536 / CVE-2026-21852: Claude Code config injection + MCP consent bypass | Repository-controlled `.claude/settings.json` enables silent RCE and API key exfiltration; `enableAllProjectMcpServers` bypasses user approval for MCP servers (5.1.1, 5.2.1) | [Check Point Research](https://research.checkpoint.com/2026/rce-and-api-token-exfiltration-through-claude-code-project-files-cve-2025-59536/) |
+| Apr 2026 | Flowise CVE-2025-59528 under active exploitation (12,000+ instances) | Third Flowise RCE in the wild; CustomMCP node executes attacker JavaScript with full Node.js runtime privileges; attack traffic from single Starlink IP (5.2.1, 5.6.2) | [The Hacker News](https://thehackernews.com/2026/04/flowise-ai-agent-builder-under-active.html) |
+| 2026 | Bessemer VP: AI agent security as defining challenge of 2026 | Shadow AI breaches average $4.63M (IBM); 48% of security professionals cite agentic AI as top attack vector; 1 in 8 AI breaches now involve autonomous agents (5.6.1, 5.6.2) | [Bessemer VP](https://www.bvp.com/atlas/securing-ai-agents-the-defining-cybersecurity-challenge-of-2026) |
 
 ---
 
@@ -119,26 +128,26 @@ Current tools, frameworks, and libraries that help implement these controls:
 - **Identity:** SPIFFE/SPIRE for workload identity, OAuth 2.0 for user-facing AI apps, OIDC-A (OpenID Connect for Agents) 1.0 proposal, ARIA (Agent Relationship-Based Identity and Authorization), Microsoft OAuth 2.0 on-behalf-of token exchange for agent delegation
 - **Agent credential management:** Grantex (scoped JWT grant tokens, per-agent DIDs, delegation chains), ScaleKit (delegated agent access with on-behalf-of auth), Nango (secure AI agent API authentication), Auth0 Token Vault (GA Jan 2026; RFC 8693 token exchange with 30+ pre-integrated providers, per-user credential isolation), HashiCorp Vault (dynamic secrets for AI agent identity), ZeroID (open-source, Apr 2026; RFC 8693 delegation chains with automatic permission narrowing, OpenID SSF/CAEP cascade revocation, LangGraph/CrewAI/Strands integrations)
 - **DLP:** Google DLP API, Microsoft Purview, Presidio, custom regex/NER-based PII filters
-- **Multi-tenant isolation:** Kubernetes namespaces, Calico/Cilium network policies, database row-level security, Pinecone namespaces (up to 100K per index), Weaviate tenant-isolated collections, Nutanix Agentic AI multi-tenancy framework (Apr 2026; per-tenant GPU allocation, tenant-specific security/networking policies across GPU-aaS, K8s-aaS, VectorDB-aaS, Models-aaS)
+- **Multi-tenant isolation:** Kubernetes namespaces, Calico/Cilium network policies, database row-level security, Pinecone namespaces (up to 100K per index), Weaviate tenant-isolated collections, Nutanix Agentic AI multi-tenancy framework (Apr 2026; per-tenant GPU allocation, tenant-specific security/networking policies across GPU-aaS, K8s-aaS, VectorDB-aaS, Models-aaS), Blaxel (microVM architecture with hardware-enforced tenant boundaries, sub-25ms resume, SOC 2 Type II / HIPAA / ISO 27001 compliant)
 - **Vector DB access control:** Pinecone (document-level filtering, role-based retrieval, SOC 2/HIPAA/ISO 27001), Weaviate (tenant isolation, collection-level access), Qdrant (managed multi-tenant support)
 - **Agent authorization:** LangChain tool permissions, OpenAI function calling constraints, Anthropic tool use scoping, Model Context Protocol (MCP) for authorization context negotiation, IETF `draft-oauth-ai-agents-on-behalf-of-user` (OAuth 2.0 agent delegation), IETF Secure Intent Protocol (`draft-goswami-agentic-jwt-00`), IETF `draft-klrc-aiagent-auth-01` (WIMSE/SPIFFE-based agent auth, Mar 2026), IETF `draft-niyikiza-oauth-attenuating-agent-tokens-00` (AATs — cryptographic scope attenuation for delegation chains, Mar 2026), IETF `draft-aap-oauth-profile-00` (Agent Authorization Profile — task binding, capability constraints, oversight claims, Feb 2026)
-- **Runtime authorization fabric:** Microsoft Authorization Fabric (PEP/PDP with RBAC+ABAC+approval injection, Apr 2026), Entra Agent Identity for workload identity governance
+- **Runtime authorization fabric:** Microsoft Authorization Fabric (PEP/PDP with RBAC+ABAC+approval injection, Apr 2026), Entra Agent Identity for workload identity governance, Microsoft Agent Governance Toolkit (open-source, Apr 2026; seven-package runtime security with Agent OS sub-millisecond policy engine, Agent Mesh cryptographic identity via DIDs, and Agent Runtime execution rings with emergency kill switches; supports OPA Rego + Cedar + YAML policies)
 - **Vector DB RBAC research:** HoneyBee (SIGMOD 2026) -- dynamic partitioning framework for RBAC in vector databases; Milvus native RBAC with fine-grained collection/partition-level permissions
 - **KV-cache isolation:** vLLM cache salting (`cache_salt` parameter, merged May 2025) for per-tenant prefix isolation; SafeKV (arxiv 2508.08438, Feb 2026) selective sharing with ChunkGuard real-time sensitivity detection; KV-Cloak (arxiv 2508.09442) reversible matrix obfuscation for plaintext cache protection (~5% overhead); NVIDIA BlueField-4 ICMSP (CES 2026) for hardware-accelerated line-rate encryption and DPU-enforced tenant isolation of KV-cache flows
 - **GPU TEE confidential computing:** NVIDIA H100 Confidential Compute (<5% throughput overhead for typical LLM inference), AMD SEV-SNP and Intel TDX for VM-level isolation; production deployments available on OpenRouter via Phala Network; provides hardware-enforced tenant isolation for the entire inference pipeline, not just KV-cache
 - **Multi-tenant inference isolation:** Token Pools (arxiv 2603.00356) — inference-native capacity isolation decomposing resources into token throughput, KV-cache capacity, and request concurrency with 5-tier priority hierarchy and admission control at API gateway level
 - **API gateway security:** API7.ai (RBAC with OPA integration), Palo Alto Prisma for AI API security
 
-### Implementation Maturity (updated 2026-04-15)
+### Implementation Maturity (updated 2026-04-16)
 
 | Control Area | Tooling Maturity | Notes |
 |--------------|:---:|-------|
-| C5.1 Identity Management & Authentication | High | OIDC/SAML and MFA are mature; OIDC-A proposal and NIST NCCoE guidance advancing agent-specific identity; SPIFFE maturing for workload identity. ZeroID (Apr 2026) provides first open-source agent identity platform with RFC 8693 delegation chains and cascade revocation. Still, only 21.9% of teams treat agents as identity-bearing entities (IANS 2026). |
-| C5.2 Authorization & Policy | Medium-High | OPA and Cedar production-ready; Cedar now integrated into Amazon Bedrock AgentCore for agent-level policy with static analysis. Microsoft's Authorization Fabric (Apr 2026) introduces PEP/PDP runtime evaluation with RBAC+ABAC+approval injection for agents. Three new requirements (5.2.9-5.2.11) address JIT access, policy expiration, and AI data classification — only 1% of orgs have fully adopted JIT (CyberArk). CVE-2026-32211 (Azure DevOps MCP, CVSS 9.1) and CVE-2025-59528 (Flowise CustomMCP, CVSS 10.0) demonstrate that MCP-based tooling frequently ships without authentication. |
-| C5.3 Query-Time Security Enforcement | Medium-High | SQL RLS is mature; vector database access control has significantly improved -- Pinecone namespaces (100K), Weaviate tenant isolation, and Qdrant all now support document-level filtering and role-based retrieval natively. Application-layer enforcement still needed for complex cross-collection queries. |
-| C5.4 Output Filtering & Data Loss Prevention | Medium | PII detection tools exist but false-negative rates remain high for AI-generated content. The PerplexedBrowser vulnerability family (Mar 2026) revealed that agentic browsers can exfiltrate data through authorized channels, bypassing traditional output filters entirely. |
-| C5.5 Multi-Tenant Isolation | Medium-High | Network and storage isolation is mature; Pinecone/Weaviate namespace isolation is production-ready. Nutanix Agentic AI (Apr 2026) adds per-tenant GPU allocation with dynamic isolation across GPU-aaS, K8s-aaS, VectorDB-aaS. KV-cache isolation advancing on multiple fronts: vLLM cache salting (May 2025), SafeKV selective sharing (94-97% side-channel mitigation), and NVIDIA BlueField-4 ICMSP (CES 2026) for DPU-enforced tenant isolation. GPU TEE confidential computing (NVIDIA H100 CC, AMD SEV-SNP, Intel TDX) now production-ready with <5% overhead. The Moltbook breach (Jan 2026) exposed 1.5M agent tokens via missing RLS — a cautionary example of multi-tenant isolation failure at the application layer. |
-| C5.6 Autonomous Agent Authorization | Medium | Three complementary IETF drafts now cover the agent authorization stack: draft-klrc-aiagent-auth (identity via WIMSE/SPIFFE), draft-niyikiza-oauth-attenuating-agent-tokens (cryptographic scope attenuation for delegation chains), and draft-aap-oauth-profile (task-bound capabilities with oversight claims). "Agent God Mode" (AWS Bedrock) and "Double Agent" (Vertex AI) both demonstrated default-overprivileged agent credentials in major cloud platforms. OWASP NHI Top 10 maps directly to agentic failure modes. ZeroID and Auth0 Token Vault provide open-source and commercial implementations respectively. Still nascent for continuous per-action authorization at scale. |
+| C5.1 Authentication | High | OIDC/SAML and MFA are mature for human users; step-up auth for high-risk AI operations is well understood. Signed JWT assertions for agent-to-system federation are advancing (IETF draft-klrc-aiagent-auth, OIDC-A proposal, NIST NCCoE listening sessions). Still, only 21.9% of teams treat agents as identity-bearing entities (IANS 2026). |
+| C5.2 AI Resource Authorization & Classification | Medium-High | OPA and Cedar production-ready; Cedar now integrated into Amazon Bedrock AgentCore for agent-level policy with static analysis. Microsoft's Agent Governance Toolkit (Apr 2026) provides open-source multi-engine policy enforcement (OPA Rego + Cedar + YAML) with sub-millisecond latency. JIT adoption remains low — only 1% of orgs have fully adopted JIT privileged access (CyberArk). Classification taxonomies covering AI-specific asset types (embeddings, model weights, prompt templates, RAG assemblies, fine-tuning datasets, agent tool schemas) are still largely custom extensions to existing DLP taxonomies. CVE-2025-59528 now under active exploitation across 12,000+ Flowise instances (Apr 2026). |
+| C5.3 Query-Time Authorization | Medium-High | SQL RLS is mature; vector database access control has significantly improved — Pinecone namespaces (100K), Weaviate tenant isolation, and Qdrant all now support document-level filtering and role-based retrieval natively. Application-layer enforcement still needed for complex cross-collection queries. |
+| C5.4 Output Entitlement Enforcement | Medium | PII detection tools exist but false-negative rates remain high for AI-generated content. Citation-level entitlement validation is still largely custom work — most RAG frameworks (LlamaIndex, LangChain) do not natively enforce citation-level access control. The PerplexedBrowser vulnerability family (Mar 2026) revealed that agentic browsers can exfiltrate data through authorized channels, bypassing traditional output filters entirely. |
+| C5.5 Policy Decision Point Isolation | Low-Medium | Emerging area. Most production agent frameworks still evaluate policy inline with agent execution, leaving the PDP reachable from a compromised agent runtime. Out-of-process policy enforcement patterns (OPA sidecar, remote Cedar evaluator, AgentCore Policy gateway) provide the reference architecture, but adoption for agent workloads lags the equivalent service-mesh pattern for microservices. |
+| C5.6 Multi-Tenant Isolation | Medium-High | Network and storage isolation is mature; Pinecone/Weaviate namespace isolation is production-ready. Nutanix Agentic AI (Apr 2026) adds per-tenant GPU allocation with dynamic isolation across GPU-aaS, K8s-aaS, VectorDB-aaS. KV-cache isolation advancing on multiple fronts: vLLM cache salting (May 2025), SafeKV selective sharing (94-97% side-channel mitigation), and NVIDIA BlueField-4 ICMSP (CES 2026) for DPU-enforced tenant isolation. GPU TEE confidential computing (NVIDIA H100 CC, AMD SEV-SNP, Intel TDX) now production-ready with <5% overhead. The Moltbook breach (Jan 2026) exposed 1.5M agent tokens via missing RLS — a cautionary example of multi-tenant isolation failure at the application layer. |
 
 ---
 
@@ -163,6 +172,7 @@ Current tools, frameworks, and libraries that help implement these controls:
 - [ ] **[2026-04]** How should the MCP specification address its optional-authentication gap, given that CVE-2026-32211 (CVSS 9.1) and CVE-2025-59528 (CVSS 10.0) both stem from MCP servers shipping without authentication?
 - [ ] **[2026-04]** What is the appropriate "reasonable care" standard for AI agent identity and authorization under the Colorado AI Act (effective June 2026), and how should organizations demonstrate compliance through adopted standards?
 - [ ] **[2026-04]** How should AI-native social platforms secure agent-to-agent credentials, given the Moltbook breach demonstrated that plaintext credential exchange in agent DMs creates cascading exposure across interconnected services?
+- [ ] **[2026-04]** How should multi-engine policy frameworks (e.g., Microsoft Agent Governance Toolkit supporting OPA + Cedar + YAML simultaneously) handle policy conflict resolution when overlapping rules from different engines produce contradictory authorization decisions for the same agent action?
 
 ---
 
@@ -199,16 +209,20 @@ Current tools, frameworks, and libraries that help implement these controls:
 - [Amazon Bedrock AgentCore + Cedar Policy Engine for Agent Authorization (Mar 2026)](https://medium.com/@tolghn/amazon-bedrock-agentcore-policy-cedar-control-what-your-ai-agents-can-do-3313e6f3a2db)
 - [Nutanix Agentic AI Multi-Tenancy Framework (.NEXT 2026)](https://www.nutanix.com/press-releases/2026/nutanix-to-extend-nutanix-agentic-ai-empowering-neoclouds-to-deliver-higher-value-ai-services)
 - [Colorado AI Act: Reasonable Care Standard for High-Risk AI Systems (effective June 2026)](https://www.rockcybermusings.com/p/i-agent-authentication-authorization-gap)
+- [Microsoft Agent Governance Toolkit: Open-Source Runtime Security for AI Agents (Apr 2026)](https://opensource.microsoft.com/blog/2026/04/02/introducing-the-agent-governance-toolkit-open-source-runtime-security-for-ai-agents/)
+- [Check Point Research: RCE and API Token Exfiltration Through Claude Code Project Files — CVE-2025-59536, CVE-2026-21852](https://research.checkpoint.com/2026/rce-and-api-token-exfiltration-through-claude-code-project-files-cve-2025-59536/)
+- [Bessemer Venture Partners: Securing AI Agents — The Defining Cybersecurity Challenge of 2026](https://www.bvp.com/atlas/securing-ai-agents-the-defining-cybersecurity-challenge-of-2026)
+- [CSA Research Note: Flowise MCP RCE Active Exploitation (Apr 2026)](https://labs.cloudsecurityalliance.org/research/csa-research-note-flowise-mcp-rce-exploitation-20260409-csa/)
 
 ---
 
 ## Related Pages
 
-- [C05-06: Autonomous Agent Authorization](C05-06-Autonomous-Agent-Authorization.md) — Scoped capability tokens, default-deny high-risk actions, session-bound credentials, and continuous per-action policy evaluation — the section-level detail for C5.6 requirements.
-- [C08-01: Access Controls for Memory & RAG](C08-01-Access-Controls-Memory-RAG.md) — RBAC and namespace isolation for vector databases and RAG pipelines, including cross-tenant detection and retrieval logging — the data-layer complement to the access control policies here.
-- [C09-06: Authorization & Delegation](C09-06-Authorization-and-Delegation.md) — Agent authorization with delegation context propagation, credential isolation, and dual-constraint evaluation — the orchestration-layer counterpart to the identity patterns here.
-- [C05-01: Identity Management & Authentication](C05-01-Identity-Management-Authentication.md) — Centralized identity, MFA for high-risk model operations, and short-lived cryptographic tokens for federated agent authentication.
-- [C05-02: Authorization & Policy](C05-02-Authorization-Policy.md) — Deep dive on RBAC/ABAC enforcement, externalized policy engines (OPA, Cedar), JIT privileged access, and temporal scoping for agent tool authorization.
+- [C05-05: Policy Decision Point Isolation](C05-05-Policy-Decision-Point-Isolation.md) — Runtime isolation of the agent PDP from the agent runtime it governs, complementing the agent-specific authorization controls in C9.6.
+- [C05-06: Multi-Tenant Isolation](C05-06-Multi-Tenant-Isolation.md) — KV-cache partitioning, shared model state isolation, and tenant-specific inference infrastructure isolation.
+- [C09-06: Authorization & Delegation](C09-06-Authorization-and-Delegation.md) — Agent authorization with delegation context propagation, credential isolation, and IETF transaction tokens — the orchestration-layer counterpart to the authentication patterns here.
+- [C05-03: Query-Time Authorization](C05-03-Query-Time-Security-Enforcement.md) — Mandatory security filters, fail-closed query behavior, RLS, and field masking for vector DB and RAG query pipelines — the data-access enforcement layer beneath the policies defined here.
+- [C05-02: AI Resource Authorization & Classification](C05-02-Authorization-Policy.md) — RBAC/ABAC enforcement for AI resources, externalized policy engines (OPA, Cedar, AgentCore), JIT privileged access, and the AI-specific classification taxonomy that underpins query-time and output enforcement.
 
 ---
 

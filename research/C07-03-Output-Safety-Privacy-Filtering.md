@@ -234,13 +234,59 @@ Key performance metrics on the QwenGuardTest benchmark: F1 of 97.5 (vs. 95.9 for
 
 For output safety pipelines serving real-time applications, StreamGuard's forecasting approach offers a meaningful improvement over boundary-detection methods — catching unsafe trajectories before they materialize in the output stream rather than reacting after delivery.
 
+### Adversarial Robustness Benchmarks: Quantifying the Gap (April 2026)
+
+As of April 2026, the General Analysis Guardrails Index provides the most comprehensive head-to-head comparison of guardrail adversarial robustness across major providers. Testing against both standard benchmarks and RL-trained adversarial prompts designed to simulate motivated attackers, the results reveal dramatic performance differences:
+
+| Guardrail | Latency | HarmBench F1 | Adversarial F1 | Notes |
+|-----------|---------|:------------:|:--------------:|-------|
+| GA Guard Thinking | 650ms | 0.983 | 0.93+ | Highest overall; 256k-token long-context support |
+| GA Guard (base) | 29ms | 0.981 | 0.93+ | Best latency-to-accuracy ratio |
+| GA Guard Lite | 16ms | 0.963 | 0.93+ | Sub-20ms for inline use |
+| Llama Guard 4 (Meta) | 459ms | 0.961 | 0.796 | Free open-source; significant adversarial drop |
+| Google Vertex AI Model Armor | 873ms | 0.945 | 0.190 | Catastrophic adversarial collapse |
+| AWS Bedrock Guardrails | 375ms | 0.797 | 0.607 | 1.000 FPR on long-context traces |
+| Azure AI Content Safety | — | — | 0.193 | Minimal adversarial resilience |
+| Lakera Guard | — | — | 0.525 | Focused on prompt injection detection |
+
+The headline finding: cloud guardrails that score well on standard benchmarks suffer 50-80% F1 drops under adversarial conditions. GA Guard's mean adversarial F1 (0.93) is roughly 2.8x higher than the cloud provider average (0.33), while its false-positive rate is ~73% lower (0.038 vs. 0.143). Google Vertex AI Model Armor shows the most extreme collapse — from 0.945 HarmBench F1 to just 0.190 under adversarial pressure.
+
+For production guardrail selection, these numbers argue strongly for adversarial-condition testing as the primary evaluation metric. Standard benchmarks create a misleading sense of security. Organizations should request adversarial robustness scores from any guardrail vendor and treat HarmBench or OpenAI Moderation F1 as a ceiling, not a floor.
+
+Separately, Alice WonderFence (2026) demonstrated production-scale low-latency guardrails at 68ms average response time (P95: 119ms) across 30,000 multilingual prompts in 20+ languages covering 10 safety categories. Their architecture uses lightweight model ensembles with early exit conditions for benign inputs and language-agnostic token normalization — achieving sub-120ms at P95 without sacrificing multilingual coverage.
+
+### Multimodal Output Safety: Beyond Text
+
+As of early 2026, output safety research is expanding beyond text into image, video, and audio modalities — driven by the proliferation of multimodal models that can generate or process content across formats.
+
+**SafeWatch** (ICLR 2025) is the first MLLM-based video guardrail model designed to follow customizable safety policies and provide multi-label safety verdicts with natural-language explanations. Unlike prior video classifiers that autoregressively encode all policies (introducing positional bias), SafeWatch encodes each policy chunk in parallel so all policies receive equal attention. On SafeWatch-Bench (2M videos across six unsafe categories), it outperforms all prior video guardrails by 28.2% while reducing inference costs by 10%. The accompanying SafeWatch-Bench dataset covers both real-world scenarios and outputs from state-of-the-art generative models.
+
+**OmniGuard** (December 2025) goes further, providing the first unified omni-modal guardrail covering text, images, video, and audio in a single framework. Built on Qwen2.5-Omni in 3B and 7B parameter variants, OmniGuard produces three outputs per evaluation: safety judgment, violation categories, and natural-language reasoning critiques. Trained via targeted distillation from expert models (GPT-oss-120B for text, Qwen3-VL-235B for vision, Kimi-Audio-7B for audio) on 210K+ samples, the 3B variant achieves competitive results against models 80x its size. Key benchmark results: 77.2% F1 on text, 75.2% on images, 90%+ on SafeWatch-Bench video, and strong cross-modal performance on combined modality scenarios. The cross-modal capability is particularly important — it can detect cases where individual modalities appear safe but their combination creates harm (e.g., innocuous text paired with a dangerous image).
+
+For output safety pipelines handling multimodal content, these developments signal that text-only filtering is increasingly insufficient. Organizations deploying image or video generation should evaluate modality-specific guardrails or unified systems like OmniGuard rather than relying solely on text classifiers applied to captions or descriptions.
+
+### MCP-Mediated Output Exfiltration
+
+Palo Alto Networks Unit 42 disclosed a new class of output exfiltration attacks in 2026 that exploit the Model Context Protocol (MCP) sampling feature. Unlike traditional output exfiltration via rendered markdown (covered in 7.3.8), MCP sampling attacks operate at the protocol level — malicious MCP servers can manipulate the LLM's outputs through three mechanisms:
+
+1. **Resource theft via hidden prompts.** Servers append concealed instructions to legitimate sampling requests, causing the LLM to generate unauthorized content (hidden from the user) alongside the expected response. Users see normal output while the model silently processes additional instructions consuming tokens and compute.
+
+2. **Covert tool invocation.** Injected prompts trigger unauthorized tool executions — file writes, API calls, data operations — without user awareness. The tool invocations appear legitimate from the model's perspective because they originate within an authorized MCP session.
+
+3. **Persistent conversation hijacking.** Servers embed meta-instructions in sampling responses that persist across conversation turns, enabling behavioral manipulation throughout the session and ongoing data exfiltration.
+
+A related attack vector emerged from Unit 42's research on agent memory poisoning (April 2026): indirect prompt injection payloads embedded in web pages or documents can be incorporated into an agent's long-term memory via session summarization. Once stored, these payloads persist for up to 365 days and influence all future sessions — enabling silent exfiltration of conversation history across interactions. The attack was demonstrated against Amazon Bedrock Agents with memory features enabled.
+
+Defenses for MCP-mediated exfiltration include: strict prompt templates with suspicious pattern stripping at the request layer, removal of instruction-like phrases from outputs at the response layer, capability declarations limiting what servers can request, context isolation preventing history access, and rate limiting on sampling frequency. For agent memory poisoning specifically, enabling pre-processing prompt evaluation, deploying guardrails with prompt-attack policies on memory summarization, and applying URL filtering against threat intelligence feeds are recommended.
+
 ### Selecting a Guardrail Architecture
 
-As of March 2026, the market offers three broad architectural patterns for output safety:
+As of April 2026, the market offers three broad architectural patterns for output safety:
 
-1. **API-based cloud services** (OpenAI Moderation, Azure Content Safety, AWS Bedrock Guardrails): Lowest integration effort, but introduce external dependencies and network latency. Best for teams without dedicated ML infrastructure.
+1. **API-based cloud services** (OpenAI Moderation, Azure Content Safety, AWS Bedrock Guardrails): Lowest integration effort, but introduce external dependencies and network latency. Best for teams without dedicated ML infrastructure. Caveat: adversarial robustness testing (see above) shows significant F1 drops under attack conditions for most cloud providers.
 2. **Self-hosted open-source frameworks** (LLM Guard, Guardrails AI, NeMo Guardrails, Presidio): Full control over filtering logic and data residency. Requires ML engineering capacity to deploy and maintain. Preferred for regulated industries and air-gapped environments.
 3. **Hybrid managed platforms** (Galileo, Lakera Guard): Combine cloud convenience with configurable policy engines. Typically offer sub-200ms latency budgets and dashboard-based policy management.
+4. **Specialized high-performance guardrails** (GA Guard, Alice WonderFence): Purpose-built for adversarial robustness with sub-30ms latency at the fast end. GA Guard's tiered offering (16ms Lite / 29ms base / 650ms Thinking) lets organizations pick their latency-accuracy trade-off. Newer entrants without the track record of established cloud providers, but benchmark performance is strong.
 
 Key selection criteria: latency budget (200-300ms is typical for real-time applications), data residency requirements, PII entity coverage depth, evasion resistance (does the tool handle Unicode normalization?), and whether the architecture avoids the self-policing vulnerability described above.
 
@@ -315,6 +361,13 @@ A Google research survey published in April 2026 mapped how LLMs are being embed
 - [Unmasking the Reality of PII Masking Models (Singh & Narayanan, April 2025)](https://arxiv.org/abs/2504.12308) — evaluation showing 28% PII miss rate and 67% misclassification in Piiranha/Starpii/Presidio
 - [PII-Bench: Evaluating Query-Aware Privacy Protection Systems (February 2025)](https://arxiv.org/abs/2502.18545) — 2,842 test samples across 55 PII categories, query-relevance F1 below 0.63
 - [Piiranha: Multilingual PII Detection Model (2024)](https://huggingface.co/iiiorg/piiranha-v1-detect-personal-information) — 280M-parameter DeBERTa-v3-base for 17 PII types across 6 languages, MIT license
+- [GA Guard: Guardrail Series (General Analysis, 2026)](https://generalanalysis.com/blog/ga_guard_series) — adversarial-robust guardrail with 0.983 HarmBench F1 and 29ms latency
+- [Best AI Guardrails in 2026: Adversarial Robustness Comparison (General Analysis)](https://generalanalysis.com/guides/best-ai-guardrails) — head-to-head F1, latency, and FPR benchmarks across major guardrail providers
+- [SafeWatch: Efficient Safety-Policy Following Video Guardrail Model (ICLR 2025)](https://github.com/BillChan226/SafeWatch) — first MLLM-based video guardrail with parallel policy encoding, 28.2% improvement over prior models
+- [OmniGuard: Unified Omni-Modal Guardrails with Deliberate Reasoning (December 2025)](https://arxiv.org/abs/2512.02306) — first unified text/image/video/audio guardrail with cross-modal harm detection
+- [Unit 42: Prompt Injection Attack Vectors Through MCP Sampling (2026)](https://unit42.paloaltonetworks.com/model-context-protocol-attack-vectors/) — resource theft, covert tool invocation, and conversation hijacking via MCP protocol
+- [Unit 42: Persistent Behaviors in Agents' Memory via Indirect Prompt Injection (April 2026)](https://unit42.paloaltonetworks.com/indirect-prompt-injection-poisons-ai-longterm-memory/) — memory poisoning enabling 365-day persistent exfiltration in Amazon Bedrock Agents
+- [Alice WonderFence: Low-Latency AI Guardrails (2026)](https://alice.io/blog/low-latency-ai-guardrails) — 68ms average, P95 119ms across 30,000 multilingual prompts in 20+ languages
 
 ---
 
@@ -344,5 +397,8 @@ A Google research survey published in April 2026 mapped how LLMs are being embed
 - Knowledge-decomposition attacks (CKA-Agent) achieve 78.6%+ success even with full conversation context — can cross-query intent aggregation be implemented at acceptable latency for real-time applications, or does this fundamentally require offline analysis? What minimum conversation window length is needed for reliable multi-turn intent detection?
 - Predictive streaming safety (StreamGuard) shows promise for catching harmful trajectories before they materialize, but relies on Monte Carlo sampling during training. How should these forecasting models be validated against novel attack patterns they weren't trained on, and what is the risk of adversarial exploitation of the prediction mechanism itself?
 - With PII detection benchmarks (PII-Bench) showing query-relevance F1 below 0.63, should output safety pipelines adopt query-aware redaction that preserves task-relevant PII while masking everything else, or is blanket redaction the safer default for production deployments?
+- As multimodal output generation becomes standard, should guardrail architectures move toward unified omni-modal systems (like OmniGuard) that can detect cross-modal harm, or is modality-specific specialization more effective? What is the latency cost of cross-modal reasoning in production pipelines?
+- MCP sampling attacks introduce protocol-level output exfiltration that bypasses traditional content filters entirely — should MCP implementations mandate capability declarations and sampling rate limits as part of the protocol specification, or is this better handled at the application layer?
+- Given that agent memory poisoning can persist for up to 365 days via session summarization, should output safety pipelines extend to cover memory write operations, treating summarization as a security boundary equivalent to output delivery?
 
 ---

@@ -135,9 +135,50 @@ These physical-world attack vectors demonstrate that adversarial robustness is n
 
 ### Regulatory Momentum: EU AI Act Adversarial Testing
 
-As of March 2026, the EU AI Act has established concrete adversarial testing mandates. For general-purpose AI (GPAI) models classified as posing systemic risk, providers must perform adversarial testing throughout the model lifecycle, including red-teaming exercises simulating malicious use (effective August 2025). For high-risk AI systems (full enforcement August 2026), performance standards explicitly require resilience against adversarial manipulation, with testing and validation reports covering stress testing under edge cases and adversarial attack scenarios. Non-compliance penalties reach up to EUR 35 million or 7% of global revenue.
+As of April 2026, the EU AI Act has established concrete adversarial testing mandates with enforcement roughly four months away. For general-purpose AI (GPAI) models classified as posing systemic risk, providers must perform adversarial testing throughout the model lifecycle, including red-teaming exercises simulating malicious use (GPAI rules effective August 2, 2025; enforcement actions begin August 2, 2026). For high-risk AI systems (full enforcement August 2, 2026), performance standards explicitly require resilience against adversarial manipulation, with testing and validation reports covering stress testing under edge cases and adversarial attack scenarios. Non-compliance penalties reach up to EUR 35 million or 7% of global revenue.
+
+The **EU AI Act General-Purpose AI Code of Practice (Final Version)** spells out the expected methodology in more specific terms than the underlying regulation. Acceptable model evaluation methods include "Q&A sets, task-based evaluations, benchmarks, red-teaming and other methods of adversarial testing, human uplift studies, model organisms, simulations, and/or proxy evaluations for classified materials." Testing must use "state-of-the-art adversarial techniques" and evaluations must be performed by multi-disciplinary teams combining technical and domain expertise specific to the systemic risk in scope. This effectively raises the bar for requirement 11.2.4 in the EU jurisdiction: generic benchmark evaluation is insufficient; adaptive attacks and domain-specific red-teaming are the compliance baseline.
 
 This regulatory environment directly reinforces requirements 11.2.1 through 11.2.4 -- organizations deploying in the EU will need documented adversarial evaluation (11.2.1), runtime detection (11.2.2), hardening procedures (11.2.3), and adaptive attack evaluation (11.2.4) as compliance obligations, not just best practices.
+
+### MITRE ATLAS v5.4.0: Agentic AI Adversarial Techniques Formalized
+
+MITRE ATLAS published **v5.4.0 in February 2026**, its second major 2026 update, expanding the framework to **16 tactics, 84 techniques, 56 sub-techniques, 32 mitigations, and 42 real-world case studies** -- up from 15 tactics and 66 techniques in October 2025. The January 12, 2026 update (contributed with Zenity Labs) was particularly relevant to adversarial-example hardening because it formalized several execution-layer agentic AI adversarial techniques that had previously been poorly catalogued:
+
+- **AML.T0096 (AI Service API):** Adversaries exploit AI service APIs (e.g., the OpenAI Assistants API) as covert command-and-control channels, evading conventional network detection because traffic blends into legitimate AI workflow patterns.
+- **AML.T0098 (AI Agent Tool Credential Harvesting):** Adversaries retrieve credentials, secrets, and API keys from agent-accessible tools -- a post-exploitation pivot once an agent has been adversarially manipulated.
+- **AML.T0099 (AI Agent Tool Data Poisoning):** Bad actors place malicious content where agents will invoke it, enabling hijacking or indirect prompt injection of the agent's reasoning chain.
+- **AML.T0100 (AI Agent Clickbait):** Adversaries lure AI-browser agents (e.g., web-browsing VLMs) into unintended actions through manipulated UI elements and hidden instructions embedded in page content.
+- **AML.T0101 (Data Destruction via AI Agent Tool Invocation):** Attackers use legitimate tool capabilities the agent holds to destroy data or disrupt systems.
+- **SesameOp (AML.CS0042):** A new case study documenting a backdoor that repurposes the OpenAI Assistants API for command and control, illustrating AML.T0096 in the wild.
+
+For requirement 11.2.1, the practical implication is that adversarial evaluation scope for agentic systems should now include these agent-specific techniques alongside traditional evasion attacks. For requirement 11.2.4, adaptive attack methodology should explicitly consider the adversary's ability to chain classical adversarial examples with agent-tool manipulation. Promptfoo's ATLAS-aligned LLM red-teaming and MITRE ATLAS Arsenal (CALDERA plugin) have both been updated to cover the new 2026 technique set.
+
+### New Agent & Multi-Modal Adversarial Attack Classes (2025--2026)
+
+The boundary between adversarial examples and prompt injection has continued to dissolve in 2025--2026 research, with several attack classes that are relevant to requirement 11.2.1's "known adversarial attack techniques" scoping:
+
+- **AdvWeb (AdvAgent):** A black-box adversarial framework that uses Direct Policy Optimization (DPO) to train an adversarial prompter which injects invisible adversarial strings into web page content. Reported approximately **97.5% average success rate** against state-of-the-art GPT-4V-based VLM web agents, with attacks stealthy enough that the page's appearance is unchanged pre- and post-injection. The attack allows substring-level control so operators can re-target an exploit (e.g., from "buy stock X" to "transfer funds to account Y") without retraining. For organizations deploying VLM-driven web agents in finance, trading, or e-commerce, this attack class must be in scope under requirements 11.2.1 and 11.2.4.
+- **AdvEDM:** A 2025 fine-grained adversarial attack against VLM-based embodied decision-making agents that disrupts chain-of-thought reasoning by selectively modifying how the VLM perceives specific objects while leaving other semantics intact -- useful for attacks against robotics, autonomous systems, and physical-world agents where the adversary wants to alter a specific action without triggering obvious safety checks.
+- **Virtual Scenario Hypnosis (VSH):** A jailbreak framework that combines narrative hypnosis, adversarial visual encoding, and encrypted in-context learning to coax VLMs into processing harmful queries, reported at **over 82% success rate**. VSH is an example of a cross-modal adversarial attack that a text-only evaluator would not catch -- relevant for the modality-matching criterion in requirement 11.2.1.
+- **AdvWave and real-world audio-LLM attacks:** "Attacker's Noise Can Manipulate Your Audio-based LLM in the Real World" (EACL 2026 / arXiv July 2025) and related work demonstrate that audio-LLM systems (Qwen-Audio, GPT-4o voice mode, similar) can be manipulated by background noise injected into the ambient environment. ACM CCS 2025 follow-up work accounts for real-world physical conditions (room echo, frequency loss, microphone distortion), reporting **87--88% success rates in over-the-air physical tests**. Viral-video vectors -- subtle audio perturbations embedded in widely distributed content -- have been proposed as a way to simultaneously compromise millions of smart devices. For organizations deploying voice assistants or audio-modal LLMs, the audio attack surface has crossed from laboratory demonstration to deployable threat and belongs explicitly in requirement 11.2.1 scope.
+- **Compositional multi-modal attacks:** Work during 2025 has shown that combining adversarial images with benign text (or vice versa) can induce harmful content generation through vulnerabilities in the cross-modal alignment layer, without requiring white-box access to the language model itself. This means a defender cannot treat modality-specific evaluations as independent -- requirement 11.2.1's modality coverage needs an explicit cross-modal evaluation pass.
+
+### LLM-Specific Robustness Benchmarks
+
+In addition to RobustBench (which focuses on Lp-norm vision robustness), a set of LLM-specific adversarial robustness benchmarks has become the de facto standard for requirement 11.2.1 evaluations in the LLM domain:
+
+- **Microsoft PromptBench** provides a unified evaluation library integrating seven adversarial prompt attack types (TextBugger, TextFooler, BertAttack, DeepWordBug, Checklist, StressTest, and semantic attacks) against tasks drawn from GLUE, MMLU, SQuAD, BIG-Bench Hard, and multimodal benchmarks. Three leaderboards (adversarial prompt attack, prompt engineering, dynamic evaluation) provide standardized comparison points. For LLM robustness claims, PromptBench provides the closest equivalent to RobustBench's role in vision.
+- **JailbreakBench** is a standardized evaluation framework for jailbreak attacks with a defined threat model, system prompts, chat templates, and scoring functions. Its public leaderboards track attack and defense performance across frontier LLMs.
+- **HarmBench and AdvBench** provide standardized frameworks for automated LLM red-teaming across chemical/biological safety, misinformation, cybercrime, illegal activities, and copyright-related harms. These are frequently cited in EU AI Act compliance discussions as examples of "state-of-the-art adversarial techniques" for GPAI systemic-risk evaluation.
+
+For requirement 11.2.1 compliance, LLM deployments should be evaluated against at least one of PromptBench, JailbreakBench, or HarmBench in addition to any vision- or multi-modal-specific adversarial testing, and the choice should be documented alongside the threat model.
+
+### ART Tooling Status as of Early 2026
+
+The IBM Adversarial Robustness Toolbox has continued to release incremental updates. **ART 1.20.x** (mid-2024) added the **GREAT Score** for measuring robustness against generative models, added support for YOLO v8+ object detection, and retired TensorFlow v1 and MXNet support. Earlier 1.18.x releases added the Overload Attack against object detectors and fast-accurate loss gradients for all-norm Projected Gradient Descent. 1.19.x introduced the Steal Now Attack Later (SNAL) evasion attack, Rescaling Auto Conjugate Gradient (ReACG), and BEYOND detector support in PyTorch.
+
+Organizations evaluating ART for requirement 11.2.1 should confirm they are on a current 1.20+ line; older 1.17 deployments lack the generative-model robustness metric and recent evasion attack implementations that current adversarial evaluations should include.
 
 ---
 
@@ -177,6 +218,16 @@ This regulatory environment directly reinforces requirements 11.2.1 through 11.2
 - [Adversarial Attacks and Defenses on Text-to-Image Diffusion Models: Survey (2025)](https://arxiv.org/abs/2407.15861) -- Comprehensive survey of adversarial attack surfaces in generative diffusion models
 - [Physical Adversarial Attacks in Computer Vision: A Decade Survey (2025)](https://arxiv.org/abs/2209.15179) -- Survey of physical-world adversarial perturbations across autonomous driving, facial recognition, and medical imaging
 - [ISO/IEC 42001:2023 -- AI Management System](https://www.iso.org/standard/81230.html) -- Requires adversarial testing and red-team exercises as part of AI verification and validation
+- [EU AI Act General-Purpose AI Code of Practice (Final Version)](https://code-of-practice.ai/) -- Official methodology for GPAI systemic-risk evaluation including adversarial testing and red-teaming expectations
+- [MITRE ATLAS v5.4.0 Agentic AI Update (Zenity Labs, January 2026)](https://zenity.io/blog/current-events/mitre-atlas-ai-security) -- New techniques AML.T0096--T0101 and SesameOp case study (AML.CS0042)
+- [AdvWeb: Controllable Black-box Attacks on VLM-powered Web Agents (ICLR 2025)](https://arxiv.org/abs/2410.17401) -- 97.5% success-rate adversarial prompter against GPT-4V web agents
+- [AdvEDM: Fine-grained Adversarial Attack against VLM-based Embodied Agents (2025)](https://arxiv.org/abs/2509.16645) -- CoT-reasoning disruption attack against VLM-driven embodied agents
+- [Attacker's Noise Can Manipulate Your Audio-based LLM in the Real World (EACL 2026)](https://aclanthology.org/2026.eacl-long.66.pdf) -- Real-world over-the-air audio adversarial attacks on voice LLMs
+- [Jailbreak Attack with Multimodal Virtual Scenario Hypnosis for VLMs (Pattern Recognition, 2025)](https://www.sciencedirect.com/science/article/abs/pii/S0031320325010520) -- 82%+ success-rate narrative-hypnosis jailbreak for vision-language models
+- [Microsoft PromptBench -- Unified LLM Adversarial Evaluation Library](https://github.com/microsoft/promptbench) -- Seven-attack benchmark covering GLUE/MMLU/SQuAD with adversarial prompt leaderboards
+- [JailbreakBench -- Standardized LLM Jailbreak Evaluation Framework](https://jailbreakbench.github.io/) -- Open repository of jailbreak artifacts and attack/defense leaderboards
+- [HarmBench -- Standardized Framework for Automated LLM Red-Teaming](https://github.com/centerforaisafety/HarmBench) -- Benchmark across harmful-behavior categories used as EU AI Act GPAI reference
+- [IBM Adversarial Robustness Toolbox 1.20.x Release Notes](https://github.com/Trusted-AI/adversarial-robustness-toolbox/releases) -- GREAT Score, YOLO v8+, SNAL evasion, ReACG, BEYOND detector
 
 ---
 
@@ -198,5 +249,8 @@ This regulatory environment directly reinforces requirements 11.2.1 through 11.2
 - How should adversarial evaluation scope expand to cover text-to-image diffusion models -- is safety bypass (prompt adversarial manipulation) fundamentally different from traditional evasion, or can existing frameworks accommodate it?
 - As NIST AI 100-2e2025 introduces "misuse violations" as a distinct attack category, how should organizations draw the boundary between adversarial examples and intentional misuse in their evaluation programs?
 - What is the minimum viable adversarial testing program for physical-world deployments (autonomous vehicles, medical devices) -- and how should physical-world perturbation budgets be defined when Lp norms are meaningless in 3D environments?
+- How should adversarial evaluation scope expand for audio-modal LLMs now that over-the-air acoustic adversarial attacks achieve ~87--88% success rates -- and is there an equivalent to RobustBench for audio robustness claims?
+- As agent-specific adversarial techniques (MITRE ATLAS AML.T0096--T0101) become the dominant attack class against deployed AI systems, how should requirement 11.2.1's modality-focused scoping evolve to cover tool-use and multi-step reasoning attack surfaces?
+- What constitutes a "state-of-the-art adversarial technique" under the EU AI Act GPAI Code of Practice -- which benchmarks, attack libraries, and methodologies satisfy the bar, and who makes that determination in practice?
 
 ---

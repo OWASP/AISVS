@@ -37,7 +37,7 @@ Appendix D provides a cross-cutting inventory of all 20 security control categor
 
 ## Implementation Maturity by Category
 
-Industry adoption data drawn from multiple sources including the Gravitee State of AI Agent Security 2026 report, CSA AI Security and Governance survey (December 2025), Microsoft Cyber Pulse AI Security Report, and Lakera GenAI Security Readiness Report 2025.
+Industry adoption data drawn from multiple sources including the Gravitee State of AI Agent Security 2026 report, CSA AI Security and Governance survey (December 2025), Microsoft Cyber Pulse AI Security Report, Lakera GenAI Security Readiness Report 2025, and the Zscaler 2026 AI Security Report (which observed a 91% year-over-year surge in AI/ML traffic across more than 3,400 enterprise applications).
 
 | # | Category | Maturity | Key Tools & Frameworks | Adoption Evidence |
 |---|----------|:--------:|----------------------|-------------------|
@@ -46,18 +46,18 @@ Industry adoption data drawn from multiple sources including the Gravitee State 
 | AD.3 | Encryption at Rest | **High** | AWS KMS, Azure Key Vault, HashiCorp Vault, LUKS | Standard enterprise practice; cloud providers encrypt model storage by default. Gap: data-in-use encryption during inference remains uncommon. |
 | AD.4 | Encryption in Transit | **High** | mTLS (cert-manager, Istio), TLS 1.3 | Well-established. Gap: unencrypted GPU interconnects (NVLink, PCIe) in multi-tenant clusters. |
 | AD.5 | Key & Secret Management | **Medium** | HashiCorp Vault, AWS Secrets Manager, Azure Key Vault, SOPS | Existing KMS applies but API key sprawl is severe (~1,200 unofficial AI apps per enterprise create unmanaged key surfaces). No AI-specific lifecycle management standards. |
-| AD.6 | Integrity & Signing | **Low** | Sigstore/cosign, in-toto, Notary v2, OpenSSF Model Signing (OMS, June 2025) | OMS specification published June 2025 but not broadly adopted. 48% of security professionals say orgs are behind on SBOM; ML-BOM adoption is far lower. Most model registries lack signing support. |
+| AD.6 | Integrity & Signing | **Low–Med** | Sigstore/cosign, in-toto, Notary v2, OpenSSF Model Signing (OMS, June 2025), sigstore/model-transparency | OMS specification published June 2025; as of early 2026 NVIDIA's NGC catalog, Google's Kaggle, and Hugging Face have begun rolling out OMS signing flows. 48% of security professionals still say orgs are behind on SBOM; ML-BOM adoption is far lower. Many private model registries still lack signing support. |
 | AD.7 | Input Validation | **Medium** | LLM Guard (Protect AI), Lakera Guard, NeMo Guardrails, AWS Bedrock prompt attack filter, Pydantic, Zod | 34.7% have deployed dedicated prompt injection defenses; 89% of models remain vulnerable to prompt attacks. $1.42B market growing at 27.8% CAGR. |
 | AD.8 | Output Filtering | **Medium** | Guardrails AI, NeMo Guardrails, Presidio, OpenAI Moderation API, AWS Bedrock content filters | 41% have runtime guardrails. Mostly focused on content safety rather than security-specific output filtering (e.g., data exfiltration via output). |
-| AD.9 | Rate Limiting | **High** | Kong AI Gateway (token-aware), LiteLLM Proxy, Envoy AI Gateway, AWS API Gateway, Zuplo | Standard API gateway capability. All major LLM providers enforce rate limits natively. Gap: per-agent token/cost budgets for agentic loops are newer and less standardized. |
+| AD.9 | Rate Limiting | **High** | Kong AI Gateway 3.14 / Kong Agent Gateway (April 2026: LLM + MCP + A2A unified governance, token/cost quotas, full audit logging of A2A conversations), LiteLLM Proxy, Envoy AI Gateway, AWS API Gateway, Zuplo | Standard API gateway capability. All major LLM providers enforce rate limits natively. Gap: per-agent token/cost budgets for agentic loops are newer but converging — Kong's 3.14 release (April 14, 2026) is the first unified gateway spanning LLM, MCP, and agent-to-agent traffic from a single control plane. |
 | AD.10 | Sandboxing | **Medium** | gVisor, Kata Containers, Firecracker, E2B, WASM runtimes | Container isolation well-established; agent tool execution sandboxing is less mature. MCP servers typically run with broad host access. No standard for isolating agentic tool calls. |
 | AD.11 | Network Segmentation | **High** | Cilium, Calico, AWS Security Groups, cloud VPC | Standard network controls apply. Gap: 86% of orgs report no visibility into AI data flows, suggesting AI-specific segmentation (model serving vs. training vs. RAG) is not standard. |
-| AD.12 | Supply Chain | **Low** | ModelScan, Guardian (35+ formats), Fickling, safetensors, CycloneDX, Black Duck AI (Oct 2025), Palisade (Sigstore) | 91% use unvetted pre-trained models; 67% of models lack security scanning. ENISA 2025 report documents poisoned models and trojanized packages. AI BOM concept is nascent. |
+| AD.12 | Supply Chain | **Low** | ModelScan, Guardian (35+ formats), Fickling, safetensors, CycloneDX, Black Duck AI (Oct 2025), Palisade (Sigstore), sigstore/model-transparency | 91% use unvetted pre-trained models; 67% of models lack security scanning. ENISA 2025 report documents poisoned models and trojanized packages. AI BOM concept is nascent. Recent incident: LiteLLM 1.82.7 and 1.82.8 PyPI packages were compromised on March 24, 2026 and live for roughly 40 minutes before quarantine — pinned Docker deployments were unaffected, reinforcing the value of dependency pinning and lockfile enforcement (the controls already codified under 6.5 and ASVS V15). |
 | AD.13 | Deployment & Lifecycle | **Medium** | MLflow, Seldon Core, BentoML, ArgoCD, Kubernetes, Weights & Biases | MLOps tooling covers versioning and deployment, but security is not integrated by default. Model retirement/deprecation policies are rare. Shadow AI (~1,200 unofficial apps/enterprise) indicates lifecycle management failure. |
 | AD.14 | Privacy | **Low** | Opacus, TensorFlow Privacy, Presidio, PySyft, Flower | Differential privacy at Level 3 maturity (12% of orgs). Machine unlearning is still academic — no production-grade solutions for LLMs. DP implementation degrades accuracy; privacy-accuracy tradeoff remains unsolved. |
 | AD.15 | Adversarial Testing | **Low–Med** | ART (IBM), TextAttack, Garak, Counterfit, Deepchecks, Lakera Red | 12% of orgs perform adversarial robustness evaluation. Fine-tuning attacks bypassed Claude Haiku in 72% of cases, GPT-4o in 57%. 45% of models susceptible to extraction. No standardized testing methodology. |
 | AD.16 | Logging & Audit | **Medium** | OpenTelemetry, Langfuse, LangSmith, Splunk, Elastic, Datadog LLM Obs | 47.1% of agents are monitored, meaning >50% operate without security oversight or logging. No standard log schema for AI operations. Prompt/response logging raises privacy concerns. |
-| AD.17 | Monitoring & Alerting | **Medium** | Evidently AI, NannyML, Arize AI, WhyLabs, PagerDuty, Galileo AI | 38% monitor AI traffic end-to-end. Most monitoring is performance-focused, not security-focused. Real-time security-specific monitoring (prompt injection detection, exfiltration) is less mature. |
+| AD.17 | Monitoring & Alerting | **Medium** | Evidently AI, NannyML, Arize AI, WhyLabs, PagerDuty, Galileo AI, CrowdStrike AIDR (Endpoint/Cloud/Copilot Studio, March 2026), Capsule Security (April 2026), Zscaler AI Runtime Guardrails | 38% monitor AI traffic end-to-end. The "runtime gap" — the window between prompt receipt and action execution — is now the primary focus of the newest entrants (Capsule Security launched April 15, 2026 with $7M seed; CrowdStrike's March 2026 AIDR expansion covers Copilot Studio, desktop assistants, and cloud AI workloads). Real-time security-specific monitoring (prompt injection detection, exfiltration, agent misbehavior) has moved from research-grade to GA in the past six months. |
 | AD.18 | Explainability | **Medium** | SHAP, LIME, Captum, InterpretML, Alibi, IBM AI FactSheets | ~$9.2B market growing at 18% CAGR; 65% view explainability as top barrier to AI scaling. Tools are mainly for tabular/classical ML — LLM explainability is fundamentally harder. Primarily compliance-driven (EU AI Act). |
 | AD.19 | Human Oversight | **Medium** | Label Studio, custom approval workflows, Slack/webhook gates | 82% of executives feel confident policies protect against unauthorized agent actions, but actual governance enforcement is at 7%. 25.5% of deployed agents can create and task other agents autonomously. Massive perception-reality gap. |
 | AD.20 | Hardware Security | **Low** | NVIDIA MIG, AMD SEV, Intel TDX, TPM 2.0, NVIDIA Confidential Computing (Hopper/Blackwell) | GPU TEE support is vendor-locked (NVIDIA). Performance overhead significant. Enterprise adoption limited to defense/healthcare/finance. Data-in-use protection during inference is not mainstream. |
@@ -66,7 +66,7 @@ Industry adoption data drawn from multiple sources including the Gravitee State 
 
 ## External Framework Cross-Reference
 
-How the 20 AD categories map to major external AI security frameworks. As of March 2026, the most actionable frameworks for control-level mapping are MITRE SAFE-AI (100 NIST 800-53 controls), CSA AICM (243 control objectives), OWASP LLM Top 10 (2025), and the new OWASP Agentic AI Top 10 (2026). The MITRE ATLAS 2026 update shifts focus from model-centric attacks to execution-layer exposure, with threat modeling now accounting for autonomous workflow chaining, delegated authority persistence, and API-level orchestration risk.
+How the 20 AD categories map to major external AI security frameworks. As of April 2026, the most actionable frameworks for control-level mapping are MITRE SAFE-AI (100 NIST 800-53 controls), CSA AICM (243 control objectives), OWASP LLM Top 10 (2025), and the OWASP Agentic AI Top 10 (2026). The MITRE ATLAS 2026 update shifts focus from model-centric attacks to execution-layer exposure, with threat modeling now accounting for autonomous workflow chaining, delegated authority persistence, and API-level orchestration risk. ATLAS v5.4.0 (February 2026) added "Publish Poisoned AI Agent Tool" (supply-chain compromise via malicious MCP/tool catalogs) and "Escape to Host" (agent escape from tool sandbox) as first-class techniques.
 
 | Category | MITRE ATLAS Technique/Mitigation | NIST IR 8596 (Cyber AI Profile) | CSA AICM Domain | OWASP LLM Top 10 (2025) | OWASP Agentic Top 10 (2026) | EU AI Act |
 |----------|--------------------------------|-------------------------------|-----------------|------------------------|-----------------------------|-----------|
@@ -91,7 +91,8 @@ How the 20 AD categories map to major external AI security frameworks. As of Mar
 | AD.20 Hardware | — | PR.PS | — | — | — | — |
 
 **Key external frameworks referenced:**
-- **NIST IR 8596** (Cyber AI Profile, draft December 2025) — maps AI concerns to all 106 CSF 2.0 subcategories with priority ratings. Identified gap: limited coverage of agentic AI patterns.
+- **NIST IR 8596** (Cyber AI Profile, preliminary draft December 2025; 45-day comment period closed Q1 2026) — maps AI concerns to all 106 CSF 2.0 subcategories with priority ratings. Identified gap: limited coverage of agentic AI patterns. The initial public draft is expected later in 2026.
+- **NIST AI RMF Profile for Trustworthy AI in Critical Infrastructure** — concept note released April 7, 2026. The planned profile will guide critical-infrastructure operators (energy, water, transport, healthcare) toward specific risk-management practices when deploying AI-enabled capabilities.
 - **MITRE ATLAS** (v5.4.0, February 2026) — now 16 tactics, 84 techniques, 56 sub-techniques, 32 mitigations, and 42 case studies. The February 2026 release added agentic-specific techniques including AML.T0096 (AI Service API exploitation), AML.T0098 (Agent Tool Credential Harvesting), AML.T0099 (Agent Tool Data Poisoning), AML.T0100 (AI Agent Clickbait), and AML.T0101 (Data Destruction via Agent Tool Invocation). The accompanying OpenClaw investigation mapped adversary patterns in autonomous agent systems to identify chokepoint techniques. Approximately 70% of ATLAS mitigations map to existing security controls; the remaining 30% require AI-specific governance.
 - **MITRE SAFE-AI** — maps ATLAS threats × 4 system elements (Environment, AI Platform, AI Model, AI Data) → 100 identified NIST SP 800-53 controls. The most granular threat-to-control mapping available.
 - **CSA AI Controls Matrix** (AICM) — 243 control objectives across 18 security domains with ISO 42001, EU AI Act, and NIST AI RMF mappings completed August 2025.
@@ -104,7 +105,7 @@ How the 20 AD categories map to major external AI security frameworks. As of Mar
 
 ## AI Security Platform Coverage
 
-Which commercial and open-source platforms address which control categories. Reflects the major consolidation wave of 2024–2025: Robust Intelligence → Cisco (Oct 2024), Protect AI → Palo Alto (Apr 2025), Lakera → Check Point (Sep 2025), Prompt Security → SentinelOne (Aug 2025, ~$250M). The broader cybersecurity M&A wave totaled $76–96B across 320–400 deals in 2025 (Return on Security / Momentum Cyber), with AI security as a distinct acquisition category.
+Which commercial and open-source platforms address which control categories. Reflects the major consolidation wave of 2024–2025: Robust Intelligence → Cisco (Oct 2024), Protect AI → Palo Alto (Apr 2025), Lakera → Check Point (Sep 2025), Prompt Security → SentinelOne (Aug 2025, ~$250M), SPLX → Zscaler (2026). The broader cybersecurity M&A wave totaled $76–96B across 320–400 deals in 2025 (Return on Security / Momentum Cyber), with AI security as a distinct acquisition category. Early 2026 shows a second inflection point: established endpoint and gateway vendors (CrowdStrike, Kong, Zscaler) are extending existing platforms to AI rather than acquiring boutique startups, while new entrants (Capsule Security, Noma Security) target the narrow "runtime gap" between prompt arrival and agent action.
 
 | Platform | AD.1 | AD.2 | AD.7 | AD.8 | AD.9 | AD.12 | AD.15 | AD.16 | AD.17 | Notes |
 |----------|:----:|:----:|:----:|:----:|:----:|:-----:|:-----:|:-----:|:-----:|-------|
@@ -116,7 +117,7 @@ Which commercial and open-source platforms address which control categories. Ref
 | CalypsoAI | | X | X | X | | | | X | | Agentic cognitive-layer intervention; CrewAI + MCP support |
 | HiddenLayer | | | | | | X | X | | X | Model integrity monitoring; adversarial attack prevention |
 | Qualys TotalAI | | | X | | | X | | X | X | Inventory-first approach; 650+ AI-specific detections; MCP server graph inventory (March 2026); shadow model discovery; AI CVE scanning |
-| Kong AI Gateway | X | | X | X | X | | | X | | Token-aware rate limiting; AI Semantic Prompt Guard; MCP server security |
+| Kong AI Gateway 3.14 / Agent Gateway | X | X | X | X | X | | | X | X | April 14, 2026 release — unified governance of LLM + MCP + agent-to-agent (A2A) traffic from one control plane; token-aware rate limiting; full A2A audit logging; AI Semantic Prompt Guard; MCP server security |
 | AWS Bedrock Guardrails | | | X | X | | | | | | 6 guardrail types; automated reasoning with formal logic; 88% harmful content blocking |
 | Azure AI Content Safety | | | X | X | | | | | | Prompt Shields; Groundedness Detection (preview); detection-oriented |
 | Datadog LLM Obs | | | X | X | | | | X | | Auto-instrumentation; prompt injection scanning; PII leak detection; $8/10K requests |
@@ -125,6 +126,10 @@ Which commercial and open-source platforms address which control categories. Ref
 | Varonis Atlas | | X | | | | | | X | X | AI Gateway for real-time prompt/response inspection; data-aware posture management; shadow AI discovery; full lifecycle (discovery → runtime → compliance); launched March 2026 |
 | SandboxAQ AQtive Guard | | | X | X | | | | | X | AI security posture management; MCP server discovery and monitoring; runtime guardrails for prompt injection and data leakage; announced ahead of RSAC 2026 |
 | Arize Phoenix (OSS) | | | | | | | | X | X | OpenTelemetry-native; drift detection; 7.8K+ GitHub stars |
+| CrowdStrike AIDR / Falcon | | | X | X | | X | | X | X | RSA 2026 announcement: AIDR for Copilot Studio (real-time prompt inspection, injection detection), AIDR for Endpoint (desktop LLM clients), Shadow AI Discovery across endpoint/SaaS/cloud, AI Data Flow Discovery for Cloud |
+| Capsule Security | | X | | | | | | X | X | Launched April 15, 2026 with $7M seed (Lama Partners, Forgepoint); agentless runtime monitoring and policy enforcement for AI agents (Cursor, Claude Code, Copilot Studio, ServiceNow, Salesforce Agentforce); founded by ex-F5/Unit 8200 and Transmit Security veterans |
+| Zscaler AI Guard / SPLX | | | X | X | | | X | | X | AI Runtime Guardrails integrated with NVIDIA NeMo Guardrails (aiguard-nemo-guardrails connector); blocks prompt injection, PII exposure, data poisoning, and malicious outputs; 2026 SPLX acquisition extends coverage across the enterprise AI lifecycle |
+| Noma Security | | X | X | X | | | | | X | Runtime guardrails for Microsoft Copilot Studio agents; policy enforcement on agent behavior before action completes |
 
 ---
 
@@ -136,7 +141,7 @@ Which commercial and open-source platforms address which control categories. Ref
 - [ ] **Model Fairness & Bias Testing** — Referenced in C1 (1.4.6), C6 (6.5.4), C14 (14.5.3) but doesn't have its own AD category; currently folded into AD.15 and AD.18
 - [ ] **Incident Forensics** — AD.17 covers incident response but forensic-specific controls (C13.5.2 AI forensic tools) could warrant their own category as the field matures
 - [ ] **Multi-Agent Coordination Security** — C9.8 covers multi-agent isolation but agent coordination patterns (consensus, conflict resolution, swarm safety) are emerging concerns. As of March 2026, 25.5% of deployed agents can create and task other agents autonomously
-- [ ] **MCP-Specific Controls** — C10 has 34 requirements spanning authentication, transport, validation, and boundary enforcement for MCP. As MCP adoption grows (60% of LLMjacking attack traffic targeted MCP endpoints in Operation Bizarre Bazaar), a dedicated AD category for MCP security may be warranted. As of March 2026, over 10,000 active public MCP servers have been deployed within roughly a year of the protocol's introduction, with 53% relying on static secrets for authentication (Astrix). MITRE ATLAS v5.4.0 now includes "Publish Poisoned AI Agent Tool" as a named technique, and SandboxAQ AQtive Guard added MCP server discovery and risk analysis as a product capability (March 2026). Qualys reports MCP services evade traditional monitoring by binding to localhost, using random high ports, or hiding behind proxies — effectively becoming "the new shadow IT for AI"
+- [ ] **MCP-Specific Controls** — C10 has 30 requirements (after the early-2026 reduction pass) spanning authentication, transport, validation, and boundary enforcement for MCP. As MCP adoption grows (60% of LLMjacking attack traffic targeted MCP endpoints in Operation Bizarre Bazaar), a dedicated AD category for MCP security may be warranted. As of March 2026, over 10,000 active public MCP servers have been deployed within roughly a year of the protocol's introduction, with 53% relying on static secrets for authentication (Astrix). MITRE ATLAS v5.4.0 now includes "Publish Poisoned AI Agent Tool" and "Escape to Host" as named techniques. SandboxAQ AQtive Guard added MCP server discovery and risk analysis (March 2026); Kong's Agent Gateway (April 2026) introduced full A2A audit logging alongside existing MCP governance; and Capsule Security's April 2026 launch explicitly supports ServiceNow, Salesforce Agentforce, and Copilot Studio — three of the most common MCP-style agent runtimes. Qualys reports MCP services still evade traditional monitoring by binding to localhost, using random high ports, or hiding behind proxies — "the new shadow IT for AI"
 - [ ] **Agentic Coordination & Identity** — The OWASP Agentic AI Top 10 (2026) introduces 10 distinct risk categories (ASI01–ASI10) that cut across multiple AD categories. Agent identity, delegation chains, and inter-agent trust relationships are not fully captured by existing AD.1/AD.2 categories. The EY February 2026 survey found 52% of department-level AI initiatives operate without formal approval or oversight, and 78% of leaders say AI adoption outpaces their ability to manage it
 
 ### Controls Appearing in Multiple Categories
@@ -152,9 +157,9 @@ Some requirement IDs appear across multiple AD categories, which is expected for
 
 ---
 
-## Industry Adoption Snapshot (March 2026)
+## Industry Adoption Snapshot (April 2026)
 
-Overall adoption remains low — 94% of enterprises use AI in production, yet only 23% have mature security programs. As of March 2026, the governance gap is widening: 97% of tech executives view broad autonomous AI as a high or essential priority, but 52% of department-level AI initiatives operate without formal oversight (EY, February 2026).
+Overall adoption remains low — 94% of enterprises use AI in production, yet only 23% have mature security programs. As of April 2026, the governance gap is widening: 97% of tech executives view broad autonomous AI as a high or essential priority, but 52% of department-level AI initiatives operate without formal oversight (EY, February 2026). The Zscaler 2026 AI Security Report logged a 91% year-over-year increase in AI/ML traffic across more than 3,400 applications, with Finance/Insurance carrying 23% of volume and Technology and Education sectors growing 202% and 184% respectively — consumption is outpacing control deployment at every measured ratio.
 
 | Metric | Percentage | Source |
 |--------|:----------:|--------|
@@ -180,6 +185,8 @@ Overall adoption remains low — 94% of enterprises use AI in production, yet on
 | Enterprises with at least one AI workload in production | 72% | Cybersecurity Insiders AI Risk Report (Q1 2026) |
 | Orgs describing AI adoption as "mature" across functions | 28% | Cybersecurity Insiders AI Risk Report (Q1 2026) |
 | Orgs with comprehensive AI security governance policies | 26% | CSA/Google Cloud AI Governance Study (2026) |
+| Year-over-year growth in enterprise AI/ML traffic | 91% | Zscaler 2026 AI Security Report |
+| Unique AI/ML applications observed in enterprise traffic | 3,400+ | Zscaler 2026 AI Security Report |
 
 **Maturity distribution** (CyberSecFeed 5-level model): Level 0 (Unaware) 34%, Level 1 (Initial) 28%, Level 2 (Developing) 23%, Level 3 (Managed) 12%, Level 4 (Optimized) 3%.
 
@@ -223,6 +230,16 @@ _Discussion about control inventory completeness and organization._
 * [F5 AI Guardrails and AI Red Team (January 2026)](https://www.f5.com/company/news/press-releases/f5-accelerates-ai-security-with-integrated-runtime-protection-for-enterprise-ai-at-scale)
 * [Varonis Atlas: AI Security Platform (March 2026)](https://www.varonis.com/blog/atlas-ai-security)
 * [Cybersecurity Insiders: AI Risk and Readiness Report 2026](https://www.cybersecurity-insiders.com/ai-risk-and-readiness-report-2026/)
+* [Capsule Security Launches with $7M to Secure AI Agents at Runtime (SiliconANGLE, April 15, 2026)](https://siliconangle.com/2026/04/15/capsule-security-launches-7m-secure-ai-agents-runtime/)
+* [CrowdStrike Establishes the Endpoint as the Epicenter for AI Security (March 2026)](https://www.crowdstrike.com/en-us/press-releases/crowdstrike-establishes-the-endpoint-as-the-epicenter-for-ai-security/)
+* [Kong AI Gateway 3.14: Agent-to-Agent Traffic and Kong Agent Gateway (April 14, 2026)](https://www.prnewswire.com/news-releases/kong-ai-gateway-now-supports-agent-to-agent-traffic-becoming-the-most-comprehensive-ai-gateway-for-the-agentic-era-302741741.html)
+* [Kong MCP Gateway Overview](https://konghq.com/resources/reports/mcp-gateway)
+* [LiteLLM Security Update: Suspected Supply Chain Incident (March 24, 2026)](https://docs.litellm.ai/blog/security-update-march-2026)
+* [Zscaler AI Guardrails and NeMo Guardrails Integration](https://www.zscaler.com/blogs/partner/securing-genai-applications-zscaler-ai-guard-and-nvidia-nemo-guardrails)
+* [Zscaler 2026 AI Security Report](https://www.zscaler.com/press/zscaler-2026-ai-threat-report-91-year-over-year-surge-ai-activity-creates-growing-oversight)
+* [sigstore/model-transparency — Supply chain security for ML](https://github.com/sigstore/model-transparency)
+* [OpenSSF Model Signing Specification (Repo)](https://github.com/ossf/model-signing-spec)
+* [Noma Security: Runtime Guardrails for Microsoft Copilot Studio](https://noma.security/blog/runtime-guardrails-for-microsoft-copilot-studio-agents/)
 
 ---
 
