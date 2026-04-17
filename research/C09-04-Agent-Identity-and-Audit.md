@@ -223,6 +223,58 @@ MoonPay has already integrated Ledger signing into AI agent wallets, requiring p
 
 On April 2, 2026, Microsoft formally open-sourced the Agent Governance Toolkit (MIT license) as seven integrated packages: Agent OS (policy engine), Agent Mesh (cryptographic identity with DIDs and Ed25519), Agent Runtime (execution rings), Agent SRE (reliability patterns), Agent Compliance (regulatory verification), Agent Marketplace (plugin lifecycle), and Agent Lightning (RL training governance). The release includes 9,500+ tests, SLSA-compatible build provenance, and sub-0.1ms p99 governance latency. SDK packages are available for Python, TypeScript, Rust, Go, and .NET, with native integration for LangChain, CrewAI, LlamaIndex, OpenAI Agents SDK, LangGraph, PydanticAI, and Haystack -- requiring no code rewrites for adoption. The toolkit maps mitigations to all 10 OWASP Agentic AI Top 10 risks.
 
+### CVE-2026-25253 (ClawBleed): Agent Token Exfiltration via WebSocket Hijacking
+
+CVE-2026-25253, dubbed "ClawBleed" (CVSS 8.8), disclosed in February 2026 and confirmed as actively exploited in the wild, demonstrated a particularly insidious agent identity attack: OpenClaw's Control UI automatically trusted URL-supplied `gatewayUrl` query parameters and established WebSocket connections that transmitted the user's stored authentication token without origin verification. An attacker who crafted a malicious URL could steal the victim's agent authentication token in a single click -- the token was transmitted to an attacker-controlled WebSocket endpoint in milliseconds. Because OpenClaw operates with full system access (file operations, shell command execution), compromising an operator's authentication token granted complete control over the victim's machine, including credential theft from the OpenClaw Vault (AWS keys, database passwords), infrastructure destruction, and CI/CD pipeline manipulation. The vulnerability affected all versions prior to 2026.1.29. ClawBleed illustrates a pattern distinct from the other OpenClaw vulnerabilities: rather than exploiting supply chain weaknesses (malicious skills) or missing authentication (API endpoints), it weaponized the agent's own identity mechanism -- the authentication token became the attack vector. Requirement 9.4.1's insistence on cryptographic identity bound to specific workloads (not transferable bearer tokens) would have limited the blast radius significantly.
+
+### ZeroID: Open-Source Identity Platform for Autonomous Agents
+
+ZeroID (Apache 2.0, by Highflame, released April 2026) is a purpose-built identity and credentialing platform for autonomous AI agents and multi-agent systems. Its core innovation is RFC 8693 token exchange creating verifiable delegation chains -- when an orchestrator agent spawns sub-agents, each receives a token that carries the sub-agent identity, orchestrator identity, and original authorizing principal. Scope attenuates automatically at each delegation hop, so sub-agents cannot receive permissions the orchestrator does not already hold. Revoking any token in a delegation chain immediately invalidates all downstream tokens.
+
+Key capabilities relevant to requirements 9.4.1 and 9.4.4:
+
+- OpenID Shared Signals Framework (SSF) and Continuous Access Evaluation Profile (CAEP) integration for real-time revocation without polling delays
+- Local JWT verification against cached JWKS endpoints for low-latency scenarios
+- SDKs for Python, TypeScript, and Rust, with framework integrations for LangGraph, CrewAI, and Strands
+- Containerized deployment backed by PostgreSQL, with a hosted option at auth.highflame.ai
+
+ZeroID complements SPIFFE-based approaches: where SPIFFE anchors workload identity at the infrastructure level, ZeroID handles the application-layer delegation chain and scope attenuation that agents require for multi-hop task execution.
+
+### Asqav: Quantum-Resistant Agent Audit Trail SDK
+
+Asqav (MIT license, Python SDK, released April 2026) takes a distinctive approach to agent audit trails by using ML-DSA-65 (FIPS 204 standardized) post-quantum digital signatures rather than the Ed25519 signatures common in other implementations. Each agent action receives a quantum-resistant cryptographic signature with RFC 3161 timestamps, and entries link into a hash chain where tampering or omission breaks verification.
+
+Practical features for requirement 9.4.2 and 9.4.3 compliance:
+
+- Framework support for LangChain, CrewAI, LiteLLM, Haystack, and OpenAI Agents SDK
+- Simple integration via decorator (`@asqav.sign`) or context manager (`asqav.session()`)
+- Policy enforcement at the action level -- block patterns like `data:delete:*`
+- Multi-party signing using an m-of-n threshold scheme for high-stakes actions requiring multiple approvals
+- Offline mode with local signing and later sync for air-gapped or intermittently connected environments
+
+Asqav is the first agent audit tool to adopt post-quantum signatures by default, addressing the longer-term concern that Ed25519-signed audit records may become verifiably insecure as quantum computing capabilities mature. For organizations with multi-decade record retention requirements (healthcare, financial services), quantum-resistant signing future-proofs the audit trail.
+
+### IETF Agent Audit Trail (AAT) Draft Specification
+
+A third IETF Internet-Draft relevant to agent audit emerged in March 2026: draft-sharif-agent-audit-trail-00 by Raza Sharif (CyberSecAI Ltd) defines a standardized JSON-based logging format specifically for autonomous AI agent systems. Where the AIVS draft (draft-stone-aivs-00) focuses on session-level cryptographic proof bundles, AAT targets operation-level structured logging suitable for SIEM ingestion and regulatory compliance.
+
+Mandatory record fields include: `record_id` (UUIDv4), `timestamp` (RFC 3339), `agent_id` (URI), `agent_version`, `session_id`, `action_type`, `action_detail`, `outcome`, `trust_level`, `parent_record_id`, and `prev_hash` (SHA-256 via RFC 8785 JSON Canonicalization Scheme). Optional ECDSA P-256 signatures provide non-repudiation. The specification defines seven action type categories: tool calls/responses, decisions, delegation, escalation, errors, and lifecycle events.
+
+Two design decisions distinguish AAT from other approaches. First, privacy-by-design: input/output data is replaced with hashes rather than stored in plaintext, and GDPR right-to-erasure requests are handled via tombstone records that preserve chain integrity. Second, explicit regulatory mappings to EU AI Act Articles 12-14, SOC 2 Trust Services Criteria, ISO/IEC 42001, and PCI DSS v4.0.1 -- making compliance mapping concrete rather than aspirational. Export formats include JSONL (primary), Syslog (RFC 5424), and CSV.
+
+AAT, AIVS, and the LangChain ComplianceCallbackHandler RFC represent three complementary approaches to the same underlying need: AAT for structured log ingestion, AIVS for portable cryptographic proof bundles, and the LangChain RFC for framework-native integration. Organizations may end up using more than one depending on their compliance requirements and technology stack.
+
+### Databricks Unity AI Gateway: Enterprise Agent Governance
+
+Databricks expanded Unity Catalog's governance model to agentic AI with Unity AI Gateway (April 2026), treating each agent action as an auditable event with full identity and permission context. The platform enforces identity-aware agent governance at the gateway level:
+
+- Every request logs the requesting identity and timestamp. For MCP tool calls, the system captures connection name, HTTP method, and whether the call executes on-behalf-of a user
+- MCP calls execute with the requesting user's exact permissions, not a shared service account -- meaning an agent cannot access Salesforce data if the delegating user lacks Salesforce permissions, even if the agent holds elevated privileges elsewhere
+- Unified Delta-based logging infrastructure serves security auditing, engineering debugging, and cost attribution simultaneously
+- Fine-grained access control prevents unauthorized tool access, with consistent policy enforcement across different LLM providers (Anthropic, OpenAI, Google, open-source models)
+
+Unity AI Gateway represents the first major data platform to integrate agent identity governance natively rather than as an add-on security product. For organizations already on Databricks, this eliminates a separate agent identity layer.
+
 ### Regulatory Convergence: Colorado AI Act
 
 The Colorado AI Act (SB 24-205) takes effect June 30, 2026, becoming the first comprehensive U.S. state AI law. While focused on algorithmic discrimination in high-risk decisions (financial services, employment, housing, insurance), it establishes transparency and audit obligations that intersect with agent identity: deployers must maintain documented risk management policies, conduct annual impact assessments, and report algorithmic discrimination incidents within 90 days. Combined with the EU AI Act's August 2, 2026 enforcement date, organizations face a compressed compliance timeline. The NIST NCCoE is hosting sector-specific listening sessions in April 2026 (healthcare, finance, education) to inform practical guidance for agent identity and authorization -- what NIST publishes from these sessions will likely shape compliance expectations for 2027 and beyond.
@@ -387,6 +439,11 @@ With the EU AI Act's remaining provisions taking effect August 2, 2026, framewor
 - [Fortune: AI Agents Governance Gap (April 2026)](https://fortune.com/2026/04/13/ai-agents-governance-identity-risk-okta/) -- enterprise governance vacuum as deployment outpaces organizational readiness
 - [McHire AI Breach: 64M Applicant Records Exposed (Oasis Security)](https://www.oasis.security/blog/mcdonalds-ai-hiring-breach-nonhuman-identity) -- default credentials on AI hiring chatbot demonstrating catastrophic identity failures
 - [Qualys ETM: Autonomous Agent Risk and Identity Correlation (April 2026)](https://blog.qualys.com/product-tech/2026/04/13/anatomy-autonomous-ai-agent-risk-qualys-etm-openclaw) -- agent vulnerability chaining to domain-wide identity compromise via SID-History Injection
+- [CVE-2026-25253 (ClawBleed): OpenClaw Token Exfiltration](https://socradar.io/blog/cve-2026-25253-rce-openclaw-auth-token/) -- CVSS 8.8, one-click RCE via WebSocket hijacking of agent authentication tokens
+- [ZeroID: Open-Source Identity for Autonomous AI Agents](https://www.helpnetsecurity.com/2026/04/13/zeroid-open-source-identity-platform-autonomous-ai-agents/) -- RFC 8693 token exchange with automatic scope attenuation and real-time revocation via OpenID SSF/CAEP
+- [Asqav: Quantum-Resistant Agent Audit Trail SDK](https://www.helpnetsecurity.com/2026/04/09/asqav-ai-agent-audit-trail/) -- ML-DSA-65 post-quantum signed hash-chain audit trails for five agent frameworks
+- [IETF draft-sharif-agent-audit-trail-00: Agent Audit Trail Standard](https://datatracker.ietf.org/doc/draft-sharif-agent-audit-trail/) -- JSON-based agent logging format with SHA-256 hash chaining and regulatory compliance mappings
+- [Databricks Unity AI Gateway: Agent Governance](https://www.databricks.com/blog/ai-gateway-governance-layer-agentic-ai) -- identity-aware audit trails and MCP policy enforcement integrated into Unity Catalog
 
 ---
 
@@ -420,12 +477,16 @@ With the EU AI Act's remaining provisions taking effect August 2, 2026, framewor
 - The IETF dual-identity credential model (draft-ni-wimse-ai-agent-identity-02) cryptographically binds agent identity to owner identity. Does this effectively solve cross-organizational accountability, or does it create new key management complexity that limits adoption?
 - With 91% of organizations deploying agents but only 10% having a management strategy (Strata/CSA 2026), what minimum viable identity posture should organizations target before deploying agents in production -- and should frameworks enforce this as a pre-deployment gate?
 - Cisco's MCP gateway approach intercepts every tool call for policy enforcement. Does routing all agent traffic through a centralized gateway create a single point of failure that undermines the resilience benefits of distributed agent architectures?
+- Asqav's adoption of ML-DSA-65 post-quantum signatures addresses future cryptanalytic threats, but imposes higher computational overhead than Ed25519. For high-throughput agent systems signing thousands of actions per second, is the quantum-resistance trade-off justified now, or should organizations plan a migration path from Ed25519 to post-quantum when NIST's PQC timeline firms up?
+- Three IETF drafts now address agent audit (AIMS, AIVS, AAT) with overlapping but distinct scopes. Will the community converge on a single standard, or will the fragmentation itself become a compliance burden as organizations must implement multiple formats for different regulatory regimes?
+- ZeroID's RFC 8693-based delegation chains with automatic scope attenuation solve the multi-hop agent authorization problem elegantly. However, token exchange adds latency at each delegation hop -- for deep agent hierarchies (5+ levels), does the cumulative overhead become a practical barrier, and what caching strategies can mitigate it without undermining revocation propagation?
 
 ---
 
 ## Related Pages
 
-- [C04-04 Secrets and Key Management](C04-04-Secrets-Key-Management.md) -- the credential storage and rotation practices that underpin agent identity; covers HSM-backed key storage and agentic credential risks that map directly to requirement 9.4.4.
+- ASVS V10 (Secrets & Key Management) -- the credential storage and rotation practices that underpin agent identity; covers HSM-backed key storage and agentic credential risks that map directly to requirement 9.4.4. AISVS C4 no longer duplicates these generic controls.
 - [C09-06 Authorization and Delegation](C09-06-Authorization-and-Delegation.md) -- the authorization layer that follows identity; covers delegation context propagation and credential isolation patterns that complement 9.4.1's identity requirements.
+- [C09-08 Multi-Agent Isolation](C09-08-Multi-Agent-Isolation.md) -- runtime separation, credential scoping, and kill switches for multi-agent systems; the isolation controls that depend on the identity primitives established here.
 - [C05 Access Control](C05-Access-Control.md) -- the broader IAM context for agent identity, including multi-tenant isolation and autonomous agent authorization as first-class principals.
 - [C11-07 Security Policy Adaptation](C11-07-Security-Policy-Adaptation.md) -- runtime policy enforcement and audit trails for policy changes, connecting to 9.4.5's requirement for policy version tracking in audit records.
