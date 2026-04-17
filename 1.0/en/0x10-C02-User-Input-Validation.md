@@ -33,8 +33,7 @@ AI models process text through tokenizers and embeddings that can be exploited v
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **2.2.1** | **Verify that** input normalization (Unicode NFC canonicalization, homoglyph mapping, removal of control and invisible Unicode characters, and bidirectional text neutralization) is applied before tokenization or embedding, and that inputs which still contain suspicious encoding artifacts after normalization are rejected or flagged for review. | 1 |
-| **2.2.2** | **Verify that** suspected adversarial inputs are quarantined and logged. | 1 |
-| **2.2.3** | **Verify that** encoding and representation smuggling in both inputs and outputs (e.g., invisible Unicode/control characters, homoglyph swaps, or mixed-direction text) are detected and mitigated. Approved mitigations include canonicalization, strict schema validation, policy-based rejection, or explicit marking. | 3 |
+| **2.2.2** | **Verify that** encoding and representation smuggling in both inputs and outputs (e.g., invisible Unicode/control characters, homoglyph swaps, or mixed-direction text) are detected and mitigated. Approved mitigations include canonicalization, strict schema validation, policy-based rejection, or explicit marking. | 3 |
 
 ---
 
