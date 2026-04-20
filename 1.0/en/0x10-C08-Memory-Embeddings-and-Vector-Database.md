@@ -4,7 +4,7 @@
 
 Embeddings and vector stores act as semi-persistent and persistent "memory" for AI systems via Retrieval-Augmented Generation (RAG). This memory can become a high-risk data sink and data exfiltration path. This control family hardens memory pipelines and vector databases so that access is least-privilege, data is sanitized before vectorization, retention is explicit, and systems are resilient to embedding inversion, membership inference, and cross-tenant leakage.
 
-General authorization (RBAC/ABAC, scoped tokens, cross-tenant controls), data-at-rest cryptography and key management, generic data-retention and secure-deletion, generic input validation, and session lifecycle management are out of scope and are covered by OWASP ASVS v5 chapters V8, V11, V13, V14, V2, and V7.
+> **Scope note:** General authorization (RBAC/ABAC, scoped tokens, cross-tenant controls), data-at-rest cryptography and key management, generic data-retention and secure-deletion, generic input validation, and session lifecycle management are out of scope and are covered by OWASP ASVS v5 chapters V8, V11, V13, V14, V2, and V7. End-user authorization context propagation through RAG retrieval is covered by AISVS C5.3. Personal-data deletion propagation across AI artifacts (including embeddings) is covered by AISVS C12.2. Per-agent memory namespace isolation in multi-agent systems is covered by AISVS C9.8.3. This chapter focuses on AI-specific concerns: scope enforcement at the vector-engine layer, AI-specific data lineage (embedding model version, ingestion provenance), embedding-pipeline poisoning resistance, retrieval-time anomaly detection, RAG-specific deletion propagation windows, and embedding inversion / membership-inference resistance.
 
 ---
 
@@ -64,9 +64,10 @@ Prevent cross-tenant and cross-user leakage in retrieval and prompt assembly.
 
 | # | Description | Level |
 | :--: | --- | :---: |
-| **8.5.1** | **Verify that** every retrieval operation enforces scope constraints (tenant/user/classification) **in the vector engine query** and verifies them again **before prompt assembly** (post-filter), discarding results that match similarity criteria but fail scope checks. | 1 |
+| **8.5.1** | **Verify that** every retrieval operation enforces scope constraints (tenant/user/classification) **in the vector engine query** and verifies them again **before prompt assembly** (post-filter). | 1 |
 | **8.5.2** | **Verify that** vector identifiers, namespaces, and metadata indexing prevent cross-scope collisions and enforce uniqueness per tenant. | 1 |
-| **8.5.3** | **Verify that** multi-tenant tests simulate adversarial retrieval attempts (prompt-based and query-based) and demonstrate zero out-of-scope document inclusion in prompts and outputs. | 2 |
+| **8.5.3** | **Verify that** retrieval results that match similarity criteria but fail scope checks are discarded. | 1 |
+| **8.5.4** | **Verify that** multi-tenant tests simulate adversarial retrieval attempts (prompt-based and query-based) and demonstrate zero out-of-scope document inclusion in prompts and outputs. | 2 |
 
 ---
 
