@@ -2,7 +2,9 @@
 
 ## Control Objective
 
-Autonomous and multi-agent systems must execute only **authorized, intended, and bounded** actions. This control family reduces risk from tool misuse, privilege escalation, uncontrolled recursion/cost growth, protocol manipulation, and cross-agent or cross-tenant interference by enforcing: explicit authorization, sandboxed execution, cryptographic identity and tamper-evident audit, message security, and intent/constraint gates.
+Autonomous and multi-agent systems must execute only authorized, intended, and bounded actions. This chapter focuses on controls unique to agentic AI execution: agent-as-principal identity, agent action chains, model-output-driven authorization risk, intent verification of LLM-decided actions, and multi-agent swarm dynamics. Generic application security controls (transport encryption, schema validation, message integrity, log integrity, concurrency safety, supply chain integrity, service-account rotation, multi-tenant isolation, contextual authorization, and API-edge rate limiting) are covered by ASVS v5 (V2, V4, V8, V11, V12, V13, V15, V16), AISVS C13.1.6, and OWASP SCVS, and are not repeated here.
+
+Boundaries with adjacent controls determine what evidence satisfies each requirement. C9.1 execution budgets apply inside the orchestration runtime and do not substitute for API-edge rate limiting (ASVS v5 V2.4) or anti-extraction/anti-inversion throttling (C11.4, C11.5). C9.2 governs the runtime gate that blocks high-impact actions until approval is received; C14.2 defines the policy that classifies actions as high-risk and assigns approval authority; C13.7.4 covers logging of approval events. C9.5 covers semantic validation of agent-generated outputs flowing into downstream agents, while transport, schema, and replay protections are in ASVS v5 V4/V11/V12 and MCP-specific message and schema controls are in C10.4.
 
 ---
 
@@ -10,15 +12,11 @@ Autonomous and multi-agent systems must execute only **authorized, intended, and
 
 Bound runtime expansion (recursion, concurrency, cost) and halt safely on runaway behavior.
 
-> **Scope note:** Controls in this section govern internal orchestration runtime budgets: per-task recursion depth, concurrency, wall-clock time, token spend, and monetary limits. They apply inside the agentic execution layer, not at the API ingress edge (see ASVS v5 V2.4 for generic rate limiting) and not in response to adversarial probing patterns (C11.4, C11.5). A single token-spend cap at the API gateway does not satisfy C9.1 budget enforcement, which requires enforcement within the orchestration runtime itself.
-
 | # | Description | Level |
 | :--: | --- | :---: |
 | **9.1.1** | **Verify that** per-execution budgets (max recursion depth, max fan-out/concurrency, wall-clock time, tokens, and monetary spend) are configured and enforced by the orchestration runtime. | 1 |
-| **9.1.2** | **Verify that** cumulative resource/spend counters are tracked per request chain and hard-stop the chain when thresholds are exceeded. | 2 |
-| **9.1.3** | **Verify that** circuit breakers terminate execution on budget violations. | 2 |
-| **9.1.4** | **Verify that** security testing covers runaway loops, budget exhaustion, and partial-failure scenarios, confirming safe termination and consistent state. | 3 |
-| **9.1.5** | **Verify that** budget and circuit-breaker policies are expressed as policy-as-code and are validated in CI/CD to prevent drift and unsafe configuration changes. | 3 |
+| **9.1.2** | **Verify that** cumulative resource and spend counters are tracked per request chain and that exceeding any configured threshold hard-stops the chain via a circuit breaker. | 2 |
+| **9.1.3** | **Verify that** security testing covers runaway loops, budget exhaustion, and partial-failure scenarios, confirming safe termination and consistent state. | 3 |
 
 ---
 
@@ -26,16 +24,12 @@ Bound runtime expansion (recursion, concurrency, cost) and halt safely on runawa
 
 Require explicit checkpoints for privileged or irreversible outcomes.
 
-> **Scope note:** C9.2 governs the runtime execution gate: the mechanism by which the agent system blocks a privileged or irreversible action and waits for an explicit approval signal before proceeding. Organizational policy that defines which decisions qualify as high-risk and what approval authority is required is in C14.2. Logging and auditing of approval events is in C13.7.4. All three controls address different aspects of the same workflow and require separate evidence.
-
 | # | Description | Level |
 | :--: | --- | :---: |
 | **9.2.1** | **Verify that** the agent runtime enforces an execution gate that blocks privileged or irreversible actions (e.g., code merges/deploys, financial transfers, user access changes, destructive deletes, external notifications) until an explicit human approval is received and verified. | 1 |
 | **9.2.2** | **Verify that** approval requests display canonicalized and complete action parameters (diff, command, recipient, amount, scope) without truncation or transformation. | 2 |
-| **9.2.3** | **Verify that** approvals are cryptographically bound (e.g., signed or MACed) to the exact action parameters, requester identity, and execution context. | 2 |
-| **9.2.4** | **Verify that** approvals include a unique nonce and are single-use to prevent replay or substitution. | 2 |
-| **9.2.5** | **Verify that** approvals expire within a defined maximum time-to-live (TTL) and are rejected after expiration. | 2 |
-| **9.2.6** | **Verify that** where rollback is feasible, compensating actions are defined and tested (transactional semantics), and failures trigger rollback or safe containment. | 3 |
+| **9.2.3** | **Verify that** approvals are cryptographically bound (e.g., signed or MACed) to the exact action parameters, requester identity, and execution context, include a unique single-use nonce, and expire within a defined maximum time-to-live (TTL). | 2 |
+| **9.2.4** | **Verify that** where rollback is feasible, compensating actions are defined and tested (transactional semantics), and failures trigger rollback or safe containment. | 3 |
 
 ---
 
@@ -46,12 +40,10 @@ Constrain tool execution, loading, and outputs to prevent unauthorized system ac
 | # | Description | Level |
 | :--: | --- | :---: |
 | **9.3.1** | **Verify that** each tool/plugin executes in an isolated sandbox (container/VM/WASM/OS sandbox) with least-privilege filesystem, network egress, and syscall permissions appropriate to the tool's function. | 1 |
-| **9.3.2** | **Verify that** per-tool quotas and timeouts (CPU, memory, disk, egress, execution time) are enforced and logged. | 1 |
-| **9.3.7** | **Verify that** quota or timeout breaches fail closed, terminating the tool execution rather than continuing with degraded or uncontrolled behavior. | 1 |
+| **9.3.2** | **Verify that** per-tool quotas and timeouts (CPU, memory, disk, egress, execution time) are enforced and logged, and that quota or timeout breaches fail closed by terminating the tool execution rather than continuing with degraded or uncontrolled behavior. | 1 |
 | **9.3.3** | **Verify that** tool outputs are validated against strict schemas and security policies before being incorporated into downstream reasoning or follow-on actions. | 1 |
-| **9.3.4** | **Verify that** tool binaries or packages are integrity-verified (e.g., signatures, checksums) prior to loading. | 2 |
-| **9.3.5** | **Verify that** tool manifests declare required privileges, side-effect level, resource limits, and output validation requirements, and that the runtime enforces these declarations. | 2 |
-| **9.3.6** | **Verify that** sandbox escape indicators or policy violations trigger automated containment (tool disabled/quarantined). | 3 |
+| **9.3.4** | **Verify that** tool manifests declare required privileges, side-effect level, resource limits, and output validation requirements, and that the runtime enforces these declarations. | 2 |
+| **9.3.5** | **Verify that** sandbox escape indicators or policy violations trigger automated containment (tool disabled/quarantined). | 3 |
 
 ---
 
@@ -63,23 +55,19 @@ Make every action attributable and every mutation detectable.
 | :--: | --- | :---: |
 | **9.4.1** | **Verify that** each agent instance (and orchestrator/runtime) has a unique cryptographic identity and authenticates as a first-class principal to downstream systems (no reuse of end-user credentials). | 1 |
 | **9.4.2** | **Verify that** agent-initiated actions are cryptographically bound to the execution chain (chain ID) and are signed and timestamped for non-repudiation and traceability. | 2 |
-| **9.4.3** | **Verify that** audit logs are tamper-evident via append-only/WORM/immutable log store, cryptographic hash chaining where each record includes the hash of the prior record, or equivalent integrity guarantees that can be independently verified. | 2 |
-| **9.4.5** | **Verify that** audit log records include sufficient context to reconstruct who/what acted, the initiating user identifier, delegation scope, authorization decision (policy/version), tool parameters, approvals (where applicable), and outcomes. | 2 |
+| **9.4.3** | **Verify that** audit log records include sufficient context to reconstruct who/what acted, the initiating user identifier, delegation scope, authorization decision (policy/version), tool parameters, approvals (where applicable), and outcomes. | 2 |
 | **9.4.4** | **Verify that** agent identity credentials (keys/certs/tokens) rotate on a defined schedule and on compromise indicators, with rapid revocation and quarantine on suspected compromise or spoofing attempts. | 3 |
-| **9.4.6** | **Verify that** agent state persisted between invocations (including memory, task context, goals, and partial results) is integrity-protected (e.g., via cryptographic MACs or signatures), and that the runtime rejects or quarantines state that fails integrity verification before resuming execution. | 3 |
+| **9.4.5** | **Verify that** agent state persisted between invocations (including memory, task context, goals, and partial results) is integrity-protected (e.g., via cryptographic MACs or signatures), and that the runtime rejects or quarantines state that fails integrity verification before resuming execution. | 3 |
 
 ---
 
 ## C9.5 Secure Messaging and Protocol Hardening
 
-Protect agent-to-agent and agent-to-tool communications from hijacking, injection, replay, and desynchronization.
+Protect agent-to-agent and agent-to-tool communications from hijacking, injection, and unauthorized modifications.
 
 | # | Description | Level |
 | :--: | --- | :---: |
-| **9.5.1** | **Verify that** agent-to-agent and agent-to-tool channels enforce mutual authentication and encryption using current recommended protocols (e.g., TLS 1.3 or later) with strong certificate/token validation. | 1 |
-| **9.5.2** | **Verify that** all messages are strictly schema-validated; unknown fields, malformed payloads, and oversized frames are rejected. | 1 |
-| **9.5.3** | **Verify that** message integrity covers the full payload including tool parameters, and that replay protections (nonces/sequence numbers/timestamp windows) are enforced. | 2 |
-| **9.5.4** | **Verify that** agent outputs propagated to downstream agents are validated against semantic constraints (e.g., value ranges, logical consistency) in addition to schema validation. | 2 |
+| **9.5.1** | **Verify that** agent outputs propagated to downstream agents are validated against semantic constraints (e.g., value ranges, logical consistency) in addition to schema validation. | 2 |
 
 ---
 
@@ -91,11 +79,10 @@ Ensure every action is authorized at execution time and constrained by scope.
 | :--: | --- | :---: |
 | **9.6.1** | **Verify that** agent actions are authorized against fine-grained policies enforced by the runtime that restrict which tools an agent may invoke, which parameter values it may supply (e.g., allowed resources, data scopes, action types), and that policy violations are blocked. | 1 |
 | **9.6.2** | **Verify that** when an agent acts on a user's behalf, the runtime propagates an integrity-protected delegation context (user ID, tenant, session, scopes) and enforces that context at every downstream call without using the user's credentials. | 2 |
-| **9.6.3** | **Verify that** authorization is re-evaluated on every call (continuous authorization) using current context (user, tenant, environment, data classification, time, risk). | 2 |
-| **9.6.4** | **Verify that** all access control decisions are enforced by application logic or a policy engine, never by the AI model itself, and that model-generated output (e.g., "the user is allowed to do this") cannot override or bypass access control checks. | 2 |
-| **9.6.5** | **Verify that** secrets and credentials required by an agent at runtime are not exposed within the model's observable context, including the context window, system prompts, or tool call parameters, and are instead provided via out-of-band mechanisms such as credential proxies, secrets manager injection, runtime sidecar authentication, or short-lived scoped tokens. | 2 |
-| **9.6.6** | **Verify that** when an agent acts under delegated authority, the policy decision point evaluates both the agent's own granted permissions and the initiating principal's delegated scope as independent constraints, denying the action if either is insufficient for the requested operation. | 2 |
-| **9.6.7** | **Verify that** agent-to-agent task delegation is restricted by an explicit peer authorization policy (e.g., an approved agent registry or allowlist) so that even authenticated agents can only delegate to or accept delegations from pre-approved peers, with delegation attempts from unlisted agents rejected by default. | 2 |
+| **9.6.3** | **Verify that** all access control decisions are enforced by application logic or a policy engine, never by the AI model itself, and that model-generated output (e.g., "the user is allowed to do this") cannot override or bypass access control checks. | 2 |
+| **9.6.4** | **Verify that** secrets and credentials required by an agent at runtime are not exposed within the model's observable context, including the context window, system prompts, or tool call parameters, and are instead provided via out-of-band mechanisms such as credential proxies, secrets manager injection, runtime sidecar authentication, or short-lived scoped tokens. | 2 |
+| **9.6.5** | **Verify that** when an agent acts under delegated authority, the policy decision point evaluates both the agent's own granted permissions and the initiating principal's delegated scope as independent constraints, denying the action if either is insufficient for the requested operation. | 2 |
+| **9.6.6** | **Verify that** agent-to-agent task delegation is restricted by an explicit peer authorization policy (e.g., an approved agent registry or allowlist) so that even authenticated agents can only delegate to or accept delegations from pre-approved peers, with delegation attempts from unlisted agents rejected by default. | 2 |
 
 ---
 
@@ -106,12 +93,10 @@ Prevent "technically authorized but unintended" actions by binding execution to 
 | # | Description | Level |
 | :--: | --- | :---: |
 | **9.7.1** | **Verify that** pre-execution gates evaluate proposed actions and parameters against hard policy constraints (deny rules, data handling constraints, allow-lists, side-effect budgets) and block execution on any violation. | 1 |
-| **9.7.2** | **Verify that** post-execution checks confirm the intended outcome was achieved. | 2 |
-| **9.7.3** | **Verify that** post-execution checks detect unintended side effects. | 2 |
-| **9.7.4** | **Verify that** any mismatch between intended outcome and actual results triggers containment and, where supported, compensating actions. | 2 |
+| **9.7.2** | **Verify that** post-execution checks confirm the intended outcome was achieved and detect unintended side effects, and that any mismatch triggers containment and, where supported, compensating actions. | 2 |
+| **9.7.3** | **Verify that** all write operations to persistent external state are authorized by either explicit human approval or an independent policy-based authorization mechanism that evaluates the operation against the original user intent, and not solely on agent-generated output. | 2 |
+| **9.7.4** | **Verify that** when the policy decision point (PDP) used for governance evaluation is unavailable (e.g., timeout, network partition, service failure), agent execution fails closed by blocking the proposed action, and the unavailability event is logged with sufficient detail for incident investigation. | 2 |
 | **9.7.5** | **Verify that** prompt templates and agent policy configurations retrieved from a remote source are integrity-verified at load time against their approved versions (e.g., via hashes or signatures). | 3 |
-| **9.7.6** | **Verify that** all write operations to persistent external state are authorized by either explicit human approval or an independent policy-based authorization mechanism that evaluates the operation against the original user intent, and not solely on agent-generated output. | 2 |
-| **9.7.7** | **Verify that** when the policy decision point (PDP) used for governance evaluation is unavailable (e.g., timeout, network partition, service failure), agent execution fails closed by blocking the proposed action, and the unavailability event is logged with sufficient detail for incident investigation. | 2 |
 
 ---
 
@@ -122,13 +107,11 @@ Reduce cross-domain interference and emergent unsafe collective behavior.
 | # | Description | Level |
 | :--: | --- | :---: |
 | **9.8.1** | **Verify that** agents in different tenants, security domains, or environments (dev/test/prod) run in isolated runtimes and network segments, with default-deny controls that prevent cross-domain discovery and calls. | 1 |
-| **9.8.2** | **Verify that** runtime monitoring detects unsafe emergent behavior (oscillation, deadlocks, uncontrolled broadcast, abnormal call graphs) and automatically applies corrective actions (throttle, isolate, terminate). | 3 |
-| **9.8.3** | **Verify that** each agent is restricted to its own memory namespace and is technically prevented from reading or modifying peer agent state, preventing unauthorized cross-agent access within the same swarm. | 2 |
-| **9.8.4** | **Verify that** each agent operates with an isolated context window that peer agents cannot read or influence, preventing unauthorized cross-agent context access within the same swarm. | 3 |
-| **9.8.7** | **Verify that** each agent is issued dedicated credentials scoped to its role that are not shared with or accessible to peer agents within the same swarm. | 3 |
+| **9.8.2** | **Verify that** each agent is restricted to its own memory namespace and is technically prevented from reading or modifying peer agent state, preventing unauthorized cross-agent access within the same swarm. | 2 |
+| **9.8.3** | **Verify that** each agent operates with an isolated context window that peer agents cannot read or influence, preventing unauthorized cross-agent context access within the same swarm. | 3 |
+| **9.8.4** | **Verify that** runtime monitoring detects unsafe emergent behavior (oscillation, deadlocks, uncontrolled broadcast, abnormal call graphs) and automatically applies corrective actions (throttle, isolate, terminate). | 3 |
 | **9.8.5** | **Verify that** swarm-level aggregate action rate limits (e.g., total external API calls, file writes, or network requests per time window across all agents) are enforced to prevent bursts that cause denial-of-service or abuse of external systems. | 3 |
 | **9.8.6** | **Verify that** a swarm-level shutdown capability exists that can halt all active agent instances or selected problematic instances in an organized fashion and prevents new agent spawning, with shutdown completable within a pre-defined response time. | 3 |
-| **9.8.8** | **Verify that** when multiple agents concurrently access shared mutable state, authorization checks and the state mutations they gate are executed atomically (e.g., via transactions, optimistic locking, or compare-and-swap) to prevent TOCTOU vulnerabilities where a concurrent state change invalidates a prior authorization decision before the guarded action completes. | 2 |
 
 ---
 

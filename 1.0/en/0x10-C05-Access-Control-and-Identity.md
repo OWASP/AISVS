@@ -6,7 +6,7 @@ AI systems introduce access control challenges beyond traditional application se
 
 This chapter addresses AI-specific access control and identity concerns only. General identity management and authentication (centralized IdP, federation, MFA, step-up authentication) are covered by ASVS v5 V6. General authorization patterns (RBAC/ABAC design, externalized PDP, dynamic attribute evaluation, policy caching), access control audit logging, and multi-tenant networking are covered by ASVS v5 V8, V14, and V16. 
 
-Agent-specific authorization policies and delegation are covered in C9.6; single-system agent identity is in C9.4.1; this chapter covers runtime isolation of the policy decision point from agent execution (complementing C9.6.4). Vector database scope enforcement is in C8.1 and C8.5. General output safety filtering (PII redaction, content moderation, confidential data blocking) is in C7.3; this chapter covers authorization-aware output filtering where entitlements vary per caller.
+Agent-specific authorization policies and delegation are covered in C9.6; single-system agent identity is in C9.4.1; this chapter covers runtime isolation of the policy decision point from agent execution (complementing C9.6.3). Vector database scope enforcement is in C8.1 and C8.5. General output safety filtering (PII redaction, content moderation, confidential data blocking) is in C7.3; this chapter covers authorization-aware output filtering where entitlements vary per caller.
 
 ---
 

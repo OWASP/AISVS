@@ -42,8 +42,7 @@ Enforce access decisions across users, agents, tools, data, and MCP resources us
 | Caller authorization context enforcement through AI query pipelines | 5.3.1 |
 | Fine-grained agent action authorization (tool, parameters, resources, data scope) | 9.6.1 |
 | Delegation context propagation with integrity protection (user, tenant, scopes) | 9.6.2 |
-| Continuous authorization re-evaluation (context, time, risk) | 9.6.3 |
-| Application-layer policy enforcement (model output cannot bypass) | 9.6.4 |
+| Application-layer policy enforcement (model output cannot bypass) | 9.6.3 |
 | Pre-execution policy constraint gates (deny rules, allow-lists, budgets) | 9.7.1 |
 | Scope-filtered MCP tool discovery (tools/list) | 10.2.6 |
 | Per-tool MCP invocation access control (argument, token scope) | 10.2.7 |
@@ -57,8 +56,7 @@ Enforce access decisions across users, agents, tools, data, and MCP resources us
 | KV-cache partitioning by session/tenant to prevent prompt reconstruction | 5.6.1 |
 | Shared model serving tenant isolation (fine-tuning, inference, embeddings) | 5.6.2 |
 | MCP tool namespace collision detection and trust-ranked shadowing prevention | 10.6.5 |
-| Peer authorization policy (approved agent registry) for agent-to-agent task delegation | 9.6.7 |
-| Dedicated scoped credentials per agent, not shared across swarm peers | 9.8.7 |
+| Peer authorization policy (approved agent registry) for agent-to-agent task delegation | 9.6.6 |
 
 **Common pitfalls:** granting broad OAuth scopes instead of minimal required; not re-evaluating authorization when context changes mid-session; allowing model-generated output to override hard policy decisions.
 
@@ -92,7 +90,6 @@ Protect data moving between services, agents, tools, and edge devices.
 | Control / Technique | Requirement IDs |
 | --- | --- |
 | Mutual TLS with certificate validation for inter-service communication | 4.3.4 |
-| Mutual TLS for agent-to-agent and agent-to-tool communication (TLS 1.3+) | 9.5.1 |
 | Authenticated streamable-HTTP transport with TLS 1.3 for MCP | 10.3.1, 10.3.2 |
 | SSE private channel with TLS enforcement | 10.3.3 |
 | Encrypted TEE communication channels | 4.5.9 |
@@ -140,15 +137,13 @@ Verify authenticity and detect tampering of models, artifacts, messages, logs, a
 | Cryptographic signature validation for model publishers | 6.2.1, 6.2.2 |
 | Model watermarking and fingerprinting | 7.7.5, 11.5.4 |
 | Execution chain cryptographic signing with non-repudiation timestamps | 9.4.2 |
-| Message integrity with nonce / sequence / timestamp replay protection | 9.5.3 |
 | Cryptographic log signatures (write-only / append-only) | 13.1.6 |
-| Tamper-evident audit logs (WORM) | 9.4.3 |
 | MCP component signature and checksum verification | 10.1.1 |
 | MCP schema integrity signing and tool definition hash tracking | 10.4.2, 10.4.5 |
 | DAG cryptographic signatures and tamper-evident storage | 13.7.3 |
 | Publisher key pinning per source registry with rotation re-approval | 6.2.2 |
 | Document metadata tag immutability after initial ingestion write | 8.1.7 |
-| Agent persisted state integrity protection (MAC/signature, rejection on failure) | 9.4.6 |
+| Agent persisted state integrity protection (MAC/signature, rejection on failure) | 9.4.5 |
 
 **Common pitfalls:** using mutable `:latest` tags instead of immutable digests; not re-verifying tool definition hashes between MCP invocations; missing replay protection on agent messages.
 
@@ -226,10 +221,8 @@ Enforce consumption bounds to prevent abuse, runaway execution, and denial-of-se
 | Per-agent token, cost, and tool-call budgets | 9.1.1 |
 | Recursion depth and max concurrency / fan-out limits | 9.1.1 |
 | Wall-clock time and monetary spend caps | 9.1.1 |
-| Cumulative resource counters with hard-stop thresholds | 9.1.2 |
-| Circuit breaker enforcement | 9.1.3 |
-| Per-tool CPU, memory, disk, egress, and execution time limits | 9.3.2 |
-| Quota and timeout breach fail-closed termination | 9.3.7 |
+| Cumulative resource counters with hard-stop thresholds and circuit breaker enforcement | 9.1.2 |
+| Per-tool CPU, memory, disk, egress, and execution time limits with fail-closed termination on breach | 9.3.2 |
 | Sub-task delegation chain depth limit per execution | 7.4.4 |
 | Query-rate limiting for model extraction and inversion defense | 11.4.2, 11.5.1 |
 | MCP outbound execution limits, timeouts, recursion limits, and circuit breakers | 10.5.2 |
@@ -254,7 +247,7 @@ Isolate workloads, tools, models, and agents to contain failures and prevent lat
 | TEE / confidential computing with remote attestation | 4.1.5, 4.5.4, 4.5.6, 4.5.8 |
 | Untrusted AI model sandboxing with network isolation | 4.5.1, 4.5.2 |
 | Tool and plugin sandboxing (container, VM, WASM, OS sandbox) | 9.3.1 |
-| Sandbox escape detection with automated tool quarantine | 9.3.6 |
+| Sandbox escape detection with automated tool quarantine | 9.3.5 |
 | Agent isolation across tenants, security domains, and environments | 9.8.1 |
 | GPU memory isolation (MIG / VM partitioning) with peer-to-peer prevention | 4.7.5 |
 | On-device process, memory, and file access isolation | 4.8.7 |
@@ -422,8 +415,7 @@ Capture security-relevant events with integrity protection for forensic analysis
 | PII, credential, and proprietary information redaction in logs | 13.1.4 |
 | Policy decision and safety filtering action logging | 13.1.5 |
 | Cryptographic log signatures with write-only storage | 13.1.6 |
-| Tamper-evident audit log storage (append-only, WORM, hash chaining) | 9.4.3 |
-| Audit log context fields sufficient for forensic reconstruction (actor, delegation, policy, parameters, outcomes) | 9.4.5 |
+| Audit log context fields sufficient for forensic reconstruction (actor, delegation, policy, parameters, outcomes) | 9.4.3 |
 | Agent action signing with chain ID binding and timestamps | 9.4.2 |
 | Immutable audit records for model changes (actor, change type, before/after) | 3.2.5 |
 | Immutable deletion logging for regulatory audit trails | 12.2.4 |
@@ -458,7 +450,7 @@ Detect anomalies, alert on threats, and respond to security incidents in AI syst
 | Data drift and concept drift detection | 13.6.2, 13.6.3 |
 | Model extraction alert generation with query metadata logging | 11.5.2 |
 | Model extraction alert IR playbook integration | 11.5.6 |
-| Emergent multi-agent behavior detection (oscillation, deadlock, broadcast storms) | 9.8.2 |
+| Emergent multi-agent behavior detection (oscillation, deadlock, broadcast storms) | 9.8.4 |
 | AI-specific incident response plans (model compromise, data poisoning, adversarial attack) | 13.5.1 |
 | AI-specific forensic tools for model behavior investigation | 13.5.2 |
 | Safety violation rate alerting | 7.6.2 |
@@ -502,7 +494,7 @@ Require human review and approval for high-impact, irreversible, or safety-criti
 | --- | --- |
 | High-impact action approval gates (deploy, delete, financial, notify) | 9.2.1 |
 | Approval parameter binding (prevent approve-one-execute-another) | 9.2.2 |
-| High-impact intent confirmation with exact parameter binding and quick expiration | 9.7.2 |
+| High-impact intent confirmation with exact parameter binding and quick expiration | 9.2.3 |
 | High-risk MCP action confirmation (data deletion, financial, system config) | 10.5.3 |
 | Human approval for high-risk content generation | 7.3.5 |
 | Human review on uncertainty threshold breach | 14.6.2 |
@@ -510,8 +502,8 @@ Require human review and approval for high-impact, irreversible, or safety-criti
 | Enhanced monitoring and human intervention on security warnings | 11.8.3 |
 | Security-critical proactive action approval with approval chain logging | 13.8.4 |
 | High-risk model quarantine with human review and sign-off | 6.1.3 |
-| Post-condition outcome checking with containment on mismatch | 9.7.3 |
-| Compensating actions and transactional rollback on failure | 9.2.3 |
+| Post-condition outcome checking with containment on mismatch | 9.7.2 |
+| Compensating actions and transactional rollback on failure | 9.2.4 |
 | Intermediate operational degradation states (tool disable, model swap, read-only, source removal) | 14.1.5 |
 
 **Common pitfalls:** not binding approval to exact parameters allowing bait-and-switch; confirmation tokens without quick expiration; missing post-condition checks after approved actions execute.
