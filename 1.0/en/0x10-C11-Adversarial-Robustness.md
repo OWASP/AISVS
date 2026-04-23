@@ -4,6 +4,8 @@
 
 Ensure that AI systems remain reliable, privacy-preserving, and abuse-resistant when facing evasion, inference, extraction, or poisoning attacks. These controls cover model alignment testing, adversarial hardening, privacy attack resistance, model theft deterrence, and security adaptation for autonomous agents.
 
+Generic application security controls (configuration management, secret and key management, signed artifacts, audit logging, change control, transport security, generic anti-automation rate limiting) are covered by ASVS v5 (V11, V13, V14, V15, V16) and are not repeated here. Logging of AI security events, AI incident response planning, and human-oversight escalation are covered by AISVS C13 and C14. Inversion-specific (C11.4) and extraction-specific (C11.5) throttling controls do not substitute for generic API rate limiting (ASVS v5 V2.4) or orchestration runtime budgets (C9.1). C11.7 is scoped to protecting the security review mechanism itself from adversarial bypass; the runtime gate that blocks high-impact agent actions is defined in C9.2 and C9.7.
+
 ---
 
 ## C11.1 Model Alignment & Safety
@@ -50,13 +52,10 @@ Limit the ability to determine whether a specific record was in the training dat
 
 Prevent reconstruction of private training data or sensitive attributes from model outputs.
 
-> **Scope note:** Rate limiting in C11.4 is scoped specifically to inversion attack resistance: throttling repeated adaptive queries from the same principal to raise the cost of reconstructing training data or sensitive attributes. It is not a substitute for generic API rate limiting (see ASVS v5 V2.4) or orchestration execution budgets (C9.1). Generic abuse prevention cannot double-count as inversion resistance.
-
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.4.1** | **Verify that** sensitive attributes are never directly output; where needed, outputs use generalized categories (e.g., ranges, buckets) or one-way transforms. | 1 |
-| **11.4.2** | **Verify that** query-rate limits throttle repeated adaptive queries from the same principal to raise the cost of inversion attacks. | 1 |
-| **11.4.3** | **Verify that** models handling sensitive data are trained with privacy-preserving techniques (e.g., differential privacy, gradient clipping) to limit information leakage through outputs. | 2 |
+| **11.4.1** | **Verify that** model-inferred sensitive attributes are not directly returned in outputs; where such attributes must be exposed, they are returned as generalized categories (e.g., ranges, buckets) or one-way transforms to limit reconstruction of underlying training records. | 1 |
+| **11.4.2** | **Verify that** query-rate limits throttle repeated adaptive queries from the same principal at thresholds calibrated to the inversion threat model (e.g., the number of queries required to reconstruct training data or sensitive attributes), and not solely as a generic anti-automation control. | 1 |
 
 ---
 
@@ -64,16 +63,12 @@ Prevent reconstruction of private training data or sensitive attributes from mod
 
 Detect and deter unauthorized model cloning through API abuse. Rate limiting, query-pattern analysis, and watermarking are recommended defenses.
 
-> **Scope note:** Rate limits in C11.5 are calibrated specifically to make large-scale query harvesting for model cloning impractical -- they are not general-purpose API throttles (see ASVS v5 V2.4). Satisfying C11.5.1 requires demonstrating that limits are sized to the extraction threat model (e.g., number of queries required to approximate the model), not merely that any rate limit is present.
-
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.5.1** | **Verify that** inference endpoints enforce per-principal and global rate limits designed to make large-scale query harvesting impractical. | 1 |
+| **11.5.1** | **Verify that** inference endpoints enforce per-principal and global rate limits sized to the extraction threat model (e.g., the number of queries required to approximate the model), and not solely as a generic API throttle. | 1 |
 | **11.5.2** | **Verify that** extraction-alert events include offending query metadata (e.g., source principal, query volume, input distribution statistics) to support investigation. | 2 |
-| **11.5.6** | **Verify that** extraction-alert events are integrated with incident-response playbooks that define escalation and remediation steps. | 2 |
 | **11.5.3** | **Verify that** query-pattern analysis (e.g., query diversity, input distribution anomalies) feeds an automated extraction-attempt detector. | 2 |
 | **11.5.4** | **Verify that** model watermarking or fingerprinting techniques are applied so that unauthorized copies can be identified. | 3 |
-| **11.5.5** | **Verify that** watermark verification keys and trigger sets are protected with access controls equivalent to other critical cryptographic material. | 3 |
 
 ---
 
@@ -93,27 +88,22 @@ Identify and neutralize backdoored or poisoned inputs at inference time, particu
 
 ## C11.7 Security Policy Adaptation
 
-Real-time security policy updates based on threat intelligence and behavioral analysis.
+Maintain the ability to update AI safety and guardrail policies rapidly in response to evolving jailbreak techniques and adversarial campaigns.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.7.1** | **Verify that** security policies (e.g., content filters, rate-limit thresholds, guardrail configurations) can be updated without full system redeployment, and that policy versions are tracked. | 1 |
-| **11.7.2** | **Verify that** policy updates are authorized, integrity-protected (e.g., cryptographically signed), and validated before application. | 2 |
-| **11.7.3** | **Verify that** policy changes are logged with audit trails including timestamp, author, and justification. | 2 |
-| **11.7.5** | **Verify that** rollback procedures exist for policy changes and are tested to confirm they restore the previous policy state. | 2 |
-| **11.7.4** | **Verify that** threat-detection sensitivity can be adjusted based on risk context (e.g., elevated threat level, incident response) with appropriate authorization. | 3 |
+| **11.7.1** | **Verify that** AI safety and guardrail policies (e.g., content filters, refusal categories, prompt-injection signatures, rate-limit thresholds applied to model endpoints) can be updated and propagated to running inference services without full system redeployment, and that the active policy version is recorded with each inference decision. | 2 |
 
 ---
 
 ## C11.8 Agent Security Self-Assessment
 
-For agentic AI systems, validate that the agent's reasoning and actions are subject to security-focused review mechanisms.
+For agentic AI systems, supplement deterministic policy gates (C9.2, C9.7) with AI-augmented review of proposed actions, and protect that review mechanism from adversarial bypass.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.8.1** | **Verify that** agentic systems include a mechanism to review planned high-risk actions against security policy before execution (e.g., a secondary model, rule-based checker, or structured self-review step). | 2 |
-| **11.8.2** | **Verify that** security review mechanisms are protected against manipulation by adversarial inputs (e.g., the review step cannot be overridden or bypassed through prompt injection). | 2 |
-| **11.8.3** | **Verify that** security review warnings trigger enhanced monitoring or human intervention workflows for the affected session or task. | 3 |
+| **11.8.1** | **Verify that** agentic systems include an AI-augmented review of planned high-risk actions before execution (e.g., a secondary model, structured self-review step, or ensemble-of-judges check) that operates in addition to and not in place of the deterministic policy gate in C9.7.1. | 2 |
+| **11.8.2** | **Verify that** the AI-augmented review mechanism in 11.8.1 is protected against manipulation by adversarial inputs, so that the review step cannot be overridden or bypassed through prompt injection or instruction smuggling in agent context. | 2 |
 
 ---
 
@@ -125,10 +115,10 @@ Security controls for systems where the AI can modify its own configuration, pro
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **11.9.1** | **Verify that** any self-modification capability (e.g., prompt rewriting, tool-list changes, parameter updates) is restricted to explicitly designated areas with enforced boundaries. | 2 |
 | **11.9.2** | **Verify that** proposed self-modifications undergo security impact assessment or policy validation before taking effect. | 2 |
-| **11.9.3** | **Verify that** all self-modifications are logged with sufficient detail to reconstruct what changed, when, and under what authorization. | 2 |
-| **11.9.6** | **Verify that** self-modifications are reversible and subject to integrity verification, so that rollback to a known-good state is possible and can be confirmed. | 2 |
-| **11.9.4** | **Verify that** self-modification scope is bounded (e.g., maximum change magnitude, rate limits on updates, prohibited modification targets) to prevent runaway or adversarially induced changes. | 3 |
-| **11.9.5** | **Verify that** when safety violation data (blocked inputs, filtered outputs, flagged hallucinations) is used as training signal for model improvement, the feedback pipeline includes integrity verification, poisoning detection, and human review gates to prevent adversarial manipulation of the improvement mechanism. | 3 |
+| **11.9.3** | **Verify that** self-modifications are explicitly classified as security-relevant events and logged with sufficient detail to reconstruct what changed, when, by which agent or principal, and under what authorization, regardless of whether self-modification is otherwise documented as a logged event. | 2 |
+| **11.9.4** | **Verify that** self-modifications are reversible and subject to integrity verification, so that rollback to a known-good state is possible and can be confirmed. | 2 |
+| **11.9.5** | **Verify that** self-modification scope is bounded (e.g., maximum change magnitude, rate limits on updates, prohibited modification targets) to prevent runaway or adversarially induced changes. | 3 |
+| **11.9.6** | **Verify that** when safety violation data (blocked inputs, filtered outputs, flagged hallucinations) is used as training signal for model improvement, the feedback pipeline includes integrity verification, poisoning detection, and human review gates to prevent adversarial manipulation of the improvement mechanism. | 3 |
 
 ## C11.10 Adversarial Bias Exploitation Defense
 
