@@ -114,7 +114,6 @@ Manage cryptographic keys, secrets, and credentials throughout their lifecycle.
 | Automated key and secret rotation | 4.4.5 |
 | Agent identity credential rotation with rapid revocation | 9.4.4 |
 | MCP runtime credential injection (no plaintext secrets) | 10.1.2 |
-| Watermark verification key and trigger set protection | 11.5.5 |
 | Separate backup credentials from production | 4.6.3 |
 | User-space key inaccessibility on mobile | 4.8.8 |
 
@@ -205,6 +204,7 @@ Constrain, filter, and validate model outputs before they reach users or downstr
 | MCP error response sanitization (no stack traces, tokens, internal paths) | 10.4.6 |
 | Statistical steganographic covert channel detection in generated outputs | 7.3.9 |
 | RAG attribution derived from retrieval metadata, not model-generated | 7.8.3 |
+| Generalization or one-way transformation of model-inferred sensitive attributes (ranges, buckets) to limit reconstruction of training records | 11.4.1 |
 
 **Common pitfalls:** redacting PII in text but not in structured data fields; not enforcing stop sequences on streaming outputs; leaking internal architecture through error messages.
 
@@ -224,7 +224,7 @@ Enforce consumption bounds to prevent abuse, runaway execution, and denial-of-se
 | Cumulative resource counters with hard-stop thresholds and circuit breaker enforcement | 9.1.2 |
 | Per-tool CPU, memory, disk, egress, and execution time limits with fail-closed termination on breach | 9.3.2 |
 | Sub-task delegation chain depth limit per execution | 7.4.4 |
-| Query-rate limiting for model extraction and inversion defense | 11.4.2, 11.5.1 |
+| Query-rate limiting for model extraction and inversion defense, sized to the threat model (e.g., the number of queries required to approximate the model or to reconstruct training records) rather than as a generic API throttle | 11.4.2, 11.5.1 |
 | MCP outbound execution limits, timeouts, recursion limits, and circuit breakers | 10.5.2 |
 | Anomalous usage pattern detection and blocking | 13.2.4, ASVS v5 V2.4 |
 | Resource quotas (CPU, memory, GPU) for infrastructure | 4.6.1 |
@@ -391,9 +391,11 @@ Test for and defend against evasion, extraction, inversion, poisoning, and align
 | Model extraction detection (query-pattern analysis, diversity measurement) | 11.5.3 |
 | Statistical outlier and consistency scoring on external inputs | 11.6.1 |
 | Adaptive attack evasion testing | 11.6.4 |
-| Security-focused secondary review mechanisms (second model, rule-based) | 11.8.1 |
-| Self-modification restriction with scope bounds and rate limits | 11.9.1, 11.9.4 |
-| Self-modification reversibility and integrity verification enabling rollback to known-good state | 11.9.6 |
+| AI-augmented review of high-risk agent actions (secondary model, structured self-review, ensemble-of-judges) supplementing the deterministic policy gate (C9.7.1) | 11.8.1 |
+| AI-augmented review mechanism protected against prompt-injection bypass | 11.8.2 |
+| Self-modification restriction with scope bounds and rate limits | 11.9.1, 11.9.5 |
+| Self-modification reversibility and integrity verification enabling rollback to known-good state | 11.9.4 |
+| Safety-violation feedback pipeline integrity, poisoning detection, and human review gates | 11.9.6 |
 | Data augmentation with perturbed inputs for training robustness | 1.4.4 |
 | RONI (Reject On Negative Influence) filtering -- influence-score each training sample and reject those that degrade held-out performance beyond a threshold (implementation example for 1.4.2) | 1.4.2 |
 | Gradient fingerprinting / per-sample gradient analysis — detect abnormal gradient norms or directions indicating poisoned samples during training (implementation example for 1.4.2) | 1.4.2 |
@@ -423,9 +425,7 @@ Capture security-relevant events with integrity protection for forensic analysis
 | Detection rules for anomalous package pulls and tampered build steps | ASVS v5 V16.3.3 |
 | DAG visualization with access controls and tamper evidence | 13.7.1, 13.7.2, 13.7.3 |
 | Safety violation metrics logging | 7.6.1 |
-| MCP policy change audit logging (timestamp, author, justification) | 11.7.3 |
-| Policy change rollback procedures and testing | 11.7.5 |
-| Self-modification detailed logging (what changed, when, under what authorization) | 11.9.3 |
+| Self-modification logging classified as security event with what/when/by-whom/authorization detail | 11.9.3 |
 
 **Common pitfalls:** logging prompts without redacting PII; using mutable log storage without integrity protection; not including sufficient context for forensic reconstruction.
 
@@ -449,12 +449,12 @@ Detect anomalies, alert on threats, and respond to security incidents in AI syst
 | Hallucination rate time-series tracking | 13.3.11 |
 | Data drift and concept drift detection | 13.6.2, 13.6.3 |
 | Model extraction alert generation with query metadata logging | 11.5.2 |
-| Model extraction alert IR playbook integration | 11.5.6 |
 | Emergent multi-agent behavior detection (oscillation, deadlock, broadcast storms) | 9.8.4 |
 | AI-specific incident response plans (model compromise, data poisoning, adversarial attack) | 13.5.1 |
 | AI-specific forensic tools for model behavior investigation | 13.5.2 |
 | Safety violation rate alerting | 7.6.2 |
 | Real-time security policy updates without full redeployment | 11.7.1 |
+| Policy change rollback procedures and testing | 11.7.3 |
 | Accelerator telemetry and side-channel anomaly detection | 4.7.8 |
 | Proactive agent behavior validation with risk assessment | 13.8.1, 13.8.2 |
 
@@ -499,7 +499,6 @@ Require human review and approval for high-impact, irreversible, or safety-criti
 | Human approval for high-risk content generation | 7.3.5 |
 | Human review on uncertainty threshold breach | 14.6.2 |
 | Human review on anomaly detection | 11.6.3 |
-| Enhanced monitoring and human intervention on security warnings | 11.8.3 |
 | Security-critical proactive action approval with approval chain logging | 13.8.4 |
 | High-risk model quarantine with human review and sign-off | 6.1.3 |
 | Post-condition outcome checking with containment on mismatch | 9.7.2 |
