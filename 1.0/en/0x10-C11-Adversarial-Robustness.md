@@ -70,10 +70,10 @@ Detect and deter unauthorized model cloning through API abuse. Rate limiting, qu
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **11.5.1** | **Verify that** inference endpoints enforce per-principal and global rate limits designed to make large-scale query harvesting impractical. | 1 |
 | **11.5.2** | **Verify that** extraction-alert events include offending query metadata (e.g., source principal, query volume, input distribution statistics) to support investigation. | 2 |
-| **11.5.6** | **Verify that** extraction-alert events are integrated with incident-response playbooks that define escalation and remediation steps. | 2 |
-| **11.5.3** | **Verify that** query-pattern analysis (e.g., query diversity, input distribution anomalies) feeds an automated extraction-attempt detector. | 2 |
-| **11.5.4** | **Verify that** model watermarking or fingerprinting techniques are applied so that unauthorized copies can be identified. | 3 |
-| **11.5.5** | **Verify that** watermark verification keys and trigger sets are protected with access controls equivalent to other critical cryptographic material. | 3 |
+| **11.5.3** | **Verify that** extraction-alert events are integrated with incident-response playbooks that define escalation and remediation steps. | 2 |
+| **11.5.4** | **Verify that** query-pattern analysis (e.g., query diversity, input distribution anomalies) feeds an automated extraction-attempt detector. | 2 |
+| **11.5.5** | **Verify that** model watermarking or fingerprinting techniques are applied so that unauthorized copies can be identified. | 3 |
+| **11.5.6** | **Verify that** watermark verification keys and trigger sets are protected with access controls equivalent to other critical cryptographic material. | 3 |
 
 ---
 
