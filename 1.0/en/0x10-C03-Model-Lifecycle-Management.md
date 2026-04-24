@@ -28,12 +28,14 @@ Models must pass defined security and safety validations before deployment.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **3.2.1** | **Verify that** models undergo automated input validation testing and output sanitization testing before deployment. | 1 |
-| **3.2.2** | **Verify that** models undergo safety evaluations with defined pass/fail thresholds before deployment. | 1 |
-| **3.2.3** | **Verify that** security testing covers agent workflows, tool and MCP integrations, RAG and memory interactions, multimodal inputs, and guardrails (safety models or detection services) using a versioned evaluation harness. | 2 |
-| **3.2.4** | **Verify that** all model changes (deployment, configuration, retirement) generate immutable audit records including a timestamp, an authenticated actor identity, a change type, and before/after states, with trace metadata (environment and consuming services/agents) and a model identifier (version/digest/signature). | 2 |
-| **3.2.5** | **Verify that** validation failures automatically block model deployment unless an explicit override approval from pre-designated authorized personnel with documented business justifications is provided. | 3 |
-| **3.2.6** | **Verify that** models subjected to post-training quantization, pruning, or distillation are re-evaluated against the same safety and alignment test suite on the compressed artifact before deployment, and that evaluation results are retained as distinct records linked to the compressed artifact's version or digest. | 2 |
+| **3.2.1** | **Verify that** models undergo automated input validation testing before deployment. | 1 |
+| **3.2.2** | **Verify that** models undergo automated output sanitization testing before deployment. | 1 |
+| **3.2.3** | **Verify that** models undergo safety evaluations with defined pass/fail thresholds before deployment. | 1 |
+| **3.2.4** | **Verify that** security testing covers agent workflows, tool and MCP integrations, RAG and memory interactions, multimodal inputs, and guardrails (safety models or detection services) using a versioned evaluation harness. | 2 |
+| **3.2.5** | **Verify that** all model changes (deployment, configuration, retirement) generate immutable audit records including a timestamp, an authenticated actor identity, a change type, and before/after states, with trace metadata (environment and consuming services/agents) and a model identifier (version/digest/signature). | 2 |
+| **3.2.6** | **Verify that** validation failures automatically block model deployment unless an explicit override approval from pre-designated authorized personnel with documented business justifications. | 3 |
+| **3.2.7** | **Verify that** models subjected to post-training quantization, pruning, or distillation are re-evaluated against the same safety and alignment test suite on the compressed artifact before deployment, and that evaluation results are retained as distinct records linked to the compressed artifact's version or digest. | 2 |
+
 
 ---
 
