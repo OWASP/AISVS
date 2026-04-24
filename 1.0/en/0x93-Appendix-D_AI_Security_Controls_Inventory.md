@@ -224,7 +224,7 @@ Enforce consumption bounds to prevent abuse, runaway execution, and denial-of-se
 | Cumulative resource counters with hard-stop thresholds and circuit breaker enforcement | 9.1.2 |
 | Per-tool CPU, memory, disk, egress, and execution time limits with fail-closed termination on breach | 9.3.2 |
 | Sub-task delegation chain depth limit per execution | 7.4.4 |
-| Query-rate limiting for model extraction and inversion defense | 11.4.2, 11.5.1 |
+| Query-rate limiting for model extraction and inversion defense, sized to the threat model (e.g., the number of queries required to approximate the model or to reconstruct training records) rather than as a generic API throttle | 11.4.2, 11.5.1 |
 | MCP outbound execution limits, timeouts, recursion limits, and circuit breakers | 10.5.2 |
 | Anomalous usage pattern detection and blocking | 13.2.4, ASVS v5 V2.4 |
 | Resource quotas (CPU, memory, GPU) for infrastructure | 4.6.1 |
@@ -454,6 +454,7 @@ Detect anomalies, alert on threats, and respond to security incidents in AI syst
 | AI-specific forensic tools for model behavior investigation | 13.5.2 |
 | Safety violation rate alerting | 7.6.2 |
 | Real-time security policy updates without full redeployment | 11.7.1 |
+| Policy change rollback procedures and testing | 11.7.3 |
 | Accelerator telemetry and side-channel anomaly detection | 4.7.8 |
 | Proactive agent behavior validation with risk assessment | 13.8.1, 13.8.2 |
 

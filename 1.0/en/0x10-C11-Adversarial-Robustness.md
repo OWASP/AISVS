@@ -4,7 +4,7 @@
 
 Ensure that AI systems remain reliable, privacy-preserving, and abuse-resistant when facing evasion, inference, extraction, or poisoning attacks. These controls cover model alignment testing, adversarial hardening, privacy attack resistance, model theft deterrence, and security adaptation for autonomous agents.
 
-Generic application security controls (configuration management, secret and key management, signed artifacts, audit logging, change control, transport security, generic anti-automation rate limiting) are covered by ASVS v5 (V11, V13, V14, V15, V16) and are not repeated here. Logging of AI security events, AI incident response planning, and human-oversight escalation are covered by AISVS C13 and C14. Inversion-specific (C11.4) and extraction-specific (C11.5) throttling controls do not substitute for generic API rate limiting (ASVS v5 V2.4) or orchestration runtime budgets (C9.1). C11.7 is scoped to protecting the security review mechanism itself from adversarial bypass; the runtime gate that blocks high-impact agent actions is defined in C9.2 and C9.7.
+Generic application security controls (configuration management, secret and key management, signed artifacts, audit logging, change control, transport security, generic anti-automation rate limiting) are covered by ASVS v5 (V11, V13, V14, V15, V16) and are not repeated here. Logging of AI security events, AI incident response planning, and human-oversight escalation are covered by AISVS C13 and C14. Inversion-specific (C11.4) and extraction-specific (C11.5) throttling controls do not substitute for generic API rate limiting (ASVS v5 V2.4) or orchestration runtime budgets (C9.1). C11.8 (agent self-review) covers AI-augmented review of proposed agent actions and protection of that review mechanism from prompt-injection bypass; the deterministic runtime gate that blocks high-impact agent actions is governed by C9.2 and C9.7.
 
 ---
 
@@ -65,7 +65,7 @@ Detect and deter unauthorized model cloning through API abuse. Rate limiting, qu
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.5.1** | **Verify that** inference endpoints enforce per-principal and global rate limits sized to the extraction threat model (e.g., the number of queries required to approximate the model), and not solely as a generic API throttle. | 1 |
+| **11.5.1** | **Verify that** inference endpoints enforce per-principal and global rate limits sized to the extraction threat model, and not solely as a generic API throttle. | 1 |
 | **11.5.2** | **Verify that** extraction-alert events include offending query metadata (e.g., source principal, query volume, input distribution statistics) to support investigation. | 2 |
 | **11.5.3** | **Verify that** query-pattern analysis (e.g., query diversity, input distribution anomalies) feeds an automated extraction-attempt detector. | 2 |
 | **11.5.4** | **Verify that** model watermarking or fingerprinting techniques are applied so that unauthorized copies can be identified. | 3 |
@@ -88,11 +88,14 @@ Identify and neutralize backdoored or poisoned inputs at inference time, particu
 
 ## C11.7 Security Policy Adaptation
 
-Maintain the ability to update AI safety and guardrail policies rapidly in response to evolving jailbreak techniques and adversarial campaigns.
+Maintain the ability to update AI safety and guardrail policies rapidly in response to threat intelligence and behavioral analysis.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.7.1** | **Verify that** AI safety and guardrail policies (e.g., content filters, refusal categories, prompt-injection signatures, rate-limit thresholds applied to model endpoints) can be updated and propagated to running inference services without full system redeployment, and that the active policy version is recorded with each inference decision. | 2 |
+| **11.7.1** | **Verify that** security policies (e.g., content filters, rate-limit thresholds, guardrail configurations) can be updated without full system redeployment, and that policy versions are tracked. | 1 |
+| **11.7.2** | **Verify that** policy updates are authorized, integrity-protected (e.g., cryptographically signed), and validated before application. | 2 |
+| **11.7.3** | **Verify that** rollback procedures exist for policy changes and are tested to confirm they restore the previous policy state. | 2 |
+| **11.7.4** | **Verify that** threat-detection sensitivity can be adjusted based on risk context (e.g., elevated threat level, incident response) with appropriate authorization. | 3 |
 
 ---
 
