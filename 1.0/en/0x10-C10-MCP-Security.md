@@ -12,7 +12,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | :--: | --- | :---: |
 | **10.1.1** | **Verify that** MCP server and client components are obtained only from trusted sources and verified using signatures, checksums, or secure package metadata, rejecting tampered or unsigned builds. | 1 |
 | **10.1.2** | **Verify that** only allowlisted MCP server identifiers (name, version, and registry) are permitted in production and that the runtime rejects connections to unlisted or unregistered servers at load time. | 1 |
-| **10.1.3** | **Verify that** all MCP tool and resource schemas include cryptographically verifiable provenance metadata — including author, timestamp, version hash, signature, and approved‑by fields. | 1 |
+| **10.1.3** | **Verify that** all MCP tool and resource schemas include cryptographically verifiable provenance metadata — including author, timestamp, version hash, signature, and approved‑by fields. | 2 |
 
 ---
 
