@@ -95,3 +95,5 @@ Provide periodic disclosures on incidents, drift, and data usage.
 | **14.7.4** | **Verify that** transparency reports disclose operational metrics (e.g., usage volumes, safety filter rates, error rates) in reasonable detail. | 2 |
 
 ## References
+
+* [MITRE ATLAS: Human In-the-Loop for AI Agent Actions](https://atlas.mitre.org/mitigations/AML.M0029)
