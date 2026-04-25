@@ -66,7 +66,7 @@ Generate and sign detailed AI-specific bills of materials (AI BOMs) so downstrea
 | **6.5.1** | **Verify that** every model artifact publishes a version-controlled AI BOM that lists datasets, weights, hyperparameters, licenses, export-control tags, and data-origin statements. | 1 |
 | **6.5.2** | **Verify that** AI BOMs are cryptographically signed before deployment. | 2 |
 | **6.5.3** | **Verify that** AI BOM completeness checks fail the build if any component metadata (hash and license) is missing. | 2 |
-| **6.5.4** | **Verify that** downstream consumers can query AI BOMs via API to validate imported models at deploy time. | 2 |
+| **6.5.4** | **Verify that** downstream consumers can query AI BOMs via API to validate imported models at deployment time. | 2 |
 
 ---
 
@@ -76,3 +76,4 @@ Generate and sign detailed AI-specific bills of materials (AI BOMs) so downstrea
 * [MITRE ATLAS: Supply Chain Compromise](https://atlas.mitre.org/techniques/AML.T0010)
 * [SBOM Overview: CISA](https://www.cisa.gov/sbom)
 * [CycloneDX: Machine Learning Bill of Materials](https://cyclonedx.org/capabilities/mlbom/)
+* [OWASP AIBOM](https://genai.owasp.org/owasp-aibom/)
