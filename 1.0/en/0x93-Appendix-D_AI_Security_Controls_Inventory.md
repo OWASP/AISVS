@@ -348,18 +348,21 @@ Protect personal data and enforce data subject rights throughout the AI lifecycl
 | Labeled data anonymization and granular redaction | 1.3.5 |
 | Direct and quasi-identifier removal | 12.1.1 |
 | k-anonymity and l-diversity measurement with automated audits | 12.1.2 |
+| Feature-importance leakage check on trained models | 12.1.3 |
 | Synthetic data with formal re-identification risk bounds | 12.1.4 |
-| Data deletion propagation (datasets, checkpoints, embeddings, logs, backups) | 12.2.1 |
+| Data deletion propagation across AI artifacts (datasets, checkpoints, caches) | 12.2.1 |
 | Machine unlearning with certified algorithms | 12.2.2 |
 | Shadow-model evaluation of unlearning effectiveness | 12.2.3 |
-| Privacy-loss accounting with epsilon budget tracking and alerts | 12.3.1, 12.3.5 |
+| Privacy-loss accounting with epsilon budget tracking and alerts | 12.3.1 |
+| Empirical (black-box) differential privacy audits | 12.3.2 |
 | Formal differential privacy proofs (including post-training and embeddings) | 12.3.3 |
-| Purpose tags with machine-readable alignment and runtime enforcement | 12.4.1, 12.4.2, 12.4.5 |
-| Consent Management Platform (CMP) with opt-in tracking | 12.5.1 |
-| Consent token API exposure and model-side scope validation | 12.5.2, 12.5.4 |
-| Consent withdrawal processing (< 24 hour SLA) | 12.5.3 |
+| Purpose tags with machine-readable alignment and runtime enforcement | 12.4.1, 12.4.2 |
+| Models validate consent token scope before inference | 12.5.1 |
+| Consent withdrawal halts processing pipelines | 12.5.2 |
 | Local differential privacy in federated learning (client-side noise) | 12.6.1 |
-| Poisoning-resistant aggregation (Krum, Trimmed-Mean) | 12.6.3 |
+| Differentially private training metrics | 12.6.2 |
+| Federated canary-based privacy auditing | 12.6.3 |
+| Federated training utility-loss bound against ε budget | 12.6.4 |
 | PII detection and removal in external datasets | 6.3.2 |
 | Session context discard at session end (not accessible in subsequent sessions) | 8.3.7 |
 | Quarantined content excluded from retrieval results while under quarantine | 8.3.8 |
@@ -420,7 +423,7 @@ Capture security-relevant events with integrity protection for forensic analysis
 | Audit log context fields sufficient for forensic reconstruction (actor, delegation, policy, parameters, outcomes) | 9.4.3 |
 | Agent action signing with chain ID binding and timestamps | 9.4.2 |
 | Immutable audit records for model changes (actor, change type, before/after) | 3.2.5 |
-| Immutable deletion logging for regulatory audit trails | 12.2.4 |
+| Generic audit log immutability and tamper-evidence | ASVS v5 V16.4.2 |
 | CI/CD audit log streaming to SIEM | ASVS v5 V16.4.3 |
 | Detection rules for anomalous package pulls and tampered build steps | ASVS v5 V16.3.3 |
 | DAG visualization with access controls and tamper evidence | 13.7.1, 13.7.2, 13.7.3 |
