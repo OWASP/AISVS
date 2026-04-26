@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-AI systems must implement change control processes that prevent unauthorized or unsafe model modifications from reaching production. These controls ensure model integrity through the entire lifecycle--from development through deployment to decommissioning--which enables rapid incident response and maintains accountability for all changes.
+AI systems must implement change control processes that prevent unauthorized or unsafe model modifications from reaching production. These controls ensure model integrity through the entire lifecycle, from development through deployment to decommissioning, which enables rapid incident response and maintains accountability for all changes.
 
 **Core Security Goal:** Only authorized, validated models reach production by employing controlled processes that maintain integrity, traceability, and recoverability.
 
@@ -93,6 +93,7 @@ Fine-tuning pipelines are high-privilege operations that can alter deployed mode
 ## References
 
 * [MITRE ATLAS](https://atlas.mitre.org/)
+* [OWASP AI Testing Guide](https://owasp.org/www-project-ai-testing-guide/)
 * [MLOps Principles](https://ml-ops.org/content/mlops-principles)
 * [Reinforcement fine-tuning](https://platform.openai.com/docs/guides/reinforcement-fine-tuning)
 * [What is AI adversarial robustness?: IBM Research](https://research.ibm.com/blog/securing-ai-workflows-with-adversarial-robustness)
