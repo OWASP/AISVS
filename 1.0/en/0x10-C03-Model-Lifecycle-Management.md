@@ -36,7 +36,6 @@ Models must pass defined security and safety validations before deployment.
 | **3.2.6** | **Verify that** validation failures automatically block model deployment unless an explicit override approval from pre-designated authorized personnel with documented business justifications. | 3 |
 | **3.2.7** | **Verify that** models subjected to post-training quantization, pruning, or distillation are re-evaluated against the same safety and alignment test suite on the compressed artifact before deployment, and that evaluation results are retained as distinct records linked to the compressed artifact's version or digest. | 2 |
 
-
 ---
 
 ## C3.3 Controlled Deployment & Rollback
