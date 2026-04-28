@@ -115,3 +115,6 @@ logprob
 logprobs
 SLSA
 SCVS
+Clopper
+Pearson
+f-DP
