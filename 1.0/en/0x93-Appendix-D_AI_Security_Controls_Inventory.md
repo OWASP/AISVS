@@ -127,7 +127,7 @@ Verify authenticity and detect tampering of models, artifacts, messages, logs, a
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Cryptographic hashes for training data integrity | 1.2.4, 1.3.4 |
+| Cryptographic hashes for training data integrity | 1.2.5, 1.3.4 |
 | Cryptographic model signing | 3.1.2 |
 | Model signature and checksum verification at deployment and load | 3.1.3 |
 | Signed build artifacts with build-origin metadata | ASVS v5 V15 / SLSA |
@@ -399,7 +399,7 @@ Test for and defend against evasion, extraction, inversion, poisoning, and align
 | Self-modification restriction with scope bounds and rate limits | 11.9.1, 11.9.5 |
 | Self-modification reversibility and integrity verification enabling rollback to known-good state | 11.9.4 |
 | Safety-violation feedback pipeline integrity, poisoning detection, and human review gates | 11.9.6 |
-| Data augmentation with perturbed inputs for training robustness | 1.4.4 |
+| Data augmentation with perturbed inputs for training robustness | 1.4.6 |
 | RONI (Reject On Negative Influence) filtering -- influence-score each training sample and reject those that degrade held-out performance beyond a threshold (implementation example for 1.4.2) | 1.4.2 |
 | Gradient fingerprinting / per-sample gradient analysis — detect abnormal gradient norms or directions indicating poisoned samples during training (implementation example for 1.4.2) | 1.4.2 |
 | Activation clustering — cluster intermediate activations to detect backdoor-associated subpopulations (implementation example for 1.4.2) | 1.4.2 |
