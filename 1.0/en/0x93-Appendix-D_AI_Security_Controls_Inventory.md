@@ -351,8 +351,8 @@ Protect personal data and enforce data subject rights throughout the AI lifecycl
 | Feature-importance leakage check on trained models | 12.1.3 |
 | Synthetic data with formal re-identification risk bounds | 12.1.4 |
 | Data deletion propagation across AI artifacts (datasets, checkpoints, caches) | 12.2.1 |
-| Machine unlearning with certified algorithms | 12.2.2 |
-| Shadow-model evaluation of unlearning effectiveness | 12.2.3 |
+| Shadow-model evaluation of unlearning effectiveness | 12.2.2 |
+| Machine unlearning with certified algorithms | 12.2.3 |
 | Privacy-loss accounting with epsilon budget tracking and alerts | 12.3.1 |
 | Empirical (black-box) differential privacy audits | 12.3.2 |
 | Formal differential privacy proofs (including post-training and embeddings) | 12.3.3 |
