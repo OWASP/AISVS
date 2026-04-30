@@ -38,7 +38,7 @@ Capture human-initiated oversight events so that override and mode-change action
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **14.3.1** | **Verify that** kill-switch activations, intermediate operational state transitions, and override commands are logged with the operator identity, the channel used (including whether the out-of-band channel per C14.1.6 was invoked), the originating trigger or justification, the prior and resulting system state, and the timestamp, with the same tamper-evidence guarantees as the audit log defined in C9.4.3. | 1 |
+| **14.3.1** | **Verify that** kill-switch activations, intermediate operational state transitions, and override commands are logged with the operator identity, the channel used (including whether the out-of-band channel per C14.1.6 was invoked), the originating trigger or justification, the prior and resulting system state, and the timestamp. | 1 |
 
 ## References
 
