@@ -429,8 +429,9 @@ Capture security-relevant events with integrity protection for forensic analysis
 | DAG visualization with access controls and tamper evidence | 13.7.1, 13.7.2, 13.7.3 |
 | Safety violation metrics logging | 7.6.1 |
 | Self-modification logging classified as security event with what/when/by-whom/authorization detail | 11.9.3 |
+| Human oversight intervention logging (kill-switch activations, mode transitions, override commands) with operator identity, channel, trigger, and prior/resulting state | 14.3.1 |
 
-**Common pitfalls:** logging prompts without redacting PII; using mutable log storage without integrity protection; not including sufficient context for forensic reconstruction.
+**Common pitfalls:** logging prompts without redacting PII; using mutable log storage without integrity protection; not including sufficient context for forensic reconstruction; logging agent actions and approvals but not human-initiated overrides such as kill-switch activations.
 
 ---
 
@@ -467,48 +468,44 @@ Detect anomalies, alert on threats, and respond to security incidents in AI syst
 
 ## AD.18 Explainability & Transparency
 
-Enable human understanding of model decisions through interpretability, documentation, and uncertainty quantification.
+Enable human understanding of model decisions through interpretability artifacts and uncertainty quantification, with explanations sanitized to avoid leaking internal context.
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Human-readable decision explanations | 14.4.1 |
-| Explanation quality validation (human evaluation studies) | 14.4.2 |
-| SHAP, LIME, and feature importance scores | 14.4.3 |
-| Counterfactual explanations | 14.4.4 |
-| Model cards (intended use, known failures, performance metrics) | 14.5.1, 14.5.2 |
-| Ethical considerations and bias assessment documentation | 14.5.3 |
-| Model card version control and change tracking | 14.5.4 |
-| Uncertainty quantification (confidence scores, entropy measures) | 14.6.1 |
-| Human review triggers on uncertainty thresholds | 14.6.2 |
-| Uncertainty calibration against ground truth | 14.6.3 |
-| Multi-step uncertainty propagation | 14.6.4 |
-| Model interpretability artifacts (attention maps, attribution) | 7.5.3 |
-| Confidence and reasoning summary display | 7.5.2 |
+| Sanitization of user-facing explanations to remove system prompts and backend data | 7.4.1 |
+| Logging of model interpretability artifacts (attention maps, feature attributions) for forensic use | 7.4.2 |
+| Confidence or uncertainty estimation for generated answers | 7.2.1 |
+| Automatic blocking or fallback when confidence drops below a defined threshold | 7.2.2 |
+| Model output calibration to reduce overconfident predictions exploitable by membership inference | 11.3.1 |
 
-**Common pitfalls:** providing explanations that expose system prompts or internal architecture; not calibrating uncertainty estimates; treating model cards as static documents rather than living artifacts.
+**Common pitfalls:** providing explanations that expose system prompts or internal architecture; treating LLM-generated rationales as faithful descriptions of model internals; not calibrating uncertainty estimates such that downstream gates cannot trust them.
 
 ---
 
 ## AD.19 Human Oversight & Approval Gates
 
-Require human review and approval for high-impact, irreversible, or safety-critical actions.
+Require human review and approval for high-impact, irreversible, or safety-critical actions, and provide reliable shutdown and graceful-degradation paths under human control. Effective human oversight requires four cooperating layers: a **policy** that classifies which actions are high-risk (C14.2), a **runtime gate** that blocks execution until approval is received (C9.2), **kill-switch and graceful-degradation mechanisms** to halt or constrain the system when needed (C14.1), and **independent audit trails** for both approvals (C13.7.4) and human-initiated overrides (C14.3). Each layer is separately verifiable; an approval gate without a policy is unenforceable, a policy without a runtime gate is unenforced, and either without audit trails is unattributable.
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
+| Documented high-risk action policy (classification criteria, approval authority) | 14.2.1 |
 | High-impact action approval gates (deploy, delete, financial, notify) | 9.2.1 |
 | Approval parameter binding (prevent approve-one-execute-another) | 9.2.2 |
 | High-impact intent confirmation with exact parameter binding and quick expiration | 9.2.3 |
+| Documented fail-closed default when human approval is not received within TTL | 14.2.3 |
 | High-risk MCP action confirmation (data deletion, financial, system config) | 10.5.3 |
 | Human approval for high-risk content generation | 7.3.5 |
-| Human review on uncertainty threshold breach | 14.6.2 |
 | Human review on anomaly detection | 11.6.3 |
 | Security-critical proactive action approval with approval chain logging | 13.8.4 |
 | High-risk model quarantine with human review and sign-off | 6.1.3 |
 | Post-condition outcome checking with containment on mismatch | 9.7.2 |
 | Compensating actions and transactional rollback on failure | 9.2.4 |
+| Manual kill-switch to halt model inference and outputs | 14.1.1 |
 | Intermediate operational degradation states (tool disable, model swap, read-only, source removal) | 14.1.5 |
+| Recurring exercise of kill-switch and intermediate-state mechanisms with response-time verification | 14.1.4 |
+| Out-of-band override and kill-switch channel for autonomous agents | 14.1.6 |
 
-**Common pitfalls:** not binding approval to exact parameters allowing bait-and-switch; confirmation tokens without quick expiration; missing post-condition checks after approved actions execute.
+**Common pitfalls:** documenting a high-risk action policy that is never wired to a runtime gate; binding approval to a hash of parameters without binding to identity or context (replay across sessions); confirmation tokens without quick expiration; defaulting to fail-open when the approver does not respond, silently bypassing the gate; assuming an in-band kill-switch will work against a compromised agent; kill-switch implemented but never exercised, atrophying until the moment it is needed.
 
 ---
 
