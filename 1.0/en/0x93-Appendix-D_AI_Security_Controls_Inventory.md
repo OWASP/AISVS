@@ -37,8 +37,8 @@ Enforce access decisions across users, agents, tools, data, and MCP resources us
 | --- | --- |
 | Access controls on AI resources (datasets, models, endpoints, vector collections, compute) | 5.2.1 |
 | Just-in-time privileged access for AI resources (model weights, training pipelines) | 5.2.2 |
-| Classification label propagation to derived AI resources (embeddings, caches, outputs) | 5.2.3 |
-| AI-specific data classification taxonomy | 5.2.4 |
+| AI-specific data classification taxonomy | 5.2.3 |
+| Classification label propagation to derived AI resources (embeddings, caches, outputs) | 5.2.4 |
 | Caller authorization context enforcement through AI query pipelines | 5.3.1 |
 | Fine-grained agent action authorization (tool, parameters, resources, data scope) | 9.6.1 |
 | Delegation context propagation with integrity protection (user, tenant, scopes) | 9.6.2 |
