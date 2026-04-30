@@ -321,12 +321,12 @@ Manage model deployment, rollback, retirement, and emergency response.
 | Safety evaluations with pass/fail thresholds before deployment | 3.2.3 |
 | Agent workflow, tool, MCP, and RAG integration testing | 3.2.4 |
 | Immutable audit records for model changes | 3.2.5 |
-| Deployment validation with failure blocking and override approval | 3.2.6 |
+| Deployment validation with failure blocking and override approval | 3.2.7 |
 | Canary / blue-green deployments with automated rollback triggers | 3.3.1 |
-| Parallel deployment cohort isolation (A/B, canary, shadow) | 3.3.5 |
+| Parallel deployment cohort isolation (A/B, canary, shadow) | 3.3.3 |
 | Atomic state restoration on rollback (weights, config, adapters, safety models) | 3.3.2 |
-| Emergency model shutdown capability with pre-defined response time | 3.3.3 |
-| Shutdown cascade to tools, MCP, RAG, credentials, memory stores | 3.3.4 |
+| Emergency model shutdown capability with pre-defined response time | 3.3.4 |
+| Shutdown cascade to tools, MCP, RAG, credentials, memory stores | 3.3.5 |
 | Development / test / production environment separation | 3.4.1 |
 | No shared infrastructure across environment boundaries | 3.4.2 |
 | Version control for all development artifacts (hyperparams, scripts, prompts, policies) | 3.4.3 |
