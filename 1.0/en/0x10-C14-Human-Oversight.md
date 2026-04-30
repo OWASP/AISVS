@@ -14,10 +14,10 @@ Provide shutdown or rollback paths when unsafe behavior of the AI system is obse
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
 | **14.1.1** | **Verify that** a manual kill-switch mechanism exists to immediately halt AI model inference and outputs. | 1 |
 | **14.1.2** | **Verify that** override controls are accessible to only to authorized personnel. | 1 |
-| **14.1.3** | **Verify that** rollback procedures can revert to previous model versions or safe-mode operations. | 3 |
-| **14.1.4** | **Verify that** override mechanisms are tested regularly. | 3 |
-| **14.1.5** | **Verify that** the system can be placed into at least two intermediate operational states between full operation and complete shutdown (e.g., disabling specific tools or MCP servers, removing a retrieval source, switching to a safer or smaller model, enforcing read-only mode for agents), and that each state has defined entry triggers and can be exited independently without requiring a full system restart or shutdown. | 2 |
-| **14.1.6** | **Verify that** override and kill-switch commands for autonomous agents are delivered and enforced through a channel that the agent runtime cannot access, intercept, or suppress (e.g., out-of-band infrastructure controls, hypervisor-level signals, network-layer isolation), so that a compromised or manipulated agent cannot prevent its own shutdown. | 2 |
+| **14.1.3** | **Verify that** the system can be placed into at least two intermediate operational states between full operation and complete shutdown (e.g., disabling specific tools or MCP servers, removing a retrieval source, switching to a safer or smaller model, enforcing read-only mode for agents), and that each state has defined entry triggers and can be exited independently without requiring a full system restart or shutdown. | 2 |
+| **14.1.4** | **Verify that** override and kill-switch commands for autonomous agents are delivered and enforced through a channel that the agent runtime cannot access, intercept, or suppress (e.g., out-of-band infrastructure controls, hypervisor-level signals, network-layer isolation), so that a compromised or manipulated agent cannot prevent its own shutdown. | 2 |
+| **14.1.5** | **Verify that** rollback procedures can revert to previous model versions or safe-mode operations. | 3 |
+| **14.1.6** | **Verify that** override mechanisms are tested regularly. | 3 |
 
 ---
 

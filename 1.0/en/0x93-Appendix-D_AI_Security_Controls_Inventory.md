@@ -506,7 +506,7 @@ Require human review and approval for high-impact, irreversible, or safety-criti
 | High-risk model quarantine with human review and sign-off | 6.1.3 |
 | Post-condition outcome checking with containment on mismatch | 9.7.2 |
 | Compensating actions and transactional rollback on failure | 9.2.4 |
-| Intermediate operational degradation states (tool disable, model swap, read-only, source removal) | 14.1.5 |
+| Intermediate operational degradation states (tool disable, model swap, read-only, source removal) | 14.1.3 |
 
 **Common pitfalls:** not binding approval to exact parameters allowing bait-and-switch; confirmation tokens without quick expiration; missing post-condition checks after approved actions execute.
 
