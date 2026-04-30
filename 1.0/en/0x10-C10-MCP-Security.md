@@ -24,9 +24,9 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | :--: | --- | :---: |
 | **10.2.1** | **Verify that** MCP clients and servers implement the OAuth 2.1 authorization framework: clients present a valid access token for each request, and servers validate the token's issuer, audience, expiration, and scope claims, acting as resource servers that do not store tokens or user credentials. | 1 |
 | **10.2.2** | **Verify that** MCP servers are registered through a controlled technical onboarding mechanism requiring explicit owner, environment, and resource definitions; unregistered or undiscoverable servers must not be callable in production. | 1 |
-| **10.2.3** | **Verify that** MCP `tools/list` and resource discovery responses are filtered based on the end-user's authorized scopes so that agents receive only the tool and resource definitions the user is permitted to invoke. | 2 |
-| **10.2.4** | **Verify that** MCP servers enforce access control on every tool invocation, validating that the user's access token authorizes both the requested tool and the specific argument values supplied. | 2 |
-| **10.2.5** | **Verify that** MCP session identifiers are treated as state, not identity: generated using cryptographically secure random values, bound to the authenticated user, and never relied on for authentication or authorization decisions. | 1 |
+| **10.2.3** | **Verify that** MCP session identifiers are treated as state, not identity: generated using cryptographically secure random values, bound to the authenticated user, and never relied on for authentication or authorization decisions. | 1 |
+| **10.2.4** | **Verify that** MCP `tools/list` and resource discovery responses are filtered based on the end-user's authorized scopes so that agents receive only the tool and resource definitions the user is permitted to invoke. | 2 |
+| **10.2.5** | **Verify that** MCP servers enforce access control on every tool invocation, validating that the user's access token authorizes both the requested tool and the specific argument values supplied. | 2 |
 | **10.2.6** | **Verify that** MCP servers do not pass through access tokens received from clients to downstream APIs and instead obtain a separate token scoped to the server's own identity (e.g., via on-behalf-of or client credentials flow). | 2 |
 | **10.2.7** | **Verify that** MCP clients request only the minimum scopes needed for the current operation and elevate progressively via step-up authorization for higher-privilege operations. | 2 |
 | **10.2.8** | **Verify that** MCP servers enforce deterministic session teardown, destroying cached tokens, in-memory state, temporary storage, and file handles when a session terminates, disconnects, or times out. | 2 |
@@ -39,11 +39,11 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | # | Description | Level |
 | :--: | --- | :---: |
 | **10.3.1** | **Verify that** authenticated, encrypted streamable-HTTP is used as the primary MCP transport in production environments and that alternate transports (e.g., stdio or SSE) are restricted to local or tightly controlled environments with explicit justification. | 1 |
-| **10.3.3** | **Verify that** SSE-based MCP transports are used only within private, authenticated internal channels with TLS, schema validation, payload size limits, and rate limiting enforced, and are not exposed to the public internet. | 2 |
-| **10.3.4** | **Verify that** MCP servers validate the `Origin` and `Host` headers on all HTTP-based transports (including SSE and streamable-HTTP) to prevent DNS rebinding attacks and reject requests from untrusted, mismatched, or missing origins. | 2 |
-| **10.3.5** | **Verify that** intermediaries do not alter or remove the `Mcp-Protocol-Version` header on streamable-HTTP transports unless explicitly required by the protocol specification, preventing protocol downgrade via header stripping. | 2 |
-| **10.3.6** | **Verify that** SSE-based MCP transport endpoints enforce TLS, authentication, schema validation, payload size limits, and rate limiting. | 2 |
-| **10.3.7** | **Verify that** MCP clients enforce a minimum acceptable protocol version and reject `initialize` responses that propose a version below that minimum, preventing a server or intermediary from forcing use of a protocol version with weaker security properties. | 2 |
+| **10.3.2** | **Verify that** SSE-based MCP transports are used only within private, authenticated internal channels with TLS, schema validation, payload size limits, and rate limiting enforced, and are not exposed to the public internet. | 2 |
+| **10.3.3** | **Verify that** MCP servers validate the `Origin` and `Host` headers on all HTTP-based transports (including SSE and streamable-HTTP) to prevent DNS rebinding attacks and reject requests from untrusted, mismatched, or missing origins. | 2 |
+| **10.3.4** | **Verify that** intermediaries do not alter or remove the `Mcp-Protocol-Version` header on streamable-HTTP transports unless explicitly required by the protocol specification, preventing protocol downgrade via header stripping. | 2 |
+| **10.3.5** | **Verify that** SSE-based MCP transport endpoints enforce TLS, authentication, schema validation, payload size limits, and rate limiting. | 2 |
+| **10.3.6** | **Verify that** MCP clients enforce a minimum acceptable protocol version and reject `initialize` responses that propose a version below that minimum, preventing a server or intermediary from forcing use of a protocol version with weaker security properties. | 2 |
 
 ---
 
@@ -52,13 +52,13 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | # | Description | Level |
 | :--: | --- | :---: |
 | **10.4.1** | **Verify that** MCP tool responses are validated before being injected into the model context to prevent prompt injection, malicious tool output, or context manipulation. | 1 |
-| **10.4.2** | **Verify that** MCP tool and resource schemas (e.g., JSON schemas or capability descriptors) along with schema manifests are validated for authenticity and integrity using signatures to prevent schema tampering or malicious parameter modification. | 3 |
+| **10.4.2** | **Verify that** MCP server error responses do not expose internal details (stack traces, file paths, tokens, tool implementation) to the client or model context, preventing information leakage that could be exploited via the model. | 1 |
 | **10.4.3** | **Verify that** all MCP transports enforce message-framing integrity, strict schema validation, maximum payload sizes, and rejection of malformed, truncated, or interleaved frames to prevent desynchronization or injection attacks. | 2 |
 | **10.4.4** | **Verify that** MCP servers perform strict input validation for all function calls, including type checking, boundary validation, enumeration enforcement, and rejection of unrecognized or oversized parameters. | 2 |
 | **10.4.5** | **Verify that** MCP clients maintain a hash or versioned snapshot of tool definitions and that any change to a tool definition (via `notifications/tools/list_changed` or between sessions) triggers re-approval before the modified tool can be invoked. | 2 |
-| **10.4.6** | **Verify that** MCP server error responses do not expose internal details (stack traces, file paths, tokens, tool implementation) to the client or model context, preventing information leakage that could be exploited via the model. | 1 |
-| **10.4.8** | **Verify that** intermediaries evaluating message content either forward the canonicalized representation they evaluated or reject messages where multiple byte representations could produce different parsed structures. | 3 |
-| **10.4.11** | **Verify that** MCP servers sign tool responses with a unique nonce and timestamp within a bounded time window so that the calling agent can verify origin, integrity, and freshness, preventing spoofing, tampering, and replay of tool responses by intermediaries. | 3 |
+| **10.4.6** | **Verify that** MCP tool and resource schemas (e.g., JSON schemas or capability descriptors) along with schema manifests are validated for authenticity and integrity using signatures to prevent schema tampering or malicious parameter modification. | 3 |
+| **10.4.7** | **Verify that** intermediaries evaluating message content either forward the canonicalized representation they evaluated or reject messages where multiple byte representations could produce different parsed structures. | 3 |
+| **10.4.8** | **Verify that** MCP servers sign tool responses with a unique nonce and timestamp within a bounded time window so that the calling agent can verify origin, integrity, and freshness, preventing spoofing, tampering, and replay of tool responses by intermediaries. | 3 |
 
 ---
 
@@ -78,8 +78,8 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 
 | # | Description | Level |
 | :--: | --- | :---: |
+| **10.6.1** | **Verify that** MCP security controls enforce fail-closed semantics: if tool schema validation, MCP-Protocol-Version negotiation fails, authentication check, or policy evaluation fails or cannot be completed, the default action is to deny the request rather than permit it. | 2 |
 | **10.6.2** | **Verify that** MCP servers expose only allow-listed functions and resources and prohibit dynamic dispatch, reflective invocation, or execution of function names influenced by user or model-provided input. | 3 |
-| **10.6.4** | **Verify that** MCP security controls enforce fail-closed semantics: if tool schema validation, MCP-Protocol-Version negotiation fails, authentication check, or policy evaluation fails or cannot be completed, the default action is to deny the request rather than permit it. | 2 |
 
 ---
 

@@ -19,7 +19,7 @@ Verify the identity of users, agents, services, MCP clients/servers, and edge de
 | Agent identity credential rotation and rapid revocation | 9.4.4 |
 | OAuth 2.1 for MCP client authentication | 10.2.1 |
 | MCP server OAuth token validation (issuer, audience, expiration, scope) | 10.2.2 |
-| MCP server registration with explicit ownership | 10.2.3 |
+| MCP server registration with explicit ownership | 10.2.4 |
 | Cryptographically secure MCP session IDs (not used for auth) | 10.2.8 |
 | Edge device mutual authentication with certificate validation | 4.8.1 |
 | Workload attestation for confidential compute | 4.5.3 |
@@ -48,7 +48,7 @@ Enforce access decisions across users, agents, tools, data, and MCP resources us
 | Per-tool MCP invocation access control (argument, token scope) | 10.2.7 |
 | Minimum scope requests with step-up authorization | 10.2.11 |
 | Wildcard and overly broad scope rejection | 10.2.14 |
-| MCP policy enforcement that model output cannot bypass | 10.2.4 |
+| MCP policy enforcement that model output cannot bypass | 10.2.5 |
 | Authorization-aware post-inference filtering (per-caller entitlement enforcement) | 5.4.1 |
 | Citation and attribution validation against caller entitlements | 5.4.2 |
 | Agent PDP runtime isolation from agent execution environment | 5.5.1 |
@@ -91,12 +91,12 @@ Protect data moving between services, agents, tools, and edge devices.
 | --- | --- |
 | Mutual TLS with certificate validation for inter-service communication | 4.3.4 |
 | Authenticated streamable-HTTP transport with TLS 1.3 for MCP | 10.3.1, 10.3.2 |
-| SSE private channel with TLS enforcement | 10.3.3 |
+| SSE private channel with TLS enforcement | 10.3.2 |
 | Encrypted TEE communication channels | 4.5.9 |
 | Authenticated accelerator interconnects (NVLink, PCIe, InfiniBand) | 4.7.7 |
 | Encrypted edge-to-cloud communication with bandwidth throttling | 4.8.6 |
 | Log encryption in transit | 13.1.3 |
-| MCP client minimum protocol version enforcement against downgrade negotiation | 10.3.7 |
+| MCP client minimum protocol version enforcement against downgrade negotiation | 10.3.6 |
 
 **Common pitfalls:** allowing plaintext interconnects in multi-tenant GPU clusters; using SSE over public internet without TLS; not validating certificates on internal service calls.
 
@@ -138,7 +138,7 @@ Verify authenticity and detect tampering of models, artifacts, messages, logs, a
 | Execution chain cryptographic signing with non-repudiation timestamps | 9.4.2 |
 | Cryptographic log signatures (write-only / append-only) | 13.1.6 |
 | MCP component signature and checksum verification | 10.1.1 |
-| MCP schema integrity signing and tool definition hash tracking | 10.4.2, 10.4.5 |
+| MCP schema integrity signing and tool definition hash tracking | 10.4.6, 10.4.5 |
 | DAG cryptographic signatures and tamper-evident storage | 13.7.3 |
 | Publisher key pinning per source registry with rotation re-approval | 6.2.2 |
 | Document metadata tag immutability after initial ingestion write | 8.1.7 |
@@ -173,7 +173,7 @@ Validate, normalize, and constrain all inputs before they reach models or downst
 | Cross-modal attack detection | 2.4.3 |
 | MCP input type checking, boundary validation, and enumeration enforcement | 10.4.4 |
 | MCP message-framing integrity and payload size limits | 10.4.3 |
-| MCP schema validation for tool and resource integrity | 10.4.2 |
+| MCP schema validation for tool and resource integrity | 10.4.6 |
 | Tool output schema and security policy validation before re-entry to agent | 9.3.3 |
 | MCP tool response validation (prompt injection, context manipulation) | 10.4.1 |
 
@@ -201,7 +201,7 @@ Constrain, filter, and validate model outputs before they reach users or downstr
 | Explicit / non-consensual content filters | 7.7.1 |
 | Authorization-aware post-inference filtering (per-caller entitlement enforcement) | 5.4.1 |
 | Citation and attribution validation against caller entitlements | 5.4.2 |
-| MCP error response sanitization (no stack traces, tokens, internal paths) | 10.4.6 |
+| MCP error response sanitization (no stack traces, tokens, internal paths) | 10.4.2 |
 | Statistical steganographic covert channel detection in generated outputs | 7.3.9 |
 | RAG attribution derived from retrieval metadata, not model-generated | 7.8.3 |
 | Generalization or one-way transformation of model-inferred sensitive attributes (ranges, buckets) to limit reconstruction of training records | 11.4.1 |
@@ -273,8 +273,8 @@ Control network boundaries, traffic flow, and outbound access for AI workloads.
 | MCP egress allow-list with cloud metadata service blocking | 10.5.1 |
 | MCP dynamic dispatch and reflective invocation prevention | 10.6.2 |
 | Default-deny cross-domain agent discovery and calls | 9.8.1 |
-| Origin and Host header validation for DNS rebinding defense | 10.3.4 |
-| SSE public internet blocking | 10.3.3 |
+| Origin and Host header validation for DNS rebinding defense | 10.3.3 |
+| SSE public internet blocking | 10.3.2 |
 
 **Common pitfalls:** allowing AI workloads to reach cloud metadata services; not logging egress traffic for forensic analysis; missing Origin header validation enabling DNS rebinding attacks.
 
