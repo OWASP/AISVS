@@ -455,7 +455,7 @@ Detect anomalies, alert on threats, and respond to security incidents in AI syst
 | Emergent multi-agent behavior detection (oscillation, deadlock, broadcast storms) | 9.8.4 |
 | AI-specific incident response plans (model compromise, data poisoning, adversarial attack) | 13.5.1 |
 | AI-specific forensic tools for model behavior investigation | 13.5.2 |
-| Safety violation rate alerting | 7.6.2 |
+| Safety violation rate alerting | 7.6.3 |
 | Real-time security policy updates without full redeployment | 11.7.1 |
 | Policy change rollback procedures and testing | 11.7.3 |
 | Accelerator telemetry and side-channel anomaly detection | 4.7.8 |
