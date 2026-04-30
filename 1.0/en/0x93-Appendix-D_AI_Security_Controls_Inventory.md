@@ -156,18 +156,18 @@ Validate, normalize, and constrain all inputs before they reach models or downst
 | --- | --- |
 | Prompt injection detection ruleset / service | 2.1.1 |
 | Instruction hierarchy enforcement (system > developer > user) | 2.1.2 |
-| Per-request demonstration count limits in context window | 2.1.5 |
-| Many-shot jailbreaking pattern detection (systematic in-context behavioral override) | 2.1.6 |
-| In-context behavioral override attempts classified as prompt injection events | 2.1.7 |
+| Per-request demonstration count limits in context window | 2.1.6 |
+| Many-shot jailbreaking pattern detection (systematic in-context behavioral override) | 2.1.7 |
+| In-context behavioral override attempts classified as prompt injection events | 2.1.8 |
 | Context window proportion limits and token limit enforcement (reject, not truncate) | 2.1.3 |
-| Third-party content sanitization | 2.1.4 |
-| Character set allow-listing for model prompt inputs | 2.1.9 |
+| Third-party content sanitization | 2.1.5 |
+| Character set allow-listing for model prompt inputs | 2.1.4 |
 | Pre-tokenization input normalization (Unicode NFC, homoglyph mapping, control/invisible character removal, bidirectional text neutralization) | 2.2.1 |
 | Adversarial input quarantine and logging | 2.2.2 |
 | Encoding and representation smuggling detection and mitigation | 2.2.3 |
 | Content classifiers for inbound prompts (hate, violence, sexual, illegal) | 2.3.1 |
 | Policy-violating input rejection before model propagation | 2.3.2 |
-| User-specific and agent-aware policy screening | 2.1.8 |
+| User-specific and agent-aware policy screening | 2.1.9 |
 | Extracted and hidden content from non-text inputs treated as untrusted | 2.4.1 |
 | Adversarial perturbation detection on image/audio inputs | 2.4.2 |
 | Cross-modal attack detection | 2.4.3 |
