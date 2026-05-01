@@ -1,4 +1,4 @@
-# C2 User Input Validation
+# C2 Input Validation
 
 ## Control Objective
 
