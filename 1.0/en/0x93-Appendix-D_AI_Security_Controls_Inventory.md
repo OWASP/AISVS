@@ -21,9 +21,6 @@ Verify the identity of users, agents, services, MCP clients/servers, and edge de
 | MCP server OAuth token validation (issuer, audience, expiration, scope) | 10.2.2 |
 | MCP server registration with explicit ownership | 10.2.4 |
 | Cryptographically secure MCP session IDs (not used for auth) | 10.2.8 |
-| Edge device mutual authentication with certificate validation | 4.8.1 |
-| Workload attestation for confidential compute | 4.5.3 |
-| Hardware-based attestation (TPM, DRTM) | 4.7.1 |
 
 **Common pitfalls:** reusing end-user credentials for agent-to-agent calls; using MCP session IDs as authentication tokens; not rotating agent credentials on suspected compromise.
 
@@ -46,8 +43,6 @@ Enforce access decisions across users, agents, tools, data, and MCP resources us
 | Pre-execution policy constraint gates (deny rules, allow-lists, budgets) | 9.7.1 |
 | Scope-filtered MCP tool discovery (tools/list) | 10.2.6 |
 | Per-tool MCP invocation access control (argument, token scope) | 10.2.7 |
-| Minimum scope requests with step-up authorization | 10.2.11 |
-| Wildcard and overly broad scope rejection | 10.2.14 |
 | MCP policy enforcement that model output cannot bypass | 10.2.5 |
 | Authorization-aware post-inference filtering (per-caller entitlement enforcement) | 5.4.1 |
 | Citation and attribution validation against caller entitlements | 5.4.2 |
@@ -55,7 +50,6 @@ Enforce access decisions across users, agents, tools, data, and MCP resources us
 | Structured action descriptions to PDP (not raw agent reasoning context) | 5.5.2 |
 | KV-cache partitioning by session/tenant to prevent prompt reconstruction | 5.6.1 |
 | Shared model serving tenant isolation (fine-tuning, inference, embeddings) | 5.6.2 |
-| MCP tool namespace collision detection and trust-ranked shadowing prevention | 10.6.5 |
 | Peer authorization policy (approved agent registry) for agent-to-agent task delegation | 9.6.6 |
 
 **Common pitfalls:** granting broad OAuth scopes instead of minimal required; not re-evaluating authorization when context changes mid-session; allowing model-generated output to override hard policy decisions.
@@ -70,14 +64,7 @@ Protect stored data, models, secrets, logs, and backups through encryption.
 | --- | --- |
 | Training data encryption at rest | 1.2.3 |
 | Labeled data encryption | 1.3.5 |
-| Secrets encryption at rest in secrets management system | 4.4.1 |
 | Log encryption at rest | 13.1.3 |
-| TEE memory encryption and integrity protection | 4.5.4 |
-| Confidential inference (sealed model weights in protected execution) | 4.5.5 |
-| Backup network isolation with separate credentials | 4.6.3 |
-| Air-gapped / WORM backup storage | 4.6.4 |
-| Model encryption at rest on mobile with trusted runtime decryption | 4.8.9 |
-| Hardware-backed key stores (Secure Enclave, Android Keystore, TPM) | 4.8.8 |
 
 **Common pitfalls:** encrypting the database but not model checkpoints or embeddings; not encrypting logs that contain prompt/response data; storing encryption keys alongside the data they protect.
 
@@ -92,9 +79,6 @@ Protect data moving between services, agents, tools, and edge devices.
 | Mutual TLS with certificate validation for inter-service communication | 4.3.4 |
 | Authenticated streamable-HTTP transport with TLS 1.3 for MCP | 10.3.1, 10.3.2 |
 | SSE private channel with TLS enforcement | 10.3.2 |
-| Encrypted TEE communication channels | 4.5.9 |
-| Authenticated accelerator interconnects (NVLink, PCIe, InfiniBand) | 4.7.7 |
-| Encrypted edge-to-cloud communication with bandwidth throttling | 4.8.6 |
 | Log encryption in transit | 13.1.3 |
 | MCP client minimum protocol version enforcement against downgrade negotiation | 10.3.6 |
 
@@ -108,14 +92,8 @@ Manage cryptographic keys, secrets, and credentials throughout their lifecycle.
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Hardware-backed key storage (HSM, KMS, FIPS 140-3 Level 3) | 4.4.4, 4.7.6 |
-| Secrets isolation from application workloads | 4.4.1 |
-| Runtime secret injection (removed from code, config, images) | 4.4.3 |
-| Automated key and secret rotation | 4.4.5 |
 | Agent identity credential rotation with rapid revocation | 9.4.4 |
 | MCP runtime credential injection (no plaintext secrets) | 10.1.2 |
-| Separate backup credentials from production | 4.6.3 |
-| User-space key inaccessibility on mobile | 4.8.8 |
 
 **Common pitfalls:** hardcoded secrets in config or container images; neglecting rotation schedules; storing MCP OAuth tokens in server state rather than validating externally.
 
@@ -134,14 +112,12 @@ Verify authenticity and detect tampering of models, artifacts, messages, logs, a
 | Build signature validation at deployment | ASVS v5 V15 / SLSA |
 | Third-party model origin and integrity verification (signed records) | 6.1.1 |
 | Cryptographic signature validation for model publishers | 6.2.1, 6.2.2 |
-| Model watermarking and fingerprinting | 7.7.5, 11.5.4 |
+| Model watermarking and fingerprinting | 11.5.4 |
 | Execution chain cryptographic signing with non-repudiation timestamps | 9.4.2 |
-| Cryptographic log signatures (write-only / append-only) | 13.1.6 |
 | MCP component signature and checksum verification | 10.1.1 |
 | MCP schema integrity signing and tool definition hash tracking | 10.4.6, 10.4.5 |
 | DAG cryptographic signatures and tamper-evident storage | 13.7.3 |
 | Publisher key pinning per source registry with rotation re-approval | 6.2.2 |
-| Document metadata tag immutability after initial ingestion write | 8.1.7 |
 | Agent persisted state integrity protection (MAC/signature, rejection on failure) | 9.4.5 |
 
 **Common pitfalls:** using mutable `:latest` tags instead of immutable digests; not re-verifying tool definition hashes between MCP invocations; missing replay protection on agent messages.
@@ -194,16 +170,10 @@ Constrain, filter, and validate model outputs before they reach users or downstr
 | Confidence threshold gating with fallback messages | 7.2.2 |
 | Output safety classifiers (hate, harassment, violence) | 7.3.1 |
 | PII detection and redaction (post-inference filtering) | 7.3.2, 7.3.3 |
-| Human approval for high-risk content | 7.3.5 |
 | System prompt and backend data removal from explanations | 7.5.1 |
-| AI-generated media watermarking | 7.7.5 |
-| Copyright violation detection | 7.7.3 |
-| Explicit / non-consensual content filters | 7.7.1 |
 | Authorization-aware post-inference filtering (per-caller entitlement enforcement) | 5.4.1 |
 | Citation and attribution validation against caller entitlements | 5.4.2 |
 | MCP error response sanitization (no stack traces, tokens, internal paths) | 10.4.2 |
-| Statistical steganographic covert channel detection in generated outputs | 7.3.9 |
-| RAG attribution derived from retrieval metadata, not model-generated | 7.8.3 |
 | Generalization or one-way transformation of model-inferred sensitive attributes (ranges, buckets) to limit reconstruction of training records | 11.4.1 |
 
 **Common pitfalls:** redacting PII in text but not in structured data fields; not enforcing stop sequences on streaming outputs; leaking internal architecture through error messages.
@@ -223,12 +193,8 @@ Enforce consumption bounds to prevent abuse, runaway execution, and denial-of-se
 | Wall-clock time and monetary spend caps | 9.1.1 |
 | Cumulative resource counters with hard-stop thresholds and circuit breaker enforcement | 9.1.2 |
 | Per-tool CPU, memory, disk, egress, and execution time limits with fail-closed termination on breach | 9.3.2 |
-| Sub-task delegation chain depth limit per execution | 7.4.4 |
 | Query-rate limiting for model extraction and inversion defense, sized to the threat model (e.g., the number of queries required to approximate the model or to reconstruct training records) rather than as a generic API throttle | 11.4.2, 11.5.1 |
-| MCP outbound execution limits, timeouts, recursion limits, and circuit breakers | 10.5.2 |
 | Anomalous usage pattern detection and blocking | 13.2.3, ASVS v5 V2.4 |
-| Resource quotas (CPU, memory, GPU) for infrastructure | 4.6.1 |
-| Threshold-based protection triggers on resource exhaustion | 4.6.2 |
 
 **Common pitfalls:** setting rate limits per-endpoint but not per-agent-session; not accounting for tool fan-out when calculating budgets; missing circuit breakers on recursive agent chains.
 
@@ -244,15 +210,11 @@ Isolate workloads, tools, models, and agents to contain failures and prevent lat
 | Mandatory access control (seccomp, AppArmor, SELinux) | 4.1.2 |
 | Read-only root filesystem with restrictive mount options | 4.1.3 |
 | Runtime privilege escalation and container escape detection | 4.1.4 |
-| TEE / confidential computing with remote attestation | 4.1.5, 4.5.4, 4.5.6, 4.5.8 |
-| Untrusted AI model sandboxing with network isolation | 4.5.1, 4.5.2 |
+| TEE / confidential computing with remote attestation | 4.1.5 |
 | Tool and plugin sandboxing (container, VM, WASM, OS sandbox) | 9.3.1 |
 | Sandbox escape detection with automated tool quarantine | 9.3.5 |
 | Agent isolation across tenants, security domains, and environments | 9.8.1 |
-| GPU memory isolation (MIG / VM partitioning) with peer-to-peer prevention | 4.7.5 |
-| On-device process, memory, and file access isolation | 4.8.7 |
 | MCP stdio local-only enforcement with terminal injection prevention | 10.6.1 |
-| MCP tenant and environment boundary enforcement | 10.6.3 |
 
 **Common pitfalls:** sharing infrastructure between dev and prod; granting containers more capabilities than needed; not restricting cloud metadata service access from AI workloads.
 
@@ -269,7 +231,6 @@ Control network boundaries, traffic flow, and outbound access for AI workloads.
 | Separate IAM roles and security groups per environment with no shared principals | 4.3.6 |
 | Restricted administrative access and cloud metadata service blocking | 4.3.3 |
 | Egress traffic restriction to approved destinations with logging | 4.3.5 |
-| Egress allow-lists for training environments | 3.4.4 |
 | MCP egress allow-list with cloud metadata service blocking | 10.5.1 |
 | MCP dynamic dispatch and reflective invocation prevention | 10.6.2 |
 | Default-deny cross-domain agent discovery and calls | 9.8.1 |
@@ -364,8 +325,6 @@ Protect personal data and enforce data subject rights throughout the AI lifecycl
 | Federated canary-based privacy auditing | 12.6.3 |
 | Federated training utility-loss bound against ε budget | 12.6.4 |
 | PII detection and removal in external datasets | 6.3.2 |
-| Session context discard at session end (not accessible in subsequent sessions) | 8.3.7 |
-| Quarantined content excluded from retrieval results while under quarantine | 8.3.8 |
 
 **Common pitfalls:** deleting records from the database but not from model checkpoints or embeddings; not accounting for epsilon budget accumulation across queries; treating anonymization as a one-time step.
 
@@ -419,7 +378,6 @@ Capture security-relevant events with integrity protection for forensic analysis
 | Log encryption at rest and in transit | 13.1.3 |
 | PII, credential, and proprietary information redaction in logs | 13.1.4 |
 | Policy decision and safety filtering action logging | 13.1.2 |
-| Cryptographic log signatures with write-only storage | 13.1.6 |
 | Audit log context fields sufficient for forensic reconstruction (actor, delegation, policy, parameters, outcomes) | 9.4.3 |
 | Agent action signing with chain ID binding and timestamps | 9.4.2 |
 | Immutable audit records for model changes (actor, change type, before/after) | 3.2.5 |
@@ -451,7 +409,6 @@ Detect anomalies, alert on threats, and respond to security incidents in AI syst
 | Performance degradation retraining and replacement workflow triggers | 13.3.8 |
 | Hallucination detection monitoring | 13.3.5 |
 | Hallucination rate time-series tracking | 13.3.9 |
-| Data drift and concept drift detection | 13.6.2, 13.6.3 |
 | Model extraction alert generation with query metadata logging | 11.5.2 |
 | Emergent multi-agent behavior detection (oscillation, deadlock, broadcast storms) | 9.8.4 |
 | AI-specific incident response plans (model compromise, data poisoning, adversarial attack) | 13.5.1 |
@@ -459,8 +416,6 @@ Detect anomalies, alert on threats, and respond to security incidents in AI syst
 | Safety violation rate alerting | 7.6.3 |
 | Real-time security policy updates without full redeployment | 11.7.1 |
 | Policy change rollback procedures and testing | 11.7.3 |
-| Accelerator telemetry and side-channel anomaly detection | 4.7.8 |
-| Proactive agent behavior validation with risk assessment | 13.8.1, 13.8.2 |
 
 **Common pitfalls:** not correlating AI-specific events with broader SIEM alerts; treating model drift as a scheduled check rather than continuous monitoring; lacking AI-specific forensic tooling during incident response.
 
@@ -493,10 +448,7 @@ Require human review and approval for high-impact, irreversible, or safety-criti
 | Approval parameter binding (prevent approve-one-execute-another) | 9.2.2 |
 | High-impact intent confirmation with exact parameter binding and quick expiration | 9.2.3 |
 | Documented fail-closed default when human approval is not received within TTL | 14.2.3 |
-| High-risk MCP action confirmation (data deletion, financial, system config) | 10.5.3 |
-| Human approval for high-risk content generation | 7.3.5 |
 | Human review on anomaly detection | 11.6.3 |
-| Security-critical proactive action approval with approval chain logging | 13.8.4 |
 | High-risk model quarantine with human review and sign-off | 6.1.3 |
 | Post-condition outcome checking with containment on mismatch | 9.7.2 |
 | Compensating actions and transactional rollback on failure | 9.2.4 |
@@ -508,30 +460,6 @@ Require human review and approval for high-impact, irreversible, or safety-criti
 **Common pitfalls:** documenting a high-risk action policy that is never wired to a runtime gate; binding approval to a hash of parameters without binding to identity or context (replay across sessions); confirmation tokens without quick expiration; defaulting to fail-open when the approver does not respond, silently bypassing the gate; assuming an in-band kill-switch will work against a compromised agent; kill-switch implemented but never exercised, atrophying until the moment it is needed.
 
 ---
-
-## AD.20 Hardware & Accelerator Security
-
-Secure AI accelerator hardware, firmware, memory, interconnects, and edge devices.
-
-| Control / Technique | Requirement IDs |
-| --- | --- |
-| GPU/TPU integrity validation with hardware attestation (TPM, DRTM) | 4.7.1 |
-| GPU memory isolation and sanitization between workloads and tenants | 4.7.2 |
-| Signed GPU firmware with version pinning and attestation | 4.7.3 |
-| VRAM zeroing and device reset between jobs | 4.7.4 |
-| MIG / VM GPU partitioning with peer-to-peer access prevention | 4.7.5 |
-| HSM with FIPS 140-3 Level 3 certification | 4.7.6 |
-| Authenticated accelerator interconnects (NVLink, PCIe, InfiniBand, RDMA) | 4.7.7 |
-| Accelerator telemetry export (power, temperature, error correction) | 4.7.8 |
-| Edge device secure boot with firmware rollback protection | 4.8.3 |
-| Model signature verification on edge devices | 4.8.2 |
-| Mobile verified boot, code signing, and runtime integrity checks | 4.8.4 |
-| Byzantine fault-tolerant consensus for distributed AI | 4.8.5 |
-| On-device process, memory, and file access isolation | 4.8.7 |
-| Model obfuscation and decryption inside trusted runtime | 4.8.9 |
-| Secure offline edge operation with hardware-backed encrypted local storage | 4.8.10 |
-
-**Common pitfalls:** not zeroing VRAM between tenant workloads; running debug firmware in production; allowing unencrypted interconnects in multi-tenant GPU clusters; neglecting firmware update attestation.
 
 ---
 
