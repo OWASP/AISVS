@@ -226,7 +226,7 @@ Enforce consumption bounds to prevent abuse, runaway execution, and denial-of-se
 | Sub-task delegation chain depth limit per execution | 7.4.4 |
 | Query-rate limiting for model extraction and inversion defense, sized to the threat model (e.g., the number of queries required to approximate the model or to reconstruct training records) rather than as a generic API throttle | 11.4.2, 11.5.1 |
 | MCP outbound execution limits, timeouts, recursion limits, and circuit breakers | 10.5.2 |
-| Anomalous usage pattern detection and blocking | 13.2.4, ASVS v5 V2.4 |
+| Anomalous usage pattern detection and blocking | 13.2.3, ASVS v5 V2.4 |
 | Resource quotas (CPU, memory, GPU) for infrastructure | 4.6.1 |
 | Threshold-based protection triggers on resource exhaustion | 4.6.2 |
 
@@ -418,7 +418,7 @@ Capture security-relevant events with integrity protection for forensic analysis
 | Secure, access-controlled log repositories with retention policies | 13.1.2 |
 | Log encryption at rest and in transit | 13.1.3 |
 | PII, credential, and proprietary information redaction in logs | 13.1.4 |
-| Policy decision and safety filtering action logging | 13.1.5 |
+| Policy decision and safety filtering action logging | 13.1.2 |
 | Cryptographic log signatures with write-only storage | 13.1.6 |
 | Audit log context fields sufficient for forensic reconstruction (actor, delegation, policy, parameters, outcomes) | 9.4.3 |
 | Agent action signing with chain ID binding and timestamps | 9.4.2 |
@@ -443,14 +443,14 @@ Detect anomalies, alert on threats, and respond to security incidents in AI syst
 | --- | --- |
 | Jailbreak and prompt injection attempt detection (signature-based) | 13.2.1 |
 | SIEM integration with standard log formats | 13.2.2 |
-| AI-specific event enrichment (model ID, confidence, filter decisions) | 13.2.3 |
-| Behavioral anomaly detection (unusual patterns, excessive retries, systematic probing) | 13.2.4, 13.2.5 |
-| Real-time alerting on policy violations and coordinated attack campaigns | 13.2.6 |
-| Automated incident response (isolation and blocking of compromised models and malicious users) | 13.2.7 |
-| Performance metric monitoring (accuracy, latency, error rate) with alerting | 13.3.1, 13.3.2, 13.3.3 |
-| Performance degradation retraining and replacement workflow triggers | 13.3.10 |
-| Hallucination detection monitoring | 13.3.4 |
-| Hallucination rate time-series tracking | 13.3.11 |
+| AI-specific event enrichment (model ID, confidence, filter decisions) | 13.2.2 |
+| Behavioral anomaly detection (unusual patterns, excessive retries, systematic probing) | 13.2.3, 13.2.5 |
+| Real-time alerting on policy violations and coordinated attack campaigns | 13.2.4 |
+| Automated incident response (isolation and blocking of compromised models and malicious users) | 13.2.6 |
+| Performance metric monitoring (accuracy, latency, error rate) with alerting | 13.3.1, 13.3.3, 13.3.4 |
+| Performance degradation retraining and replacement workflow triggers | 13.3.8 |
+| Hallucination detection monitoring | 13.3.5 |
+| Hallucination rate time-series tracking | 13.3.9 |
 | Data drift and concept drift detection | 13.6.2, 13.6.3 |
 | Model extraction alert generation with query metadata logging | 11.5.2 |
 | Emergent multi-agent behavior detection (oscillation, deadlock, broadcast storms) | 9.8.4 |
