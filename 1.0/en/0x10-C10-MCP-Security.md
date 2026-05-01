@@ -87,4 +87,4 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 
 * [Model Context Protocol (MCP) Specification](https://modelcontextprotocol.io/)
 * [OWASP MCP Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/MCP_Security_Cheat_Sheet.html)
-* [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/pubs/detail/sp/800-207/final)
+* [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final)

@@ -131,5 +131,5 @@ In practice, policy-based enforcement depends on the availability and quality of
 ## References
 
 * [NIST AI Risk Management Framework 1.0](https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf)
-* [ISO/IEC 42001:2023: AI Management Systems Requirements](https://www.iso.org/standard/81230.html)
+* [ISO/IEC 42001:2023: AI Management Systems Requirements](https://www.iso.org/standard/42001)
 * [OWASP Secure Coding Practices: Quick Reference Guide](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/)
