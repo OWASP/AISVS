@@ -25,8 +25,8 @@ Agent-specific authorization policies and delegation are covered in C9.6; single
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
 | **5.2.1** | **Verify that** every AI resource (datasets, models, endpoints, vector collections, embedding indices, compute instances) enforces access controls (e.g., RBAC, ABAC) with explicit allow-lists and default-deny policies. | 1 |
 | **5.2.2** | **Verify that** privileged access to model weights, training pipelines, and production AI configuration is provisioned on a just-in-time basis with a defined maximum session duration and automatic expiry, and permanent standing privileged access to these resources is not permitted. | 2 |
-| **5.2.3** | **Verify that** data classification labels (PII, PHI, proprietary, etc.) automatically propagate to derived resources (embeddings, prompt caches, model outputs). | 3 |
-| **5.2.4** | **Verify that** a documented data classification taxonomy covering AI-specific data types (embeddings, model weights, prompt templates, RAG context assemblies, fine-tuning datasets, agent tool schemas) is defined, and that AI assets are labeled in accordance with this taxonomy. | 2 |
+| **5.2.3** | **Verify that** a documented data classification taxonomy covering AI-specific data types (embeddings, model weights, prompt templates, RAG context assemblies, fine-tuning datasets, agent tool schemas) is defined, and that AI assets are labeled in accordance with this taxonomy. | 2 |
+| **5.2.4** | **Verify that** data classification labels (PII, PHI, proprietary, etc.) automatically propagate to derived resources (embeddings, prompt caches, model outputs). | 3 |
 
 ---
 
