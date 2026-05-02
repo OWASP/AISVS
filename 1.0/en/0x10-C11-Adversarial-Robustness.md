@@ -26,8 +26,6 @@ Guard against harmful or policy-breaking outputs through systematic testing and 
 
 Increase resilience to manipulated inputs designed to cause misclassification or policy bypass. Adversarial testing and robustness benchmarking are the current best practices.
 
-> **Scope note for 11.2.7:** C3.2.7 requires re-evaluation of quantized/pruned/distilled models against the same safety and alignment test suite, and C3.2.4 may imply inclusion of adversarial robustness in that suite. However, 11.2.7 addresses a distinct concern: formal or empirical **robustness certification** (certified radius, verified robust accuracy at defined perturbation bounds) is not equivalent to passing a general safety/alignment test suite. A model can pass behavioral safety tests while losing certified robustness guarantees after transformation. 11.2.7 explicitly requires that the robustness metrics tracked under 11.2.6 are re-verified, not merely that the model passes a functional test suite. Auditors should treat C3.2.7 and 11.2.7 as complementary, since the former covers behavioral safety regression, the latter covers formal robustness guarantee preservation.
-
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **11.2.1** | **Verify that** models serving high-risk functions are evaluated against known adversarial attack techniques relevant to their modality (e.g., perturbation attacks for vision, token-manipulation attacks for text). | 1 |
