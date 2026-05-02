@@ -168,7 +168,8 @@ Constrain, filter, and validate model outputs before they reach users or downstr
 | Confidence scoring and uncertainty estimation | 7.2.1 |
 | Confidence threshold gating with fallback messages | 7.2.2 |
 | Output safety classifiers (hate, harassment, violence) | 7.3.1 |
-| PII detection and redaction (post-inference filtering) | 7.3.2, 7.3.3 |
+| System prompt leakage detection in outputs (verbatim and paraphrased) | 7.3.2 |
+| Prevention of auto-triggered outbound requests from model-generated output | 7.3.3 |
 | System prompt and backend data removal from explanations | 7.5.1 |
 | Authorization-aware post-inference filtering (per-caller entitlement enforcement) | 5.4.1 |
 | Citation and attribution validation against caller entitlements | 5.4.2 |
@@ -403,7 +404,7 @@ Detect anomalies, alert on threats, and respond to security incidents in AI syst
 | SIEM integration with standard log formats | 13.2.2 |
 | AI-specific event enrichment (model ID, confidence, filter decisions) | 13.2.2 |
 | Behavioral anomaly detection (unusual patterns, excessive retries, systematic probing) | 13.2.3, 13.2.5 |
-| Real-time alerting on policy violations and coordinated attack campaigns | 13.2.4 |
+| Detection rules for AI-specific attack patterns (jailbreak campaigns, prompt injection, system prompt extraction, model extraction) | 13.2.4 |
 | Automated incident response (isolation and blocking of compromised models and malicious users) | 13.2.6 |
 | Performance metric monitoring (accuracy, latency, error rate) with alerting | 13.3.1, 13.3.3, 13.3.4 |
 | Performance degradation retraining and replacement workflow triggers | 13.3.8 |
