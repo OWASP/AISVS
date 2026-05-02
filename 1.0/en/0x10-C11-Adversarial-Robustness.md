@@ -6,8 +6,6 @@ Ensure that AI systems remain reliable, privacy-preserving, and abuse-resistant 
 
 Generic application security controls (configuration management, secret and key management, signed artifacts, audit logging, change control, transport security, generic anti-automation rate limiting) are covered by ASVS v5 (V11, V13, V14, V15, V16) and are not repeated here. Logging of AI security events, AI incident response planning, and human-oversight escalation are covered by AISVS C13 and C14. Inversion-specific (C11.4) and extraction-specific (C11.5) throttling controls do not substitute for generic API rate limiting (ASVS v5 V2.4) or orchestration runtime budgets (C9.1). C11.8 (agent self-review) covers AI-augmented review of proposed agent actions and protection of that review mechanism from prompt-injection bypass; the deterministic runtime gate that blocks high-impact agent actions is governed by C9.2 and C9.7.
 
-> **Scope note for 11.2.7:** C3.2.7 requires re-evaluation of quantized/pruned/distilled models against the same safety and alignment test suite, and C3.2.4 may imply inclusion of adversarial robustness in that suite. However, 11.2.7 addresses a distinct concern: formal or empirical **robustness certification** (certified radius, verified robust accuracy at defined perturbation bounds) is not equivalent to passing a general safety/alignment test suite. A model can pass behavioral safety tests while losing certified robustness guarantees after transformation. 11.2.7 explicitly requires that the robustness metrics tracked under 11.2.6 are re-verified, not merely that the model passes a functional test suite. Auditors should treat C3.2.7 and 11.2.7 as complementary, since the former covers behavioral safety regression, the latter covers formal robustness guarantee preservation.
-
 ---
 
 ## C11.1 Model Alignment & Safety
@@ -28,14 +26,16 @@ Guard against harmful or policy-breaking outputs through systematic testing and 
 
 Increase resilience to manipulated inputs designed to cause misclassification or policy bypass. Adversarial testing and robustness benchmarking are the current best practices.
 
+> **Scope note for 11.2.7:** C3.2.7 requires re-evaluation of quantized/pruned/distilled models against the same safety and alignment test suite, and C3.2.4 may imply inclusion of adversarial robustness in that suite. However, 11.2.7 addresses a distinct concern: formal or empirical **robustness certification** (certified radius, verified robust accuracy at defined perturbation bounds) is not equivalent to passing a general safety/alignment test suite. A model can pass behavioral safety tests while losing certified robustness guarantees after transformation. 11.2.7 explicitly requires that the robustness metrics tracked under 11.2.6 are re-verified, not merely that the model passes a functional test suite. Auditors should treat C3.2.7 and 11.2.7 as complementary, since the former covers behavioral safety regression, the latter covers formal robustness guarantee preservation.
+
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **11.2.1** | **Verify that** models serving high-risk functions are evaluated against known adversarial attack techniques relevant to their modality (e.g., perturbation attacks for vision, token-manipulation attacks for text). | 1 |
 | **11.2.2** | **Verify that** adversarial-example detection raises alerts in production pipelines, with blocking or degraded-capability responses for high-risk endpoints or use cases. | 2 |
 | **11.2.3** | **Verify that** adversarial training or equivalent hardening techniques are applied where feasible, with documented configurations and reproducible procedures. | 2 |
-| **11.2.4** | **Verify that** robustness evaluations use adaptive attacks (attacks specifically designed to defeat the deployed defenses) to confirm no measurable robustness loss across releases. | 3 |
-| **11.2.5** | **Verify that** formal robustness verification methods (e.g., certified bounds, interval-bound propagation) are applied to safety-critical model components where the model architecture supports them. | 3 |
-| **11.2.6** | **Verify that** certified robustness metrics (e.g., certified radius, verified robust accuracy at defined perturbation bounds) are tracked and recorded per model version, and that degradation beyond defined thresholds triggers re-evaluation before deployment. | 2 |
+| **11.2.4** | **Verify that** certified robustness metrics (e.g., certified radius, verified robust accuracy at defined perturbation bounds) are tracked and recorded per model version, and that degradation beyond defined thresholds triggers re-evaluation before deployment. | 2 |
+| **11.2.5** | **Verify that** robustness evaluations use adaptive attacks (attacks specifically designed to defeat the deployed defenses) to confirm no measurable robustness loss across releases. | 3 |
+| **11.2.6** | **Verify that** formal robustness verification methods (e.g., certified bounds, interval-bound propagation) are applied to safety-critical model components where the model architecture supports them. | 3 |
 | **11.2.7** | **Verify that** robustness certification or empirical robustness audits are repeated after all post-training transformations (fine-tuning, distillation, quantization, adapter merging) that consume the same base model. | 3 |
 
 ---
