@@ -411,6 +411,7 @@ Detect anomalies, alert on threats, and respond to security incidents in AI syst
 | Performance degradation retraining and replacement workflow triggers | 13.3.8 |
 | Hallucination detection monitoring | 13.3.5 |
 | Hallucination rate time-series tracking | 13.3.9 |
+| Training pipeline telemetry monitoring (runtime duration, loss trajectory, convergence rate) with baseline alerting and artifact gating | 13.3.10 |
 | Model extraction alert generation with query metadata logging | 11.5.2 |
 | Emergent multi-agent behavior detection (oscillation, deadlock, broadcast storms) | 9.8.4 |
 | AI-specific incident response plans (model compromise, data poisoning, adversarial attack) | 13.5.1 |
