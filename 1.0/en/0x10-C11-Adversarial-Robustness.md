@@ -72,9 +72,9 @@ Detect and deter unauthorized model cloning through API abuse. Rate limiting, qu
 
 ---
 
-## C11.6 Inference-Time Poisoned-Data Detection
+## C11.6 Runtime Context Contamination Detection
 
-Identify and neutralize backdoored or poisoned inputs at inference time, particularly in systems that consume external data (e.g., RAG pipelines, tool outputs).
+Identify and neutralize manipulated, backdoored, or adversarial data entering the model context at inference time via external sources (e.g., RAG retrieval, tool outputs, MCP server responses, grounding pipelines).
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
