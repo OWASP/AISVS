@@ -116,7 +116,6 @@ Verify authenticity and detect tampering of models, artifacts, messages, logs, a
 | Execution chain cryptographic signing with non-repudiation timestamps | 9.4.2 |
 | MCP component signature and checksum verification | 10.1.1 |
 | MCP schema integrity signing and tool definition hash tracking | 10.4.6, 10.4.5 |
-| DAG cryptographic signatures and tamper-evident storage | 13.7.3 |
 | Publisher key pinning per source registry with rotation re-approval | 6.2.2 |
 | Agent persisted state integrity protection (MAC/signature, rejection on failure) | 9.4.5 |
 
@@ -386,7 +385,6 @@ Capture security-relevant events with integrity protection for forensic analysis
 | Generic audit log immutability and tamper-evidence | ASVS v5 V16.4.2 |
 | CI/CD audit log streaming to SIEM | ASVS v5 V16.4.3 |
 | Detection rules for anomalous package pulls and tampered build steps | ASVS v5 V16.3.3 |
-| DAG visualization with access controls and tamper evidence | 13.7.1, 13.7.2, 13.7.3 |
 | Safety violation metrics logging | 7.6.1 |
 | Self-modification logging classified as security event with what/when/by-whom/authorization detail | 11.9.3 |
 | Human oversight intervention logging (kill-switch activations, mode transitions, override commands) with operator identity, channel, trigger, and prior/resulting state | 14.3.1 |
@@ -442,7 +440,7 @@ Enable human understanding of model decisions through interpretability artifacts
 
 ## AD.19 Human Oversight & Approval Gates
 
-Require human review and approval for high-impact, irreversible, or safety-critical actions, and provide reliable shutdown and graceful-degradation paths under human control. Effective human oversight requires four cooperating layers: a **policy** that classifies which actions are high-risk (C14.2), a **runtime gate** that blocks execution until approval is received (C9.2), **kill-switch and graceful-degradation mechanisms** to halt or constrain the system when needed (C14.1), and **independent audit trails** for both approvals (C13.7.4) and human-initiated overrides (C14.3). Each layer is separately verifiable; an approval gate without a policy is unenforceable, a policy without a runtime gate is unenforced, and either without audit trails is unattributable.
+Require human review and approval for high-impact, irreversible, or safety-critical actions, and provide reliable shutdown and graceful-degradation paths under human control. Effective human oversight requires four cooperating layers: a **policy** that classifies which actions are high-risk (C14.2), a **runtime gate** that blocks execution until approval is received (C9.2), **kill-switch and graceful-degradation mechanisms** to halt or constrain the system when needed (C14.1), and **independent audit trails** for both approvals (C13.6.4) and human-initiated overrides (C14.3). Each layer is separately verifiable; an approval gate without a policy is unenforceable, a policy without a runtime gate is unenforced, and either without audit trails is unattributable.
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
