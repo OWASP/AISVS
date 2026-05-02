@@ -342,7 +342,9 @@ Test for and defend against evasion, extraction, inversion, poisoning, and align
 | RLHF / Constitutional AI alignment training | 11.1.4 |
 | Adversarial training and defensive distillation | 11.2.3 |
 | Adversarially robust distillation — distill teacher into student using adversarial training so the student inherits robustness as well as accuracy (implementation example for 11.2.3) | 11.2.3 |
-| Formal robustness verification (certified bounds, interval-bound propagation) | 11.2.5 |
+| Certified robustness metrics tracking per model version with degradation alerting | 11.2.4 |
+| Formal robustness verification (certified bounds, interval-bound propagation) | 11.2.6 |
+| Post-transformation robustness re-certification (fine-tuning, distillation, quantization, adapter merging) | 11.2.7 |
 | Adversarial-example detection with production alerting | 11.2.2 |
 | Model ensemble as evasion containment — route queries through independently trained models and flag disagreement beyond a threshold (implementation example for 11.2.2) | 11.2.2 |
 | Output calibration and perturbation for privacy | 11.3.1 |
