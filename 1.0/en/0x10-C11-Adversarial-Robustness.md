@@ -137,6 +137,18 @@ Protect security-relevant classifiers against adversaries who systematically pro
 
 ---
 
+## C11.11 Data and Model Poisoning Resistance
+
+Detect, resist, and recover from adversarial manipulation of training data, fine-tuning pipelines, or pre-trained model artifacts intended to compromise model integrity, embed backdoors, or degrade alignment. These controls address the adversarial robustness dimension of poisoning and complement the data integrity and traceability controls in C01.
+
+| # | Description | Level |
+| --- | --- | --- |
+| **11.11.1** | **Verify that** models serving high-risk functions are evaluated against known backdoor attack techniques relevant to their modality and training paradigm (e.g., trigger-based backdoors for vision models, instruction-injection backdoors for language models, feature-collision attacks for tabular classifiers), with documented test configurations and results. | 1 |
+| **11.11.2** | **Verify that** post-training model integrity verification techniques (e.g., activation clustering, spectral signature analysis, neural cleanse, or meta-classifier approaches) are applied to detect potential backdoors or poisoning-induced behavioral anomalies in trained models, regardless of model type or architecture. | 2 |
+| **11.11.3** | **Verify that** training data sanitization includes defenses against clean-label poisoning attacks (e.g., diffusion-based input denoising, Deep k-NN filtering, or robust training via data partitioning and aggregation), in addition to the dirty-label detection methods covered by C01 (outlier detection, embedding analysis, label consistency checks). The choice of defense must be documented with rationale. | 2 |
+| **11.11.4** | **Verify that** fine-tuning pipelines (e.g., transfer learning, domain adaptation, RLHF, DPO, instruction tuning) include integrity monitoring for adversarial training data or reward manipulation, and that relevant evaluation suites (e.g., alignment testing per C11.1.2, robustness testing per C11.2) are repeated after fine-tuning to detect poisoning-induced degradation. This complements the adversarial evaluation required by C6.1.5 for transfer-learning imports by extending monitoring to alignment and reward-based fine-tuning pipelines. | 2 |
+| **11.11.5** | **Verify that** poisoning robustness evaluations are repeated after all post-training transformations (fine-tuning, distillation, quantization, adapter merging), as transformations may activate dormant backdoors or alter poisoning signatures. This complements C3.2.7 (safety/alignment suite re-evaluation) by specifically requiring poisoning-focused verification. | 3 |
+
 ## References
 
 * [OWASP LLM02:2025 Sensitive Information Disclosure](https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/)
