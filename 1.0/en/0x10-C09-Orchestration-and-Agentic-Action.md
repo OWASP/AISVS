@@ -115,6 +115,23 @@ Reduce cross-domain interference and emergent unsafe collective behavior.
 
 ---
 
+## C9.9 Architectural Data-Flow Isolation and Provenance Enforcement
+
+Prevent data-flow attacks that exploit agentic tool-calling pipelines by manipulating tool arguments without altering the control flow, through architectural separation of planning from untrusted data processing and provenance-aware policy enforcement at the tool-call boundary. These controls complement C2.1 (input-level filtering) and C9.7 (intent verification gates), which do not address attacks where the correct tools are called in the correct sequence but with attacker-controlled arguments derived from untrusted data. Any isolation mechanism that achieves the stated outcome satisfies the requirement.
+
+
+| # | Description | Level |
+| :--: | --- | :---: |
+| **9.9.1** | **Verify that** the system architecturally separates, or applies an equivalent isolation mechanism to separate, plan generation (control flow) from untrusted data processing, such that the component determining which tools to call and in what sequence does not directly process untrusted content (e.g., tool outputs, retrieved documents, external messages). | 2 |
+| **9.9.2** | **Verify that** components processing untrusted data (e.g., for extraction, summarization, or parsing) are isolated, or equivalently constrained, from tool-calling capabilities, ensuring that compromised data processing cannot trigger unauthorized tool invocations. | 2 |
+| **9.9.3** | **Verify that** values passed to tools carry provenance metadata tracking their origin (user input, specific tool, external source). | 3 |
+| **9.9.4** | **Verify that** security policies are evaluated against value provenance before each tool invocation, and that invocations with provenance violations are blocked. | 3 |
+| **9.9.5** | **Verify that** data-flow integrity is enforced such that untrusted data cannot modify tool arguments beyond what the security policy explicitly permits, even when the control flow (sequence of tool calls) remains as intended. | 3 |
+| **9.9.6** | **Verify that** security policies for tool execution are expressed as auditable, versioned, machine-interpretable code or configuration, not solely as natural language instructions within prompts. | 2 |
+| **9.9.7** | **Verify that** the system's data-flow dependency graph is maintained per session and is inspectable by authorized security and operations personnel for post-hoc audit, enabling identification of which data sources influenced each tool invocation and its arguments. | 3 |
+
+---
+
 ## References
 
 * [OWASP LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/)
