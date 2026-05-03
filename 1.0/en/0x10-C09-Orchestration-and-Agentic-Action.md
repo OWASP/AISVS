@@ -4,7 +4,7 @@
 
 Autonomous and multi-agent systems must execute only authorized, intended, and bounded actions. This chapter focuses on controls unique to agentic AI execution: agent-as-principal identity, agent action chains, model-output-driven authorization risk, intent verification of LLM-decided actions, and multi-agent swarm dynamics. Generic application security controls (transport encryption, schema validation, message integrity, log integrity, concurrency safety, supply chain integrity, service-account rotation, multi-tenant isolation, contextual authorization, and API-edge rate limiting) are covered by ASVS v5 (V2, V4, V8, V11, V12, V13, V15, V16), AISVS C9.4.3 (tamper-evident audit logs), and OWASP SCVS, and are not repeated here.
 
-Boundaries with adjacent controls determine what evidence satisfies each requirement. C9.1 execution budgets apply inside the orchestration runtime and do not substitute for API-edge rate limiting (ASVS v5 V2.4) or anti-extraction/anti-inversion throttling (C11.4, C11.5). C9.2 governs the runtime gate that blocks high-impact actions until approval is received; C14.2 defines the policy that classifies actions as high-risk and assigns approval authority; C13.7.4 covers logging of approval events. C9.5 covers semantic validation of agent-generated outputs flowing into downstream agents, while transport, schema, and replay protections are in ASVS v5 V4/V11/V12 and MCP-specific message and schema controls are in C10.4.
+Boundaries with adjacent controls determine what evidence satisfies each requirement. C9.1 execution budgets apply inside the orchestration runtime and do not substitute for API-edge rate limiting (ASVS v5 V2.4) or anti-extraction/anti-inversion throttling (C11.4, C11.5). C9.2 governs the runtime gate that blocks high-impact actions until approval is received; C14.2 defines the policy that classifies actions as high-risk and assigns approval authority; C13.6.4 covers logging of approval events. C9.5 covers semantic validation of agent-generated outputs flowing into downstream agents, while transport, schema, and replay protections are in ASVS v5 V4/V11/V12 and MCP-specific message and schema controls are in C10.4.
 
 ---
 
@@ -115,11 +115,28 @@ Reduce cross-domain interference and emergent unsafe collective behavior.
 
 ---
 
+## C9.9 Architectural Data-Flow Isolation and Origin Enforcement
+
+Prevent data-flow attacks that exploit agentic tool-calling pipelines by manipulating tool arguments without altering the control flow, through architectural separation of planning from untrusted data processing and origin-aware policy enforcement at the tool-call boundary. These controls complement C2.1 (input-level filtering) and C9.7 (intent verification gates), which do not address attacks where the correct tools are called in the correct sequence but with attacker-controlled arguments derived from untrusted data. Any isolation mechanism that achieves the stated outcome satisfies the requirement.
+
+| # | Description | Level |
+| :--: | --- | :---: |
+| **9.9.1** | **Verify that** the system architecturally separates, or applies an equivalent isolation mechanism to separate, plan generation (control flow) from untrusted data processing, such that the component determining which tools to call and in what sequence does not directly process untrusted content (e.g., tool outputs, retrieved documents, external messages). | 2 |
+| **9.9.2** | **Verify that** components processing untrusted data (e.g., for extraction, summarization, or parsing) are isolated, or equivalently constrained, from tool-calling capabilities, ensuring that compromised data processing cannot trigger unauthorized tool invocations. | 2 |
+| **9.9.3** | **Verify that** security policies for tool execution are expressed as auditable, versioned, machine-interpretable code or configuration, not solely as natural language instructions within prompts. | 2 |
+| **9.9.4** | **Verify that** values passed to tools carry origin metadata tracking their source (user input, specific tool, external source). | 3 |
+| **9.9.5** | **Verify that** security policies are evaluated against value origin before each tool invocation. | 3 |
+| **9.9.6** | **Verify that** tool invocations where argument origin violates the applicable security policy are blocked before execution. | 3 |
+| **9.9.7** | **Verify that** data-flow integrity is enforced such that untrusted data cannot modify tool arguments beyond what the security policy explicitly permits, even when the control flow (sequence of tool calls) remains as intended. | 3 |
+| **9.9.8** | **Verify that** the system's data-flow dependency graph is maintained per session and is available for review by authorized security and operations personnel for post-hoc audit, enabling identification of which data sources influenced each tool invocation and its arguments. | 3 |
+
+---
+
 ## References
 
 * [OWASP LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/)
 * [OWASP LLM10:2025 Unbounded Consumption](https://genai.owasp.org/llmrisk/llm102025-unbounded-consumption/)
 * [OWASP Agentic AI Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)
-* [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/pubs/detail/sp/800-207/final)
+* [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final)
 * [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026)
 * [OpenAPI x-agent-trust Extension (OAI Extensions Registry)](https://spec.openapis.org/registry/extension/x-agent-trust.html)

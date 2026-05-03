@@ -1,0 +1,84 @@
+# C8.1: Access Controls on Memory & RAG Indices
+
+> [Back to C08 Index](C08-Memory-and-Embeddings.md)
+> **Last Researched:** 2026-05-02
+
+## Purpose
+
+Enforce fine-grained access controls and query-time scope enforcement for every memory store, vector collection, retrieval index, and semantic cache. A RAG system should never retrieve content merely because it is semantically close to the question; it should retrieve content only when the caller, agent, service principal, and current task are authorized to see it.
+
+The recurring failure mode is permission stripping during ingestion. Connectors for SharePoint, Confluence, file shares, ticket systems, and object stores often convert source documents into chunks and embeddings while dropping the source ACL, writer identity, sensitivity label, or revocation state. Once that happens, the vector store has no reliable basis for enforcing access at query time, and the application is left to guess or filter after retrieval. That is why C8.1 treats provenance, immutable metadata, retrieval logging, and anomaly detection as part of access control rather than as separate observability concerns.
+
+As of May 2026, the practical implementation pattern is clearer than it was a year ago: store authorization metadata with every chunk, inject the caller's scope server-side, push filters into the vector/search engine whenever possible, and keep post-retrieval checks as a backup rather than the primary control. Azure AI Search now documents native document-level access control patterns using Microsoft Entra tokens, POSIX-like ACL/RBAC scopes, SharePoint ACLs, and Purview sensitivity labels. Databricks Mosaic AI Vector Search is governed through Unity Catalog and explicit vector-index privileges. Pinecone namespaces, Weaviate tenants, and Qdrant payload indexes are still useful isolation primitives, but they need server-side enforcement and regression tests so a missing filter cannot silently become a cross-tenant leak.
+
+The threat landscape also keeps pushing access control toward provenance and monitoring. OWASP LLM08:2025 calls out unauthorized vector access, cross-context leakage, poisoning, and weak retrieval monitoring. PoisonedRAG showed that five malicious texts can drive a 90% attack success rate in large corpora. The April 2026 Black-Hole Attack showed centroid-positioned vectors appearing in up to 99.85% of top-10 results. Semantic caches add another retrieval surface: the January 2026 Key Collision Attack showed that embedding-based cache keys behave like fuzzy hashes and can be collided for response hijacking. Access controls therefore need to cover insert, update, delete, query, retrieval logging, cache hit paths, and incident replay.
+
+---
+
+## Requirements
+
+| # | Requirement | Level | Threat Mitigated | Verification Approach | Gaps / Notes |
+|---|-------------|:-----:|-----------------|----------------------|--------------|
+| **8.1.1** | **Verify that** vector insert, update, delete, and query operations are enforced with namespace/collection/document-tag scope controls (e.g., tenant ID, user ID, data classification labels) with default-deny. | 1 | Cross-tenant retrieval, unauthorized embedding reads, and write-path poisoning where a caller can insert or mutate vectors outside its tenant or data classification. This maps directly to OWASP LLM08:2025 Vector and Embedding Weaknesses and also supports MITRE ATLAS RAG Poisoning and RAG Credential Harvesting scenarios. | Review the vector/search query path and confirm tenant, user, role, data-classification, and source-system ACL filters are injected by trusted server code, not accepted from the client. Attempt unauthenticated, wrong-tenant, wrong-role, and omitted-filter queries and verify they fail closed. Seed canary chunks in each tenant and confirm no other tenant can retrieve, update, delete, cache-hit, or cite them. Inspect authorization decision logs for the policy version, caller identity, resource IDs, and denied matches. | Native controls vary by platform. Pinecone recommends one namespace per tenant for serverless multitenancy; Weaviate tenants are isolated in separate shards; Qdrant recommends payload partitioning with `is_tenant=true` indexes and tiered multitenancy for large tenants. Azure AI Search can enforce Microsoft Entra-backed document permissions at query time with `x-ms-query-source-authorization`, and Databricks Apps require `USE CATALOG`, `USE SCHEMA`, and `SELECT` on vector indexes. Zanzibar-style systems such as SpiceDB, OpenFGA, and Cerbos are increasingly used to convert relationship-based authorization into vector metadata filters or post-retrieval permission checks. Application-only filters remain fragile: one missing `tenant_id` predicate or one overbroad service principal can expose a shared index. Milvus operators should verify patched versions for CVE-2025-64513 because the vulnerable proxy path allowed unauthenticated administrative access. |
+| **8.1.2** | **Verify that** every ingested document is tagged at write time with source, writer identity (authenticated user or system principal), timestamp, batch ID, and embedding model version. | 2 | Data provenance attacks, false RAG entries, and "ghost documents" inserted by compromised ingestion jobs. Without source, writer, timestamp, batch, and embedding-model metadata, responders cannot determine which poisoned vectors to quarantine or which model version needs re-embedding. | Inspect ingestion code and stored vector metadata for required fields on every chunk. Query a sample from each connector and verify the source-system object ID, ACL snapshot or policy reference, writer principal, ingestion job ID, timestamp, content hash, embedding model name/version, and chunking strategy are present. Attempt direct writes that omit provenance fields and verify rejection. Reconcile batch logs against vector counts so missing or extra chunks are visible. | Provenance has to be captured before chunking and embedding, not reconstructed afterward. RAGForensics and similar traceback approaches depend on retrieval records and source metadata to identify poisoned texts. EU AI Act record-keeping expectations for high-risk systems and NIST AI RMF evidence practices both push teams toward durable provenance records. For regulated deployments, keep source ACL snapshots or stable policy references with each chunk so permission changes can be replayed during incident review. |
+| **8.1.3** | **Verify that** document metadata tags applied at ingestion are immutable after initial write and cannot be modified by subsequent pipeline stages or user operations. | 2 | Metadata tampering after ingestion, where an attacker re-labels poisoned or restricted content as trusted, public, or owned by another tenant. This undermines quarantine, revocation, audit replay, and source-based authorization. | Try to overwrite source, owner, tenant, classification, timestamp, batch ID, content hash, and embedding model fields through the vector DB API, ingestion API, SDK upsert path, and bulk re-index job. Verify rejection or append-only versioning. Review storage design for WORM object storage, immutable Delta/lake commits, signed manifests, or hash-chain records that let auditors detect metadata changes. Confirm metadata-change attempts are logged as security events. | Many vector databases treat metadata as mutable payload by design. Pinecone upserts, Qdrant payload updates, Weaviate property updates, and Milvus field updates can be safe only when wrapped by an application policy that distinguishes content refresh from provenance mutation. Practical compensating controls include append-only metadata stores, signed ingestion manifests, content hashes stored outside the vector DB, and periodic reconciliation between source systems, object storage, and vector indexes. |
+| **8.1.4** | **Verify that** RAG pipeline retrieval events log the query issued, the documents or chunks retrieved, similarity scores, the knowledge source, and whether retrieved content passed prompt injection scanning before being incorporated into model context. | 2 | Undetected RAG poisoning, indirect prompt injection through retrieved content, unauthorized source exposure, and failed incident reconstruction. If retrieval events are incomplete, teams cannot prove which source influenced a response or whether an authorization filter failed. | Issue controlled queries and confirm logs include the normalized query, caller identity, authorization scope, vector index, cache-hit status, retrieved chunk IDs, source-system IDs, similarity/rerank scores, authorization decision, prompt-injection scan result, and downstream context inclusion decision. Replay sampled events from logs and verify the same chunks would still be allowed for the caller. Ship logs to a SIEM with retention and access controls appropriate for sensitive prompts and retrieved text. | Logging full prompts and chunks can create a secondary data store containing regulated content, so many teams log identifiers, hashes, classifications, scores, and scan decisions while storing raw text only in restricted forensic stores. Azure AI Search's document-level permission model and EU AI Act Article 12 both reinforce the need for traceable query-time decisions. RevPRAG and RAGForensics show why retrieval records matter: detection and traceback are much weaker when the system cannot link output behavior back to specific retrieved chunks. |
+| **8.1.5** | **Verify that** retrieval anomaly detection identifies embedding density outliers, repeated dominance of specific documents in similarity results, and sudden shifts in retrieval bias distribution that may indicate vector database poisoning. | 3 | Poisoning that does not break authorization directly but manipulates what authorized users retrieve: high-centrality vectors, repeated document dominance, coordinated poisoned passages, cache collisions, and sudden bias shifts in retrieved sources. | Monitor retrieval-frequency histograms, per-tenant embedding density, centroid proximity, top-k dominance by document/source, authorization-denied match rates, and stable-query-set drift over time. Test with synthetic poisoning: near-duplicate clusters, centroid-positioned vectors modeled on the Black-Hole Attack, single-document targeted poisoning, and semantic-cache collision attempts. Confirm alerts trigger, affected chunks can be quarantined by source/batch ID, and clean re-indexing restores baseline retrieval behavior. | No major vector database provides complete poisoning anomaly detection natively. Teams usually combine vector DB telemetry, SIEM rules, offline embedding-space analysis, stable canary queries, and post-incident tools such as RAGForensics. RevPRAG provides a complementary generation-time detector by analyzing model activations for poisoned responses, but it does not replace retrieval-layer monitoring. Hybrid retrieval, reranking, and over-fetching can reduce some attacks, but they also complicate authorization because every extra candidate must still be permission-checked before it reaches context. |
+
+---
+
+## Implementation Notes
+
+**Default-deny retrieval path.** Treat vector retrieval as a privileged database read. The caller's tenant, role, data classification clearance, source-system permissions, and task scope should be computed server-side and injected into the query. The client should never be allowed to choose its own authorization filter.
+
+**Source ACL propagation.** For connector-based ingestion, preserve the source object's stable ID, ACL or policy reference, sensitivity label, owner, and revocation state before chunking. If the connector cannot provide reliable ACLs, route that content to a separate low-trust index rather than mixing it into the enterprise retrieval pool.
+
+**Pre-filter and post-filter tradeoff.** Pre-filtering keeps unauthorized content out of vector ranking and model context, but it depends on accurate metadata and filter support. Post-filtering is useful as a defense-in-depth check, but over-fetching can still reveal side channels through counts, scores, latency, and empty-answer patterns. Log both allowed and denied candidate counts.
+
+**Regression test set.** Maintain tenant canary documents, revoked documents, high-sensitivity documents, poisoned test chunks, semantic-cache collision probes, and stable benchmark queries. Run the set after connector changes, vector DB upgrades, embedding model changes, policy changes, and cache tuning.
+
+**Incident response.** Quarantine must operate by source ID, batch ID, embedding model version, and content hash, not only by vector ID. During a poisoning incident, responders need to remove or suppress every chunk derived from the bad source and then replay retrieval logs to identify affected users and responses.
+
+---
+
+## References
+
+* [OWASP LLM08:2025 Vector and Embedding Weaknesses](https://genai.owasp.org/llmrisk/llm082025-vector-and-embedding-weaknesses/)
+* [MITRE ATLAS data repository](https://github.com/mitre-atlas/atlas-data)
+* [PoisonedRAG: Knowledge Corruption Attacks to Retrieval-Augmented Generation of Large Language Models](https://www.usenix.org/conference/usenixsecurity25/presentation/zou-poisonedrag)
+* [RevPRAG: Revealing Poisoning Attacks in Retrieval-Augmented Generation through LLM Activation Analysis](https://aclanthology.org/2025.findings-emnlp.698/)
+* [Traceback of Poisoning Attacks to Retrieval-Augmented Generation](https://doi.org/10.1145/3696410.3714756)
+* [Can You Trust the Vectors in Your Vector Database? Black-Hole Attack from Embedding Space Defects](https://arxiv.org/abs/2604.05480)
+* [From Similarity to Vulnerability: Key Collision Attack on LLM Semantic Caching](https://arxiv.org/abs/2601.23088)
+* [Azure AI Search - Document-level access control](https://learn.microsoft.com/en-us/azure/search/search-document-level-access-overview)
+* [Databricks Mosaic AI Vector Search](https://docs.databricks.com/aws/en/vector-search/vector-search)
+* [Databricks Apps - Add a vector search index resource](https://docs.databricks.com/aws/en/dev-tools/databricks-apps/vector-search)
+* [Pinecone - Implement multitenancy](https://docs.pinecone.io/guides/get-started/implement-multitenancy)
+* [Weaviate - Multi-tenancy operations](https://weaviate.io/developers/weaviate/manage-data/multi-tenancy)
+* [Qdrant - Configure multitenancy](https://qdrant.tech/documentation/guides/multitenancy/)
+* [Authzed - Access Control in RAG with Pinecone and SpiceDB](https://authzed.com/docs/spicedb/integrations/pinecone)
+* [Authzed - Use SpiceDB with LangChain and LangGraph for RAG authorization](https://authzed.com/docs/spicedb/integrations/langchain-spicedb)
+* [Cerbos - Authorize RAG retrieval with dynamic filters](https://www.cerbos.dev/ecosystem/rag)
+* [OpenFGA - Introduction to fine-grained authorization](https://openfga.dev/docs/fga)
+* [Milvus release notes - v2.6.5 security update](https://milvus.io/docs/id/release_notes.md)
+* [NVD - CVE-2025-64513](https://nvd.nist.gov/vuln/detail/CVE-2025-64513)
+* [NIST AI RMF Generative AI Profile](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence)
+* [Regulation (EU) 2024/1689 - Artificial Intelligence Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj?locale=en)
+
+---
+
+## Related Pages
+
+- [C05-03: Query-Time Security Enforcement](../C05-Access-Control/C05-03-Query-Time-Security-Enforcement.md) - Covers mandatory security filters and fail-closed query behavior that C8.1 relies on for vector and search retrieval.
+- [C01-03: Data Labeling & Annotation Security](../C01-Training-Data/C01-03-Data-Labeling-Annotation-Security.md) - Connects provenance, label integrity, and annotator audit trails to the metadata that C8.1 preserves during ingestion.
+- [C05-02: Authorization Policy](../C05-Access-Control/C05-02-Authorization-Policy.md) - Provides the policy modeling, label propagation, and least-privilege foundation that retrieval filters need to inherit.
+- [C08-05: Scope Enforcement for User-Specific Memory](C08-05-Scope-Enforcement-User-Memory.md) - Extends these controls to user and agent memory, including namespace uniqueness and cross-user leakage tests.
+- [C08: Memory, Embeddings & Vector Databases](C08-Memory-and-Embeddings.md) - Frames this page alongside embedding sanitization, retention, inversion defense, and multi-tenant scope enforcement.
+
+---
+
+## Community Notes
+
+_Space for contributor observations, discussion, and context that doesn't fit elsewhere._
+
+---

@@ -1,0 +1,65 @@
+# C1.1: Training Data Origin & Traceability
+
+> [Back to C01 Index](C01-Training-Data.md)
+> **Last Researched:** 2026-05-02
+
+## Purpose
+
+Maintaining a verifiable inventory of every dataset, accepting only trusted sources, and logging every change for auditability are the load-bearing foundations of training-data security. Without knowing where data came from, who is responsible for it, and what happened to it over time, an organization cannot detect supply-chain compromise, trace poisoned samples back to their origin during incident response, or satisfy the regulatory pressure that has intensified sharply since 2024.
+
+The threat landscape is no longer theoretical. LAION's August 2024 Re-LAION-5B release removed 2,236 links to suspected CSAM from a web-scale training-data index after external safety review, a blunt reminder that "public web data" still needs source review, hash matching, and remediation records. In October 2025, Anthropic, the UK AI Security Institute, the Alan Turing Institute, and academic partners showed that as few as 250 malicious documents could backdoor LLMs across tested model sizes. The authors were careful about practical attacker constraints, but the finding lowers confidence in volume-based assumptions such as "the corpus is too large to poison." These are the failure modes C1.1 is trying to prevent: unknown data sources, weak source accountability, and no durable record of what was accepted into training.
+
+Regulatory traction has caught up with the threat model. California AB 2013 took effect January 1, 2026 and requires developers of publicly available generative AI systems to publish high-level training-data summaries covering sources and ownership, data characteristics and volume, collection and processing methods, IP status, personal-information status, collection timelines, and synthetic-data use. The EU AI Act's Article 10 obligations for high-risk AI systems become applicable August 2, 2026, demanding data governance over collection origin, preparation operations, assumptions, availability, suitability, limitations, and representativeness. Neither regime is satisfiable by a spreadsheet maintained by goodwill; both presuppose the kind of machine-readable inventory and change-log discipline this section describes.
+
+This section covers provenance metadata (origin, responsible party, license, collection method, intended-use constraints, processing history), minimization of unnecessary features and PII, logged approval gates on dataset changes, and fingerprinting or watermarking datasets for attribution and theft detection.
+
+---
+
+## Requirements
+
+| # | Requirement | Level | Threat Mitigated | Verification Approach | Gaps / Notes |
+|---|-------------|:-----:|-----------------|----------------------|--------------|
+| 1.1.1 | **Verify that** an up-to-date inventory of every training-data source (origin, responsible party, license, collection method, intended use constraints, and processing history) is maintained. | 1 | Supply-chain compromise via unknown or unvetted data sources (MITRE ATLAS AML.T0010.002 ML Supply Chain Compromise: Data; AML.T0019 Publish Poisoned Datasets); inability to trace poisoned samples or unsafe source material back to origin during incident response; weak evidence for California AB 2013 (effective Jan 1, 2026) and EU AI Act Article 10 (applicable Aug 2, 2026), both of which require dataset-source and preparation records. Anthropic's Oct 2025 poisoning study makes source accountability more important because small, targeted poison sets can matter even in large corpora. | Review the data catalog or asset inventory system. Practical options include DataHub, OpenMetadata, Marquez/OpenLineage, MLflow's `mlflow.data` tracking for run-linked source and digest metadata, and Unity Catalog when the stack is Databricks-centered. Confirm each dataset entry includes all six required metadata fields: origin, responsible party, license, collection method, intended-use constraints, and processing history. Spot-check source links, owners, licenses, and collection dates against upstream evidence. For AB 2013, confirm the public disclosure can be regenerated when a covered model is substantially modified. For EU AI Act Article 10, confirm the inventory emits timestamped evidence per pipeline run. Compare exported manifests against CycloneDX ML-BOM, SPDX 3.0 AI/Dataset profiles, or the OWASP AIBOM checklist. | Catalogs capture metadata but do not prove it is complete or true. Required fields can still be blank, owners can be stale, and lineage can break when ingestion jobs miss file-based or ad hoc transformations. Manual sampling remains necessary. MLflow is useful for experiment-linked dataset digests but is not a full governance catalog. Marquez/OpenLineage records job and dataset lineage well but usually needs a catalog for ownership, glossary, policy, and disclosure workflows. |
+| 1.1.2 | **Verify that** training data processes exclude unnecessary features, attributes, or fields (e.g., unused metadata, sensitive PII, leaked test data). | 1 | Data leakage through benchmark or holdout contamination; PII exposure in model weights via extraction or membership-inference attacks (MITRE ATLAS AML.T0044 Full ML Model Access, AML.T0057 LLM Data Leakage); larger GDPR/CCPA/HIPAA blast radius from retaining fields that the model does not need. LAION's 2024 remediation of unsafe links shows why large scraped corpora need repeatable exclusion and re-scan processes, not one-time review. | Review pipeline code and ETL configuration for explicit feature-selection steps; allow-listing is stronger than deny-listing. Confirm sensitive-data scanning is wired into ingest and significant transformations using tools such as Microsoft Presidio, AWS Macie for S3, Google Cloud Sensitive Data Protection, or an equivalent scanner. Verify test/validation/holdout separation at ingest time and use hashes or dataset split manifests to catch contamination. Inspect per-run PII and safety scan reports, then spot-check by rerunning a scanner over sampled records and diffing against the stored report. Confirm records that fail sensitive-data, source-policy, or holdout checks are rejected or quarantined before training. | Automated PII and safety classifiers have false negatives, especially for non-English data, domain-specific identifiers, images, and context-dependent personal information. They also do not decide which business features are unnecessary. Keep human review for high-risk datasets, require documented field-level rationale, and connect this control to C12.1 for privacy-specific minimization and anonymization checks. |
+| 1.1.3 | **Verify that** all dataset changes are subject to a logged approval workflow. | 1 | Unauthorized data modification or injection (MITRE ATLAS AML.T0020 Poison Training Data and AML.T0020.000 tainted data from acquisition); insider insertion of poisoned records; untracked composition drift that hides slow-burn poisoning; loss of operational evidence for EU AI Act Article 10. | Inspect dataset-level version control. lakeFS supports pull requests over data branches so reviewers can inspect diffs and run validation before merge; DVC supports data registries backed by Git history, pull requests, and CI/CD around `.dvc` and lockfile changes. Confirm the production branch is protected, merges require review, and checks for schema, PII, license, source policy, poisoning heuristics, and holdout leakage must pass. Verify audit logs capture approver identity, timestamp, justification, changed source set, and validation result. Check integration with GitHub/GitLab, Jira, MLflow, Airflow, or the MLOps platform so approval evidence survives incident response and compliance review. | lakeFS and DVC provide workflow primitives, but approval policy usually lives in the Git provider, CI system, or platform configuration. Plain S3 versioning, Git-LFS, or notebook-driven uploads may record object history without any review gate. For regulated or high-impact systems, require immutable logs and a break-glass procedure that records who bypassed the normal workflow and why. |
+| 1.1.4 | **Verify that** datasets or subsets are watermarked or fingerprinted where feasible. | 3 | Unauthorized redistribution of proprietary datasets (MITRE ATLAS AML.T0010.002 ML Supply Chain Compromise: Data); inability to prove whether a model saw a licensed or stolen dataset; weak copyright/license evidence for AB 2013 disclosures and AI-BOM attestations. | Check whether high-value datasets have a stored fingerprint or watermark before release or training. [Datasig](https://github.com/trailofbits/datasig) produces compact MinHash-based fingerprints for comparing dataset similarity without sharing raw data, which is useful for AI-BOM entries and incident triage. For text corpora, track emerging approaches such as SPECTRA-style paraphrase-guided training-data watermarking; for image-generation pipelines, monitor radioactive watermarking work such as HMARK for diffusion models. Confirm fingerprints or watermark keys are stored beside catalog entries, tied to dataset versions, and exercised in an annual detection test. | As of May 2026, dataset fingerprinting and radioactive data watermarks remain maturing controls rather than universal proof. Datasig is promising but prototype-oriented; MinHash similarity estimates are approximate and depend on canonicalization. Text watermarks can be weakened by paraphrasing, deduplication, or format conversion, and image watermarks vary by model family and fine-tuning method. Treat this as an attribution and deterrence layer, not the primary integrity control. |
+
+---
+
+## References
+
+* [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
+* [EU AI Act Article 10 — Data and Data Governance](https://artificialintelligenceact.eu/article/10/)
+* [California AB 2013 — Generative AI Training Data Transparency Act](https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202320240AB2013)
+* [MITRE ATLAS — Adversarial Threat Landscape for AI Systems](https://atlas.mitre.org/)
+* [OWASP LLM Top 10 — LLM03 Supply Chain](https://genai.owasp.org/llmrisk/llm03-training-data-poisoning/)
+* [OWASP AI-BOM Project](https://owaspaibom.org/)
+* [CycloneDX ML-BOM Capability](https://cyclonedx.org/capabilities/mlbom/)
+* [SPDX — Implementing an AI BOM](https://spdx.dev/implementing-an-ai-bom/)
+* [Anthropic — A Small Number of Samples Can Poison LLMs of Any Size](https://www.anthropic.com/research/small-samples-poison?from_blog=true)
+* [LAION — Re-LAION-5B Safety Fixes](https://laion.ai/blog/relaion-5b/)
+* [Datasig — Dataset Fingerprinting (Trail of Bits)](https://blog.trailofbits.com/2025/05/02/datasig-fingerprinting-ai/ml-datasets-to-stop-data-borne-attacks/)
+* [Microsoft Presidio — PII Detection and Anonymization](https://github.com/microsoft/presidio)
+* [Google Cloud Sensitive Data Protection](https://cloud.google.com/sensitive-data-protection/docs)
+* [Amazon Macie Managed Data Identifiers](https://docs.aws.amazon.com/macie/latest/user/managed-data-identifiers.html)
+* [MLflow Dataset Tracking](https://mlflow.org/docs/latest/ml/dataset/)
+* [DataHub — Metadata Platform](https://github.com/datahub-project/datahub)
+* [OpenMetadata — Metadata and Governance Platform](https://github.com/open-metadata/OpenMetadata)
+* [DVC Data Registry](https://dvc.org/doc/use-cases/data-registry)
+* [lakeFS Pull Requests](https://docs.lakefs.io/v1.70/howto/pull-requests/)
+* [OpenLineage — Metadata and Lineage Collection Standard](https://github.com/OpenLineage/OpenLineage)
+* [CISA Advisory AA25-142A — Securing Data for AI Systems](https://www.cisa.gov/news-events/cybersecurity-advisories/aa25-142a)
+* [SPECTRA — Paraphrase-Guided Training Data Watermarking](https://openreview.net/forum?id=3LRQTufBlb)
+* [HMARK — Radioactive Multi-Bit Semantic-Latent Watermarking](https://arxiv.org/abs/2512.00094)
+
+---
+
+## Related Pages
+
+* [C03-01 Model Authorization & Integrity](../C03-Model-Lifecycle-Management/C03-01-Model-Authorization-Integrity.md) - carries dataset provenance into model registry, signing, and deployment admission decisions.
+* [C01-05 Data Lineage & Traceability](C01-05-Data-Lineage-Traceability.md) - extends the source inventory through transformations, joins, synthetic data, and model-input reconstruction.
+* [C06-03 Third-Party Dataset Risk](../C06-Supply-Chain/C06-03-Third-Party-Dataset-Risk.md) - vets externally sourced datasets before they become trusted entries in the inventory required here.
+* [C06-05 AI-BOM & Model Artifacts](../C06-Supply-Chain/C06-05-AI-BOM-Model-Artifacts.md) - packages source, license, fingerprint, and lineage evidence into machine-readable AI-BOM records.
+* [C01-04 Training Data Quality & Security Assurance](C01-04-Training-Data-Quality-Security-Assurance.md) - tests the approved sources for schema failures, poison signals, label skew, and security-relevant quality drift.
+
+---

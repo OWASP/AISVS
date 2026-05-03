@@ -32,9 +32,9 @@ Restrict access to training data, encrypt it at rest and in transit, and validat
 | **1.2.1** | **Verify that** access controls protect training data storage and pipelines. | 1 |
 | **1.2.2** | **Verify that** all access to training data is logged, including user, time, and action. | 1 |
 | **1.2.3** | **Verify that** training datasets are encrypted in transit and at rest, using current recommended cryptographic algorithms and key management practices. | 1 |
-| **1.2.4** | **Verify that** cryptographic hashes or digital signatures are used to ensure data integrity during training data storage and transfer. | 2 |
-| **1.2.5** | **Verify that** automated integrity monitoring is applied to guard against unauthorized modifications or corruption of training data. | 2 |
-| **1.2.6** | **Verify that** obsolete training data is securely purged or anonymized. | 1 |
+| **1.2.4** | **Verify that** obsolete training data is securely purged or anonymized. | 1 |
+| **1.2.5** | **Verify that** cryptographic hashes or digital signatures are used to ensure data integrity during training data storage and transfer. | 2 |
+| **1.2.6** | **Verify that** automated integrity monitoring is applied to guard against unauthorized modifications or corruption of training data. | 2 |
 | **1.2.7** | **Verify that** all training dataset versions are uniquely identified, stored immutably, and auditable to support rollback and forensic analysis. | 3 |
 
 ---
@@ -62,9 +62,9 @@ Combine automated validation, manual spot-checks, and logged remediation to guar
 | **1.4.1** | **Verify that** automated tests catch format errors and nulls on every ingest or significant data transformation. | 1 |
 | **1.4.2** | **Verify that** training and fine-tuning pipelines implement data integrity validation and poisoning detection techniques (e.g., statistical analysis, outlier detection, embedding analysis) to identify potential data poisoning or unintentional corruption in training data. | 2 |
 | **1.4.3** | **Verify that** automatically generated labels (e.g., via models or weak supervision) are subject to confidence thresholds and consistency checks to detect misleading or low-confidence labels. | 2 |
-| **1.4.4** | **Verify that** appropriate defenses, such as adversarial training, data augmentation with perturbed inputs, or robust optimization techniques, are implemented and tuned for relevant models based on risk assessment. | 3 |
-| **1.4.5** | **Verify that** automated tests catch label skews on every ingest or significant data transformation. | 2 |
-| **1.4.6** | **Verify that** models used in security-relevant decisions (e.g., abuse detection, fraud scoring, automated trust decisions) are evaluated for systematic bias patterns that an adversary could exploit to evade controls (e.g., mimicking a trusted language style or demographic pattern to bypass detection). | 2 |
+| **1.4.4** | **Verify that** automated tests catch label skews on every ingest or significant data transformation. | 2 |
+| **1.4.5** | **Verify that** models used in security-relevant decisions (e.g., abuse detection, fraud scoring, automated trust decisions) are evaluated for systematic bias patterns that an adversary could exploit to evade controls (e.g., mimicking a trusted language style or demographic pattern to bypass detection). | 2 |
+| **1.4.6** | **Verify that** appropriate defenses, such as adversarial training, data augmentation with perturbed inputs, or robust optimization techniques, are implemented and tuned for relevant models based on risk assessment. | 3 |
 
 ---
 
