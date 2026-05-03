@@ -65,12 +65,8 @@ Prevent reconstruction of private training data or sensitive attributes from mod
 
 Detect and deter unauthorized model cloning through API abuse. Rate limiting, query-pattern analysis, and watermarking are recommended defenses.
 
-Thanks for the detailed review. All three points are valid. I'll split and trim accordingly.
-
-**Proposed restructuring:**
-
 | # | Description | Level |
-|---|---|---|
+| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **11.5.1** | **Verify that** inference endpoints enforce per-principal and global rate limits sized to the extraction threat model, and not solely as a generic API throttle. | 1 |
 | **11.5.2** | **Verify that** extraction-alert events include offending query metadata (e.g., source principal, query volume, input distribution statistics) to support investigation. | 2 |
 | **11.5.3** | **Verify that** query-pattern analysis (e.g., query diversity, input distribution anomalies) feeds an automated extraction-attempt detector. | 2 |
