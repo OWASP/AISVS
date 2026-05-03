@@ -449,15 +449,15 @@ Require human review and approval for high-impact, irreversible, or safety-criti
 | High-impact action approval gates (deploy, delete, financial, notify) | 9.2.1 |
 | Approval parameter binding (prevent approve-one-execute-another) | 9.2.2 |
 | High-impact intent confirmation with exact parameter binding and quick expiration | 9.2.3 |
-| Documented fail-closed default when human approval is not received within TTL | 14.2.3 |
+| Documented fail-closed default when human approval is not received within TTL | 14.2.2 |
 | Human review on anomaly detection | 11.6.3 |
 | High-risk model quarantine with human review and sign-off | 6.1.3 |
 | Post-condition outcome checking with containment on mismatch | 9.7.2 |
 | Compensating actions and transactional rollback on failure | 9.2.4 |
 | Manual kill-switch to halt model inference and outputs | 14.1.1 |
-| Intermediate operational degradation states (tool disable, model swap, read-only, source removal) | 14.1.5 |
-| Recurring exercise of kill-switch and intermediate-state mechanisms with response-time verification | 14.1.4 |
-| Out-of-band override and kill-switch channel for autonomous agents | 14.1.6 |
+| Intermediate operational degradation states (tool disable, model swap, read-only, source removal) | 14.1.3 |
+| Recurring exercise of kill-switch and intermediate-state mechanisms with response-time verification | 14.1.2 |
+| Out-of-band override and kill-switch channel for autonomous agents | 14.1.4 |
 
 **Common pitfalls:** documenting a high-risk action policy that is never wired to a runtime gate; binding approval to a hash of parameters without binding to identity or context (replay across sessions); confirmation tokens without quick expiration; defaulting to fail-open when the approver does not respond, silently bypassing the gate; assuming an in-band kill-switch will work against a compromised agent; kill-switch implemented but never exercised, atrophying until the moment it is needed.
 
