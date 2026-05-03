@@ -44,7 +44,8 @@ Syntactically valid prompts may request disallowed content such as policy-violat
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **2.3.1** | **Verify that** a content classifier scores every inbound prompt for violence, self-harm, hate, sexual content and illegal requests, with configurable thresholds, before the prompt is included in model context. | 1 |
+| **2.3.1** | **Verify that** a content classifier scores every inbound prompt for violence, self-harm, hate, sexual content and illegal requests, with configurable thresholds, before the prompt is included in model context. The classifier coverage is evaluated for all languages the underlying model may process, with gaps documented and compensating controls applied. | 1 |
+| **2.3.1** | **Verify that** a content classifier scores every inbound prompt for violence, self-harm, hate, sexual content, and illegal requests, rejects or sanitizes prompts that exceed configurable thresholds, before the prompt is included in model context. The classifier coverage is evaluated for all languages the underlying model may process, with gaps documented and compensating controls applied. | 1 |
 | **2.3.2** | **Verify that** inputs which violate policies are rejected so they do not propagate to downstream model or tool/MCP calls. | 1 |
 | **2.3.3** | **Verify that** screening logs include classifier confidence scores and policy category tags with applied stage (pre-prompt or post-response) and trace metadata (source, tool or MCP server, agent ID, session) for SOC correlation and future red-team replay. | 3 |
 
