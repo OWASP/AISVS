@@ -142,6 +142,7 @@ Validate, normalize, and constrain all inputs before they reach models or downst
 | Encoding and representation smuggling detection and mitigation | 2.2.3 |
 | Content classifiers for inbound prompts (hate, violence, sexual, illegal) | 2.3.1 |
 | Policy-violating input rejection before model propagation | 2.3.2 |
+| Cross-lingual classifier coverage evaluation and gap remediation | 2.3.3 |
 | User-specific and agent-aware policy screening | 2.1.9 |
 | Extracted and hidden content from non-text inputs treated as untrusted | 2.4.1 |
 | Adversarial perturbation detection on image/audio inputs | 2.4.2 |
