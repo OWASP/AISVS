@@ -76,7 +76,6 @@ Detect and deter unauthorized model cloning through API abuse. Rate limiting, qu
 | **11.5.7** | **Verify that** detection of anomalously broad output-space coverage triggers adaptive response measures proportional to estimated extraction risk. | 3 |
 | **11.5.8** | **Verify that** for classification or embedding endpoints served via API, per-principal output transformations are applied to prevent aggregation of outputs across multiple accounts for extraction purposes, while preserving downstream utility. | 3 |
 
-This keeps the originals (11.5.1-11.5.4) unchanged and adds four new single-concern controls. I'll update the PR with this structure.
 ---
 
 ## C11.6 Runtime Context Contamination Detection
