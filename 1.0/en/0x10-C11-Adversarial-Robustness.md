@@ -65,13 +65,22 @@ Prevent reconstruction of private training data or sensitive attributes from mod
 
 Detect and deter unauthorized model cloning through API abuse. Rate limiting, query-pattern analysis, and watermarking are recommended defenses.
 
-| # | Description | Level |
-| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.5.1** | **Verify that** inference endpoints enforce per-principal and global rate limits sized to the extraction threat model (not solely as a generic API throttle), that raw model outputs (e.g., full posterior probability distributions, raw model output vectors, internal label identifiers) are not directly exposed beyond the application backend, and that externally visible API responses minimize output informativeness by default (e.g., returning top-k predictions with truncated confidence scores), calibrated to the extraction risk level. | 1 |
-| **11.5.2** | **Verify that** extraction-alert events include offending query metadata (e.g., source principal, query volume, input distribution statistics) to support investigation. | 2 |
-| **11.5.3** | **Verify that** extraction-attempt detection incorporates both input-side query-pattern analysis (e.g., query diversity, input distribution anomalies) and output-side coverage analysis (e.g., monitoring the fraction of the embedding or output space covered by representations returned to each principal), and that detection of anomalously broad coverage triggers adaptive response measures such as progressive output degradation proportional to estimated extraction risk. | 2 |
-| **11.5.4** | **Verify that** model watermarking or fingerprinting techniques are applied so that unauthorized copies can be identified, and that where models are served via API, per-principal output transformations (e.g., unique affine transformations, permutations, or encoding schemes applied to returned representations) are used to prevent aggregation of outputs across multiple accounts for extraction purposes, while preserving downstream utility for legitimate users. | 3 |
+Thanks for the detailed review. All three points are valid. I'll split and trim accordingly.
 
+**Proposed restructuring:**
+
+| # | Description | Level |
+|---|---|---|
+| **11.5.1** | **Verify that** inference endpoints enforce per-principal and global rate limits sized to the extraction threat model, and not solely as a generic API throttle. | 1 |
+| **11.5.2** | **Verify that** extraction-alert events include offending query metadata (e.g., source principal, query volume, input distribution statistics) to support investigation. | 2 |
+| **11.5.3** | **Verify that** query-pattern analysis (e.g., query diversity, input distribution anomalies) feeds an automated extraction-attempt detector. | 2 |
+| **11.5.4** | **Verify that** model watermarking or fingerprinting techniques are applied so that unauthorized copies can be identified. | 3 |
+| **11.5.5** | **Verify that** raw model outputs (e.g., full posterior distributions, output vectors) are not directly exposed beyond the application backend, and that externally visible responses minimize output informativeness calibrated to the extraction risk level. | 1 |
+| **11.5.6** | **Verify that** output-side coverage analysis monitors the fraction of the output space covered by representations returned to each principal to detect extraction attempts. | 2 |
+| **11.5.7** | **Verify that** detection of anomalously broad output-space coverage triggers adaptive response measures proportional to estimated extraction risk. | 3 |
+| **11.5.8** | **Verify that** for classification or embedding endpoints served via API, per-principal output transformations are applied to prevent aggregation of outputs across multiple accounts for extraction purposes, while preserving downstream utility. | 3 |
+
+This keeps the originals (11.5.1-11.5.4) unchanged and adds four new single-concern controls. I'll update the PR with this structure.
 ---
 
 ## C11.6 Runtime Context Contamination Detection
