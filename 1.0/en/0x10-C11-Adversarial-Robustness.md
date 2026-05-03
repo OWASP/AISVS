@@ -65,10 +65,11 @@ Detect and deter unauthorized model cloning through API abuse. Rate limiting, qu
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.5.1** | **Verify that** inference endpoints enforce per-principal and global rate limits sized to the extraction threat model (not solely as a generic API throttle), and that API responses minimize output informativeness by default (e.g., returning top-k predictions with truncated confidence scores rather than full posterior probability distributions or logit vectors), calibrated to the extraction risk level. | 1 |
+| **11.5.1** | **Verify that** inference endpoints enforce per-principal and global rate limits sized to the extraction threat model (not solely as a generic API throttle), and that API responses minimize output informativeness by default (e.g., returning top-k predictions with truncated confidence scores rather than full posterior probability distributions or raw model output vectors), calibrated to the extraction risk level. | 1 |
 | **11.5.2** | **Verify that** extraction-alert events include offending query metadata (e.g., source principal, query volume, input distribution statistics) to support investigation. | 2 |
 | **11.5.3** | **Verify that** extraction-attempt detection incorporates both input-side query-pattern analysis (e.g., query diversity, input distribution anomalies) and output-side coverage analysis (e.g., monitoring the fraction of the embedding or output space covered by representations returned to each principal), and that detection of anomalously broad coverage triggers adaptive response measures such as progressive output degradation proportional to estimated extraction risk. | 2 |
 | **11.5.4** | **Verify that** model watermarking or fingerprinting techniques are applied so that unauthorized copies can be identified, and that where models are served via API, per-principal output transformations (e.g., unique affine transformations, permutations, or encoding schemes applied to returned representations) are used to prevent aggregation of outputs across multiple accounts for extraction purposes, while preserving downstream utility for legitimate users. | 3 |
+
 ---
 
 ## C11.6 Inference-Time Poisoned-Data Detection
