@@ -64,7 +64,7 @@ Combine automated validation, manual spot-checks, and logged remediation to guar
 | **1.4.3** | **Verify that** automatically generated labels (e.g., via models or weak supervision) are subject to confidence thresholds and consistency checks to detect misleading or low-confidence labels. | 2 |
 | **1.4.4** | **Verify that** automated tests catch label skews on every ingest or significant data transformation. | 2 |
 | **1.4.5** | **Verify that** models used in security-relevant decisions (e.g., abuse detection, fraud scoring, automated trust decisions) are evaluated for systematic bias patterns that an adversary could exploit to evade controls (e.g., mimicking a trusted language style or demographic pattern to bypass detection). | 2 |
-| **1.4.6** | **Verify that** appropriate defenses, such as adversarial training, data augmentation with perturbed inputs, or robust optimization techniques, are implemented and tuned for relevant models based on risk assessment. | 3 |
+| **1.4.6** | **Verify that** appropriate defenses, such as adversarial training, data augmentation with perturbed inputs, robust optimization techniques, or defenses against clean-label poisoning (e.g., input purification, k-NN filtering, data partitioning and aggregation), are implemented and tuned for relevant models based on risk assessment.
 
 ---
 
