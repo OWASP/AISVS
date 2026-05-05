@@ -171,6 +171,7 @@ Constrain, filter, and validate model outputs before they reach users or downstr
 | System prompt leakage detection in outputs (verbatim and paraphrased) | 7.3.2 |
 | Prevention of auto-triggered outbound requests from model-generated output | 7.3.3 |
 | System prompt and backend data removal from explanations | 7.5.1 |
+| RAG unsupported-claim blocking or redaction before serving | 7.6.4 |
 | Authorization-aware post-inference filtering (per-caller entitlement enforcement) | 5.4.1 |
 | Citation and attribution validation against caller entitlements | 5.4.2 |
 | MCP error response sanitization (no stack traces, tokens, internal paths) | 10.4.2 |
