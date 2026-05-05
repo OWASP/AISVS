@@ -28,13 +28,14 @@ Increase resilience to manipulated inputs designed to cause misclassification or
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.2.1** | **Verify that** models serving high-risk functions are evaluated against known adversarial attack techniques relevant to their modality (e.g., perturbation attacks for vision, token-manipulation attacks for text). | 1 |
+| **11.2.1** | **Verify that** models serving high-risk functions are evaluated against known adversarial attack techniques relevant to their modality (e.g., perturbation attacks for vision, token-manipulation attacks for text, trigger-based or instruction-injection backdoors where applicable). | 1 |
 | **11.2.2** | **Verify that** adversarial-example detection raises alerts in production pipelines, with blocking or degraded-capability responses for high-risk endpoints or use cases. | 2 |
 | **11.2.3** | **Verify that** adversarial training or equivalent hardening techniques are applied where feasible, with documented configurations and reproducible procedures. | 2 |
 | **11.2.4** | **Verify that** certified robustness metrics (e.g., certified radius, verified robust accuracy at defined perturbation bounds) are tracked and recorded per model version, and that degradation beyond defined thresholds triggers re-evaluation before deployment. | 2 |
 | **11.2.5** | **Verify that** robustness evaluations use adaptive attacks (attacks specifically designed to defeat the deployed defenses) to confirm no measurable robustness loss across releases. | 3 |
 | **11.2.6** | **Verify that** formal robustness verification methods (e.g., certified bounds, interval-bound propagation) are applied to safety-critical model components where the model architecture supports them. | 3 |
 | **11.2.7** | **Verify that** robustness certification or empirical robustness audits are repeated after all post-training transformations (fine-tuning, distillation, quantization, adapter merging) that consume the same base model. | 3 |
+| **11.2.8** | **Verify that** post-training model integrity verification techniques (e.g., activation clustering, spectral signature analysis, neural cleanse) are applied to detect potential backdoors or poisoning-induced behavioral anomalies, where such techniques exist for the model architecture. | 3 |
 
 ---
 
@@ -136,18 +137,6 @@ Protect security-relevant classifiers against adversaries who systematically pro
 | **11.10.3** | **Verify that** where bias-based evasion is identified as a material threat, adversarial hardening (e.g., adversarial training with per-subgroup loss constraints, ensemble diversity across training distributions) incorporates explicit subgroup robustness requirements, and that per-subgroup robustness metrics are verified not to regress across model releases. | 3 |
 
 ---
-
-## C11.11 Data and Model Poisoning Resistance
-
-Detect, resist, and recover from adversarial manipulation of training data, fine-tuning pipelines, or pre-trained model artifacts intended to compromise model integrity, embed backdoors, or degrade alignment. These controls address the adversarial robustness dimension of poisoning and complement the data integrity and traceability controls in C01.
-
-| # | Description | Level |
-| --- | --- | --- |
-| **11.11.1** | **Verify that** models serving high-risk functions are evaluated against known backdoor attack techniques relevant to their modality and training paradigm (e.g., trigger-based backdoors for vision models, instruction-injection backdoors for language models, feature-collision attacks for tabular classifiers), with documented test configurations and results. | 1 |
-| **11.11.2** | **Verify that** post-training model integrity verification techniques (e.g., activation clustering, spectral signature analysis, neural cleanse, or meta-classifier approaches) are applied to detect potential backdoors or poisoning-induced behavioral anomalies in trained models, regardless of model type or architecture. | 2 |
-| **11.11.3** | **Verify that** training data sanitization includes defenses against clean-label poisoning attacks (e.g., diffusion-based input cleaning, Deep k-NN filtering, or robust training via data partitioning and aggregation), in addition to the dirty-label detection methods covered by C01 (outlier detection, embedding analysis, label consistency checks). The choice of defense must be documented with rationale. | 2 |
-| **11.11.4** | **Verify that** fine-tuning pipelines (e.g., transfer learning, domain adaptation, RLHF, DPO, instruction tuning) include integrity monitoring for adversarial training data or reward manipulation, and that relevant evaluation suites (e.g., alignment testing per C11.1.2, robustness testing per C11.2) are repeated after fine-tuning to detect poisoning-induced degradation. This complements the adversarial evaluation required by C6.1.5 for transfer-learning imports by extending monitoring to alignment and reward-based fine-tuning pipelines. | 2 |
-| **11.11.5** | **Verify that** poisoning robustness evaluations are repeated after all post-training transformations (fine-tuning, distillation, quantization, adapter merging), as transformations may activate dormant backdoors or alter poisoning signatures. This complements C3.2.7 (safety/alignment suite re-evaluation) by specifically requiring poisoning-focused verification. | 3 |
 
 ## References
 
