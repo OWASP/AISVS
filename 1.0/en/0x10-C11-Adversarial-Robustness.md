@@ -71,7 +71,7 @@ Detect and deter unauthorized model cloning through API abuse. Rate limiting, qu
 | **11.5.2** | **Verify that** extraction-alert events include offending query metadata (e.g., source principal, query volume, input distribution statistics) to support investigation. | 2 |
 | **11.5.3** | **Verify that** query-pattern analysis (e.g., query diversity, input distribution anomalies, output-space coverage anomalies) feeds an automated extraction-attempt detector. | 2 |
 | **11.5.4** | **Verify that** model watermarking or fingerprinting techniques are applied so that unauthorized copies can be identified. | 3 |
-| **11.5.5** | **Verify that** raw model outputs (e.g., full posterior distributions, output vectors) are not directly exposed beyond the application backend, and that externally visible responses minimize output informativeness calibrated to the extraction risk level. | 1 |
+| **11.5.5** | **Verify that** raw model outputs (e.g., full posterior distributions, output vectors) are not directly exposed beyond the application backend, and that externally visible responses minimize output informativeness calibrated to the extraction risk level. | 2 |
 | **11.5.6** | **Verify that** detection of suspected extraction activity triggers adaptive response measures proportional to estimated extraction risk. | 3 |
 
 ---
