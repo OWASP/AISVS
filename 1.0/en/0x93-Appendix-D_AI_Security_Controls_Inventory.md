@@ -280,9 +280,10 @@ Manage model deployment, rollback, retirement, and emergency response.
 | Automated input validation testing before deployment | 3.2.1 |
 | Automated output sanitization testing before deployment | 3.2.2 |
 | Safety evaluations with pass/fail thresholds before deployment | 3.2.3 |
-| Agent workflow, tool, MCP, and RAG integration testing | 3.2.4 |
-| Immutable audit records for model changes | 3.2.5 |
-| Deployment validation with failure blocking and override approval | 3.2.7 |
+| Automatic deployment block on safety evaluation threshold failure | 3.2.4 |
+| Agent workflow, tool, MCP, and RAG integration testing | 3.2.5 |
+| Immutable audit records for model changes | 3.2.6 |
+| Deployment validation with failure blocking and override approval | 3.2.8 |
 | Canary / blue-green deployments with automated rollback triggers | 3.3.1 |
 | Parallel deployment cohort isolation (A/B, canary, shadow) | 3.3.3 |
 | Atomic state restoration on rollback (weights, config, adapters, safety models) | 3.3.2 |
@@ -382,7 +383,7 @@ Capture security-relevant events with integrity protection for forensic analysis
 | Policy decision and safety filtering action logging | 13.1.2 |
 | Audit log context fields sufficient for forensic reconstruction (actor, delegation, policy, parameters, outcomes) | 9.4.3 |
 | Agent action signing with chain ID binding and timestamps | 9.4.2 |
-| Immutable audit records for model changes (actor, change type, before/after) | 3.2.5 |
+| Immutable audit records for model changes (actor, change type, before/after) | 3.2.6 |
 | Generic audit log immutability and tamper-evidence | ASVS v5 V16.4.2 |
 | CI/CD audit log streaming to SIEM | ASVS v5 V16.4.3 |
 | Detection rules for anomalous package pulls and tampered build steps | ASVS v5 V16.3.3 |
