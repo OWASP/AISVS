@@ -15,7 +15,7 @@ Guard against harmful or policy-breaking outputs through systematic testing and 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **11.1.1** | **Verify that** refusal and safe-completion guardrails are enforced to prevent the model from generating disallowed content categories. | 1 |
-| **11.1.2** | **Verify that** an alignment test suite (red-team prompts, jailbreak probes, disallowed-content checks, and multilingual and language-switching jailbreak probes) is version-controlled and run on every model update or release. | 1 |
+| **11.1.2** | **Verify that** an alignment test suite, including red-team prompts, jailbreak probes, disallowed-content checks, and multilingual or code-switching abuse cases, is version-controlled and run on every model update or release. | 1 |
 | **11.1.3** | **Verify that** an automated evaluator measures harmful-content rate and flags regressions beyond a defined threshold. | 2 |
 | **11.1.4** | **Verify that** alignment and safety training procedures (e.g., RLHF, constitutional AI, or equivalent) are documented and reproducible. | 2 |
 | **11.1.5** | **Verify that** alignment evaluation includes assessments for evaluation awareness, where the model may behave differently when it detects it is being tested versus deployed. | 3 |

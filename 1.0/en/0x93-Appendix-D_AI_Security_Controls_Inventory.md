@@ -140,8 +140,9 @@ Validate, normalize, and constrain all inputs before they reach models or downst
 | Pre-tokenization input normalization (Unicode NFC, homoglyph mapping, control/invisible character removal, bidirectional text neutralization) | 2.2.1 |
 | Adversarial input quarantine and logging | 2.2.2 |
 | Encoding and representation smuggling detection and mitigation | 2.2.3 |
-| Content classifiers for inbound prompts (hate, violence, sexual, illegal) | 2.3.1 |
-| Policy-violating input rejection before model propagation | 2.3.2 |
+| Content classifiers for inbound prompts (hate, violence, sexual, illegal) with threshold-based rejection or sanitization | 2.3.1 |
+| Multilingual classifier gap evaluation with compensating controls (language detection, conservative thresholds, human review routing) | 2.3.2 |
+| Policy-violating input rejection before model propagation | 2.3.3 |
 | User-specific and agent-aware policy screening | 2.1.9 |
 | Extracted and hidden content from non-text inputs treated as untrusted | 2.4.1 |
 | Adversarial perturbation detection on image/audio inputs | 2.4.2 |
