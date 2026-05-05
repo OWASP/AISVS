@@ -32,7 +32,8 @@ Pre-screen content before vectorization; treat memory writes as untrusted inputs
 | **8.2.2** | **Verify that** content intended to poison retrieval (e.g., text crafted to project to attacker-chosen embedding neighborhoods, hidden instructions intended for downstream model context, or steganographic payloads in non-text inputs) is detected and rejected or quarantined before vectorization. | 1 |
 | **8.2.3** | **Verify that** vectors that fall outside normal clustering patterns are flagged and quarantined before entering production indices. | 2 |
 | **8.2.4** | **Verify that** an agent's own outputs are not automatically written back into its trusted memory without explicit validation (such as content-origin checks or write-authorization controls that verify the content's source before committing writes). | 2 |
-| **8.2.5** | **Verify that** new content written to memory is checked for contradictions with what is already stored and that conflicts trigger alerts. | 3 |
+| **8.2.5** | **Verify that** tool outputs and orchestration results are not automatically written to agent memory without the same source validation and write-authorization controls applied to the agent's own outputs. | 2 |
+| **8.2.6** | **Verify that** new content written to memory is checked for contradictions with what is already stored and that conflicts trigger alerts. | 3 |
 
 ---
 
