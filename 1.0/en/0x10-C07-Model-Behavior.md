@@ -12,6 +12,8 @@ General application output controls such as output encoding and escaping, parame
 
 Ensure the model outputs data in a way that helps prevent injection.
 
+> **Scope note:** 7.1.1 applies only to applications that expect structured output (e.g., JSON, XML, typed function-call responses). Free-form text outputs are out of scope for schema validation.
+
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
 | **7.1.1** | **Verify that** the application validates all model outputs against a strict schema (like JSON Schema) and rejects any output that does not match. | 1 |
