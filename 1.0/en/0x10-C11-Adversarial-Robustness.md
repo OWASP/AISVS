@@ -69,12 +69,10 @@ Detect and deter unauthorized model cloning through API abuse. Rate limiting, qu
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **11.5.1** | **Verify that** inference endpoints enforce per-principal and global rate limits sized to the extraction threat model, and not solely as a generic API throttle. | 1 |
 | **11.5.2** | **Verify that** extraction-alert events include offending query metadata (e.g., source principal, query volume, input distribution statistics) to support investigation. | 2 |
-| **11.5.3** | **Verify that** query-pattern analysis (e.g., query diversity, input distribution anomalies) feeds an automated extraction-attempt detector. | 2 |
+| **11.5.3** | **Verify that** query-pattern analysis (e.g., query diversity, input distribution anomalies, output-space coverage anomalies) feeds an automated extraction-attempt detector. | 2 |
 | **11.5.4** | **Verify that** model watermarking or fingerprinting techniques are applied so that unauthorized copies can be identified. | 3 |
 | **11.5.5** | **Verify that** raw model outputs (e.g., full posterior distributions, output vectors) are not directly exposed beyond the application backend, and that externally visible responses minimize output informativeness calibrated to the extraction risk level. | 1 |
-| **11.5.6** | **Verify that** output-side coverage analysis monitors the fraction of the output space covered by representations returned to each principal to detect extraction attempts. | 2 |
-| **11.5.7** | **Verify that** detection of anomalously broad output-space coverage triggers adaptive response measures proportional to estimated extraction risk. | 3 |
-| **11.5.8** | **Verify that** for classification or embedding endpoints served via API, per-principal output transformations are applied to prevent aggregation of outputs across multiple accounts for extraction purposes, while preserving downstream utility. | 3 |
+| **11.5.6** | **Verify that** detection of suspected extraction activity triggers adaptive response measures proportional to estimated extraction risk. | 3 |
 
 ---
 
