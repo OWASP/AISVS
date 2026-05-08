@@ -33,9 +33,9 @@ Require explicit checkpoints for privileged or irreversible outcomes.
 
 ---
 
-## C9.3 Tool and Plugin Isolation and Safe Integration
+## C9.3 Component Isolation and Safe Integration
 
-Constrain tool execution, loading, and outputs to prevent unauthorized system access and unsafe side effects.
+Constrain tool and plugin execution, loading, and outputs to prevent unauthorized system access and unsafe side effects.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -100,7 +100,7 @@ Prevent "technically authorized but unintended" actions by binding execution to 
 
 ---
 
-## C9.8 Multi-Agent Domain Isolation and Swarm Risk Controls
+## C9.8 Multi-Agent Domain Isolation and Risk Controls
 
 Reduce cross-domain interference and emergent unsafe collective behavior.
 
