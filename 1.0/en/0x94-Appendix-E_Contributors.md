@@ -45,6 +45,7 @@ please open an issue or pull request.
 * William Jawad ([wiljav](https://github.com/wiljav))
 * hackwither ([hackwither](https://github.com/hackwither))
 * Boone Carlson ([KeystoneSmartQuotes](https://github.com/KeystoneSmartQuotes))
+
 ---
 
 ## Reviewers
