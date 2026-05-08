@@ -32,19 +32,20 @@ Each of the 14 requirement chapters follows the same format:
 * **Requirement Tables.** Individual requirements are presented in tables with the following columns:
 
 | Column | Meaning |
-|---|---|
+| --- | --- |
 | **#** | Unique requirement identifier (e.g., 1.1.1, 9.3.2). |
 | **Description** | The requirement text, always beginning with "Verify that" to emphasize testability. |
 | **Level** | The verification level (1, 2, or 3) indicating the depth of assurance required. |
 
 ### Appendices
 
-Four appendices support the core requirements:
+Five appendices support the core requirements:
 
 * **Appendix A (Glossary)** defines key terms and acronyms used throughout the standard.
 * **Appendix B (References)** lists external standards, research, and frameworks referenced by AISVS requirements.
 * **Appendix C (AI-Assisted Secure Coding)** provides controls for the safe use of AI coding tools during software development.
 * **Appendix D (AI Security Controls Inventory)** is a cross-reference of every defense technique in AISVS, organized by security control category (authentication, authorization, encryption, input validation, and so on) with mappings back to specific requirement identifiers.
+* **Appendix E (Contributors)** lists the project leads, contributors, and reviewers who have shaped this standard.
 
 ## Scope Boundaries
 

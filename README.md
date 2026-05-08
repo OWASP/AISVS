@@ -103,6 +103,7 @@ Organizations should select a target level based on the risk profile of their AI
 * [Appendix B: References](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x91-Appendix-B_References.md)
 * [Appendix C: AI-Assisted Secure Coding](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x92-Appendix-C_AI_for_Code_Generation.md)
 * [Appendix D: AI Security Controls Inventory](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x93-Appendix-D_AI_Security_Controls_Inventory.md)
+* [Appendix E: Contributors](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x94-Appendix-E_Contributors.md)
 
 ---
 

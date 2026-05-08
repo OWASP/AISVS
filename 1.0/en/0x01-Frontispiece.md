@@ -8,7 +8,7 @@ Every requirement in AISVS has been developed from the ground up to reflect the 
 
 ## Copyright and License
 
-Version 1.0 (Working Draft), 2025
+Version 1.0 (Working Draft), 2026
 
 [![CC BY-SA 4.0](https://licensebuttons.net/l/by-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -25,25 +25,6 @@ For any reuse or distribution, you must clearly communicate the license terms of
 
 ## Contributors and Reviewers
 
-The following individuals have contributed to the AISVS through requirements authoring, review, or technical feedback:
+We have included a list of contributors and reviewers in [Appendix E](0x94-Appendix-E_Contributors.md).
 
-* [Josh Beck](https://github.com/Josh-Beck)
-* [Blake Gatto](https://github.com/BlakeGatto)
-* [Khalid Walid Alamri](https://github.com/khalidwalidalamri)
-* [Tetsuo Seto](https://github.com/tetsuoseto)
-* [Jim Schwoebel](https://github.com/jim-schwoebel)
-* [Vineeth Sai](https://github.com/vineethsai)
-* [Almog](https://github.com/almogbhl)
-* [Deepak Pandey](https://github.com/deepakrpandey12)
-* [Tametomo](https://github.com/Tametomo)
-* [Hari Mukundhan](https://github.com/harimukundhan)
-* [Jerry Hoff](https://github.com/jerryhoff)
-* [RogueValley](https://github.com/RogueValley)
-* [Mamicidal](https://github.com/mamicidal)
-* [Stu Small](https://github.com/stusmall)
-* [Wiljav](https://github.com/wiljav)
-* [Hackwither](https://github.com/hackwither)
-* [Kattn](https://github.com/kattn)
-* [mbhatt1](https://github.com/mbhatt1)
-* [cciprofm](https://github.com/cciprofm)
-* [thornshadow99](https://github.com/thornshadow99)
+If a credit is missing, please open an issue or pull request on GitHub to be recognized in future updates.
