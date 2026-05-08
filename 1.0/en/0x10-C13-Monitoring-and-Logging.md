@@ -8,6 +8,8 @@ This chapter focuses on controls unique to AI systems for monitoring, logging an
 
 Generic logging and operational controls (log storage access control, retention, backup, encryption at rest and in transit, sensitive-data redaction and masking, log tamper protection, SIEM integration, log shipping to a separate analysis system, generic alerting workflows, and operational telemetry such as latency, throughput, success/failure rates, error categorization, and CPU/GPU/memory/storage utilization) are covered by ASVS v5 (V12, V14, V16) and standard observability practice and are not repeated here.
 
+---
+
 ## C13.1 Request & Response Logging
 
 | # | Description | Level |
