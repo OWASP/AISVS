@@ -4,7 +4,7 @@
 
 Robust validation of all inputs is a first-line defense against some of the most damaging attacks on AI systems. Prompt injection attacks can override system instructions, leak sensitive data, or steer the model toward behavior that is not allowed. Unless dedicated filters and other validation is in place, research shows that jailbreaks that exploit context windows will continue to be effective. In agentic and multi-step systems, inputs from tools, retrieved documents, MCP server responses, and sub-agent outputs carry the same risks as direct user input and require the same validation pipeline.
 
-> **Scope note:** This chapter covers AI-specific input validation concerns that go beyond general application input validation. Standard input validation (schema enforcement, type checking, character allow-listing, rate limiting, file upload validation, server-side enforcement, logging of validation failures) is addressed by OWASP ASVS v5 chapters V1, V2, V4, V5, and V16, and should be implemented as a baseline. This chapter focuses on threats unique to AI systems: prompt injection, adversarial inputs targeting model behavior, AI-specific content screening, and multi-modal attack vectors.
+> **Scope:** Standard input validation (schema enforcement, type checking, character allow-listing, rate limiting, file upload validation, server-side enforcement, logging of validation failures) is addressed by OWASP ASVS v5 chapters V1, V2, V4, V5, and V16 and should be implemented as a baseline. This chapter focuses on threats unique to AI systems: prompt injection, adversarial inputs targeting model behavior, AI-specific content screening, and multi-modal attack vectors. For multi-modal inputs, standard file upload validation (type, size, format, malware scanning, path traversal prevention) is covered by ASVS v5 V5; this chapter addresses AI-specific risks such as adversarial perturbations, steganographic payloads, and cross-modal attacks.
 
 ---
 
@@ -53,8 +53,6 @@ Syntactically valid prompts may request disallowed content such as policy-violat
 ## C2.4 Multi-Modal Input Validation
 
 AI systems that accept non-textual inputs (images, audio, video, files) face unique attack vectors where malicious content can be embedded across modalities and extracted into text that feeds the model's context.
-
-> **Scope note:** Standard file upload validation (type, size, format, malware scanning, path traversal prevention) is covered by OWASP ASVS v5 chapter V5 and should be implemented as a baseline. This section addresses AI-specific risks: extraction of text from non-text inputs feeding into prompts, adversarial perturbations targeting model perception, and coordinated cross-modal attacks.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
