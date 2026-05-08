@@ -44,6 +44,7 @@ please open an issue or pull request.
 * Uncle Joe ([sydseter](https://github.com/sydseter))
 * William Jawad ([wiljav](https://github.com/wiljav))
 * hackwither ([hackwither](https://github.com/hackwither))
+* Boone Carlson ([KeystoneSmartQuotes](https://github.com/KeystoneSmartQuotes))
 
 ---
 
