@@ -2,9 +2,7 @@
 
 ## Control Objective
 
-Ensure secure discovery, authentication, authorization, transport, and use of MCP-based tool and resource integrations to prevent context confusion, unauthorized tool invocation, or cross-tenant data exposure.
-
-> **Scope:** This chapter focuses on MCP-protocol-specific controls. General agent authorization principles (model output must not override access control, delegation context, continuous authorization) are covered in C9.6; OAuth details in ASVS v5 V10. Execution budgets, circuit breakers, and human approval gates for agent-initiated actions are covered in C9.1 and C9.2. General agent sandbox isolation is covered in C9.3; multi-agent tenant and environment isolation in C9.8.
+Ensure secure discovery, authentication, authorization, transport, and use of MCP-based tool and resource integrations to prevent context confusion, unauthorized tool invocation, or cross-tenant data exposure. This chapter covers MCP-protocol-specific controls; general agent authorization is in C9.6, OAuth details in ASVS v5 V10, execution budgets and human approval gates in C9.1–C9.2, sandbox isolation in C9.3, and multi-agent tenant and environment isolation in C9.8.
 
 ---
 
