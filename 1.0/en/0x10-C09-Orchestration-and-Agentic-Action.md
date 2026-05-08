@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-Autonomous and multi-agent systems must execute only authorized, intended, and bounded actions. This chapter focuses on controls unique to agentic AI execution: agent-as-principal identity, agent action chains, model-output-driven authorization risk, intent verification of LLM-decided actions, and multi-agent swarm dynamics. Generic application security controls (transport encryption, schema validation, message integrity, log integrity, concurrency safety, supply chain integrity, service-account rotation, multi-tenant isolation, contextual authorization, and API-edge rate limiting) are covered by ASVS v5 (V2, V4, V8, V11, V12, V13, V15, V16), AISVS C9.4.3 (tamper-evident audit logs), and OWASP SCVS, and are not repeated here.
+Autonomous and multi-agent systems must execute only authorized, intended, and bounded actions. This chapter focuses on controls unique to agentic AI execution: agent-as-principal identity, agent action chains, model-output-driven authorization risk, intent verification of LLM-decided actions, and multi-agent group dynamics. Generic application security controls (transport encryption, schema validation, message integrity, log integrity, concurrency safety, supply chain integrity, service-account rotation, multi-tenant isolation, contextual authorization, and API-edge rate limiting) are covered by ASVS v5 (V2, V4, V8, V11, V12, V13, V15, V16), AISVS C9.4.3 (tamper-evident audit logs), and OWASP SCVS, and are not repeated here.
 
 Boundaries with adjacent controls determine what evidence satisfies each requirement. C9.1 execution budgets apply inside the orchestration runtime and do not substitute for API-edge rate limiting (ASVS v5 V2.4) or anti-extraction/anti-inversion throttling (C11.4, C11.5). C9.2 governs the runtime gate that blocks high-impact actions until approval is received; C14.2 defines the policy that classifies actions as high-risk and assigns approval authority; C13.6.4 covers logging of approval events. C9.5 covers semantic validation of agent-generated outputs flowing into downstream agents, while transport, schema, and replay protections are in ASVS v5 V4/V11/V12 and MCP-specific message and schema controls are in C10.4.
 
@@ -33,9 +33,9 @@ Require explicit checkpoints for privileged or irreversible outcomes.
 
 ---
 
-## C9.3 Tool and Plugin Isolation and Safe Integration
+## C9.3 Component Isolation and Safe Integration
 
-Constrain tool execution, loading, and outputs to prevent unauthorized system access and unsafe side effects.
+Constrain tool and plugin execution, loading, and outputs to prevent unauthorized system access and unsafe side effects.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -100,18 +100,18 @@ Prevent "technically authorized but unintended" actions by binding execution to 
 
 ---
 
-## C9.8 Multi-Agent Domain Isolation and Swarm Risk Controls
+## C9.8 Multi-Agent Domain Isolation and Risk Controls
 
 Reduce cross-domain interference and emergent unsafe collective behavior.
 
 | # | Description | Level |
 | :--: | --- | :---: |
 | **9.8.1** | **Verify that** agents in different tenants, security domains, or environments (dev/test/prod) run in isolated runtimes and network segments, with default-deny controls that prevent cross-domain discovery and calls. | 1 |
-| **9.8.2** | **Verify that** each agent is restricted to its own memory namespace and is technically prevented from reading or modifying peer agent state, preventing unauthorized cross-agent access within the same swarm. | 2 |
-| **9.8.3** | **Verify that** each agent operates with an isolated context window that peer agents cannot read or influence, preventing unauthorized cross-agent context access within the same swarm. | 3 |
+| **9.8.2** | **Verify that** each agent is restricted to its own memory namespace and is technically prevented from reading or modifying peer agent state, preventing unauthorized cross-agent access within the same multi-agent group. | 2 |
+| **9.8.3** | **Verify that** each agent operates with an isolated context window that peer agents cannot read or influence, preventing unauthorized cross-agent context access within the same multi-agent group. | 3 |
 | **9.8.4** | **Verify that** runtime monitoring detects unsafe emergent behavior (oscillation, deadlocks, uncontrolled broadcast, abnormal call graphs) and automatically applies corrective actions (throttle, isolate, terminate). | 3 |
-| **9.8.5** | **Verify that** swarm-level aggregate action rate limits (e.g., total external API calls, file writes, or network requests per time window across all agents) are enforced to prevent bursts that cause denial-of-service or abuse of external systems. | 3 |
-| **9.8.6** | **Verify that** a swarm-level shutdown capability exists that can halt all active agent instances or selected problematic instances in an organized fashion and prevents new agent spawning, with shutdown completable within a pre-defined response time. | 3 |
+| **9.8.5** | **Verify that** aggregate action rate limits across all agents in a group (e.g., total external API calls, file writes, or network requests per time window) are enforced to prevent bursts that cause denial-of-service or abuse of external systems. | 3 |
+| **9.8.6** | **Verify that** a group-level shutdown capability exists that can halt all active agent instances or selected problematic instances in an organized fashion and prevents new agent spawning, with shutdown completable within a pre-defined response time. | 3 |
 
 ---
 
