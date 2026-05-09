@@ -27,7 +27,7 @@ AISVS is modeled after the [OWASP Application Security Verification Standard (AS
 
 ## Project Leaders
 
-This project was founded by [Jim Manico](https://github.com/jmanico). Current project leadership includes [Jim Manico](https://github.com/jmanico), [Otto Sulin](https://github.com/ottosulin), [Rico Komenda](https://github.com/RicoKomenda), and [Russ Memisyazici](https://github.com/vtknightmare).
+This project was founded by [Jim Manico](https://github.com/jmanico). Current project leadership includes [Jim Manico](https://github.com/jmanico), [Otto Sulin](https://github.com/ottosulin), [Rico Komenda](https://github.com/RicoKomenda), and [Russ Memisyazici](https://linkedin.com/in/vtxmm).
 
 ---
 
