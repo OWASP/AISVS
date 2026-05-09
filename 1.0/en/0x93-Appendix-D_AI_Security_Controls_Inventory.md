@@ -17,8 +17,10 @@ Verify the identity of users, agents, services, MCP clients/servers, and edge de
 | Unique cryptographic agent and orchestrator identity | 9.4.1 |
 | First-class principal authentication (no end-user credential reuse) | 9.4.1 |
 | Agent identity credential rotation and rapid revocation | 9.4.4 |
-| OAuth 2.1 for MCP client authentication | 10.2.1 |
-| MCP server OAuth token validation (issuer, audience, expiration, scope) | 10.2.2 |
+| MCP client OAuth 2.1 token presentation per request | 10.2.1 |
+| MCP server OAuth 2.1 token validation (issuer, audience, expiration, scope) | 10.2.10 |
+| MCP server stateless constraint (no token or credential persistence) | 10.2.11 |
+| MCP server registration with explicit ownership | 10.2.2 |
 | MCP server registration with explicit ownership | 10.2.4 |
 | Cryptographically secure MCP session IDs (not used for auth) | 10.2.8 |
 
@@ -113,7 +115,8 @@ Verify authenticity and detect tampering of models, artifacts, messages, logs, a
 | Third-party model origin and integrity verification (signed records) | 6.1.1 |
 | Cryptographic signature validation for model publishers | 6.2.1, 6.2.2 |
 | Model watermarking and fingerprinting | 11.5.4 |
-| Execution chain cryptographic signing with non-repudiation timestamps | 9.4.2 |
+| Execution chain cryptographic binding (chain ID) for agent actions | 9.4.2 |
+| Agent action signing and timestamping for non-repudiation and traceability | 9.4.6 |
 | MCP component signature and checksum verification | 10.1.1 |
 | MCP schema integrity signing and tool definition hash tracking | 10.4.6, 10.4.5 |
 | Publisher key pinning per source registry with rotation re-approval | 6.2.2 |
@@ -131,6 +134,8 @@ Validate, normalize, and constrain all inputs before they reach models or downst
 | --- | --- |
 | Prompt injection detection ruleset / service | 2.1.1 |
 | Instruction hierarchy enforcement (system > developer > user) | 2.1.2 |
+| Instruction hierarchy preservation across multi-step and tool-augmented workflows | 2.1.10 |
+| Prompt composition constraint (user-controlled content cannot override system instructions) | 2.1.11 |
 | Per-request demonstration count limits in context window | 2.1.6 |
 | Many-shot jailbreaking pattern detection (systematic in-context behavioral override) | 2.1.7 |
 | In-context behavioral override attempts classified as prompt injection events | 2.1.8 |
@@ -138,6 +143,7 @@ Validate, normalize, and constrain all inputs before they reach models or downst
 | Third-party content sanitization | 2.1.5 |
 | Character set allow-listing for model prompt inputs | 2.1.4 |
 | Pre-tokenization input normalization (Unicode NFC, homoglyph mapping, control/invisible character removal, bidirectional text neutralization) | 2.2.1 |
+| Post-normalization suspicious artifact rejection or flagging | 2.2.4 |
 | Adversarial input quarantine and logging | 2.2.2 |
 | Encoding and representation smuggling detection and mitigation | 2.2.3 |
 | Content classifiers for inbound prompts (hate, violence, sexual, illegal) | 2.3.1 |
@@ -147,7 +153,9 @@ Validate, normalize, and constrain all inputs before they reach models or downst
 | Adversarial perturbation detection on image/audio inputs | 2.4.2 |
 | Cross-modal attack detection | 2.4.3 |
 | MCP input type checking, boundary validation, and enumeration enforcement | 10.4.4 |
-| MCP message-framing integrity and payload size limits | 10.4.3 |
+| MCP rejection of unrecognized or oversized function call parameters | 10.4.10 |
+| MCP message-framing integrity and strict schema validation | 10.4.3 |
+| MCP maximum payload size limits and malformed frame rejection | 10.4.9 |
 | MCP schema validation for tool and resource integrity | 10.4.6 |
 | Tool output schema and security policy validation before re-entry to agent | 9.3.3 |
 | MCP tool response validation (prompt injection, context manipulation) | 10.4.1 |
@@ -193,6 +201,7 @@ Enforce consumption bounds to prevent abuse, runaway execution, and denial-of-se
 | Wall-clock time and monetary spend caps | 9.1.1 |
 | Cumulative resource counters with hard-stop thresholds and circuit breaker enforcement | 9.1.2 |
 | Per-tool CPU, memory, disk, egress, and execution time limits with fail-closed termination on breach | 9.3.2 |
+| Quota and timeout breach logging (tool, exceeded limit, timestamp) | 9.3.6 |
 | Query-rate limiting for model extraction and inversion defense, sized to the threat model (e.g., the number of queries required to approximate the model or to reconstruct training records) rather than as a generic API throttle | 11.4.2, 11.5.1 |
 | Anomalous usage pattern detection and blocking | 13.2.3, ASVS v5 V2.4 |
 
@@ -340,7 +349,8 @@ Test for and defend against evasion, extraction, inversion, poisoning, and align
 | Red-team and jailbreak test suites (version-controlled) | 11.1.2 |
 | Automated harmful-content rate evaluation with regression detection | 11.1.3 |
 | RLHF / Constitutional AI alignment training | 11.1.4 |
-| Adversarial training and defensive distillation | 11.2.3 |
+| Adversarial training and equivalent hardening techniques applied where feasible | 11.2.3 |
+| Adversarial hardening configurations and procedures documented and reproducible | 11.2.9 |
 | Adversarially robust distillation — distill teacher into student using adversarial training so the student inherits robustness as well as accuracy (implementation example for 11.2.3) | 11.2.3 |
 | Certified robustness metrics tracking per model version with degradation alerting | 11.2.4 |
 | Formal robustness verification (certified bounds, interval-bound propagation) | 11.2.6 |
@@ -375,13 +385,15 @@ Capture security-relevant events with integrity protection for forensic analysis
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Prompt and response logging with metadata (timestamp, user ID, session, model version) | 13.1.1 |
+| AI interaction logging with security-relevant metadata (timestamp, user ID, session, model version, safety filter outcomes) | 13.1.1 |
+| Prompt and response content excluded from AI interaction logs by default | 13.1.5 |
 | Secure, access-controlled log repositories with retention policies | 13.1.2 |
 | Log encryption at rest and in transit | 13.1.3 |
 | PII, credential, and proprietary information redaction in logs | 13.1.4 |
 | Policy decision and safety filtering action logging | 13.1.2 |
 | Audit log context fields sufficient for forensic reconstruction (actor, delegation, policy, parameters, outcomes) | 9.4.3 |
-| Agent action signing with chain ID binding and timestamps | 9.4.2 |
+| Agent action cryptographic chain ID binding | 9.4.2 |
+| Agent action signing and timestamping for non-repudiation | 9.4.6 |
 | Immutable audit records for model changes (actor, change type, before/after) | 3.2.5 |
 | Generic audit log immutability and tamper-evidence | ASVS v5 V16.4.2 |
 | CI/CD audit log streaming to SIEM | ASVS v5 V16.4.3 |
@@ -406,7 +418,10 @@ Detect anomalies, alert on threats, and respond to security incidents in AI syst
 | Behavioral anomaly detection (unusual patterns, excessive retries, systematic probing) | 13.2.3, 13.2.5 |
 | Detection rules for AI-specific attack patterns (jailbreak campaigns, prompt injection, system prompt extraction, model extraction) | 13.2.4 |
 | Automated incident response (isolation and blocking of compromised models and malicious users) | 13.2.6 |
-| Performance metric monitoring (accuracy, latency, error rate) with alerting | 13.3.1, 13.3.3, 13.3.4 |
+| Continuous performance metric monitoring across model versions (accuracy, latency, error rate) | 13.3.1 |
+| Monitored metric comparison against documented baselines with deviation flagging | 13.3.13 |
+| Baseline documentation, version control, and periodic review | 13.3.3 |
+| Automated alerting on metric degradation beyond defined thresholds | 13.3.4 |
 | Performance degradation retraining and replacement workflow triggers | 13.3.8 |
 | Hallucination detection monitoring | 13.3.5 |
 | Hallucination rate time-series tracking | 13.3.9 |
@@ -450,6 +465,7 @@ Require human review and approval for high-impact, irreversible, or safety-criti
 | Approval parameter binding (prevent approve-one-execute-another) | 9.2.2 |
 | High-impact intent confirmation with exact parameter binding and quick expiration | 9.2.3 |
 | Documented fail-closed default when human approval is not received within TTL | 14.2.3 |
+| Non-fail-closed default classification as high-risk policy decision requiring explicit authorization | 14.2.4 |
 | Human review on anomaly detection | 11.6.3 |
 | High-risk model quarantine with human review and sign-off | 6.1.3 |
 | Post-condition outcome checking with containment on mismatch | 9.7.2 |

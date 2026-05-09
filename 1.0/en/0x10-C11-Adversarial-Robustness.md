@@ -30,7 +30,8 @@ Increase resilience to manipulated inputs designed to cause misclassification or
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **11.2.1** | **Verify that** models serving high-risk functions are evaluated against known adversarial attack techniques relevant to their modality (e.g., perturbation attacks for vision, token-manipulation attacks for text). | 1 |
 | **11.2.2** | **Verify that** adversarial-example detection raises alerts in production pipelines, with blocking or degraded-capability responses for high-risk endpoints or use cases. | 2 |
-| **11.2.3** | **Verify that** adversarial training or equivalent hardening techniques are applied where feasible, with documented configurations and reproducible procedures. | 2 |
+| **11.2.3** | **Verify that** adversarial training or equivalent hardening techniques are applied where feasible. | 2 |
+| **11.2.9** | **Verify that** adversarial hardening configurations and procedures are documented and reproducible. | 2 |
 | **11.2.4** | **Verify that** certified robustness metrics (e.g., certified radius, verified robust accuracy at defined perturbation bounds) are tracked and recorded per model version, and that degradation beyond defined thresholds triggers re-evaluation before deployment. | 2 |
 | **11.2.5** | **Verify that** robustness evaluations use adaptive attacks (attacks specifically designed to defeat the deployed defenses) to confirm no measurable robustness loss across releases. | 3 |
 | **11.2.6** | **Verify that** formal robustness verification methods (e.g., certified bounds, interval-bound propagation) are applied to safety-critical model components where the model architecture supports them. | 3 |
@@ -81,7 +82,8 @@ Identify and neutralize manipulated, backdoored, or adversarial data entering th
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **11.6.1** | **Verify that** inputs from external or untrusted sources pass through anomaly detection (e.g., statistical outlier detection, consistency scoring) before model inference. | 2 |
-| **11.6.2** | **Verify that** anomaly-detection thresholds are tuned on representative clean and adversarial validation sets and that the false-positive rate is measured and documented. | 2 |
+| **11.6.2** | **Verify that** anomaly-detection thresholds are tuned on representative clean and adversarial validation sets. | 2 |
+| **11.6.6** | **Verify that** the false-positive rate of anomaly detection is measured on representative data and documented per model version. | 2 |
 | **11.6.3** | **Verify that** inputs flagged as anomalous trigger gating actions (blocking, capability degradation, or human review) appropriate to the risk level. | 2 |
 | **11.6.4** | **Verify that** detection methods are periodically stress-tested with current adversarial techniques, including adaptive attacks designed to evade the specific detectors in use. | 3 |
 | **11.6.5** | **Verify that** detection efficacy metrics are logged and periodically re-evaluated against updated threat intelligence. | 3 |
