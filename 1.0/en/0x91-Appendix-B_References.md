@@ -11,6 +11,7 @@ The following standards, frameworks, and publications are referenced throughout 
 * [OWASP Top 10 for Large Language Model Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 * [OWASP Secure Coding Practices: Quick Reference Guide](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/)
 * [MITRE ATLAS: Adversarial Threat Landscape for AI Systems](https://atlas.mitre.org/)
+* [Agent Threat Rules (ATR)](https://github.com/Agent-Threat-Rule/agent-threat-rules) — Open detection standard providing executable Sigma/YARA-style YAML rules for AI agent threats, with cross-walks to OWASP Agentic Top 10, MITRE ATLAS, NIST AI RMF, and SAFE-MCP.
 
 ## Specifications and Protocols
 
