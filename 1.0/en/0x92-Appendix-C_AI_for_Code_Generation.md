@@ -36,7 +36,7 @@ Prevent leakage of secrets, proprietary code, and personal data when constructin
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **AC.3.1** | **Verify that** written guidance prohibits sending secrets, credentials, or classified data in prompts. | 1 |
+| **AC.3.1** | **Verify that** documented guidance specifies that secrets, credentials, and classified data must not be included in prompts sent to AI tools. | 1 |
 | **AC.3.2** | **Verify that** technical controls (client-side redaction, approved context filters) automatically strip sensitive artifacts. | 2 |
 | **AC.3.3** | **Verify that** prompts and responses are tokenized, encrypted in transit and at rest, and retention periods comply with data-classification policy. | 3 |
 
@@ -49,8 +49,9 @@ Detect and remediate vulnerabilities introduced by AI output before the code is 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
 | **AC.4.1** | **Verify that** AI-generated code is always subjected to human code review. | 1 |
-| **AC.4.2** | **Verify that** automated scanners (SAST/IAST/DAST) run on every pull request containing AI-generated code and block merges on critical findings. | 2 |
-| **AC.4.3** | **Verify that** differential fuzz testing or property-based tests prove security-critical behaviors (e.g., input validation, authorization logic). | 3 |
+| **AC.4.2** | **Verify that** automated scanners (SAST/IAST/DAST) run on every pull request containing AI-generated code. | 2 |
+| **AC.4.3** | **Verify that** pull requests containing AI-generated code are blocked from merging when automated scans identify critical security findings. | 2 |
+| **AC.4.4** | **Verify that** differential fuzz testing or property-based tests prove security-critical behaviors (e.g., input validation, authorization logic). | 3 |
 
 ---
 
