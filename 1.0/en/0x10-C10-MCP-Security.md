@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-Ensure secure discovery, authentication, authorization, transport, and use of MCP-based tool and resource integrations to prevent context confusion, unauthorized tool invocation, or cross-tenant data exposure.
+Ensure secure discovery, authentication, authorization, transport, and use of MCP-based tool and resource integrations to prevent context confusion, unauthorized tool invocation, or cross-tenant data exposure. This chapter covers MCP-protocol-specific controls; general agent authorization is in C9.6, OAuth details in ASVS v5 V10, execution budgets and human approval gates in C9.1–C9.2, sandbox isolation in C9.3, and multi-agent tenant and environment isolation in C9.8.
 
 ---
 
@@ -17,8 +17,6 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 ---
 
 ## C10.2 Authentication & Authorization
-
-> **Scope note:** General agent authorization principles (model output must not override access control, delegation context, continuous authorization) are covered in C9.6. Controls in this section address MCP-protocol-specific authentication and authorization mechanisms. Refer to ASVSv5 V10 for OAuth specific details.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -64,8 +62,6 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 
 ## C10.5 Outbound Access & Agent Execution Safety
 
-> **Scope note:** Execution budgets, circuit breakers, and human approval gates for agent-initiated actions (including MCP tool invocations) are covered in C9.1 and C9.2. Controls in this section address MCP-specific outbound network constraints.
-
 | # | Description | Level |
 | :--: | --- | :---: |
 | **10.5.1** | **Verify that** MCP servers may only initiate outbound requests to approved internal or external destinations following least-privilege egress policies and cannot access arbitrary network targets or internal cloud metadata services. | 2 |
@@ -73,8 +69,6 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 ---
 
 ## C10.6 Transport Restrictions & High-Risk Boundary Controls
-
-> **Scope note:** General agent sandbox isolation is covered in C9.3. Tenant and environment isolation for multi-agent systems is covered in C9.8. Controls in this section address MCP-specific transport and dispatch restrictions.
 
 | # | Description | Level |
 | :--: | --- | :---: |
