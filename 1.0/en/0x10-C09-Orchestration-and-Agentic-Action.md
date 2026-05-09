@@ -40,10 +40,12 @@ Constrain tool and plugin execution, loading, and outputs to prevent unauthorize
 | # | Description | Level |
 | :--: | --- | :---: |
 | **9.3.1** | **Verify that** each tool/plugin executes in an isolated sandbox (container/VM/WASM/OS sandbox) with least-privilege filesystem, network egress, and syscall permissions appropriate to the tool's function. | 1 |
-| **9.3.2** | **Verify that** per-tool quotas and timeouts (CPU, memory, disk, egress, execution time) are enforced and logged, and that quota or timeout breaches fail closed by terminating the tool execution rather than continuing with degraded or uncontrolled behavior. | 1 |
+| **9.3.2** | **Verify that** per-tool quotas and timeouts (CPU, memory, disk, egress, execution time) are enforced, and that quota or timeout breaches fail closed by terminating the tool execution rather than continuing with degraded or uncontrolled behavior. | 1 |
 | **9.3.3** | **Verify that** tool outputs are validated against strict schemas and security policies before being incorporated into downstream reasoning or follow-on actions. | 1 |
-| **9.3.4** | **Verify that** tool manifests declare required privileges, side-effect level, resource limits, and output validation requirements, and that the runtime enforces these declarations. | 2 |
-| **9.3.5** | **Verify that** sandbox escape indicators or policy violations trigger automated containment (tool disabled/quarantined). | 3 |
+| **9.3.4** | **Verify that** quota and timeout breaches are logged with sufficient detail to identify the tool, the exceeded limit, and the time of breach. | 1 |
+| **9.3.5** | **Verify that** tool manifests declare required privileges, side-effect level, resource limits, and output validation requirements. | 2 |
+| **9.3.6** | **Verify that** the orchestration runtime enforces the declarations specified in tool manifests for required privileges, side-effect level, resource limits, and output validation. | 2 |
+| **9.3.7** | **Verify that** sandbox escape indicators or policy violations trigger automated containment (tool disabled/quarantined). | 3 |
 
 ---
 
@@ -54,10 +56,11 @@ Make every action attributable and every mutation detectable.
 | # | Description | Level |
 | :--: | --- | :---: |
 | **9.4.1** | **Verify that** each agent instance (and orchestrator/runtime) has a unique cryptographic identity and authenticates as a first-class principal to downstream systems (no reuse of end-user credentials). | 1 |
-| **9.4.2** | **Verify that** agent-initiated actions are cryptographically bound to the execution chain (chain ID) and are signed and timestamped for non-repudiation and traceability. | 2 |
+| **9.4.2** | **Verify that** agent-initiated actions are cryptographically bound to the execution chain (chain ID). | 2 |
 | **9.4.3** | **Verify that** audit log records include sufficient context to reconstruct who/what acted, the initiating user identifier, delegation scope, authorization decision (policy/version), tool parameters, approvals (where applicable), and outcomes. | 2 |
-| **9.4.4** | **Verify that** agent identity credentials (keys/certs/tokens) rotate on a defined schedule and on compromise indicators, with rapid revocation and quarantine on suspected compromise or spoofing attempts. | 3 |
-| **9.4.5** | **Verify that** agent state persisted between invocations (including memory, task context, goals, and partial results) is integrity-protected (e.g., via cryptographic MACs or signatures), and that the runtime rejects or quarantines state that fails integrity verification before resuming execution. | 3 |
+| **9.4.4** | **Verify that** agent-initiated actions are signed and timestamped for non-repudiation and traceability. | 2 |
+| **9.4.5** | **Verify that** agent identity credentials (keys/certs/tokens) rotate on a defined schedule and on compromise indicators, with rapid revocation and quarantine on suspected compromise or spoofing attempts. | 3 |
+| **9.4.6** | **Verify that** agent state persisted between invocations (including memory, task context, goals, and partial results) is integrity-protected (e.g., via cryptographic MACs or signatures), and that the runtime rejects or quarantines state that fails integrity verification before resuming execution. | 3 |
 
 ---
 
