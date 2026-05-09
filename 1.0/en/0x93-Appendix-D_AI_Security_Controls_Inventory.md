@@ -343,11 +343,12 @@ Test for and defend against evasion, extraction, inversion, poisoning, and align
 | Red-team and jailbreak test suites (version-controlled) | 11.1.2 |
 | Automated harmful-content rate evaluation with regression detection | 11.1.3 |
 | RLHF / Constitutional AI alignment training | 11.1.4 |
-| Adversarial training and defensive distillation | 11.2.3 |
+| Adversarial training and equivalent hardening techniques applied where feasible | 11.2.3 |
+| Adversarial hardening configurations and procedures documented and reproducible | 11.2.5 |
 | Adversarially robust distillation — distill teacher into student using adversarial training so the student inherits robustness as well as accuracy (implementation example for 11.2.3) | 11.2.3 |
 | Certified robustness metrics tracking per model version with degradation alerting | 11.2.4 |
-| Formal robustness verification (certified bounds, interval-bound propagation) | 11.2.6 |
-| Post-transformation robustness re-certification (fine-tuning, distillation, quantization, adapter merging) | 11.2.7 |
+| Formal robustness verification (certified bounds, interval-bound propagation) | 11.2.7 |
+| Post-transformation robustness re-certification (fine-tuning, distillation, quantization, adapter merging) | 11.2.8 |
 | Adversarial-example detection with production alerting | 11.2.2 |
 | Model ensemble as evasion containment — route queries through independently trained models and flag disagreement beyond a threshold (implementation example for 11.2.2) | 11.2.2 |
 | Output calibration and perturbation for privacy | 11.3.1 |
@@ -357,7 +358,7 @@ Test for and defend against evasion, extraction, inversion, poisoning, and align
 | Membership inference attack simulation (shadow-model, likelihood-ratio) | 11.3.3 |
 | Model extraction detection (query-pattern analysis, diversity measurement) | 11.5.3 |
 | Statistical outlier and consistency scoring on external inputs | 11.6.1 |
-| Adaptive attack evasion testing | 11.6.4 |
+| Adaptive attack evasion testing | 11.6.5 |
 | AI-augmented review of high-risk agent actions (secondary model, structured self-review, ensemble-of-judges) supplementing the deterministic policy gate (C9.7.1) | 11.8.1 |
 | AI-augmented review mechanism protected against prompt-injection bypass | 11.8.2 |
 | Self-modification restriction with scope bounds and rate limits | 11.9.1, 11.9.5 |
