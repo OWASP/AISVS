@@ -452,7 +452,8 @@ Require human review and approval for high-impact, irreversible, or safety-criti
 | High-impact action approval gates (deploy, delete, financial, notify) | 9.2.1 |
 | Approval parameter binding (prevent approve-one-execute-another) | 9.2.2 |
 | High-impact intent confirmation with exact parameter binding and quick expiration | 9.2.3 |
-| Documented fail-closed default when human approval is not received within TTL | 14.2.2 |
+| Fail-closed default action (block pending action) when human approval is not received within TTL | 14.2.2 |
+| Any non-fail-closed TTL-expiry default explicitly authorized and classified as a high-risk policy decision requiring approval authority sign-off | 14.2.3 |
 | Human review on anomaly detection | 11.6.3 |
 | High-risk model quarantine with human review and sign-off | 6.1.3 |
 | Post-condition outcome checking with containment on mismatch | 9.7.2 |
