@@ -17,10 +17,12 @@ Verify the identity of users, agents, services, MCP clients/servers, and edge de
 | Unique cryptographic agent and orchestrator identity | 9.4.1 |
 | First-class principal authentication (no end-user credential reuse) | 9.4.1 |
 | Agent identity credential rotation and rapid revocation | 9.4.4 |
-| OAuth 2.1 for MCP client authentication | 10.2.1 |
-| MCP server OAuth token validation (issuer, audience, expiration, scope) | 10.2.2 |
-| MCP server registration with explicit ownership | 10.2.4 |
-| Cryptographically secure MCP session IDs (not used for auth) | 10.2.8 |
+| MCP client OAuth 2.1 token presentation per request | 10.2.1 |
+| MCP server OAuth 2.1 token validation (issuer, audience, expiration, scope) | 10.2.4 |
+| MCP server stateless constraint (no token or credential persistence) | 10.2.5 |
+| MCP server registration with explicit ownership | 10.2.2 |
+| MCP server registration with explicit ownership | 10.2.6 |
+| Cryptographically secure MCP session IDs (not used for auth) | 10.2.10 |
 
 **Common pitfalls:** reusing end-user credentials for agent-to-agent calls; using MCP session IDs as authentication tokens; not rotating agent credentials on suspected compromise.
 
@@ -41,9 +43,9 @@ Enforce access decisions across users, agents, tools, data, and MCP resources us
 | Delegation context propagation with integrity protection (user, tenant, scopes) | 9.6.2 |
 | Application-layer policy enforcement (model output cannot bypass) | 9.6.3 |
 | Pre-execution policy constraint gates (deny rules, allow-lists, budgets) | 9.7.1 |
-| Scope-filtered MCP tool discovery (tools/list) | 10.2.6 |
-| Per-tool MCP invocation access control (argument, token scope) | 10.2.7 |
-| MCP policy enforcement that model output cannot bypass | 10.2.5 |
+| Scope-filtered MCP tool discovery (tools/list) | 10.2.8 |
+| Per-tool MCP invocation access control (argument, token scope) | 10.2.9 |
+| MCP policy enforcement that model output cannot bypass | 10.2.7 |
 | Authorization-aware post-inference filtering (per-caller entitlement enforcement) | 5.4.1 |
 | Citation and attribution validation against caller entitlements | 5.4.2 |
 | Agent PDP runtime isolation from agent execution environment | 5.5.1 |
@@ -115,7 +117,7 @@ Verify authenticity and detect tampering of models, artifacts, messages, logs, a
 | Model watermarking and fingerprinting | 11.5.4 |
 | Execution chain cryptographic signing with non-repudiation timestamps | 9.4.2 |
 | MCP component signature and checksum verification | 10.1.1 |
-| MCP schema integrity signing and tool definition hash tracking | 10.4.6, 10.4.5 |
+| MCP schema integrity signing and tool definition hash tracking | 10.4.8, 10.4.5 |
 | Publisher key pinning per source registry with rotation re-approval | 6.2.2 |
 | Agent persisted state integrity protection (MAC/signature, rejection on failure) | 9.4.5 |
 
@@ -148,8 +150,10 @@ Validate, normalize, and constrain all inputs before they reach models or downst
 | Adversarial perturbation detection on image/audio inputs | 2.4.2 |
 | Cross-modal attack detection | 2.4.3 |
 | MCP input type checking, boundary validation, and enumeration enforcement | 10.4.4 |
-| MCP message-framing integrity and payload size limits | 10.4.3 |
-| MCP schema validation for tool and resource integrity | 10.4.6 |
+| MCP rejection of unrecognized or oversized function call parameters | 10.4.7 |
+| MCP message-framing integrity and strict schema validation | 10.4.3 |
+| MCP maximum payload size limits and malformed frame rejection | 10.4.6 |
+| MCP schema validation for tool and resource integrity | 10.4.8 |
 | Tool output schema and security policy validation before re-entry to agent | 9.3.3 |
 | MCP tool response validation (prompt injection, context manipulation) | 10.4.1 |
 
@@ -233,8 +237,8 @@ Control network boundaries, traffic flow, and outbound access for AI workloads.
 | Separate IAM roles and security groups per environment with no shared principals | 4.3.6 |
 | Restricted administrative access and cloud metadata service blocking | 4.3.3 |
 | Egress traffic restriction to approved destinations with logging | 4.3.5 |
-| MCP egress allow-list with cloud metadata service blocking | 10.5.1 |
-| MCP dynamic dispatch and reflective invocation prevention | 10.6.2 |
+| MCP outbound egress restricted to approved destinations (all others blocked by default) | 10.5.1 |
+| MCP function invocation restricted to statically defined allow-listed names | 10.6.2 |
 | Default-deny cross-domain agent discovery and calls | 9.8.1 |
 | Origin and Host header validation for DNS rebinding defense | 10.3.3 |
 | SSE public internet blocking | 10.3.2 |
