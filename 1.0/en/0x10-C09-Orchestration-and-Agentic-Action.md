@@ -39,7 +39,7 @@ Constrain tool and plugin execution, loading, and outputs to prevent unauthorize
 
 | # | Description | Level |
 | :--: | --- | :---: |
-| **9.3.1** | **Verify that** each tool/plugin executes in an isolated sandbox (container/VM/WASM/OS sandbox) with least-privilege filesystem, network egress, and syscall permissions appropriate to the tool's function. | 1 |
+| **9.3.1** | **Verify that** each tool/plugin executes in an isolated sandbox (container/VM/WASM/OS sandbox) with least-privilege filesystem, network egress, and syscall permissions scoped to the minimum required to perform the tool's documented function. | 1 |
 | **9.3.2** | **Verify that** per-tool quotas and timeouts (CPU, memory, disk, egress, execution time) are enforced, and that quota or timeout breaches fail closed by terminating the tool execution rather than continuing with degraded or uncontrolled behavior. | 1 |
 | **9.3.3** | **Verify that** tool outputs are validated against strict schemas and security policies before being incorporated into downstream reasoning or follow-on actions. | 1 |
 | **9.3.4** | **Verify that** quota and timeout breaches are logged with sufficient detail to identify the tool, the exceeded limit, and the time of breach. | 1 |
