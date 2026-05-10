@@ -30,7 +30,7 @@ Increase resilience to manipulated inputs designed to cause misclassification or
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **11.2.1** | **Verify that** models serving high-risk functions are evaluated against known adversarial attack techniques relevant to their modality (e.g., perturbation attacks for vision, token-manipulation attacks for text, trigger-based or instruction-injection backdoors where applicable). | 1 |
 | **11.2.2** | **Verify that** adversarial-example detection raises alerts in production pipelines, with blocking or degraded-capability responses for high-risk endpoints or use cases. | 2 |
-| **11.2.3** | **Verify that** adversarial training or equivalent hardening techniques are applied to models serving high-risk functions. | 2 |
+| **11.2.3** | **Verify that** models serving high-risk functions are hardened against adversarial inputs using one or more techniques such as adversarial training, randomized smoothing, defensive distillation, or input transformation. | 2 |
 | **11.2.4** | **Verify that** certified robustness metrics (e.g., certified radius, verified robust accuracy at defined perturbation bounds) are tracked and recorded per model version, and that degradation beyond defined thresholds triggers re-evaluation before deployment. | 2 |
 | **11.2.5** | **Verify that** adversarial hardening configurations and procedures are documented and reproducible. | 2 |
 | **11.2.6** | **Verify that** robustness evaluations use adaptive attacks (attacks specifically designed to defeat the deployed defenses) to confirm no measurable robustness loss across releases. | 3 |
