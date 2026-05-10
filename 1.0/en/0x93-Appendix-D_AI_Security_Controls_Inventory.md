@@ -131,19 +131,21 @@ Validate, normalize, and constrain all inputs before they reach models or downst
 | --- | --- |
 | Prompt injection detection ruleset / service | 2.1.1 |
 | Instruction hierarchy enforcement (system > developer > user) | 2.1.2 |
-| Per-request demonstration count limits in context window | 2.1.6 |
-| Many-shot jailbreaking pattern detection (systematic in-context behavioral override) | 2.1.7 |
-| In-context behavioral override attempts classified as prompt injection events | 2.1.8 |
+| Instruction hierarchy preservation across multi-step and tool-augmented workflows, including prompt composition | 2.1.5 |
+| Per-request demonstration count limits in context window | 2.1.7 |
+| Many-shot jailbreaking pattern detection (systematic in-context behavioral override) | 2.1.8 |
+| In-context behavioral override attempts classified as prompt injection events | 2.1.9 |
 | Context window proportion limits and token limit enforcement (reject, not truncate) | 2.1.3 |
-| Third-party content sanitization | 2.1.5 |
+| Third-party content sanitization | 2.1.6 |
 | Character set allow-listing for model prompt inputs | 2.1.4 |
 | Pre-tokenization input normalization (Unicode NFC, homoglyph mapping, control/invisible character removal, bidirectional text neutralization) | 2.2.1 |
+| Post-normalization suspicious artifact rejection or flagging | 2.2.3 |
 | Adversarial input quarantine and logging | 2.2.2 |
-| Encoding and representation smuggling detection and mitigation | 2.2.3 |
+| Encoding and representation smuggling detection and mitigation | 2.2.4 |
 | Content classifiers for inbound prompts (hate, violence, sexual, illegal) with threshold-based rejection or sanitization | 2.3.1 |
 | Multilingual classifier gap evaluation with compensating controls (language detection, conservative thresholds, human review routing) | 2.3.2 |
 | Policy-violating input rejection before model propagation | 2.3.3 |
-| User-specific and agent-aware policy screening | 2.1.9 |
+| User-specific and agent-aware policy screening | 2.1.10 |
 | Extracted and hidden content from non-text inputs treated as untrusted | 2.4.1 |
 | Adversarial perturbation detection on image/audio inputs | 2.4.2 |
 | Cross-modal attack detection | 2.4.3 |
