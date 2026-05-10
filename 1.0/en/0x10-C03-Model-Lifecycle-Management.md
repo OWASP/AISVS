@@ -14,7 +14,7 @@ Only authorized models with verified integrity reach production environments.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **3.1.1** | **Verify that** a model registry maintains an inventory of all deployed model artifacts and produces a machine-readable Model/AI Bill of Materials (MBOM/AIBOM) (e.g., SPDX or CycloneDX). | 1 |
+| **3.1.1** | **Verify that** a model registry maintains an inventory of all deployed model artifacts with version, environment, and integrity metadata. AI BOM publication is covered in C6.5. | 1 |
 | **3.1.2** | **Verify that** all model artifacts (weights, configurations, tokenizers, base models, fine-tunes, adapters, and safety/policy models) are cryptographically signed by authorized entities. | 1 |
 | **3.1.3** | **Verify that** model artifact signatures and integrity checksums are verified at deployment admission and on load, and unsigned, tampered, or mismatched artifacts are rejected. | 1 |
 | **3.1.4** | **Verify that** lineage and dependency tracking maintains a dependency graph that enables identification of all consuming services and agents per environment (e.g., dev, staging, prod). | 3 |

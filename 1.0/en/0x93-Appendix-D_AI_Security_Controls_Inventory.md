@@ -255,7 +255,8 @@ Verify origin and authenticity, scan dependencies, and enforce integrity of mode
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Model registry with AI BOM (SPDX, CycloneDX) | 3.1.1, 6.5.1 |
+| Model registry inventory of deployed model artifacts | 3.1.1 |
+| AI BOM publication (CycloneDX, SPDX) | 6.5.1 |
 | Model dependency graph tracking (services, agents, environments) | 3.1.4 |
 | Model origin records (source, training data checksums, authorship) | 3.1.5, 6.1.1 |
 | Automated reproducible builds | ASVS v5 V15 / SLSA |
