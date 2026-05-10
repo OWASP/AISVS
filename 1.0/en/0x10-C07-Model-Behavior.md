@@ -2,9 +2,7 @@
 
 ## Control Objective
 
-This control category ensures that model outputs are technically constrained, validated, and monitored so that unsafe, malformed, or high-risk responses cannot reach users or downstream systems. The chapter focuses on AI-specific output handling concerns and intentionally avoids duplicating controls that already exist in OWASP ASVS v5 or in other AISVS chapters.
-
-General application output controls such as output encoding and escaping, parameterized queries, safe deserialization, anti-automation, security event logging, and error handling are addressed by ASVS v5 chapters V1, V2, V14, and V16. Schema output validation (7.1.1) applies only to applications that expect structured output (e.g., JSON, XML, typed function-call responses); free-form text outputs are out of scope for schema validation.
+This control category ensures that model outputs are technically constrained, validated, and monitored so that unsafe, malformed, or high-risk responses cannot reach users or downstream systems. The chapter focuses on AI-specific output handling concerns.
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-Training data must be sourced, handled, and maintained in a way that preserves origin traceability, integrity, and quality. The core security concern is ensuring data has not been tampered with, poisoned, or corrupted. Security-relevant bias (e.g., skewed abuse-detection training data that allows attackers to bypass controls) is treated as a possible consequence of compromised or unvalidated data, not as a standalone control category; broader fairness governance is out of scope and addressed by ISO/IEC 42001 or NIST AI RMF. Generic data security controls (access control, logging, encryption, data retention) are covered by ASVS v5 (V8, V11, V12, V14, V16) and are not repeated here.
+Training data must be sourced, handled, and maintained in a way that preserves origin traceability, integrity, and quality. The core security concern is ensuring data has not been tampered with, poisoned, or corrupted. Security-relevant bias (e.g., skewed abuse-detection training data that allows attackers to bypass controls) is treated as a possible consequence of compromised or unvalidated data, not as a standalone control category.
 
 ---
 
