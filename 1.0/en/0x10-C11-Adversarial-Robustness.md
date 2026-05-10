@@ -88,8 +88,6 @@ Identify and neutralize manipulated, backdoored, or adversarial data entering th
 | **11.6.2** | **Verify that** anomaly-detection thresholds are tuned on representative clean and adversarial validation sets. | 2 |
 | **11.6.3** | **Verify that** inputs flagged as anomalous trigger gating actions (blocking, capability degradation, or human review) appropriate to the risk level. | 2 |
 | **11.6.4** | **Verify that** the false-positive rate of anomaly detection is measured on representative data and documented per model version. | 2 |
-| **11.6.5** | **Verify that** detection methods are periodically stress-tested with current adversarial techniques, including adaptive attacks designed to evade the specific detectors in use. | 3 |
-| **11.6.6** | **Verify that** detection efficacy metrics are logged and periodically re-evaluated against updated threat intelligence. | 3 |
 
 ---
 
