@@ -112,7 +112,7 @@ Verify authenticity and detect tampering of models, artifacts, messages, logs, a
 | Build signature validation at deployment | ASVS v5 V15 / SLSA |
 | Third-party model origin and integrity verification (signed records) | 6.1.1 |
 | Cryptographic signature validation for model publishers | 6.2.1, 6.2.2 |
-| Model watermarking and fingerprinting | 11.5.4 |
+| Model watermarking and fingerprinting | 11.5.5 |
 | Execution chain cryptographic binding (chain ID) for agent actions | 9.4.2 |
 | Agent action signing and timestamps for non-repudiation and traceability | 9.4.4 |
 | MCP component signature and checksum verification | 10.1.1 |
