@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-Embeddings and vector stores act as semi-persistent and persistent "memory" for AI systems via Retrieval-Augmented Generation (RAG). This memory can become a high-risk data sink and data exfiltration path. This control family hardens memory pipelines and vector databases so that access is least-privilege, data is sanitized before vectorization, retention is explicit, and systems are resilient to embedding inversion, membership inference, and cross-tenant leakage. General authorization, cryptography, data retention, input validation, and session management are covered by ASVS v5 (V8, V11, V13, V14, V2, V7) and are not repeated here; end-user authorization context propagation through RAG retrieval is covered by C5.3, personal-data deletion propagation across AI artifacts by C12.2, and per-agent memory namespace isolation by C9.8.3.
+Embeddings and vector stores act as semi-persistent and persistent "memory" for AI systems via Retrieval-Augmented Generation (RAG). This memory can become a high-risk data sink and data exfiltration path. This control family hardens memory pipelines and vector databases so that access is least-privilege, data is sanitized before vectorization, retention is explicit, and systems are resilient to embedding inversion, membership inference, and cross-tenant leakage.
 
 ---
 

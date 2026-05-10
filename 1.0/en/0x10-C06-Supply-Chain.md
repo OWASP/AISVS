@@ -2,9 +2,7 @@
 
 ## Control Objective
 
-AI supply-chain attacks exploit third-party models, frameworks, or datasets to embed backdoors, bias, or exploitable code. These controls ensure traceability, vetting, and monitoring of AI-specific supply chain artifacts throughout the model lifecycle.
-
-Generic software supply chain controls (dependency scanning, version pinning, lockfile enforcement, container digest pinning, build attestation, reproducible builds, SBOM generation, CI/CD audit logging, etc.) are covered by ASVS v5 (V13, V15), OWASP SCVS, SLSA, and CIS Controls, and are not repeated here. This chapter focuses on supply chain risks unique to AI: model artifact integrity, backdoor detection in pretrained weights, dataset poisoning, AI-specific bills of materials, and model-publisher trust.
+AI supply-chain attacks exploit third-party models, frameworks, or datasets to embed backdoors, bias, or exploitable code. These controls ensure traceability, vetting, and monitoring of AI-specific supply chain artifacts throughout the model lifecycle. This chapter focuses on supply chain risks unique to AI: model artifact integrity, backdoor detection in pretrained weights, dataset poisoning, AI-specific bills of materials, and model-publisher trust.
 
 ---
 
