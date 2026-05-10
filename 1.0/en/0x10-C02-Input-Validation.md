@@ -2,9 +2,7 @@
 
 ## Control Objective
 
-Robust validation of all inputs is a first-line defense against some of the most damaging attacks on AI systems. Prompt injection attacks can override system instructions, leak sensitive data, or steer the model toward behavior that is not allowed. Unless dedicated filters and other validation is in place, research shows that jailbreaks that exploit context windows will continue to be effective. In agentic and multi-step systems, inputs from tools, retrieved documents, MCP server responses, and sub-agent outputs carry the same risks as direct user input and require the same validation pipeline.
-
-> **Scope note:** This chapter covers AI-specific input validation concerns that go beyond general application input validation. Standard input validation (schema enforcement, type checking, character allow-listing, rate limiting, file upload validation, server-side enforcement, logging of validation failures) is addressed by OWASP ASVS v5 chapters V1, V2, V4, V5, and V16, and should be implemented as a baseline. This chapter focuses on threats unique to AI systems: prompt injection, adversarial inputs targeting model behavior, AI-specific content screening, and multi-modal attack vectors.
+Robust validation of all inputs is a first-line defense against some of the most damaging attacks on AI systems. Prompt injection attacks can override system instructions, leak sensitive data, or steer the model toward behavior that is not allowed. Unless dedicated filters and other validation is in place, research shows that jailbreaks that exploit context windows will continue to be effective. In agentic and multi-step systems, inputs from tools, retrieved documents, MCP server responses, and sub-agent outputs carry the same risks as direct user input and require the same validation pipeline. Standard input validation (schema enforcement, type checking, character allow-listing, rate limiting, file upload validation, server-side enforcement, and logging of validation failures) is addressed by OWASP ASVS v5 (V1, V2, V4, V5, V16) and should be implemented as a baseline alongside these controls; this chapter focuses on threats unique to AI systems: prompt injection, adversarial inputs targeting model behavior, AI-specific content screening, and multi-modal attack vectors including adversarial perturbations, steganographic payloads, and cross-modal attacks.
 
 ---
 
@@ -18,13 +16,12 @@ Prompt injection is one of the top risks for AI systems. Defenses against this t
 | **2.1.2** | **Verify that** the system enforces an instruction hierarchy in which system and developer messages override user instructions and other untrusted inputs, even after processing user instructions. | 1 |
 | **2.1.3** | **Verify that** input length controls prevent user-supplied content from exceeding a defined proportion of the context window, and that inputs exceeding token limits are rejected rather than silently truncated, ensuring system instructions and safety directives are not displaced from the model's effective attention. | 1 |
 | **2.1.4** | **Verify that** the system implements a character set limitation for user inputs to model prompts, allowing only characters that are explicitly required for business purposes using an allow-list approach. | 1 |
-| **2.1.5** | **Verify that** prompts originating from third-party content (web pages, PDFs, emails) are sanitized in isolation (for example, stripping instruction-like directives and neutralizing HTML, Markdown, and script content) before being concatenated into the main prompt. | 2 |
-| **2.1.6** | **Verify that** the system enforces per-request limits on the number of user-supplied demonstrations included in a single context window. | 2 |
-| **2.1.7** | **Verify that** the system detects patterns indicative of systematic in-context behavioral override attempts consistent with many-shot jailbreaking. | 2 |
-| **2.1.8** | **Verify that** detected in-context behavioral override attempts are classified and handled as prompt injection events. | 2 |
-| **2.1.9** | **Verify that** prompt injection screening respects user-specific policies (age and regional legal constraints) via attribute-based rules resolved at request time, including the role or permission level of the calling agent. | 2 |
-| **2.1.10** | **Verify that** instruction hierarchy enforcement is preserved across multi-step interactions and tool-augmented workflows. | 1 |
-| **2.1.11** | **Verify that** prompt composition and intermediate outputs in multi-step or tool-augmented workflows do not allow user-controlled content to influence or override system or developer instructions. | 1 |
+| **2.1.5** | **Verify that** the instruction hierarchy is preserved across multi-step interactions and tool-augmented workflows, including prompt composition and intermediate outputs, such that user-controlled content cannot override system or developer instructions. | 1 |
+| **2.1.6** | **Verify that** prompts originating from third-party content (web pages, PDFs, emails) are sanitized in isolation (for example, stripping instruction-like directives and neutralizing HTML, Markdown, and script content) before being concatenated into the main prompt. | 2 |
+| **2.1.7** | **Verify that** the system enforces per-request limits on the number of user-supplied demonstrations included in a single context window. | 2 |
+| **2.1.8** | **Verify that** the system detects patterns indicative of systematic in-context behavioral override attempts consistent with many-shot jailbreaking. | 2 |
+| **2.1.9** | **Verify that** detected in-context behavioral override attempts are classified and handled as prompt injection events. | 2 |
+| **2.1.10** | **Verify that** prompt injection screening respects user-specific policies (age and regional legal constraints) via attribute-based rules resolved at request time, including the role or permission level of the calling agent. | 2 |
 
 ---
 
@@ -36,8 +33,8 @@ AI models process text through tokenizers and embeddings that can be exploited v
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **2.2.1** | **Verify that** input normalization (Unicode NFC canonicalization, homoglyph mapping, removal of control and invisible Unicode characters, and bidirectional text neutralization) is applied before tokenization or embedding. | 1 |
 | **2.2.2** | **Verify that** inputs identified as adversarial by any detection mechanism are blocked from inclusion in prompts or execution of actions. | 1 |
-| **2.2.3** | **Verify that** encoding and representation smuggling in both inputs and outputs (e.g., invisible Unicode/control characters, homoglyph swaps, or mixed-direction text) are detected and mitigated. Approved mitigations include canonicalization, strict schema validation, policy-based rejection, or explicit marking. | 3 |
-| **2.2.4** | **Verify that** inputs which still contain suspicious encoding artifacts after normalization are rejected or flagged for review. | 1 |
+| **2.2.3** | **Verify that** inputs which still contain suspicious encoding artifacts after normalization are rejected or flagged for review. | 2 |
+| **2.2.4** | **Verify that** encoding and representation smuggling in both inputs and outputs (e.g., invisible Unicode/control characters, homoglyph swaps, or mixed-direction text) are detected and mitigated. Approved mitigations include canonicalization, strict schema validation, policy-based rejection, or explicit marking. | 3 |
 
 ---
 
@@ -57,8 +54,6 @@ Syntactically valid prompts may request disallowed content such as policy-violat
 ## C2.4 Multi-Modal Input Validation
 
 AI systems that accept non-textual inputs (images, audio, video, files) face unique attack vectors where malicious content can be embedded across modalities and extracted into text that feeds the model's context.
-
-> **Scope note:** Standard file upload validation (type, size, format, malware scanning, path traversal prevention) is covered by OWASP ASVS v5 chapter V5 and should be implemented as a baseline. This section addresses AI-specific risks: extraction of text from non-text inputs feeding into prompts, adversarial perturbations targeting model perception, and coordinated cross-modal attacks.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |

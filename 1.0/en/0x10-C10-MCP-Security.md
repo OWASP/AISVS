@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-Ensure secure discovery, authentication, authorization, transport, and use of MCP-based tool and resource integrations to prevent context confusion, unauthorized tool invocation, or cross-tenant data exposure.
+Ensure secure discovery, authentication, authorization, transport, and use of MCP-based tool and resource integrations to prevent context confusion, unauthorized tool invocation, or cross-tenant data exposure. This chapter covers MCP-protocol-specific controls; general agent authorization is in C9.6, OAuth details in ASVS v5 V10, execution budgets and human approval gates in C9.1–C9.2, sandbox isolation in C9.3, and multi-agent tenant and environment isolation in C9.8.
 
 ---
 
@@ -18,19 +18,19 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 
 ## C10.2 Authentication & Authorization
 
-> **Scope note:** General agent authorization principles (model output must not override access control, delegation context, continuous authorization) are covered in C9.6. Controls in this section address MCP-protocol-specific authentication and authorization mechanisms. Refer to ASVSv5 V10 for OAuth specific details.
-
 | # | Description | Level |
 | :--: | --- | :---: |
-| **10.2.1** | **Verify that** MCP clients and servers implement the OAuth 2.1 authorization framework: clients present a valid access token for each request, and servers validate the token's issuer, audience, expiration, and scope claims, acting as resource servers that do not store tokens or user credentials. | 1 |
+| **10.2.1** | **Verify that** MCP clients present a valid access token for each request to MCP servers. | 1 |
 | **10.2.2** | **Verify that** MCP servers are registered through a controlled technical onboarding mechanism requiring explicit owner, environment, and resource definitions; unregistered or undiscoverable servers must not be callable in production. | 1 |
 | **10.2.3** | **Verify that** MCP session identifiers are treated as state, not identity: generated using cryptographically secure random values, bound to the authenticated user, and never relied on for authentication or authorization decisions. | 1 |
-| **10.2.4** | **Verify that** MCP `tools/list` and resource discovery responses are filtered based on the end-user's authorized scopes so that agents receive only the tool and resource definitions the user is permitted to invoke. | 2 |
-| **10.2.5** | **Verify that** MCP servers enforce access control on every tool invocation, validating that the user's access token authorizes both the requested tool and the specific argument values supplied. | 2 |
-| **10.2.6** | **Verify that** MCP servers do not pass through access tokens received from clients to downstream APIs and instead obtain a separate token scoped to the server's own identity (e.g., via on-behalf-of or client credentials flow). | 2 |
-| **10.2.7** | **Verify that** MCP clients request only the minimum scopes needed for the current operation and elevate progressively via step-up authorization for higher-privilege operations. | 2 |
-| **10.2.8** | **Verify that** MCP servers enforce deterministic session teardown, destroying cached tokens, in-memory state, temporary storage, and file handles when a session terminates, disconnects, or times out. | 2 |
-| **10.2.9** | **Verify that** autonomous agents authenticate using cryptographically bound identity credentials (e.g., key-based proof-of-possession) rather than bearer-only tokens, ensuring that agent identity cannot be transferred, replayed, or impersonated by forwarding a shared secret. | 2 |
+| **10.2.4** | **Verify that** MCP servers validate the presented access token's issuer, audience, expiration, and scope claims in accordance with OAuth 2.1. | 1 |
+| **10.2.5** | **Verify that** MCP servers acting as OAuth 2.1 resource servers do not store or persist access tokens or user credentials. | 1 |
+| **10.2.6** | **Verify that** MCP `tools/list` and resource discovery responses are filtered based on the end-user's authorized scopes so that agents receive only the tool and resource definitions the user is permitted to invoke. | 2 |
+| **10.2.7** | **Verify that** MCP servers enforce access control on every tool invocation, validating that the user's access token authorizes both the requested tool and the specific argument values supplied. | 2 |
+| **10.2.8** | **Verify that** MCP servers do not pass through access tokens received from clients to downstream APIs and instead obtain a separate token scoped to the server's own identity (e.g., via on-behalf-of or client credentials flow). | 2 |
+| **10.2.9** | **Verify that** MCP clients request only the minimum scopes needed for the current operation and elevate progressively via step-up authorization for higher-privilege operations. | 2 |
+| **10.2.10** | **Verify that** MCP servers enforce deterministic session teardown, destroying cached tokens, in-memory state, temporary storage, and file handles when a session terminates, disconnects, or times out. | 2 |
+| **10.2.11** | **Verify that** autonomous agents authenticate using cryptographically bound identity credentials (e.g., key-based proof-of-possession) rather than bearer-only tokens, ensuring that agent identity cannot be transferred, replayed, or impersonated by forwarding a shared secret. | 2 |
 
 ---
 
@@ -53,33 +53,31 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | :--: | --- | :---: |
 | **10.4.1** | **Verify that** MCP tool responses are validated before being injected into the model context to prevent prompt injection, malicious tool output, or context manipulation. | 1 |
 | **10.4.2** | **Verify that** MCP server error responses do not expose internal details (stack traces, file paths, tokens, tool implementation) to the client or model context, preventing information leakage that could be exploited via the model. | 1 |
-| **10.4.3** | **Verify that** all MCP transports enforce message-framing integrity, strict schema validation, maximum payload sizes, and rejection of malformed, truncated, or interleaved frames to prevent desynchronization or injection attacks. | 2 |
-| **10.4.4** | **Verify that** MCP servers perform strict input validation for all function calls, including type checking, boundary validation, enumeration enforcement, and rejection of unrecognized or oversized parameters. | 2 |
+| **10.4.3** | **Verify that** all MCP transports enforce message-framing integrity and strict schema validation to prevent desynchronization or injection attacks. | 2 |
+| **10.4.4** | **Verify that** MCP servers perform strict input validation for all function calls, including type checking, boundary validation, and enumeration enforcement. | 2 |
 | **10.4.5** | **Verify that** MCP clients maintain a hash or versioned snapshot of tool definitions and that any change to a tool definition (via `notifications/tools/list_changed` or between sessions) triggers re-approval before the modified tool can be invoked. | 2 |
-| **10.4.6** | **Verify that** MCP tool and resource schemas (e.g., JSON schemas or capability descriptors) along with schema manifests are validated for authenticity and integrity using signatures to prevent schema tampering or malicious parameter modification. | 3 |
-| **10.4.7** | **Verify that** intermediaries evaluating message content either forward the canonicalized representation they evaluated or reject messages where multiple byte representations could produce different parsed structures. | 3 |
-| **10.4.8** | **Verify that** MCP servers sign tool responses with a unique nonce and timestamp within a bounded time window so that the calling agent can verify origin, integrity, and freshness, preventing spoofing, tampering, and replay of tool responses by intermediaries. | 3 |
+| **10.4.6** | **Verify that** all MCP transports enforce maximum payload size limits and reject malformed, truncated, or interleaved frames. | 2 |
+| **10.4.7** | **Verify that** MCP servers reject unrecognized or oversized parameters in function calls. | 2 |
+| **10.4.8** | **Verify that** MCP tool and resource schemas (e.g., JSON schemas or capability descriptors) along with schema manifests are validated for authenticity and integrity using signatures to prevent schema tampering or malicious parameter modification. | 3 |
+| **10.4.9** | **Verify that** intermediaries evaluating message content either forward the canonicalized representation they evaluated or reject messages where multiple byte representations could produce different parsed structures. | 3 |
+| **10.4.10** | **Verify that** MCP servers sign tool responses with a unique nonce and timestamp within a bounded time window so that the calling agent can verify origin, integrity, and freshness, preventing spoofing, tampering, and replay of tool responses by intermediaries. | 3 |
 
 ---
 
 ## C10.5 Outbound Access & Agent Execution Safety
 
-> **Scope note:** Execution budgets, circuit breakers, and human approval gates for agent-initiated actions (including MCP tool invocations) are covered in C9.1 and C9.2. Controls in this section address MCP-specific outbound network constraints.
-
 | # | Description | Level |
 | :--: | --- | :---: |
-| **10.5.1** | **Verify that** MCP servers may only initiate outbound requests to approved internal or external destinations following least-privilege egress policies and cannot access arbitrary network targets or internal cloud metadata services. | 2 |
+| **10.5.1** | **Verify that** MCP servers restrict outbound requests to approved internal or external destinations per least-privilege egress policies, with egress to all other targets blocked by default. | 2 |
 
 ---
 
 ## C10.6 Transport Restrictions & High-Risk Boundary Controls
 
-> **Scope note:** General agent sandbox isolation is covered in C9.3. Tenant and environment isolation for multi-agent systems is covered in C9.8. Controls in this section address MCP-specific transport and dispatch restrictions.
-
 | # | Description | Level |
 | :--: | --- | :---: |
 | **10.6.1** | **Verify that** MCP security controls enforce fail-closed semantics: if tool schema validation, MCP-Protocol-Version negotiation fails, authentication check, or policy evaluation fails or cannot be completed, the default action is to deny the request rather than permit it. | 2 |
-| **10.6.2** | **Verify that** MCP servers expose only allow-listed functions and resources and prohibit dynamic dispatch, reflective invocation, or execution of function names influenced by user or model-provided input. | 3 |
+| **10.6.2** | **Verify that** MCP servers expose only allow-listed functions and resources, and restrict function invocation to statically defined, pre-approved names that cannot be influenced by user or model-provided input. | 3 |
 
 ---
 
