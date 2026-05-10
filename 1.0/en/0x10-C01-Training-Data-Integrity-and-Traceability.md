@@ -2,13 +2,13 @@
 
 ## Control Objective
 
-Training data must be sourced, handled, and maintained in a way that preserves origin traceability, integrity, and quality. The core security concern is ensuring data has not been tampered with, poisoned, or corrupted. Security-relevant bias (e.g., skewed abuse-detection training data that allows attackers to bypass controls) is treated as a possible consequence of compromised or unvalidated data, not as a standalone control category; broader fairness governance is out of scope and addressed by ISO/IEC 42001 or NIST AI RMF. Generic data security controls (access control, logging, encryption, data retention) are covered by ASVS v5 (V8, V11, V12, V14, V16) and are not repeated here.
+This chapter addresses the sourcing, handling, and maintenance of training data in a way that preserves origin traceability, integrity, and quality. The core security concern is ensuring data has not been tampered with, poisoned, or corrupted.
 
 ---
 
 ## C1.1 Training Data Origin & Traceability
 
-Maintain a verifiable inventory of all datasets, accept only trusted sources, and log every change for auditability.
+Training data origin and traceability are critical to the security and trustworthiness of any AI system. Datasets must be sourced from verifiable origins and tracked across their full lifecycle so that tampering or unauthorized modification can be detected.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -21,7 +21,7 @@ Maintain a verifiable inventory of all datasets, accept only trusted sources, an
 
 ## C1.2 Training Data Security & Integrity
 
-Restrict access to training data, encrypt it at rest and in transit, and validate its integrity to prevent tampering, theft, or data poisoning.
+Training data must be protected against unauthorized access, disclosure, tampering, corruption, and poisoning throughout its lifecycle. Storage systems and data pipelines should enforce access control, preserve auditability, protect confidentiality through encryption, validate integrity during storage and transfer, and maintain immutable dataset versions for rollback and forensic analysis.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -37,7 +37,7 @@ Restrict access to training data, encrypt it at rest and in transit, and validat
 
 ## C1.3 Data Labeling and Annotation Security
 
-Ensure labeling and annotation processes are access-controlled and auditable.
+Labeling and annotation processes must be protected against unauthorized modification, attribution loss, data leakage, and integrity compromise. Annotation platforms should enforce access control, preserve auditability, retain verified annotator attribution, and protect labeling artifacts, preference data, and sensitive label content throughout the training pipeline.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -51,7 +51,7 @@ Ensure labeling and annotation processes are access-controlled and auditable.
 
 ## C1.4 Training Data Quality and Security Assurance
 
-Combine automated validation, manual spot-checks, and logged remediation to guarantee dataset reliability.
+Training data quality and security assurance controls help detect corruption, poisoning, labeling errors, and exploitable dataset patterns before they affect model behavior. Pipelines should combine automated validation, poisoning detection, label quality checks, and bias analysis.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -66,7 +66,7 @@ Combine automated validation, manual spot-checks, and logged remediation to guar
 
 ## C1.5 Data Lineage and Traceability
 
-Track the full journey of each dataset from source to model input for auditability and incident response.
+Data lineage and traceability controls ensure that datasets can be tracked from source through transformation, augmentation, merge, and final model input. Lineage records should be complete, tamper-resistant, auditable, and sufficient to support reproducibility, incident response, rollback, and investigation of compromised or inappropriate training data.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
