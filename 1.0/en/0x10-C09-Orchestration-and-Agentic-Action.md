@@ -86,6 +86,7 @@ Ensure every action is authorized at execution time and constrained by scope.
 | **9.6.4** | **Verify that** secrets and credentials required by an agent at runtime are not exposed within the model's observable context, including the context window, system prompts, or tool call parameters, and are instead provided via out-of-band mechanisms such as credential proxies, secrets manager injection, runtime sidecar authentication, or short-lived scoped tokens. | 2 |
 | **9.6.5** | **Verify that** when an agent acts under delegated authority, the policy decision point evaluates both the agent's own granted permissions and the initiating principal's delegated scope as independent constraints, denying the action if either is insufficient for the requested operation. | 2 |
 | **9.6.6** | **Verify that** agent-to-agent task delegation is restricted by an explicit peer authorization policy (e.g., an approved agent registry or allowlist) so that even authenticated agents can only delegate to or accept delegations from pre-approved peers, with delegation attempts from unlisted agents rejected by default. | 2 |
+| **9.6.7** | **Verify that** long-running agent sessions re-evaluate current backend authorization policy for the agent’s identity on every privileged action, and reject the action when current policy no longer authorizes it, even if the presented token remains valid. | 3 |
 
 ---
 
