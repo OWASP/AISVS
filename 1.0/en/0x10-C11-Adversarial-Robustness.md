@@ -102,7 +102,7 @@ Maintain the ability to update AI safety and guardrail policies rapidly in respo
 | **11.7.1** | **Verify that** security policies (e.g., content filters, rate-limit thresholds, guardrail configurations) can be updated without full system redeployment, and that policy versions are tracked. | 1 |
 | **11.7.2** | **Verify that** policy updates are authorized, integrity-protected (e.g., cryptographically signed), and validated before application. | 2 |
 | **11.7.3** | **Verify that** rollback procedures exist for policy changes and are tested to confirm they restore the previous policy state. | 2 |
-| **11.7.4** | **Verify that** threat-detection sensitivity can be adjusted based on risk context (e.g., elevated threat level, incident response), and that the change requires authentication and a privilege explicitly granted for this operation, with the change logged. | 3 |
+| **11.7.4** | **Verify that** threat-detection sensitivity can be adjusted based on risk context (e.g., elevated threat level, incident response). | 3 |
 
 ---
 
