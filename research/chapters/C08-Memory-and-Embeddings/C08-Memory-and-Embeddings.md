@@ -169,7 +169,7 @@ Current tools, frameworks, and libraries that help implement these controls:
 | C03 Data Sanitization | Input validation and sanitization | C03 covers general AI input sanitization; C08.2 focuses on pre-embedding sanitization |
 | C05 Agent Security | Multi-agent memory isolation | C05 covers agent architecture; C08.5.5 addresses memory namespace isolation for agents |
 | C10 Privacy | PII detection and deletion rights | C10 covers privacy broadly; C08 addresses embedding-specific privacy risks (inversion, membership inference) |
-| C14 Logging & Monitoring | Retrieval event logging, tripwires, and anomaly detection | C14 covers observability; C08.1.4 specifies RAG retrieval event logging, and C08.1.5-8.1.6 specify retrieval tripwires (canary documents) and anomaly detection |
+| C14 Logging & Monitoring | Retrieval event logging and anomaly detection | C14 covers observability; C08.1.5-8.1.6 specify RAG-specific logging and anomaly detection |
 
 ---
 
