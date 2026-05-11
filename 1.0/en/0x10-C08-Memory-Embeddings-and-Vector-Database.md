@@ -16,7 +16,7 @@ Enforce fine-grained access controls and query-time scope enforcement for every 
 | **8.1.2** | **Verify that** every ingested document is tagged at write time with source, writer identity (authenticated user or system principal), timestamp, batch ID, and embedding model version. | 2 |
 | **8.1.3** | **Verify that** document metadata tags applied at ingestion are immutable after initial write and cannot be modified by subsequent pipeline stages or user operations. | 2 |
 | **8.1.4** | **Verify that** RAG pipeline retrieval events log the query issued, the documents or chunks retrieved, similarity scores, the knowledge source, and whether retrieved content passed prompt injection scanning before being incorporated into model context. | 2 |
-| **8.1.5** | **Verify that** canary documents (uniquely-marked decoy records carrying no real sensitive content but indistinguishable to retrieval consumers from genuine restricted records) are planted in restricted indices, that any retrieval, similarity match, or grounding-context inclusion of a canary record triggers a high-severity alert and incident-response workflow, and that canary markers are part of the immutable metadata tag set. | 2 |
+| **8.1.5** | **Verify that** restricted retrieval indices include uniquely marked canary records that contain no real sensitive content and generate a high-severity security alert if selected by retrieval, matched by similarity search, or passed to the model as context. | 2 |
 | **8.1.6** | **Verify that** retrieval anomaly detection identifies embedding density outliers, repeated dominance of specific documents in similarity results, and sudden shifts in retrieval bias distribution that may indicate vector database poisoning. | 3 |
 
 ---
