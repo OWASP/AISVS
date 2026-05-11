@@ -28,7 +28,7 @@ Increase resilience to manipulated inputs designed to cause misclassification or
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **11.2.1** | **Verify that** models serving high-risk functions are evaluated against known adversarial attack techniques relevant to their modality (e.g., perturbation attacks for vision, token-manipulation attacks for text, trigger-based or instruction-injection backdoors where applicable). | 1 |
 | **11.2.2** | **Verify that** adversarial-example detection raises alerts in production pipelines, with blocking or degraded-capability responses for high-risk endpoints or use cases. | 2 |
-| **11.2.3** | **Verify that** adversarial training or equivalent hardening techniques are applied where feasible. | 2 |
+| **11.2.3** | **Verify that** models serving high-risk functions are hardened against adversarial inputs using one or more techniques such as adversarial training, randomized smoothing, defensive distillation, or input transformation. | 2 |
 | **11.2.4** | **Verify that** certified robustness metrics (e.g., certified radius, verified robust accuracy at defined perturbation bounds) are tracked and recorded per model version, and that degradation beyond defined thresholds triggers re-evaluation before deployment. | 2 |
 | **11.2.5** | **Verify that** adversarial hardening configurations and procedures are documented and reproducible. | 2 |
 | **11.2.6** | **Verify that** robustness evaluations use adaptive attacks (attacks specifically designed to defeat the deployed defenses) to confirm no measurable robustness loss across releases. | 3 |
@@ -84,7 +84,7 @@ Identify and neutralize manipulated, backdoored, or adversarial data entering th
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **11.6.1** | **Verify that** inputs from external or untrusted sources pass through anomaly detection (e.g., statistical outlier detection, consistency scoring) before model inference. | 2 |
 | **11.6.2** | **Verify that** anomaly-detection thresholds are tuned on representative clean and adversarial validation sets. | 2 |
-| **11.6.3** | **Verify that** inputs flagged as anomalous trigger gating actions (blocking, capability degradation, or human review) appropriate to the risk level. | 2 |
+| **11.6.3** | **Verify that** inputs flagged as anomalous trigger gating actions (blocking, capability degradation, or human review). | 2 |
 | **11.6.4** | **Verify that** the false-positive rate of anomaly detection is measured on representative data and documented per model version. | 2 |
 
 ---
@@ -98,7 +98,7 @@ Maintain the ability to update AI safety and guardrail policies rapidly in respo
 | **11.7.1** | **Verify that** security policies (e.g., content filters, rate-limit thresholds, guardrail configurations) can be updated without full system redeployment, and that policy versions are tracked. | 1 |
 | **11.7.2** | **Verify that** policy updates are authorized, integrity-protected (e.g., cryptographically signed), and validated before application. | 2 |
 | **11.7.3** | **Verify that** rollback procedures exist for policy changes and are tested to confirm they restore the previous policy state. | 2 |
-| **11.7.4** | **Verify that** threat-detection sensitivity can be adjusted based on risk context (e.g., elevated threat level, incident response) with appropriate authorization. | 3 |
+| **11.7.4** | **Verify that** threat-detection sensitivity can be adjusted based on risk context (e.g., elevated threat level, incident response). | 3 |
 
 ---
 

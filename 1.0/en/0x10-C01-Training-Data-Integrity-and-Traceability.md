@@ -13,9 +13,9 @@ Training data origin and traceability are critical to the security and trustwort
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
 | **1.1.1** | **Verify that** an up-to-date inventory of every training-data source (origin, responsible party, license, collection method, intended use constraints, and processing history) is maintained. | 1 |
-| **1.1.2** | **Verify that** training data processes exclude unnecessary features, attributes, or fields (e.g., unused metadata, sensitive PII, leaked test data). | 1 |
+| **1.1.2** | **Verify that** training data processes include only features, attributes, and fields required for the model's stated purpose, excluding all others (e.g., unused metadata, sensitive PII, leaked test data). | 1 |
 | **1.1.3** | **Verify that** all dataset changes are subject to a logged approval workflow. | 1 |
-| **1.1.4** | **Verify that** datasets or subsets are watermarked or fingerprinted where feasible. | 3 |
+| **1.1.4** | **Verify that** datasets or subsets are watermarked or fingerprinted to enable downstream attribution and detection of unauthorized use. | 3 |
 
 ---
 
@@ -28,7 +28,7 @@ Training data must be protected against unauthorized access, disclosure, tamperi
 | **1.2.1** | **Verify that** access controls protect training data storage and pipelines. | 1 |
 | **1.2.2** | **Verify that** all access to training data is logged, including user, time, and action. | 1 |
 | **1.2.3** | **Verify that** training datasets are encrypted in transit and at rest, using current recommended cryptographic algorithms and key management practices. | 1 |
-| **1.2.4** | **Verify that** obsolete training data is securely purged or anonymized. | 1 |
+| **1.2.4** | **Verify that** training data is securely purged or anonymized when it is no longer required for the model's stated purpose. | 1 |
 | **1.2.5** | **Verify that** cryptographic hashes or digital signatures are used to ensure data integrity during training data storage and transfer. | 2 |
 | **1.2.6** | **Verify that** automated integrity monitoring is applied to guard against unauthorized modifications or corruption of training data. | 2 |
 | **1.2.7** | **Verify that** all training dataset versions are uniquely identified, stored immutably, and auditable to support rollback and forensic analysis. | 3 |
@@ -45,7 +45,7 @@ Labeling and annotation processes must be protected against unauthorized modific
 | **1.3.2** | **Verify that** all labeling activities are recorded in audit logs, including the annotator identity, timestamp, and action performed. | 1 |
 | **1.3.3** | **Verify that** annotator identity metadata is exported and retained alongside the dataset so that every annotation or preference pair can be attributed to a specific, verified human annotator throughout the training pipeline. | 1 |
 | **1.3.4** | **Verify that** cryptographic hashes or digital signatures are applied to labeling artifacts, annotation data, and fine-tuning feedback records (including RLHF preference pairs) to ensure their integrity and authenticity. | 2 |
-| **1.3.5** | **Verify that** sensitive information in labels is redacted, anonymized, or encrypted using appropriate granularity at rest and in transit. | 2 |
+| **1.3.5** | **Verify that** sensitive information in labels is redacted, anonymized, or encrypted both at rest and in transit before being used in any labeling artifact. | 2 |
 
 ---
 

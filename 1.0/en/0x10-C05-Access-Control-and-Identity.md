@@ -11,7 +11,7 @@ AI systems introduce access control challenges beyond traditional application se
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
 | **5.1.1** | **Verify that** high-risk AI operations (model deployment, weight export, training data access, production configuration changes) require step-up authentication with session re-validation. | 2 |
-| **5.1.2** | **Verify that** AI agents in federated or multi-system deployments authenticate via short-lived, cryptographically signed authentication tokens (e.g., signed JWT assertions) with a maximum lifetime appropriate to the risk level and including cryptographic proof of origin. | 3 |
+| **5.1.2** | **Verify that** AI agents in federated or multi-system deployments authenticate using short-lived, cryptographically signed tokens (e.g., signed JWT assertions) where the signature key is bound to the issuing system's identity (e.g., via JWKS, x5c, or sender-constrained tokens such as DPoP or mTLS). | 3 |
 
 ---
 
