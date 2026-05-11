@@ -4,8 +4,6 @@
 
 Ensure that AI systems remain reliable, privacy-preserving, and abuse-resistant when facing evasion, inference, extraction, or poisoning attacks. These controls cover model alignment testing, adversarial hardening, privacy attack resistance, model theft deterrence, and security adaptation for autonomous agents.
 
-Generic application security controls (configuration management, secret and key management, signed artifacts, audit logging, change control, transport security, generic anti-automation rate limiting) are covered by ASVS v5 (V11, V13, V14, V15, V16) and are not repeated here. Logging of AI security events, AI incident response planning, and human-oversight escalation are covered by AISVS C13 and C14. Inversion-specific (C11.4) and extraction-specific (C11.5) throttling controls do not substitute for generic API rate limiting (ASVS v5 V2.4) or orchestration runtime budgets (C9.1). C11.8 (agent self-review) covers AI-augmented review of proposed agent actions and protection of that review mechanism from prompt-injection bypass; the deterministic runtime gate that blocks high-impact agent actions is governed by C9.2 and C9.7.
-
 ---
 
 ## C11.1 Model Alignment & Safety

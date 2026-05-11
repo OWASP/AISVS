@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-Robust validation of all inputs is a first-line defense against some of the most damaging attacks on AI systems. Prompt injection attacks can override system instructions, leak sensitive data, or steer the model toward behavior that is not allowed. Unless dedicated filters and other validation is in place, research shows that jailbreaks that exploit context windows will continue to be effective. In agentic and multi-step systems, inputs from tools, retrieved documents, MCP server responses, and sub-agent outputs carry the same risks as direct user input and require the same validation pipeline. Standard input validation (schema enforcement, type checking, character allow-listing, rate limiting, file upload validation, server-side enforcement, and logging of validation failures) is addressed by OWASP ASVS v5 (V1, V2, V4, V5, V16) and should be implemented as a baseline alongside these controls; this chapter focuses on threats unique to AI systems: prompt injection, adversarial inputs targeting model behavior, AI-specific content screening, and multi-modal attack vectors including adversarial perturbations, steganographic payloads, and cross-modal attacks.
+Robust validation of all inputs is a first-line defense against some of the most damaging attacks on AI systems. Prompt injection attacks can override system instructions, leak sensitive data, or steer the model toward behavior that is not allowed. Unless dedicated filters and other validation is in place, research shows that jailbreaks that exploit context windows will continue to be effective. In agentic and multi-step systems, inputs from tools, retrieved documents, MCP server responses, and sub-agent outputs carry the same risks as direct user input and require the same validation pipeline. This chapter focuses on threats unique to AI systems: prompt injection, adversarial inputs targeting model behavior, AI-specific content screening, and multi-modal attack vectors including adversarial perturbations, steganographic payloads, and cross-modal attacks.
 
 ---
 
@@ -40,7 +40,7 @@ AI models process text through tokenizers and embeddings that can be exploited v
 
 ## C2.3 Content & Policy Screening
 
-Syntactically valid prompts may request disallowed content such as policy-violating instructions, harmful content, or restricted material. Input-side content screening prevents such prompts from reaching the model. For output-side content filtering, see C7.3.
+Syntactically valid prompts may request disallowed content such as policy-violating instructions, harmful content, or restricted material. Input-side content screening prevents such prompts from reaching the model.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
