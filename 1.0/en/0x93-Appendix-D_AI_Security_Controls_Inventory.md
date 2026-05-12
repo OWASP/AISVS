@@ -292,7 +292,6 @@ Manage model deployment, rollback, retirement, and emergency response.
 | Automatic deployment block on safety evaluation threshold failure | 3.2.4 |
 | Agent workflow, tool, MCP, and RAG integration testing | 3.2.5 |
 | Immutable audit records for model changes | 3.2.6 |
-| Deployment validation with failure blocking and override approval | 3.2.8 |
 | Canary / blue-green deployments with automated rollback triggers | 3.3.1 |
 | Parallel deployment cohort isolation (A/B, canary, shadow) | 3.3.3 |
 | Atomic state restoration on rollback (weights, config, adapters, safety models) | 3.3.2 |
