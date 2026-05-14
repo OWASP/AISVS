@@ -37,6 +37,7 @@ This section should be read narrowly. Transport encryption, authentication, repl
 | Structured contracts with semantic validators | Mature | Pydantic field validators, Zod `refine` / `superRefine`, JSON Schema custom formats, and Protocol Buffers plus application validators can enforce ranges, enums, units, required relationships, and state transitions. They work best when contracts are versioned and treated as deploy artifacts rather than model prompts. |
 | Runtime guardrails for agent outputs | Emerging | Guardrails AI supports Pydantic-backed structured output validation and custom validators. NVIDIA NeMo Guardrails provides input, output, topical, and agentic security rails, including validation of tool inputs and outputs before and after invocation. These help, but they still require domain-specific policies. |
 | Policy-as-code checks | Mature | Open Policy Agent/Rego, Cedar, or equivalent policy engines can validate claims that are easier to express as authorization or business rules: actor may approve action, tenant IDs match, transfer amount is below the delegated limit, and workflow state permits the transition. |
+| Protocol metadata validation | Emerging | A2A Agent Cards and MCP tool definitions are executable trust inputs for the receiver. Treat names, descriptions, examples, schemas, auth declarations, and capability lists as untrusted metadata until they are fetched from an approved source, authenticated where the protocol supports it, pinned or versioned, diff-reviewed, and checked for instruction-shaped content. |
 | Natural-language intent validation | Emerging | Task-anchor comparison, intent-diffing, embedding similarity, classifier checks, and LLM-based review can flag drift from the original task. They are useful for free-text summaries and peer-agent messages, but false positives and evasions remain common. Use them to gate review, not to silently bless high-impact actions. |
 | Tool description and output scanning | Emerging | Static checks can flag imperative phrases, invisible Unicode, base64 blobs, references to unrelated tools, unexpected URLs, or description changes after install. OWASP's MCP tool poisoning guidance recommends constrained response formats, server allowlists, least privilege, and approval for sensitive operations. |
 
@@ -57,15 +58,25 @@ This section should be read narrowly. Transport encryption, authentication, repl
 | [C09.7 Intent Verification](C09-07-Intent-Verification.md) | Task-anchor checks | C9.7 validates proposed actions against the user's intent. C9.5 applies the same idea to messages and outputs before they influence downstream agents. |
 | [C09.8 Multi-Agent Isolation](C09-08-Multi-Agent-Isolation.md) | Blast-radius control | Semantic validation reduces the chance of bad propagation; isolation limits the impact when a peer agent still sends unsafe content. |
 | [C10.4 MCP Schema Validation](../C10-MCP-Security/C10-04-Schema-Message-Validation.md) | Protocol-specific schema enforcement | C10.4 handles MCP schemas and tool definition change detection. C9.5 adds business meaning and intent validation after the message is structurally valid. |
-| [C13.7 Proactive Security Behavior Monitoring](../C13-Monitoring-and-Logging/C13-07-Proactive-Security-Behavior-Monitoring.md) | Detection and drift monitoring | Logs from semantic validators become evidence for detecting tool poisoning, context drift, and abnormal peer-agent behavior. |
+| [C13.6 Proactive Security Behavior Monitoring](../C13-Monitoring-and-Logging/C13-06-Proactive-Security-Behavior-Monitoring.md) | Detection and drift monitoring | Logs from semantic validators become evidence for detecting tool poisoning, context drift, and abnormal peer-agent behavior. |
 | [C11 Adversarial Robustness](../C11-Adversarial-Robustness/C11-Adversarial-Robustness.md) | Malicious or misleading outputs | C11 covers broader adversarial robustness. C9.5 focuses on validating the content being handed from one agent boundary to the next. |
 
 ## Protocol Notes
 
-- **A2A:** Agent Cards and task messages make cross-agent collaboration explicit, but stateful sessions create room for hidden instruction drift. Receivers should verify signed or trusted Agent Cards, then separately validate each message against the current task anchor.
-- **MCP:** Tool descriptions, parameter descriptions, errors, and tool results can become model-facing context. MCP security guidance treats server outputs as untrusted and recommends strong authorization, SSRF protection, session hygiene, and careful trust-boundary handling. C9.5 adds the semantic check before those outputs reach downstream reasoning.
+- **A2A:** Agent Cards and task messages make cross-agent collaboration explicit, but stateful sessions create room for hidden instruction drift. The A2A specification requires HTTPS for production deployments and per-request authentication based on declared Agent Card requirements; C9.5 adds the content-level check that a properly authenticated peer is still staying within the delegated task.
+- **MCP:** Tool descriptions, parameter descriptions, errors, and tool results can become model-facing context. MCP security guidance treats server outputs as untrusted and recommends strong authorization, SSRF protection, session hygiene, scope minimization, and careful trust-boundary handling. C9.5 adds the semantic check before those outputs reach downstream reasoning.
 - **Mixed-protocol deployments:** Agents often bridge A2A, MCP, custom REST, queues, and shared memory. Validate at the receiving boundary rather than assuming the previous protocol hop preserved meaning.
 - **Free-text summaries:** Summaries are high-risk propagation artifacts because they compress evidence and can quietly change intent. Require source links, confidence, omitted-field disclosure, and comparison against the original evidence for high-impact workflows.
+
+## Protocol-Specific Verification Checks
+
+| Boundary | Auditor Checks | Failure Examples |
+|----------|----------------|------------------|
+| A2A Agent Card intake | Confirm Agent Cards are fetched over HTTPS, authenticated when extended cards are used, stored with version/hash history, and reviewed before new capabilities, examples, URLs, or security schemes are exposed to planning. Compare public and authenticated cards for unexpected capability expansion. | A peer updates a capability description to request credentials, adds a lookalike high-privilege capability, or changes its endpoint after approval. |
+| A2A task/session messages | Verify each received message carries task/session binding and is compared against the original task anchor, allowed capabilities, current workflow state, and user-approved impact level. Red-team with multi-turn requests that slowly shift from the delegated task to credential collection or tool execution. | A remote research agent asks the client to reveal tool schemas, replay prior conversation history, or execute an unrelated purchase during a stateful session. |
+| MCP tool metadata | Inspect how the client pins, diffs, and scans tool names, descriptions, parameter descriptions, annotations, and examples. Require review when a server changes metadata after install or when descriptions contain imperatives, invisible Unicode, encoded blobs, unrelated tool references, or external callback URLs. | A benign calculator tool includes hidden instructions to read local configuration, or a server changes descriptions after a trusted initial review. |
+| MCP tool results and async events | Validate tool results, errors, resumed stream events, and `tools/list_changed` notifications before they enter model context. Check session IDs are not treated as authentication and that every inbound request is authorized independently. | A hijacked session queues a malicious event that changes offered tools, or an error message contains instructions that cause a privileged follow-up tool call. |
+| Shared memory, queues, and summaries | Require provenance, tenant binding, source links, expiry, sensitivity labels, and contradiction checks before propagated output becomes memory or a queue message consumed by another agent. | A schema-valid summary drops caveats, changes the actor or amount, marks attacker-provided content as authoritative, or writes stale approval state into memory. |
 
 ## Hardening Recommendations
 
@@ -85,14 +96,19 @@ This section should be read narrowly. Transport encryption, authentication, repl
 - [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/) -- ASI07 includes missing semantic validation as an inter-agent communication failure
 - [OWASP MCP Tool Poisoning](https://owasp.org/www-community/attacks/MCP_Tool_Poisoning) -- attack description and prevention guidance for poisoned MCP tool outputs
 - [MCP Security Best Practices](https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices) -- MCP trust-boundary, authorization, SSRF, session hijacking, and local server compromise guidance
+- [A2A Protocol Specification](https://a2a-protocol.org/v0.3.0/specification/) -- Agent Card discovery, authentication, authorization, TLS, and declared security requirements
 - [Agent Session Smuggling in Agent2Agent Systems](https://unit42.paloaltonetworks.com/agent-session-smuggling-in-agent2agent-systems/) -- A2A multi-turn semantic drift and task-anchor defense
 - [MCP-ITP: Automated Implicit Tool Poisoning](https://arxiv.org/abs/2601.07395) -- implicit tool poisoning benchmark and attack results
 - [Model Context Protocol at First Glance](https://arxiv.org/abs/2506.13538) -- large-scale MCP server security and maintainability study
 - [Security Threat Modeling for Emerging AI-Agent Protocols](https://arxiv.org/abs/2602.11327) -- comparative analysis of MCP, A2A, Agora, and ANP
 - [Microsoft: AI Recommendation Poisoning](https://www.microsoft.com/en-us/security/blog/2026/02/10/ai-recommendation-poisoning/) -- memory manipulation mapped to MITRE ATLAS AML.T0051 and AML.T0080.000
 - [Guardrails AI Structured Data Validation](https://guardrailsai.com/guardrails/docs/how-to-guides/generate_structured_data) -- Pydantic-backed structured output validation and validators
+- [Guardrails AI Custom Validators](https://guardrailsai.com/guardrails/docs/how-to-guides/custom_validators) -- custom validators for domain-specific checks
 - [Pydantic AI Structured Output](https://pydantic.dev/docs/validation/latest/examples/pydantic_ai/) -- output type validation with Pydantic field validators
+- [Pydantic AI Output Validators](https://pydantic.dev/docs/ai/core-concepts/output/) -- validation context and output validators for structured outputs and tool arguments
 - [NVIDIA NeMo Guardrails Overview](https://docs.nvidia.com/nemo/guardrails/latest/about/overview.html) -- programmable guardrails, tool input/output validation, and agentic security rails
+- [Open Policy Agent Documentation](https://www.openpolicyagent.org/docs) -- policy-as-code decisions over structured JSON inputs
+- [Cedar Policy Validation](https://docs.cedarpolicy.com/policies/validation.html) -- schema-backed validation for authorization policies and request expectations
 - AISVS C10 (MCP Security) -- protocol-specific MCP controls that complement C9.5's semantic validation focus
 
 ---
@@ -108,7 +124,10 @@ This section should be read narrowly. Transport encryption, authentication, repl
 
 ## Related Pages
 
-- [C10.4 MCP Schema Validation](../C10-MCP-Security/C10-04-Schema-Message-Validation.md) -- MCP-specific schema and message validation is the structural layer that C9.5 builds on when the receiving agent checks meaning, intent, and downstream safety.
-- [C09.3 Tool and Plugin Isolation](C09-03-Tool-and-Plugin-Isolation.md) -- Isolation keeps poisoned tool output or unsafe peer-agent content from reaching unrelated tools, tenants, or execution environments after semantic validation fails.
+- [C11.8 Agent Security Self-Assessment](../C11-Adversarial-Robustness/C11-08-Agent-Security-Self-Assessment.md) -- Self-assessment gives teams a place to prove that message validators, metadata review, and high-impact action gates are exercised before an agent acts.
+- [C02.1 Prompt Injection Defense](../C02-User-Input-Validation/C02-01-Prompt-Injection-Defense.md) -- Prompt injection controls cover the upstream attack patterns that C9.5 must catch again when peer-agent and tool outputs cross a trust boundary.
+- [C11.7 Security Policy Adaptation](../C11-Adversarial-Robustness/C11-07-Security-Policy-Adaptation.md) -- Adaptive policy work is closely related to keeping semantic validators, allowlists, and protocol metadata rules current without silently widening trust.
+- [C09.9 Data Flow Isolation and Origin Enforcement](C09-09-Data-Flow-Isolation-Origin-Enforcement.md) -- Origin-aware data-flow controls help C9.5 validators decide which propagated facts, summaries, and tool results are allowed to influence downstream agents.
+- [C02.2 Pre-Tokenization Input Normalization](../C02-User-Input-Validation/C02-02-Pre-Tokenization-Input-Normalization.md) -- Normalization checks catch invisible Unicode, encoded content, and metadata smuggling before semantic validators reason over the message body.
 
 ---

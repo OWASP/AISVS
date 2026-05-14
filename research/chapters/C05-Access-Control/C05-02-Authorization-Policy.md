@@ -1,7 +1,7 @@
 # C5.2: AI Resource Authorization & Classification
 
 > [Back to C05 Index](C05-Access-Control.md)
-> **Last Researched:** 2026-05-02 (6th pass, updated with AuthZEN 1.0, Bedrock AgentCore Policy GA, current vector database RBAC controls, NIST IR 8596, and OpenClaw/EchoLeak authorization lessons)
+> **Last Researched:** 2026-05-13 (7th pass, updated with May 2026 Spring AI vector-store and memory advisories, Milvus management-port exposure, AuthZEN 1.0, Bedrock AgentCore Policy GA, and current AI asset-governance tooling)
 
 ## Purpose
 
@@ -22,8 +22,21 @@ Implement access controls for all AI resources with explicit permission models a
 
 ---
 
+## Current Research Notes
+
+- As of May 2026, vector-store authorization needs explicit testing below the application UI. Milvus CVE-2026-26190 exposed unauthenticated business APIs on a management port, while Spring AI CVE-2026-22729 and CVE-2026-22730 showed that metadata filters used for tenant and role isolation can be bypassed when filter expressions are built from unescaped input.
+- Spring AI 1.0.7 and 1.1.6 added fresh security fixes on May 8, 2026. CVE-2026-41705 is especially relevant to C5.2.1 because unsanitized document IDs in `MilvusVectorStore#doDelete(List)` could alter vector-store deletion filters; CVE-2026-41712 is relevant to C5.2.4 because an implicit default conversation ID could mix chat memory across users unless applications pass an explicit conversation identifier.
+- AuthZEN 1.0, published April 29, 2026, gives teams a practical interoperability target for PDP and PEP integration: request attributes should include subject, resource, action, and context, and AI gateways should preserve enough context for policy decisions to be replayed during audit.
+- Asset-governance products are starting to cover AI-specific resources, but coverage is uneven. Microsoft Purview supports classification, sensitivity labels, audit, and DSPM for Entra-registered AI apps; Collibra's AI Governance operating model adds assets such as AI agents, AI endpoints, model deployments, and agent-governance records. Neither removes the need to label embeddings, prompt caches, memory rows, and vector metadata at ingestion time.
+
 ## Related Standards & References
 
+- Spring AI 1.0.7, 1.1.6, 2.0.0-M6 release notes - https://spring.io/blog/2026/05/08/spring-ai-1-0-7-1-1-6-2-0-0-M6-available-now
+- Spring AI CVE-2026-41705, MilvusVectorStore filter-expression injection - https://spring.io/security/cve-2026-41705
+- Spring AI CVE-2026-41712, ChatMemory default conversation ID data leakage - https://spring.io/security/cve-2026-41712
+- Spring AI CVE-2026-22729, vector-store JSONPath filter injection - https://spring.io/security/cve-2026-22729
+- Milvus GHSA-7ppg-37fh-vcr6, unauthenticated REST API on metrics port - https://github.com/milvus-io/milvus/security/advisories/GHSA-7ppg-37fh-vcr6
+- NVD CVE-2026-26190, Milvus authentication bypass - https://nvd.nist.gov/vuln/detail/CVE-2026-26190
 - OWASP Top 10 for Agentic Applications 2026 - https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/
 - OWASP release notes for Agentic Top 10 risk examples - https://genai.owasp.org/2025/12/09/owasp-top-10-for-agentic-applications-the-benchmark-for-agentic-security-in-the-age-of-autonomous-ai/
 - MITRE ATLAS OpenClaw Investigation - https://www.mitre.org/sites/default/files/2026-02/PR-26-00176-1-MITRE-ATLAS-OpenClaw-Investigation.pdf
@@ -38,16 +51,18 @@ Implement access controls for all AI resources with explicit permission models a
 - Qdrant managed-cloud database authentication - https://qdrant.tech/documentation/cloud/authentication/
 - Microsoft Entra Privileged Identity Management - https://learn.microsoft.com/en-us/entra/id-governance/privileged-identity-management/pim-configure
 - Microsoft Purview security and compliance for Entra-registered AI apps - https://learn.microsoft.com/en-us/purview/ai-entra-based
+- Collibra AI Governance operating model - https://productresources.collibra.com/docs/cpsh/latest/Content/AIGovernance/co_ai-governance-om.htm
 - Atlan tag propagation - https://docs.atlan.com/product/integrations/automation/always-on/references/tag-propagation
 
 ---
 
 ## Related Pages
 
-- [C08-01 Access Controls for Memory and RAG](../C08-Memory-and-Embeddings/C08-01-Access-Controls-Memory-RAG.md) - Carries the C5.2 authorization and classification model into vector stores, RAG indices, memory scopes, provenance tags, and retrieval logging.
-- [C05 Access Control](C05-Access-Control.md) - Places this section alongside identity, query-time enforcement, output filtering, PDP isolation, and multi-tenant controls.
-- [C08-02 Embedding Sanitization & Validation](../C08-Memory-and-Embeddings/C08-02-Embedding-Sanitization-Validation.md) - Covers the ingestion controls that keep classified source data and prompt-injection content from entering embedding pipelines unchecked.
-- [C09-06 Authorization & Delegation](../C09-Orchestration-and-Agents/C09-06-Authorization-and-Delegation.md) - Extends these policies into scoped capability tokens, delegation context propagation, credential isolation, and per-action agent authorization.
+- [C08-05 Scope Enforcement for User Memory](../C08-Memory-and-Embeddings/C08-05-Scope-Enforcement-User-Memory.md) - Applies the same authorization labels to memory keys, cache scopes, conversation IDs, and cross-user retrieval tests.
+- [C12-04 Purpose Limitation & Scope Creep](../C12-Privacy/C12-04-Purpose-Limitation-Scope-Creep.md) - Connects classification and purpose labels to consented-use boundaries, DPIA/FRIA evidence, and audit trails for AI-assisted processing.
+- [C09-06 Authorization & Delegation](../C09-Orchestration-and-Agents/C09-06-Authorization-and-Delegation.md) - Extends these resource policies into scoped capability tokens, continuous re-authorization, credential isolation, and per-action agent decisions.
+- [C05-03 Query-Time Security Enforcement](C05-03-Query-Time-Security-Enforcement.md) - Covers the runtime retrieval filters and caller-context checks that make C5.2 labels enforceable during RAG and vector search.
+- [C05 Access Control](C05-Access-Control.md) - Places this section alongside identity, output filtering, PDP isolation, and multi-tenant access-control requirements.
 
 ---
 
