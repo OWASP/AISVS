@@ -1,7 +1,7 @@
 # C5.6: Multi-Tenant Isolation
 
 > [Back to C05 Index](C05-Access-Control.md)
-> **Last Researched:** 2026-05-02 (refresh: vLLM v0.20.0 security baseline, GHSA-83vm-p52w-f9pw speculative-decoding DoS, April 2026 vLLM DoS/SSRF/OOM advisories patched in 0.19.0, vLLM prefix-cache SHA256/cache-salt guidance, LMCache P2P KV sharing production notes, MITRE ATLAS v5.6.0, NIST CAISI agent identity/authorization work, NIST COSAiS predictive-AI overlay, CVE-2026-27928 Windows Hello S:C clarification)
+> **Last Researched:** 2026-05-13 (refresh: vLLM v0.20.0 prefix-cache salt and SHA256 guidance, vLLM deployment-hardening and API-key limitation guidance, dynamic LoRA resolver production warning, CacheSolidarity selective prefix-cache isolation research, LMCache P2P KV-sharing isolation considerations, MITRE ATLAS v5.6.1/v5.6.0, NIST CAISI agent identity/authorization work, NIST COSAiS overlays)
 
 ## Purpose
 
@@ -26,6 +26,18 @@ Ensure logical and cryptographic isolation between tenants in shared AI infrastr
 - **[2026-05] CVE-2026-27928 handling:** NVD and MSRC describe CVE-2026-27928 as a Windows Hello security-feature bypass caused by improper input validation, with CVSS v3.1 scope changed (`S:C`).
   It remains useful as a changed-scope identity-control example, but it should not be treated as an Azure tenant-isolation CVE.
   See [NVD CVE-2026-27928](https://nvd.nist.gov/vuln/detail/CVE-2026-27928) and [MSRC CVE-2026-27928](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-27928).
+- **[2026-05] vLLM deployment hardening:** vLLM's security guidance now gives auditors concrete multi-tenant checks beyond framework version: inter-node traffic for PyTorch Distributed, KV-cache transfer, and tensor/pipeline/data parallelism is insecure by default unless isolated on trusted networks; firewalls should expose only the API listener and keep internal communication ports tenant-private.
+  The same guidance warns that `--api-key` protects the OpenAI-compatible `/v1` endpoints only, while endpoints such as `/invocations`, `/pause`, `/resume`, `/tokenize`, `/detokenize`, and development-only cache reset/RPC endpoints need reverse-proxy and network controls.
+  For 5.6.2 evidence, ask for listener bindings, firewall rules, endpoint exposure tests, and proof that tenant-facing deployments do not expose internal control endpoints. See [vLLM Security](https://docs.vllm.ai/en/v0.20.0/usage/security/).
+- **[2026-05] Dynamic LoRA loading boundary:** vLLM's LoRA documentation says runtime resolver plugins can load adapters from local files or Hugging Face Hub, but enabling remote downloads is not intended for production.
+  In shared serving clusters, treat `VLLM_ALLOW_RUNTIME_LORA_UPDATING`, `VLLM_PLUGINS`, resolver cache directories, and S3/Hugging Face repository allowlists as tenant-bound security controls rather than convenience settings.
+  A practical 5.6.2 test is to attempt cross-tenant adapter selection, adapter replacement through `load_inplace`, and path traversal or repository-confusion cases while confirming every adapter is signed and mapped to the authenticated tenant. See [vLLM LoRA adapters](https://docs.vllm.ai/en/v0.20.0/features/lora/).
+- **[2026-05] Selective prefix-cache isolation:** CacheSolidarity (arxiv 2603.10726, March 2026) proposes a middle ground between disabling automatic prefix caching and leaving cross-user cache reuse open: track owner metadata on cache entries, flag suspicious cross-user reuse, and selectively isolate prefixes when hit/miss timing becomes distinguishable.
+  This is not yet a mainstream serving-engine control, so auditors should not accept it as deployed unless there is implementation evidence, but it is useful as a design pattern for vendors that need 5.6.1 assurance without sacrificing all cache efficiency.
+  See [CacheSolidarity](https://arxiv.org/abs/2603.10726) and [vLLM prefix caching](https://docs.vllm.ai/en/v0.20.0/design/prefix_caching/).
+- **[2026-05] ATLAS and agent standards drift:** MITRE ATLAS v5.6.1 was a small schema-fix release on May 5, 2026, while v5.6.0 on April 30 added `Acquire Public AI Artifacts: AI Agent Configuration`, `Search Open Websites/Domains: Code Repositories`, and `Phishing: Deepfake-Assisted Phishing`; the March v5.5.0 release added AI agent tool poisoning, AI service proxy, and cost-harvesting techniques plus updates to AI telemetry logging and component segmentation mitigations.
+  For multi-tenant platforms, the important control mapping is identity-bound agent/tool execution, tenant-scoped telemetry, signed agent/tool artifacts, and segmentation of agent components from shared model-serving and cache planes.
+  See [MITRE ATLAS changelog](https://github.com/mitre-atlas/atlas-data/blob/main/CHANGELOG.md) and [NIST AI Agent Standards Initiative](https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative).
 
 ---
 
@@ -38,6 +50,19 @@ Ensure logical and cryptographic isolation between tenants in shared AI infrastr
 
 ---
 
+## Notable Incidents and Research Signals
+
+- **PROMPTPEEK, NDSS 2025:** The first focused public analysis of prompt leakage through shared KV-cache reuse showed that timing differences in multi-tenant vLLM/SGLang-style serving can let an attacker reconstruct another user's prompt under realistic prior-knowledge assumptions. This remains the core test case for 5.6.1 because it turns a performance optimization into a confidentiality boundary. See [PROMPTPEEK](https://www.ndss-symposium.org/ndss-paper/i-know-what-you-asked-prompt-leakage-via-kv-cache-sharing-in-multi-tenant-llm-serving/).
+- **vLLM prompt embedding deserialization, November 2025:** GHSA-mrw7-hf4f-83pf / CVE-2025-62164 shows how a tenant-facing model-server feature can become a shared-host compromise path: user-supplied `prompt_embeds` were loaded with `torch.load()` and could trigger memory corruption through sparse-tensor handling. Even when direct cache isolation is sound, 5.6.2 evidence has to include admission controls for tenant-controlled embeddings, model files, media URLs, and adapter artifacts. See [vLLM advisory GHSA-mrw7-hf4f-83pf](https://github.com/vllm-project/vllm/security/advisories/GHSA-mrw7-hf4f-83pf).
+- **Agent/tool supply-chain expansion, March-May 2026:** ATLAS v5.5.0 and v5.6.0 added agent tool poisoning, AI service proxy, cost-harvesting, public AI artifact acquisition, and code-repository discovery techniques. These are not GPU attacks, but they matter for multi-tenant isolation because a poisoned tenant-scoped agent tool or proxy can bridge the same boundaries that model-serving controls try to preserve.
+
+## Implementation Maturity
+
+- **5.6.1 KV-cache isolation:** Improving. vLLM exposes `cache_salt`, SHA256 is the default prefix-cache hash as of v0.11, and prompt-structure mitigations are practical today. Selective isolation designs such as CacheSolidarity are promising, but should be treated as research unless the serving provider can show implementation and test evidence.
+- **5.6.2 shared model-serving isolation:** Mixed. Kubernetes namespaces, network policy, reverse proxies, signed artifacts, and patch management are mature controls, but runtime LoRA loading, adapter attestation, cross-tenant batching kernels, and GPU/TEE attestation are still uneven across open-source serving stacks. The strongest current posture layers tenant-bound adapters, disabled remote runtime loading, isolated inter-node networks, hardened container or VM runtimes, and explicit tests for unprotected control endpoints.
+
+---
+
 ## Community Notes
 
 _Space for contributor observations, discussion, and context that doesn't fit elsewhere._
@@ -46,8 +71,7 @@ _Space for contributor observations, discussion, and context that doesn't fit el
 
 ## Related Pages
 
-- [C08-01 Access Controls for Memory and RAG](../C08-Memory-and-Embeddings/C08-01-Access-Controls-Memory-RAG.md) — extends 5.6's tenant boundary down into vector stores, memory metadata, retrieval logs, and provenance controls.
-- [C08-05 Scope Enforcement for User Memory](../C08-Memory-and-Embeddings/C08-05-Scope-Enforcement-User-Memory.md) — pairs with 5.6.1 by testing cache isolation, tenant-safe IDs, and adversarial probes for cross-user memory leakage.
-- [C05-03 Query-Time Security Enforcement](C05-03-Query-Time-Security-Enforcement.md) — covers the per-query filters and fail-closed retrieval checks that depend on the tenant identity isolated by 5.6.
-- [C04-02 AI Hardware Security](../C04-Infrastructure/C04-02-Hardware-Security.md) — anchors the hardware side of 5.6.2, including GPU attestation, memory isolation, scheduler boundaries, and encrypted interconnects.
-- [C08 Memory and Embeddings](../C08-Memory-and-Embeddings/C08-Memory-and-Embeddings.md) — provides the broader vector-database and embedding-security context for tenant-scoped cache and retrieval isolation.
+- [C08-05 Scope Enforcement for User Memory](../C08-Memory-and-Embeddings/C08-05-Scope-Enforcement-User-Memory.md) — tests whether tenant-scoped memory identifiers, cache keys, and adversarial probes prevent cross-user leakage.
+- [C04-02 AI Hardware Security](../C04-Infrastructure/C04-02-Hardware-Security.md) — supplies the GPU attestation, scheduler isolation, firmware, and encrypted-interconnect evidence needed for hard tenant boundaries.
+- [C08-01 Access Controls for Memory and RAG](../C08-Memory-and-Embeddings/C08-01-Access-Controls-Memory-RAG.md) — extends the tenant boundary into vector stores, memory metadata, retrieval logs, and provenance controls.
+- [C05-02 Authorization Policy](C05-02-Authorization-Policy.md) — ties tenant identity to resource authorization, JIT privilege, asset labels, and policy evidence consumed by shared serving and retrieval layers.

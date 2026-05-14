@@ -1,7 +1,7 @@
 # C5.4: Output Entitlement Enforcement
 
 > [Back to C05 Index](C05-Access-Control.md)
-> **Last Researched:** 2026-05-02
+> **Last Researched:** 2026-05-13
 
 ## Purpose
 
@@ -30,9 +30,21 @@ The highest-risk failures now show up outside the visible answer. Check Point Re
 
 **Fail-closed posture.** When the output filter errors, times out, or encounters an unparseable response, the default must be to block, not pass. Attackers who can induce detector errors (malformed UTF-8, extremely long outputs, structured data that breaks the parser) will otherwise get a free pass. Log every fail-closed event.
 
-**Agentic outputs.** For agents that can invoke write-capable tools, filtering the final text response is insufficient — every tool invocation is an output channel. Apply the same entitlement checks to tool arguments as to user-visible text. The PerplexedBrowser case is the canonical example: exfiltration happened through URL navigation, not through the rendered response.
+**Gateway placement.** AI gateway and guardrail products are starting to expose controls that are close enough to the model boundary to inspect generated responses before users or downstream tools see them. As of April 2026, Cloudflare AI Gateway DLP scans prompts and responses and explicitly documents that text in tool call arguments and tool results is in scope when it appears in the JSON message body. Its documented limits are audit-relevant: response scanning buffers streamed output, base64-encoded images and file attachments are not decoded, and external URLs are not followed. Lakera Guard takes a similar runtime placement approach, recommending screening after generation and before return to the user or downstream system, with repeated calls at each tool interaction in multi-step agent workflows. These controls are useful only when the application routes every outbound channel through them; separate gateways or policy projects are still needed when tenants, data classes, or latency-sensitive streaming paths require different enforcement.
+
+**Agentic outputs.** For agents that can invoke write-capable tools, filtering the final text response is insufficient; every tool invocation is an output channel. Apply the same entitlement checks to tool arguments as to user-visible text, including email recipients, calendar descriptions, CRM fields, webhook bodies, browser URLs, DNS labels, file names, and attachment metadata. The PerplexedBrowser case is the canonical example: exfiltration happened through URL navigation, not through the rendered response.
+
+**MCP and tool-description poisoning.** Invariant Labs' April 2025 MCP tool-poisoning work showed that malicious tool descriptions can cause an agent to read local configuration or SSH keys and transmit them through a hidden tool parameter. The same research demonstrated "shadowing," where a malicious MCP server changes how the agent uses a separate trusted email tool. For this control, the practical lesson is that output entitlement enforcement must inspect the exact tool payload that will execute, not the summarized approval text in the user interface. Pinning and scanning MCP servers belongs in supply-chain controls, but C5.4 should still block tool arguments that contain secrets, unauthorized source identifiers, or external destinations that the caller is not allowed to use.
 
 **Citation objects are output.** Treat citations, footnotes, source cards, tool traces, and "sources consulted" lists as protected output fields. The caller must be authorized to see the document and the specific metadata shown. If the answer can be shown but the source cannot, render the answer without that citation and log the strip event.
+
+**Audit evidence to collect.**
+- Output-filter policy versions, detector configuration, allowlists, and deny-lists active for each environment.
+- Canary replay results covering answer text, citation metadata, hidden markdown, rendered HTML attributes, tool arguments, webhook payloads, and logs exposed to users.
+- Entitlement decision logs that tie every displayed citation to the caller, source document, ACL or label, policy version, and final allow or strip decision.
+- Tool-call enforcement logs with destination, normalized payload, data-classification labels, redaction or block reason, and reviewer decision for any override.
+- Fail-closed events for detector timeout, malformed Unicode, oversized payload, parser failure, and unavailable policy services.
+- Sampling records showing that streamed responses and low-latency paths do not bypass the output filter.
 
 **Canary replay.** Keep a small set of synthetic secrets and restricted canary documents in each environment. Use them in regression tests and sampled production replay to verify that answer text, citations, browser actions, and tool payloads are blocked before leaving the trust boundary.
 
@@ -55,6 +67,8 @@ The highest-risk failures now show up outside the visible answer. Check Point Re
 * [Google Cloud Sensitive Data Protection — De-identifying Sensitive Data](https://cloud.google.com/sensitive-data-protection/docs/deidentify-sensitive-data)
 * [AWS Comprehend — Detect PII Entities](https://docs.aws.amazon.com/cli/latest/reference/comprehend/detect-pii-entities.html)
 * [Nightfall — Firewall for AI DLP APIs](https://help.nightfall.ai/developer-api/nightfall_apis/dlp)
+* [Cloudflare AI Gateway — Data Loss Prevention (DLP)](https://developers.cloudflare.com/ai-gateway/features/dlp/)
+* [Lakera Guard API Endpoint](https://docs.lakera.ai/docs/api/guard)
 * [Azure AI Search — Document-Level Access Control](https://learn.microsoft.com/en-us/azure/search/search-document-level-access-overview)
 * [Microsoft Edge — Automatic Activation of Microsoft Purview DLP Policies](https://learn.microsoft.com/en-us/deployedge/microsoft-edge-dlp-purview-configuration)
 * [Secure AI Agent Knowledge Retrieval — Security Filters in Agent Loop (Microsoft, 2026)](https://techcommunity.microsoft.com/blog/integrationsonazureblog/%F0%9F%94%90secure-ai-agent-knowledge-retrieval---introducing-security-filters-in-agent-lo/4467561)
@@ -62,6 +76,7 @@ The highest-risk failures now show up outside the visible answer. Check Point Re
 * [Zenity Labs — PerplexedBrowser local file exfiltration](https://labs.zenity.io/p/perplexedbrowser-perplexity-s-agent-browser-can-leak-your-personal-pc-local-files)
 * [Zenity Labs — PerplexedBrowser 1Password vault takeover](https://labs.zenity.io/p/perplexedbrowser-how-attackers-can-weaponize-comet-to-takeover-your-1password-vault)
 * [Help Net Security — The vulnerability that turns your AI agent against you (March 2026)](https://www.helpnetsecurity.com/2026/03/04/agentic-browser-vulnerability-perplexedbrowser/)
+* [Invariant Labs — MCP Tool Poisoning Attacks](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks)
 * [Glean — Permissions-aware AI frameworks](https://www.glean.com/perspectives/security-permissions-aware-ai)
 * [Pinecone — RAG with Access Control](https://www.pinecone.io/learn/rag-access-control/)
 * [Nightfall AI — DLP for LLMs guide](https://www.nightfall.ai/ai-security-101/data-leakage-prevention-dlp-for-llms)
@@ -76,8 +91,11 @@ The highest-risk failures now show up outside the visible answer. Check Point Re
 
 ## Related Pages
 
-- [C8.5 Scope Enforcement in User Memory](../C08-Memory-and-Embeddings/C08-05-Scope-Enforcement-User-Memory.md) — covers the memory and RAG-side scope boundaries that output filtering should verify before anything leaves the agent boundary.
-- [C5.3 Query-Time Authorization](C05-03-Query-Time-Security-Enforcement.md) — upstream retrieval enforcement that should prevent unauthorized sources from entering context before this section's output and citation checks run.
+- [C2.1 Prompt Injection Defense](../C02-User-Input-Validation/C02-01-Prompt-Injection-Defense.md) — covers the injection paths that can coerce a model or agent into leaking data through final text, citations, or tool calls.
+- [C7.6 Source Attribution and Citation Integrity](../C07-Model-Behavior/C07-06-Source-Attribution-Citation-Integrity.md) — pairs with this section where citations must be both truthful and authorized for the caller.
+- [C8.2 Embedding Sanitization Validation](../C08-Memory-and-Embeddings/C08-02-Embedding-Sanitization-Validation.md) — addresses upstream RAG and memory hygiene before retrieved content becomes answer text or citation metadata.
+- [C9.6 Authorization and Delegation](../C09-Orchestration-and-Agents/C09-06-Authorization-and-Delegation.md) — covers the agent-side authority boundaries that output filters must enforce on delegated actions.
+- [C9.7 Intent Verification](../C09-Orchestration-and-Agents/C09-07-Intent-Verification.md) — complements output filtering by checking whether write actions and tool payloads still match the user's approved intent.
 
 ---
 

@@ -4,7 +4,7 @@
 
 ## Overview
 
-Appendix B lists the standards, frameworks, specifications, and publications referenced throughout AISVS. This research page audits coverage: which chapter references are missing from Appendix B, which Appendix B entries aren't cited, and where URL inconsistencies exist. As of May 2026, **80+ additional references** have been identified from recent standards publications, framework releases, and specification updates that should be considered for inclusion. The Q1/Q2 2026 period has been particularly active: CSA expanded the CSAI Foundation with agentic assurance and CNA work, NIST published AI Agent Identity and AI 800-4 monitoring guidance, MITRE ATLAS published the OpenClaw investigation, and OWASP released new exploit, red-teaming, MCP, AIBOM, landscape, and data-security resources.
+Appendix B lists the standards, frameworks, specifications, and publications referenced throughout AISVS. This research page audits coverage: which chapter references are missing from Appendix B, which Appendix B entries aren't cited, and where URL inconsistencies exist. As of May 2026, **90+ additional references** have been identified from recent standards publications, framework releases, and specification updates that should be considered for inclusion. The Q1/Q2 2026 period has been particularly active: CSA expanded the CSAI Foundation with agentic assurance and CNA work, NIST published AI Agent Identity, AI 800-3, AI 800-4, and CAISI evaluation material, MITRE ATLAS published the OpenClaw investigation and moved toward faster release cycles, and OWASP released new exploit, red-teaming, MCP, AIBOM, FinBot, landscape, and data-security resources.
 
 ---
 
@@ -24,11 +24,13 @@ The original audit identified 39 references cited across chapters but absent fro
 | NIST Cybersecurity Framework 2.0 | Feb 2024 | C4 | https://www.nist.gov/cyberframework |
 | NIST SP 800-207: Zero Trust Architecture | Aug 2020 | C5, C9, C10 | https://csrc.nist.gov/pubs/sp/800/207/final |
 | NIST SP 800-162: Guide to ABAC | Jan 2014 | C5 | https://csrc.nist.gov/pubs/sp/800/162/final |
-| NIST SP 800-63-3: Digital Identity Guidelines | Jun 2017 | C5 | https://csrc.nist.gov/pubs/sp/800/63/3/final |
+| NIST SP 800-63-4: Digital Identity Guidelines | Jul 2025 | C05, C09, C10 | https://csrc.nist.gov/pubs/sp/800/63/4/final |
 | NIST IR 8360: ML for Access Control Policy Verification | Nov 2021 | C5 | https://csrc.nist.gov/pubs/ir/8360/final |
 | NIST AI 100-2e2023: Adversarial Machine Learning | Jan 2024 | C11 | https://csrc.nist.gov/pubs/ai/100/2/e2023/final |
 | NIST CAISI AI Agent Standards Initiative | Feb 2026 | C09, C05, C10 | https://www.nist.gov/caisi/ai-agent-standards-initiative |
+| NIST AI 800-3: Expanding the AI Evaluation Toolbox with Statistical Models | Feb 2026 | C03, C07, C11, C14 | https://www.nist.gov/publications/expanding-ai-evaluation-toolbox-statistical-models |
 | NIST AI 800-4: Challenges to Monitoring Deployed AI Systems | Mar 2026 | C13, C14, C07 | https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.800-4.pdf |
+| NIST CAISI Evaluation of DeepSeek V4 Pro | May 2026 | C03, C11, C14 | https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro |
 | NIST CAISI RFI: Security Considerations for AI Agents | Jan 2026 | C09, C05, C10 | https://www.federalregister.gov/documents/2026/01/08/2026-00206/request-for-information-regarding-security-considerations-for-artificial-intelligence-agents |
 | NIST NCCoE Concept Paper: AI Agent Identity and Authorization | Feb 2026 | C05, C09, C10 | https://csrc.nist.gov/pubs/other/2026/02/05/accelerating-the-adoption-of-software-and-ai-agent/ipd |
 | MITRE SAFE-AI Framework | Apr 2025 | C04, C03, C11 | https://atlas.mitre.org/pdf-files/SAFEAI_Full_Report.pdf |
@@ -62,9 +64,11 @@ The original audit identified 39 references cited across chapters but absent fro
 | OWASP Vendor Evaluation Criteria for AI Red Teaming v1.0 | Feb 2026 | C11, C07 | https://genai.owasp.org/resource/owasp-vendor-evaluation-criteria-for-ai-red-teaming-providers-tooling-v1-0/ |
 | OWASP GenAI Red Teaming Guide | Jan 2025 | C11, C07 | https://genai.owasp.org/resource/genai-red-teaming-guide/ |
 | OWASP GenAI Data Security Risks and Mitigations 2026 | Mar 2026 | C01, C08, C12 | https://genai.owasp.org/resource/owasp-genai-data-security-risks-mitigations-2026/ |
+| OWASP AI Security Solutions Landscape for LLM and GenAI Apps Q2 2026 | Mar 2026 | C02, C07, C13 | https://genai.owasp.org/resource/al-security-solutions-landscape-for-llm-and-gen-al-apps-q2-2026/ |
 | OWASP AI Security Solutions Landscape for Agentic AI Q2 2026 | Mar 2026 | All | https://genai.owasp.org/resource/ai-security-solutions-landscape-for-agentic-ai-q2-2026/ |
 | OWASP AI Security Solutions Landscape for AI and Agentic Red Teaming Q2 2026 | Apr 2026 | C07, C11, C13 | https://genai.owasp.org/resource/ai-security-solutions-landscape-for-ai-and-agentic-red-teaming-q2-2026/ |
 | OWASP GenAI Exploit Round-up Report Q1 2026 | Apr 2026 | C02, C06, C09, C10, C13 | https://genai.owasp.org/2026/04/14/owasp-genai-exploit-round-up-report-q1-2026/ |
+| OWASP FinBot Agentic AI CTF | Apr 2026 | C09, C10, C11 | https://genai.owasp.org/2026/04/28/finbot-ctf-is-live-a-hands-on-companion-to-the-owasp-genai-security-project/ |
 | LLM Prompt Injection Prevention Cheat Sheet | — | C2 | https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html |
 | AI Agent Security Cheat Sheet | — | C9, C10 | https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html |
 
@@ -105,11 +109,13 @@ The original audit identified 39 references cited across chapters but absent fro
 | MCP Authorization Specification (2025-06-18) | Jun 2025 | C10 | https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization |
 | MCP Specification 2025-11-25 Revision | Nov 2025 | C10 | https://modelcontextprotocol.io/specification/2025-11-25/changelog |
 | MCP Draft Authorization Spec (client-credentials, enterprise IdP) | Draft 2026 | C10, C05 | https://modelcontextprotocol.io/specification/draft/basic/authorization |
+| MCP Draft Specification Changelog (post-2025-11-25) | Draft 2026 | C10 | https://modelcontextprotocol.io/specification/draft/changelog |
 
 #### Key RFCs Mandated by MCP (missing)
 
 | Reference | Date | Cited In | Link |
 |-----------|------|----------|------|
+| OAuth 2.1 Authorization Framework draft-15 | Mar 2026 | C05, C10 | https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-15 |
 | RFC 8707: Resource Indicators for OAuth 2.0 | Feb 2020 | C10, C05 | https://www.rfc-editor.org/rfc/rfc8707 |
 | RFC 9728: OAuth 2.0 Protected Resource Metadata | Dec 2024 | C10, C05 | https://www.rfc-editor.org/rfc/rfc9728 |
 | RFC 7636: Proof Key for Code Exchange (PKCE) | Sep 2015 | C10, C05 | https://datatracker.ietf.org/doc/html/rfc7636 |
@@ -132,6 +138,7 @@ The original audit identified 39 references cited across chapters but absent fro
 | AML.T0100: AI Agent Clickbait | C09 | https://atlas.mitre.org/techniques/AML.T0100 |
 | AML.M00150: Adversarial Input Detection | C2 | https://atlas.mitre.org/mitigations/AML.M00150 |
 | MITRE ATLAS OpenClaw Investigation | C09, C10, C11 | https://www.mitre.org/news-insights/publication/mitre-atlas-openclaw-investigation |
+| MITRE ATLAS Secure AI expansion and release-cadence update | C09, C11, C13 | https://ctid.mitre.org/blog/2026/05/06/secure-ai-v2-release/ |
 
 #### Vendor Documentation (missing)
 
@@ -149,7 +156,7 @@ The original audit identified 39 references cited across chapters but absent fro
 
 | Reference | Category | Notes |
 |-----------|----------|-------|
-| NIST SP 800-218A: Secure Software Dev for GenAI | Standards | Cited in Appendix C and D only |
+| NIST SP 800-218A: Secure Software Dev for GenAI | Standards | Cited in Appendix C and D only; consider pairing with NIST AI 800-3 for evaluation evidence and uncertainty reporting |
 | ISO/IEC 42001:2023 | Standards | Cited in Appendix C and D only — but now also relevant to Appendix D maturity ratings |
 | OWASP ASVS | Standards | Cited in Appendix D only |
 | OWASP Secure Coding Practices | Standards | Cited in Appendix C only |
@@ -169,7 +176,8 @@ The same document is referenced with different URLs across chapters:
 | MITRE ATLAS AML.T0024.001 | "Invert AI Model" (C8) vs "Invert ML Model" (C11) | Use consistent title "Invert ML Model" (ATLAS canonical) |
 | ISO/IEC 42001 | Appendix B source previously used `iso.org/standard/81230.html`; current source now uses `iso.org/standard/42001` | Keep the corrected short ISO URL and avoid reintroducing the stale numeric page |
 | OAuth 2.1 | `draft-ietf-oauth-v2-1-11` in Appendix B source vs `draft-ietf-oauth-v2-1-15` (current as of March 2026) | Update to latest draft number |
-| MCP Specification | `modelcontextprotocol.io` (Appendix B) — needs versioned links to authorization spec and November 2025 revision | Add versioned spec links |
+| MCP Specification | `modelcontextprotocol.io` (Appendix B) — needs versioned links to authorization spec, November 2025 revision, and draft changelog | Add versioned spec links and keep draft-only items clearly marked as unstable |
+| NIST Digital Identity Guidelines | Several chapter references still point to SP 800-63-3-era identity guidance | Prefer SP 800-63-4 final and cite the A/B/C companion volumes where proofing, authentication, or federation details matter |
 
 ---
 
@@ -187,19 +195,25 @@ The same document is referenced with different URLs across chapters:
 
 6. **New category needed: "MCP-Specific References"** — MCP specification versions, authorization spec, OWASP MCP Top 10, OWASP Guide for Secure MCP Server Development, CoSAI MCP taxonomy, and mandated RFCs warrant their own section given MCP has its own dedicated chapter (C10).
 
-7. **NIST AI 800-4 (March 2026) cross-references needed** — This new NIST publication on post-deployment AI monitoring challenges is directly relevant to C13 (Monitoring and Logging) and C14 (Human Oversight). It identifies six monitoring categories and documents barriers from workshops with 200+ practitioners. Should be referenced in those chapters.
+7. **NIST AI 800-3 and AI 800-4 cross-references needed** — NIST AI 800-3 (February 2026) is directly relevant to evaluation evidence because it distinguishes benchmark accuracy from generalized accuracy and recommends explicit uncertainty modeling. NIST AI 800-4 (March 2026) is directly relevant to C13 (Monitoring and Logging) and C14 (Human Oversight) because it documents post-deployment monitoring challenges from workshops and literature review. These should be referenced together where AISVS asks for evaluation, monitoring, or model-performance evidence.
 
-8. **OWASP GenAI project publication velocity** — The OWASP GenAI Security Project published at least nine high-value resources between December 2025 and April 2026 (AIBOM generator, MCP server security guide, MCP third-party server cheat sheet, red teaming vendor evaluation criteria, data security risks guide, two Q2 2026 solution landscapes, the GenAI Red Teaming Guide, and the Q1 2026 exploit round-up). Appendix B should consider a dedicated "OWASP GenAI Security Project Resources" sub-section.
+8. **OWASP GenAI project publication velocity** — The OWASP GenAI Security Project published at least eleven high-value resources between December 2025 and April 2026 (AIBOM generator, MCP server security guide, MCP third-party server cheat sheet, red teaming vendor evaluation criteria, data security risks guide, three Q2 2026 solution landscapes, the GenAI Red Teaming Guide, the Q1 2026 exploit round-up, and the FinBot Agentic AI CTF launch). Appendix B should consider a dedicated "OWASP GenAI Security Project Resources" sub-section.
 
 9. **EU GPAI Code of Practice now final** — The Code of Practice for general-purpose AI was finalized in July 2025 and the Commission now maintains the official code and signatory page at https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai. The complementary GPAI provider guidelines explain the obligations that entered into application on August 2, 2025; Commission enforcement powers begin August 2, 2026.
 
-10. **MITRE ATLAS v5.4.0 (February 2026) agentic techniques** — The framework now covers 16 tactics and 84+ techniques after the October 2025 and February 2026 updates added 14 new agentic AI attack techniques including AI Agent Clickbait (AML.T0100), Publish Poisoned AI Agent Tool, and Escape to Host. The OpenClaw investigation (February 2026) demonstrated real-world exploit paths in AI-first ecosystems. These should be cross-referenced in C09 and C11.
+10. **MITRE ATLAS v5.4.0 and May 2026 Secure AI expansion** — The framework now covers 16 tactics and 84+ techniques after the October 2025 and February 2026 updates added agentic AI attack techniques including AI Agent Clickbait (AML.T0100), Publish Poisoned AI Agent Tool, and Escape to Host. The OpenClaw investigation (February 2026) demonstrated real-world exploit paths in AI-first ecosystems. The May 2026 Secure AI update adds a Technique Maturity filter, monthly release cadence, more rapid-response reporting, and a larger corpus of techniques, mitigations, and case studies. These should be cross-referenced in C09, C11, and C13.
 
 11. **NIST NCCoE AI Agent Identity concept paper** — Published February 5, 2026, this concept paper outlines a potential NCCoE project applying identity standards (OAuth 2.0, SPIFFE) to AI agents. It covers identification, authorization, auditing, non-repudiation, and prompt injection mitigation for autonomous agents. Comment period closes April 2, 2026. Directly relevant to C05, C09, and C10.
 
 12. **CSA launches and expands CSAI Foundation (March-April 2026)** — The Cloud Security Alliance launched CSAI as a dedicated 501(c)(3) for AI security, with the strategic mission of "Securing the Agentic Control Plane." Six programs cover visibility, best practices, education, governance, assurance, and research. In April 2026 CSA announced CNA authorization, the STAR for AI Catastrophic Risk Annex, and stewardship for AARM and the Agentic Trust Framework. Relevant to C09, C10, C13, and C14.
 
 13. **Exploit reporting now spans model, agent, and orchestration layers** — OWASP's Q1 2026 exploit round-up maps incidents such as OpenClaw, CustomMCP/Flowise, indirect prompt injection, and AI-assisted attack workflows to LLM and agentic risk categories. Appendix B should treat quarterly exploit reports as threat-intelligence references for C02, C06, C09, C10, and C13 rather than as generic news.
+
+14. **NIST SP 800-63-4 supersedes the older digital identity baseline** — The final July 2025 revision supersedes SP 800-63-3 and is more useful for AISVS access-control chapters because it splits identity proofing, authentication, and federation into companion volumes. C05, C09, and C10 should cite revision 4 where agent identity, federated authorization, or credential assurance is discussed.
+
+15. **FinBot is now a practical verification reference, not just a project note** — OWASP's April 2026 FinBot launch provides a live, agentic CTF mapped to OWASP LLM Top 10, OWASP Agentic Top 10, CWE, and MITRE ATLAS. It is useful as a hands-on validation reference for prompt injection, MCP tool misuse, policy bypass, data exfiltration, privilege escalation, and remote code execution scenarios.
+
+16. **MCP draft changes affect C10 implementation guidance** — The post-2025-11-25 draft changelog removes protocol-level sessions and the `Mcp-Session-Id` header from Streamable HTTP, adds capability extensions, and documents trace-context metadata conventions. Appendix B should keep this separate from stable versioned MCP references so C10 can distinguish current stable guidance from draft migration notes.
 
 ---
 
@@ -209,27 +223,27 @@ Based on the audit, Appendix B should be restructured to cover the full referenc
 
 | Category | Current Count | Missing | Recommended Total |
 |----------|:------------:|:-------:|:-----------------:|
-| Standards and Frameworks | 7 | 27 (incl. NIST AI 800-4, CAISI RFI, NCCoE AI Agent Identity, CSA CSAI) | ~34 |
-| Specifications and Protocols | 5 | 8 (MCP spec versions, draft auth + RFCs) | ~13 |
-| OWASP Publications | 3 | 20 (LLM entries, agentic, MCP guides, AIBOM, red teaming, data security, landscapes, exploit reporting) | ~23 |
-| MITRE ATLAS | 1 (main site) | 12 (individual techniques plus OpenClaw investigation) | ~13 |
+| Standards and Frameworks | 7 | 30 (incl. NIST AI 800-3/800-4, SP 800-63-4, CAISI RFI, NCCoE AI Agent Identity, CSA CSAI) | ~37 |
+| Specifications and Protocols | 5 | 10 (MCP spec versions, draft auth/changelog, OAuth 2.1 draft-15 + RFCs) | ~15 |
+| OWASP Publications | 3 | 22 (LLM entries, agentic, MCP guides, AIBOM, red teaming, data security, landscapes, exploit reporting, FinBot) | ~25 |
+| MITRE ATLAS | 1 (main site) | 13 (individual techniques plus OpenClaw and Secure AI update) | ~14 |
 | CoSAI | 0 | 4 | 4 |
 | EU AI Act & Implementing Guidance | 1 | 3 (codes of practice + GPAI guidelines) | 4 |
 | Privacy and Data Protection | 3 | 0 | 3 |
 | Cryptographic Standards | 2 | 0 | 2 |
 | Policy Engines | 2 | 0 | 2 |
 | Vendor Documentation | 0 | 5 | 5 |
-| **Total** | **18** | **~80** | **~104** |
+| **Total** | **18** | **~90** | **~113** |
 
 ---
 
 ## Related Pages
 
-- [Appendix A: Glossary](Appendix-A-Glossary.md) — Useful companion when reference additions introduce new terminology, especially around agent security, MCP, MITRE ATLAS, and supply-chain assurance.
-- [C01-01: Training Data Origin Traceability](../chapters/C01-Training-Data/C01-01-Training-Data-Origin-Traceability.md) — Connects Appendix B reference coverage to provenance, data-source inventories, and regulatory traceability requirements.
-- [C03-04: Secure Development Practices](../chapters/C03-Model-Lifecycle-Management/C03-04-Secure-Development-Practices.md) — Shows where MCP, agent runtime, prompt versioning, and secure build references need direct chapter support.
-- [C03-05: Hosted Provider Managed Controls](../chapters/C03-Model-Lifecycle-Management/C03-05-Hosted-Provider-Managed-Controls.md) — Helps map provider-dependency and hosted-model reference gaps back to lifecycle and change-management controls.
-- [C06-03: Third-Party Dataset Risk](../chapters/C06-Supply-Chain/C06-03-Third-Party-Dataset-Risk.md) — Shares the supply-chain, AI BOM, dataset provenance, and compliance references most likely to require Appendix B coverage.
+- [C11: Adversarial Robustness](../chapters/C11-Adversarial-Robustness/C11-Adversarial-Robustness.md) — Tracks the MITRE ATLAS, red-team tooling, and robustness references most likely to need Appendix B coverage.
+- [Appendix A: Glossary](Appendix-A-Glossary.md) — Useful companion when reference additions introduce new terminology around ATLAS, MCP, NIST, EU AI Act, A2A, and agent-security concepts.
+- [Appendix D: Controls Inventory](Appendix-D-Controls-Inventory.md) — Helps connect Appendix B source coverage to external frameworks, control families, platform tooling, and adoption gaps.
+- [C03-04: Secure Development Practices](../chapters/C03-Model-Lifecycle-Management/C03-04-Secure-Development-Practices.md) — Shows where secure build, MCP scanner, package quarantine, and AI configuration references should support lifecycle controls.
+- [C11-10: Adversarial Bias Exploitation Defense](../chapters/C11-Adversarial-Robustness/C11-10-Adversarial-Bias-Exploitation-Defense.md) — Links bias, classifier evasion, guardrail testing, and red-team references back to adversarial robustness evidence.
 
 ---
 

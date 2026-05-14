@@ -1,4 +1,4 @@
-# C9.8: Multi-Agent Domain Isolation and Swarm Risk Controls
+# C9.8: Multi-Agent Domain Isolation and Risk Controls
 
 [Back to C09 Index](C09-Orchestration-and-Agents.md)
 
@@ -79,6 +79,8 @@ Individual per-agent rate limits are insufficient because a swarm can collective
 - **Tiered quotas:** Different agent roles or trust levels can have different aggregate allowances. Production agents handling critical workflows may receive higher quotas than experimental or sandbox agents.
 - **Gateway-level enforcement:** Rate limits must be enforced at the API gateway or orchestration layer, not by the agents themselves. Agent self-enforcement is easily bypassed by compromised agents.
 
+As of May 2026, CVE-2026-42343 in FastGPT's code-sandbox component shows why aggregate rate limits and OS-level resource controls need to be verified together: NVD describes a sandbox that relied on a 500ms application-level polling loop for memory management, lacked strict cgroups or kernel namespace constraints, and could be driven into complete service denial by timing-window memory bypasses or concurrent CPU-intensive requests. For swarm testing, reviewers should validate cgroup v2 CPU, memory, PID, and file-descriptor quotas; per-tenant worker-pool limits; and centrally enforced queue backpressure in addition to request counters. Envoy Gateway's global rate limiting model is a useful reference pattern because it applies shared limits across all Envoy instances, while local rate limits only cap traffic per proxy replica.
+
 ### Swarm Shutdown and Kill Switch Design (requirement 9.8.6)
 
 Kill switches must reside outside the AI reasoning path -- they cannot depend on model output or agent logic. A well-designed shutdown system provides graduated response levels rather than only binary on/off:
@@ -94,7 +96,7 @@ The AutoGuard technique (Lee and Park, arXiv:2511.13725, January 2026) offers a 
 
 ### Container Escape: A Concrete Threat to Agent Isolation
 
-As of March 2026, container escape vulnerabilities remain the most direct path to breaking multi-agent isolation boundaries. Three critical runC vulnerabilities disclosed in November 2025 illustrate the risk:
+As of May 2026, container escape vulnerabilities remain the most direct path to breaking multi-agent isolation boundaries. Three critical runC vulnerabilities disclosed in November 2025 illustrate the risk:
 
 - **CVE-2025-31133:** Replaces `/dev/null` with symlinks to bypass maskedPaths protections, allowing container processes to read sensitive host files.
 - **CVE-2025-52565:** Exploits timing windows during container initialization to inject code before security policies take effect.
@@ -109,6 +111,8 @@ For AI agent platforms, container escape is amplified by three factors unique to
 **Multi-agent framework sandbox escapes (April 2026):** The sandbox escape problem extends beyond container runtimes to the multi-agent frameworks themselves. CrewAI disclosed four CVEs in April 2026: CVE-2026-2275 (code interpreter fallback to insecure SandboxPython enabling arbitrary code execution via C function calls), CVE-2026-2285 (arbitrary file reads via path traversal in the JSON loader), CVE-2026-2286 (SSRF in the RAG search tool accessing internal services and cloud metadata), and CVE-2026-2287 (insecure runtime fallback when Docker is unavailable). PraisonAI disclosed two critical sandbox escapes: CVE-2026-34955 (CVSS 8.8) and CVE-2026-39888 (CVSS 9.9), both allowing arbitrary command execution from within the agent sandbox. These CVEs demonstrate a common pattern: multi-agent frameworks implement their own sandboxing layers that are weaker than OS-level isolation, and fallback paths when Docker is unavailable silently degrade to insecure execution modes.
 
 JavaScript sandboxes remain a special weak point for agent tool execution. CVE-2026-22686 in enclave-vm, described by NVD in January 2026, allowed sandboxed agent code to traverse a host-side Error object's prototype chain and reach the host Function constructor, giving access to environment variables, the filesystem, and network from a runtime intended for isolated agent execution. CVE-2026-22709 in vm2 repeated the same lesson for widely used Node.js sandboxing: a Promise callback sanitization bypass in version 3.10.0 let untrusted code escape to host execution. Agent platforms that execute generated JavaScript should treat language-level sandboxes as convenience controls only, then wrap them in process isolation, seccomp/AppArmor, locked-down container profiles, and network egress policy.
+
+NVD's April and May 2026 agent-platform CVEs reinforce the same verification pattern for higher-level sandboxes. CVE-2026-42302 in FastGPT exposed an unauthenticated code-server process bound to `0.0.0.0:8080` inside the agent sandbox before version 4.14.13, giving any network-reachable attacker full control of the sandbox environment. CVE-2026-39421 in MaxKB's ToolExecutor bypassed an LD_PRELOAD-based Python sandbox with direct `ctypes` system calls, enabling network exfiltration and container compromise before version 2.8.0. Auditors should therefore test sandbox control-plane services, startup scripts, lifecycle endpoints, language FFI paths, and syscall filters directly, not only the user-facing code execution API.
 
 **SandboxEscapeBench (March 2026):** Researchers from the University of Oxford and the UK AI Security Institute published SandboxEscapeBench, a systematic benchmark measuring whether frontier LLMs can break out of Docker and Kubernetes sandboxes across 18 real-world vulnerability scenarios organized into three attack layers: orchestration, engine/runtime, and host/kernel exploits. Key findings: Claude Opus 4.5 and GPT-5 achieve ~50% overall escape rates with near-perfect success on common misconfigurations, escape success scales log-linearly with inference-time compute, and each escape attempt costs roughly $1. The capability gap between model tiers is substantial -- Opus-class models score nearly three times higher than Haiku-class variants (0.49 vs 0.18). This benchmark provides the first quantitative evidence that agent-driven container escape is not a theoretical risk but a practical capability of production-tier models.
 
@@ -264,6 +268,9 @@ Under 2025--2026 frameworks -- the EU AI Act, DORA, updated GDPR enforcement, an
 - [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/pubs/detail/sp/800-207/final) -- network segmentation and micro-segmentation principles
 - [OWASP Agentic AI Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/) -- multi-agent threat scenarios
 - [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026) -- covers multi-agent risks
+- [Kubernetes Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/) -- default-deny ingress/egress and namespace-scoped network isolation patterns
+- [Envoy Gateway Rate Limiting](https://gateway.envoyproxy.io/docs/concepts/rate-limiting/) -- global and local rate limiting patterns for shared swarm control points
+- [SPIFFE Workload API](https://spiffe.io/docs/latest/spiffe-specs/spiffe_workload_api/) -- standard API for issuing workload SVID identities to agent runtimes
 - [Open Challenges in Multi-Agent Security (arXiv:2505.02077)](https://arxiv.org/abs/2505.02077) -- comprehensive survey of collusion, steganography, cascade attacks, and defense mechanisms
 - [Seven Security Challenges in Cross-domain Multi-agent LLM Systems (arXiv:2505.23847)](https://arxiv.org/abs/2505.23847) -- cross-domain trust and isolation challenges
 - [TRiSM for Agentic AI (arXiv:2506.04133)](https://arxiv.org/abs/2506.04133) -- trust, risk, and security management in multi-agent systems
@@ -322,6 +329,9 @@ Under 2025--2026 frameworks -- the EU AI Act, DORA, updated GDPR enforcement, an
 - [CVE-2026-0542: ServiceNow AI Platform Sandbox RCE (UpGuard)](https://www.upguard.com/news/servicenow-data-breach-2026-03-01) -- CWE-653 improper isolation allowing unauthenticated sandbox escape in Now Assist AI agents
 - [CVE-2025-59528: Flowise CustomMCP RCE Under Active Exploitation (SonicWall)](https://www.sonicwall.com/blog/flowiseai-custom-mcp-node-remote-code-execution-) -- CVSS 10.0 code injection via unsanitized Function() constructor in agent orchestration platform
 - [CVE-2026-22686: enclave-vm AI Agent Sandbox Escape (NVD)](https://nvd.nist.gov/vuln/detail/CVE-2026-22686) -- host Error object prototype-chain escape from a JavaScript runtime intended for isolated agent code execution
+- [CVE-2026-42302: FastGPT Agent Sandbox Unauthenticated RCE (NVD)](https://nvd.nist.gov/vuln/detail/CVE-2026-42302) -- code-server exposed without authentication inside the agent sandbox
+- [CVE-2026-42343: FastGPT Code Sandbox Resource Isolation Failure (NVD)](https://nvd.nist.gov/vuln/detail/CVE-2026-42343) -- application-level memory polling without cgroups or namespaces enabling sandbox DoS
+- [CVE-2026-39421: MaxKB ToolExecutor Sandbox Escape (NVD)](https://nvd.nist.gov/vuln/detail/CVE-2026-39421) -- Python `ctypes` direct syscalls bypassing LD_PRELOAD sandbox controls
 - [CVE-2026-22709: vm2 Sandbox Escape (GitHub Advisory)](https://github.com/advisories/GHSA-99p7-6v5w-7xg8) -- Promise callback sanitization bypass allowing host code execution from a Node.js sandbox
 - [CVE-2025-53372: Node.js Sandbox MCP Command Injection (GitHub Advisory)](https://github.com/advisories/GHSA-5w57-2ccq-8w95) -- MCP server command injection that bypasses intended Docker sandboxing
 - [CVE-2026-21523: GitHub Copilot TOCTOU Race Condition (NVD)](https://nvd.nist.gov/vuln/detail/CVE-2026-21523) -- CVSS 8.0 TOCTOU enabling RCE in AI-assisted development workflows
@@ -355,5 +365,6 @@ Under 2025--2026 frameworks -- the EU AI Act, DORA, updated GDPR enforcement, an
 
 ## Related Pages
 
-- [C09-03 Tool and Plugin Isolation](C09-03-Tool-and-Plugin-Isolation.md) -- covers sandbox architectures and MCP supply chain integrity for individual tool execution, which forms the per-tool isolation layer that complements the cross-agent domain isolation defined here.
-- [C09-06 Authorization and Delegation](C09-06-Authorization-and-Delegation.md) -- defines the authorization policies, delegation context propagation, and credential isolation patterns that multi-agent systems depend on to enforce the per-agent scoping required by 9.8.2, 9.8.3, and 9.8.5.
+- [C11-05 Model Extraction Defense](../C11-Adversarial-Robustness/C11-05-Model-Extraction-Defense.md) -- complements swarm-wide rate limits and agent identity controls with extraction-specific throttling, output minimization, and abuse-response evidence.
+- [C12-04 Purpose Limitation and Scope Creep](../C12-Privacy/C12-04-Purpose-Limitation-Scope-Creep.md) -- maps the privacy side of the same agent identity, tool authorization, and audit boundaries needed to keep multi-agent activity within approved purposes.
+- [C13-06 Proactive Security Behavior Monitoring](../C13-Monitoring-and-Logging/C13-06-Proactive-Security-Behavior-Monitoring.md) -- expands the monitoring evidence for agent triggers, OpenTelemetry traces, anomaly detection, and approval-chain review used to detect unsafe swarm behavior.

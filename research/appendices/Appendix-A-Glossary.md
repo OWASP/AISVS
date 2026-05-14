@@ -4,9 +4,9 @@
 
 ## Overview
 
-The glossary defines 119 terms used throughout the AISVS, covering AI/ML concepts, security terminology, and domain-specific definitions. This research page cross-references every glossary term to the chapters that use it, identifies missing terms, flags definitions that could be improved, and tracks emerging terminology from the broader AI security community.
+The glossary defines 139 terms used throughout the AISVS, covering AI/ML concepts, security terminology, and domain-specific definitions. This research page cross-references every glossary term to the chapters that use it, identifies missing terms, flags definitions that could be improved, and tracks emerging terminology from the broader AI security community.
 
-As of May 2026, the analysis identifies 52 high-priority missing terms, 12 medium-priority missing terms, 14 definitions needing improvement, and 52 emerging terms from the 2025–2026 threat landscape that may warrant future inclusion. MITRE ATLAS continued expanding after the February 2026 agentic updates: the public data set now reports v5.6.0 and includes agent tool poisoning, AI supply-chain rug pulls, reputation inflation, AI service proxies, agent configuration discovery, cost-harvesting variants, and AI voice cloning alongside earlier techniques such as Publish Poisoned AI Agent Tool (AML.T0104), Escape to Host (AML.T0105), and Deploy AI Agent (AML.T0103). The OpenClaw investigation case studies (AML.CS0048–CS0051) documented exposed agent control interfaces, poisoned skills, one-click RCE, sandbox escape, and prompt-injection-driven command and control. Meanwhile, NIST's draft Cyber AI Profile (IR 8596) is moving through Spring 2026 working sessions after public comment, the EU GPAI Code of Practice signatory list is now live, and industry adoption of agentic identity as a first-class security concept has accelerated.
+As of May 2026, the analysis identifies 48 high-priority missing terms, 10 medium-priority missing terms, 12 definitions needing improvement, and 50 emerging terms from the 2025–2026 threat landscape that may warrant future inclusion. The latest glossary source added 20 terms that were previously tracked as missing or adjacent research items, including Context Window, Constitutional AI, Prompt Template, Sandboxing, Kill-Switch, Embedding Inversion, Data Lineage, Data Minimization, Fail-Closed / Fail-Open, PDP, SCVS, SLSA, SOC, and Reward Model. MITRE ATLAS continued expanding after the February 2026 agentic updates: the public releases now identify v5.6.0 as the latest release and add agent tool poisoning, AI supply-chain rug pulls, reputation inflation, AI service proxies, agent configuration discovery, cost-harvesting variants, and deepfake-assisted phishing alongside earlier techniques such as Publish Poisoned AI Agent Tool (AML.T0104), Escape to Host (AML.T0105), and Deploy AI Agent (AML.T0103). The OpenClaw investigation case studies (AML.CS0048–CS0051) documented exposed agent control interfaces, poisoned skills, one-click RCE, sandbox escape, and prompt-injection-driven command and control. Meanwhile, NIST's draft Cyber AI Profile (IR 8596) is moving through Spring 2026 working sessions after public comment, the EU GPAI Code of Practice signatory list is live, and industry adoption of agentic identity as a first-class security concept has accelerated.
 
 ---
 
@@ -21,7 +21,7 @@ Every glossary term mapped to the AISVS chapters that reference or rely on it.
 | Adversarial Robustness | C11 |
 | Adversarial Training | C01, C02, C11 |
 | Agent | C02, C05, C09, C10, C11, C13 |
-| AI BOM | C03, C06 |
+| AI BOM / AIBOM / MBOM | C03, C06 |
 | AppArmor | C04 |
 | Attention Map | C07, C14 |
 | ABAC | C02, C05 |
@@ -40,6 +40,8 @@ Every glossary term mapped to the AISVS chapters that reference or rely on it.
 | Concept Drift | C13 |
 | Confidential Computing | C04 |
 | Confidential Inference | C04 |
+| Constitutional AI | C11 |
+| Context Window | C02, C09 |
 | Counterfactual Explanation | C14 |
 | Covert Channel | C04, C13 |
 | CycloneDX | C03, C06 |
@@ -47,6 +49,8 @@ Every glossary term mapped to the AISVS chapters that reference or rely on it.
 | Data Augmentation | C01 |
 | Data Drift | C13 |
 | Data Leakage | C08, C12 |
+| Data Lineage | C01, C03, C06 |
+| Data Minimization | C12 |
 | Data Poisoning | C01, C06, C11, C13 |
 | Defense-in-Depth | _(general principle, not cited by specific requirement)_ |
 | Defensive Distillation | C02 |
@@ -57,7 +61,10 @@ Every glossary term mapped to the AISVS chapters that reference or rely on it.
 | DP-SGD | C11 |
 | DRTM | C04 |
 | Embeddings | C05, C08 |
+| Embedding Inversion | C08 |
+| Exfiltration | C08, C09, C10, C13 |
 | Explainability | C07, C14 |
+| Fail-Closed / Fail-Open | C03, C09, C10, C14 |
 | Feature Attribution | C07, C14 |
 | Federated Learning | C04, C12 |
 | Fine-tuning | C01, C03, C06 |
@@ -70,14 +77,17 @@ Every glossary term mapped to the AISVS chapters that reference or rely on it.
 | Infrastructure as Code (IaC) | _(none — consider removing or linking to C04)_ |
 | Interval-Bound Propagation | C11 |
 | Jailbreak | C02, C11, C13 |
+| JIT (Just-in-Time) Privileged Access | C05 |
 | JWT | C05 |
 | k-anonymity | C12 |
+| Kill-Switch | C14 |
 | KMS | C04, C08 |
 | l-diversity | C12 |
 | Least Privilege | C04, C09, C10 |
 | LIME | C14 |
 | Linkage Attack | C12 |
 | Machine Unlearning | C12 |
+| Many-Shot Jailbreaking | C02, C07, C11 |
 | MCP | C02, C03, C09, C10 |
 | Membership Inference Attack | C08, C11 |
 | MIG | C04 |
@@ -89,31 +99,41 @@ Every glossary term mapped to the AISVS chapters that reference or rely on it.
 | Model Poisoning | C06, C11 |
 | mTLS | C04 |
 | Multi-agent System | C08, C09, C11 |
+| Non-repudiation | C09, C13 |
 | NFC | C02 |
 | NVLink | C04 |
 | OAuth 2.1 | C10 |
 | OIDC | C05 |
 | OPA | C05 |
+| PDP (Policy Decision Point) | C05, C09 |
 | PII | C01, C05, C06, C07, C12, C13 |
 | Policy-as-Code | C09, C12 |
 | PPML | C11, C12 |
 | Prompt Injection | C02, C07, C08, C10, C11, C13 |
+| Prompt Template | C03, C05, C09 |
+| Quantization | C03, C11 |
 | RAG | C02, C03, C07, C08, C11 |
 | RBAC | C05 |
 | Red-Teaming | C11 |
 | Re-identification Risk | C12 |
 | Remote Attestation | C04 |
+| Reward Model | C03, C11 |
 | RLHF | C11 |
 | SAML | C05 |
+| Sandboxing | C04, C09 |
 | SBOM | C04, C06 |
+| SCVS | General guidance, Appendix D; supports C06 |
 | Secure Boot | C04 |
 | SMPC | C04 |
 | seccomp | C04 |
 | SELinux | C04 |
+| Shadow Deployment | C03 |
 | Shadow Model | C11, C12 |
 | SHAP | C14 |
 | Side-Channel Attack | C04 |
 | SIEM | C13 |
+| SLSA | General guidance, Appendix D; supports C06 |
+| SOC | C02, C13 |
 | SPDX | C03 |
 | SSE | C10 |
 | Steganography | C02 |
@@ -136,7 +156,7 @@ Every glossary term mapped to the AISVS chapters that reference or rely on it.
 | Zero-Day Vulnerability | _(none — consider removing or linking to C06)_ |
 | Zero-Trust | C04, C05 |
 
-**Stats:** 3 terms referenced by 0 chapters, ~20 terms by 1 chapter, ~30 terms by 3+ chapters. Cross-references verified against C02, C07, C09, C10, C11, and C12 source files as of May 2026.
+**Stats:** 3 terms still have no direct chapter reference (Chain of Thought, Infrastructure as Code, Zero-Day Vulnerability), while SCVS and SLSA appear in the general usage guidance and controls inventory rather than a single requirement chapter. Cross-references were refreshed against all C01–C14 source files as of May 2026.
 
 ---
 
@@ -146,7 +166,6 @@ Terms used in AISVS chapters but not defined in the glossary. These should be ad
 
 | Term | Used In | Context |
 |------|---------|---------|
-| Context Window | C02 | Core LLM concept; mentioned as an attack surface for prompt injection |
 | Instruction Hierarchy | C02 | Defense concept where system/developer messages take priority over user inputs |
 | System Prompt / System Message | C07, C13 | Critical concept for LLM security and logging |
 | Orchestrator / Orchestration | C03, C09 | Central to agentic AI architecture |
@@ -156,13 +175,11 @@ Terms used in AISVS chapters but not defined in the glossary. These should be ad
 | Streamable-HTTP | C10 | Primary MCP transport type (replacing SSE) |
 | Model Registry | C03 | MLOps concept for centralized model storage and versioning |
 | Gradient Clipping | C11 | Privacy-preserving training technique used with DP-SGD |
-| Constitutional AI | C11 | Alignment technique for training models with safety principles |
 | Soft Refusal | C12 | Safety response pattern for purpose-limitation enforcement; related to the new Downgrade (response) glossary term but still useful as a separate behavior label for C12.4.2 |
 | Content Classifier | C02, C07 | Core safety component for input/output screening |
 | Egress Controls / Egress Allow-list | C03, C04, C06, C10 | Network security concept critical for AI training environments |
 | Schema Drift | C13 | Monitoring concept for detecting input/output schema changes |
 | Stop Sequences | C07 | LLM output control mechanism for bounding generation |
-| Prompt Template | C03, C09 | Key concept for LLM application development |
 | Canary-Based Privacy Auditing | C12 | Specialized technique for testing differential privacy guarantees |
 | Krum / Trimmed-Mean | C12 | Byzantine-resilient aggregation methods for federated learning |
 | Output Perturbation | C11 | Privacy technique for membership inference defense |
@@ -172,7 +189,6 @@ Terms used in AISVS chapters but not defined in the glossary. These should be ad
 | Evaluation Harness | C03 | Testing framework for systematic model evaluation |
 | Reasoning Trace | C13 | Agentic decision recording concept for audit trails |
 | Envelope Encryption | C08 | Cryptographic technique for key management |
-| Kill Switch | C14 | Emergency AI system shutdown mechanism |
 | Quasi-identifier | C12 | Privacy term for attributes enabling re-identification |
 | Step-up Authentication | C05, C10 | Authentication escalation pattern for high-risk operations |
 | Namespace | C08 | Multi-tenant isolation concept for vector databases |
@@ -204,7 +220,6 @@ Terms used in AISVS chapters but not defined in the glossary. These should be ad
 | Term | Used In | Context |
 |------|---------|---------|
 | Tokenization (security/PII) | C08 | Data masking sense, distinct from NLP tokenizer |
-| Sandbox / Sandboxing | C04, C09 | Referenced via seccomp/AppArmor but lacks its own entry |
 | Protocol Buffers | C02 | Schema definition format for structured input validation |
 | FIDO2/WebAuthn | C05 | Phishing-resistant auth; referenced in Strong Authentication def but no own entry |
 | Customer-Managed Key (CMK) | C05 | Cloud encryption key management for multi-tenant isolation |
@@ -245,9 +260,7 @@ Terms gaining traction in the AI security community that may warrant future glos
 |------|-----------|-------------|
 | Indirect Prompt Injection | Adversarial instructions embedded in external data sources (documents, websites, tool outputs) that an LLM processes as trusted context; distinct from direct prompt injection | C02, C07, C08 |
 | RAG Poisoning | Injecting crafted documents into a knowledge base or vector store; research shows as few as 5 crafted documents among millions can achieve 90% attack success | C08, C01 |
-| Embedding Inversion | Reconstructing original text or sensitive data from vector embeddings, breaking the assumption that embeddings are one-way transformations | C08, C12 |
 | Model Collapse | Progressive quality degradation when models train on synthetic data from other models, causing output distributions to narrow and amplify errors across generations | C01, C03 |
-| Many-Shot Jailbreak | Prompt injection exploiting in-context learning by including hundreds of examples of desired prohibited behavior, leveraging expanding context windows (Anthropic, April 2024) | C07, C11 |
 | Crescendo Attack | Multi-turn jailbreak that progressively steers conversation from harmless topics toward prohibited content, exploiting conversational coherence tendencies; invisible to per-turn classifiers | C07, C11 |
 | Skeleton Key | Direct jailbreak technique (Microsoft, June 2024) that redefines safety rules in-context by instructing the model to append warnings rather than block; once accepted, the model complies with all subsequent requests without indirection or encoding | C02, C11 |
 | Data Contamination (Benchmark) | Training models on the same data used in evaluations, rendering benchmarks unreliable; distinct from adversarial data poisoning — may be unintentional | C01, C03 |
@@ -270,14 +283,14 @@ Terms gaining traction in the AI security community that may warrant future glos
 | Systemic Risk (EU AI Act) | Classification for GPAI models trained with >10²⁵ FLOPs, triggering mandatory adversarial red-teaming, incident reporting to the AI Office, and cybersecurity obligations under Article 55 | C03, C11 |
 | FRIA (Fundamental Rights Impact Assessment) | EU AI Act Article 27 mandatory assessment for deployers of high-risk AI systems, evaluating impacts on non-discrimination, privacy, and human dignity; required by August 2026. May complement a DPIA under GDPR Article 35 | C14, C12 |
 | Post-Market Monitoring | EU AI Act Article 72 requirement for high-risk AI providers to actively collect and review performance data throughout the system's lifetime | C13, C03 |
-| Code of Practice (EU AI Act) | Voluntary framework for GPAI model providers to demonstrate compliance with AI Act obligations; first draft published February 2025 covering transparency, copyright, safety, and systemic risk evaluation | C03, C06, C14 |
+| Code of Practice (EU AI Act) | Voluntary framework for GPAI model providers to demonstrate compliance with AI Act obligations; the official July 2025 code has Transparency, Copyright, and Safety and Security chapters, and the European Commission's April 2026 page lists active signatories | C03, C06, C14 |
 | Cyber AI Profile (NIST IR 8596) | Draft NIST profile (December 2025; comment period closed January 30, 2026) extending CSF 2.0 to AI systems across three focus areas: Secure (protecting AI systems), Defend (using AI for cyber defense), and Thwart (building resilience against AI-enabled attacks). NIST posted Spring 2026 working sessions for April 28, May 5, and May 12, 2026, so teams should treat the terminology as active but still draft | C03, C11, C13 |
 
 ### Interoperability & Agent Protocols
 
 | Term | Definition | Relevant To |
 |------|-----------|-------------|
-| A2A (Agent2Agent Protocol) | Open protocol (Google, April 2025; contributed to Linux Foundation June 2025) enabling AI agents to discover capabilities, exchange context, and coordinate tasks across vendors and frameworks. Uses Agent Cards for capability discovery and supports enterprise-grade auth. Version 0.3 (July 2025) added gRPC and signed security cards | C09, C10 |
+| A2A (Agent2Agent Protocol) | Open protocol (Google, April 2025; contributed to Linux Foundation June 2025) enabling AI agents to discover capabilities, exchange context, and coordinate tasks across vendors and frameworks. Uses Agent Cards for capability discovery and supports enterprise-grade auth. Version 0.3 added gRPC and signed Agent Cards, and the Linux Foundation reported 150+ supporting organizations at the protocol's first anniversary in April 2026 | C09, C10 |
 | Agent Card | JSON-format capability descriptor in the A2A protocol that advertises an agent's supported tasks, authentication requirements, and interaction modes to other agents | C09, C10 |
 | Non-Human Identity (NHI) | Machine or agent identity used for authentication and authorization in automated workflows; World Economic Forum data shows NHIs outnumber human identities 50:1 in enterprises (projected 80:1 by 2028). Three of the OWASP Agentic Top 10 risks (ASI02, ASI03, ASI04) are identity-focused | C05, C09, C10 |
 
@@ -314,8 +327,7 @@ Existing glossary definitions that could better reflect how terms are used in th
 
 | Term | Issue | Suggested Improvement |
 |------|-------|----------------------|
-| Agent | Too narrow — doesn't cover the spectrum from simple tool-calling to multi-step autonomous agents | Add: "Agents range from simple tool-calling systems that execute a single function per request to fully autonomous multi-step systems that chain reasoning, tool use, and sub-agent delegation across extended workflows. The degree of autonomy determines the required security controls (C05, C09, C10)." |
-| Circuit Breaker | Missing MCP context | Add: "In agentic and MCP-connected systems, circuit breakers also apply to tool invocation chains, halting cascading calls when step counts, latency, or cost thresholds are exceeded (C10.5.2)." |
+| Circuit Breaker | Needs explicit MCP tool-chain context | Add: "In agentic and MCP-connected systems, circuit breakers also apply to tool invocation chains, halting cascading calls when step counts, latency, or cost thresholds are exceeded (C10.5.2)." |
 | Guardrails | Only mentions "constraints" | Add: "Guardrails may be implemented as dedicated safety classifier models, rule-based filter systems, or separate validation services that evaluate inputs and outputs independently of the primary model." |
 | MCP | Missing key technical details | Add: "MCP uses JSON-RPC 2.0 as its messaging format and supports stdio and Streamable HTTP transports. The 2025-06-18 specification classifies remote MCP servers as OAuth resource servers, requires resource indicators to bind tokens to the intended MCP server, forbids token passthrough to downstream APIs, and requires Streamable HTTP servers to validate Origin headers to reduce DNS rebinding risk." |
 | Prompt Injection | Doesn't distinguish direct vs. indirect | Add: "Includes both direct injection (user crafts malicious input) and indirect injection (adversarial instructions embedded in retrieved documents, tool outputs, or third-party data the model processes as trusted context). Indirect injection is particularly dangerous in RAG and agentic systems." |
@@ -326,21 +338,20 @@ Existing glossary definitions that could better reflect how terms are used in th
 | Differential Privacy | Missing delta parameter | Replace epsilon-only clause with: "...quantified by an epsilon (ε) privacy budget bounding worst-case privacy loss and a delta (δ) parameter representing the probability of that bound being violated. DP-SGD implementations require specifying both; C12.3.1 mandates reporting both." |
 | SSE | Doesn't note deprecation | Add: "SSE has been superseded by Streamable HTTP as MCP's primary remote transport since the 2025-03-26 specification revision. SSE-based MCP endpoints should be restricted to internal channels only (C10.3.3), and new deployments should prefer Streamable HTTP's simpler request/response backpressure and Origin validation model." |
 | stdio | Missing usage restriction | Add: "C10.6.1 restricts stdio-based MCP transports to co-located, same-machine development scenarios only; stdio must not be used for production remote communication due to absent authentication and encryption." |
-| Shadow Model | Too narrow | Reframe: "Serves both offensive and defensive purposes: attackers use shadow models for membership inference attacks (C11), while defenders use them to verify data deletion and machine unlearning effectiveness (C12.2.3)." |
 | Federated Learning | Missing security nuances | Add: "Introduces unique security considerations: local differential privacy on gradient updates before sharing, Byzantine-resistant aggregation (Krum, trimmed-mean), and canary-based privacy auditing. See C12.6." |
 
 ---
 
 ## MITRE ATLAS Technique Mapping
 
-Key MITRE ATLAS techniques that correspond to AISVS glossary terms. As of May 2026, the public ATLAS data set reports v5.6.0. The October 2025 update added the initial agentic AI coverage, the February 2026 releases expanded agent sandbox and poisoned-tool techniques through the OpenClaw investigation, and the March–April 2026 updates added supply-chain rug pulls, tool poisoning persistence, reputation inflation, cost-harvesting variants, AI service proxies, call-chain discovery, and AI voice-cloning coverage.
+Key MITRE ATLAS techniques that correspond to AISVS glossary terms. As of May 2026, the latest public release is v5.6.0. The October 2025 update added the initial agentic AI coverage, the February 2026 releases expanded agent sandbox and poisoned-tool techniques through the OpenClaw investigation, the March 2026 v5.5.0 release added supply-chain rug pulls, tool poisoning persistence, reputation inflation, cost-harvesting variants, AI service proxies, and call-chain discovery, and the May 2026 v5.6.0 release added agent-configuration acquisition, code-repository discovery, and deepfake-assisted phishing coverage.
 
 | ATLAS ID | Technique | Glossary Term(s) | AISVS Chapters |
 |----------|-----------|-------------------|----------------|
 | AML.T0010 | ML Supply Chain Compromise | Supply Chain Attack, Model Poisoning | C06, C11 |
 | AML.T0018 | Backdoor ML Model | Backdoor Attack, Data Poisoning | C01, C06, C11 |
 | AML.T0020 | Poison Training Data | Data Poisoning | C01, C06 |
-| AML.T0024 | Exfiltration via ML Inference API | Model Extraction | C11, C13 |
+| AML.T0024 | Exfiltration via ML Inference API | Model Extraction, Exfiltration | C11, C13 |
 | AML.T0029 | Denial of ML Service | DoS | C02, C04, C09 |
 | AML.T0040 | ML Model Inference API Access | Membership Inference Attack | C11, C12 |
 | AML.T0043 | Craft Adversarial Data | Adversarial Example | C02, C11 |
@@ -352,16 +363,16 @@ Key MITRE ATLAS techniques that correspond to AISVS glossary terms. As of May 20
 | AML.T0098 | AI Agent Tool Credential Harvesting _(new, 2025)_ | RAG Credential Harvesting (emerging) | C09, C10, C05 |
 | AML.T0099 | AI Agent Tool Data Poisoning _(new, 2025)_ | Tool Poisoning (emerging) | C09, C10, C06 |
 | AML.T0100 | AI Agent Clickbait _(new, 2025)_ | Agent Clickbait (emerging) | C09, C10 |
-| AML.T0101 | Data Destruction via AI Agent _(new, 2025)_ | Kill Switch (missing term) | C09, C10 |
+| AML.T0101 | Data Destruction via AI Agent _(new, 2025)_ | Kill-Switch | C09, C10, C14 |
 | AML.T0103 | Deploy AI Agent _(new, Jan 2026)_ | Agent, Orchestrator (missing term) | C09, C05 |
 | AML.T0104 | Publish Poisoned AI Agent Tool _(new, Feb 2026)_ | Tool Poisoning (emerging), Tool Squatting (emerging) | C10, C06 |
-| AML.T0105 | Escape to Host _(new, Feb 2026)_ | Sandbox (missing term), TEE | C04, C09 |
+| AML.T0105 | Escape to Host _(new, Feb 2026)_ | Sandboxing, TEE | C04, C09 |
 | AML.T0106 | Exploitation for Credential Access _(new, Feb 2026)_ | RAG Credential Harvesting (emerging) | C05, C09, C10 |
 | AML.T0107 | Exploitation for Defense Evasion _(new, Feb 2026)_ | Adversarial Robustness | C11, C09 |
 | AML.T0108 | AI Agent _(new, Feb 2026)_ | Agent | C09, C10, C05 |
 | AML.T0109 | AI Supply Chain Rug Pull _(new, 2026)_ | Supply Chain Attack, Model Poisoning | C06, C03 |
 | AML.T0110 | AI Agent Tool Poisoning _(new, 2026)_ | Tool Poisoning, MCP, Agent | C09, C10, C06 |
-| AML.T0111 | AI Supply Chain Reputation Inflation _(new, 2026)_ | Supply Chain Attack, AI BOM | C06, C03 |
+| AML.T0111 | AI Supply Chain Reputation Inflation _(new, 2026)_ | Supply Chain Attack, AI BOM / AIBOM | C06, C03 |
 | AML.T0034.002 | Agentic Resource Consumption _(new, 2026)_ | DoS, Circuit Breaker | C09, C10, C13 |
 | AML.T0084.003 | Call Chains _(new, 2026)_ | Orchestrator (missing term), Evaluation Harness (missing term) | C03, C09, C10 |
 | AML.T0008.005 | AI Service Proxies _(new, 2026)_ | Model Extraction, Model Distillation (missing term) | C11, C13, C06 |
@@ -388,11 +399,15 @@ Key MITRE ATLAS techniques that correspond to AISVS glossary terms. As of May 20
 - [Trail of Bits: DataSig Dataset Fingerprinting (May 2025)](https://blog.trailofbits.com/2025/05/02/datasig-fingerprinting-ai/ml-datasets-to-stop-data-borne-attacks/) — dataset provenance verification
 - [NSA/CISA: Content Credentials CSI (January 2025)](https://media.defense.gov/2025/Jan/29/2003634788/-1/-1/0/CSI-CONTENT-CREDENTIALS.PDF) — C2PA guidance for AI-generated content
 - [MITRE ATLAS v5.5.0 Release (March 2026)](https://github.com/mitre-atlas/atlas-data/releases/tag/v5.5.0) — adds agent tool poisoning, AI supply-chain rug pull, reputation inflation, cost harvesting, AI service proxy, and related case-study updates
-- [MITRE ATLAS Data](https://raw.githubusercontent.com/mitre-atlas/atlas-data/refs/heads/main/dist/ATLAS.yaml) — current public ATLAS data set, reporting v5.6.0 as of May 2026 and adding deepfake-assisted phishing / AI voice-cloning coverage
+- [MITRE ATLAS v5.6.0 Release (May 2026)](https://github.com/mitre-atlas/atlas-data/releases/tag/v5.6.0) — adds AI agent configuration acquisition, code-repository discovery, and deepfake-assisted phishing updates
+- [MITRE ATLAS Data](https://raw.githubusercontent.com/mitre-atlas/atlas-data/refs/heads/main/dist/ATLAS.yaml) — public machine-readable ATLAS data distribution used to track technique, mitigation, and case-study changes
+- [OWASP GenAI Exploit Round-up Q1 2026](https://genai.owasp.org/2026/04/14/owasp-genai-exploit-round-up-report-q1-2026/) — incident summary showing exploitation trends around agent identity, orchestration layers, supply chain, prompt injection, and operational controls
 - [MITRE ATLAS OpenClaw Investigation (February 2026)](https://www.mitre.org/news-insights/publication/mitre-atlas-openclaw-investigation) — real-world agent control-interface, poisoned skill, one-click RCE, sandbox escape, and prompt-injection C2 case studies (AML.CS0048–CS0051)
 - [NIST IR 8596: Cyber AI Profile (December 2025 draft)](https://csrc.nist.gov/pubs/ir/8596/iprd) — extends CSF 2.0 for AI systems across Secure/Defend/Thwart focus areas and lists Spring 2026 working sessions
 - [EU General-Purpose AI Code of Practice](https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai) — official Transparency, Copyright, and Safety and Security chapters plus live signatory list
+- [OWASP AIBOM Generator (December 2025)](https://genai.owasp.org/resource/owasp-aibom-generator/) — open-source AIBOM tool producing CycloneDX output aligned with SPDX for Hugging Face model transparency
 - [MCP 2025-06-18 Authorization Specification](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization) — resource indicators, token audience validation, and token-passthrough prohibition for remote MCP servers
+- [Linux Foundation A2A One-Year Update (April 2026)](https://www.linuxfoundation.org/press/a2a-protocol-surpasses-150-organizations-lands-in-major-cloud-platforms-and-sees-enterprise-production-use-in-first-year) — production adoption update for agent-to-agent interoperability across major cloud platforms
 - [Bessemer: Securing AI Agents — The Defining Challenge of 2026](https://www.bvp.com/atlas/securing-ai-agents-the-defining-cybersecurity-challenge-of-2026) — 48% of security professionals identify agentic AI as most dangerous attack vector
 - [Prompt Injection Taxonomy for LLM Agents (February 2026)](https://arxiv.org/abs/2602.10453) — comprehensive survey of prompt injection threats with heuristic vs. optimization payload taxonomy
 
@@ -400,11 +415,11 @@ Key MITRE ATLAS techniques that correspond to AISVS glossary terms. As of May 20
 
 ## Related Pages
 
-- [C03-04 Secure Development Practices](../chapters/C03-Model-Lifecycle-Management/C03-04-Secure-Development-Practices.md) — connects glossary terms such as prompt templates, agent policy, and isolated development environments to concrete SDLC controls.
-- [C04-01 Workload Sandboxing Validation](../chapters/C04-Infrastructure/C04-01-Workload-Sandboxing-Validation.md) — grounds sandboxing, Escape to Host, TEE, and confidential-computing terms in infrastructure verification work.
-- [C08-02 Embedding Sanitization Validation](../chapters/C08-Memory-and-Embeddings/C08-02-Embedding-Sanitization-Validation.md) — ties memory poisoning, RAG poisoning, and embedding sanitation terminology to vector-store ingestion controls.
-- [C09-03 Tool and Plugin Isolation](../chapters/C09-Orchestration-and-Agents/C09-03-Tool-and-Plugin-Isolation.md) — gives the operational context for MCP tools, tool poisoning, tool manifests, and agentic resource controls.
-- [C11-06 Inference-Time Poisoned Data Detection](../chapters/C11-Adversarial-Robustness/C11-06-Inference-Time-Poisoned-Data-Detection.md) — maps poisoned retrieval, tool output, and memory inputs to detection and provenance defenses.
+- [Appendix B References](Appendix-B-References.md) — backs the glossary's standards and threat vocabulary with source references for MITRE ATLAS, MCP, NIST, OWASP, EU AI Act, and AI supply-chain material.
+- [Appendix D Controls Inventory](Appendix-D-Controls-Inventory.md) — connects glossary terms such as SLSA, SCVS, PDP, SOC, and sandboxing to the control inventory language used across AISVS.
+- [C03-04 Secure Development Practices](../chapters/C03-Model-Lifecycle-Management/C03-04-Secure-Development-Practices.md) — turns glossary terms such as prompt templates, AI BOMs, model registries, and isolated build environments into SDLC verification work.
+- [C03-01 Model Authorization Integrity](../chapters/C03-Model-Lifecycle-Management/C03-01-Model-Authorization-Integrity.md) — grounds AI BOM, data lineage, model registry, signing, and provenance terms in model-admission controls.
+- [C03-02 Model Validation Testing](../chapters/C03-Model-Lifecycle-Management/C03-02-Model-Validation-Testing.md) — connects validation, evaluation harness, quantization, MCP, and agent-release terminology to release-gate evidence.
 
 ---
 
