@@ -17,6 +17,9 @@ on:
       - '**/en/*.markdown'
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   spellcheck:
     runs-on: ubuntu-latest
