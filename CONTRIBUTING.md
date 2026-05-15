@@ -53,3 +53,7 @@ We may also ask you to open a pull request, <https://github.com/OWASP/AISVS/pull
 ### Translations
 
 We are looking for help with translations after v1.0 is released!
+
+## Release Policy
+
+AISVS follows a published release policy that defines what can change in patch, minor, and major releases, and how versions are referenced across time. See [RELEASE.md](RELEASE.md) before proposing changes that add, remove, or restructure requirements.
