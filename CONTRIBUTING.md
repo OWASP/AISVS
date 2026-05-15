@@ -56,4 +56,4 @@ We are looking for help with translations after v1.0 is released!
 
 ## Release Policy
 
-AISVS follows a published release policy that defines what can change in patch, minor, and major releases, and how versions are referenced across time. See [RELEASE.md](RELEASE.md) before proposing changes that add, remove, or restructure requirements.
+AISVS uses a two-part `v<MAJOR>.<MINOR>` version scheme and a published release policy that defines what can change in a minor release, what requires a major release, and how patch-level fixes are handled in-branch without a separate version. See [RELEASE.md](RELEASE.md) before proposing changes that add, remove, or restructure requirements.
