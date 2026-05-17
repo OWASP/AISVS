@@ -53,3 +53,7 @@ We may also ask you to open a pull request, <https://github.com/OWASP/AISVS/pull
 ### Translations
 
 We are looking for help with translations after v1.0 is released!
+
+## Release Policy
+
+AISVS uses a two-part `v<MAJOR>.<MINOR>` version scheme and a published release policy that defines what can change in a minor release, what requires a major release, and how patch-level fixes are handled in-branch without a separate version. See [RELEASE.md](RELEASE.md) before proposing changes that add, remove, or restructure requirements.
