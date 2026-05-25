@@ -43,7 +43,7 @@ Labeling and annotation processes must be protected against unauthorized modific
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
 | **1.3.1** | **Verify that** labeling interfaces and platforms enforce access controls that restrict who can create, modify, or approve annotations. | 1 |
 | **1.3.2** | **Verify that** all labeling activities are recorded in audit logs, including the annotator identity, timestamp, and action performed. | 1 |
-| **1.3.3** | **Verify that** annotator identity metadata is exported and retained alongside the dataset so that every annotation or preference pair can be attributed to a specific, verified human annotator throughout the training pipeline. | 1 |
+| **1.3.3** | **Verify that** annotator identity metadata is exported and retained alongside the dataset so that every annotation or preference pair can be attributed to a specific, verified human annotator throughout the training pipeline. | 2 |
 | **1.3.4** | **Verify that** cryptographic hashes or digital signatures are applied to labeling artifacts, annotation data, and fine-tuning feedback records (including RLHF preference pairs) to ensure their integrity and authenticity. | 2 |
 | **1.3.5** | **Verify that** sensitive information in labels is redacted, anonymized, or encrypted both at rest and in transit before being used in any labeling artifact. | 2 |
 
@@ -60,7 +60,8 @@ Training data quality and security assurance controls help detect corruption, po
 | **1.4.3** | **Verify that** automatically generated labels (e.g., via models or weak supervision) are subject to confidence thresholds and consistency checks to detect misleading or low-confidence labels. | 2 |
 | **1.4.4** | **Verify that** automated tests catch label skews on every ingest or significant data transformation. | 2 |
 | **1.4.5** | **Verify that** models used in security-relevant decisions (e.g., abuse detection, fraud scoring, automated trust decisions) are evaluated for systematic bias patterns that an adversary could exploit to evade controls (e.g., mimicking a trusted language style or demographic pattern to bypass detection). | 2 |
-| **1.4.6** | **Verify that** appropriate defenses, such as adversarial training, data augmentation with perturbed inputs, robust optimization techniques, or defenses against clean-label poisoning (e.g., input purification, k-NN filtering, data partitioning and aggregation), are implemented and tuned for relevant models based on risk assessment. | 3 |
+| **1.4.6** | **Verify that** appropriate training-time defenses against data poisoning, such as adversarial training, data augmentation with perturbed inputs, or robust optimization techniques, are implemented and tuned for relevant models based on risk assessment. | 2 |
+| **1.4.7** | **Verify that** defenses against clean-label poisoning attacks (e.g., input purification, k-NN filtering, data partitioning and aggregation) are implemented for models exposed to untrusted or partially trusted training data sources. | 3 |
 
 ---
 
