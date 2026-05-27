@@ -84,7 +84,7 @@ tokenizer
 Gatto
 Walid
 Alamri
-Setotet
+tetsuoseto
 Tetsuo
 Seto
 Schwoebel
