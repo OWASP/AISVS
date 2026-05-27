@@ -50,7 +50,7 @@ please open an issue or pull request.
 
 ## Reviewers
 
-* Tetsuo Seto ([Setotet](https://github.com/Setotet))
+* Tetsuo Seto ([tetsuoseto](https://github.com/tetsuoseto))
 * Deepak Pandey ([deepakrpandey12](https://github.com/deepakrpandey12))
 * Starr Brown ([mamicidal](https://github.com/mamicidal))
 * Stuart Small ([stusmall](https://github.com/stusmall))
