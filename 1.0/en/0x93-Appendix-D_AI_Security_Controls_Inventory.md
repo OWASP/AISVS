@@ -62,7 +62,7 @@ Protect stored data, models, secrets, logs, and backups through encryption.
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Training data encryption at rest | 1.2.3 |
+| Training data encryption at rest | ASVS v5 V6 |
 | Labeled data encryption | 1.3.5 |
 | Log encryption at rest | 13.1.4 |
 
@@ -105,7 +105,7 @@ Verify authenticity and detect tampering of models, artifacts, messages, logs, a
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Cryptographic hashes for training data integrity | 1.2.5, 1.3.4 |
+| Cryptographic hashes for training data integrity | 1.2.2, 1.3.4 |
 | Cryptographic model signing | 3.1.2 |
 | Model signature and checksum verification at deployment and load | 3.1.3 |
 | Signed build artifacts with build-origin metadata | ASVS v5 V15 / SLSA |
