@@ -325,8 +325,9 @@ Protect personal data and enforce data subject rights throughout the AI lifecycl
 | Empirical (black-box) differential privacy audits | 12.3.2 |
 | Formal differential privacy proofs (including post-training and embeddings) | 12.3.3 |
 | Purpose tags with machine-readable alignment and runtime enforcement | 12.4.1, 12.4.2 |
-| Consent-aware inference scope validation (refuse or downgrade off-scope responses) | 12.5.1 |
-| Consent withdrawal propagation through AI artifacts (aligned with deletion SLA) | 12.5.2 |
+| Consent scope validation before model inference (operation and data subjects) | 12.5.1 |
+| Consent scope enforcement: refuse or downgrade response before serving | 12.5.2 |
+| Consent withdrawal propagation through AI artifacts (aligned with deletion SLA) | 12.5.3 |
 | Local or central differential privacy in federated learning | 12.6.1 |
 | Differentially private training metrics | 12.6.2 |
 | Federated canary-based privacy auditing | 12.6.3 |
