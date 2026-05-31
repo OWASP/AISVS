@@ -43,7 +43,7 @@ Implement zero-trust networking with default-deny policies and encrypted communi
 | **4.3.2** | **Verify that** AI workloads across environments (development, testing, production) run in isolated network segments with no direct internet access and no shared identity roles, security groups, or cross-environment connectivity. | 1 | D/V |
 | **4.3.3** | **Verify that** administrative and remote access protocols and access to cloud metadata services are restricted and require strong authentication. | 1 | D/V |
 | **4.3.4** | **Verify that** inter-service communication uses mutual TLS with certificate validation and regular automated rotation. | 2 | D/V |
-| **4.3.5** | **Verify that** egress traffic is restricted to approved destinations and all requests are logged. | 3 | D/V |
+| **4.3.5** | **Verify that** egress traffic is restricted to approved destinations and all requests are logged. | 2 | D/V |
 
 ---
 
