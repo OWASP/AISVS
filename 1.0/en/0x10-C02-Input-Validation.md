@@ -27,14 +27,14 @@ Prompt injection is one of the top risks for AI systems. Defenses against this t
 
 ## C2.2 Pre-Tokenization Input Normalization
 
-AI models process text through tokenizers and embeddings that can be exploited via encoding tricks invisible to conventional input validation. Normalization before tokenization closes attack vectors such as homoglyph substitution, invisible character injection, and bidirectional text manipulation that bypass standard allow-list filters but alter model behavior.
+AI models process text through tokenizers and embeddings that can be exploited via encoding tricks invisible to conventional input validation. Normalization before tokenization closes attack vectors such as homoglyph substitution, invisible character injection, and bidirectional text manipulation that bypass standard allow-list filters but alter model behavior. For output-side encoding smuggling in model-generated content, see C7.3.5.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **2.2.1** | **Verify that** input normalization (Unicode NFC canonicalization, homoglyph mapping, removal of control and invisible Unicode characters, and bidirectional text neutralization) is applied before tokenization or embedding. | 1 |
 | **2.2.2** | **Verify that** inputs identified as adversarial by any detection mechanism are blocked from inclusion in prompts or execution of actions. | 1 |
 | **2.2.3** | **Verify that** inputs which still contain suspicious encoding artifacts after normalization are rejected or flagged for review. | 2 |
-| **2.2.4** | **Verify that** encoding and representation smuggling in both inputs and outputs (e.g., invisible Unicode/control characters, homoglyph swaps, or mixed-direction text) are detected and mitigated. Approved mitigations include canonicalization, strict schema validation, policy-based rejection, or explicit marking. | 3 |
+| **2.2.4** | **Verify that** encoding and representation smuggling in inputs (e.g., invisible Unicode/control characters, homoglyph swaps, or mixed-direction text) is detected and mitigated. Approved mitigations include canonicalization, strict schema validation, policy-based rejection, or explicit marking. | 3 |
 
 ---
 
