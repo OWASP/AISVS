@@ -42,6 +42,7 @@ Technical controls to detect and scrub bad content before it is shown to the use
 | **7.3.2** | **Verify that** output filters detect and block responses that disclose system prompt content, including verbatim reproduction and semantically equivalent paraphrases of instructions, role definitions, or policy directives. | 2 |
 | **7.3.3** | **Verify that** LLM client applications prevent model-generated output from triggering automatic outbound requests (e.g., auto-rendered images, iframes, or link prefetching) to attacker-controlled endpoints, for example by disabling automatic external resource loading or by restricting it to an explicitly allowlisted set of origins. | 2 |
 | **7.3.4** | **Verify that** generated outputs are analyzed for statistical steganographic covert channels (e.g., biased token-choice patterns or output distribution anomalies) that could encode hidden data across the model's valid output space, and that detections are flagged for review. | 3 |
+| **7.3.5** | **Verify that** model-generated outputs are scanned for encoding and representation smuggling artifacts (e.g., invisible Unicode or control characters, homoglyph substitutions, mixed-direction text) before being returned to callers or passed to downstream systems, and that detections trigger rejection or sanitization. | 3 |
 
 ---
 
