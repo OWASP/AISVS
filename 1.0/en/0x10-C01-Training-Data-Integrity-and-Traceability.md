@@ -21,7 +21,7 @@ Training data origin and traceability are critical to the security and trustwort
 
 ## C1.2 Training Data Security & Integrity
 
-Training data must be protected against tampering, corruption, and poisoning throughout its lifecycle. Generic data security controls -- access control on storage, access logging, and encryption at rest and in transit -- are covered by OWASP ASVS v5 (V6, V7, V8) and must be implemented as a baseline. This section addresses AI-specific concerns: integrity verification against data poisoning, immutable dataset versioning for rollback, and the residual-memorization risk that persists in trained models after training data is retired.
+Training data must be protected against tampering, corruption, and poisoning throughout its lifecycle. Generic data security controls (access control on storage, access logging, and encryption at rest and in transit) are covered by OWASP ASVS v5 (V6, V7, V8) and must be implemented as a baseline. This section addresses AI-specific concerns: integrity verification against data poisoning, immutable dataset versioning for rollback, and the residual-memorization risk that persists in trained models after training data is retired.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
