@@ -57,3 +57,16 @@ We are looking for help with translations after v1.0 is released!
 ## Release Policy
 
 AISVS uses a two-part `v<MAJOR>.<MINOR>` version scheme and a published release policy that defines what can change in a minor release, what requires a major release, and how patch-level fixes are handled in-branch without a separate version. See [RELEASE.md](RELEASE.md) before proposing changes that add, remove, or restructure requirements.
+
+## AI-Assisted Contributions
+
+AI tools are welcome as a productivity aid across the entire contribution workflow -- drafting issues, writing PR descriptions, sketching initial requirement text, spotting gaps, or formulating review comments. If it gets good ideas into the project faster, use it.
+
+The line is ownership and substance. Every contribution must reflect the contributor's own security judgment, whether that contribution is a requirement, a PR description, a review comment, or an issue. What we want to avoid:
+
+- Submitting large blocks of AI-generated text without reviewing or editing it. If you would not defend every sentence in a discussion, it should not be in your issue, PR, or comment.
+- Using AI to pad a contribution. A thin idea wrapped in generated prose is still a thin idea, and reviewers will notice.
+- Requirements or requirement text that reads as generic boilerplate rather than a concrete, testable control. AISVS controls must be independently verifiable; vague filler fails that bar regardless of how it was produced.
+- Review comments that restate what is already visible in the diff without adding security judgment. AI-assisted reviews are welcome; AI-generated summaries posted as reviews are not.
+
+What good AI-assisted contribution looks like: you have a security concern or a point to make, you use AI to help articulate it clearly, and you submit something you can fully explain and defend. The AI helped you write it; the judgment is yours.
