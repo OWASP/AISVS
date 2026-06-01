@@ -46,6 +46,7 @@ please open an issue or pull request.
 * hackwither ([hackwither](https://github.com/hackwither))
 * Boone Carlson ([KeystoneSmartQuotes](https://github.com/KeystoneSmartQuotes))
 * Mayur Agnihotri ([Mayur021](https://github.com/Mayur021))
+  
 ---
 
 ## Reviewers
