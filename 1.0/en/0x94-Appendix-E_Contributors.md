@@ -20,4 +20,4 @@ please open an issue or pull request.
 
 ## Contributors
 
-We will generate the contributor list from automation based on GitHub history before we release 1.0!
+We will generate the contributor list from automation (based on GitHub history) before we release 1.0 the end of June 2026!
