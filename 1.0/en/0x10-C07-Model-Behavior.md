@@ -24,7 +24,7 @@ Detect when the model produces potentially inaccurate or fabricated content and 
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **7.2.1** | **Verify that** the system assesses the reliability of generated answers using a confidence or uncertainty estimation method (e.g., confidence scoring, retrieval-based verification, or model uncertainty estimation). | 1 |
+| **7.2.1** | **Verify that** the system assesses the reliability of generated answers using a mechanism appropriate to the deployment (e.g., confidence scoring where the API exposes it, retrieval-based verification against authoritative sources, model uncertainty estimation, or tool-invocation-based fact-checking). | 1 |
 | **7.2.2** | **Verify that** the application automatically blocks answers or switches to a fallback message if the confidence score drops below a defined threshold. | 2 |
 | **7.2.3** | **Verify that** hallucination events (low-confidence responses) are logged with input/output metadata for analysis. (For aggregate hallucination rate monitoring over time, see C13.3.5.) | 2 |
 | **7.2.4** | **Verify that** the system tracks tool and function invocation history within a request chain and flags high-confidence factual assertions that were not preceded by relevant verification tool usage, as a practical hallucination detection signal independent of confidence scoring. | 2 |

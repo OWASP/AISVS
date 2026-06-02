@@ -15,7 +15,7 @@ Only authorized models with verified integrity reach production environments.
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **3.1.1** | **Verify that** a model registry maintains an inventory of all deployed model artifacts. | 1 |
-| **3.1.2** | **Verify that** all model artifacts (weights, configurations, tokenizers, base models, fine-tunes, adapters, and safety/policy models) are cryptographically signed by authorized entities. | 2 |
+| **3.1.2** | **Verify that** all self-hosted model artifacts (weights, configurations, tokenizers, base models, fine-tunes, adapters, and safety/policy models) are cryptographically signed by authorized entities. For hosted models where the organization does not control artifact production, see C3.5. | 2 |
 | **3.1.3** | **Verify that** model artifact signatures and integrity checksums are verified at deployment admission and on load, and unsigned, tampered, or mismatched artifacts are rejected. | 2 |
 | **3.1.4** | **Verify that** lineage and dependency tracking maintains a dependency graph that enables identification of all consuming services and agents per environment (e.g., dev, staging, prod). | 3 |
 | **3.1.5** | **Verify that** model origin integrity and trace records include an authorizing entity's identity, training data checksums, validation test results with pass/fail status, signature fingerprint/certificate chain ID, a creation timestamp, and approved deployment environments. | 3 |
@@ -76,6 +76,10 @@ Hosted and provider-managed models may change behavior without notice. These con
 ---
 
 ## C3.6 Fine-Tuning Pipeline Authorization & Reward Model Integrity
+
+**Scope:** This section applies only to organizations that operate their own
+model fine-tuning or RLHF training pipelines. Organizations using exclusively
+hosted models where fine-tuning is not available are not in scope for C3.6.
 
 Fine-tuning pipelines are high-privilege operations that can alter deployed model behavior at scale. Multi-stage pipelines compound this risk because a compromise at any intermediate stage produces a subtly altered artifact that subsequent stages accept. Reward models used in RLHF are ML artifacts subject to tampering yet often treated as static infrastructure rather than versioned, validated components.
 

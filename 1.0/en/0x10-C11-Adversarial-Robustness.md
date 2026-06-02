@@ -45,7 +45,7 @@ Limit the ability to determine whether a specific record was in the training dat
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **11.3.1** | **Verify that** model outputs are calibrated (e.g., via temperature scaling or output perturbation) to reduce overconfident predictions that facilitate membership-inference attacks. | 2 |
-| **11.3.2** | **Verify that** training on sensitive datasets employs differentially-private optimization (e.g., DP-SGD) with a documented privacy budget (epsilon). | 2 |
+| **11.3.2** | **Verify that** training on sensitive datasets (PII, trade secrets, medical information, or similar) employs differentially-private optimization (e.g., DP-SGD) with a documented privacy budget (epsilon). | 2 |
 | **11.3.3** | **Verify that** membership-inference attack simulations (e.g., shadow-model, likelihood-ratio, or label-only attacks) demonstrate that attack accuracy does not meaningfully exceed random guessing on held-out data. | 3 |
 
 ---
