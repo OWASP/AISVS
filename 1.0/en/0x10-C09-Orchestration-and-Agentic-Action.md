@@ -33,7 +33,7 @@ Require explicit checkpoints for privileged or irreversible outcomes.
 
 ## C9.3 Component Isolation and Safe Integration
 
-Constrain tool and plugin execution, loading, and outputs to prevent unauthorized system access and unsafe side effects.
+Constrain tool and plugin execution, loading, and outputs to prevent unauthorized system access and unsafe side effects. For AI model-loading sandbox isolation at the infrastructure layer, see C4.1.
 
 | # | Description | Level |
 | :--: | --- | :---: |

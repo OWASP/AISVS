@@ -42,8 +42,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **10.3.2** | **Verify that** SSE-based MCP transports are used only within private, authenticated internal channels with TLS, schema validation, payload size limits, and rate limiting enforced, and are not exposed to the public internet. | 2 |
 | **10.3.3** | **Verify that** MCP servers validate both the `Origin` header and the `Host` header independently on all HTTP-based transports (including SSE and streamable-HTTP) to prevent DNS rebinding attacks. Requests where either header is missing, mismatched, or from an untrusted origin are rejected. | 2 |
 | **10.3.4** | **Verify that** intermediaries do not alter or remove the `Mcp-Protocol-Version` header on streamable-HTTP transports unless explicitly required by the protocol specification, preventing protocol downgrade via header stripping. | 2 |
-| **10.3.5** | **Verify that** SSE-based MCP transport endpoints enforce TLS, authentication, schema validation, payload size limits, and rate limiting. | 2 |
-| **10.3.6** | **Verify that** MCP clients enforce a minimum acceptable protocol version and reject `initialize` responses that propose a version below that minimum, preventing a server or intermediary from forcing use of a protocol version with weaker security properties. | 2 |
+| **10.3.5** | **Verify that** MCP clients enforce a minimum acceptable protocol version and reject `initialize` responses that propose a version below that minimum, preventing a server or intermediary from forcing use of a protocol version with weaker security properties. | 2 |
 
 ---
 
