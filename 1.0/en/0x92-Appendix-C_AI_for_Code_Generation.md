@@ -89,7 +89,7 @@ Two goals in this family. First: stop secrets, proprietary code, and personal da
 | **AC.3.3** | Verify that any externally-sourced context being fed to an AI tool is treated as untrusted and screened for prompt injection before it reaches the prompt. Sources to cover: PR descriptions and comments, fork-supplied diffs, issue bodies, commit messages, third-party documentation, web search results, and MCP tool outputs. | 1 |
 | **AC.3.4** | Verify that the AI tool enforces an instruction hierarchy, with system and developer messages taking precedence over untrusted repository content. This hierarchy has to hold across multi-turn conversations and tool-augmented workflows. | 1 |
 | **AC.3.5** | Verify that input length controls stop untrusted PR or repository content from crowding system instructions or safety directives out of the effective context window. Oversized inputs are rejected outright. Silent truncation is not acceptable. | 2 |
-| **AC.3.6** | Verify that prompts and AI responses are tokenized, encrypted in transit and at rest, and retained per the data-classification policy. Tenants and projects are cryptographically separated from each other. | 3 |
+| **AC.3.6** | Verify that prompts and AI responses are encrypted in transit and at rest, and retained per the data-classification policy. Tenants and projects are cryptographically separated from each other. | 3 |
 
 **Mappings & References:**
 
@@ -111,7 +111,7 @@ Catch the vulnerabilities AI output introduces. Fix them before the code reaches
 | --- | --- | --- |
 | **AC.4.1** | Verify that AI-generated code always goes through code review by a qualified human engineer. The reviewer must not be the same identity that asked for the AI generation in the first place (separation of duties). And the AI agent itself does not count as the human reviewer. | 1 |
 | **AC.4.2** | Verify that automated security testing runs on every pull request containing AI-generated code: SAST, IAST, DAST, secret scanning, IaC scanning, and SCA. Where the scanner supports them, AI-attribution-aware rules are turned on. | 2 |
-| **AC.4.3** | Verify that pull requests containing AI-generated code are blocked from merging when an automated scan surfaces a critical security finding. Bypassing the block requires a written exception, approved by an authorized human. | 2 |
+| **AC.4.3** | Verify that pull requests containing AI-generated code are blocked from merging when an automated scan surfaces a critical security finding, defined as CVSS >= 9.0 or the equivalent threshold in the organization's vulnerability severity policy. Bypassing the block requires a written exception approved by an authorized human. | 2 |
 | **AC.4.4** | Verify that security-critical files require an elevated review threshold when AI generated or modified them: two-person review, security-team sign-off, or stricter. Security-critical files here include authentication, authorization, and cryptography code; IAM policy; CI/CD workflow definitions; deployment manifests; and sandbox or network policy artifacts. | 2 |
 | **AC.4.5** | Verify that differential fuzz testing or property-based tests cover the security-critical behaviors of AI-generated code: input validation, authorization logic, and deserialization safety. | 3 |
 
@@ -152,7 +152,7 @@ Improve model security over time. Watch for negative drift. Keep red-teaming the
 | # | Description | Level |
 | --- | --- | --- |
 | **AC.6.1** | Verify that developers and reviewers can flag insecure or non-compliant suggestions, and that each flag is tracked to closure with links back to the originating prompt and response and forward to any downstream artifacts. | 1 |
-| **AC.6.2** | Verify that aggregated feedback feeds into periodic fine-tuning, system-prompt updates, or retrieval-augmented generation against vetted secure-coding corpora (OWASP Cheat Sheets, internal coding standards). | 2 |
+| **AC.6.2** | Verify that aggregated feedback feeds into periodic system-prompt updates or retrieval-augmented generation against vetted secure-coding corpora (OWASP Cheat Sheets, internal coding standards). Where the organization controls model training infrastructure, fine-tuning on the same feedback corpus is also required. | 2 |
 | **AC.6.3** | Verify that scheduled red-team exercises target the AI tooling itself. The exercises include direct and indirect prompt-injection probes delivered through realistic PR, issue, and comment surfaces, jailbreak corpora, and supply-chain payload generation. Findings are remediated under tracked severity SLAs. | 2 |
 | **AC.6.4** | Verify that a closed-loop evaluation harness runs regression tests after every fine-tune, system-prompt change, or model upgrade. Security metrics must meet or exceed the prior baseline before deployment. | 3 |
 
