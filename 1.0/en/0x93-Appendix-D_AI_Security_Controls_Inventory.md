@@ -80,7 +80,7 @@ Protect data moving between services, agents, tools, and edge devices.
 | Authenticated streamable-HTTP transport with TLS 1.3 for MCP | 10.3.1, 10.3.2 |
 | SSE private channel with TLS enforcement | 10.3.2 |
 | Log encryption in transit | 13.1.4 |
-| MCP client minimum protocol version enforcement against downgrade negotiation | 10.3.6 |
+| MCP client minimum protocol version enforcement against downgrade negotiation | 10.3.5 |
 
 **Common pitfalls:** allowing plaintext interconnects in multi-tenant GPU clusters; using SSE over public internet without TLS; not validating certificates on internal service calls.
 

@@ -8,7 +8,7 @@ AI-specific infrastructure components must be hardened against model theft, data
 
 ## C4.1 AI Workload Sandboxing & Validation
 
-Isolate untrusted AI models in secure sandboxes and protect sensitive AI workloads using trusted execution environments (TEEs) and confidential computing technologies.
+Isolate untrusted AI models in secure sandboxes and protect sensitive AI workloads using trusted execution environments (TEEs) and confidential computing technologies. For tool and plugin execution sandboxing within agentic workflows, see C9.3.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------ | :---: |
