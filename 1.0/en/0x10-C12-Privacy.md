@@ -62,7 +62,7 @@ Enforce consent at AI-specific decision points (training data ingestion, inferen
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **12.5.1** | **Verify that** model inference validates consent scope before processing, covering both the requested operation and the data subjects whose data materially influences the response. | 2 |
+| **12.5.1** | **Verify that** model inference validates consent scope before processing, covering both the requested operation and the data subjects whose data materially influences the response. | 3 |
 | **12.5.2** | **Verify that** when validated consent scope does not cover the requested operation or the data subjects whose data materially influences the response, the system refuses or downgrades the response before serving it to the caller. | 2 |
 | **12.5.3** | **Verify that** withdrawal of consent triggers the same AI-artifact propagation pipeline as a deletion request (see 12.2.1), and that inference paths relying on the withdrawn data are disabled within the same SLA. | 2 |
 

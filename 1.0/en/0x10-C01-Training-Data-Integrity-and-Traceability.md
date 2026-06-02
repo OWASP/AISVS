@@ -28,7 +28,7 @@ Training data must be protected against tampering, corruption, and poisoning thr
 | **1.2.1** | **Verify that** when training data is retired or removed, an impact assessment is documented covering all models trained on that data, the assessed residual memorization risk, and the selected mitigation (targeted fine-tuning, machine unlearning, model retraining, or documented risk acceptance). | 1 |
 | **1.2.2** | **Verify that** cryptographic hashes or digital signatures are used to ensure data integrity during training data storage and transfer. | 2 |
 | **1.2.3** | **Verify that** automated integrity monitoring is applied to guard against unauthorized modifications or corruption of training data. | 2 |
-| **1.2.4** | **Verify that** all training dataset versions are uniquely identified, stored immutably, and auditable to support rollback and forensic analysis. | 3 |
+| **1.2.4** | **Verify that** all training dataset versions are uniquely identified, stored immutably, and auditable to support rollback and forensic analysis. | 2 |
 
 ---
 
