@@ -16,7 +16,7 @@ Only authorized models with verified integrity reach production environments.
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **3.1.1** | **Verify that** a model registry maintains an inventory of all deployed model artifacts. | 1 |
 | **3.1.2** | **Verify that** all model artifacts (weights, configurations, tokenizers, base models, fine-tunes, adapters, and safety/policy models) are cryptographically signed by authorized entities. | 2 |
-| **3.1.3** | **Verify that** model artifact signatures and integrity checksums are verified at deployment admission and on load, and unsigned, tampered, or mismatched artifacts are rejected. | 1 |
+| **3.1.3** | **Verify that** model artifact signatures and integrity checksums are verified at deployment admission and on load, and unsigned, tampered, or mismatched artifacts are rejected. | 2 |
 | **3.1.4** | **Verify that** lineage and dependency tracking maintains a dependency graph that enables identification of all consuming services and agents per environment (e.g., dev, staging, prod). | 3 |
 | **3.1.5** | **Verify that** model origin integrity and trace records include an authorizing entity's identity, training data checksums, validation test results with pass/fail status, signature fingerprint/certificate chain ID, a creation timestamp, and approved deployment environments. | 3 |
 
@@ -82,7 +82,7 @@ Fine-tuning pipelines are high-privilege operations that can alter deployed mode
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **3.6.1** | **Verify that** reward models used in RLHF fine-tuning are versioned, cryptographically signed, and integrity-verified before use in a training run. | 2 |
-| **3.6.2** | **Verify that** initiating a fine-tuning or retraining run requires authorization from a person who did not request the run (separation of duties). | 3 |
+| **3.6.2** | **Verify that** initiating a fine-tuning or retraining run requires authorization from a person who did not request the run (separation of duties). | 2 |
 | **3.6.3** | **Verify that** RLHF training stages include automated detection of reward hacking or reward model over-optimization (e.g., held-out human-preference probe sets, divergence thresholds, or KL penalty monitoring), with the run blocked from promotion if detection thresholds are exceeded. | 3 |
 | **3.6.4** | **Verify that** in multi-stage fine-tuning pipelines, each stage's output is integrity-verified before the next stage consumes it. | 3 |
 | **3.6.5** | **Verify that** intermediate fine-tuning checkpoints are registered as distinct artifacts with version or digest identifiers, enabling per-stage rollback. | 3 |
