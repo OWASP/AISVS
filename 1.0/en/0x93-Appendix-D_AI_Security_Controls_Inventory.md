@@ -64,7 +64,7 @@ Protect stored data, models, secrets, logs, and backups through encryption.
 | --- | --- |
 | Training data encryption at rest | ASVS v5 V6 |
 | Labeled data encryption | 1.3.5 |
-| Log encryption at rest | 13.1.4 |
+| Log encryption at rest | ASVS v5 V16 |
 
 **Common pitfalls:** encrypting the database but not model checkpoints or embeddings; not encrypting logs that contain prompt/response data; storing encryption keys alongside the data they protect.
 
@@ -79,7 +79,7 @@ Protect data moving between services, agents, tools, and edge devices.
 | Mutual TLS with certificate validation for inter-service communication | 4.3.4 |
 | Authenticated streamable-HTTP transport with TLS 1.3 for MCP | 10.3.1, 10.3.2 |
 | SSE private channel with TLS enforcement | 10.3.2 |
-| Log encryption in transit | 13.1.4 |
+| Log encryption in transit | ASVS v5 V16 |
 | MCP client minimum protocol version enforcement against downgrade negotiation | 10.3.5 |
 
 **Common pitfalls:** allowing plaintext interconnects in multi-tenant GPU clusters; using SSE over public internet without TLS; not validating certificates on internal service calls.
@@ -387,9 +387,9 @@ Capture security-relevant events with integrity protection for forensic analysis
 | --- | --- |
 | Security-relevant metadata logging for AI interactions (timestamp, user ID, session ID, model version, token count, input hash, confidence score, safety filter outcome) | 13.1.1 |
 | AI interaction logs exclude prompt and response content by default, with content logging requiring explicit opt-in and documented justification | 13.1.2 |
-| Secure, access-controlled log repositories with retention policies | 13.1.3 |
-| Log encryption at rest and in transit | 13.1.4 |
-| PII, credential, and proprietary information redaction in logs | 13.1.5 |
+| Secure, access-controlled log repositories with retention policies | ASVS v5 V16 |
+| Log encryption at rest and in transit | ASVS v5 V16 |
+| PII, credential, and proprietary information redaction in logs | ASVS v5 V16 |
 | Policy decision and safety filtering action logging | 13.1.3 |
 | Audit log context fields sufficient for forensic reconstruction (actor, delegation, policy, parameters, outcomes) | 9.4.3 |
 | Agent action cryptographic chain ID binding | 9.4.2 |
