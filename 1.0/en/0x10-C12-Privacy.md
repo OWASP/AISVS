@@ -51,8 +51,7 @@ Prevent models and datasets from being used beyond their originally consented pu
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
 | **12.4.1** | **Verify that** every dataset and model checkpoint carries a machine-readable purpose tag aligned to the original consent and lawful basis under which the source data was collected. | 1 |
 | **12.4.2** | **Verify that** runtime monitors detect queries inconsistent with the declared purpose of the dataset or model, and that detected queries trigger a soft refusal or are blocked pending review. | 1 |
-| **12.4.3** | **Verify that** policy-as-code gates block redeployment of models to new domains without DPIA review. | 3 |
-| **12.4.4** | **Verify that** formal traceability proofs show every personal data lifecycle remains within consented scope. | 3 |
+| **12.4.3** | **Verify that** policy-as-code gates block redeployment of a model to a purpose or domain not covered by its purpose tag (12.4.1). | 3 |
 
 ---
 
