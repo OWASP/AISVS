@@ -57,7 +57,7 @@ Prevent reconstruction of private training data or sensitive attributes from mod
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **11.4.1** | **Verify that** model-inferred sensitive attributes are not directly returned in outputs; where such attributes must be exposed, they are returned as generalized categories (e.g., ranges, buckets) or one-way transforms to limit reconstruction of underlying training records. | 1 |
-| **11.4.2** | **Verify that** query-rate limits throttle repeated adaptive queries from the same principal at thresholds calibrated to the inversion threat model (e.g., the number of queries required to reconstruct training data or sensitive attributes), and not solely as a generic anti-automation control. | 1 |
+| **11.4.2** | **Verify that** query-rate limits throttle repeated adaptive queries from the same principal at thresholds calibrated to the inversion threat model (e.g., the number of queries required to reconstruct training data or sensitive attributes), and not solely as a generic anti-automation control. | 2 |
 
 ---
 

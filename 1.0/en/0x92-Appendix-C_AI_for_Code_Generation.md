@@ -133,7 +133,7 @@ Auditors, defenders, and the developers themselves need to be able to see why a 
 | # | Description | Level |
 | --- | --- | --- |
 | **AC.5.1** | Verify that prompt-and-response pairs are logged with stable correlation identifiers, so that an investigator can later replay the whole chain: prompt → response → commit → build → deployment. | 1 |
-| **AC.5.2** | Verify that developers can pull up the citations (training snippets, retrieved documents, MCP tool outputs) that support a suggestion, and that the citation chain travels with the artifact. | 2 |
+| **AC.5.2** | Verify that developers can pull up the citations (training snippets, retrieved documents, MCP tool outputs) that support a suggestion, and that the citation chain travels with the artifact. | 3 |
 | **AC.5.3** | Verify that explainability reports, AI-event logs, and citation records are kept in tamper-evident storage (append-only, WORM, or an immutable log store) and are referenced during security reviews. | 3 |
 
 **Mappings & References:**
@@ -216,8 +216,8 @@ Deployment and promotion pipelines need to validate the cryptographic origin and
 <!-- markdownlint-disable MD013 -->
 | # | Description | Level |
 | --- | --- | --- |
-| **AC.9.1** | Verify that AI-generated artifacts carry signed origin and generation metadata (in-toto or SLSA provenance attestations, AI-BOM entries) identifying the AI system that produced them, the generation context, the humans involved, and the associated audit records. | 1 |
-| **AC.9.2** | Verify that deployment pipelines check the presence, signature, and integrity of origin and generation metadata on AI-generated artifacts before promotion, using a trusted verifier (Sigstore/cosign, in-toto verification). | 2 |
+| **AC.9.1** | Verify that AI-generated artifacts carry signed origin and generation metadata (in-toto or SLSA provenance attestations, AI-BOM entries) identifying the AI system that produced them, the generation context, the humans involved, and the associated audit records. | 2 |
+| **AC.9.2** | Verify that deployment pipelines check the presence, signature, and integrity of origin and generation metadata on AI-generated artifacts before promotion, using a trusted verifier (Sigstore/cosign, in-toto verification). | 3 |
 | **AC.9.3** | Verify that artifacts are rejected at deployment and quarantined for review when they are missing required origin and generation information, signed by untrusted keys, or produced by an unapproved AI system or environment. | 3 |
 
 **Mappings & References:**
