@@ -364,7 +364,7 @@ Test for and defend against evasion, extraction, inversion, poisoning, and align
 | Membership inference attack simulation (shadow-model, likelihood-ratio) | 11.3.3 |
 | Model extraction detection (query-pattern analysis, diversity measurement) | 11.5.3 |
 | Statistical outlier and consistency scoring on external inputs | 11.6.1 |
-| Adaptive attack evasion testing | 11.6.5 |
+| Adaptive attack evasion testing | 11.2.6 |
 | AI-augmented review of high-risk agent actions (secondary model, structured self-review, ensemble-of-judges) supplementing the deterministic policy gate (C9.7.1) | 11.8.1 |
 | AI-augmented review mechanism protected against prompt-injection bypass | 11.8.2 |
 | Self-modification restriction with scope bounds and rate limits | 11.9.1, 11.9.5 |
