@@ -16,8 +16,8 @@ Only authorized models with verified integrity reach production environments.
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **3.1.1** | **Verify that** a model registry maintains an inventory of all deployed model artifacts. | 1 |
 | **3.1.2** | **Verify that** all model artifacts (weights, configurations, tokenizers, base models, fine-tunes, adapters, and safety/policy models) are cryptographically signed by authorized entities. | 2 |
-| **3.1.3** | **Verify that** model artifact signatures and integrity checksums are verified at deployment admission and on load, and unsigned, tampered, or mismatched artifacts are rejected. | 2 |
-| **3.1.4** | **Verify that** lineage and dependency tracking maintains a dependency graph that enables identification of all consuming services and agents per environment (e.g., dev, staging, prod). | 3 |
+| **3.1.3** | **Verify that** model artifact signatures and integrity checksums are verified at deployment admission and on load. Unsigned, tampered, or mismatched artifacts are rejected. | 2 |
+| **3.1.4** | **Verify that** lineage and dependency tracking maintains a dependency graph that identifies all consuming services and agents per environment (e.g., dev, staging, prod). | 3 |
 | **3.1.5** | **Verify that** model origin integrity and trace records include an authorizing entity's identity, training data checksums, validation test results with pass/fail status, signature fingerprint/certificate chain ID, a creation timestamp, and approved deployment environments. | 3 |
 
 ---
@@ -33,8 +33,8 @@ Models must pass defined security and safety validations before deployment.
 | **3.2.3** | **Verify that** models undergo safety evaluations with defined pass/fail thresholds before deployment. | 1 |
 | **3.2.4** | **Verify that** deployment is automatically blocked when safety evaluation results do not meet the thresholds defined for the model being deployed. | 1 |
 | **3.2.5** | **Verify that** security testing covers agent workflows, tool and MCP integrations, RAG and memory interactions, multimodal inputs, and guardrails (safety models or detection services) using a versioned evaluation harness. At minimum, tests demonstrate rejection of prompt injection probes from a maintained corpus and correct sanitization of tool outputs before model context inclusion. | 2 |
-| **3.2.6** | **Verify that** all model changes (deployment, configuration, retirement) generate immutable audit records including a timestamp, an authenticated actor identity, a change type, and before/after states, with trace metadata (environment and consuming services/agents) and a model identifier (version/digest/signature). | 2 |
-| **3.2.7** | **Verify that** models subjected to post-training quantization, pruning, or distillation are re-evaluated against the same safety and alignment test suite on the compressed artifact before deployment, and that evaluation results are retained as distinct records linked to the compressed artifact's version or digest. | 2 |
+| **3.2.6** | **Verify that** all model changes (deployment, configuration, retirement) generate immutable audit records. Each record includes a timestamp, an authenticated actor identity, a change type, before/after states, trace metadata (environment and consuming services/agents), and a model identifier (version/digest/signature). | 2 |
+| **3.2.7** | **Verify that** models subjected to post-training quantization, pruning, or distillation are re-evaluated against the same safety and alignment test suite on the compressed artifact before deployment. Evaluation results are retained as distinct records linked to the compressed artifact's version or digest. | 2 |
 
 ---
 
