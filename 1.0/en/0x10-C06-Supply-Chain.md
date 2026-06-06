@@ -13,9 +13,9 @@ Assess and authenticate third-party model origins and hidden behaviors before an
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **6.1.1** | **Verify that** every third-party model artifact includes a signed origin-and-integrity record identifying its source, version, and integrity checksum. | 1 |
-| **6.1.2** | **Verify that** models are scanned for malicious layers or Trojan triggers using automated tools before import. | 1 |
+| **6.1.2** | **Verify that** models are scanned with automated tools for malicious layers or Trojan triggers before import. | 1 |
 | **6.1.3** | **Verify that** high-risk models (e.g., publicly uploaded weights, unverified creators) remain quarantined until human review and sign-off. | 2 |
-| **6.1.4** | **Verify that** third-party or open-source models pass a defined behavioral acceptance test suite (covering safety, alignment, and capability boundaries relevant to the deployment context) before being imported or promoted to any non-development environment. | 2 |
+| **6.1.4** | **Verify that** third-party or open-source models pass a defined behavioral acceptance test suite before being imported or promoted to any non-development environment. The suite covers safety, alignment, and capability boundaries relevant to the deployment context. | 2 |
 | **6.1.5** | **Verify that** transfer-learning fine-tunes pass adversarial evaluation to detect hidden behaviors. | 3 |
 
 ---
@@ -27,7 +27,7 @@ Allow AI artifact downloads only from organization-approved sources and verify m
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **6.2.1** | **Verify that** model weights, datasets, and fine-tuning adapters are downloaded only from approved sources or internal registries. | 1 |
-| **6.2.2** | **Verify that** cryptographic signing keys used to authenticate model publishers are pinned per source registry, and that key rotation events require explicit re-approval before updated keys are trusted. | 3 |
+| **6.2.2** | **Verify that** the cryptographic signing keys used to authenticate model publishers are pinned per source registry. When a key is rotated, verify that it is explicitly re-approved before the updated key is trusted. | 3 |
 
 ---
 
@@ -37,7 +37,7 @@ Evaluate external datasets for poisoning and legal compliance, and monitor them 
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **6.3.1** | **Verify that** disallowed content (e.g., copyrighted material, PII) is detected and removed via automated scrubbing prior to training. | 1 |
+| **6.3.1** | **Verify that** disallowed content (e.g., copyrighted material, PII) is detected and removed by automated scrubbing before training. | 1 |
 | **6.3.2** | **Verify that** external datasets undergo poisoning risk assessment (e.g., data fingerprinting, outlier detection). | 2 |
 | **6.3.3** | **Verify that** origin, lineage, and license terms for datasets are captured in AI BOM entries. | 2 |
 | **6.3.4** | **Verify that** periodic monitoring detects drift or corruption in hosted datasets. | 3 |
