@@ -38,7 +38,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 
 | # | Description | Level |
 | :--: | --- | :---: |
-| **10.3.1** | **Verify that** authenticated, encrypted streamable-HTTP is used as the primary MCP transport in production environments and that alternate transports (e.g., stdio or SSE) are restricted to local or tightly controlled environments with explicit justification. | 1 |
+| **10.3.1** | **Verify that** authenticated, encrypted streamable-HTTP is used as the primary MCP transport in production environments and that stdio transport is restricted to use cases where the MCP server process is launched by a single authorized parent process on a dedicated low-privilege account, binds no network interfaces, and has its tool set locked at startup; use of stdio transport is documented with justification and subject to the same allowlist verification required for production servers under C10.1.2. | 1 |
 | **10.3.2** | **Verify that** SSE-based MCP transports are used only within private, authenticated internal channels with TLS, schema validation, payload size limits, and rate limiting enforced, and are not exposed to the public internet. | 2 |
 | **10.3.3** | **Verify that** MCP servers validate both the `Origin` header and the `Host` header independently on all HTTP-based transports (including SSE and streamable-HTTP) to prevent DNS rebinding attacks. Requests where either header is missing, mismatched, or from an untrusted origin are rejected. | 2 |
 | **10.3.4** | **Verify that** intermediaries do not alter or remove the `Mcp-Protocol-Version` header on streamable-HTTP transports unless explicitly required by the protocol specification, preventing protocol downgrade via header stripping. | 2 |
