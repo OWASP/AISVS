@@ -12,10 +12,10 @@ Training data origin and traceability are critical to the security and trustwort
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **1.1.1** | **Verify that** an up-to-date inventory of every training-data source (origin, responsible party, license, collection method, intended use constraints, and processing history) is maintained. | 1 |
+| **1.1.1** | **Verify that** an up-to-date inventory is kept of every training-data source, including its origin, responsible party, license, collection method, intended use constraints, and processing history. | 1 |
 | **1.1.2** | **Verify that** training data processes include only features, attributes, and fields required for the model's stated purpose, excluding all others (e.g., unused metadata, sensitive PII, leaked test data). | 1 |
 | **1.1.3** | **Verify that** all dataset changes are subject to a logged approval workflow. | 1 |
-| **1.1.4** | **Verify that** datasets or subsets are watermarked or fingerprinted to enable downstream attribution and detection of unauthorized use. | 3 |
+| **1.1.4** | **Verify that** datasets or subsets are watermarked or fingerprinted so their later use can be attributed and any unauthorized use detected. | 3 |
 
 ---
 
@@ -25,8 +25,8 @@ Training data must be protected against tampering, corruption, and poisoning thr
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **1.2.1** | **Verify that** when training data is retired or removed, an impact assessment is documented covering all models trained on that data, the assessed residual memorization risk, and the selected mitigation (targeted fine-tuning, machine unlearning, model retraining, or documented risk acceptance). | 1 |
-| **1.2.2** | **Verify that** cryptographic hashes or digital signatures are used to ensure data integrity during training data storage and transfer. | 2 |
+| **1.2.1** | **Verify that** when training data is retired or removed, an impact assessment is documented. The assessment covers all models trained on that data, the assessed residual memorization risk, and the selected mitigation (targeted fine-tuning, machine unlearning, model retraining, or documented risk acceptance). | 1 |
+| **1.2.2** | **Verify that** cryptographic hashes or digital signatures are used to ensure data integrity when training data is stored and transferred. | 2 |
 | **1.2.3** | **Verify that** automated integrity monitoring is applied to guard against unauthorized modifications or corruption of training data. | 2 |
 | **1.2.4** | **Verify that** all training dataset versions are uniquely identified, stored immutably, and auditable to support rollback and forensic analysis. | 2 |
 
@@ -56,8 +56,8 @@ Training data quality and security assurance controls help detect corruption, po
 | **1.4.2** | **Verify that** training and fine-tuning pipelines implement data integrity validation and poisoning detection techniques (e.g., statistical analysis, outlier detection, embedding analysis) to identify potential data poisoning or unintentional corruption in training data. | 2 |
 | **1.4.3** | **Verify that** automatically generated labels (e.g., via models or weak supervision) are subject to confidence thresholds and consistency checks to detect misleading or low-confidence labels. | 2 |
 | **1.4.4** | **Verify that** automated tests catch label skews on every ingest or significant data transformation. | 2 |
-| **1.4.5** | **Verify that** models used in security-relevant decisions (e.g., abuse detection, fraud scoring, automated trust decisions) are evaluated, prior to deployment and after any significant model update, for systematic bias patterns that an adversary could exploit to evade controls (e.g., mimicking a trusted language style or demographic pattern to bypass detection). | 2 |
-| **1.4.6** | **Verify that** training-time defenses against data poisoning are selected and applied based on a documented risk assessment, with the chosen defense (e.g., adversarial training, data augmentation with perturbed inputs, or robust optimization) and its tuning rationale recorded alongside the model artifact. | 2 |
+| **1.4.5** | **Verify that** models used in security-relevant decisions (e.g., abuse detection, fraud scoring, automated trust decisions) are evaluated for systematic bias patterns that an adversary could exploit to evade controls (e.g., mimicking a trusted language style or demographic pattern to bypass detection), before deployment and after any significant model update. | 2 |
+| **1.4.6** | **Verify that** training-time defenses against data poisoning are selected and applied based on a documented risk assessment, and that the chosen defense (e.g., adversarial training, data augmentation with perturbed inputs, or robust optimization) and its tuning rationale are recorded alongside the model artifact. | 2 |
 | **1.4.7** | **Verify that** defenses against clean-label poisoning attacks (e.g., input purification, k-NN filtering, data partitioning and aggregation) are implemented for models exposed to untrusted or partially trusted training data sources. | 3 |
 
 ---
