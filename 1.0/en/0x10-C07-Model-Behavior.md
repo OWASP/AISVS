@@ -27,8 +27,8 @@ Detect when the model produces potentially inaccurate or fabricated content and 
 | **7.2.1** | **Verify that** the system assesses the reliability of generated answers using a confidence or uncertainty estimation method (e.g., confidence scoring, retrieval-based verification, or model uncertainty estimation). | 1 |
 | **7.2.2** | **Verify that** the application automatically blocks answers or switches to a fallback message if the confidence score drops below a defined threshold. | 2 |
 | **7.2.3** | **Verify that** hallucination events (low-confidence responses) are logged with input/output metadata for analysis. (For aggregate hallucination rate monitoring over time, see C13.3.5.) | 2 |
-| **7.2.4** | **Verify that** the system tracks tool and function calls within a request chain and flags confident factual claims that were not preceded by a relevant verification tool call. This gives a practical hallucination signal that does not depend on confidence scoring. | 2 |
-| **7.2.5** | **Verify that** for responses the policy classifies as high-risk or high-impact, the system runs an extra verification step using an independent method, such as retrieval-based grounding against authoritative sources, deterministic rule-based validation, tool-based fact-checking, or consensus review by a separately provisioned model. | 3 |
+| **7.2.4** | **Verify that** the system tracks tool and function invocation history within a request chain and flags high-confidence factual assertions that were not preceded by relevant verification tool usage, as a practical hallucination detection signal independent of confidence scoring. | 2 |
+| **7.2.5** | **Verify that** for responses classified as high-risk or high-impact by policy, the system performs an additional verification step through an independent mechanism, such as retrieval-based grounding against authoritative sources, deterministic rule-based validation, tool-based fact-checking, or consensus review by a separately provisioned model. | 3 |
 
 ---
 
