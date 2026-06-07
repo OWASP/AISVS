@@ -31,7 +31,7 @@ Secure AI-specific hardware components including GPUs, TPUs, and specialized AI 
 | **4.2.1** | **Verify that** before workload execution, AI accelerator integrity is validated using hardware-based attestation mechanisms (e.g., TPM, DRTM, or equivalent). | 2 |
 | **4.2.2** | **Verify that** accelerator (GPU) memory is isolated between workloads through partitioning mechanisms with memory sanitization between jobs. | 2 |
 | **4.2.3** | **Verify that** AI accelerator firmware is version-pinned, signed, and attested at boot; unsigned or debug firmware is blocked. | 2 |
-| **4.2.4** | **Verify that** VRAM and on-package memory are zeroed between jobs/tenants and that device reset policies prevent cross-tenant data remanence. | 2 |
+| **4.2.4** | **Verify that** VRAM and on-package memory are zeroed between jobs/tenants and that device reset policies prevent cross-tenant data remanence. | 3 |
 | **4.2.5** | **Verify that** partitioning/isolation features (e.g., MIG/VM partitioning) are enforced per tenant and prevent peer-to-peer memory access across partitions. | 2 |
 | **4.2.6** | **Verify that** hardware security modules (HSMs) or equivalent tamper-resistant hardware protect AI model weights and cryptographic keys, with certification to an appropriate assurance level (e.g., FIPS 140-3 Level 3 or Common Criteria EAL4+). | 3 |
 | **4.2.7** | **Verify that** accelerator interconnects (NVLink/PCIe/InfiniBand/RDMA/NCCL) are restricted to approved topologies and authenticated endpoints; plaintext cross-tenant links are disallowed. | 3 |
@@ -46,7 +46,7 @@ Secure distributed AI deployments including edge computing, federated learning, 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------ | :---: |
 | **4.3.1** | **Verify that** edge AI devices authenticate to central infrastructure using mutual authentication with certificate validation (e.g., mutual TLS). | 1 |
-| **4.3.2** | **Verify that** models deployed to edge or mobile devices are cryptographically signed during packaging, and that the on-device runtime validates these signatures or checksums before loading or inference; unverified or altered models must be rejected. | 1 |
+| **4.3.2** | **Verify that** models deployed to edge or mobile devices are cryptographically signed during packaging, and that the on-device runtime validates these signatures or checksums before loading or inference; unverified or altered models must be rejected. | 2 |
 | **4.3.3** | **Verify that** distributed AI coordination uses Byzantine fault-tolerant consensus mechanisms with participant validation and malicious node detection. | 3 |
 | **4.3.4** | **Verify that** on-device inference runtimes enforce process, memory, and file access isolation to prevent model dumping, debugging, or extraction of intermediate embeddings and activations. | 3 |
 | **4.3.5** | **Verify that** model weights and sensitive parameters stored locally are encrypted using hardware-backed key stores or secure enclaves (e.g., Android Keystore, iOS Secure Enclave, TPM/TEE), with keys inaccessible to user space. | 3 |
