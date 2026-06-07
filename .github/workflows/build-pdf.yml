@@ -1,0 +1,63 @@
+name: Build PDF
+
+# Produces the typeset AISVS PDF (OWASP-AISVS-<version>-RC.pdf).
+# Runs on demand, and attaches the PDF to any published GitHub Release.
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version directory to build (e.g. 1.0)"
+        default: "1.0"
+        required: true
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pandoc
+        run: |
+          PANDOC_VERSION=3.9
+          curl -fsSL "https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-amd64.deb" -o /tmp/pandoc.deb
+          sudo dpkg -i /tmp/pandoc.deb
+          pandoc --version | head -1
+
+      - name: Install tectonic
+        run: |
+          curl -fsSL https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic%400.15.0/tectonic-0.15.0-x86_64-unknown-linux-gnu.tar.gz -o /tmp/tectonic.tar.gz
+          tar xzf /tmp/tectonic.tar.gz -C /usr/local/bin
+          tectonic --version
+
+      - name: Install fonts (Source Serif 4 / Source Sans 3)
+        run: |
+          mkdir -p ~/.local/share/fonts
+          curl -fsSL "https://github.com/adobe-fonts/source-serif/releases/download/4.005R/source-serif-4.005R.zip" -o /tmp/serif.zip
+          curl -fsSL "https://github.com/adobe-fonts/source-sans/releases/download/3.052R/source-sans-3.052R.zip" -o /tmp/sans.zip
+          unzip -joq /tmp/serif.zip '*/TTF/*.ttf' -d ~/.local/share/fonts || unzip -joq /tmp/serif.zip '*.ttf' -d ~/.local/share/fonts
+          unzip -joq /tmp/sans.zip  '*/TTF/*.ttf' -d ~/.local/share/fonts || unzip -joq /tmp/sans.zip  '*.ttf' -d ~/.local/share/fonts
+          fc-cache -f
+          fc-list | grep -iE "source serif 4|source sans 3" | head
+
+      - name: Build PDF
+        run: |
+          VERSION="${{ github.event.inputs.version || '1.0' }}"
+          tools/build-pdf.sh "$VERSION" en
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aisvs-pdf
+          path: dist/*.pdf
+          if-no-files-found: error
+
+      - name: Attach PDF to release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.pdf
