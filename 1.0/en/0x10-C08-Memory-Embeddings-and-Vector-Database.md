@@ -43,7 +43,7 @@ Retention and revocation must be explicit and enforceable for memory and RAG ind
 | # | Description | Level |
 | :--: | --- | :---: |
 | **8.3.1** | **Verify that** expired vectors are excluded from retrieval results within a measured and monitored propagation window. | 2 |
-| **8.3.2** | **Verify that** memory can be reset for security reasons (quarantine, selective purge, full reset) through an operation that is separate from the retention deletion process. | 2 |
+| **8.3.2** | **Verify that** memory can be reset for security reasons (quarantine, selective purge, full reset) through an operation that is separate and independent from the retention deletion process. | 2 |
 | **8.3.3** | **Verify that** quarantined content is retained for investigation but is excluded from all retrieval results while under quarantine. | 2 |
 
 ---
