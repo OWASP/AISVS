@@ -28,7 +28,7 @@ Define which AI decisions and agent actions require human approval so that runti
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
 | **14.2.1** | **Verify that** a documented human oversight policy defines which AI decisions and agent actions are classified as high-risk, the criteria used to make that determination, the approval authority required before execution, and whether any deviation from fail-closed default behavior on approval TTL expiry is permitted and under what conditions. | 1 |
-| **14.2.2** | **Verify that** when a human-approval gate (per C14.2.1 and C9.2) is not satisfied within the defined approval time-to-live, the system applies a documented default action that is fail-closed (blocking the pending action). | 2 |
+| **14.2.2** | **Verify that** when a human-approval gate is not satisfied within the defined approval time-to-live, the system applies a documented default action that is fail-closed (blocking the pending action). | 2 |
 
 ---
 
@@ -38,7 +38,7 @@ Capture human-initiated oversight events so that override and mode-change action
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **14.3.1** | **Verify that** kill-switch activations, intermediate operational state transitions, and override commands are logged with the operator identity, the channel used (including whether the out-of-band channel per C14.1.4 was invoked), the originating trigger or justification, the prior and resulting system state, and the timestamp. | 1 |
+| **14.3.1** | **Verify that** kill-switch activations, intermediate operational state transitions, and override commands are logged with the operator identity, the channel used, the originating trigger or justification, the prior and resulting system state, and the timestamp. | 1 |
 
 ## References
 

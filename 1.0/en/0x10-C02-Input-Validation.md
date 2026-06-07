@@ -27,7 +27,7 @@ Prompt injection is one of the top risks for AI systems. Defenses against this t
 
 ## C2.2 Pre-Tokenization Input Normalization
 
-AI models process text through tokenizers and embeddings that can be exploited via encoding tricks invisible to conventional input validation. Normalization before tokenization closes attack vectors such as homoglyph substitution, invisible character injection, and bidirectional text manipulation that bypass standard allow-list filters but alter model behavior. For output-side encoding smuggling in model-generated content, see C7.3.5.
+AI models process text through tokenizers and embeddings that can be exploited via encoding tricks invisible to conventional input validation. Normalization before tokenization closes attack vectors such as homoglyph substitution, invisible character injection, and bidirectional text manipulation that bypass standard allow-list filters but alter model behavior.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
