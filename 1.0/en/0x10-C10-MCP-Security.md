@@ -75,7 +75,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 
 | # | Description | Level |
 | :--: | --- | :---: |
-| **10.6.1** | **Verify that** MCP security controls enforce fail-closed semantics: if tool schema validation, MCP-Protocol-Version negotiation fails, authentication check, or policy evaluation fails or cannot be completed, the default action is to deny the request rather than permit it. | 2 |
+| **10.6.1** | **Verify that** MCP security controls enforce fail-closed semantics: if tool schema validation, MCP-Protocol-Version negotiation, authentication, or policy evaluation fails or cannot be completed, the default action is to deny the request rather than permit it. | 2 |
 | **10.6.2** | **Verify that** MCP servers expose only allow-listed functions and resources, and restrict function invocation to statically defined, pre-approved names that cannot be influenced by user or model-provided input. | 3 |
 
 ---
