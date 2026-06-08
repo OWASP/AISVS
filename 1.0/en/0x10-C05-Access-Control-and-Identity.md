@@ -10,7 +10,7 @@ AI systems introduce access control challenges beyond traditional application se
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
-| **5.1.1** | **Verify that** high-risk AI operations (model deployment, weight export, training data access, production configuration changes) require step-up authentication with session re-validation. | 2 |
+| **5.1.1** | **Verify that** high-risk AI operations (model deployment, weight export, training data access, production configuration changes) require step-up authentication with session re-validation. | 3 |
 | **5.1.2** | **Verify that** AI agents in federated or multi-system deployments authenticate using short-lived, cryptographically signed tokens (e.g., signed JWT assertions) where the signature key is bound to the issuing system's identity (e.g., via JWKS, x5c, or sender-constrained tokens such as DPoP or mTLS). | 3 |
 
 ---
@@ -21,7 +21,7 @@ AI systems introduce access control challenges beyond traditional application se
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
 | **5.2.1** | **Verify that** every AI resource (datasets, models, endpoints, vector collections, embedding indices, compute instances) enforces access controls (e.g., RBAC, ABAC) with explicit allow-lists and default-deny policies. | 1 |
 | **5.2.2** | **Verify that** privileged access to model weights, training pipelines, and production AI configuration is granted just in time, with a defined maximum session duration and automatic expiry. Permanent standing privileged access to these resources is not permitted. | 2 |
-| **5.2.3** | **Verify that** a documented data classification taxonomy covering AI-specific data types (embeddings, model weights, prompt templates, RAG context assemblies, fine-tuning datasets, agent tool schemas) is defined. Verify that AI assets are labeled in accordance with this taxonomy. | 2 |
+| **5.2.3** | **Verify that** a documented data classification taxonomy covering AI-specific data types (embeddings, model weights, prompt templates, RAG context assemblies, fine-tuning datasets, agent tool schemas) is defined. Verify that all AI production assets are labeled in accordance with this taxonomy. | 2 |
 | **5.2.4** | **Verify that** data classification labels (PII, PHI, proprietary, etc.) automatically propagate to derived resources (embeddings, prompt caches, model outputs). | 3 |
 
 ---
@@ -32,7 +32,7 @@ Enforce the caller's authorization context through AI-specific query pipelines (
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
-| **5.3.1** | **Verify that** AI inference and retrieval pipelines (e.g., RAG queries, embedding lookups) enforce the end-user's authorization context at each retrieval and assembly stage, rather than relying solely on the service account's permissions. | 1 |
+| **5.3.1** | **Verify that** AI inference and retrieval pipelines (e.g., RAG queries, embedding lookups) enforce the end-user's authorization context at each retrieval and assembly stage, rather than relying solely on the service account's permissions. | 2 |
 
 ---
 
@@ -42,8 +42,8 @@ Ensure that AI-generated outputs, including citations and source attributions, r
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
-| **5.4.1** | **Verify that** post-inference filtering mechanisms prevent responses from including classified information or proprietary data that the requestor is not authorized to receive. | 1 |
-| **5.4.2** | **Verify that** citations, references, and source attributions in model outputs are validated against caller entitlements and removed if unauthorized access is detected. | 2 |
+| **5.4.1** | **Verify that** post-inference filtering mechanisms prevent responses from including classified information or proprietary data that the requestor is not authorized to receive. | 2 |
+| **5.4.2** | **Verify that** citations, references, and source attributions in model outputs are validated against caller entitlements and removed if unauthorized access is detected. | 3 |
 
 ---
 
@@ -65,7 +65,8 @@ Prevent cross-tenant information leakage through AI-specific shared infrastructu
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
 | **5.6.1** | **Verify that** inference-time KV-cache entries are partitioned by authenticated session or tenant identity. Verify that automatic prefix caching does not share cached prefixes across distinct security principals, to prevent timing-based prompt reconstruction attacks. | 3 |
-| **5.6.2** | **Verify that** shared model serving infrastructure prevents one tenant's fine-tuning, inference, or embedding operations from influencing or observing another tenant's operations through shared model state, adapter weights, or compute resources. | 2 |
+| **5.6.2** | **Verify that** shared model serving infrastructure prevents one tenant's fine-tuning, inference, or embedding operations from influencing or observing another tenant's operations through shared model state or adapter weights. | 2 |
+| **5.6.3** | **Verify that** one tenant cannot influence or observe another tenant's operations through shared compute resources, including timing and other side channels arising from co-located execution. Because no software-only mitigation exists in current shared inference servers, satisfying this requirement typically requires hardware partitioning (e.g., NVIDIA MIG, SR-IOV virtual functions), confidential computing (e.g., NVIDIA Confidential Computing on H100+, AWS Nitro Enclaves), or dedicated per-tenant compute allocation. | 3 |
 
 ---
 
