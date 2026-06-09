@@ -84,7 +84,7 @@ Detect and prevent security threats arising from proactive (agent-initiated) beh
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **13.6.1** | **Verify that** proactive agent behaviors are security-validated before execution with risk assessment integration. | 1 |
+| **13.6.1** | **Verify that** proactive agent behaviors are security-validated before execution, including integration with risk assessment. | 1 |
 | **13.6.2** | **Verify that** autonomous initiative triggers include security context evaluation and threat landscape assessment. | 2 |
 | **13.6.3** | **Verify that** proactive behavior patterns are analyzed for potential security implications and unintended consequences. | 2 |
 | **13.6.4** | **Verify that** audit logs capture the complete approval chain for security-critical proactive actions, including approver identity, timestamp, action parameters, and decision outcome. | 3 |
