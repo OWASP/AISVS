@@ -15,9 +15,9 @@ Provide shutdown or rollback paths when unsafe behavior of the AI system is obse
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
 | **14.1.1** | **Verify that** a manual kill-switch mechanism exists to immediately halt AI model inference and outputs. | 1 |
-| **14.1.2** | **Verify that** kill-switch and intermediate-state mechanisms are exercised at a defined frequency, and that each test confirms the system reaches the target state within the documented response time and that all dependent components (e.g., agent runtimes, tool/MCP servers, retrieval connectors) transition as specified. | 2 |
+| **14.1.2** | **Verify that** kill-switch and intermediate-state mechanisms are exercised at a defined frequency. Each test confirms that the system reaches the target state within the documented response time, and that all dependent components (e.g., agent runtimes, tool/MCP servers, retrieval connectors) transition as specified. | 2 |
 | **14.1.3** | **Verify that** the system can be placed into at least two intermediate operational states between full operation and complete shutdown (e.g., disabling specific tools or MCP servers, removing a retrieval source, switching to a safer or smaller model, enforcing read-only mode for agents), and that each state has defined entry triggers and can be exited independently without requiring a full system restart or shutdown. | 2 |
-| **14.1.4** | **Verify that** override and kill-switch commands for autonomous agents are delivered through an out-of-band channel (e.g., infrastructure controls, hypervisor-level signals, network-layer isolation) that is architecturally isolated from the agent runtime, ensuring commands remain enforceable even if the agent runtime is compromised or manipulated. | 3 |
+| **14.1.4** | **Verify that** override and kill-switch commands for autonomous agents are delivered through an out-of-band channel (e.g., infrastructure controls, hypervisor-level signals, network-layer isolation) that is architecturally isolated from the agent runtime, so the commands stay enforceable even if the agent runtime is compromised or manipulated. | 3 |
 
 ---
 
@@ -27,7 +27,7 @@ Define which AI decisions and agent actions require human approval so that runti
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **14.2.1** | **Verify that** a documented human oversight policy defines which AI decisions and agent actions are classified as high-risk, the criteria used to make that determination, the approval authority required before execution, and whether any deviation from fail-closed default behavior on approval TTL expiry is permitted and under what conditions. | 1 |
+| **14.2.1** | **Verify that** a documented human oversight policy defines which AI decisions and agent actions are classified as high-risk, the criteria used to make that determination, and the approval authority required before execution. The policy also states whether any deviation from fail-closed default behavior on approval TTL expiry is permitted, and under what conditions. | 1 |
 | **14.2.2** | **Verify that** when a human-approval gate is not satisfied within the defined approval time-to-live, the system applies a documented default action that is fail-closed (blocking the pending action). | 2 |
 
 ---
