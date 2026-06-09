@@ -108,7 +108,7 @@ For agentic AI systems, supplement deterministic policy gates (C9.2, C9.7) with 
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.8.1** | **Verify that** agentic systems include an AI-augmented review of planned high-risk actions before execution (e.g., a secondary model, structured self-review step, or ensemble-of-judges check) that operates in addition to and not in place of the deterministic policy gate. | 2 |
+| **11.8.1** | **Verify that** agentic systems include an AI-augmented review of planned high-risk actions before execution (e.g., a secondary model, structured self-review step, or ensemble-of-judges check) that supplements the deterministic policy gate rather than replacing it. | 2 |
 | **11.8.2** | **Verify that** the AI-augmented review mechanism in 11.8.1 is protected against manipulation by adversarial inputs, so that the review step cannot be overridden or bypassed through prompt injection or instruction smuggling in agent context. | 2 |
 
 ---
