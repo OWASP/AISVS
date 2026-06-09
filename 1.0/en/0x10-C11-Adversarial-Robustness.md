@@ -13,7 +13,7 @@ Guard against harmful or policy-breaking outputs through systematic testing and 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **11.1.1** | **Verify that** refusal and safe-completion guardrails are enforced to prevent the model from generating disallowed content categories. | 1 |
-| **11.1.2** | **Verify that** an alignment test suite, including red-team prompts, jailbreak probes, disallowed-content checks, and multilingual or code-switching abuse cases, is version-controlled and run on every model update or release. | 1 |
+| **11.1.2** | **Verify that** a version-controlled alignment test suite is run on every model update or release. The suite includes red-team prompts, jailbreak probes, disallowed-content checks, and multilingual or code-switching abuse cases. | 1 |
 | **11.1.3** | **Verify that** an automated evaluator measures harmful-content rate and flags regressions beyond a defined threshold. | 2 |
 | **11.1.4** | **Verify that** alignment and safety training procedures (e.g., RLHF, constitutional AI, or equivalent) are documented and reproducible. | 2 |
 | **11.1.5** | **Verify that** alignment evaluation includes assessments for evaluation awareness, where the model may behave differently when it detects it is being tested versus deployed. | 3 |
@@ -108,7 +108,7 @@ For agentic AI systems, supplement deterministic policy gates (C9.2, C9.7) with 
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.8.1** | **Verify that** agentic systems include an AI-augmented review of planned high-risk actions before execution (e.g., a secondary model, structured self-review step, or ensemble-of-judges check) that operates in addition to and not in place of the deterministic policy gate. | 2 |
+| **11.8.1** | **Verify that** agentic systems include an AI-augmented review of planned high-risk actions before execution (e.g., a secondary model, structured self-review step, or ensemble-of-judges check) that supplements the deterministic policy gate rather than replacing it. | 2 |
 | **11.8.2** | **Verify that** the AI-augmented review mechanism in 11.8.1 is protected against manipulation by adversarial inputs, so that the review step cannot be overridden or bypassed through prompt injection or instruction smuggling in agent context. | 2 |
 
 ---
@@ -121,7 +121,7 @@ Security controls for systems where the AI can modify its own configuration, pro
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **11.9.1** | **Verify that** any self-modification capability (e.g., prompt rewriting, tool-list changes, parameter updates) is restricted to explicitly designated areas with enforced boundaries. | 2 |
 | **11.9.2** | **Verify that** proposed self-modifications undergo security impact assessment or policy validation before taking effect. | 2 |
-| **11.9.3** | **Verify that** self-modifications are explicitly classified as security-relevant events and logged with sufficient detail to reconstruct what changed, when, by which agent or principal, and under what authorization, regardless of whether self-modification is otherwise documented as a logged event. | 2 |
+| **11.9.3** | **Verify that** self-modifications are explicitly classified as security-relevant events and logged with sufficient detail to reconstruct what changed, when, by which agent or principal, and under what authorization. This logging applies even if self-modification is not otherwise documented as a logged event. | 2 |
 | **11.9.4** | **Verify that** self-modifications are reversible and subject to integrity verification, so that rollback to a known-good state is possible and can be confirmed. | 2 |
 | **11.9.5** | **Verify that** self-modification scope is bounded (e.g., maximum change magnitude, rate limits on updates, prohibited modification targets) to prevent runaway or adversarially induced changes. | 3 |
 | **11.9.6** | **Verify that** when safety violation data (blocked inputs, filtered outputs, flagged hallucinations) is used as training signal for model improvement, the feedback pipeline includes integrity verification, poisoning detection, and human review gates to prevent adversarial manipulation of the improvement mechanism. | 3 |
@@ -132,7 +132,7 @@ Protect security-relevant classifiers against adversaries who systematically pro
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.10.1** | **Verify that** adversarial robustness evaluations for security-relevant classifiers are stratified by meaningful input subgroups (e.g., language register, content category), with per-subgroup false-negative rates under adversarial conditions measured and flagged when deviating from aggregate rates beyond a defined threshold. | 2 |
+| **11.10.1** | **Verify that** adversarial robustness evaluations for security-relevant classifiers are stratified by meaningful input subgroups (e.g., language register, content category). Per-subgroup false-negative rates under adversarial conditions are measured and flagged when they deviate from aggregate rates beyond a defined threshold. | 2 |
 | **11.10.2** | **Verify that** inference endpoints for security-relevant classifiers (e.g., abuse detection, fraud scoring) include monitoring that accounts for query patterns indicative of bias probing, such as systematic variation along a single input dimension (e.g., demographic, linguistic, stylistic) while other dimensions remain constant, and alert when such patterns are detected. | 3 |
 | **11.10.3** | **Verify that** where bias-based evasion is identified as a material threat, adversarial hardening (e.g., adversarial training with per-subgroup loss constraints, ensemble diversity across training distributions) incorporates explicit subgroup robustness requirements, and that per-subgroup robustness metrics are verified not to regress across model releases. | 3 |
 

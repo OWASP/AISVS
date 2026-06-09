@@ -15,7 +15,7 @@ Remove or transform personal identifiers before training to prevent re-identific
 | **12.1.1** | **Verify that** direct and quasi-identifiers in training and fine-tuning datasets are removed, hashed, or generalized before the data is used to fit or update a model. | 1 |
 | **12.1.2** | **Verify that** automated audits measure k-anonymity or l-diversity on training datasets and alert when thresholds drop below policy. | 2 |
 | **12.1.3** | **Verify that** model feature-importance or attribution analyses are run on trained models to confirm that no removed identifier or quasi-identifier has been reconstructed as a high-importance feature. | 2 |
-| **12.1.4** | **Verify that** formal proofs or synthetic-data certification show re-identification risk against trained models remains below a documented policy threshold even under linkage attacks. | 3 |
+| **12.1.4** | **Verify that** formal proofs or synthetic-data certification show that re-identification risk against trained models remains below a documented policy threshold even under linkage attacks. | 3 |
 
 ---
 
@@ -25,7 +25,7 @@ Ensure data-subject deletion requests propagate across all AI artifacts and that
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **12.2.1** | **Verify that** data-subject deletion requests propagate to AI-derived artifacts including training and fine-tuning datasets, model checkpoints, evaluation sets, derived caches, and feature stores within a service level agreement of less than 30 days. | 1 |
+| **12.2.1** | **Verify that** data-subject deletion requests propagate to AI-derived artifacts including training and fine-tuning datasets, model checkpoints, evaluation sets, derived caches, and feature stores within a service-level agreement window of less than 30 days. | 1 |
 | **12.2.2** | **Verify that** shadow-model or membership-inference evaluation demonstrates that forgotten records influence less than a documented policy threshold of model outputs after unlearning. | 2 |
 | **12.2.3** | **Verify that** machine-unlearning routines, when claimed, either physically retrain the affected model on the retained data or apply a certified unlearning algorithm with documented (ε, δ) guarantees. | 3 |
 
@@ -61,7 +61,7 @@ Enforce consent at AI-specific decision points (training data ingestion, inferen
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **12.5.1** | **Verify that** model inference validates consent scope before processing, covering both the requested operation and the data subjects whose data materially influences the response. | 3 |
+| **12.5.1** | **Verify that** model inference validates consent scope before processing, covering the requested operation and the data subjects whose data materially influences the response. | 3 |
 | **12.5.2** | **Verify that** when validated consent scope does not cover the requested operation or the data subjects whose data materially influences the response, the system refuses or downgrades the response before serving it to the caller. | 2 |
 | **12.5.3** | **Verify that** withdrawal of consent triggers the same AI-artifact propagation pipeline as a deletion request (see 12.2.1), and that inference paths relying on the withdrawn data are disabled within the same SLA. | 2 |
 
