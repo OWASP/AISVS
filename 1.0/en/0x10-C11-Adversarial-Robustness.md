@@ -44,7 +44,7 @@ Limit the ability to determine whether a specific record was in the training dat
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.3.1** | **Verify that** model outputs are calibrated (e.g., via temperature scaling or output perturbation) to reduce overconfident predictions that facilitate membership-inference attacks. | 2 |
+| **11.3.1** | **Verify that** model outputs are calibrated (e.g., via temperature scaling or output perturbation) to reduce overconfident predictions that make membership-inference attacks easier. | 2 |
 | **11.3.2** | **Verify that** training on sensitive datasets employs differentially-private optimization (e.g., DP-SGD) with a documented privacy budget (epsilon). | 2 |
 | **11.3.3** | **Verify that** membership-inference attack simulations (e.g., shadow-model, likelihood-ratio, or label-only attacks) demonstrate that attack accuracy does not meaningfully exceed random guessing on held-out data. | 3 |
 
@@ -108,7 +108,7 @@ For agentic AI systems, supplement deterministic policy gates (C9.2, C9.7) with 
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.8.1** | **Verify that** agentic systems include an AI-augmented review of planned high-risk actions before execution (e.g., a secondary model, structured self-review step, or ensemble-of-judges check) that operates in addition to and not in place of the deterministic policy gate. | 2 |
+| **11.8.1** | **Verify that** agentic systems include an AI-augmented review of planned high-risk actions before execution (e.g., a secondary model, structured self-review step, or ensemble-of-judges check) that adds to, and does not replace, the deterministic policy gate. | 2 |
 | **11.8.2** | **Verify that** the AI-augmented review mechanism in 11.8.1 is protected against manipulation by adversarial inputs, so that the review step cannot be overridden or bypassed through prompt injection or instruction smuggling in agent context. | 2 |
 
 ---
@@ -132,7 +132,7 @@ Protect security-relevant classifiers against adversaries who systematically pro
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.10.1** | **Verify that** adversarial robustness evaluations for security-relevant classifiers are stratified by meaningful input subgroups (e.g., language register, content category), with per-subgroup false-negative rates under adversarial conditions measured and flagged when deviating from aggregate rates beyond a defined threshold. | 2 |
+| **11.10.1** | **Verify that** adversarial robustness evaluations for security-relevant classifiers are stratified by meaningful input subgroups (e.g., language register, content category), and that per-subgroup false-negative rates under adversarial conditions are measured and flagged when they deviate from aggregate rates beyond a defined threshold. | 2 |
 | **11.10.2** | **Verify that** inference endpoints for security-relevant classifiers (e.g., abuse detection, fraud scoring) include monitoring that accounts for query patterns indicative of bias probing, such as systematic variation along a single input dimension (e.g., demographic, linguistic, stylistic) while other dimensions remain constant, and alert when such patterns are detected. | 3 |
 | **11.10.3** | **Verify that** where bias-based evasion is identified as a material threat, adversarial hardening (e.g., adversarial training with per-subgroup loss constraints, ensemble diversity across training distributions) incorporates explicit subgroup robustness requirements, and that per-subgroup robustness metrics are verified not to regress across model releases. | 3 |
 
