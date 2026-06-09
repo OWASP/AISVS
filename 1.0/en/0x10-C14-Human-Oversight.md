@@ -27,7 +27,7 @@ Define which AI decisions and agent actions require human approval so that runti
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **14.2.1** | **Verify that** a documented human oversight policy defines which AI decisions and agent actions are classified as high-risk, the criteria used to make that determination, the approval authority required before execution, and whether any deviation from fail-closed default behavior on approval TTL expiry is permitted and under what conditions. | 1 |
+| **14.2.1** | **Verify that** a documented human oversight policy defines which AI decisions and agent actions are classified as high-risk, the criteria used to make that determination, and the approval authority required before execution. The policy also states whether any deviation from fail-closed default behavior on approval TTL expiry is permitted, and under what conditions. | 1 |
 | **14.2.2** | **Verify that** when a human-approval gate is not satisfied within the defined approval time-to-live, the system applies a documented default action that is fail-closed (blocking the pending action). | 2 |
 
 ---
