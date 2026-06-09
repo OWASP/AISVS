@@ -15,7 +15,7 @@ Remove or transform personal identifiers before training to prevent re-identific
 | **12.1.1** | **Verify that** direct and quasi-identifiers in training and fine-tuning datasets are removed, hashed, or generalized before the data is used to fit or update a model. | 1 |
 | **12.1.2** | **Verify that** automated audits measure k-anonymity or l-diversity on training datasets and alert when thresholds drop below policy. | 2 |
 | **12.1.3** | **Verify that** model feature-importance or attribution analyses are run on trained models to confirm that no removed identifier or quasi-identifier has been reconstructed as a high-importance feature. | 2 |
-| **12.1.4** | **Verify that** formal proofs or synthetic-data certification show re-identification risk against trained models remains below a documented policy threshold even under linkage attacks. | 3 |
+| **12.1.4** | **Verify that** formal proofs or synthetic-data certification show that re-identification risk against trained models remains below a documented policy threshold even under linkage attacks. | 3 |
 
 ---
 
