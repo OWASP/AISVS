@@ -8,17 +8,17 @@ This chapter addresses the sourcing, handling, and maintenance of training data 
 
 ## C1.1 Training Data Origin & Data Security
 
-Training data origin and traceability are critical to the security and trustworthiness of any AI system. Datasets must be sourced from verifiable origins and tracked across their full lifecycle so that tampering or unauthorized modification can be detected. Training data must be protected against tampering, corruption, and poisoning throughout its lifecycle. Generic data security controls (access control on storage, access logging, and encryption at rest and in transit) are covered by OWASP ASVS v5 (V6, V7, V8) and must be implemented as a baseline. This section addresses AI-specific concerns: integrity verification against data poisoning, immutable dataset versioning for rollback, and the residual-memorization risk that persists in trained models after training data is retired.
+Training data origin and data security are critical to the security and trustworthiness of any AI system. Datasets must be sourced from verifiable origins and tracked across their full lifecycle so that tampering or unauthorized modification can be detected. Training data must be protected against tampering, corruption, and poisoning throughout its lifecycle.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-
-| **1.1.1** | **Verify that** training data includes only features, attributes, and fields required for the model's stated purpose. | 1 |
-| **1.1.2** | **Verify that** an up-to-date inventory is kept of every training-data source, including its origin, responsible party, license, collection method, intended use constraints, and processing history. | 2 |
-| **1.1.3** | **Verify that** datasets are watermarked so their use can be attributed and any unauthorized use detected. | 3 |
-| **1.2.4** | **Verify that** data integrity is provided when training data is stored and transferred. | 2 |
-| **1.2.5** | **Verify that** integrity monitoring is applied to guard against unauthorized modifications or corruption of training data. | 2 |
-| **1.2.6** | **Verify that** all training datasets are uniquely identified, with change tracking, to support rollback and forensic analysis. | 3 |
+| **1.1.1** | **Verify that** training data 	includes only features, attributes, and fields required for the model's stated purpose. | 1 |
+| **1.1.2** | **Verify that** the lineage of each dataset and its components, including all transformations, augmentations, and merges, is recorded and can be reconstructed. | 1 |
+| **1.1.3** | **Verify that** an up-to-date inventory is kept of every training-data source, including its origin, responsible party, license, collection method, intended use constraints, and processing history. | 2 |
+| **1.1.4** | **Verify that** datasets are watermarked so their use can be attributed and any unauthorized use detected. | 3 |
+| **1.2.5** | **Verify that** data integrity is provided when training data is stored and transferred. | 2 |
+| **1.2.6** | **Verify that** integrity monitoring is applied to guard against unauthorized modifications or corruption of training data. | 2 |
+| **1.2.7** | **Verify that** all training datasets are uniquely identified, with change tracking, to support rollback and forensic analysis. | 3 |
 
 ---
 
@@ -44,20 +44,7 @@ Training data quality and security assurance controls help detect corruption, po
 | **1.4.1** | **Verify that** training and fine-tuning pipelines implement poisoning detection techniques to identify potential data poisoning or unintentional corruption in training data. | 2 |
 | **1.4.2** | **Verify that** automatically generated labels are subject to confidence thresholds and consistency checks to detect misleading or low-confidence labels. | 2 |
 | **1.4.3** | **Verify that** models used in security-relevant decisions are evaluated for bias patterns. | 2 |
-| **1.4.5** | **Verify that** defenses against clean-label poisoning attacks are implemented. | 3 |
-
----
-
-## C1.5 Data Lineage and Traceability
-
-Data lineage and traceability controls ensure that datasets can be tracked from source through transformation, augmentation, merge, and final model input. Lineage records should be complete, tamper-resistant, auditable, and sufficient to support reproducibility, incident response, rollback, and investigation of compromised or inappropriate training data.
-
-| # | Description | Level |
-| :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **1.5.1** | **Verify that** the lineage of each dataset and its components, including all transformations, augmentations, and merges, is recorded and can be reconstructed. | 1 |
-| **1.5.2** | **Verify that** lineage records are immutable, securely stored, and accessible for audits. | 2 |
-| **1.5.3** | **Verify that** lineage tracking covers synthetic data generated via augmentation, synthesis, or privacy-preserving techniques. | 2 |
-| **1.5.4** | **Verify that** synthetic data is clearly labeled and distinguishable from real data throughout the pipeline. | 2 |
+| **1.4.4** | **Verify that** defenses against clean-label poisoning attacks are implemented. | 3 |
 
 ---
 
