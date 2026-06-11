@@ -12,8 +12,8 @@ Assess and authenticate third-party model origins and hidden behaviors before an
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **6.1.1** | **Verify that** every third-party model artifact includes a signed origin-and-integrity record identifying its source, version, and integrity checksum. | 1 |
-| **6.1.2** | **Verify that** models are scanned with automated tools for malicious layers or Trojan triggers before import. | 1 |
+| **6.1.1** | **Verify that** every third-party model artifact includes a signed origin-and-integrity record identifying its source, version, and integrity checksum. | 2 |
+| **6.1.2** | **Verify that** models are scanned with automated tools for malicious code or unsafe serialization payloads (e.g., pickle code execution, Keras Lambda code injection) before import. | 1 |
 | **6.1.3** | **Verify that** high-risk models (e.g., publicly uploaded weights, unverified creators) remain quarantined until human review and sign-off. | 2 |
 | **6.1.4** | **Verify that** third-party or open-source models pass a defined behavioral acceptance test suite before being imported or promoted to any non-development environment. The suite covers safety, alignment, and capability boundaries relevant to the deployment context. | 2 |
 | **6.1.5** | **Verify that** transfer-learning fine-tunes pass adversarial evaluation to detect hidden behaviors. | 3 |
@@ -37,10 +37,10 @@ Evaluate external datasets for poisoning and legal compliance, and monitor them 
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **6.3.1** | **Verify that** disallowed content (e.g., copyrighted material, PII) is detected and removed by automated scrubbing before training. | 1 |
+| **6.3.1** | **Verify that** disallowed content (e.g., copyrighted material) is detected and removed by automated scrubbing before training. | 1 |
 | **6.3.2** | **Verify that** external datasets undergo poisoning risk assessment (e.g., data fingerprinting, outlier detection). | 2 |
-| **6.3.3** | **Verify that** origin, lineage, and license terms for datasets are captured in AI BOM entries. | 2 |
-| **6.3.4** | **Verify that** periodic monitoring detects drift or corruption in hosted datasets. | 3 |
+| **6.3.3** | **Verify that** origin, lineage, and license terms for datasets are captured in AI BOM entries. | 1 |
+| **6.3.4** | **Verify that** periodic monitoring detects drift or corruption in hosted datasets. | 2 |
 
 ---
 
@@ -61,7 +61,7 @@ Generate and sign detailed AI-specific bills of materials (AI BOMs) so downstrea
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **6.5.1** | **Verify that** every model artifact publishes a version-controlled, machine-readable AI BOM (e.g., CycloneDX or SPDX) that lists datasets, weights, hyperparameters, licenses, export-control tags, and data-origin statements. | 1 |
+| **6.5.1** | **Verify that** every model artifact publishes a version-controlled, machine-readable AI BOM (e.g., CycloneDX or SPDX) that lists datasets, weights, hyperparameters, licenses, and data-origin statements. | 1 |
 | **6.5.2** | **Verify that** AI BOMs are cryptographically signed before deployment. | 2 |
 | **6.5.3** | **Verify that** AI BOM completeness checks fail the build if any component metadata (hash and license) is missing. | 2 |
 | **6.5.4** | **Verify that** downstream consumers can query AI BOMs via API to validate imported models at deployment time. | 2 |
