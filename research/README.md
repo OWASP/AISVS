@@ -12,8 +12,8 @@ The standard is organized into 14 chapters spanning the full AI application secu
 
 | # | Chapter | Reqs | Pages | Type | Updated |
 |---|---------|:----:|:-----:|------|:-------:|
-| C1 | Training Data Integrity & Traceability | 24 | [C01](chapters/C01-Training-Data/C01-Training-Data.md) | [5 sections](#c1-training-data-integrity-traceability) | 2026-06-11 |
-| C2 | Input Validation | 21 | [C02](chapters/C02-User-Input-Validation/C02-User-Input-Validation.md) | [4 sections](#c2-input-validation) | 2026-06-10 |
+| C1 | Training Data Integrity & Traceability | 15 | [C01](chapters/C01-Training-Data/C01-Training-Data.md) | [3 sections](#c1-training-data-integrity-traceability) | 2026-06-11 |
+| C2 | Input Validation | 12 | [C02](chapters/C02-User-Input-Validation/C02-User-Input-Validation.md) | [2 sections](#c2-input-validation) | 2026-06-11 |
 | C3 | Model Lifecycle Management & Change Control | 27 | [C03](chapters/C03-Model-Lifecycle-Management/C03-Model-Lifecycle-Management.md) | [6 sections](#c3-model-lifecycle-management-change-control) | 2026-06-10 |
 | C4 | Infrastructure, Configuration & Deployment Security | 21 | [C04](chapters/C04-Infrastructure/C04-Infrastructure.md) | [3 sections](#c4-infrastructure-configuration-deployment-security) | 2026-06-10 |
 | C5 | Access Control & Identity for AI Components & Users | 14 | [C05](chapters/C05-Access-Control/C05-Access-Control.md) | [6 sections](#c5-access-control-identity-for-ai-components-users) | 2026-06-10 |
@@ -26,7 +26,7 @@ The standard is organized into 14 chapters spanning the full AI application secu
 | C12 | Privacy Protection & Personal Data Management | 20 | [C12](chapters/C12-Privacy/C12-Privacy.md) | [6 sections](#c12-privacy-protection-personal-data-management) | 2026-06-10 |
 | C13 | Monitoring, Logging & Anomaly Detection | 36 | [C13](chapters/C13-Monitoring-and-Logging/C13-Monitoring-and-Logging.md) | [6 sections](#c13-monitoring-logging-anomaly-detection) | 2026-06-11 |
 | C14 | Human Oversight and Trust | 7 | [C14](chapters/C14-Human-Oversight/C14-Human-Oversight.md) | [3 sections](#c14-human-oversight-and-trust) | 2026-06-10 |
-| | **Total** | **352** | **98 pages** | | |
+| | **Total** | **334** | **94 pages** | | |
 
 ---
 
@@ -36,11 +36,9 @@ Covers training data origin and traceability, data security and integrity, label
 
 | Section | Page |
 |---------|------|
-| C1.1 Training Data Origin & Traceability | [C01-01](chapters/C01-Training-Data/C01-01-Training-Data-Origin-Traceability.md) |
-| C1.2 Training Data Security & Integrity | [C01-02](chapters/C01-Training-Data/C01-02-Training-Data-Security-Integrity.md) |
-| C1.3 Data Labeling and Annotation Security | [C01-03](chapters/C01-Training-Data/C01-03-Data-Labeling-Annotation-Security.md) |
-| C1.4 Training Data Quality and Security Assurance | [C01-04](chapters/C01-Training-Data/C01-04-Training-Data-Quality-Security-Assurance.md) |
-| C1.5 Data Lineage and Traceability | [C01-05](chapters/C01-Training-Data/C01-05-Data-Lineage-Traceability.md) |
+| C1.1 Training Data Origin & Data Security | [C01-01](chapters/C01-Training-Data/C01-01-Training-Data-Origin-Traceability.md) |
+| C1.2 Data Labeling and Annotation Security | [C01-02](chapters/C01-Training-Data/C01-02-Data-Labeling-Annotation-Security.md) |
+| C1.3 Training Data Quality and Security Assurance | [C01-03](chapters/C01-Training-Data/C01-03-Training-Data-Quality-Security-Assurance.md) |
 
 
 ### C2: Input Validation
@@ -50,9 +48,7 @@ Covers prompt injection defense, pre-tokenization normalization, content and pol
 | Section | Page |
 |---------|------|
 | C2.1 Prompt Injection Defense | [C02-01](chapters/C02-User-Input-Validation/C02-01-Prompt-Injection-Defense.md) |
-| C2.2 Pre-Tokenization Input Normalization | [C02-02](chapters/C02-User-Input-Validation/C02-02-Pre-Tokenization-Input-Normalization.md) |
-| C2.3 Content & Policy Screening | [C02-03](chapters/C02-User-Input-Validation/C02-03-Content-Policy-Screening.md) |
-| C2.4 Multi-Modal Input Validation | [C02-04](chapters/C02-User-Input-Validation/C02-04-Multi-Modal-Input-Validation.md) |
+| C2.2 Content & Policy Screening | [C02-02](chapters/C02-User-Input-Validation/C02-02-Content-Policy-Screening.md) |
 
 
 ### C3: Model Lifecycle Management & Change Control
