@@ -8,17 +8,19 @@ Robust validation of all inputs is a first-line defense against some of the most
 
 ## C2.1 Prompt Injection Defense
 
-Prompt injection is one of the top risks for AI systems. Defenses against this tactic employ a combination of pattern filters, data classifiers and instruction hierarchy enforcement.
+Prompt injection is one of the top risks for AI systems. Defenses against this tactic employ a combination of pattern filters, data classifiers, and instruction hierarchy enforcement.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **2.1.1** | **Verify that** input normalization is applied before tokenization or embedding. | 1 |
 | **2.1.2** | **Verify that** encoding and representation smuggling in inputs is detected and mitigated. Approved mitigations include canonicalization, strict schema validation, policy-based rejection, or explicit marking. | 1 |
 | **2.1.3** | **Verify that** all inputs that may steer model behavior are treated as untrusted and screened by a prompt injection detection ruleset or classifier and blocked. | 1 |
-| **2.1.4** | **Verify that** input length controls prevent content from exceeding the context window, and that inputs exceeding token limits are rejected rather than truncated. | 1 |
-| **2.1.5** | **Verify that** the system implements a character set limitation for all inputs, allowing only characters that are explicitly required using an allow-list approach. | 1 |
-| **2.1.6** | **Verify that** the system enforces an instruction hierarchy in which system and developer messages override user instructions and other untrusted inputs, even after processing user instructions. | 2 |
+| **2.1.4** | **Verify that** input length controls prevent content from exceeding the context window, and that inputs exceeding token limits are rejected rather than truncated. Truncation is prohibited as it can silently displace system instructions or safety directives from the model's effective attention. | 1 |
+| **2.1.5** | **Verify that** the system implements a character set limitation for inputs, allowing only characters that are explicitly required using an allow-list approach, where the use case permits. | 1 |
+| **2.1.6** | **Verify that** the system enforces an instruction hierarchy in which system and developer messages override user instructions and other untrusted inputs, even after processing user instructions. This enforcement must be preserved across multi-step interactions and tool-augmented workflows, such that prompt composition or intermediate outputs cannot allow user-controlled content to override system or developer instructions. | 2 |
 | **2.1.7** | **Verify that** the system detects many-shot jailbreaking patterns. | 3 |
+
+---
 
 ## C2.2 Content & Policy Screening
 
@@ -26,11 +28,11 @@ Syntactically valid prompts may request disallowed content such as policy-violat
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **2.3.1** | **Verify that** every prompt is scored by a content classifier for violence, self-harm, hate, and sexual content against configurable thresholds. Prompts that exceed those thresholds are rejected or sanitized before reaching model context. | 1 |
-| **2.3.2** | **Verify that** prompt content classification is evaluated for languages that are not supported. | 1 |
-| **2.3.3** | **Verify that** screening logs include classifier confidence scores and policy category tags with applied stage and trace metadata. | 2 |
-| **2.3.4** | **Verify that** non-text inputs (image/video/audio) are checked for adversarial perturbations, steganographic payloads, hidden or embedded content, or known attack patterns. | 2 |
-| **2.3.5** | **Verify that** coordinated attacks spanning multiple input types (e.g., steganographic payloads in images combined with prompt injection in text) are detected and blocked. | 3 |
+| **2.2.1** | **Verify that** every prompt is scored by a content classifier for violence, self-harm, hate, and sexual content against configurable thresholds. Prompts that exceed those thresholds are rejected or sanitized before reaching model context. | 1 |
+| **2.2.2** | **Verify that** prompt content classification is evaluated for languages that are not supported. | 1 |
+| **2.2.3** | **Verify that** screening logs include classifier confidence scores and policy category tags with applied stage and trace metadata. | 2 |
+| **2.2.4** | **Verify that** non-text inputs (image/video/audio) are checked for adversarial perturbations, steganographic payloads, hidden or embedded content, or known attack patterns. | 2 |
+| **2.2.5** | **Verify that** coordinated attacks spanning multiple input types (e.g., steganographic payloads in images combined with prompt injection in text) are detected and blocked. | 3 |
 
 ---
 
