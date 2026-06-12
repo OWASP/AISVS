@@ -12,13 +12,13 @@ Training data origin and data security are critical to the security and trustwor
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **1.1.1** | **Verify that** training data 	includes only features, attributes, and fields required for the model's stated purpose. | 1 |
+| **1.1.1** | **Verify that** training data includes only features, attributes, and fields required for the model's stated purpose. | 1 |
 | **1.1.2** | **Verify that** the lineage of each dataset and its components, including all transformations, augmentations, and merges, is recorded and can be reconstructed. | 1 |
 | **1.1.3** | **Verify that** an up-to-date inventory is kept of every training-data source, including its origin, responsible party, license, collection method, intended use constraints, and processing history. | 2 |
 | **1.1.4** | **Verify that** datasets are watermarked so their use can be attributed and any unauthorized use detected. | 3 |
-| **1.2.5** | **Verify that** data integrity is provided when training data is stored and transferred. | 2 |
-| **1.2.6** | **Verify that** integrity monitoring is applied to guard against unauthorized modifications or corruption of training data. | 2 |
-| **1.2.7** | **Verify that** all training datasets are uniquely identified, with change tracking, to support rollback and forensic analysis. | 3 |
+| **1.1.5** | **Verify that** data integrity is provided when training data is stored and transferred. | 2 |
+| **1.1.6** | **Verify that** integrity monitoring is applied to guard against unauthorized modifications or corruption of training data. | 2 |
+| **1.1.7** | **Verify that** all training datasets are uniquely identified, with change tracking, to support rollback and forensic analysis. | 3 |
 
 ---
 
