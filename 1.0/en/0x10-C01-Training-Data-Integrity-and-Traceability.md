@@ -24,7 +24,7 @@ Training data origin and data security are critical to the security and trustwor
 
 ## C1.2 Data Labeling and Annotation Security
 
-Labeling and annotation processes must be protected against unauthorized modification, attribution loss, data leakage, and integrity compromise. Annotation platforms should enforce access control, preserve auditability, retain verified annotator attribution, and protect labeling artifacts, preference data, and sensitive label content throughout the training pipeline.
+Labeling and annotation processes must be protected against unauthorized modification, data leakage, and integrity compromise. Annotation platforms should enforce access control, preserve auditability, and protect labeling artifacts and sensitive label content throughout the training pipeline.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
