@@ -13,7 +13,7 @@ Assess and authenticate third-party model origins and hidden behaviors before an
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **6.1.1** | **Verify that** every third-party model artifact includes a signed origin-and-integrity record identifying its source, version, and integrity checksum. | 2 |
-| **6.1.2** | **Verify that** models are scanned with automated tools for malicious code or unsafe serialization payloads (e.g., pickle code execution, Keras Lambda code injection) before import. | 1 |
+| **6.1.2** | **Verify that** models are scanned with automated tools for malicious code or unsafe serialization payloads (e.g., pickle code execution, embedded executable payloads) before import. | 1 |
 | **6.1.3** | **Verify that** high-risk models (e.g., publicly uploaded weights, unverified creators) remain quarantined until human review and sign-off. | 2 |
 | **6.1.4** | **Verify that** third-party or open-source models pass a defined behavioral acceptance test suite before being imported or promoted to any non-development environment. The suite covers safety, alignment, and capability boundaries relevant to the deployment context. | 2 |
 | **6.1.5** | **Verify that** transfer-learning fine-tunes pass adversarial evaluation to detect hidden behaviors. | 3 |
