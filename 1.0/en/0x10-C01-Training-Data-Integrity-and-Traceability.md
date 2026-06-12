@@ -28,10 +28,10 @@ Labeling and annotation processes must be protected against unauthorized modific
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **1.3.1** | **Verify that** labeling platforms enforce access controls that restrict who can create, modify, or approve annotations. | 1 |
-| **1.3.2** | **Verify that** all labeling activities are recorded in logs. | 1 |
-| **1.3.3** | **Verify that** cryptographic integrity is applied to labeling artifacts. | 2 |
-| **1.3.4** | **Verify that** sensitive information in labels is redacted, anonymized, or encrypted before being used in any labeling artifact. | 2 |
+| **1.2.1** | **Verify that** labeling platforms enforce access controls that restrict who can create, modify, or approve annotations. | 1 |
+| **1.2.2** | **Verify that** all labeling activities are recorded in logs. | 1 |
+| **1.2.3** | **Verify that** cryptographic integrity is applied to labeling artifacts. | 2 |
+| **1.2.4** | **Verify that** sensitive information in labels is redacted, anonymized, or encrypted before being used in any labeling artifact. | 2 |
 
 ---
 
@@ -41,10 +41,10 @@ Training data quality and security assurance controls help detect corruption, po
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **1.4.1** | **Verify that** training and fine-tuning pipelines implement poisoning detection techniques to identify potential data poisoning or unintentional corruption in training data. | 2 |
-| **1.4.2** | **Verify that** automatically generated labels are subject to confidence thresholds and consistency checks to detect misleading or low-confidence labels. | 2 |
-| **1.4.3** | **Verify that** models used in security-relevant decisions are evaluated for bias patterns. | 2 |
-| **1.4.4** | **Verify that** defenses against clean-label poisoning attacks are implemented. | 3 |
+| **1.3.1** | **Verify that** training and fine-tuning pipelines implement poisoning detection techniques to identify potential data poisoning or unintentional corruption in training data. | 2 |
+| **1.3.2** | **Verify that** automatically generated labels are subject to confidence thresholds and consistency checks to detect misleading or low-confidence labels. | 2 |
+| **1.3.3** | **Verify that** models used in security-relevant decisions are evaluated for bias patterns. | 2 |
+| **1.3.4** | **Verify that** defenses against clean-label poisoning attacks are implemented. | 3 |
 
 ---
 
