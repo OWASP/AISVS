@@ -35,3 +35,7 @@ The following standards, frameworks, and publications are referenced throughout 
 
 * [Open Policy Agent (OPA)](https://www.openpolicyagent.org/)
 * [Cedar Policy Language](https://www.cedarpolicy.com/)
+
+## Academic Research
+
+* ["Do Not Mention This to the User": Detecting and Understanding Malicious Agent Skills in the Wild](https://arxiv.org/abs/2602.06547) — USENIX Security 2026; measurement study of 98,380 agent skills from public marketplaces, confirming 157 malicious skills carrying 632 vulnerabilities (73.2% implementing user-hidden "shadow" behavior). Empirical context for the C06 (Supply Chain) and C09 (Orchestration & Agentic Action) threat landscape.
