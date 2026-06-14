@@ -6,65 +6,43 @@ AI supply-chain attacks exploit third-party models, frameworks, or datasets to e
 
 ---
 
-## C6.1 Pretrained Model Vetting & Origin Integrity
+## C6.1 Model Artifact Integrity & Source Trust
 
-Assess and authenticate third-party model origins and hidden behaviors before any fine-tuning or deployment.
-
-| # | Description | Level |
-| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **6.1.1** | **Verify that** every third-party model artifact includes a signed origin-and-integrity record identifying its source, version, and integrity checksum. | 2 |
-| **6.1.2** | **Verify that** models are scanned with automated tools for malicious code or unsafe serialization payloads (e.g., pickle code execution, embedded executable payloads) before import. | 1 |
-| **6.1.3** | **Verify that** high-risk models (e.g., publicly uploaded weights, unverified creators) remain quarantined until human review and sign-off. | 2 |
-| **6.1.4** | **Verify that** third-party or open-source models pass a defined behavioral acceptance test suite before being imported or promoted to any non-development environment. The suite covers safety, alignment, and capability boundaries relevant to the deployment context. | 2 |
-| **6.1.5** | **Verify that** transfer-learning fine-tunes pass adversarial evaluation to detect hidden behaviors. | 3 |
-
----
-
-## C6.2 Trusted Source Enforcement for AI Artifacts
-
-Allow AI artifact downloads only from organization-approved sources and verify model publisher identity.
+Authenticate third-party model origins and check for hidden behavior before fine-tuning or deployment. Download AI artifacts only from approved sources.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **6.2.1** | **Verify that** model weights, datasets, and fine-tuning adapters are downloaded only from approved sources or internal registries. | 1 |
-| **6.2.2** | **Verify that** the cryptographic signing keys used to authenticate model publishers are pinned per source registry. When a key is rotated, verify that it is explicitly re-approved before the updated key is trusted. | 3 |
+| **6.1.1** | **Verify that** every third-party model artifact can be attested or integrity-verified. | 2 |
+| **6.1.2** | **Verify that** models are scanned for malicious code before import. | 1 |
+| **6.1.3** | **Verify that** high-risk models remain quarantined until human review and sign-off. | 2 |
+| **6.1.4** | **Verify that** third-party or open-source models pass a behavioral acceptance test suite before being imported or promoted to any non-development environment. | 2 |
+| **6.1.5** | **Verify that** model weights, datasets, and fine-tuning adapters are downloaded only from approved sources. | 1 |
+| **6.1.6** | **Verify that** transfer-learning fine-tuned models are tested against adversarial inputs before deployment. | 3 |
 
 ---
 
-## C6.3 Third-Party Dataset Risk Assessment
+## C6.2 Dataset Risk Assessment
 
 Evaluate external datasets for poisoning and legal compliance, and monitor them throughout their lifecycle.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **6.3.1** | **Verify that** disallowed content (e.g., copyrighted material) is detected and removed by automated scrubbing before training. | 1 |
-| **6.3.2** | **Verify that** external datasets undergo poisoning risk assessment (e.g., data fingerprinting, outlier detection). | 2 |
-| **6.3.3** | **Verify that** origin, lineage, and license terms for datasets are captured in AI BOM entries. | 1 |
-| **6.3.4** | **Verify that** periodic monitoring detects drift or corruption in hosted datasets. | 2 |
+| **6.2.1** | **Verify that** disallowed content is detected and removed by automated scrubbing before training. | 1 |
+| **6.2.2** | **Verify that** external datasets undergo poisoning risk assessment. | 2 |
+| **6.2.3** | **Verify that** periodic monitoring detects drift or corruption in hosted datasets. | 2 |
 
 ---
 
-## C6.4 Supply Chain Attack Monitoring
+## C6.3 AI BOM & Supply Chain Monitoring
 
-Detect AI-specific supply-chain threats through threat intelligence enrichment and incident response readiness.
-
-| # | Description | Level |
-| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **6.4.1** | **Verify that** incident response playbooks include procedures specific to compromised AI artifacts, such as rollback of poisoned models, revocation of model signatures, and re-evaluation of downstream systems that consumed affected artifacts. | 2 |
-| **6.4.2** | **Verify that** threat-intelligence enrichment tags AI-specific indicators (e.g., model-poisoning indicators of compromise) in alert triage. | 3 |
-
----
-
-## C6.5 AI BOM for Model Artifacts
-
-Generate and sign detailed AI-specific bills of materials (AI BOMs) so downstream consumers can verify component integrity at deploy time.
+Generate and sign detailed AI-specific bills of materials and ensure readiness to respond to supply chain compromise events.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **6.5.1** | **Verify that** every model artifact publishes a version-controlled, machine-readable AI BOM (e.g., CycloneDX or SPDX) that lists datasets, weights, hyperparameters, licenses, and data-origin statements. | 1 |
-| **6.5.2** | **Verify that** AI BOMs are cryptographically signed before deployment. | 2 |
-| **6.5.3** | **Verify that** AI BOM completeness checks fail the build if any component metadata (hash and license) is missing. | 2 |
-| **6.5.4** | **Verify that** downstream consumers can query AI BOMs via API to validate imported models at deployment time. | 2 |
+| **6.3.1** | **Verify that** every model artifact publishes a version-controlled, machine-readable AI BOM listing datasets, weights, licenses, and data-origin statements. | 1 |
+| **6.3.2** | **Verify that** AI BOMs are cryptographically signed before deployment. | 2 |
+| **6.3.3** | **Verify that** AI BOM completeness checks fail the build if any component metadata is missing. | 2 |
+| **6.3.4** | **Verify that** incident response playbooks include procedures specific to compromised AI artifacts, such as rollback of poisoned models and revocation of model signatures. | 2 |
 
 ---
 
