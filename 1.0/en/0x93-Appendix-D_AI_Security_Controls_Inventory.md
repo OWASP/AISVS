@@ -33,10 +33,9 @@ Enforce access decisions across users, agents, tools, data, and MCP resources us
 | Control / Technique | Requirement IDs |
 | --- | --- |
 | Access controls on AI resources (datasets, models, endpoints, vector collections, compute) | 5.2.1 |
-| Just-in-time privileged access for AI resources (model weights, training pipelines) | 5.2.2 |
-| AI-specific data classification taxonomy | 5.2.3 |
-| Classification label propagation to derived AI resources (embeddings, caches, outputs) | 5.2.4 |
-| Caller authorization context enforcement through AI query pipelines | 5.3.1 |
+| Just-in-time privileged access for AI resources (model weights, training pipelines) | 5.2.6 |
+| Classification label propagation to derived AI resources (embeddings, caches, outputs) | 5.2.7 |
+| Caller authorization context enforcement through AI query pipelines | 5.2.2 |
 | Fine-grained agent action authorization (tool, parameters, resources, data scope) | 9.6.1 |
 | Delegation context propagation with integrity protection (user, tenant, scopes) | 9.6.2 |
 | Application-layer policy enforcement (model output cannot bypass) | 9.6.3 |
@@ -44,12 +43,9 @@ Enforce access decisions across users, agents, tools, data, and MCP resources us
 | Scope-filtered MCP tool discovery (tools/list) | 10.2.8 |
 | Per-tool MCP invocation access control (argument, token scope) | 10.2.9 |
 | MCP policy enforcement that model output cannot bypass | 10.2.7 |
-| Authorization-aware post-inference filtering (per-caller entitlement enforcement) | 5.4.1 |
-| Citation and attribution validation against caller entitlements | 5.4.2 |
-| Agent PDP runtime isolation from agent execution environment | 5.5.1 |
-| Structured action descriptions to PDP (not raw agent reasoning context) | 5.5.2 |
-| KV-cache partitioning by session/tenant to prevent prompt reconstruction | 5.6.1 |
-| Shared model serving tenant isolation (fine-tuning, inference, embeddings) | 5.6.2 |
+| Authorization-aware post-inference filtering (per-caller entitlement enforcement) | 5.2.4 |
+| Agent PDP runtime isolation from agent execution environment | 5.2.5 |
+| Shared model serving tenant isolation (fine-tuning, inference, embeddings) | 5.3.1 |
 | Peer authorization policy (approved agent registry) for agent-to-agent task delegation | 9.6.6 |
 
 **Common pitfalls:** granting broad OAuth scopes instead of minimal required; not re-evaluating authorization when context changes mid-session; allowing model-generated output to override hard policy decisions.
@@ -63,7 +59,7 @@ Protect stored data, models, secrets, logs, and backups through encryption.
 | Control / Technique | Requirement IDs |
 | --- | --- |
 | Training data encryption at rest | ASVS v5 V6 |
-| Labeled data encryption | 1.3.5 |
+| Labeled data encryption | 1.2.4 |
 | Log encryption at rest | 13.1.5 |
 
 **Common pitfalls:** encrypting the database but not model checkpoints or embeddings; not encrypting logs that contain prompt/response data; storing encryption keys alongside the data they protect.
@@ -76,7 +72,7 @@ Protect data moving between services, agents, tools, and edge devices.
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Mutual TLS with certificate validation for inter-service communication | 4.3.4 |
+| Mutual TLS with certificate validation for inter-service communication | ASVS v5 V9 |
 | Authenticated streamable-HTTP transport with TLS 1.3 for MCP | 10.3.1, 10.3.2 |
 | SSE private channel with TLS enforcement | 10.3.2 |
 | Log encryption in transit | 13.1.5 |
@@ -105,7 +101,7 @@ Verify authenticity and detect tampering of models, artifacts, messages, logs, a
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Cryptographic hashes for training data integrity | 1.2.2, 1.3.4 |
+| Cryptographic hashes for training data integrity | 1.1.5, 1.2.3 |
 | Cryptographic model signing | 3.1.2 |
 | Model signature and checksum verification at deployment and load | 3.1.3 |
 | Signed build artifacts with build-origin metadata | ASVS v5 V15 / SLSA |
@@ -130,26 +126,25 @@ Validate, normalize, and constrain all inputs before they reach models or downst
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Prompt injection detection ruleset / service | 2.1.1 |
-| Instruction hierarchy enforcement (system > developer > user) | 2.1.7 |
-| Instruction hierarchy preservation across multi-step and tool-augmented workflows, including prompt composition | 2.1.8 |
-| Per-request demonstration count limits in context window | 2.1.5 |
-| Many-shot jailbreaking pattern detection (systematic in-context behavioral override) | 2.1.9 |
-| In-context behavioral override attempts classified as prompt injection events | 2.1.10 |
-| Context window proportion limits and token limit enforcement (reject, not truncate) | 2.1.2 |
-| Third-party content sanitization | 2.1.4 |
-| Character set allow-listing for model prompt inputs | 2.1.3 |
-| Pre-tokenization input normalization (Unicode NFC, homoglyph mapping, control/invisible character removal, bidirectional text neutralization) | 2.2.1 |
-| Post-normalization suspicious artifact rejection or flagging | 2.2.3 |
-| Adversarial input quarantine and logging | 2.2.2 |
-| Input encoding and representation smuggling detection and mitigation | 2.2.4 |
-| Content classifiers for inbound prompts (hate, violence, sexual, illegal) with threshold-based rejection or sanitization | 2.3.1 |
-| Multilingual classifier gap evaluation with compensating controls (language detection, conservative thresholds, human review routing) | 2.3.2 |
-| Policy-violating input rejection before model propagation | 2.3.3 |
-| User-specific and agent-aware policy screening | 2.1.6 |
-| Extracted and hidden content from non-text inputs treated as untrusted | 2.4.1 |
-| Adversarial perturbation detection on image/audio inputs | 2.4.2 |
-| Cross-modal attack detection | 2.4.3 |
+| Prompt injection detection ruleset / service | 2.1.3 |
+| Instruction hierarchy enforcement (system > developer > user) | 2.1.6 |
+| Instruction hierarchy preservation across multi-step and tool-augmented workflows, including prompt composition | 2.1.6 |
+| Per-request demonstration count limits in context window | 2.1.7 |
+| Many-shot jailbreaking pattern detection (systematic in-context behavioral override) | 2.1.7 |
+| In-context behavioral override attempts classified as prompt injection events | 2.1.3 |
+| Context window proportion limits and token limit enforcement (reject, not truncate) | 2.1.4 |
+| Third-party content sanitization | 2.1.3 |
+| Character set allow-listing for model prompt inputs | 2.1.5 |
+| Pre-tokenization input normalization (Unicode NFC, homoglyph mapping, control/invisible character removal, bidirectional text neutralization) | 2.1.1 |
+| Post-normalization suspicious artifact rejection or flagging | 2.1.2 |
+| Adversarial input quarantine and logging | 2.1.3, 2.2.3 |
+| Input encoding and representation smuggling detection and mitigation | 2.1.2 |
+| Content classifiers for inbound prompts (hate, violence, sexual, illegal) with threshold-based rejection or sanitization | 2.2.1 |
+| Multilingual classifier gap evaluation with compensating controls (language detection, conservative thresholds, human review routing) | 2.2.2 |
+| Policy-violating input rejection before model propagation | 2.2.1 |
+| Extracted and hidden content from non-text inputs treated as untrusted | 2.2.4 |
+| Adversarial perturbation detection on image/audio inputs | 2.2.4 |
+| Cross-modal attack detection | 2.2.5 |
 | MCP input type checking, boundary validation, and enumeration enforcement | 10.4.4 |
 | MCP rejection of unrecognized or oversized function call parameters | 10.4.7 |
 | MCP message-framing integrity and strict schema validation | 10.4.3 |
@@ -179,8 +174,7 @@ Constrain, filter, and validate model outputs before they reach users or downstr
 | Output encoding and representation smuggling detection and sanitization | 7.3.5 |
 | System prompt and backend data removal from explanations | 7.5.1 |
 | RAG unsupported-claim blocking or redaction before serving | 7.6.4 |
-| Authorization-aware post-inference filtering (per-caller entitlement enforcement) | 5.4.1 |
-| Citation and attribution validation against caller entitlements | 5.4.2 |
+| Authorization-aware post-inference filtering (per-caller entitlement enforcement) | 5.2.4 |
 | MCP error response sanitization (no stack traces, tokens, internal paths) | 10.4.2 |
 | Generalization or one-way transformation of model-inferred sensitive attributes (ranges, buckets) to limit reconstruction of training records | 11.4.1 |
 
@@ -215,11 +209,11 @@ Isolate workloads, tools, models, and agents to contain failures and prevent lat
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Minimal OS permissions and Linux capabilities | 4.1.1 |
-| Mandatory access control (seccomp, AppArmor, SELinux) | 4.1.2 |
-| Read-only root filesystem with restrictive mount options | 4.1.3 |
-| Runtime privilege escalation and container escape detection | 4.1.4 |
-| TEE / confidential computing with remote attestation | 4.1.5 |
+| AI model workload isolation (sandboxed execution environments) | 4.1.1 |
+| Serialization format allowlist (no arbitrary code execution on deserialization) | 4.1.2 |
+| Workload attestation before model loading | 4.1.3 |
+| Confidential inference with isolated execution environments | 4.1.4 |
+| TEE / confidential computing with remote attestation | 4.2.1 |
 | Tool and plugin sandboxing (container, VM, WASM, OS sandbox) | 9.3.1 |
 | Sandbox escape detection with automated tool quarantine | 9.3.7 |
 | Agent isolation across tenants, security domains, and environments | 9.8.1 |
@@ -235,11 +229,7 @@ Control network boundaries, traffic flow, and outbound access for AI workloads.
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Default-deny network policies with explicit allow-lists | 4.3.1 |
-| Network segmentation across dev / test / prod environments | 4.3.2, 3.4.1 |
-| Separate IAM roles and security groups per environment with no shared principals | 4.3.6 |
-| Restricted administrative access and cloud metadata service blocking | 4.3.3 |
-| Egress traffic restriction to approved destinations with logging | 4.3.5 |
+| AI runtime component isolation across environment boundaries (dev, staging, prod) | 3.4.1 |
 | MCP outbound egress restricted to approved destinations (all others blocked by default) | 10.5.1 |
 | MCP function invocation restricted to statically defined allow-listed names | 10.6.2 |
 | Default-deny cross-domain agent discovery and calls | 9.8.1 |
@@ -258,8 +248,7 @@ Verify origin and authenticity, scan dependencies, and enforce integrity of mode
 | --- | --- |
 | Model registry inventory of deployed model artifacts | 3.1.1 |
 | AI BOM publication (CycloneDX, SPDX) | 6.5.1 |
-| Model dependency graph tracking (services, agents, environments) | 3.1.4 |
-| Model origin records (source, training data checksums, authorship) | 3.1.5, 6.1.1 |
+| Model origin records (source, training data checksums, authorship) | 6.1.1 |
 | Automated reproducible builds | ASVS v5 V15 / SLSA |
 | SBOM production from automated builds | ASVS v5 V15.1.2 / SCVS |
 | Reproducible build hash comparison | SLSA Build L3 |
@@ -270,7 +259,7 @@ Verify origin and authenticity, scan dependencies, and enforce integrity of mode
 | Expired and unmaintained dependency detection | ASVS v5 V15.1.1, V15.2.1 |
 | Approved source enforcement for AI artifacts | 6.2.1 |
 | Malicious layer and trojan trigger scanning | 6.1.2 |
-| Unsafe deserialization format prohibition and format-aware scanning at load time | 4.1.3 |
+| Unsafe deserialization format prohibition and format-aware scanning at load time | 4.1.2 |
 | External dataset poisoning assessment (fingerprinting, outlier detection) | 6.3.1 |
 | Copyright and PII detection in external datasets | 6.3.2 |
 | Dataset origin and lineage documentation | 6.3.3 |
@@ -287,20 +276,13 @@ Manage model deployment, rollback, retirement, and emergency response.
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Automated input validation testing before deployment | 3.2.1 |
-| Automated output sanitization testing before deployment | 3.2.2 |
-| Safety evaluations with pass/fail thresholds before deployment | 3.2.3 |
-| Automatic deployment block on safety evaluation threshold failure | 3.2.4 |
-| Agent workflow, tool, MCP, and RAG integration testing | 3.2.5 |
-| Immutable audit records for model changes | 3.2.6 |
+| Automated pre-deployment testing (input validation, safety evaluation, output sanitization) | 3.2.1 |
+| Immutable audit records for model changes | 3.2.2 |
 | Canary / blue-green deployments with automated rollback triggers | 3.3.1 |
 | Parallel deployment cohort isolation (A/B, canary, shadow) | 3.3.3 |
 | Atomic state restoration on rollback (weights, config, adapters, safety models) | 3.3.2 |
 | Development / test / production environment separation | 3.4.1 |
 | No shared infrastructure across environment boundaries | 3.4.2 |
-| Version control for all development artifacts (hyperparams, scripts, prompts, policies) | 3.4.3 |
-| Secure model artifact wiping and cryptographic erasure on retirement | 3.5.1 |
-| Model signature revocation and registry deny-list on retirement | 3.5.2 |
 | AI-specific supply chain incident response (model rollback, signature revocation) | 6.4.1 |
 
 **Common pitfalls:** not testing rollback procedures before they are needed; leaving retired model artifacts in serving caches; missing shutdown cascade to downstream tool and MCP connections.
@@ -314,7 +296,7 @@ Protect personal data and enforce data subject rights throughout the AI lifecycl
 | Control / Technique | Requirement IDs |
 | --- | --- |
 | Training data minimization (exclude unnecessary features, PII, leaked test data) | 1.1.2 |
-| Labeled data anonymization and granular redaction | 1.3.5 |
+| Labeled data anonymization and granular redaction | 1.2.4 |
 | Direct and quasi-identifier removal | 12.1.1 |
 | k-anonymity and l-diversity measurement with automated audits | 12.1.2 |
 | Feature-importance leakage check on trained models | 12.1.3 |
@@ -370,10 +352,9 @@ Test for and defend against evasion, extraction, inversion, poisoning, and align
 | Self-modification restriction with scope bounds and rate limits | 11.9.1, 11.9.5 |
 | Self-modification reversibility and integrity verification enabling rollback to known-good state | 11.9.4 |
 | Safety-violation feedback pipeline integrity, poisoning detection, and human review gates | 11.9.6 |
-| Data augmentation with perturbed inputs for training robustness | 1.4.6 |
-| RONI (Reject On Negative Influence) filtering — influence-score each training sample and reject those that degrade held-out performance beyond a threshold (implementation example for 1.4.2) | 1.4.2 |
-| Gradient fingerprinting / per-sample gradient analysis — detect abnormal gradient norms or directions indicating poisoned samples during training (implementation example for 1.4.2) | 1.4.2 |
-| Activation clustering — cluster intermediate activations to detect backdoor-associated subpopulations (implementation example for 1.4.2) | 1.4.2 |
+| RONI (Reject On Negative Influence) filtering — influence-score each training sample and reject those that degrade held-out performance beyond a threshold (implementation example for 1.3.1) | 1.3.1 |
+| Gradient fingerprinting / per-sample gradient analysis — detect abnormal gradient norms or directions indicating poisoned samples during training (implementation example for 1.3.1) | 1.3.1 |
+| Activation clustering — cluster intermediate activations to detect backdoor-associated subpopulations (implementation example for 1.3.1) | 1.3.1 |
 
 **Common pitfalls:** testing only known jailbreak patterns without adaptive attacks; not updating red-team suites after model updates; relying on a single defense without defense-in-depth.
 
@@ -395,7 +376,7 @@ Capture security-relevant events with integrity protection for forensic analysis
 | Audit log context fields sufficient for forensic reconstruction (actor, delegation, policy, parameters, outcomes) | 9.4.3 |
 | Agent action cryptographic chain ID binding | 9.4.2 |
 | Agent action signing and timestamps for non-repudiation | 9.4.4 |
-| Immutable audit records for model changes (actor, change type, before/after) | 3.2.6 |
+| Immutable audit records for model changes (actor, change type, before/after) | 3.2.2 |
 | Generic audit log immutability and tamper-evidence | ASVS v5 V16.4.2 |
 | CI/CD audit log streaming to SIEM | ASVS v5 V16.4.3 |
 | Detection rules for anomalous package pulls and tampered build steps | ASVS v5 V16.3.3 |
