@@ -26,7 +26,7 @@ Require explicit checkpoints for privileged or irreversible outcomes.
 | :--: | --- | :---: |
 | **9.2.1** | **Verify that** the agent runtime enforces an execution gate that blocks privileged or irreversible actions (e.g., code merges/deploys, financial transfers, user access changes, destructive deletes, external notifications) until an explicit human approval is received and verified. | 1 |
 | **9.2.2** | **Verify that** approval requests display canonicalized and complete action parameters (diff, command, recipient, amount, scope) without truncation or transformation. | 2 |
-| **9.2.3** | **Verify that** approvals are cryptographically bound (e.g., signed or MACed) to the exact action parameters, requester identity, and execution context, include a unique single-use nonce, and expire within a defined maximum time-to-live (TTL). | 2 |
+| **9.2.3** | **Verify that** approvals are cryptographically bound (e.g., signed or MACed) to the exact action parameters, requester identity, and execution context, include a unique single-use nonce, and expire within a defined maximum time-to-live (TTL). | 3 |
 | **9.2.4** | **Verify that** where rollback is feasible, compensating actions are defined and tested (transactional semantics), and failures trigger rollback or safe containment. | 3 |
 
 ---
@@ -78,7 +78,7 @@ Ensure every action is authorized at execution time and constrained by scope.
 
 | # | Description | Level |
 | :--: | --- | :---: |
-| **9.6.1** | **Verify that** agent actions are authorized against fine-grained policies enforced by the runtime that restrict which tools an agent may invoke, which parameter values it may supply (e.g., allowed resources, data scopes, action types), and block policy violations. | 1 |
+| **9.6.1** | **Verify that** agent actions are authorized against fine-grained policies enforced by the runtime that restrict which tools an agent may invoke, which parameter values it may supply (e.g., allowed resources, data scopes, action types), and block policy violations. | 2 |
 | **9.6.2** | **Verify that** when an agent acts on a user's behalf, the runtime propagates an integrity-protected delegation context (user ID, tenant, session, scopes) and enforces that context at every downstream call without using the user's credentials. | 2 |
 | **9.6.3** | **Verify that** all access control decisions are enforced by application logic or a policy engine, never by the AI model itself, and that model-generated output (e.g., "the user is allowed to do this") cannot override or bypass access control checks. | 2 |
 | **9.6.4** | **Verify that** secrets and credentials required by an agent at runtime are not exposed within the model's observable context, including the context window, system prompts, or tool call parameters, and are instead provided via out-of-band mechanisms such as credential proxies, secrets manager injection, runtime sidecar authentication, or short-lived scoped tokens. | 2 |
@@ -98,7 +98,7 @@ Prevent "technically authorized but unintended" actions by binding execution to 
 | **9.7.2** | **Verify that** post-execution checks confirm the intended outcome was achieved and detect unintended side effects, and that any mismatch triggers containment and, where supported, compensating actions. | 2 |
 | **9.7.3** | **Verify that** all write operations to persistent external state are authorized by either explicit human approval or an independent policy-based authorization mechanism that evaluates the operation against the original user intent, and not solely on agent-generated output. | 2 |
 | **9.7.4** | **Verify that** when the policy decision point (PDP) used for governance evaluation is unavailable (e.g., timeout, network partition, service failure), agent execution fails closed by blocking the proposed action, and the unavailability event is logged with sufficient detail for incident investigation. | 2 |
-| **9.7.5** | **Verify that** prompt templates and agent policy configurations retrieved from a remote source are integrity-verified at load time against their approved versions (e.g., via hashes or signatures). | 3 |
+| **9.7.5** | **Verify that** prompt templates and agent policy configurations retrieved from a remote source are integrity-verified at load time against their approved versions (e.g., via hashes or signatures). | 2 |
 
 ---
 
@@ -109,8 +109,8 @@ Reduce cross-domain interference and emergent unsafe collective behavior.
 | # | Description | Level |
 | :--: | --- | :---: |
 | **9.8.1** | **Verify that** agents in different tenants, security domains, or environments (dev/test/prod) run in isolated runtimes and network segments, with default-deny controls that prevent cross-domain discovery and calls. | 1 |
-| **9.8.2** | **Verify that** each agent is restricted to its own memory namespace and is technically prevented from reading or modifying peer agent state, preventing unauthorized cross-agent access within the same swarm. | 2 |
-| **9.8.3** | **Verify that** each agent operates with an isolated context window that peer agents cannot read or influence, preventing unauthorized cross-agent context access within the same swarm. | 3 |
+| **9.8.2** | **Verify that** each agent is restricted to its own memory namespace and is technically prevented from reading or modifying peer agent state, preventing unauthorized cross-agent access within the same swarm. | 3 |
+| **9.8.3** | **Verify that** each agent operates with an isolated context window that peer agents cannot read or influence, preventing unauthorized cross-agent context access within the same swarm. | 2 |
 | **9.8.4** | **Verify that** runtime monitoring detects unsafe emergent behavior (oscillation, deadlocks, uncontrolled broadcast, abnormal call graphs) and automatically applies corrective actions (throttle, isolate, terminate). | 3 |
 | **9.8.5** | **Verify that** swarm-level aggregate action rate limits (e.g., total external API calls, file writes, or network requests per time window across all agents) are enforced to prevent bursts that cause denial-of-service or abuse of external systems. | 3 |
 | **9.8.6** | **Verify that** a swarm-level shutdown capability exists that can halt all active agent instances or selected problematic instances in an organized fashion and prevents new agent spawning, with shutdown completable within a pre-defined response time. | 3 |
@@ -123,7 +123,7 @@ Prevent data-flow attacks that exploit agentic tool-calling pipelines by manipul
 
 | # | Description | Level |
 | :--: | --- | :---: |
-| **9.9.1** | **Verify that** the system architecturally separates, or applies an equivalent isolation mechanism to separate, plan generation (control flow) from untrusted data processing, such that the component determining which tools to call and in what sequence does not directly process untrusted content (e.g., tool outputs, retrieved documents, external messages). | 2 |
+| **9.9.1** | **Verify that** the system architecturally separates, or applies an equivalent isolation mechanism to separate, plan generation (control flow) from untrusted data processing, such that the component determining which tools to call and in what sequence does not directly process untrusted content (e.g., tool outputs, retrieved documents, external messages). | 3 |
 | **9.9.2** | **Verify that** components processing untrusted data (e.g., for extraction, summarization, or parsing) are isolated, or equivalently constrained, from tool-calling capabilities, ensuring that compromised data processing cannot trigger unauthorized tool invocations. | 2 |
 | **9.9.3** | **Verify that** security policies for tool execution are expressed as auditable, versioned, machine-interpretable code or configuration, not solely as natural language instructions within prompts. | 2 |
 | **9.9.4** | **Verify that** values passed to tools carry origin metadata tracking their source (user input, specific tool, external source). | 3 |
