@@ -12,12 +12,11 @@ Enforce fine-grained access controls and query-time scope enforcement for every 
 
 | # | Description | Level |
 | :--: | --- | :---: |
-| **8.1.1** | **Verify that** vector store operations are enforced with namespace and collection scope controls with default-deny. | 1 |
+| **8.1.1** | **Verify that** vector identifiers and namespaces enforce uniqueness per tenant and prevent cross-tenant collisions. | 1 |
 | **8.1.2** | **Verify that** every ingested document is tagged at write time with source, writer identity, and timestamp. | 2 |
-| **8.1.3** | **Verify that** document metadata tags are immutable after the initial write and cannot be changed by later pipeline stages or user operations. | 2 |
+| **8.1.3** | **Verify that** document metadata tags are immutable after the initial write. | 2 |
 | **8.1.4** | **Verify that** RAG pipeline retrieval events are logged, including the query, documents retrieved, and knowledge source. | 2 |
-| **8.1.5** | **Verify that** a high-severity alert is generated whenever a canary record is selected by retrieval or passed to the model as context. | 2 |
-| **8.1.6** | **Verify that** retrieval anomaly detection identifies unusual retrieval patterns that may indicate vector database poisoning. | 3 |
+| **8.1.5** | **Verify that** retrieval operations enforces scope constraints. | 2 |
 
 ---
 
@@ -27,7 +26,7 @@ Pre-screen content before vectorization and treat memory writes as untrusted inp
 
 | # | Description | Level |
 | :--: | --- | :---: |
-| **8.2.1** | **Verify that** sensitive fields are detected before embedding and are masked, tokenized, or dropped, since data once embedded cannot be reliably redacted. | 1 |
+| **8.2.1** | **Verify that** sensitive fields are detected before embedding and are masked, tokenized, or dropped. | 1 |
 | **8.2.2** | **Verify that** content crafted to manipulate retrieval results is detected and rejected or quarantined before vectorization. | 3 |
 | **8.2.3** | **Verify that** vectors that fall outside normal clustering patterns are flagged and quarantined before entering production indices. | 2 |
 | **8.2.4** | **Verify that** agent outputs and tool outputs are not automatically written to trusted agent memory without explicit source validation. | 2 |
@@ -41,23 +40,9 @@ Retention and revocation must be explicit and enforceable for memory and RAG ind
 
 | # | Description | Level |
 | :--: | --- | :---: |
-| **8.3.1** | **Verify that** expired vectors are excluded from retrieval results within a defined propagation window. | 2 |
-| **8.3.2** | **Verify that** memory can be reset for security reasons through an operation independent from the retention deletion process. | 2 |
-| **8.3.3** | **Verify that** quarantined content is retained for investigation but excluded from all retrieval results while under quarantine. | 2 |
-| **8.3.4** | **Verify that** embedding leakage resistance targets are defined and measured, and that changes to embedding models or privacy transforms are gated by regression tests against those targets. | 3 |
-
----
-
-## C8.4 Scope Enforcement for User-Specific Memory
-
-Prevent cross-tenant and cross-user leakage in retrieval and prompt assembly.
-
-| # | Description | Level |
-| :--: | --- | :---: |
-| **8.4.1** | **Verify that** every retrieval operation enforces scope constraints in the vector engine query and verifies them again before prompt assembly. | 2 |
-| **8.4.2** | **Verify that** vector identifiers and namespaces enforce uniqueness per tenant and prevent cross-scope collisions. | 1 |
-| **8.4.3** | **Verify that** retrieval results that match similarity criteria but fail scope checks are discarded. | 1 |
-| **8.4.4** | **Verify that** multi-tenant tests simulate adversarial retrieval attempts and verify that no out-of-scope documents appear in prompts or outputs. | 2 |
+| **8.3.1** | **Verify that** expired vectors are excluded from retrieval results. | 2 |
+| **8.3.2** | **Verify that** memory can be reset. | 2 |
+| **8.3.3** | **Verify that** quarantined content is retained but excluded from all retrieval results. | 3 |
 
 ---
 
