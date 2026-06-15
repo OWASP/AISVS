@@ -44,7 +44,8 @@ Training data quality and security assurance controls help detect corruption, po
 | **1.3.1** | **Verify that** training and fine-tuning pipelines implement poisoning detection techniques to identify potential data poisoning or unintentional corruption in training data. | 2 |
 | **1.3.2** | **Verify that** automatically generated labels are subject to confidence thresholds and consistency checks to detect misleading or low-confidence labels. | 2 |
 | **1.3.3** | **Verify that** models used in security-relevant decisions are evaluated for bias patterns. | 2 |
-| **1.3.4** | **Verify that** defenses against clean-label poisoning attacks are implemented. | 3 |
+| **1.3.4** | **Verify that** disallowed content is detected and removed before training. | 2 |
+| **1.3.5** | **Verify that** defenses against clean-label poisoning attacks are implemented. | 3 |
 
 ---
 
