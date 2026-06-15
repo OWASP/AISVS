@@ -12,7 +12,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | :--: | --- | :---: |
 | **10.1.1** | **Verify that** MCP server and client components are obtained only from trusted sources and verified using signatures, checksums, or secure package metadata, rejecting tampered or unsigned builds. | 1 |
 | **10.1.2** | **Verify that** only allowlisted MCP server identifiers (name, version, and registry) are permitted in production and that the runtime rejects connections to unlisted or unregistered servers at load time. | 1 |
-| **10.1.3** | **Verify that** all MCP tool and resource schemas include cryptographically verifiable provenance metadata — including author, timestamp, version hash, signature, and approved‑by fields. | 2 |
+| **10.1.3** | **Verify that** all MCP tool and resource schemas record provenance metadata, including author, timestamp, version hash, and approved-by fields. | 2 |
 
 ---
 
@@ -30,7 +30,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **10.2.8** | **Verify that** MCP servers do not pass through access tokens received from clients to downstream APIs and instead obtain a separate token scoped to the server's own identity (e.g., via on-behalf-of or client credentials flow). | 2 |
 | **10.2.9** | **Verify that** MCP clients request only the minimum scopes needed for the current operation and elevate progressively via step-up authorization for higher-privilege operations. | 2 |
 | **10.2.10** | **Verify that** MCP servers enforce deterministic session teardown, destroying cached tokens, in-memory state, temporary storage, and file handles when a session terminates, disconnects, or times out. | 2 |
-| **10.2.11** | **Verify that** autonomous agents authenticate using cryptographically bound identity credentials (e.g., key-based proof-of-possession) rather than bearer-only tokens, ensuring that agent identity cannot be transferred, replayed, or impersonated by forwarding a shared secret. | 2 |
+| **10.2.11** | **Verify that** autonomous agents authenticate using cryptographically bound identity credentials (e.g., key-based proof-of-possession) rather than bearer-only tokens, ensuring that agent identity cannot be transferred, replayed, or impersonated by forwarding a shared secret. | 3 |
 
 ---
 
@@ -77,7 +77,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | # | Description | Level |
 | :--: | --- | :---: |
 | **10.6.1** | **Verify that** MCP security controls enforce fail-closed semantics: if tool schema validation, MCP-Protocol-Version negotiation, authentication, or policy evaluation fails or cannot be completed, the default action is to deny the request rather than permit it. | 2 |
-| **10.6.2** | **Verify that** MCP servers expose only allow-listed functions and resources, and restrict function invocation to statically defined, pre-approved names that cannot be influenced by user or model-provided input. | 3 |
+| **10.6.2** | **Verify that** MCP servers expose only allow-listed functions and resources, and restrict function invocation to statically defined, pre-approved names that cannot be influenced by user or model-provided input. | 2 |
 
 ---
 
