@@ -25,7 +25,7 @@ Ensure data-subject deletion requests propagate across all AI artifacts and that
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **12.2.1** | **Verify that** data-subject deletion requests propagate to AI-derived artifacts including training and fine-tuning datasets, model checkpoints, evaluation sets, derived caches, and feature stores within a service-level agreement window of less than 30 days. | 1 |
+| **12.2.1** | **Verify that** data-subject deletion requests propagate to AI data artifacts including training and fine-tuning datasets, evaluation sets, derived caches, feature stores, and vector/embedding stores within a service-level agreement window of less than 30 days. | 1 |
 | **12.2.2** | **Verify that** shadow-model or membership-inference evaluation demonstrates that forgotten records influence less than a documented policy threshold of model outputs after unlearning. | 2 |
 | **12.2.3** | **Verify that** machine-unlearning routines, when claimed, either physically retrain the affected model on the retained data or apply a certified unlearning algorithm with documented (ε, δ) guarantees. | 3 |
 
@@ -50,8 +50,8 @@ Prevent models and datasets from being used beyond their originally consented pu
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
 | **12.4.1** | **Verify that** every dataset and model checkpoint carries a machine-readable purpose tag aligned to the original consent and lawful basis under which the source data was collected. | 1 |
-| **12.4.2** | **Verify that** runtime monitors detect queries inconsistent with the declared purpose of the dataset or model, and that detected queries trigger a soft refusal or are blocked pending review. | 1 |
-| **12.4.3** | **Verify that** policy-as-code gates block redeployment of a model to a purpose or domain not covered by its purpose tag (12.4.1). | 3 |
+| **12.4.2** | **Verify that** runtime monitors detect queries inconsistent with the declared purpose of the dataset or model, and that detected queries trigger a soft refusal or are blocked pending review. | 2 |
+| **12.4.3** | **Verify that** policy-as-code gates block redeployment of a model to a purpose or domain not covered by its purpose tag (12.4.1). | 2 |
 
 ---
 
