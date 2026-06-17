@@ -32,7 +32,7 @@ Detect AI-specific attack patterns (jailbreak, prompt injection, model extractio
 | **13.2.3** | **Verify that** behavioral anomaly detection identifies unusual conversation patterns, excessive retry attempts, or systematic probing behaviors. | 2 |
 | **13.2.4** | **Verify that** custom rules detect AI-specific threat patterns, including coordinated jailbreak attempts, prompt injection campaigns, system prompt extraction attempts, and model extraction attacks. | 2 |
 | **13.2.5** | **Verify that** per-user and per-session token consumption triggers an alert when consumption exceeds defined thresholds. | 2 |
-| **13.2.6** | **Verify that** automated incident response workflows can isolate compromised models and block malicious users. | 3 |
+| **13.2.6** | **Verify that** automated incident response workflows can isolate compromised models and block malicious users. | 2 |
 | **13.2.7** | **Verify that** session-level conversation trajectory analysis detects multi-turn jailbreak patterns where no single turn looks overtly malicious on its own, but the conversation as a whole shows attack indicators. | 3 |
 | **13.2.8** | **Verify that** LLM API traffic is monitored for covert channel indicators, including Base64-encoded payloads, structured non-human query patterns, and communication signatures consistent with malware command-and-control activity using LLM endpoints. | 3 |
 
@@ -87,7 +87,7 @@ Detect and prevent security threats arising from proactive (agent-initiated) beh
 | **13.6.1** | **Verify that** proactive agent behaviors are security-validated before execution, including integration with risk assessment. | 1 |
 | **13.6.2** | **Verify that** autonomous initiative triggers include security context evaluation and threat landscape assessment. | 2 |
 | **13.6.3** | **Verify that** proactive behavior patterns are analyzed for potential security implications and unintended consequences. | 2 |
-| **13.6.4** | **Verify that** audit logs capture the complete approval chain for security-critical proactive actions, including approver identity, timestamp, action parameters, and decision outcome. | 3 |
+| **13.6.4** | **Verify that** audit logs capture the complete approval chain for security-critical proactive actions, including approver identity, timestamp, action parameters, and decision outcome. | 2 |
 | **13.6.5** | **Verify that** behavioral anomaly detection identifies deviations in proactive agent patterns that may indicate compromise. | 3 |
 
 ---
