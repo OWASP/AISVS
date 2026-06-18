@@ -26,6 +26,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **10.2.5** | **Verify that** MCP servers enforce access control on every tool invocation, validating that the user's access token authorizes both the requested tool and the specific argument values supplied. | 2 |
 | **10.2.6** | **Verify that** MCP servers ensure that all session artifacts are removed when a session terminates. | 2 |
 | **10.2.7** | **Verify that** MCP servers do not pass through access tokens received from clients to downstream APIs. | 2 |
+| **10.2.8** | **Verify that** MCP clients validate the `iss` parameter on OAuth authorization responses in accordance with RFC 9207 to prevent mix-up attacks across multiple authorization servers. | 2 |
 
 ---
 
@@ -60,3 +61,4 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 * [Model Context Protocol (MCP) Specification](https://modelcontextprotocol.io/)
 * [OWASP MCP Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/MCP_Security_Cheat_Sheet.html)
 * [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final)
+* [RFC 9207: OAuth 2.0 Authorization Server Issuer Identification](https://www.rfc-editor.org/rfc/rfc9207)
