@@ -84,11 +84,9 @@ Provide shutdown and graceful-degradation paths under human control, with mechan
 | # | Description | Level |
 | :--: | --- | :---: |
 | **9.6.1** | **Verify that** a manual kill-switch mechanism exists to immediately halt AI model inference and outputs. | 1 |
-| **9.6.2** | **Verify that** the system can be placed into at least two intermediate operational states between full operation and complete shutdown (e.g., disabling specific tools or MCP servers, removing a retrieval source, switching to a safer or smaller model, enforcing read-only mode for agents), and that each state has defined entry triggers and can be exited independently without requiring a full system restart or shutdown. | 2 |
-| **9.6.3** | **Verify that** when a human-approval gate is not satisfied within the defined approval time-to-live, the system applies a documented default action that is fail-closed (blocking the pending action). | 2 |
-| **9.6.4** | **Verify that** kill-switch activations, intermediate operational state transitions, and override commands are logged with operator identity, channel used, originating trigger or justification, prior and resulting system state, and timestamp. | 2 |
-| **9.6.5** | **Verify that** kill-switch and intermediate-state mechanisms are exercised at a defined frequency. Each test confirms that the system reaches the target state within the documented response time, and that all dependent components (e.g., agent runtimes, tool/MCP servers, retrieval connectors) transition as specified. | 2 |
-| **9.6.6** | **Verify that** override and kill-switch commands for autonomous agents are delivered through an out-of-band channel (e.g., infrastructure controls, hypervisor-level signals, network-layer isolation) that is architecturally isolated from the agent runtime, so the commands stay enforceable even if the agent runtime is compromised or manipulated. | 3 |
+| **9.6.2** | **Verify that** when a human-approval gate is not satisfied within the defined approval time, the system blocks the pending action. | 2 |
+| **9.6.3** | **Verify that** kill-switch activations and override commands are logged. | 2 |
+| **9.6.4** | **Verify that** kill-switch commands are implemented through an out-of-band channel that is isolated from the agent runtime. | 3 |
 
 ---
 
