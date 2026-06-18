@@ -27,6 +27,7 @@ Require explicit checkpoints for privileged or irreversible outcomes.
 | **9.2.1** | **Verify that** the agent runtime blocks privileged or irreversible actions, as defined by a documented policy, until an explicit human approval is received and verified. | 1 |
 | **9.2.2** | **Verify that** approval requests display canonicalized and complete action parameters (diff, command, recipient, amount, scope) without truncation or transformation. | 2 |
 | **9.2.3** | **Verify that** approvals are cryptographically bound to action parameters, requester identity, and execution context with a unique single-use nonce. | 3 |
+| **9.2.4** | **Verify that** the key material used to issue an approval is not accessible to the agent runtime. | 3 |
 
 ---
 
