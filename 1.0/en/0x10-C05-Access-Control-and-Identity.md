@@ -17,7 +17,7 @@ AI systems introduce access control challenges beyond traditional application se
 
 ## C5.2 AI Resource Authorization & Classification
 
-Enforce the caller's authorization context through AI-specific query pipelines (RAG retrieval, embedding lookups, inference chains) so that the AI system does not return data the caller is not entitled to access
+Enforce the caller's authorization context through AI-specific query pipelines (RAG retrieval, embedding lookups, inference chains) so that the AI system does not return data that the caller is not entitled to access.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
