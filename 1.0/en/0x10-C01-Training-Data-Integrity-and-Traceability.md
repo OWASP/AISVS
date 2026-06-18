@@ -55,3 +55,4 @@ Training data quality and security assurance controls help detect corruption, po
 * [EU AI Act: Article 10: Data & Data Governance](https://artificialintelligenceact.eu/article/10/)
 * [CISA Advisory: Securing Data for AI Systems](https://www.cisa.gov/news-events/cybersecurity-advisories/aa25-142a)
 * [OpenAI Privacy Center: Data Deletion Controls](https://privacy.openai.com/policies?modal=take-control)
+* [MITRE ATLAS: Sanitize Training Data](https://atlas.mitre.org/mitigations/AML.M0007)

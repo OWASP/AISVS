@@ -59,3 +59,6 @@ Ensure RAG-grounded outputs are traceable to their source documents and that cit
 
 * [OWASP LLM05:2025 Improper Output Handling](https://genai.owasp.org/llmrisk/llm052025-improper-output-handling/)
 * [OWASP LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/)
+* [MITRE ATLAS: Passive AI Output Obfuscation](https://atlas.mitre.org/mitigations/AML.M0002)
+* [MITRE ATLAS: Restrict Number of AI Model Queries](https://atlas.mitre.org/mitigations/AML.M0004)
+* [MITRE ATLAS: AI Telemetry Logging](https://atlas.mitre.org/mitigations/AML.M0024)
