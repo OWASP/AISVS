@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-Autonomous and multi-agent systems must execute only authorized, intended, and bounded actions. This chapter focuses on controls unique to agentic AI execution: agent-as-principal identity, agent action chains, model-output-driven authorization risk, intent verification of LLM-decided actions, multi-agent swarm dynamics, and human oversight of agentic systems: human-approval gates for high-impact actions (C9.2) and human-controlled shutdown and graceful degradation (C9.6).
+Autonomous and multi-agent systems must execute only authorized, intended, and bounded actions. This chapter focuses on controls unique to agentic AI execution: agent-as-principal identity, agent action chains, model-output-driven authorization risk, intent verification of LLM-decided actions, multi-agent swarm dynamics, and human oversight of agentic systems: human-approval gates for high-impact actions and human-controlled shutdown and graceful degradation.
 
 ---
 
