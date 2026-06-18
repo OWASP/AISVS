@@ -20,7 +20,7 @@ Bound runtime expansion (recursion, concurrency, cost) and halt safely on runawa
 
 ## C9.2 High-Impact Action Approval and Irreversibility Controls
 
-Require explicit checkpoints for privileged or irreversible outcomes.
+Require explicit checkpoints for privileged or irreversible outcomes, and ensure that approval credentials are isolated from the agent runtime so the agent cannot approve its own actions.
 
 | # | Description | Level |
 | :--: | --- | :---: |
