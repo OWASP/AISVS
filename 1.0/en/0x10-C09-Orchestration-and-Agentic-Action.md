@@ -34,8 +34,6 @@ Require trusted approval checkpoints for agent actions that are privileged, high
 
 ---
 
-Irreversibility Controls
-
 ## C9.3 Component Isolation and Tool Authorization
 
 Constrain tool and plugin execution, loading, and outputs to prevent unauthorized system access and unsafe side effects.
