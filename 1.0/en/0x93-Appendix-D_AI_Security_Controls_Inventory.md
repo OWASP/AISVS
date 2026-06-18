@@ -382,7 +382,7 @@ Capture security-relevant events with integrity protection for forensic analysis
 | Detection rules for anomalous package pulls and tampered build steps | ASVS v5 V16.3.3 |
 | Safety violation metrics logging | 7.6.1 |
 | Self-modification logging classified as security event with what/when/by-whom/authorization detail | 11.9.3 |
-| Human oversight intervention logging (kill-switch activations, mode transitions, override commands) with operator identity, channel, trigger, and prior/resulting state | 14.3.1 |
+| Human oversight intervention logging (kill-switch activations, mode transitions, override commands) with operator identity, channel, trigger, and prior/resulting state | 9.6.4 |
 
 **Common pitfalls:** logging prompts without redacting PII; using mutable log storage without integrity protection; not including sufficient context for forensic reconstruction; logging agent actions and approvals but not human-initiated overrides such as kill-switch activations.
 
@@ -435,23 +435,21 @@ Enable human understanding of model decisions through interpretability artifacts
 
 ## AD.19 Human Oversight & Approval Gates
 
-Require human review and approval for high-impact, irreversible, or safety-critical actions, and provide reliable shutdown and graceful-degradation paths under human control. Effective human oversight requires four cooperating layers: a **policy** that classifies which actions are high-risk (C14.2), a **runtime gate** that blocks execution until approval is received (C9.2), **kill-switch and graceful-degradation mechanisms** to halt or constrain the system when needed (C14.1), and **independent audit trails** for both approvals (C13.6.4) and human-initiated overrides (C14.3). Each layer is separately verifiable; an approval gate without a policy is unenforceable, a policy without a runtime gate is unenforced, and either without audit trails is unattributable.
+Require human review and approval for high-impact, irreversible, or safety-critical actions, and provide reliable shutdown and graceful-degradation paths under human control. Effective human oversight requires four cooperating layers: a **documented policy** that classifies which actions are high-risk and is wired to the runtime gate (C9.2.1), a **runtime gate** that blocks execution until approval is received (C9.2), **kill-switch and graceful-degradation mechanisms** to halt or constrain the system when needed (C9.6), and **independent audit trails** for both approvals (C13.6.4) and human-initiated overrides (C9.6.4). Each layer is separately verifiable; an approval gate without a policy is unenforceable, a policy without a runtime gate is unenforced, and either without audit trails is unattributable.
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Documented high-risk action policy (classification criteria, approval authority; including authorization of any non-fail-closed TTL-expiry default) | 14.2.1 |
-| High-impact action approval gates (deploy, delete, financial, notify) | 9.2.1 |
+| High-impact action approval gates (deploy, delete, financial, notify), as defined by a documented policy | 9.2.1 |
 | Approval parameter binding (prevent approve-one-execute-another) | 9.2.2 |
-| High-impact intent confirmation with exact parameter binding and quick expiration | 9.2.3 |
-| Fail-closed default action (block pending action) when human approval is not received within TTL | 14.2.2 |
+| High-impact intent confirmation with exact parameter binding and nonce | 9.2.3 |
+| Fail-closed default action (block pending action) when human approval is not received within TTL | 9.6.3 |
 | Human review on anomaly detection | 11.6.3 |
 | High-risk model quarantine with human review and sign-off | 6.1.3 |
-| Post-condition outcome checking with containment on mismatch | 9.7.2 |
-| Compensating actions and transactional rollback on failure | 9.2.4 |
-| Manual kill-switch to halt model inference and outputs | 14.1.1 |
-| Intermediate operational degradation states (tool disable, model swap, read-only, source removal) | 14.1.3 |
-| Recurring exercise of kill-switch and intermediate-state mechanisms with response-time verification | 14.1.2 |
-| Out-of-band override and kill-switch channel for autonomous agents | 14.1.4 |
+| Manual kill-switch to halt model inference and outputs | 9.6.1 |
+| Intermediate operational degradation states (tool disable, model swap, read-only, source removal) | 9.6.2 |
+| Human-override event logging (kill-switch activations, state transitions, override commands) | 9.6.4 |
+| Recurring exercise of kill-switch and intermediate-state mechanisms with response-time verification | 9.6.5 |
+| Out-of-band override and kill-switch channel for autonomous agents | 9.6.6 |
 
 **Common pitfalls:** documenting a high-risk action policy that is never wired to a runtime gate; binding approval to a hash of parameters without binding to identity or context (replay across sessions); confirmation tokens without quick expiration; defaulting to fail-open when the approver does not respond, silently bypassing the gate; assuming an in-band kill-switch will work against a compromised agent; kill-switch implemented but never exercised, atrophying until the moment it is needed.
 
