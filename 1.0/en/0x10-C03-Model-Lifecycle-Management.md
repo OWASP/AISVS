@@ -2,13 +2,13 @@
 
 ## Control Objective
 
-AI systems must implement change control processes that prevent unauthorized or unsafe model modifications from reaching production. These controls ensure model integrity through the entire lifecycle, from development through deployment to decommissioning, which enables rapid incident response and maintains accountability for all changes. Only authorized, validated models reach production by employing controlled processes that maintain integrity, traceability, and recoverability.
+AI systems must implement change control processes that prevent unauthorized or unsafe model modifications from reaching production. These controls enable rapid incident response and maintain accountability for all changes by ensuring model integrity through the entire lifecycle, from development through deployment to decommissioning. By employing controlled processes that maintain integrity, traceability, and recoverability, only authorized and validated models will reach production.
 
 ---
 
 ## C3.1 Model Authorization & Integrity
 
-Only authorized models with verified integrity reach production environments.
+Only authorized models with verified integrity should reach production environments.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -26,7 +26,7 @@ Models must pass defined security and safety validations before deployment.
 | :--------: | --------------------------------------------------------------------------------------------------------------- | :---: |
 | **3.2.1** | **Verify that** models undergo automated input validation testing, safety evaluation testing and output sanitization testing before deployment. | 1 |
 | **3.2.2** | **Verify that** all model changes (deployment, configuration, retirement) generate immutable audit records. | 2 |
-| **3.2.3** | **Verify that** models subjected to post-training quantization are re-evaluated against the same safety and alignment test suite on the compressed artifact before deployment. | 2 |
+| **3.2.3** | **Verify that** models that are subjected to post-training quantization will be re-evaluated against the same safety and alignment test suite on the compressed artifact before deployment. | 2 |
 | **3.2.4** | **Verify that** provider model, version, or routing changes trigger security re-evaluation before continued use. | 3 |
 
 ---
@@ -57,13 +57,13 @@ Model development must follow secure practices to prevent compromise.
 
 ## C3.5 Pipeline Fine-Tuning
 
-Fine-tuning pipelines are high-privilege operations that can alter deployed model behavior at scale. Multi-stage pipelines compound this risk because a compromise at any intermediate stage produces a subtly altered artifact that subsequent stages accept. Reward models used in RLHF are ML artifacts subject to tampering yet often treated as static infrastructure rather than versioned, validated components.
+Fine-tuning pipelines are high-privilege operations that can alter deployed model behavior at scale. Multi-stage pipelines compound this risk because a compromise at any intermediate stage produces a subtly altered artifact that subsequent stages accept. Reward models used in RLHF are ML artifacts subject to tampering yet they are often treated as static infrastructure rather than versioned, validated components.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **3.6.1** | **Verify that** models used in RLHF fine-tuning are versioned and integrity-verified before use in a training run. | 2 |
 | **3.6.2** | **Verify that** RLHF training stages include automated detection of reward hacking or reward model over-optimization. | 3 |
-| **3.6.3** | **Verify that** in multi-stage fine-tuning pipelines, each stage's output is integrity-verified before the next stage consumes it. | 3 |
+| **3.6.3** | **Verify that** in multi-stage fine-tuning pipelines, each stage's output is integrity-verified before the next stage is consumed. | 3 |
 | **3.6.4** | **Verify that** fine-tuning checkpoints are registered as distinct artifacts. | 3 |
 
 ---
