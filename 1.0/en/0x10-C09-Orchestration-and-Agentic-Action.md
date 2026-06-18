@@ -20,19 +20,21 @@ Bound runtime expansion (recursion, concurrency, cost) and halt safely on runawa
 
 ## C9.2 High-Impact Action Approval and Irreversibility Controls
 
-Require explicit checkpoints for privileged or irreversible outcomes, and ensure that approval credentials are isolated from the agent runtime so the agent cannot approve its own actions.
+Require trusted approval checkpoints for agent actions that are privileged, high-impact, or difficult to reverse.
 
 | # | Description | Level |
 | :--: | --- | :---: |
-| **9.2.1** | **Verify that** the agent runtime blocks privileged or irreversible actions, as defined by a documented policy, until an explicit human approval is received and verified. | 1 |
-| **9.2.2** | **Verify that** approval requests display canonicalized and complete action parameters (diff, command, recipient, amount, scope) without truncation or transformation. | 2 |
-| **9.2.3** | **Verify that** each high-impact action has a reversibility classification, such as read-only, reversible, externally reversible, or irreversible. | 2 |
-| **9.2.4** | **Verify that** reversibility classifications are enforced at runtime. For example, irreversible actions may require human approval prior to execution. | 2 |
-| **9.2.5** | **Verify that** approvals are cryptographically bound to action parameters, requester identity, and execution context with a unique single-use nonce. | 3 |
-| **9.2.6** | **Verify that** the key material used to issue an approval is not accessible to the agent runtime. | 3 |
-| **9.2.7** | **Verify that** approval gates for multi-step or multi-agent action chains enforce the highest-impact reversibility classification across the chain. | 3 |
+| **9.2.1** | **Verify that** the agent runtime blocks execution of privileged, high-impact, or irreversible actions until explicit human approval is received and verified. | 1 |
+| **9.2.2** | **Verify that** approval requests display canonicalized and complete action parameters, such as diffs, commands, recipients, amounts, resources, and scopes, without truncation or unsafe transformation. | 2 |
+| **9.2.3** | **Verify that** each high-impact action has a trusted reversibility classification, such as read-only, reversible, externally reversible, or irreversible. | 2 |
+| **9.2.4** | **Verify that** the agent runtime enforces reversibility classifications by blocking, requiring approval, or restricting actions based on their impact and ability to be reversed. | 2 |
+| **9.2.5** | **Verify that** approvals are cryptographically bound to action parameters, requester identity, execution context, and a unique single-use nonce. | 3 |
+| **9.2.6** | **Verify that** cryptographic key material or credentials used to issue approvals are isolated from the agent runtime. | 3 |
+| **9.2.7** | **Verify that** approval gates for multi-step or multi-agent action chains enforce the highest-impact reversibility classification present anywhere in the chain. | 3 |
 
 ---
+
+Irreversibility Controls
 
 ## C9.3 Component Isolation and Tool Authorization
 
