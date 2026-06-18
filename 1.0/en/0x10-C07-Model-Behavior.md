@@ -31,7 +31,7 @@ Detect when the model produces potentially inaccurate or fabricated content and 
 
 ## C7.3 Output Safety, Privacy & Explainability
 
-Technical controls to detect and scrub unsafe content before it is shown to the user, and to ensure interpretability of AI decisions.
+Technical controls that detect and scrub unsafe content before it is shown to the user and ensure interpretability of AI decisions.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
