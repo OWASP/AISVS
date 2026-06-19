@@ -60,7 +60,7 @@ Protect stored data, models, secrets, logs, and backups through encryption.
 | --- | --- |
 | Training data encryption at rest | ASVS v5 V6 |
 | Labeled data encryption | 1.2.4 |
-| Log encryption at rest | 13.1.5 |
+| Log encryption at rest | 12.1.5 |
 
 **Common pitfalls:** encrypting the database but not model checkpoints or embeddings; not encrypting logs that contain prompt/response data; storing encryption keys alongside the data they protect.
 
@@ -75,7 +75,7 @@ Protect data moving between services, agents, tools, and edge devices.
 | Mutual TLS with certificate validation for inter-service communication | ASVS v5 V9 |
 | Authenticated streamable-HTTP transport with TLS 1.3 for MCP | 10.3.1, 10.3.2 |
 | SSE private channel with TLS enforcement | 10.3.2 |
-| Log encryption in transit | 13.1.5 |
+| Log encryption in transit | 12.1.5 |
 | MCP client minimum protocol version enforcement against downgrade negotiation | 10.3.5 |
 
 **Common pitfalls:** allowing plaintext interconnects in multi-tenant GPU clusters; using SSE over public internet without TLS; not validating certificates on internal service calls.
@@ -197,7 +197,7 @@ Enforce consumption bounds to prevent abuse, runaway execution, and denial-of-se
 | Per-tool CPU, memory, disk, egress, and execution time limits with fail-closed termination on breach | 9.3.2 |
 | Quota and timeout breach logging (tool, exceeded limit, timestamp) | 9.3.4 |
 | Query-rate limiting for model extraction and inversion defense, sized to the threat model (e.g., the number of queries required to approximate the model or to reconstruct training records) rather than as a generic API throttle | 11.4.2, 11.5.1 |
-| Anomalous usage pattern detection and blocking | 13.2.3, ASVS v5 V2.4 |
+| Anomalous usage pattern detection and blocking | 12.2.3, ASVS v5 V2.4 |
 
 **Common pitfalls:** setting rate limits per-endpoint but not per-agent-session; not accounting for tool fan-out when calculating budgets; missing circuit breakers on recursive agent chains.
 
@@ -289,38 +289,6 @@ Manage model deployment, rollback, retirement, and emergency response.
 
 ---
 
-## AD.14 Privacy & Data Minimization
-
-Protect personal data and enforce data subject rights throughout the AI lifecycle.
-
-| Control / Technique | Requirement IDs |
-| --- | --- |
-| Training data minimization (exclude unnecessary features, PII, leaked test data) | 1.1.2 |
-| Labeled data anonymization and granular redaction | 1.2.4 |
-| Direct and quasi-identifier removal | 12.1.1 |
-| k-anonymity and l-diversity measurement with automated audits | 12.1.2 |
-| Feature-importance leakage check on trained models | 12.1.3 |
-| Synthetic data with formal re-identification risk bounds | 12.1.4 |
-| Data deletion propagation across AI artifacts (datasets, checkpoints, caches) | 12.2.1 |
-| Shadow-model evaluation of unlearning effectiveness | 12.2.2 |
-| Machine unlearning with certified algorithms | 12.2.3 |
-| Privacy-loss accounting with epsilon budget tracking and alerts | 12.3.1 |
-| Empirical (black-box) differential privacy audits | 12.3.2 |
-| Formal differential privacy proofs (including post-training and embeddings) | 12.3.3 |
-| Purpose tags with machine-readable alignment and runtime enforcement | 12.4.1, 12.4.2 |
-| Consent scope validation before model inference (operation and data subjects) | 12.5.1 |
-| Consent scope enforcement: refuse or downgrade response before serving | 12.5.2 |
-| Consent withdrawal propagation through AI artifacts (aligned with deletion SLA) | 12.5.3 |
-| Local or central differential privacy in federated learning | 12.6.1 |
-| Differentially private training metrics | 12.6.2 |
-| Federated canary-based privacy auditing | 12.6.3 |
-| Federated training utility-loss bound against ε budget | 12.6.4 |
-| PII detection and removal in external datasets | 6.3.2 |
-
-**Common pitfalls:** deleting records from the database but not from model checkpoints or embeddings; not accounting for epsilon budget accumulation across queries; treating anonymization as a one-time step.
-
----
-
 ## AD.15 Adversarial Testing & Model Hardening
 
 Test for and defend against evasion, extraction, inversion, poisoning, and alignment bypass attacks.
@@ -366,13 +334,13 @@ Capture security-relevant events with integrity protection for forensic analysis
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Basic session and model context logging (timestamp, user ID, session ID, model version) | 13.1.1 |
-| AI-specific telemetry logging (token count, input hash, system prompt version, confidence score, safety filter outcome) | 13.1.2 |
-| AI interaction logs exclude prompt and response content by default, with content logging requiring explicit opt-in and documented justification | 13.1.3 |
-| Secure, access-controlled log repositories with retention policies | 13.1.4 |
-| Log encryption at rest and in transit | 13.1.5 |
-| PII, credential, and proprietary information redaction in logs | 13.1.6 |
-| Policy decision and safety filtering action logging | 13.1.4 |
+| Basic session and model context logging (timestamp, user ID, session ID, model version) | 12.1.1 |
+| AI-specific telemetry logging (token count, input hash, system prompt version, confidence score, safety filter outcome) | 12.1.2 |
+| AI interaction logs exclude prompt and response content by default, with content logging requiring explicit opt-in and documented justification | 12.1.3 |
+| Secure, access-controlled log repositories with retention policies | 12.1.4 |
+| Log encryption at rest and in transit | 12.1.5 |
+| PII, credential, and proprietary information redaction in logs | 12.1.6 |
+| Policy decision and safety filtering action logging | 12.1.4 |
 | Audit log context fields sufficient for forensic reconstruction (actor, delegation, policy, parameters, outcomes) | 9.4.3 |
 | Agent action cryptographic chain ID binding | 9.4.2 |
 | Agent action signing and timestamps for non-repudiation | 9.4.4 |
@@ -394,21 +362,21 @@ Detect anomalies, alert on threats, and respond to security incidents in AI syst
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Jailbreak and prompt injection attempt detection (signature-based) | 13.2.1 |
-| SIEM integration with standard log formats | 13.2.2 |
-| AI-specific event enrichment (model ID, confidence, filter decisions) | 13.2.2 |
-| Behavioral anomaly detection (unusual patterns, excessive retries, systematic probing) | 13.2.3, 13.2.5 |
-| Detection rules for AI-specific attack patterns (jailbreak campaigns, prompt injection, system prompt extraction, model extraction) | 13.2.4 |
-| Automated incident response (isolation and blocking of compromised models and malicious users) | 13.2.6 |
-| Performance metric monitoring (accuracy, latency, error rate) with alerting | 13.3.1, 13.3.3, 13.3.4 |
-| Performance degradation retraining and replacement workflow triggers | 13.3.8 |
-| Hallucination detection monitoring | 13.3.5 |
-| Hallucination rate time-series tracking | 13.3.9 |
-| Training pipeline telemetry monitoring (runtime duration, loss trajectory, convergence rate) with baseline alerting and artifact gating | 13.3.10 |
+| Jailbreak and prompt injection attempt detection (signature-based) | 12.2.1 |
+| SIEM integration with standard log formats | 12.2.2 |
+| AI-specific event enrichment (model ID, confidence, filter decisions) | 12.2.2 |
+| Behavioral anomaly detection (unusual patterns, excessive retries, systematic probing) | 12.2.3, 12.2.5 |
+| Detection rules for AI-specific attack patterns (jailbreak campaigns, prompt injection, system prompt extraction, model extraction) | 12.2.4 |
+| Automated incident response (isolation and blocking of compromised models and malicious users) | 12.2.6 |
+| Performance metric monitoring (accuracy, latency, error rate) with alerting | 12.3.1, 12.3.3, 12.3.4 |
+| Performance degradation retraining and replacement workflow triggers | 12.3.8 |
+| Hallucination detection monitoring | 12.3.5 |
+| Hallucination rate time-series tracking | 12.3.9 |
+| Training pipeline telemetry monitoring (runtime duration, loss trajectory, convergence rate) with baseline alerting and artifact gating | 12.3.10 |
 | Model extraction alert generation with query metadata logging | 11.5.2 |
 | Emergent multi-agent behavior detection (oscillation, deadlock, broadcast storms) | 9.8.4 |
-| AI-specific incident response plans (model compromise, data poisoning, adversarial attack) | 13.5.1 |
-| AI-specific forensic tools for model behavior investigation | 13.5.2 |
+| AI-specific incident response plans (model compromise, data poisoning, adversarial attack) | 12.5.1 |
+| AI-specific forensic tools for model behavior investigation | 12.5.2 |
 | Safety violation rate alerting | 7.6.3 |
 | Real-time security policy updates without full redeployment | 11.7.1 |
 | Policy change rollback procedures and testing | 11.7.3 |
@@ -435,7 +403,7 @@ Enable human understanding of model decisions through interpretability artifacts
 
 ## AD.19 Human Oversight & Approval Gates
 
-Require human review and approval for high-impact, irreversible, or safety-critical actions, and provide reliable shutdown and graceful-degradation paths under human control. Effective human oversight requires four cooperating layers: a **documented policy** that classifies which actions are high-risk and is wired to the runtime gate (C9.2.1), a **runtime gate** that blocks execution until approval is received (C9.2), **kill-switch and graceful-degradation mechanisms** to halt or constrain the system when needed (C9.6), and **independent audit trails** for both approvals (C13.6.4) and human-initiated overrides (C9.6.4). Each layer is separately verifiable; an approval gate without a policy is unenforceable, a policy without a runtime gate is unenforced, and either without audit trails is unattributable.
+Require human review and approval for high-impact, irreversible, or safety-critical actions, and provide reliable shutdown and graceful-degradation paths under human control. Effective human oversight requires four cooperating layers: a **documented policy** that classifies which actions are high-risk and is wired to the runtime gate (C9.2.1), a **runtime gate** that blocks execution until approval is received (C9.2), **kill-switch and graceful-degradation mechanisms** to halt or constrain the system when needed (C9.6), and **independent audit trails** for both approvals (C12.6.4) and human-initiated overrides (C9.6.4). Each layer is separately verifiable; an approval gate without a policy is unenforceable, a policy without a runtime gate is unenforced, and either without audit trails is unattributable.
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
