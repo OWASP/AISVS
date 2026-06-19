@@ -12,6 +12,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | :--: | --- | :---: |
 | **10.1.1** | **Verify that** MCP components are obtained only from trusted sources and cryptographically verified. | 1 |
 | **10.1.2** | **Verify that** only allow-listed MCP servers are permitted. | 2 |
+| **10.1.3** | **Verify that** locally launched MCP servers run in a least-privilege sandbox with restricted file system, network, and system access. | 2 |
 
 ---
 
