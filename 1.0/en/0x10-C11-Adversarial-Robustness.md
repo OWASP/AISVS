@@ -27,7 +27,7 @@ Increase resilience to manipulated inputs designed to cause misclassification or
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **11.2.1** | **Verify that** models serving high-risk functions are evaluated against known adversarial attack techniques relevant to their modality (e.g., perturbation attacks for vision, token-manipulation attacks for text, trigger-based or instruction-injection backdoors where applicable). | 1 |
-| **11.2.2** | **Verify that** adversarial-example detection raises alerts in production pipelines, with blocking or degraded-capability responses for high-risk endpoints or use cases. | 2 |
+| **11.2.2** | **Verify that** adversarial example detection raises alerts in production pipelines, with blocking or degraded-capability responses for high-risk endpoints or use cases. | 2 |
 | **11.2.3** | **Verify that** models serving high-risk functions are hardened against adversarial inputs using one or more techniques such as adversarial training, randomized smoothing, defensive distillation, or input transformation. | 3 |
 | **11.2.4** | **Verify that** certified robustness metrics (e.g., certified radius, verified robust accuracy at defined perturbation bounds) are tracked and recorded per model version, and that degradation beyond defined thresholds triggers re-evaluation before deployment. | 3 |
 | **11.2.5** | **Verify that** adversarial hardening configurations and procedures are documented and reproducible. | 2 |
@@ -134,7 +134,7 @@ Protect security-relevant classifiers against adversaries who systematically pro
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **11.10.1** | **Verify that** adversarial robustness evaluations for security-relevant classifiers are stratified by meaningful input subgroups (e.g., language register, content category). Per-subgroup false-negative rates under adversarial conditions are measured and flagged when they deviate from aggregate rates beyond a defined threshold. | 2 |
 | **11.10.2** | **Verify that** inference endpoints for security-relevant classifiers (e.g., abuse detection, fraud scoring) include monitoring that accounts for query patterns indicative of bias probing, such as systematic variation along a single input dimension (e.g., demographic, linguistic, stylistic) while other dimensions remain constant, and alert when such patterns are detected. | 3 |
-| **11.10.3** | **Verify that** where bias-based evasion is identified as a material threat, adversarial hardening (e.g., adversarial training with per-subgroup loss constraints, ensemble diversity across training distributions) incorporates explicit subgroup robustness requirements, and that per-subgroup robustness metrics are verified not to regress across model releases. | 3 |
+| **11.10.3** | **Verify that** where bias-based evasion is identified as a material threat, adversarial hardening (e.g. adversarial training with per-subgroup loss constraints, ensemble diversity across training distributions) incorporates explicit subgroup robustness requirements, and that per-subgroup robustness metrics are verified not to regress across model releases. | 3 |
 
 ---
 
