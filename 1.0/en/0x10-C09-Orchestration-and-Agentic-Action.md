@@ -59,9 +59,8 @@ Make every action attributable and every mutation detectable.
 | :--: | --- | :---: |
 | **9.4.1** | **Verify that** each agent instance has a unique cryptographic identity and authenticates as a first-class principal to downstream systems. | 2 |
 | **9.4.2** | **Verify that** agent-initiated actions are cryptographically bound to each step of the execution chain for non-repudiation. | 2 |
-| **9.4.3** | **Verify that** audit log records include identity, scope, authorization decisions, tool parameters, and outcomes. | 2 |
-| **9.4.4** | **Verify that** agent identity credentials rotate on a defined schedule. | 3 |
-| **9.4.5** | **Verify that** agent state persisted between invocations is integrity-protected. | 3 |
+| **9.4.3** | **Verify that** agent identity credentials rotate on a defined schedule. | 3 |
+| **9.4.4** | **Verify that** agent state persisted between invocations is integrity-protected. | 3 |
 
 ---
 
@@ -88,8 +87,7 @@ Provide shutdown and graceful degradation paths under human control, with mechan
 | :--: | --- | :---: |
 | **9.6.1** | **Verify that** a manual kill-switch mechanism exists to immediately halt AI model inference and outputs. | 1 |
 | **9.6.2** | **Verify that** when a human-approval gate is not satisfied within the defined approval time, the system blocks the pending action. | 2 |
-| **9.6.3** | **Verify that** kill-switch activations and override commands are logged. | 2 |
-| **9.6.4** | **Verify that** kill-switch commands are implemented through an out-of-band channel that is isolated from the agent runtime. | 3 |
+| **9.6.3** | **Verify that** kill-switch commands are implemented through an out-of-band channel that is isolated from the agent runtime. | 3 |
 
 ---
 
