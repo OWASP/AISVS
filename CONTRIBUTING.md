@@ -12,7 +12,7 @@ The Open Worldwide Application Security Project (OWASP) is a nonprofit organizat
 
 ### What is the [AISVS](https://github.com/OWASP/www-project-artificial-intelligence-security-verification-standard-aisvs-docs)?
 
-The OWASP Artificial Intelligence Security Verification Standard (AISVS) focuses on providing developers, architects, and security professionals with a structured framework to evaluate and verify the security and ethical considerations of AI-driven applications. Modeled after existing OWASP standards (such as the ASVS for web applications), AISVS defines categories of requirements across 14 chapters covering areas including model behavior, supply chain integrity, agentic orchestration, privacy, adversarial robustness, and human oversight.
+The OWASP Artificial Intelligence Security Verification Standard (AISVS) focuses on providing developers, architects, and security professionals with a structured framework to evaluate and verify the security and ethical considerations of AI-driven applications. Modeled after existing OWASP standards (such as the ASVS for web applications), AISVS defines categories of requirements across 12 chapters covering areas including model behavior, supply chain integrity, agentic orchestration, adversarial robustness, and human oversight.
 
 ### What is the Current Status of AISVS development?
 
@@ -24,7 +24,7 @@ The OWASP Artificial Intelligence Security Verification Standard (AISVS) focuses
 
 This is the most important moment to contribute. We are actively refining the control set to ensure every requirement is independently testable, clearly scoped, and useful to both implementers and auditors. Once the freeze lands, the control text is locked for the 1.0 release.
 
-If you have security expertise in any of the 14 chapters and want to leave a mark on the first stable release of AISVS, now is the time.
+If you have security expertise in any of the 12 chapters and want to leave a mark on the first stable release of AISVS, now is the time.
 
 ## How can I help?
 
