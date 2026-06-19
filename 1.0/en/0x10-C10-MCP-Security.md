@@ -46,13 +46,14 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 
 | # | Description | Level |
 | :--: | --- | :---: |
-| **10.4.1** | **Verify that** MCP tools/list requests and tool responses are validated via a prompt injection guardrail system to prevent indirect prompt injection. | 1 |
-| **10.4.2** | **Verify that** MCP tools/list requests and tool responses are schema validated before being injected into the model context. | 1 |
+| **10.4.1** | **Verify that** MCP tools/list and tool responses are validated via a prompt injection guardrail system to prevent indirect prompt injection. | 1 |
+| **10.4.2** | **Verify that** MCP tools/list and tool responses are schema validated before being injected into the model context. | 1 |
 | **10.4.3** | **Verify that** MCP servers reject unrecognized or oversized parameters in function calls. | 1 |
 | **10.4.4** | **Verify that** all MCP servers enforce strict schema validation. | 2 |
 | **10.4.5** | **Verify that** all MCP transports enforce maximum payload size limits. | 2 |
 | **10.4.6** | **Verify that** MCP servers sign tool responses with a unique nonce and timestamp so MCP clients can avoid replay attacks. | 2 |
 | **10.4.7** | **Verify that** MCP clients maintain a snapshot of tool definitions and that any change to a tool definition triggers re-approval before the modified tool can be invoked. | 3 |
+| **10.4.8** | **Verify that** MCP clients present users with explicit consent dialogue and cancellation options upon installation of a local MCP server. | 2 |
 
 ---
 
