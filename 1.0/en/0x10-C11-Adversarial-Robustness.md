@@ -68,11 +68,10 @@ Detect and deter unauthorized model cloning through API abuse. Rate limiting, qu
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **11.5.1** | **Verify that** inference endpoints enforce per-principal and global rate limits sized to the extraction threat model, and not solely as a generic API throttle. | 1 |
-| **11.5.2** | **Verify that** extraction-alert events include offending query metadata (e.g., source principal, query volume, input distribution statistics) to support investigation. | 2 |
-| **11.5.3** | **Verify that** query-pattern analysis (e.g., query diversity, input distribution anomalies, output-space coverage anomalies) feeds an automated extraction-attempt detector. | 2 |
-| **11.5.4** | **Verify that** raw model outputs (e.g., full posterior distributions, output vectors) are not directly exposed beyond the application backend, and that externally visible responses minimize output informativeness calibrated to the extraction risk level. | 2 |
-| **11.5.5** | **Verify that** model watermarking or fingerprinting techniques are applied so that unauthorized copies can be identified. | 3 |
-| **11.5.6** | **Verify that** detection of suspected extraction activity triggers adaptive response measures proportional to estimated extraction risk. | 3 |
+| **11.5.2** | **Verify that** query-pattern analysis (e.g., query diversity, input distribution anomalies, output-space coverage anomalies) feeds an automated extraction-attempt detector. | 2 |
+| **11.5.3** | **Verify that** raw model outputs (e.g., full posterior distributions, output vectors) are not directly exposed beyond the application backend, and that externally visible responses minimize output informativeness calibrated to the extraction risk level. | 2 |
+| **11.5.4** | **Verify that** model watermarking or fingerprinting techniques are applied so that unauthorized copies can be identified. | 3 |
+| **11.5.5** | **Verify that** detection of suspected extraction activity triggers adaptive response measures proportional to estimated extraction risk. | 3 |
 
 ---
 
@@ -121,10 +120,9 @@ Security controls for systems where the AI can modify its own configuration, pro
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **11.9.1** | **Verify that** any self-modification capability (e.g., prompt rewriting, tool-list changes, parameter updates) is restricted to explicitly designated areas with enforced boundaries. | 2 |
 | **11.9.2** | **Verify that** proposed self-modifications undergo security impact assessment or policy validation before taking effect. | 2 |
-| **11.9.3** | **Verify that** self-modifications are explicitly classified as security-relevant events and logged with sufficient detail to reconstruct what changed, when, by which agent or principal, and under what authorization. This logging applies even if self-modification is not otherwise documented as a logged event. | 2 |
-| **11.9.4** | **Verify that** self-modifications are reversible and subject to integrity verification, so that rollback to a known-good state is possible and can be confirmed. | 2 |
-| **11.9.5** | **Verify that** self-modification scope is bounded (e.g., maximum change magnitude, rate limits on updates, prohibited modification targets) to prevent runaway or adversarially induced changes. | 3 |
-| **11.9.6** | **Verify that** when safety violation data (blocked inputs, filtered outputs, flagged hallucinations) is used as training signal for model improvement, the feedback pipeline includes integrity verification, poisoning detection, and human review gates to prevent adversarial manipulation of the improvement mechanism. | 3 |
+| **11.9.3** | **Verify that** self-modifications are reversible and subject to integrity verification, so that rollback to a known-good state is possible and can be confirmed. | 2 |
+| **11.9.4** | **Verify that** self-modification scope is bounded (e.g., maximum change magnitude, rate limits on updates, prohibited modification targets) to prevent runaway or adversarially induced changes. | 3 |
+| **11.9.5** | **Verify that** when safety violation data (blocked inputs, filtered outputs, flagged hallucinations) is used as training signal for model improvement, the feedback pipeline includes integrity verification, poisoning detection, and human review gates to prevent adversarial manipulation of the improvement mechanism. | 3 |
 
 ## C11.10 Adversarial Bias Exploitation Defense
 

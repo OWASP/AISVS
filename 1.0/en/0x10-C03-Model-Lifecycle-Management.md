@@ -25,9 +25,8 @@ Models must pass defined security and safety validations before deployment.
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------- | :---: |
 | **3.2.1** | **Verify that** models undergo automated input validation testing, safety evaluation testing and output sanitization testing before deployment. | 1 |
-| **3.2.2** | **Verify that** all model changes (deployment, configuration, retirement) generate immutable audit records. | 2 |
-| **3.2.3** | **Verify that** models that are subjected to post-training quantization will be re-evaluated against the same safety and alignment test suite on the compressed artifact before deployment. | 2 |
-| **3.2.4** | **Verify that** provider model, version, or routing changes trigger security re-evaluation before continued use. | 3 |
+| **3.2.2** | **Verify that** models that are subjected to post-training quantization will be re-evaluated against the same safety and alignment test suite on the compressed artifact before deployment. | 2 |
+| **3.2.3** | **Verify that** provider model, version, or routing changes trigger security re-evaluation before continued use. | 3 |
 
 ---
 
@@ -40,7 +39,6 @@ Model deployments must be controlled, monitored, and reversible.
 | **3.3.1** | **Verify that** production deployments implement rollout mechanisms with automated rollback triggers. | 2 |
 | **3.3.2** | **Verify that** rollback capabilities restore the complete model state. | 2 |
 | **3.3.3** | **Verify that** model versions running in parallel use isolated runtime state so that AI-specific shared resources are not shared across deployments. | 2 |
-| **3.3.4** | **Verify that** logs record the exact hosted model identifier returned by the provider. | 2 |
 
 ---
 

@@ -4,7 +4,7 @@
 
 Deliver real-time and forensic visibility into what the model and other AI components see, do, and return, so AI-specific threats can be detected, triaged, and learned from.
 
-This chapter focuses on controls unique to AI systems for monitoring, logging, and anomaly detection: AI-specific log content (model identifier, token usage, safety filter outcomes, prompt/response handling), AI-specific abuse and attack detection (jailbreak, prompt injection, extraction, multi-turn trajectory, covert channels over LLM endpoints), model and data drift detection, AI-specific telemetry signals (token attribution, output/input ratio anomalies), AI incident response, and proactive agent behavior monitoring.
+This chapter focuses on controls unique to AI systems for monitoring, logging, and anomaly detection: AI-specific log content (model identifier, token usage, safety filter outcomes, prompt/response handling), AI-specific abuse and attack detection (jailbreak, prompt injection, extraction, multi-turn trajectory, covert channels over LLM endpoints), model and data drift detection, AI-specific telemetry signals (token attribution, output/input ratio anomalies), AI incident response, proactive agent behavior monitoring, and training data and model lifecycle audit logging.
 
 ---
 
@@ -18,6 +18,9 @@ This chapter focuses on controls unique to AI systems for monitoring, logging, a
 | **12.1.4** | **Verify that** policy decisions and safety filtering actions are logged with enough detail to audit and debug content moderation systems. | 2 |
 | **12.1.5** | **Verify that** log entries for AI inference events follow a structured, interoperable schema that includes at least the model identifier, token usage (input and output), provider name, and operation type, so AI observability stays consistent across tools and platforms. | 2 |
 | **12.1.6** | **Verify that** full prompt and response content is logged only when a security-relevant event is detected (e.g., safety filter trigger, prompt injection detection, anomaly flag), or when required by explicit user consent and a documented legal basis. | 2 |
+| **12.1.7** | **Verify that** screening logs include classifier confidence scores and policy category tags with applied stage and trace metadata. | 2 |
+| **12.1.8** | **Verify that** logs record the exact hosted model identifier returned by the provider. | 2 |
+| **12.1.9** | **Verify that** RAG pipeline retrieval events are logged, including the query, documents retrieved, and knowledge source. | 2 |
 
 ---
 
@@ -33,8 +36,9 @@ Detect AI-specific attack patterns (jailbreak, prompt injection, model extractio
 | **12.2.4** | **Verify that** custom rules detect AI-specific threat patterns, including coordinated jailbreak attempts, prompt injection campaigns, system prompt extraction attempts, and model extraction attacks. | 2 |
 | **12.2.5** | **Verify that** per-user and per-session token consumption triggers an alert when consumption exceeds defined thresholds. | 2 |
 | **12.2.6** | **Verify that** automated incident response workflows can isolate compromised models and block malicious users. | 2 |
-| **12.2.7** | **Verify that** session-level conversation trajectory analysis detects multi-turn jailbreak patterns where no single turn looks overtly malicious on its own, but the conversation as a whole shows attack indicators. | 3 |
-| **12.2.8** | **Verify that** LLM API traffic is monitored for covert channel indicators, including Base64-encoded payloads, structured non-human query patterns, and communication signatures consistent with malware command-and-control activity using LLM endpoints. | 3 |
+| **12.2.7** | **Verify that** extraction-alert events include offending query metadata (e.g., source principal, query volume, input distribution statistics) to support investigation. | 2 |
+| **12.2.8** | **Verify that** session-level conversation trajectory analysis detects multi-turn jailbreak patterns where no single turn looks overtly malicious on its own, but the conversation as a whole shows attack indicators. | 3 |
+| **12.2.9** | **Verify that** LLM API traffic is monitored for covert channel indicators, including Base64-encoded payloads, structured non-human query patterns, and communication signatures consistent with malware command-and-control activity using LLM endpoints. | 3 |
 
 ---
 
@@ -88,7 +92,24 @@ Detect and prevent security threats arising from proactive (agent-initiated) beh
 | **12.6.2** | **Verify that** autonomous initiative triggers include security context evaluation and threat landscape assessment. | 2 |
 | **12.6.3** | **Verify that** proactive behavior patterns are analyzed for potential security implications and unintended consequences. | 2 |
 | **12.6.4** | **Verify that** audit logs capture the complete approval chain for security-critical proactive actions, including approver identity, timestamp, action parameters, and decision outcome. | 2 |
-| **12.6.5** | **Verify that** behavioral anomaly detection identifies deviations in proactive agent patterns that may indicate compromise. | 3 |
+| **12.6.5** | **Verify that** audit log records include identity, scope, authorization decisions, tool parameters, and outcomes. | 2 |
+| **12.6.6** | **Verify that** kill-switch activations and override commands are logged. | 2 |
+| **12.6.7** | **Verify that** self-modifications are explicitly classified as security-relevant events and logged with sufficient detail to reconstruct what changed, when, by which agent or principal, and under what authorization. | 2 |
+| **12.6.8** | **Verify that** behavioral anomaly detection identifies deviations in proactive agent patterns that may indicate compromise. | 3 |
+
+---
+
+## C12.7 Training Data & Model Lifecycle Audit
+
+Ensure that the provenance and change history of training data, model artifacts, and knowledge sources are auditable throughout the AI development lifecycle.
+
+| # | Description | Level |
+| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
+| **12.7.1** | **Verify that** the lineage of each dataset and its components, including all transformations, augmentations, and merges, is recorded and can be reconstructed. | 1 |
+| **12.7.2** | **Verify that** all labeling activities are recorded in logs. | 1 |
+| **12.7.3** | **Verify that** all model changes (deployment, configuration, retirement) generate immutable audit records. | 2 |
+| **12.7.4** | **Verify that** every ingested document is tagged at write time with source, writer identity, and timestamp. | 2 |
+| **12.7.5** | **Verify that** all training datasets are uniquely identified, with change tracking, to support rollback and forensic analysis. | 3 |
 
 ---
 
