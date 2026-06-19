@@ -35,7 +35,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | :--: | --- | :---: |
 | **10.3.1** | **Verify that** authenticated, encrypted streamable HTTP is used for MCP transport for remote services. | 1 |
 | **10.3.2** | **Verify that** stdio transport is permitted only in controlled local environments. | 1 |
-| **10.3.3** | **Verify that** MCP servers validate both the Origin header and the Host header independently on all HTTP-based transports to prevent DNS rebinding attacks.| 2 |
+| **10.3.3** | **Verify that** MCP servers validate both the Origin header and the Host header independently on all HTTP-based transports to prevent DNS rebinding attacks. | 2 |
 | **10.3.4** | **Verify that** MCP clients enforce a minimum acceptable protocol version and reject initialize responses that propose a version below that minimum. | 2 |
 | **10.3.5** | **Verify that** access tokens between the MCP client and server are sender-constrained using mTLS or DPoP. | 3 |
 
