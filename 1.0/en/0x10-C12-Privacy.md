@@ -25,7 +25,7 @@ Ensure data-subject deletion requests propagate across all AI artifacts and that
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **12.2.1** | **Verify that** data-subject deletion requests propagate to AI data artifacts including training and fine-tuning datasets, evaluation sets, derived caches, feature stores, and vector/embedding stores within a service-level agreement window of less than 30 days. | 1 |
+| **12.2.1** | **Verify that** data-subject deletion requests propagate to AI data artifacts, including training and fine-tuning datasets, evaluation sets, derived caches, feature stores, and vector/embedding stores within a service-level agreement window of less than 30 days. | 1 |
 | **12.2.2** | **Verify that** shadow-model or membership-inference evaluation demonstrates that forgotten records influence less than a documented policy threshold of model outputs after unlearning. | 2 |
 | **12.2.3** | **Verify that** machine-unlearning routines, when claimed, either physically retrain the affected model on the retained data or apply a certified unlearning algorithm with documented (ε, δ) guarantees. | 3 |
 
@@ -69,7 +69,7 @@ Enforce consent at AI-specific decision points (training data ingestion, inferen
 
 ## C12.6 Federated Learning with Privacy Controls
 
-Apply differential privacy and privacy auditing to federated learning to protect individual participant data.
+Apply differential privacy and privacy auditing to federated learning in order to protect individual participant data.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
