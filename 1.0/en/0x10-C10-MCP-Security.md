@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-Ensure secure discovery, authentication, authorization, transport, and use of MCP-based tool and resource integrations to prevent context confusion, unauthorized tool invocation, or cross-tenant data exposure. This chapter covers MCP-protocol-specific controls.
+Ensure secure discovery, authentication, authorization, transport, and use of MCP-based tool and resource integrations to prevent context confusion, unauthorized tool invocation, or cross-tenant data exposure. This chapter covers MCP protocol-specific controls.
 
 ---
 
@@ -11,7 +11,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | # | Description | Level |
 | :--: | --- | :---: |
 | **10.1.1** | **Verify that** MCP components are obtained only from trusted sources and cryptographically verified. | 1 |
-| **10.1.2** | **Verify that** only allowlisted MCP servers are permitted. | 2 |
+| **10.1.2** | **Verify that** only allow-listed MCP servers are permitted. | 2 |
 
 ---
 
@@ -22,9 +22,9 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **10.2.1** | **Verify that** MCP servers validate access tokens for each request and do not rely on transport security alone. | 1 |
 | **10.2.2** | **Verify that** MCP servers validate the presented access token's issuer, audience, expiration, and scope claims in accordance with OAuth 2.1. | 1 |
 | **10.2.3** | **Verify that** MCP servers acting as OAuth 2.1 resource servers do not store or persist access tokens or user credentials. | 1 |
-| **10.2.4** | **Verify that** MCP tools/list only returns tools that the resource owners authorized scopes allow. | 2 |
+| **10.2.4** | **Verify that** MCP tools/list only returns tools that the resource owners' authorized scopes allow. | 2 |
 | **10.2.5** | **Verify that** MCP servers enforce access control on every tool invocation, validating that the user's access token authorizes both the requested tool and the specific argument values supplied. | 2 |
-| **10.2.6** | **Verify that** MCP servers ensure that all session artifacts are removed when a session terminates. | 2 |
+| **10.2.6** | **Verify that** MCP servers ensure all session artifacts are removed when a session terminates. | 2 |
 | **10.2.7** | **Verify that** MCP servers do not pass through access tokens received from clients to downstream APIs. | 2 |
 
 ---
@@ -33,7 +33,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 
 | # | Description | Level |
 | :--: | --- | :---: |
-| **10.3.1** | **Verify that** authenticated, encrypted streamable-HTTP is used for MCP transport for remote services. | 1 |
+| **10.3.1** | **Verify that** authenticated, encrypted streamable HTTP is used for MCP transport for remote services. | 1 |
 | **10.3.2** | **Verify that** stdio transport is permitted only in controlled local environments. | 1 |
 | **10.3.3** | **Verify that** MCP servers validate both the Origin header and the Host header independently on all HTTP-based transports to prevent DNS rebinding attacks.| 2 |
 | **10.3.4** | **Verify that** MCP clients enforce a minimum acceptable protocol version and reject initialize responses that propose a version below that minimum. | 2 |
@@ -50,7 +50,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **10.4.3** | **Verify that** MCP servers reject unrecognized or oversized parameters in function calls. | 1 |
 | **10.4.4** | **Verify that** all MCP servers enforce strict schema validation. | 2 |
 | **10.4.5** | **Verify that** all MCP transports enforce maximum payload size limits. | 2 |
-| **10.4.6** | **Verify that** MCP servers sign tool responses with a unique nonce and timestamp so that MCP clients can avoid replay attacks. | 2 |
+| **10.4.6** | **Verify that** MCP servers sign tool responses with a unique nonce and timestamp so MCP clients can avoid replay attacks. | 2 |
 | **10.4.7** | **Verify that** MCP clients maintain a snapshot of tool definitions and that any change to a tool definition triggers re-approval before the modified tool can be invoked. | 3 |
 
 ---
