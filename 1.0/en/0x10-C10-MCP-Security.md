@@ -12,6 +12,8 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | :--: | --- | :---: |
 | **10.1.1** | **Verify that** MCP components are obtained only from trusted sources and cryptographically verified. | 1 |
 | **10.1.2** | **Verify that** only allowlisted MCP servers are permitted. | 2 |
+| **10.1.3** | **Verify that** before a local MCP server is configured or launched (including one-click install flows), the MCP client displays the exact command and arguments to be executed without truncation and requires explicit human approval before execution. | 1 |
+| **10.1.4** | **Verify that** locally launched MCP servers run in a least-privilege sandbox with restricted file system, network, and system access. | 2 |
 
 ---
 
