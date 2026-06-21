@@ -63,4 +63,4 @@ Individual chapters and sections do not enumerate which other AISVS chapters cov
 
 When using AISVS to assess security of a system, often the organization developing the system is not in full control of the supply chain. AISVS does not prescribe a certain way to approach these situations.
 
-One option is to get this information from the vendors used in the supply chain. Often the requirements can be assessed using a combination of technical testing and referencing vendor documentation (e.g., model cards for AI models). Another option is to just mark requirements not in organization's control as out of scope.s
+One option is to get this information from the vendors used in the supply chain. Often the requirements can be assessed using a combination of technical testing and referencing vendor documentation (e.g., model cards for AI models). Another option is to just mark requirements not in organization's control as out of scope.
