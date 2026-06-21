@@ -55,7 +55,6 @@ If an AISVS requirement appears to overlap with an ASVS requirement, the AISVS v
 
 ## Cross-References Inside AISVS
 
-AISVS chapters are organized by control family rather than by attack or component. As a result, defending against a given AI threat usually requires applying requirements from several chapters together. For example, defending against prompt injection in an agentic application combines requirements from C2 (input validation), C7 (output controls), C9 (agent action gating and human oversight), C10 (MCP-specific controls), C11 (adversarial robustness), and C13 (detection and logging).
+AISVS chapters are organized by control family rather than by attack or component. As a result, defending against a given AI threat usually requires applying requirements from several chapters together. For example, defending against prompt injection in an agentic application combines requirements from C2 (input validation), C7 (model behavior), C9 (orchestration and agentic action), C10 (MCP-specific controls), C11 (adversarial robustness), and C12 (detection and logging).
 
 Individual chapters and sections do not enumerate which other AISVS chapters cover related concerns. When applying AISVS, treat the standard as a whole and consult Appendix D (AI Security Controls Inventory) for a cross-cutting view of where each defense technique appears.
-
