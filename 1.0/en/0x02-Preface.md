@@ -10,16 +10,16 @@ AISVS was created to give organizations a structured, testable set of security c
 
 ## Design Principles
 
-The standard is organized into 12 chapters, referred to as control families. Each control family is divided into focused sections that collectively address the family's control objective. Each section contains individual verification requirements. Sections are not required to define requirements for every assurance level, and requirements must not duplicate controls that are already specified elsewhere in the standard.
+AISVS is organized into 12 control families. Each control family is divided into focused sections that support its control objective. Each section contains verification requirements. Sections need not define requirements at every assurance level.
 
-Each requirement must address a single concern that can, in common scenarios, be implemented and audited as one technical mechanism. A requirement may specify progressively stricter criteria at higher levels; when present, these stricter criteria are represented as separate requirements in the section. Requirements must use clear, technology-neutral language to the extent possible, referencing well-known technologies as examples where helpful for clarity.
+Each requirement must address a single concern that can ordinarily be implemented and verified as one technical mechanism. Requirements must not duplicate controls defined elsewhere in AISVS. Higher assurance levels may introduce stricter criteria, but those criteria must be stated as separate requirements. Requirements should use clear, technology-neutral language, referencing specific technologies only as examples where they improve clarity.
 
-Every requirement in AISVS follows these principles derived from the standard's name:
+Every AISVS requirement follows four design principles derived from the standard’s name:
 
-* **Artificial Intelligence.** Each control operates at the AI or ML layer (data, model, pipeline, agent, or inference) and addresses risks specific to AI systems rather than general application security. The standard does not duplicate controls from other broadly adopted standards or frameworks (such as ASVS), unless the control has unique, AI-specific implementation concerns.
-* **Security.** Each requirement directly mitigates an identified security, privacy, or safety risk. Controls that serve only operational, governance, compliance, or business objectives are out of scope.
-* **Verification.** Requirements are written so that conformance can be objectively validated through testing, inspection, or audit. Sufficient implementation guidance or tooling must exist to allow both implementation and effective verification of the requirement; purely theoretical, subjective, or aspirational guidance is excluded.
-* **Standard.** All chapters follow a consistent structure and terminology to form a coherent, navigable reference document.
+* **Artificial Intelligence.** Requirements must address AI/ML-specific assets, workflows, or runtime behavior, including datasets, models, training and evaluation pipelines, retrieval systems, agents, tools, memory, and inference-time operation. AISVS does not duplicate general application security controls from standards such as ASVS unless the control has AI-specific implementation or verification concerns.
+* **Security.** Requirements must mitigate an identifiable security, privacy, or safety risk. Controls that serve only operational, governance, compliance, or business objectives are out of scope.
+* **Verification.** Requirements must be objectively verifiable through testing, inspection, or audit. Sufficient implementation guidance or tooling must exist to support both implementation and verification. Purely theoretical, subjective, or aspirational guidance is excluded.
+* **Standard.** Requirements must use consistent structure, terminology, and assurance-level semantics so AISVS remains coherent, navigable, and suitable for repeatable assessment.
 
 ## How to Read This Standard
 
