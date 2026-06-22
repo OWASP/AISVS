@@ -7,30 +7,6 @@
 
 This appendix lists organizational controls for using AI coding tools safely. The range is baseline to advanced. Scope is coding, code review, and the rest of the SSDLC.
 
-Treat the AI coding agent as an actor in the supply chain, not as a passive helper. It has identity, authority, and the ability to act on its own behalf or to be acted upon by an attacker.
-
-Two things follow from that framing.
-
-Your own agent can be turned against you. A code-review bot reading a malicious PR description can be prompt-injected into approving the same code it was meant to reject. The injection does not have to be subtle. It just has to reach the bot's context window.
-
-Attackers run AI of their own, often at scale. Familiar patterns include automated fork-and-pull-request campaigns aimed at `pull_request_target`-class triggers, AI-generated payloads tailored to a specific target repository, and abuse of long-lived CI secrets harvested along the way.
-
-The appendix aligns with NIST SSDF (SP 800-218 and SP 800-218A), NIST SP 800-204D, NIST AI RMF (AI 100-1), the NIST Generative AI Profile (AI 600-1), NIST SP 800-207 Zero Trust Architecture, SLSA v1.2 (Build and Source Tracks), OWASP ASVS v5, the OWASP Top 10 CI/CD Security Risks, the OWASP Top 10 for Large Language Model Applications (2025), the OWASP Top 10 for Agentic Applications (2026, ASI01-ASI10), ISO/IEC 42001:2023, and MITRE ATLAS and ATT&CK.
-
-> **Scope note:** Only the AI-specific delta is in scope here. Generic CI/CD pipeline security (branch protection, signed commits, runner hardening, secret scanning, dependency pinning) is already covered by OWASP ASVS v5, the OWASP Top 10 CI/CD Security Risks, NIST SP 800-204D, and SLSA v1.2. Those baselines must already be in place. The references to them in this appendix are reminders. AI augmentation must not weaken them. And the AI-specific threat classes (fork-PR trigger exploitation, prompt injection, adversaries running AI of their own) have to be addressed as well.
->
-> **Relationship to normative chapters:** Several controls in this appendix are really applications of an AISVS chapter control to the secure-coding case. The chapters that come up most often are C2.1 (Prompt Input Validation), C9.3 (Tool Sandboxing), and C9.6 (Action Authorization). The family introduction calls this out where it applies. For assessors: count an Appendix C finding either as an additional gap that the upstream chapter verification did not close, or as already counted under the chapter. Not as both.
-
----
-
-### Architectural Prerequisites
-
-Before you start verifying against Appendix C, the hosting environment needs to satisfy this baseline:
-
-* **OWASP ASVS v5 compliance.** This appendix supplements the ASVS v5 requirements for coding quality and CI/CD deployment security (V10 above all). It does not replace them. ASVS v5 coverage of CI/CD pipeline security has to be in place before Appendix C is verified. Same goes for coverage of the OWASP Top 10 CI/CD Security Risks.
-* **SLSA implementation.** SLSA Build Track Level 2 or higher on the core integration and delivery lines, with provenance generated and verified for release artifacts. If production AI agents are acting on source repositories, adopt the SLSA Source Track (v1.2) as well, for authorship and review controls.
-* **Platform control invariants.** Branch protection or ruleset constraints on the release paths. At a minimum: no unreviewed merges into default or release branches, signed commits where the platform supports them, required status checks, protected environments, and a trail for every human override.
-
 ---
 
 ## AC.1 AI-Assisted Secure-Coding Workflow
