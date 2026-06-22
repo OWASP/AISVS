@@ -8,7 +8,7 @@ This chapter addresses the embeddings and vector stores that act as semi-persist
 
 ## C8.1 Access Controls on Memory & RAG Indices
 
-This section covers enforcing fine-grained access controls and query-time scope enforcement for every vector collection.
+Fine-grained access controls and query-time scope enforcement must be applied to every vector collection.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -20,7 +20,7 @@ This section covers enforcing fine-grained access controls and query-time scope 
 
 ## C8.2 Embedding Sanitization & Validation
 
-This section covers pre-screening content before vectorization and treating memory writes as untrusted inputs to prevent ingestion of unsafe payloads.
+Content must be pre-screened before vectorization, and memory writes treated as untrusted input, to prevent ingestion of unsafe payloads.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -34,7 +34,7 @@ This section covers pre-screening content before vectorization and treating memo
 
 ## C8.3 Memory Expiry & Revocation
 
-This section covers making retention and revocation explicit and enforceable for memory and RAG indices.
+Retention and revocation must be explicit and enforceable for memory and RAG indices.
 
 | # | Description | Level |
 | :--: | --- | :---: |
