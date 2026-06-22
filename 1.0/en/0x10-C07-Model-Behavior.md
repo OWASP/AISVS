@@ -2,13 +2,13 @@
 
 ## Control Objective
 
-This control category ensures that model outputs are technically constrained, validated, and monitored so that unsafe, malformed, or high-risk responses cannot reach users or downstream systems. The chapter focuses on AI-specific output handling concerns: format and schema enforcement for model output, confidence and uncertainty handling, output safety filtering, and explainability artifacts.
+This chapter addresses constraining, validating, and monitoring model outputs so that unsafe, malformed, or high-risk responses cannot reach users or downstream systems. It covers output format enforcement, hallucination detection and mitigation, output safety, and source attribution and citation integrity.
 
 ---
 
 ## C7.1 Output Format Enforcement
 
-Ensure model outputs are structured and validated to reduce downstream injection risk.
+This section covers ensuring model outputs are structured and validated to reduce downstream injection risk.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -19,7 +19,7 @@ Ensure model outputs are structured and validated to reduce downstream injection
 
 ## C7.2 Hallucination Detection & Mitigation
 
-Detect when the model produces potentially inaccurate or fabricated content and prevent unreliable outputs from reaching users or downstream systems.
+This section covers detecting when the model produces potentially inaccurate or fabricated content and preventing unreliable outputs from reaching users or downstream systems.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -29,9 +29,9 @@ Detect when the model produces potentially inaccurate or fabricated content and 
 
 ---
 
-## C7.3 Output Safety, Privacy & Explainability
+## C7.3 Output Safety
 
-Technical controls detect and scrub unsafe content before it is shown to the user and ensure AI decisions are interpretable.
+This section covers technical controls that detect and remove unsafe content before it is shown to the user.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -44,7 +44,7 @@ Technical controls detect and scrub unsafe content before it is shown to the use
 
 ## C7.4 Source Attribution & Citation Integrity
 
-Ensure RAG-grounded outputs are traceable to their source documents and that cited claims are verifiably supported by retrieved content.
+This section covers ensuring RAG-grounded outputs are traceable to their source documents and that cited claims are verifiably supported by retrieved content.
 
 | # | Description | Level |
 | :-------: | -------------------------------------------------------------------------------------------------------------------------------------------- | :---: |
