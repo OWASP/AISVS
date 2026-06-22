@@ -2,13 +2,13 @@
 
 ## Control Objective
 
-AI systems must implement change control processes that prevent unauthorized or unsafe model modifications from reaching production. These controls enable rapid incident response and maintain accountability for all changes by ensuring model integrity through the entire lifecycle, from development through deployment to decommissioning. Controlled processes that maintain integrity, traceability, and recoverability ensure that only authorized and validated models reach production.
+This chapter addresses control of model changes so that unauthorized or unsafe modifications cannot reach production, preserving integrity, traceability, and recoverability across the entire lifecycle from development through deployment to decommissioning. These controls enable rapid incident response and maintain accountability for every change. It covers model authorization and integrity, model validation and testing, controlled deployment and rollback, secure development practices, and pipeline fine-tuning.
 
 ---
 
 ## C3.1 Model Authorization & Integrity
 
-Only authorized models with verified integrity should be allowed to reach production environments.
+This section covers ensuring that only authorized models with verified integrity can reach production environments.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -20,7 +20,7 @@ Only authorized models with verified integrity should be allowed to reach produc
 
 ## C3.2 Model Validation & Testing
 
-Models must pass defined security and safety validations before deployment.
+This section covers the security and safety validations that models must pass before deployment.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------- | :---: |
@@ -32,7 +32,7 @@ Models must pass defined security and safety validations before deployment.
 
 ## C3.3 Controlled Deployment & Rollback
 
-Model deployments must be controlled, monitored, and reversible to support model lifecycle management.
+This section covers keeping model deployments controlled, monitored, and reversible to support model lifecycle management.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -44,7 +44,7 @@ Model deployments must be controlled, monitored, and reversible to support model
 
 ## C3.4 Secure Development Practices
 
-Model development must follow secure practices to prevent compromise.
+This section covers separating model development environments from production environments.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -55,7 +55,7 @@ Model development must follow secure practices to prevent compromise.
 
 ## C3.5 Pipeline Fine-Tuning
 
-Fine-tuning pipelines are high-privilege operations that can alter deployed model behavior at scale. Multi-stage pipelines compound this risk because a compromise at any intermediate stage produces a subtly altered artifact that subsequent stages accept. Reward models used in Reinforcement Learning from Human Feedback (RLHF) are ML artifacts subject to tampering, yet they are often treated as static infrastructure rather than versioned, validated components.
+This section covers fine-tuning pipelines, which are high-privilege operations that can alter deployed model behavior at scale. Multi-stage pipelines compound this risk because a compromise at any intermediate stage produces a subtly altered artifact that subsequent stages accept.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
