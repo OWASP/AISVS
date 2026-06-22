@@ -60,11 +60,11 @@ AISVS levels are aligned with [ASVS](https://owasp.org/www-project-application-s
 | 2 | 2 | AI applications handling sensitive business data, regulated data, or operating in adversarial contexts. |
 | 3 | 3 | High-assurance AI applications such as those handling life-safety decisions, critical infrastructure, or highly sensitive personal data. |
 
-If an AISVS requirement appears to overlap with an ASVS requirement, the AISVS version is restated only because it has AI-specific implementation details, attack surface, or evidence that an auditor needs to evaluate differently. In all other cases, the ASVS requirement governs and AISVS does not repeat it.
+If an AISVS requirement appears to overlap with an ASVS requirement, the AISVS version is restated only because it has AI-specific implementation details, attack surface, or evidence that an auditor needs to evaluate differently.
 
 ## Scope of the AISVS
 
-AISVS is intentionally narrow. It only defines security requirements that are specific to AI and ML systems, or where general security controls have AI-specific nuances that warrant restating. It is not a self-contained security program for an AI application. AISVS assumes that the underlying application, infrastructure, and organizational practices are already verified against established general-purpose standards, and adds the AI-specific layer on top.
+AISVS is intentionally narrow. It only defines security requirements that are specific to AI and ML systems, or where general security controls have AI-specific nuances that warrant restating. It is not a self-contained security program for an AI application. AISVS assumes that the underlying application, infrastructure, and organizational practices are already verified against established general-purpose standards, and adds the AI-specific layer.
 
 The following are intentionally out of scope and are not duplicated in AISVS chapters:
 
@@ -76,16 +76,14 @@ The following are intentionally out of scope and are not duplicated in AISVS cha
 * **AI governance and risk management.** Organizational AI governance, AI impact assessments, fairness and ethics documentation, model cards, public transparency reports, and risk-management process design are defined by [ISO/IEC 42001](https://www.iso.org/standard/81230.html), [ISO/IEC 23894](https://www.iso.org/standard/77304.html), and the [NIST AI RMF](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10).
 * **Vendor-specific guidance.** AISVS is vendor-neutral. It specifies what to verify, not which product to use.
 
-When verifying an AI application against AISVS, the equivalent level of those underlying standards should be verified in parallel. AISVS by itself is not a substitute for, and does not subsume, any of them.
+When verifying an AI application against AISVS, the equivalent level of those underlying standards should be verified in parallel.
 
 ## Cross-References Inside AISVS
 
 AISVS chapters are organized by control family rather than by attack or component. As a result, defending against a given AI threat usually requires applying requirements from several chapters together. For example, defending against prompt injection in an agentic application combines requirements from C2 (input validation), C7 (model behavior), C9 (orchestration and agentic security), C10 (MCP-specific controls), C11 (adversarial robustness), and C12 (detection and logging).
 
-Individual chapters and sections do not enumerate which other AISVS chapters cover related concerns. When applying AISVS, treat the standard as a whole and consult Appendix B (AI Security Controls Inventory) for a cross-cutting view of where each defense technique appears.
+When applying AISVS, treat the standard as a whole and consult Appendix B (AI Security Controls Inventory) for a cross-cutting view of where each defense technique appears.
 
 ## AISVS Requirements and Scope in Assessments
 
-When using AISVS to assess the security of a system, the organization developing the system may not fully control its supply chain. AISVS does not prescribe one way to handle these situations.
-
-One option is to obtain evidence from supply chain vendors. Requirements can often be assessed using a combination of technical testing and vendor documentation, such as model cards for AI models. Another option is to mark requirements outside the organization's control as out of scope.
+Requirements can often be assessed using a combination of technical testing and vendor documentation, such as model cards for AI models. Another option is to mark requirements outside the organization's control as out of scope.
