@@ -39,13 +39,12 @@ Each of the 12 requirement chapters follows the same format:
 
 ### Appendices
 
-Five appendices support the core requirements:
+Four appendices support the core requirements:
 
 * **Appendix A (Glossary)** defines key terms and acronyms used throughout the standard.
 * **Appendix B (References)** lists external standards, research, and frameworks referenced by AISVS requirements.
 * **Appendix C (AI-Assisted Secure Coding)** provides controls for the safe use of AI coding tools during software development.
 * **Appendix D (AI Security Controls Inventory)** is a cross-reference of every defense technique in AISVS, organized by security control category (authentication, authorization, encryption, input validation, and so on) with mappings back to specific requirement identifiers.
-* **Appendix E (Contributors)** lists the project leads, contributors, and reviewers who have shaped this standard.
 
 ## Scope Boundaries
 
@@ -57,6 +56,6 @@ AISVS focuses on security controls that are specific to AI and ML systems. It in
 
 ## Acknowledgments
 
-AISVS v1.0 is the result of a collaborative effort by its project leads, working group members, and community contributors. We thank everyone who has contributed requirements, reviews, and feedback to make this standard possible. A full list of contributors is available in [Appendix E](0x94-Appendix-E_Contributors.md).
+AISVS v1.0 is the result of a collaborative effort by its project leads, working group members, and community contributors. We thank everyone who has contributed requirements, reviews, and feedback to make this standard possible. A full list of contributors is available in the [Frontispiece](0x01-Frontispiece.md).
 
 By adopting AISVS, organizations can systematically evaluate and strengthen the security posture of their AI systems, building a foundation of secure AI engineering practices that evolves alongside the technology itself.
