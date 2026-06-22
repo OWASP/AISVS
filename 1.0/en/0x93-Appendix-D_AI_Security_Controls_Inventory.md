@@ -283,10 +283,9 @@ Source, vet, and document training data so tampering, poisoning, and corruption 
 | Confidence thresholds and consistency checks on automatically generated labels | C1.3.2 |
 | Bias evaluation for models used in security-relevant decisions | C1.3.3 |
 | Defenses against clean-label poisoning attacks | C1.3.5 |
-| Dataset lineage recording and reconstruction (transformations, augmentations, merges) | C12.7.1 |
-| Logging of all labeling activities | C12.7.2 |
-| Write-time tagging of every ingested document (source, writer identity, timestamp) | C12.7.4 |
-| Unique identification of all training datasets with change tracking for rollback and forensics | C12.7.5 |
+| Dataset lineage recording (transformations, augmentations, merges) | C12.6.1 |
+| Logging of all labeling activities | C12.6.2 |
+| Write-time tagging of every ingested document (source, writer identity, timestamp) | C12.6.4 |
 
 **Common pitfalls:** not scanning fine-tuning datasets for poisoning; collecting more attributes than the purpose requires; losing dataset lineage across transformations and merges.
 
@@ -346,20 +345,13 @@ Capture security-relevant events with sufficient context and integrity for foren
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Basic session and model-context logging (timestamp, user ID, session ID, model version) | C12.1.1 |
-| AI-specific telemetry logging (token count, input hash, system prompt version, confidence score where exposed, safety filter outcome) | C12.1.2 |
-| Exclusion of prompt and response content by default, with content logging only on explicit opt-in and documented justification | C12.1.3 |
-| Logging of policy decisions and safety filtering actions in enough detail to audit moderation | C12.1.4 |
-| Structured, interoperable log schema for inference events (model identifier, input/output token usage, provider, operation type) | C12.1.5 |
-| Full prompt and response logging only on a detected security event or with consent and a documented legal basis | C12.1.6 |
-| Screening logs including classifier confidence scores, policy category tags, stage, and trace metadata | C12.1.7 |
-| Recording of the exact hosted model identifier returned by the provider | C12.1.8 |
-| Logging of RAG pipeline retrieval events (query, documents retrieved, knowledge source) | C12.1.9 |
-| Audit logs capturing the complete approval chain for security-critical proactive actions (approver identity, timestamp, parameters, outcome) | C12.6.4 |
-| Audit log records including identity, scope, authorization decisions, tool parameters, and outcomes | C12.6.5 |
-| Logging of kill-switch activations and override commands | C12.6.6 |
-| Classification and logging of self-modifications as security-relevant events (what changed, when, by which principal, under what authorization) | C12.6.7 |
-| Immutable audit records for all model changes (deployment, configuration, retirement) | C12.7.3 |
+| AI interaction logging with session context and AI-specific telemetry | C12.1.1 |
+| Logging of safety filtering and policy decisions in enough detail to audit content moderation | C12.1.2 |
+| Structured, interoperable log schema for inference events (model identifier, token usage, provider, operation type) | C12.1.3 |
+| Logging of RAG pipeline retrieval events (query, documents retrieved, knowledge source) | C12.1.4 |
+| Audit logs capturing the approval chain for security-critical proactive actions (approver identity, timestamp, parameters, outcome) | C12.5.2 |
+| Logging of kill-switch activations and override commands | C12.5.3 |
+| Immutable audit records for all model changes | C12.6.3 |
 
 **Common pitfalls:** logging prompts without redaction; using mutable log storage without integrity protection; logging agent actions and approvals but not human-initiated overrides such as kill-switch activations.
 
@@ -375,35 +367,20 @@ Detect AI-specific abuse, drift, and anomalies, and respond to incidents.
 | Extraction-attempt detector fed by query-pattern analysis | C11.3.1 |
 | Response measures triggered on detection of suspected model extraction | C11.3.4 |
 | Signature-based detection and alerting on jailbreak patterns, prompt injection, and adversarial inputs | C12.2.1 |
-| Enrichment of security events with AI-specific context (model identifiers, confidence scores, safety filter decisions) | C12.2.2 |
-| Behavioral anomaly detection (unusual conversation patterns, excessive retries, systematic probing) | C12.2.3 |
-| Custom detection rules for AI-specific threat patterns (jailbreak campaigns, prompt injection campaigns, system prompt extraction, model extraction) | C12.2.4 |
-| Per-user and per-session token-consumption alerting against defined thresholds | C12.2.5 |
-| Automated incident-response workflows that isolate compromised models and block malicious users | C12.2.6 |
-| Extraction-alert events including offending query metadata (source principal, query volume, input distribution) | C12.2.7 |
-| Session-level trajectory analysis for multi-turn jailbreaks | C12.2.8 |
-| Monitoring of LLM API traffic for covert-channel indicators (encoded payloads, structured non-human patterns, C2-like signatures) | C12.2.9 |
-| Continuous monitoring of model performance metrics across versions and time | C12.3.1 |
-| Data drift detection using methods matched to the input type (KS test or PSI for tabular, embedding-distance for text/image) | C12.3.2 |
-| Documented, version-controlled baseline performance profiles reviewed on a defined cadence | C12.3.3 |
-| Automated alerting when performance metrics breach degradation thresholds | C12.3.4 |
-| Hallucination detection monitoring of model outputs | C12.3.5 |
-| Schema drift detection in incoming data | C12.3.6 |
-| Concept drift detection in input-to-output relationships | C12.3.7 |
-| Defined remediation workflow triggered by performance-degradation alerts | C12.3.8 |
-| Hallucination rates tracked as continuous time-series metrics | C12.3.9 |
-| Training-pipeline instrumentation (runtime duration, loss trajectory, convergence) with baseline alerting and artifact gating | C12.3.10 |
-| Degradation root-cause analysis correlating drops with data, infrastructure, or external factors | C12.3.11 |
-| Distinction of sudden unexplained behavioral shifts from gradual drift, with a security escalation path | C12.3.12 |
-| Granular token-usage attribution (per user, session, feature endpoint, team or workspace) | C12.4.1 |
-| Detection and alerting on output-to-input token-ratio anomalies | C12.4.2 |
-| AI-specific incident response plans (model compromise, data poisoning, adversarial attack, inversion, injection campaigns, extraction) | C12.5.1 |
-| AI-specific forensic tools and expertise for investigating model behavior | C12.5.2 |
-| Post-incident analysis feeding retraining, safety filter updates, and lessons learned back into controls | C12.5.3 |
-| Security validation of proactive agent behaviors before execution, integrated with risk assessment | C12.6.1 |
-| Security context and threat-landscape evaluation on autonomous initiative triggers | C12.6.2 |
-| Analysis of proactive behavior patterns for security implications and unintended consequences | C12.6.3 |
-| Behavioral anomaly detection for deviations in proactive agent patterns indicating compromise | C12.6.8 |
+| Behavioral anomaly detection (unusual conversation patterns, excessive retries, systematic probing) | C12.2.2 |
+| Custom detection rules for AI-specific threat patterns (coordinated jailbreak attempts, prompt injection, system prompt extraction) | C12.2.3 |
+| Extraction-alert events including offending query metadata | C12.2.4 |
+| Granular token-usage attribution (per user, session, feature endpoint, team or workspace) | C12.2.5 |
+| Monitoring of LLM API traffic for covert-channel and command-and-control indicators | C12.2.6 |
+| Data drift detection using methods matched to the input type (KS test or PSI for tabular, embedding-distance for text/image) | C12.3.1 |
+| Hallucination detection monitoring of model outputs | C12.3.2 |
+| Hallucination rates tracked as continuous time-series metrics | C12.3.3 |
+| Distinction of unexplained behavioral shifts from gradual operational drift | C12.3.4 |
+| AI-specific incident response plans with per-scenario containment and investigation steps | C12.4.1 |
+| AI-specific forensic tools and expertise for investigating model behavior | C12.4.2 |
+| Automated incident-response workflows that isolate compromised models and block malicious users | C12.4.3 |
+| Post-incident analysis feeding model retraining and safety filter updates | C12.4.4 |
+| Security evaluation and threat-landscape assessment on autonomous initiative triggers | C12.5.1 |
 
 **Common pitfalls:** not correlating AI-specific events with broader SIEM alerts; treating drift as a scheduled check rather than continuous monitoring; lacking AI-specific forensic tooling during an incident.
 
