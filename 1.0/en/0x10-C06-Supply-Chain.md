@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-This chapter addresses AI supply chain attacks that exploit third-party models, frameworks, or datasets to embed backdoors, bias, or exploitable code.
+This chapter addresses defending against AI supply chain attacks that exploit third-party models, frameworks, or datasets to embed backdoors, bias, or exploitable code.
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-This chapter addresses how training data is sourced, handled, and maintained.
+This chapter addresses protecting the integrity and traceability of training data as it is sourced, handled, and maintained.
 
 ---
 
