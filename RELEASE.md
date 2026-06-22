@@ -6,7 +6,7 @@ AISVS addresses a fast-moving technology, so it has to update more often than mo
 
 AISVS uses a two-part version number:
 
-```
+```text
 v<MAJOR>.<MINOR>
 ```
 
@@ -82,7 +82,7 @@ The intent is that organizations should never be in a position where the only su
 
 Each released minor version lives in its own folder. Once a version is released its folder is locked, and the next version is opened in a new folder with a `-dev` suffix:
 
-```
+```text
 /
 ├── 1.0/         <- released (locked after release)
 ├── 1.01-dev/    <- next minor release in progress
@@ -94,7 +94,7 @@ When work on a new major opens, it lives alongside the active minor line in its 
 
 For citing requirements in reports, tools, audits, or other documents, use the full versioned form:
 
-```
+```text
 v<version>-C<chapter>.<section>.<requirement>
 ```
 
