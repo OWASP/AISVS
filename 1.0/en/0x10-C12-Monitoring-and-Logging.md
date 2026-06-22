@@ -30,7 +30,7 @@ Detect AI-specific attack patterns (jailbreak, prompt injection, model extractio
 | **12.2.3** | **Verify that** custom rules detect AI-specific threat patterns for coordinated jailbreak attempts, prompt injection and system prompt extraction attempts. | 2 |
 | **12.2.4** | **Verify that** extraction-alert events include offending query metadata to support investigation. | 2 |
 | **12.2.5** | **Verify that** token usage is tracked at granular attribution levels including per user, per session, per feature endpoint, and per team or workspace. | 2 |
-| **12.2.6** | **Verify that** LLM API traffic is monitored for covert channel indicators and communication signatures to identify, malware and command-and-control (C2) activity. | 3 |
+| **12.2.6** | **Verify that** LLM API traffic is monitored for covert channel indicators and communication signatures to identify malware and command-and-control (C2) activity. | 3 |
 
 ---
 
@@ -43,7 +43,7 @@ Monitor and detect drift and degradation across model outputs, input distributio
 | **12.3.1** | **Verify that** data drift detection monitors input distribution changes that may impact model performance, using statistically validated methods matched to the input data type (e.g., KS test or PSI for tabular numeric features, embedding-distance metrics for text or image). | 1 |
 | **12.3.2** | **Verify that** hallucination detection monitors identify and flag model outputs that contain factually incorrect, inconsistent, or fabricated information. | 2 |
 | **12.3.3** | **Verify that** hallucination rates are tracked as continuous time-series metrics to enable trend analysis and detection of sustained model degradation. | 2 |
-| **12.3.4** | **Verify that** unexplained behavioral shifts are identified from gradual expected operational drift. | 3 |
+| **12.3.4** | **Verify that** unexplained behavioral shifts are distinguished from gradual, expected operational drift. | 3 |
 
 ---
 
@@ -54,7 +54,7 @@ Monitor and detect drift and degradation across model outputs, input distributio
 | **12.4.1** | **Verify that** incident response plans specifically address AI-related security events with specific containment and investigation steps for each scenario. | 1 |
 | **12.4.2** | **Verify that** incident response teams have access to forensic AI-specific capabilities. | 2 |
 | **12.4.3** | **Verify that** automated incident response workflows can isolate compromised models and block malicious users. | 2 |
-| **12.4.4** | **Verify that** post-incident analysis includes model retraining, and safety filter updates. | 3 |
+| **12.4.4** | **Verify that** post-incident analysis includes model retraining and safety filter updates. | 3 |
 
 ---
 
@@ -88,7 +88,6 @@ Ensure that the provenance and change history of training data, model artifacts,
 * [OWASP Top 10 for LLM Applications 2025](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 * [MITRE ATLAS - Adversarial Threat Landscape for AI Systems](https://atlas.mitre.org/)
 * [NIST AI Risk Management Framework (AI RMF 1.0)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf)
-* [NIST AI 100-1 - Artificial Intelligence Risk Management Framework](https://doi.org/10.6028/NIST.AI.100-1)
 * [OWASP Agentic AI Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)
 * [Microsoft Agent Governance Toolkit](https://github.com/microsoft/agent-governance-toolkit)
 * [NIST SP 800-207 Zero Trust Architecture](https://nvlpubs.nist.gov/nistpubs/specialpublications/NIST.SP.800-207.pdf)

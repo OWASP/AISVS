@@ -61,7 +61,7 @@ Fine-tuning pipelines are high-privilege operations that can alter deployed mode
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **3.5.1** | **Verify that** models used in RLHF fine-tuning are versioned and integrity-verified before use in a training run. | 2 |
 | **3.5.2** | **Verify that** RLHF training stages include automated detection of reward hacking or reward model over-optimization. | 3 |
-| **3.5.3** | **Verify that** in multi-stage fine-tuning pipelines, each stage's output is integrity-verified before the next stage is consumed. | 3 |
+| **3.5.3** | **Verify that** in multi-stage fine-tuning pipelines, each stage's output is integrity-verified before it is consumed by the next stage. | 3 |
 | **3.5.4** | **Verify that** fine-tuning checkpoints are registered as distinct artifacts. | 3 |
 
 ---

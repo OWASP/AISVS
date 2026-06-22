@@ -49,7 +49,7 @@ Constrain tool and plugin execution, loading, and outputs to prevent unauthorize
 | **9.3.4** | **Verify that** the runtime enforces that tool manifests define required privileges, resource limits, and output validation. | 2 |
 | **9.3.5** | **Verify that** components processing untrusted data are isolated from tool-calling capabilities, ensuring that compromised data processing cannot trigger unauthorized tool invocations. | 2 |
 | **9.3.6** | **Verify that** there is architectural separation between untrusted data processing of tool outputs and agent operations. | 2 |
-| **9.3.7** | **Verify that** external resources named in model output are verified against an approved allowlist or registry before the agent installs or invokes them. | 2 |
+| **9.3.7** | **Verify that** external resources named in model output are verified against an approved allow-list or registry before the agent installs or invokes them. | 2 |
 | **9.3.8** | **Verify that** policy violations trigger automated tool containment. | 3 |
 
 ---

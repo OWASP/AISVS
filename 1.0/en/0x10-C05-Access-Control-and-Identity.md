@@ -8,7 +8,7 @@ AI systems introduce access control challenges beyond traditional application se
 
 ## C5.1 Authentication
 
-Enforce identity checking of AI agents or human users accessing resources have proper authentication and are allowed for such level of access.
+Ensure that AI agents and human users accessing resources are properly authenticated and authorized for that level of access.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
