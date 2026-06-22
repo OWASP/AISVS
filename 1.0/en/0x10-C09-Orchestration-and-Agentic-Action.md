@@ -74,7 +74,7 @@ Ensure every action is authorized at execution time and constrained by scope.
 | # | Description | Level |
 | :--: | --- | :---: |
 | **9.5.1** | **Verify that** agent actions are authorized against fine-grained policies enforced by the runtime that restrict which tools an agent may invoke, and which parameter values it may supply. | 2 |
-| **9.5.2** | **Verify that** every downstream call an agent makes on a user's behalf includes a delegation token that is integrity protected, limited in scope, and bound to the user's authorization context. | 2 |
+| **9.5.2** | **Verify that** when an agent acts on a user's behalf, the runtime propagates an integrity-protected, scope-limited token that carries the user's authorization context and is enforced at every downstream call. | 2 |
 | **9.5.3** | **Verify that** all access control decisions are enforced by application logic or a policy engine, never by the AI model itself. | 2 |
 | **9.5.4** | **Verify that** secrets and credentials required by an agent at runtime are not exposed within the model's observable context, including the context window, system prompts, or tool call parameters. | 2 |
 | **9.5.5** | **Verify that** inter-agent task delegation is restricted by an explicit authorization policy. | 2 |
