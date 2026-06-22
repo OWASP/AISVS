@@ -2,13 +2,13 @@
 
 ## Control Objective
 
-Autonomous and multi-agent systems must execute only authorized, intended, and bounded actions. This chapter focuses on controls unique to agentic AI execution: agent-as-principal identity, agent action chains, model-output-driven authorization risk, intent verification of LLM-decided actions, multi-agent swarm dynamics, and human oversight of agentic systems, including human-approval gates for high-impact actions and human-controlled shutdown and graceful degradation.
+This chapter addresses ensuring autonomous and multi-agent systems execute only authorized, intended, and bounded actions. It covers execution budgets, loop control, and circuit breakers; high-impact action approval and irreversibility controls; component isolation and tool authorization; agent and orchestrator identity; agent authorization, delegation, and continuous enforcement; and shutdown and graceful degradation.
 
 ---
 
 ## C9.1 Execution Budgets, Loop Control, and Circuit Breakers
 
-Bound runtime expansion (recursion, concurrency, cost) and halt safely on runaway behavior.
+Runtime expansion (recursion, concurrency, cost) must be bounded, with safe halting on runaway behavior.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -20,7 +20,7 @@ Bound runtime expansion (recursion, concurrency, cost) and halt safely on runawa
 
 ## C9.2 High-Impact Action Approval and Irreversibility Controls
 
-Require trusted approval checkpoints for agent actions that are privileged, high-impact, or difficult to reverse.
+Privileged, high-impact, or hard-to-reverse agent actions must require trusted approval checkpoints.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -39,7 +39,7 @@ Require trusted approval checkpoints for agent actions that are privileged, high
 
 ## C9.3 Component Isolation and Tool Authorization
 
-Constrain tool and plugin execution, loading, and outputs to prevent unauthorized system access and unsafe side effects.
+Tool and plugin execution, loading, and outputs must be constrained to prevent unauthorized system access and unsafe side effects.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -56,7 +56,7 @@ Constrain tool and plugin execution, loading, and outputs to prevent unauthorize
 
 ## C9.4 Agent and Orchestrator Identity
 
-Make every action attributable and every mutation detectable.
+Every action must be attributable and every mutation detectable.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -69,7 +69,7 @@ Make every action attributable and every mutation detectable.
 
 ## C9.5 Agent Authorization, Delegation, and Continuous Enforcement
 
-Ensure every action is authorized at execution time and constrained by scope.
+Every action must be authorized at execution time and constrained by scope.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -84,7 +84,7 @@ Ensure every action is authorized at execution time and constrained by scope.
 
 ## C9.6 Shutdown and Graceful Degradation
 
-Provide shutdown and graceful degradation paths under human control, with mechanisms that remain reliable and exercised over time.
+Shutdown and graceful degradation paths must remain under human control, with mechanisms that stay reliable and are exercised over time.
 
 | # | Description | Level |
 | :--: | --- | :---: |
