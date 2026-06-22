@@ -2,13 +2,13 @@
 
 ## Control Objective
 
-Deliver real-time and forensic visibility into what the model and other AI components see, do, and return, so AI-specific threats can be detected, triaged, and learned from.
-
-This chapter focuses on controls unique to AI systems for monitoring, logging, and anomaly detection: AI-specific log content (model identifier, token usage, safety filter outcomes, prompt/response handling), AI-specific abuse and attack detection (jailbreak, prompt injection, extraction, multi-turn trajectory, covert channels over LLM endpoints), model and data drift detection, AI-specific telemetry signals (token attribution, output/input ratio anomalies), AI incident response, proactive agent behavior monitoring, and training data and model lifecycle audit logging.
+This chapter addresses real-time and forensic visibility into what the model and other AI components see, do, and return, so that AI-specific threats can be detected, triaged, and learned from. It covers request and response logging, detection and alerting, model, data, and performance drift detection, AI incident response planning and execution, proactive security behavior monitoring, and training data and model lifecycle audit.
 
 ---
 
 ## C12.1 Request & Response Logging
+
+AI requests and responses must be logged to create an audit trail and support incident response.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -21,7 +21,7 @@ This chapter focuses on controls unique to AI systems for monitoring, logging, a
 
 ## C12.2 Detection and Alerting
 
-Detect AI-specific attack patterns (jailbreak, prompt injection, model extraction, multi-turn trajectory attacks, covert channels over LLM endpoints) and enrich security events with AI-specific context so that downstream detection and response systems can act on them.
+AI-specific attack patterns (jailbreak, prompt injection, model extraction, multi-turn trajectory attacks, covert channels over LLM endpoints) must be detected, and security events enriched with AI-specific context so downstream detection and response systems can act on them.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -36,7 +36,7 @@ Detect AI-specific attack patterns (jailbreak, prompt injection, model extractio
 
 ## C12.3 Model, Data, and Performance Drift Detection
 
-Monitor and detect drift and degradation across model outputs, input distributions, and data schemas to identify quality regressions and security-relevant behavioral shifts.
+Drift and degradation across model outputs, input distributions, and data schemas must be monitored to identify quality regressions and security-relevant behavioral shifts.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -49,6 +49,8 @@ Monitor and detect drift and degradation across model outputs, input distributio
 
 ## C12.4 AI Incident Response Planning & Execution
 
+Incident response must be planned and executed for AI-specific security events.
+
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **12.4.1** | **Verify that** incident response plans address AI-related security events with containment and investigation steps for each scenario. | 1 |
@@ -60,7 +62,7 @@ Monitor and detect drift and degradation across model outputs, input distributio
 
 ## C12.5 Proactive Security Behavior Monitoring
 
-Detect and prevent security threats arising from proactive (agent-initiated) behavior, including pre-execution validation, behavior pattern analysis, and audit trails for approval of security-critical actions.
+Security threats arising from proactive (agent-initiated) behavior must be detected and prevented, including pre-execution validation, behavior pattern analysis, and audit trails for approval of security-critical actions.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -72,7 +74,7 @@ Detect and prevent security threats arising from proactive (agent-initiated) beh
 
 ## C12.6 Training Data & Model Lifecycle Audit
 
-Ensure that the provenance and change history of training data, model artifacts, and knowledge sources are auditable throughout the AI development lifecycle.
+The provenance and change history of training data, model artifacts, and knowledge sources must be auditable throughout the AI development lifecycle.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
