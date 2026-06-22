@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-This chapter addresses keeping AI systems reliable, privacy-preserving, and abuse-resistant when facing evasion, inference, extraction, or poisoning attacks. It covers model alignment, safety, and robustness testing and training, membership-inference and model-inversion mitigation, model-extraction defense, and model runtime anomaly detection.
+This chapter addresses keeping AI systems reliable and abuse-resistant when facing evasion, inference, extraction, or poisoning attacks.
 
 ---
 
