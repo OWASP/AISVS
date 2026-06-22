@@ -14,9 +14,9 @@ Training data origin and security are critical to the trustworthiness of any AI 
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
 | **1.1.1** | **Verify that** training data includes only features, attributes, and fields required for the model's stated purpose. | 1 |
 | **1.1.2** | **Verify that** an up-to-date inventory is kept of every training-data source, including its origin, responsible party, license, collection method, intended use constraints, and processing history. | 2 |
-| **1.1.3** | **Verify that** datasets are watermarked so their use can be attributed and any unauthorized use detected. | 3 |
-| **1.1.4** | **Verify that** data integrity is provided when training data is stored and transferred. | 2 |
-| **1.1.5** | **Verify that** integrity monitoring is applied to guard against unauthorized modifications or corruption of training data. | 2 |
+| **1.1.3** | **Verify that** data integrity is provided when training data is stored and transferred. | 2 |
+| **1.1.4** | **Verify that** integrity monitoring is applied to guard against unauthorized modifications or corruption of training data. | 2 |
+| **1.1.5** | **Verify that** datasets are watermarked so their use can be attributed and any unauthorized use detected. | 3 |
 
 ---
 

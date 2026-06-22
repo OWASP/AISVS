@@ -74,7 +74,7 @@ Protect data and secrets at rest, in transit, and in the model's observable cont
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Integrity protection of training data while stored and transferred | C1.1.4 |
+| Integrity protection of training data while stored and transferred | C1.1.3 |
 | Redaction, anonymization, or encryption of sensitive information in labels before use in any labeling artifact | C1.2.3 |
 | Encryption of locally stored model weights and sensitive parameters using hardware-backed key stores or secure enclaves | C4.3.4 |
 | Encryption at rest of models packaged in mobile, IoT, or embedded apps, decrypted only inside a trusted runtime or secure enclave | C4.3.5 |
@@ -90,7 +90,7 @@ Verify authenticity and detect tampering of models, artifacts, messages, tool de
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Integrity monitoring of training data against unauthorized modification or corruption | C1.1.5 |
+| Integrity monitoring of training data against unauthorized modification or corruption | C1.1.4 |
 | Cryptographic integrity for labeling artifacts | C1.2.2 |
 | Cryptographic signing of all model artifacts (weights, configs, tokenizers, base models, fine-tunes, adapters, safety/policy models) | C3.1.2 |
 | Signature verification at deployment admission and on load | C3.1.3 |
@@ -98,7 +98,7 @@ Verify authenticity and detect tampering of models, artifacts, messages, tool de
 | Cryptographic binding of agent-initiated actions to each step of the execution chain for non-repudiation | C9.4.2 |
 | Integrity protection of agent state persisted between invocations | C9.4.4 |
 | Signed MCP tool responses with a unique nonce and timestamp for replay defense | C10.4.6 |
-| Tool-definition snapshotting with re-approval required on any change before invocation | C10.4.7 |
+| Tool-definition snapshotting with re-approval required on any change before invocation | C10.4.8 |
 | Watermarking of AI-generated media to prove it was AI-generated | C7.4.4 |
 
 **Common pitfalls:** using mutable tags instead of immutable digests; not re-verifying tool definitions between MCP invocations; missing replay protection on tool responses.
@@ -193,10 +193,10 @@ Isolate models, tools, agents, and hardware workloads to contain failures and pr
 | Allow-list of serialization formats that do not permit code execution during deserialization | C4.1.2 |
 | Workload attestation before model loading | C4.1.3 |
 | Confidential inference protecting model weights at runtime through isolated execution | C4.1.4 |
-| Trusted execution environment with hardware-enforced isolation, memory encryption, and integrity protection | C4.2.1 |
-| GPU integrity validation via hardware attestation before each workload | C4.2.2 |
-| GPU memory partitioning with sanitization between jobs | C4.2.3 |
-| Version-pinned, signed, boot-attested accelerator firmware | C4.2.4 |
+| Trusted execution environment with hardware-enforced isolation, memory encryption, and integrity protection | C4.2.2 |
+| GPU integrity validation via hardware attestation before each workload | C4.2.3 |
+| GPU memory partitioning with sanitization between jobs | C4.2.4 |
+| Version-pinned, signed, boot-attested accelerator firmware | C4.2.1 |
 | Process, memory, and file-access isolation in edge inference runtimes | C4.3.3 |
 | Least-privilege sandbox or isolation for each tool or plugin | C9.3.1 |
 | Tool manifests declaring required privileges, resource limits, and output-validation requirements | C9.3.3 |
@@ -277,7 +277,7 @@ Source, vet, and document training data so tampering, poisoning, and corruption 
 | --- | --- |
 | Data minimization to only the features, attributes, and fields required for the stated purpose | C1.1.1 |
 | Up-to-date inventory of every training-data source (origin, responsible party, license, collection method, use constraints, processing history) | C1.1.2 |
-| Dataset watermarking for usage attribution and detection of unauthorized use | C1.1.3 |
+| Dataset watermarking for usage attribution and detection of unauthorized use | C1.1.5 |
 | Labeling-platform access controls restricting who can create, modify, or approve annotations | C1.2.1 |
 | Poisoning detection in training and fine-tuning pipelines | C1.3.1 |
 | Confidence thresholds and consistency checks on automatically generated labels | C1.3.2 |
@@ -301,9 +301,9 @@ Harden vector stores, memory pipelines, and retrieval-augmented generation again
 | Immutability of document metadata tags after the initial write | C8.1.2 |
 | Scope constraints enforced on retrieval operations | C8.1.3 |
 | Detection and masking, tokenization, or dropping of sensitive fields before embedding | C8.2.1 |
-| Detection, rejection, or quarantine of retrieval-manipulation content before vectorization | C8.2.2 |
-| Flagging and quarantine of outlier vectors before they enter production indices | C8.2.3 |
-| Source validation before agent or tool outputs are written to trusted memory | C8.2.4 |
+| Detection, rejection, or quarantine of retrieval-manipulation content before vectorization | C8.2.4 |
+| Flagging and quarantine of outlier vectors before they enter production indices | C8.2.2 |
+| Source validation before agent or tool outputs are written to trusted memory | C8.2.3 |
 | Contradiction checks on new memory writes, with conflicts triggering alerts | C8.2.5 |
 | Exclusion of expired vectors from retrieval results | C8.3.1 |
 | Memory reset capability | C8.3.2 |
@@ -406,7 +406,7 @@ Require human approval for high-impact actions and provide reliable, exercised s
 | Manual kill-switch to immediately halt model inference and outputs | C9.6.1 |
 | Fail-closed blocking of a pending action when a human-approval gate is not satisfied within the defined time | C9.6.2 |
 | Kill-switch commands delivered through an out-of-band channel isolated from the agent runtime | C9.6.3 |
-| Explicit consent dialogue and cancellation option on installation of a local MCP server | C10.4.8 |
+| Explicit consent dialogue and cancellation option on installation of a local MCP server | C10.4.7 |
 
 **Common pitfalls:** documenting a high-risk action policy never wired to a runtime gate; binding approval to parameters without binding to identity or context; defaulting to fail-open when the approver does not respond; assuming an in-band kill-switch will work against a compromised agent; implementing a kill-switch that is never exercised.
 
