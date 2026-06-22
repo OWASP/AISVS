@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-This chapter addresses access control challenges that AI systems introduce beyond traditional application security: classification labels must follow data through AI-specific transformations such as embeddings, caches, and model outputs; multi-tenant inference infrastructure creates novel side channels; and retrieval-augmented pipelines must enforce caller entitlements at every stage. It covers authentication, AI resource authorization and classification, and multi-tenant isolation, including runtime isolation of the policy decision point from agent execution and authorization-aware output filtering where entitlements vary per caller.
+This chapter addresses access control challenges that AI systems introduce beyond traditional application security.
 
 ---
 
