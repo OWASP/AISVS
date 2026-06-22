@@ -25,10 +25,10 @@ AI-specific hardware components, including GPUs, TPUs, and specialized AI accele
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------ | :---: |
-| **4.2.1** | **Verify that** execution within a trusted execution environment (TEE) provides hardware-enforced isolation, memory encryption, and integrity protection. | 3 |
-| **4.2.2** | **Verify that** AI accelerator (GPU) integrity is validated using hardware-based attestation mechanisms before each workload executes. | 3 |
-| **4.2.3** | **Verify that** accelerator (GPU) memory is isolated between workloads through partitioning mechanisms with memory sanitization between jobs. | 3 |
-| **4.2.4** | **Verify that** AI accelerator (GPU) firmware is version-pinned, signed, and attested at boot. | 2 |
+| **4.2.1** | **Verify that** AI accelerator (GPU) firmware is version-pinned, signed, and attested at boot. | 2 |
+| **4.2.2** | **Verify that** execution within a trusted execution environment (TEE) provides hardware-enforced isolation, memory encryption, and integrity protection. | 3 |
+| **4.2.3** | **Verify that** AI accelerator (GPU) integrity is validated using hardware-based attestation mechanisms before each workload executes. | 3 |
+| **4.2.4** | **Verify that** accelerator (GPU) memory is isolated between workloads through partitioning mechanisms with memory sanitization between jobs. | 3 |
 | **4.2.5** | **Verify that** accelerator interconnects are restricted to approved topologies and authenticated endpoints. | 3 |
 
 ---
