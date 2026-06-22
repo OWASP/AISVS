@@ -12,7 +12,7 @@ AISVS was created to give organizations a structured, testable set of security c
 
 ## Design Principles
 
-AISVS is organized into 12 control families. Each control family is divided into focused sections that support its control objective. Each section contains verification requirements. Sections need not define requirements at every assurance level.
+AISVS is organized into 12 control families. Each control family is divided into focused sections that support its control objective. Each section contains verification requirements. AISVS defines three verification levels, defined under Using the AISVS; sections need not include requirements at every level.
 
 Each requirement must address a single concern that can ordinarily be implemented and verified as one technical mechanism. Requirements must not duplicate controls defined elsewhere in AISVS. Higher assurance levels may introduce stricter criteria, but those criteria must be stated as separate requirements. Requirements should use clear, technology-neutral language, referencing specific technologies only as examples where they improve clarity.
 
@@ -22,35 +22,3 @@ Every AISVS requirement follows four design principles derived from the standard
 * **Security.** Requirements must mitigate an identifiable security, privacy, or safety risk. Controls that serve only operational, governance, compliance, or business objectives are out of scope.
 * **Verification.** Requirements must be objectively verifiable through testing, inspection, or audit. Sufficient implementation guidance or tooling must exist to support both implementation and verification. Purely theoretical, subjective, or aspirational guidance is excluded.
 * **Standard.** Requirements must use consistent structure, terminology, and assurance-level semantics so AISVS remains coherent, navigable, and suitable for repeatable assessment.
-
-## How to Read This Standard
-
-### Chapter Structure
-
-Each of the 12 requirement chapters follows the same format:
-
-* **Control Objective.** A brief statement of the security goal for the chapter.
-* **Sections.** Requirements are grouped into related sections, each with a short description of the defense goal.
-* **Requirement Tables.** Individual requirements are presented in tables with the following columns:
-
-| Column | Meaning |
-| --- | --- |
-| **#** | Unique requirement identifier (e.g., 1.1.1, 9.3.2). |
-| **Description** | The requirement text, always beginning with "Verify that" to emphasize testability. |
-| **Level** | The verification level (1, 2, or 3) indicating the depth of assurance required. |
-
-### Appendices
-
-Three appendices support the core requirements:
-
-* **Appendix A (Glossary)** defines key terms and acronyms used throughout the standard.
-* **Appendix B (AI Security Controls Inventory)** is a cross-reference of every defense technique in AISVS, organized by security control category (authentication, authorization, encryption, input validation, and so on) with mappings back to specific requirement identifiers.
-* **Appendix C (AI-Assisted Secure Coding)** provides controls for the safe use of AI coding tools during software development.
-
-## Scope Boundaries
-
-AISVS focuses on security controls that are specific to AI and ML systems. It intentionally excludes:
-
-* **General application security.** Requirements covered by the [OWASP ASVS](https://owasp.org/www-project-application-security-verification-standard/) (such as session management, CSRF protection, or SQL injection prevention) are not repeated here. Organizations should apply ASVS alongside AISVS.
-* **AI governance and risk management.** Organizational governance, risk assessment methodology, and compliance processes are better addressed by frameworks such as the NIST AI RMF and ISO/IEC 42001.
-* **Vendor-specific guidance.** AISVS is vendor-neutral. It specifies what to verify, not which product to use.
