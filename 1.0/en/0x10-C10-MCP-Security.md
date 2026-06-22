@@ -8,7 +8,7 @@ This chapter addresses secure discovery, authentication, authorization, transpor
 
 ## C10.1 Component Integrity
 
-This section covers ensuring that only trusted MCP components are used and that local servers are secured.
+Only trusted MCP components must be used, and locally launched servers must be secured.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -20,7 +20,7 @@ This section covers ensuring that only trusted MCP components are used and that 
 
 ## C10.2 Authentication & Authorization
 
-This section covers authenticating callers and authorizing access to MCP servers following protocol best practices.
+Callers must be authenticated and access to MCP servers authorized, following protocol best practices.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -36,7 +36,7 @@ This section covers authenticating callers and authorizing access to MCP servers
 
 ## C10.3 Secure Transport
 
-This section covers securing MCP communications following protocol best practices.
+MCP communications must be secured following protocol best practices.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -50,7 +50,7 @@ This section covers securing MCP communications following protocol best practice
 
 ## C10.4 Schema, Message, and Input Validation
 
-This section covers schema, message, and input validation in both MCP servers and clients.
+Schema, message, and input validation must be enforced in both MCP servers and clients.
 
 | # | Description | Level |
 | :--: | --- | :---: |
