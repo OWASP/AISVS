@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-This chapter addresses the embeddings and vector stores that act as semi-persistent and persistent "memory" for AI systems through Retrieval-Augmented Generation (RAG), which makes them a high-risk data sink and exfiltration path. It covers access controls on memory and RAG indices, embedding sanitization and validation, and memory expiry and revocation, so that access is least-privilege, data is sanitized before vectorization, retention is explicit, and systems resist embedding inversion, membership inference, and cross-tenant leakage.
+This chapter addresses embeddings and vector stores that act as semi-persistent and persistent "memory" for AI systems through Retrieval-Augmented Generation (RAG).
 
 ---
 
