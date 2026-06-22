@@ -2,15 +2,13 @@
 
 ## Control Objective
 
-Robust validation of all inputs serves as a first-line defense against some of the most damaging attacks on AI systems. Prompt injection attacks can override system instructions, leak sensitive data, or steer the model toward behavior that is not allowed. Unless dedicated filters and other validation are put in place, research indicates that jailbreaks will still be able to exploit context windows.
-
-In agentic and multi-step systems, input from tools, retrieved documents, MCP server responses, and sub-agent outputs also require the same validation pipeline because they carry the same risks as direct user input. This chapter focuses on threats unique to AI systems: prompt injection, adversarial inputs targeting model behavior, AI-specific content screening, and multi-modal attack vectors including adversarial perturbations, steganographic payloads, and cross-modal attacks.
+This chapter addresses validation of all inputs as a first-line defense against some of the most damaging attacks on AI systems. Prompt injection can override system instructions, leak sensitive data, or steer a model toward disallowed behavior, and without dedicated filtering, jailbreaks continue to exploit the context window. In agentic and multi-step systems, input from tools, retrieved documents, MCP server responses, and sub-agent outputs carries the same risks as direct user input and must pass through the same validation pipeline. It covers prompt injection defenses and AI-specific content and policy screening, including multi-modal attack vectors such as adversarial perturbations, steganographic payloads, and cross-modal attacks.
 
 ---
 
 ## C2.1 Prompt Injection Defenses
 
-Prompt injection is one of the top risks for AI systems. Defenses against this tactic require a combination of pattern filters, data classifiers, and instruction hierarchy enforcement.
+This section covers defenses against prompt injection, one of the top risks for AI systems. These defenses require a combination of pattern filters, data classifiers, and instruction hierarchy enforcement.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -27,7 +25,7 @@ Prompt injection is one of the top risks for AI systems. Defenses against this t
 
 ## C2.2 Content & Policy Screening
 
-Syntactically valid prompts may request disallowed content such as instructions that violate policies, harmful content, or restricted material. Input-side content screening prevents such prompts from reaching the model.
+This section covers input-side content screening. Syntactically valid prompts may request disallowed content such as instructions that violate policies, harmful content, or restricted material, and content screening prevents such prompts from reaching the model.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
