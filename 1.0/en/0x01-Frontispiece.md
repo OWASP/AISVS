@@ -42,11 +42,11 @@ We gratefully acknowledge everyone who has helped build AISVS through pull reque
 * DotDotSlash ([DotDotSlash](https://github.com/DotDotSlash))
 * Tetsuo Seto ([tetsuoseto](https://github.com/tetsuoseto))
 * Tametomo ([Tametomo](https://github.com/Tametomo))
-* Martin Bjerke
+* Martin Bjerke ([kattn](https://github.com/kattn))
 * Deepak Pandey ([deepakrpandey12](https://github.com/deepakrpandey12))
 * RogueValley ([RogueValley](https://github.com/RogueValley))
 * emmanuelgjr ([emmanuelgjr](https://github.com/emmanuelgjr))
-* Cyril Mathew
+* Cyril Mathew ([cy10101](https://github.com/cy10101))
 * mattijs moens ([mattijsmoens](https://github.com/mattijsmoens))
 * Jerry Hoff ([jerryhoff](https://github.com/jerryhoff))
 * Ronald Robertson ([Treyrob3](https://github.com/Treyrob3))
@@ -56,13 +56,11 @@ We gratefully acknowledge everyone who has helped build AISVS through pull reque
 * Uncle Joe ([sydseter](https://github.com/sydseter))
 * Stuart Small ([stusmall](https://github.com/stusmall))
 * Boone Carlson ([KeystoneSmartQuotes](https://github.com/KeystoneSmartQuotes))
-* kattn ([kattn](https://github.com/kattn))
 * Joe-B-Security ([Joe-B-Security](https://github.com/Joe-B-Security))
 * hackwither ([hackwither](https://github.com/hackwither))
 * Mayur Agnihotri ([Mayur021](https://github.com/Mayur021))
 * Mohamad Khalil Yossif ([MohamadKhalilYossif](https://github.com/MohamadKhalilYossif))
 * William Jawad ([wiljav](https://github.com/wiljav))
 * Hari Mukundhan ([harimukundhan](https://github.com/harimukundhan))
-* Sandhya
+* Sandhya ([sandhya13r](https://github.com/sandhya13r))
 * Starr Brown ([mamicidal](https://github.com/mamicidal))
-  
