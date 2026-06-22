@@ -2,7 +2,7 @@
 
 ## About the Standard
 
-The **Artificial Intelligence Security Verification Standard (AISVS)** is a community-driven catalogue of testable security requirements for AI-enabled systems. It gives data scientists, MLOps engineers, software architects, developers, testers, security professionals, tool vendors, regulators, and consumers a common language for specifying security controls across the AI lifecycle, from data collection and model development to deployment, monitoring, and retirement, so that organizations can measure and improve the resilience, privacy, and safety of their AI solutions.
+The **Artificial Intelligence Security Verification Standard (AISVS)** is a community-driven catalogue of testable security requirements for AI-enabled systems. It gives data scientists, MLOps engineers, software architects, developers, testers, security professionals, tool vendors, regulators, and consumers a common language for specifying security controls across the AI lifecycle. That lifecycle spans data collection and model development through deployment, monitoring, and retirement. With a shared vocabulary, organizations can measure and improve the resilience, privacy, and safety of their AI solutions.
 
 Every requirement in AISVS has been developed from the ground up to reflect the AI threat landscape. While AISVS draws inspiration from broader security best practices, it is purpose-built for artificial intelligence systems and complements (rather than duplicates) governance frameworks such as NIST AI RMF and ISO/IEC 42001.
 
@@ -27,7 +27,7 @@ For any reuse or distribution, you must clearly communicate the license terms of
 
 ## Contributors and Reviewers
 
-We gratefully acknowledge everyone who has helped build AISVS through pull requests, commits, issues, and reviews. This list reflects authored and edited content; it does not fully capture contributors whose impact came mainly through reviews and issue discussion, and we thank them as well.
+We gratefully acknowledge everyone who has helped build AISVS through pull requests, commits, issues, and reviews. This list reflects authored and edited content. It does not fully capture contributors whose impact came mainly through reviews and issue discussion, and we thank them as well.
 
 * b1oo ([b1oo](https://github.com/b1oo))
 * Jim Schwoebel ([jim-schwoebel](https://github.com/jim-schwoebel))
