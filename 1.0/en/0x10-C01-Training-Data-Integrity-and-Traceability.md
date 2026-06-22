@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-This chapter addresses how training data is sourced, handled, and maintained. The goal is to preserve its origin, integrity, and quality, and to detect any tampering, poisoning, or corruption.
+This chapter addresses how training data is sourced, handled, and maintained.
 
 ---
 
