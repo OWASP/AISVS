@@ -2,13 +2,13 @@
 
 ## Control Objective
 
-This chapter addresses the sourcing, handling, and maintenance of training data in a way that preserves origin traceability, integrity, and quality. The core security concern is ensuring data has not been tampered with, poisoned, or corrupted.
+This chapter addresses the sourcing, handling, and maintenance of training data so that its origin, integrity, and quality are preserved and any tampering, poisoning, or corruption can be detected. It covers training data origin and security, data labeling and annotation security, and training data quality and security assurance.
 
 ---
 
 ## C1.1 Training Data Origin & Data Security
 
-Training data origin and data security are critical to the security and trustworthiness of any AI system. Datasets must be sourced from verifiable origins and tracked across their full lifecycle so that tampering or unauthorized modification can be detected. Training data must be protected against tampering, corruption, and poisoning throughout its lifecycle.
+Training data origin and security are critical to the trustworthiness of any AI system. Datasets must be sourced from verifiable origins, tracked across their full lifecycle, and protected against tampering, corruption, and poisoning so that unauthorized modification can be detected.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -34,7 +34,7 @@ Labeling and annotation processes must be protected against unauthorized modific
 
 ## C1.3 Training Data Quality and Security Assurance
 
-Training data quality and security assurance controls help detect corruption, poisoning, labeling errors, and exploitable dataset patterns before they affect model behavior. Pipelines should combine automated validation, poisoning detection, label quality checks, and bias analysis.
+Quality and security assurance controls help detect corruption, poisoning, labeling errors, and exploitable dataset patterns before they affect model behavior. Pipelines should combine automated validation, poisoning detection, label quality checks, and bias analysis.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
