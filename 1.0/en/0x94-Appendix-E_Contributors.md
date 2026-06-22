@@ -35,38 +35,38 @@ _Ordered by contribution to the standard._
 | Contributor | Bytes added |
 | --- | --: |
 | b1oo ([b1oo](https://github.com/b1oo)) | 78,264 |
-| Jim Schwoebel | 47,185 |
-| Vineeth Sai Narajala | 21,200 |
-| RL Thornton | 19,926 |
+| Jim Schwoebel ([jim-schwoebel](https://github.com/jim-schwoebel)) | 47,185 |
+| Vineeth Sai Narajala ([vineethsai](https://github.com/vineethsai)) | 21,200 |
+| RL Thornton ([thornshadow99](https://github.com/thornshadow99)) | 19,926 |
 | Almog Langleben ([almogbhl](https://github.com/almogbhl)) | 16,977 |
 | Khalid Al-Amri ([khalidwalidalamri](https://github.com/khalidwalidalamri)) | 13,648 |
-| Barno Kaharova | 10,717 |
+| Barno Kaharova ([BarnoKa](https://github.com/BarnoKa)) | 10,717 |
 | Joshua Beck ([Josh-Beck](https://github.com/Josh-Beck)) | 10,156 |
 | Vishal Jindal ([vishaljindal1990](https://github.com/vishaljindal1990)) | 5,765 |
-| Stefan Aeschbacher | 4,021 |
+| Stefan Aeschbacher ([imix](https://github.com/imix)) | 4,021 |
 | DotDotSlash ([DotDotSlash](https://github.com/DotDotSlash)) | 3,259 |
-| Tetsuo Seto | 3,231 |
-| Tametomo | 3,116 |
+| Tetsuo Seto ([Setotet](https://github.com/Setotet)) | 3,231 |
+| Tametomo ([Tametomo](https://github.com/Tametomo)) | 3,116 |
 | Martin Bjerke | 2,953 |
 | Deepak Pandey ([deepakrpandey12](https://github.com/deepakrpandey12)) | 2,748 |
 | RogueValley ([RogueValley](https://github.com/RogueValley)) | 2,676 |
 | emmanuelgjr ([emmanuelgjr](https://github.com/emmanuelgjr)) | 2,235 |
 | Cyril Mathew | 1,919 |
-| mattijs moens | 1,735 |
+| mattijs moens ([mattijsmoens](https://github.com/mattijsmoens)) | 1,735 |
 | Jerry Hoff ([jerryhoff](https://github.com/jerryhoff)) | 1,554 |
 | Ronald Robertson ([Treyrob3](https://github.com/Treyrob3)) | 1,414 |
-| Vatsal Gupta | 1,301 |
-| Zoe Braiterman | 1,118 |
-| Ralph Andalis | 932 |
+| Vatsal Gupta ([vatsalgupta](https://github.com/vatsalgupta)) | 1,301 |
+| Zoe Braiterman ([zbraiterman](https://github.com/zbraiterman)) | 1,118 |
+| Ralph Andalis ([csfreak92](https://github.com/csfreak92)) | 932 |
 | Uncle Joe ([sydseter](https://github.com/sydseter)) | 607 |
-| Stuart Small | 479 |
-| Boone Carlson | 450 |
+| Stuart Small ([stusmall](https://github.com/stusmall)) | 479 |
+| Boone Carlson ([KeystoneSmartQuotes](https://github.com/KeystoneSmartQuotes)) | 450 |
 | kattn ([kattn](https://github.com/kattn)) | 408 |
 | Joe-B-Security ([Joe-B-Security](https://github.com/Joe-B-Security)) | 389 |
 | hackwither ([hackwither](https://github.com/hackwither)) | 332 |
-| Mayur Agnihotri | 296 |
+| Mayur Agnihotri ([Mayur021](https://github.com/Mayur021)) | 296 |
 | Mohamad Khalil Yossif ([MohamadKhalilYossif](https://github.com/MohamadKhalilYossif)) | 294 |
 | William Jawad ([wiljav](https://github.com/wiljav)) | 192 |
-| Hari Mukundhan | 137 |
+| Hari Mukundhan ([harimukundhan](https://github.com/harimukundhan)) | 137 |
 | Sandhya | 43 |
 | Starr Brown ([mamicidal](https://github.com/mamicidal)) | 7 |
