@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-This chapter addresses the sourcing, handling, and maintenance of training data so that its origin, integrity, and quality are preserved and any tampering, poisoning, or corruption can be detected. It covers training data origin and security, data labeling and annotation security, and training data quality and security assurance.
+This chapter addresses how training data is sourced, handled, and maintained. The goal is to preserve its origin, integrity, and quality, and to detect any tampering, poisoning, or corruption.
 
 ---
 
