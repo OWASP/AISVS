@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-This chapter addresses control of model changes so that unauthorized or unsafe modifications cannot reach production. The goal is to preserving integrity, traceability, and recoverability across the entire lifecycle from development through deployment to decommissioning.
+This chapter addresses control of model changes so that unauthorized or unsafe modifications cannot reach production.
 
 ---
 
