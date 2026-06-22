@@ -40,7 +40,7 @@ We gratefully acknowledge everyone who has helped build AISVS through pull reque
 * Vishal Jindal ([vishaljindal1990](https://github.com/vishaljindal1990))
 * Stefan Aeschbacher ([imix](https://github.com/imix))
 * DotDotSlash ([DotDotSlash](https://github.com/DotDotSlash))
-* Tetsuo Seto ([tetsuoseto]([https://github.com/Setotet](https://github.com/tetsuoseto))
+* Tetsuo Seto ([tetsuoseto](https://github.com/Setotet](https://github.com/tetsuoseto))
 * Tametomo ([Tametomo](https://github.com/Tametomo))
 * Martin Bjerke
 * Deepak Pandey ([deepakrpandey12](https://github.com/deepakrpandey12))
