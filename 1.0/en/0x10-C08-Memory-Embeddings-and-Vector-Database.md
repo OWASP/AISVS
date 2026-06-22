@@ -2,13 +2,13 @@
 
 ## Control Objective
 
-Embeddings and vector stores act as semi-persistent and persistent "memory" for AI systems via Retrieval-Augmented Generation (RAG). This memory can become a high-risk data sink and data exfiltration path. This control family hardens memory pipelines and vector databases so that access is least-privilege, data is sanitized before vectorization, retention is explicit, and systems are resilient to embedding inversion, membership inference, and cross-tenant leakage.
+This chapter addresses the embeddings and vector stores that act as semi-persistent and persistent "memory" for AI systems through Retrieval-Augmented Generation (RAG), which makes them a high-risk data sink and exfiltration path. It covers access controls on memory and RAG indices, embedding sanitization and validation, and memory expiry and revocation, so that access is least-privilege, data is sanitized before vectorization, retention is explicit, and systems resist embedding inversion, membership inference, and cross-tenant leakage.
 
 ---
 
 ## C8.1 Access Controls on Memory & RAG Indices
 
-Enforce fine-grained access controls and query-time scope enforcement for every vector collection.
+Fine-grained access controls and query-time scope enforcement must be applied to every vector collection.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -20,7 +20,7 @@ Enforce fine-grained access controls and query-time scope enforcement for every 
 
 ## C8.2 Embedding Sanitization & Validation
 
-Pre-screen content before vectorization and treat memory writes as untrusted inputs to prevent ingestion of unsafe payloads.
+Content must be pre-screened before vectorization, and memory writes treated as untrusted input, to prevent ingestion of unsafe payloads.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -32,9 +32,9 @@ Pre-screen content before vectorization and treat memory writes as untrusted inp
 
 ---
 
-## C8.3 Memory Expiry, Revocation & Leakage Prevention
+## C8.3 Memory Expiry & Revocation
 
-Retention and revocation must be explicit and enforceable for memory and RAG indices, and systems must address embedding inversion and attribute inference risks.
+Retention and revocation must be explicit and enforceable for memory and RAG indices.
 
 | # | Description | Level |
 | :--: | --- | :---: |
