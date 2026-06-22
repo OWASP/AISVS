@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-This chapter addresses ensuring autonomous and multi-agent systems execute only authorized, intended, and bounded actions. It covers execution budgets, loop control, and circuit breakers; high-impact action approval and irreversibility controls; component isolation and tool authorization; agent and orchestrator identity; agent authorization, delegation, and continuous enforcement; and shutdown and graceful degradation.
+This chapter addresses ensuring autonomous and multi-agent systems execute only authorized, intended, and bounded actions.
 
 ---
 
