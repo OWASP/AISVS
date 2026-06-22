@@ -60,7 +60,7 @@ This glossary defines key AI, ML, and security terms used throughout the AISVS t
 
 * **Covert Channel** – An unintended communication path that can be exploited to transfer information in violation of security policy, such as through timing or resource usage patterns in shared AI infrastructure.
 
-* **CycloneDX** – An open standard for software and AI bills of materials, supporting component inventory, vulnerability tracking, and license compliance.
+* **CycloneDX** – An open standard for software and AI bill of materials, supporting component inventory, vulnerability tracking, and license compliance.
 
 * **DAG (Directed Acyclic Graph)** – A graph structure with directed edges and no cycles, used in AI systems to represent agent decision paths, reasoning traces, and workflow dependencies.
 
