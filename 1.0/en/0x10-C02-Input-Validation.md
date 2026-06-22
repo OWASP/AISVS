@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-This chapter addresses validation of all inputs as a first-line defense against some of the most damaging attacks on AI systems. Prompt injection can override system instructions, leak sensitive data, or steer a model toward disallowed behavior.
+This chapter addresses validation of all inputs as a first-line defense against prompt injection, one of the most damaging attacks on AI systems.
 
 ---
 
