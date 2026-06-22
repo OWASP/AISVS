@@ -17,6 +17,10 @@ Copyright &copy; 2025-2026 The AISVS Project.
 Released under the [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
 For any reuse or distribution, you must clearly communicate the license terms of this work to others.
 
+## Acknowledgments
+
+AISVS v1.0 is the result of a collaborative effort by its project leads, working group members, and community contributors. We thank everyone who has contributed requirements, reviews, and feedback to make this standard possible.
+
 ## Project Leads
 
 * Jim Manico ([jmanico](https://github.com/jmanico))
@@ -27,7 +31,7 @@ For any reuse or distribution, you must clearly communicate the license terms of
 
 ## Contributors and Reviewers
 
-We gratefully acknowledge everyone who has helped build AISVS through pull requests, commits, issues, and reviews. This list reflects authored and edited content. It does not fully capture contributors whose impact came mainly through reviews and issue discussion, and we thank them as well.
+The list below reflects authored and edited content. It does not fully capture contributors whose impact came mainly through reviews and issue discussion, and we thank them as well.
 
 * b1oo ([b1oo](https://github.com/b1oo))
 * Jim Schwoebel ([jim-schwoebel](https://github.com/jim-schwoebel))
