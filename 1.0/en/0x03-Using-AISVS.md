@@ -4,11 +4,35 @@ The Artificial Intelligence Security Verification Standard (AISVS) defines secur
 
 The AISVS is intended for anyone developing or evaluating the security of AI applications, including developers, architects, security engineers, and auditors. This chapter introduces the structure and use of the AISVS, including its verification levels, intended use cases, and how it is positioned alongside other security standards.
 
+## How to Read This Standard
+
+### Chapter Structure
+
+Each of the 12 requirement chapters follows the same format:
+
+* **Control Objective.** A brief statement of the security goal for the chapter.
+* **Sections.** Requirements are grouped into related sections, each with a short description of the defense goal.
+* **Requirement Tables.** Individual requirements are presented in tables with the following columns:
+
+| Column | Meaning |
+| --- | --- |
+| **#** | Unique requirement identifier (e.g., 1.1.1, 9.3.2). |
+| **Description** | The requirement text, always beginning with "Verify that" to emphasize testability. |
+| **Level** | The verification level (1, 2, or 3) indicating the depth of assurance required; see the verification levels below. |
+
+### Appendices
+
+Three appendices support the core requirements:
+
+* **Appendix A (Glossary)** defines key terms and acronyms used throughout the standard.
+* **Appendix B (AI Security Controls Inventory)** is a cross-reference of every defense technique in AISVS, organized by security control category (authentication, authorization, encryption, input validation, and so on) with mappings back to specific requirement identifiers.
+* **Appendix C (AI-Assisted Secure Coding)** provides controls for the safe use of AI coding tools during software development.
+
 ## Artificial Intelligence Security Verification Levels
 
 The AISVS defines three ascending levels of security verification. Each level adds depth and complexity, enabling organizations to tailor their security posture to the risk level of their AI systems.
 
-Organizations may begin at Level 1 and progressively adopt higher levels as security maturity and threat exposure increase. AISVS levels are aligned with [ASVS](https://owasp.org/www-project-application-security-verification-standard/) levels and are intended to be applied at the matching ASVS level (see [Alignment with ASVS Levels](#alignment-with-asvs-levels)).
+Organizations may begin at Level 1 and progressively adopt higher levels as security maturity and threat exposure increase. AISVS levels are aligned with [ASVS](https://owasp.org/www-project-application-security-verification-standard/) levels and are intended to be applied at the matching ASVS level (see Alignment with ASVS Levels below).
 
 ### Definition of the Levels
 
@@ -26,6 +50,18 @@ Level 2 addresses more advanced or less common attacks, as well as layered defen
 
 Level 3 includes controls that are typically harder to implement or situational in applicability. These often represent defense-in-depth mechanisms or mitigations against niche, targeted, or high-complexity attacks.
 
+## Alignment with ASVS Levels
+
+AISVS levels are aligned with [ASVS](https://owasp.org/www-project-application-security-verification-standard/) levels. Verifying an AI application against AISVS Level _N_ assumes the application has also been, or is being, verified against ASVS Level _N_. The two standards are designed to be applied together at matching levels:
+
+| AISVS Level | Corresponding ASVS Level | Typical use |
+| :---: | :---: | --- |
+| 1 | 1 | Baseline security for any AI application that handles untrusted input or operates on data of any sensitivity. |
+| 2 | 2 | AI applications handling sensitive business data, regulated data, or operating in adversarial contexts. |
+| 3 | 3 | High-assurance AI applications such as those handling life-safety decisions, critical infrastructure, or highly sensitive personal data. |
+
+If an AISVS requirement appears to overlap with an ASVS requirement, the AISVS version is restated only because it has AI-specific implementation details, attack surface, or evidence that an auditor needs to evaluate differently. In all other cases, the ASVS requirement governs and AISVS does not repeat it.
+
 ## Scope of the AISVS
 
 AISVS is intentionally narrow. It only defines security requirements that are specific to AI and ML systems, or where general security controls have AI-specific nuances that warrant restating. It is not a self-contained security program for an AI application. AISVS assumes that the underlying application, infrastructure, and organizational practices are already verified against established general-purpose standards, and adds the AI-specific layer on top.
@@ -38,20 +74,9 @@ The following are intentionally out of scope and are not duplicated in AISVS cha
 * **General data protection and privacy operations.** Data classification, encryption at rest and in transit, retention scheduling, secure deletion of conventional storage, audit log immutability, and consent management platform operation are defined by ASVS, [ISO/IEC 27001](https://www.iso.org/standard/27001), and applicable privacy regulations such as the GDPR.
 * **General logging and monitoring.** Log storage access control, retention, backup, encryption, redaction, tamper protection, SIEM integration, and operational telemetry are defined by ASVS and standard observability practice.
 * **AI governance and risk management.** Organizational AI governance, AI impact assessments, fairness and ethics documentation, model cards, public transparency reports, and risk-management process design are defined by [ISO/IEC 42001](https://www.iso.org/standard/81230.html), [ISO/IEC 23894](https://www.iso.org/standard/77304.html), and the [NIST AI RMF](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10).
+* **Vendor-specific guidance.** AISVS is vendor-neutral. It specifies what to verify, not which product to use.
 
 When verifying an AI application against AISVS, the equivalent level of those underlying standards should be verified in parallel. AISVS by itself is not a substitute for, and does not subsume, any of them.
-
-## Alignment with ASVS Levels
-
-AISVS levels are aligned with [ASVS](https://owasp.org/www-project-application-security-verification-standard/) levels. Verifying an AI application against AISVS Level _N_ assumes the application has also been, or is being, verified against ASVS Level _N_. The two standards are designed to be applied together at matching levels:
-
-| AISVS Level | Corresponding ASVS Level | Typical use |
-| :---: | :---: | --- |
-| 1 | 1 | Baseline security for any AI application that handles untrusted input or operates on data of any sensitivity. |
-| 2 | 2 | AI applications handling sensitive business data, regulated data, or operating in adversarial contexts. |
-| 3 | 3 | High-assurance AI applications such as those handling life-safety decisions, critical infrastructure, or highly sensitive personal data. |
-
-If an AISVS requirement appears to overlap with an ASVS requirement, the AISVS version is restated only because it has AI-specific implementation details, attack surface, or evidence that an auditor needs to evaluate differently. In all other cases, the ASVS requirement governs and AISVS does not repeat it.
 
 ## Cross-References Inside AISVS
 
