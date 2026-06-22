@@ -55,7 +55,7 @@ Model development must follow secure practices to prevent compromise.
 
 ## C3.5 Pipeline Fine-Tuning
 
-Fine-tuning pipelines are high-privilege operations that can alter deployed model behavior at scale. Multi-stage pipelines compound this risk because a compromise at any intermediate stage produces a subtly altered artifact that subsequent stages accept. Reward models used in Reinforcement Learning from Human Feedback (RLHF) are ML artifacts subject to tampering yet they are often treated as static infrastructure rather than versioned, validated components.
+Fine-tuning pipelines are high-privilege operations that can alter deployed model behavior at scale. Multi-stage pipelines compound this risk because a compromise at any intermediate stage produces a subtly altered artifact that subsequent stages accept. Reward models used in Reinforcement Learning from Human Feedback (RLHF) are ML artifacts subject to tampering, yet they are often treated as static infrastructure rather than versioned, validated components.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |

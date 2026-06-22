@@ -12,7 +12,7 @@ Increase resilience to manipulated inputs designed to cause misclassification or
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.1.1** | **Verify that** model has been alignment and safety trained or fine-tuned to prevent the model from generating disallowed content categories. | 1 |
+| **11.1.1** | **Verify that** the model has been alignment and safety trained or fine-tuned to prevent the model from generating disallowed content categories. | 1 |
 | **11.1.2** | **Verify that** a version-controlled alignment test suite is run on every model update or release. | 1 |
 | **11.1.3** | **Verify that** models are evaluated against known adversarial attack techniques relevant to their modality. | 1 |
 | **11.1.4** | **Verify that** models are hardened against adversarial inputs. | 2 |
@@ -22,7 +22,7 @@ Increase resilience to manipulated inputs designed to cause misclassification or
 
 ## C11.2 Membership-Inference and Model-Inversion Mitigation
 
-Limit the ability to determine whether a specific record was in the training data, and prevent reconstruction of private training data or sensitive attributes from model outputs.. Differential privacy and output calibration are the most effective known defenses.
+Limit the ability to determine whether a specific record was in the training data, and prevent reconstruction of private training data or sensitive attributes from model outputs. Differential privacy and output calibration are the most effective known defenses.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
