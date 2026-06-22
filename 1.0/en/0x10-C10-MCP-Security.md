@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-This chapter addresses secure discovery, authentication, authorization, transport, and use of MCP-based tool and resource integrations to prevent context confusion, unauthorized tool invocation, and cross-tenant data exposure. It covers MCP component integrity, authentication and authorization, secure transport, and schema, message, and input validation.
+This chapter addresses secure discovery, authentication, authorization, transport, and use of MCP-based tool and resource integrations.
 
 ---
 
