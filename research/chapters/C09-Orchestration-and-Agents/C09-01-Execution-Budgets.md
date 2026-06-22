@@ -271,14 +271,14 @@ In multi-agent pipelines, failure probability compounds multiplicatively. A sing
 | [C09-02 High-Impact Action Approval](C09-02-High-Impact-Action-Approval.md) | Human approval gates for costly operations |
 | [C09-03 Component Isolation](C09-03-Tool-and-Plugin-Isolation.md) | Per-tool CPU/memory/execution time limits |
 | [C09-05 Agent Authorization, Delegation, and Continuous Enforcement](C09-05-Agent-Authorization-Delegation.md) | Cross-agent budget enforcement, delegation, and continuous policy checks |
-| [C12-04 Performance & Behavior Telemetry](../C12-Monitoring-and-Logging/C12-04-Performance-Behavior-Telemetry.md) | Cost observability, anomaly detection for spend spikes |
+| [C12-02 Detection and Alerting](../C12-Monitoring-and-Logging/C12-02-Abuse-Detection-Alerting.md) | Cost observability via per-user/session/endpoint token-usage attribution (12.2.5), anomaly detection for spend spikes |
 
 ---
 
 ## Related Pages
 
 - [C11-05 Model Extraction Defense](../C11-Adversarial-Robustness/C11-03-Model-Extraction-Defense.md) — shares rate-limit, output-minimization, and proxy-relay controls for stopping expensive or abusive inference patterns.
-- [C12-04 Performance & Behavior Telemetry](../C12-Monitoring-and-Logging/C12-04-Performance-Behavior-Telemetry.md) — provides the token attribution, OTel span data, and anomaly signals needed to feed C9.1 circuit breakers.
+- [C12-02 Detection and Alerting](../C12-Monitoring-and-Logging/C12-02-Abuse-Detection-Alerting.md) — provides the granular token attribution (12.2.5), OTel span data, and anomaly signals needed to feed C9.1 circuit breakers.
 
 ---
 

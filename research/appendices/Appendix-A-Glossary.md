@@ -130,7 +130,7 @@ Every glossary term mapped to the AISVS chapters that reference or rely on it.
 | Sandboxing | C04, C09 |
 | SBOM | C04, C06 |
 | Scanned | C01, C04, C06 |
-| SCVS | General guidance, Appendix D; supports C06 |
+| SCVS | General guidance, Appendix B; supports C06 |
 | Secure Boot | C04 |
 | SMPC | C04 |
 | seccomp | C04 |
@@ -141,7 +141,7 @@ Every glossary term mapped to the AISVS chapters that reference or rely on it.
 | SHAP | C07 |
 | Side-Channel Attack | C04 |
 | SIEM | C12 |
-| SLSA | General guidance, Appendix D; supports C06 |
+| SLSA | General guidance, Appendix B; supports C06 |
 | SOC | C02, C12 |
 | SPDX | C03 |
 | SSE | C10 |
@@ -471,8 +471,7 @@ Key MITRE ATLAS techniques that correspond to AISVS glossary terms. As of June 2
 
 ## Related Pages
 
-- [Appendix B References](Appendix-B-References.md) — backs the glossary's standards and threat vocabulary with source references for MITRE ATLAS, MCP, NIST, OWASP, EU AI Act, and AI supply-chain material.
-- [Appendix D Controls Inventory](Appendix-D-Controls-Inventory.md) — connects glossary terms such as SLSA, SCVS, PDP, SOC, and sandboxing to the control inventory language used across AISVS.
+- [Appendix B Controls Inventory](Appendix-B-Controls-Inventory.md) — connects glossary terms such as SLSA, SCVS, PDP, SOC, and sandboxing to the control inventory language used across AISVS.
 - [C03-04 Secure Development Practices](../chapters/C03-Model-Lifecycle-Management/C03-04-Secure-Development-Practices.md) — turns glossary terms such as prompt templates, AI BOMs, model registries, and isolated build environments into SDLC verification work.
 - [C03-01 Model Authorization Integrity](../chapters/C03-Model-Lifecycle-Management/C03-01-Model-Authorization-Integrity.md) — grounds AI BOM, data lineage, model registry, signing, and provenance terms in model-admission controls.
 - [C03-02 Model Validation Testing](../chapters/C03-Model-Lifecycle-Management/C03-02-Model-Validation-Testing.md) — connects validation, evaluation harness, quantization, MCP, and agent-release terminology to release-gate evidence.

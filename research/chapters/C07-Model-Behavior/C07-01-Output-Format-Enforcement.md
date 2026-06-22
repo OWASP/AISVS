@@ -276,6 +276,5 @@ When using streaming responses (SSE/WebSocket), full schema validation cannot be
 - [C05-02 Authorization Policy](../C05-Access-Control/C05-02-AI-Resource-Authorization-Classification.md) — constrains what downstream tools, databases, and APIs can do when model output becomes a tool call or query parameter.
 - C12-04 Purpose Limitation Scope Creep — ties output validation to consent boundaries, lineage evidence, DPIA/FRIA review, and prevention of tool-driven purpose drift.
 - [Appendix A Glossary](../../appendices/Appendix-A-Glossary.md) — defines the shared terms used across structured output, prompt injection, agent authorization, MITRE ATLAS, MCP, and compliance references.
-- [Appendix B References](../../appendices/Appendix-B-References.md) — consolidates the standards, advisories, benchmarks, and incident sources cited by output-handling controls.
 
 ---

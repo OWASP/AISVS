@@ -302,7 +302,6 @@ Medical context: Clinical vignette hallucination rates of 64-68% without mitigat
 - [C3.5 Hosted Provider Managed Controls](../C03-Model-Lifecycle-Management/C03-Model-Lifecycle-Management.md) - model ID logging and provider-change gates give hallucination investigations the model provenance they need.
 - [C12-03 Model Drift Detection](../C12-Monitoring-and-Logging/C12-03-Model-Drift-Detection.md) - drift monitoring catches changes in hallucination, refusal, grounding, and guardrail behavior after deployment.
 - [C09-04 Agent Identity and Audit](../C09-Orchestration-and-Agents/C09-04-Agent-Identity-and-Audit.md) - oversight logs help prove who approved high-impact outputs, overrides, and tool-backed decisions.
-- [Appendix B References](../../appendices/Appendix-B-References.md) - shared standards and source material for NIST, OWASP, MITRE, EU AI Act, and AI assurance references.
 - [C1.1 Training Data Origin Traceability](../C01-Training-Data/C01-01-Training-Data-Origin-Traceability.md) - provenance controls reduce hallucination risk from stale, low-quality, or unverified training and grounding sources.
 
 ---

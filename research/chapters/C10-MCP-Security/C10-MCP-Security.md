@@ -232,7 +232,7 @@ No additional contributor notes are recorded for this hub.
 - [C10-03 Secure Transport](C10-03-Secure-Transport.md) — Streamable HTTP, SSE, DNS rebinding, protocol downgrade, TLS, and localhost transport controls that underpin the May 2026 advisory wave.
 - [C10-04 Schema, Message, and Input Validation](C10-04-Schema-Message-Validation.md) — Tool descriptor validation, message-shape enforcement, and the input-validation controls that catch wrapper injection at the MCP tool boundary.
 - [C09-03 Tool and Plugin Isolation](../C09-Orchestration-and-Agents/C09-03-Tool-and-Plugin-Isolation.md) — Sandbox, manifest, quota, telemetry, and quarantine patterns that directly reduce the blast radius of MCP tool execution.
-- [Appendix D Controls Inventory](../../appendices/Appendix-D-Controls-Inventory.md) — Cross-framework control inventory for mapping MCP, agent, platform, and runtime risks to concrete assurance evidence.
+- [Appendix B Controls Inventory](../../appendices/Appendix-B-Controls-Inventory.md) — Cross-framework control inventory for mapping MCP, agent, platform, and runtime risks to concrete assurance evidence.
 - [C10-02 Authentication Authorization](C10-02-Authentication-Authorization.md) — OAuth token binding, server onboarding, scoped tool access, gateway policy, and agent identity controls behind the C10 hub.
 
 ---

@@ -363,7 +363,7 @@ Key considerations for MCP transport cryptographic agility (per [Gopher Security
 
 - **[C10 MCP Security](C10-MCP-Security.md)** — Places transport hardening in the larger MCP control set, including component integrity, auth, and schema validation.
 - **[C10-02 Authentication & Authorization](C10-02-Authentication-Authorization.md)** — Covers bearer-token validation, OAuth resource indicators, gateway enforcement, and delegated identity controls that transport protections depend on.
-- **[Appendix D Controls Inventory](../../appendices/Appendix-D-Controls-Inventory.md)** — Maps transport and gateway controls back to broader AISVS, platform, and compliance control families.
+- **[Appendix B Controls Inventory](../../appendices/Appendix-B-Controls-Inventory.md)** — Maps transport and gateway controls back to broader AISVS, platform, and compliance control families.
 - **[C10-04 Schema, Message, and Input Validation](C10-04-Schema-Message-Validation.md)** — Complements transport checks with JSON-RPC schema validation, payload limits, signed metadata, and malformed-message handling.
 - **[C10-01 Component Integrity](C10-01-Component-Integrity.md)** — Ties transport trust to verified MCP server provenance, supply-chain hygiene, and allowlisting before a connection is established.
 

@@ -115,8 +115,7 @@ New audit checks from this cycle:
 
 ## Related Pages
 
-- [Appendix B References](../../appendices/Appendix-B-References.md) — Useful for tracing the NIST, OWASP, MITRE, CSA, EU, and ISO sources cited by the secure-development controls.
-- [Appendix D Controls Inventory](../../appendices/Appendix-D-Controls-Inventory.md) — Helps map the secure-development practices here to control families for MCP, agent runtime, supply-chain, and governance programs.
+- [Appendix B Controls Inventory](../../appendices/Appendix-B-Controls-Inventory.md) — Helps map the secure-development practices here to control families for MCP, agent runtime, supply-chain, and governance programs.
 - [C02-01 Prompt Injection Defense](../C02-User-Input-Validation/C02-01-Prompt-Injection-Defense.md) — Connects reviewed prompts and tool schemas to the prompt-injection and MCP command-validation controls they are meant to support.
 - [C02-02 Content & Policy Screening](../C02-User-Input-Validation/C02-02-Content-Policy-Screening.md) — Complements raw-schema and tool-description review with controls for Unicode, hidden text, and metadata smuggling before agent or MCP execution.
 - [C09-03 Component Isolation and Tool Authorization](../C09-Orchestration-and-Agents/C09-03-Tool-and-Plugin-Isolation.md) — Extends environment isolation into origin-aware tool calls, provenance checks, policy-as-code, and MCP data-flow enforcement.
