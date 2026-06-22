@@ -8,7 +8,7 @@ AI systems must implement change control processes that prevent unauthorized or 
 
 ## C3.1 Model Authorization & Integrity
 
-Only authorized models with verified integrity should reach production environments.
+Only authorized models with verified integrity should be allowed to reach production environments.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -32,7 +32,7 @@ Models must pass defined security and safety validations before deployment.
 
 ## C3.3 Controlled Deployment & Rollback
 
-Model deployments must be controlled, monitored, and reversible.
+Model deployments must be controlled, monitored, and reversible for ease of managing model lifecycle.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -55,7 +55,7 @@ Model development must follow secure practices to prevent compromise.
 
 ## C3.5 Pipeline Fine-Tuning
 
-Fine-tuning pipelines are high-privilege operations that can alter deployed model behavior at scale. Multi-stage pipelines compound this risk because a compromise at any intermediate stage produces a subtly altered artifact that subsequent stages accept. Reward models used in RLHF are ML artifacts subject to tampering yet they are often treated as static infrastructure rather than versioned, validated components.
+Fine-tuning pipelines are high-privilege operations that can alter deployed model behavior at scale. Multi-stage pipelines compound this risk because a compromise at any intermediate stage produces a subtly altered artifact that subsequent stages accept. Reward models used in Reinforcement Learning from Human Feedback (RLHF) are ML artifacts subject to tampering yet they are often treated as static infrastructure rather than versioned, validated components.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
