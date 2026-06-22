@@ -8,7 +8,7 @@ This chapter addresses AI supply chain attacks that exploit third-party models, 
 
 ## C6.1 Model Artifact Integrity
 
-This section covers authenticating third-party model origins and checking for hidden behavior before fine-tuning or deployment. AI artifacts should be downloaded only from approved sources.
+Third-party model origins must be authenticated and checked for hidden behavior before fine-tuning or deployment, and AI artifacts should be downloaded only from approved sources.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -21,7 +21,7 @@ This section covers authenticating third-party model origins and checking for hi
 
 ## C6.2 AI BOM & Supply Chain Monitoring
 
-This section covers generating and signing detailed AI-specific bills of materials and ensuring readiness to respond to supply chain compromise events.
+Detailed AI-specific bills of materials must be generated and signed, with readiness to respond to supply chain compromise events.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
