@@ -13,7 +13,7 @@ Isolate untrusted AI models in secure sandboxes and protect sensitive AI workloa
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------ | :---: |
 | **4.1.1** | **Verify that** AI models execute in isolated sandboxes. | 1 |
-| **4.1.2** | **Verify that** model artifact loading enforces an explicit allowlist of serialization formats that do not permit arbitrary code execution during deserialization.| 1 |
+| **4.1.2** | **Verify that** model artifact loading enforces an explicit allowlist of serialization formats that do not permit arbitrary code execution during deserialization. | 1 |
 | **4.1.3** | **Verify that** workload attestation is performed before model loading to provide proof that the execution environment has not been tampered with. | 3 |
 | **4.1.4** | **Verify that** confidential inference services protect model weights during runtime through isolated execution environments. | 3 |
 
