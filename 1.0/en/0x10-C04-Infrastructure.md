@@ -39,7 +39,7 @@ Secure distributed AI deployments including edge computing, federated learning, 
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------ | :---: |
-| **4.3.1** | **Verify that** edge AI devices authenticate to central infrastructure using strong authentication. | 1 |
+| **4.3.1** | **Verify that** edge AI devices authenticate to central infrastructure using strong authentication mechanisms. | 1 |
 | **4.3.2** | **Verify that** models deployed to edge or mobile devices are cryptographically signed during packaging, and that the on-device runtime validates these signatures or checksums before loading or inference. | 2 |
 | **4.3.3** | **Verify that** inference runtimes enforce process, memory, and file access isolation. | 3 |
 | **4.3.4** | **Verify that** model weights and sensitive parameters stored locally are encrypted using hardware-backed key stores or secure enclaves. | 3 |
