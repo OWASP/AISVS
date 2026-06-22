@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-This chapter addresses validation of all inputs as a first-line defense against some of the most damaging attacks on AI systems. Prompt injection can override system instructions, leak sensitive data, or steer a model toward disallowed behavior, and without dedicated filtering, jailbreaks continue to exploit the context window. In agentic and multi-step systems, input from tools, retrieved documents, MCP server responses, and sub-agent outputs carries the same risks as direct user input and must pass through the same validation pipeline. It covers prompt injection defenses and AI-specific content and policy screening, including multi-modal attack vectors such as adversarial perturbations, steganographic payloads, and cross-modal attacks.
+This chapter addresses validation of all inputs as a first-line defense against some of the most damaging attacks on AI systems. Prompt injection can override system instructions, leak sensitive data, or steer a model toward disallowed behavior.
 
 ---
 
