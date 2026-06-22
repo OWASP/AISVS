@@ -8,7 +8,7 @@ This chapter addresses keeping AI systems reliable, privacy-preserving, and abus
 
 ## C11.1 Model Alignment, Safety, and Robustness Testing and Training
 
-This section covers increasing model resilience to manipulated inputs designed to cause misclassification or policy bypass.
+Model resilience to manipulated inputs designed to cause misclassification or policy bypass must be increased, primarily through adversarial testing and robustness benchmarking.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -22,7 +22,7 @@ This section covers increasing model resilience to manipulated inputs designed t
 
 ## C11.2 Membership-Inference and Model-Inversion Mitigation
 
-This section covers limiting the ability to determine whether a specific record was in the training data, and preventing reconstruction of private training data or sensitive attributes from model outputs.
+The ability to determine whether a specific record was in the training data must be limited, and reconstruction of private training data or sensitive attributes from model outputs prevented.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -36,7 +36,7 @@ This section covers limiting the ability to determine whether a specific record 
 
 ## C11.3 Model-Extraction Defense
 
-This section covers detecting and deterring unauthorized model cloning through API abuse by implementing rate limiting, query-pattern analysis, and watermarking.
+Unauthorized model cloning through API abuse must be detected and deterred using rate limiting, query-pattern analysis, and watermarking.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -49,7 +49,7 @@ This section covers detecting and deterring unauthorized model cloning through A
 
 ## C11.4 Model Runtime Anomaly Detection
 
-This section covers identifying and neutralizing manipulated, backdoored, or adversarial data entering the model context at inference time via external sources.
+Manipulated, backdoored, or adversarial data entering the model context at inference time via external sources must be identified and neutralized.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
