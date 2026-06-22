@@ -8,7 +8,7 @@ This chapter addresses constraining, validating, and monitoring model outputs so
 
 ## C7.1 Output Format Enforcement
 
-This section covers ensuring model outputs are structured and validated to reduce downstream injection risk.
+Model outputs must be structured and validated to reduce downstream injection risk.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -19,7 +19,7 @@ This section covers ensuring model outputs are structured and validated to reduc
 
 ## C7.2 Hallucination Detection & Mitigation
 
-This section covers detecting when the model produces potentially inaccurate or fabricated content and preventing unreliable outputs from reaching users or downstream systems.
+Potentially inaccurate or fabricated content must be detected so unreliable outputs do not reach users or downstream systems.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -31,7 +31,7 @@ This section covers detecting when the model produces potentially inaccurate or 
 
 ## C7.3 Output Safety
 
-This section covers technical controls that detect and remove unsafe content before it is shown to the user.
+Technical controls must detect and remove unsafe content before it is shown to the user.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -44,7 +44,7 @@ This section covers technical controls that detect and remove unsafe content bef
 
 ## C7.4 Source Attribution & Citation Integrity
 
-This section covers ensuring RAG-grounded outputs are traceable to their source documents and that cited claims are verifiably supported by retrieved content.
+RAG-grounded outputs must be traceable to their source documents, with cited claims verifiably supported by retrieved content.
 
 | # | Description | Level |
 | :-------: | -------------------------------------------------------------------------------------------------------------------------------------------- | :---: |
