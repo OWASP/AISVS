@@ -26,7 +26,7 @@ Enforce the caller's authorization context through AI-specific query pipelines (
 | **5.2.1** | **Verify that** every AI resource (datasets, endpoints, vector collections, embedding indices, compute instances) enforces access controls with explicit allow-lists and default-deny policies. | 2 |
 | **5.2.2** | **Verify that** retrieval pipelines (e.g., RAG queries, embedding lookups) enforce the end-user's authorization context at each retrieval and assembly stage, rather than relying solely on the service account's permissions. | 2 |
 | **5.2.3** | **Verify that** sensitive data is retrieved via retrieval pipelines (e.g., RAG queries, embedding lookups) to prevent permanent storage in models. | 2 |
-| **5.2.4** | **Verify that** post-inference filtering mechanisms prevent responses from including data that the requestor is not authorized to receive. | 2 |
+| **5.2.4** | **Verify that** post-inference filtering mechanisms prevent responses from including data that the requester is not authorized to receive. | 2 |
 | **5.2.5** | **Verify that** the policy decision point for agent authorization is isolated from the agent's execution environment. | 2 |
 | **5.2.6** | **Verify that** privileged access to model weights, training pipelines, and production AI configuration is granted just in time, with a defined maximum session duration and automatic expiry. Zero Standing Privilege (ZSP) to these resources is encouraged. | 3 |
 | **5.2.7** | **Verify that** data classification labels propagate to downstream resources (embeddings, prompt caches, model outputs). | 3 |
