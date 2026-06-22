@@ -12,7 +12,7 @@ This chapter focuses on controls unique to AI systems for monitoring, logging, a
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **12.1.1** | **Verify that** AI interactions are logged with session context and AI-specific telemetry | 1 |
+| **12.1.1** | **Verify that** AI interactions are logged with session context and AI-specific telemetry. | 1 |
 | **12.1.2** | **Verify that** safety filtering and policy decisions are logged with sufficient detail to support audit, debugging, and forensic analysis of content moderation systems. | 2 |
 | **12.1.3** | **Verify that** log entries for AI inference events follow a structured, interoperable schema that includes at least the model identifier, token usage (input and output), provider name, and operation type. | 2 |
 | **12.1.4** | **Verify that** RAG pipeline retrieval events are logged, including the query, documents retrieved, and knowledge source. | 2 |

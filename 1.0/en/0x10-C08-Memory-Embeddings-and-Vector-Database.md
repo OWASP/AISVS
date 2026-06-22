@@ -14,7 +14,7 @@ Enforce fine-grained access controls and query-time scope enforcement for every 
 | :--: | --- | :---: |
 | **8.1.1** | **Verify that** vector identifiers and namespaces enforce uniqueness per tenant and prevent cross-tenant collisions. | 1 |
 | **8.1.2** | **Verify that** document metadata tags are immutable after the initial write. | 2 |
-| **8.1.3** | **Verify that** retrieval operations enforces scope constraints. | 2 |
+| **8.1.3** | **Verify that** retrieval operations enforce scope constraints. | 2 |
 
 ---
 
