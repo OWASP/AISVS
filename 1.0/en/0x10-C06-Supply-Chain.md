@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-This chapter addresses AI supply chain attacks that exploit third-party models, frameworks, or datasets to embed backdoors, bias, or exploitable code. It covers the controls that ensure traceability, vetting, and monitoring of AI-specific supply chain artifacts throughout the model lifecycle: model artifact integrity, backdoor detection in pretrained weights, dataset poisoning, AI-specific bills of materials, and model-publisher trust.
+This chapter addresses AI supply chain attacks that exploit third-party models, frameworks, or datasets to embed backdoors, bias, or exploitable code.
 
 ---
 
