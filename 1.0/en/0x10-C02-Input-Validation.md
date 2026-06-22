@@ -23,6 +23,8 @@ Prompt injection is one of the top risks for AI systems. Defenses against this t
 | **2.1.7** | **Verify that** reserved special tokens are encoded as literal characters and cannot be injected into the model context. | 2 |
 | **2.1.8** | **Verify that** the system can detect many-shot jailbreaking patterns. | 3 |
 
+---
+
 ## C2.2 Content & Policy Screening
 
 Syntactically valid prompts may request disallowed content such as instructions that violate policies, harmful content, or restricted material. Input-side content screening prevents such prompts from reaching the model.
