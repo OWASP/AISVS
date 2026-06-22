@@ -8,7 +8,7 @@ This chapter addresses validation of all inputs as a first-line defense against 
 
 ## C2.1 Prompt Injection Defenses
 
-This section covers defenses against prompt injection, one of the top risks for AI systems. These defenses require a combination of pattern filters, data classifiers, and instruction hierarchy enforcement.
+Prompt injection is one of the top risks for AI systems, and defending against it requires a combination of pattern filters, data classifiers, and instruction hierarchy enforcement.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -25,7 +25,7 @@ This section covers defenses against prompt injection, one of the top risks for 
 
 ## C2.2 Content & Policy Screening
 
-This section covers input-side content screening. Syntactically valid prompts may request disallowed content such as instructions that violate policies, harmful content, or restricted material, and content screening prevents such prompts from reaching the model.
+Syntactically valid prompts may still request disallowed content such as policy-violating instructions, harmful material, or restricted information. Input-side content screening prevents such prompts from reaching the model.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
