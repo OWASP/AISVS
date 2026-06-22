@@ -8,7 +8,7 @@ This chapter addresses control of model changes so that unauthorized or unsafe m
 
 ## C3.1 Model Authorization & Integrity
 
-This section covers ensuring that only authorized models with verified integrity can reach production environments.
+Only authorized models with verified integrity should reach production environments.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -20,7 +20,7 @@ This section covers ensuring that only authorized models with verified integrity
 
 ## C3.2 Model Validation & Testing
 
-This section covers the security and safety validations that models must pass before deployment.
+Models must pass defined security and safety validations before deployment.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------- | :---: |
@@ -32,7 +32,7 @@ This section covers the security and safety validations that models must pass be
 
 ## C3.3 Controlled Deployment & Rollback
 
-This section covers keeping model deployments controlled, monitored, and reversible to support model lifecycle management.
+Model deployments must be controlled, monitored, and reversible to support lifecycle management.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -44,7 +44,7 @@ This section covers keeping model deployments controlled, monitored, and reversi
 
 ## C3.4 Secure Development Practices
 
-This section covers separating model development environments from production environments.
+Model development environments must be separated from production environments.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -55,7 +55,7 @@ This section covers separating model development environments from production en
 
 ## C3.5 Pipeline Fine-Tuning
 
-This section covers fine-tuning pipelines, which are high-privilege operations that can alter deployed model behavior at scale. Multi-stage pipelines compound this risk because a compromise at any intermediate stage produces a subtly altered artifact that subsequent stages accept.
+Fine-tuning pipelines are high-privilege operations that can alter deployed model behavior at scale. Multi-stage pipelines compound this risk because a compromise at any intermediate stage produces a subtly altered artifact that subsequent stages accept.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
