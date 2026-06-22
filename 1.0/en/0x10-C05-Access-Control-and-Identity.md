@@ -19,7 +19,7 @@ Ensure that AI agents and human users accessing resources are properly authentic
 
 ## C5.2 AI Resource Authorization & Classification
 
-Enforce the caller's authorization context through AI-specific query pipelines (RAG retrieval, embedding lookups, inference chains) so that the AI system does not return data that the caller is not entitled to access.
+Enforce the caller's authorization context in AI-specific query pipelines so that the AI system does not return data that the caller is not entitled to access.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |

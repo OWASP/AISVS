@@ -8,6 +8,8 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 
 ## C10.1 Component Integrity
 
+Ensure that only trusted MCP components are used and local servers are secured.
+
 | # | Description | Level |
 | :--: | --- | :---: |
 | **10.1.1** | **Verify that** MCP components are obtained only from trusted sources and cryptographically verified. | 1 |
@@ -17,6 +19,8 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 ---
 
 ## C10.2 Authentication & Authorization
+
+Implement authentication and authorization to MCP servers following protocol recommended practices.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -32,6 +36,8 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 
 ## C10.3 Secure Transport
 
+Ensure that MCP communications are secure following protocol best practices.
+
 | # | Description | Level |
 | :--: | --- | :---: |
 | **10.3.1** | **Verify that** authenticated, encrypted streamable HTTP is used for MCP transport for remote services. | 1 |
@@ -43,6 +49,8 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 ---
 
 ## C10.4 Schema, Message, and Input Validation
+
+Implement schema, message and input validation to in both MCP servers and clients.
 
 | # | Description | Level |
 | :--: | --- | :---: |

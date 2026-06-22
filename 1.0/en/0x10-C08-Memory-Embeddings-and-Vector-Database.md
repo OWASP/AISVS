@@ -32,9 +32,9 @@ Pre-screen content before vectorization and treat memory writes as untrusted inp
 
 ---
 
-## C8.3 Memory Expiry, Revocation & Leakage Prevention
+## C8.3 Memory Expiry & Revocation
 
-Retention and revocation must be explicit and enforceable for memory and RAG indices, and systems must address embedding inversion and attribute inference risks.
+Retention and revocation must be explicit and enforceable for memory and RAG indices.
 
 | # | Description | Level |
 | :--: | --- | :---: |

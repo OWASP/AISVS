@@ -8,7 +8,7 @@ AI supply-chain attacks exploit third-party models, frameworks, or datasets to e
 
 ## C6.1 Model Artifact Integrity
 
-Authenticate third-party model origins and check for hidden behavior before fine-tuning or deployment. Download AI artifacts only from approved sources.
+Authenticate third-party model origins and check for hidden behavior before fine-tuning or deployment. Ensure AI artifacts are only downloaded from approved sources.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |

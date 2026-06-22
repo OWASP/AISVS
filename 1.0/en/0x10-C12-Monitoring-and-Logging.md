@@ -10,6 +10,8 @@ This chapter focuses on controls unique to AI systems for monitoring, logging, a
 
 ## C12.1 Request & Response Logging
 
+AI specific components must include appropriate request and response logging to create audit trail and support incident response.
+
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **12.1.1** | **Verify that** AI interactions are logged with session context and AI-specific telemetry. | 1 |

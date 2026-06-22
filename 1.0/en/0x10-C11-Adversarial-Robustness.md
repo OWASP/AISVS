@@ -8,7 +8,7 @@ Ensure that AI systems remain reliable, privacy-preserving, and abuse-resistant 
 
 ## C11.1 Model Alignment, Safety, and Robustness Testing and Training
 
-Increase resilience to manipulated inputs designed to cause misclassification or policy bypass. Adversarial testing and robustness benchmarking are the current best practices.
+Increase model resilience to manipulated inputs designed to cause misclassification or policy bypass.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -22,7 +22,7 @@ Increase resilience to manipulated inputs designed to cause misclassification or
 
 ## C11.2 Membership-Inference and Model-Inversion Mitigation
 
-Limit the ability to determine whether a specific record was in the training data, and prevent reconstruction of private training data or sensitive attributes from model outputs. Differential privacy and output calibration are the most effective known defenses.
+Limit the ability to determine whether a specific record was in the training data, and prevent reconstruction of private training data or sensitive attributes from model outputs.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -36,7 +36,7 @@ Limit the ability to determine whether a specific record was in the training dat
 
 ## C11.3 Model-Extraction Defense
 
-Detect and deter unauthorized model cloning through API abuse. Rate limiting, query-pattern analysis, and watermarking are recommended defenses.
+Detect and deter unauthorized model cloning through API abuse by implementing rate limiting, query-pattern analysis, and watermarking.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |

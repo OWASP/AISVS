@@ -84,7 +84,7 @@ Ensure every action is authorized at execution time and constrained by scope.
 
 ## C9.6 Shutdown and Graceful Degradation
 
-Provide shutdown and graceful degradation paths under human control, with mechanisms that remain reliable and exercised over time.
+Provide shutdown and graceful degradation paths under human control, with mechanisms that remain reliable.
 
 | # | Description | Level |
 | :--: | --- | :---: |
