@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-Autonomous and multi-agent systems must execute only authorized, intended, and bounded actions. This chapter focuses on controls unique to agentic AI execution: agent-as-principal identity, agent action chains, model-output-driven authorization risk, intent verification of LLM-decided actions, multi-agent swarm dynamics, and human oversight of agentic systems: human-approval gates for high-impact actions and human-controlled shutdown and graceful degradation.
+Autonomous and multi-agent systems must execute only authorized, intended, and bounded actions. This chapter focuses on controls unique to agentic AI execution: agent-as-principal identity, agent action chains, model-output-driven authorization risk, intent verification of LLM-decided actions, multi-agent swarm dynamics, and human oversight of agentic systems, including human-approval gates for high-impact actions and human-controlled shutdown and graceful degradation.
 
 ---
 
@@ -28,7 +28,7 @@ Require trusted approval checkpoints for agent actions that are privileged, high
 | **9.2.2** | **Verify that** approval requests display canonicalized and complete action parameters, such as diffs, commands, recipients, amounts, resources, and scopes, without truncation or unsafe transformation. | 2 |
 | **9.2.3** | **Verify that** each high-impact action has a trusted reversibility classification, such as read-only, reversible, externally reversible, or irreversible. | 2 |
 | **9.2.4** | **Verify that** the agent runtime enforces reversibility classifications by blocking, requiring approval, or restricting actions based on their impact and ability to be reversed. | 2 |
-| **9.2.5** | **Verify that** any self-modification capability (e.g., prompt rewriting, tool-list changes, parameter updates) is restricted and enforced with boundaries. | 2 |
+| **9.2.5** | **Verify that** any self-modification capability (e.g., prompt rewriting, tool-list changes, parameter updates) is restricted by enforceable boundaries. | 2 |
 | **9.2.6** | **Verify that** agentic systems include an AI-augmented review of planned high-risk actions before execution that adds to, and does not replace, the deterministic policy gate. | 2 |
 | **9.2.7** | **Verify that** the AI-augmented review mechanism is protected against manipulation by adversarial inputs, and cannot be overridden or bypassed through prompt injection. | 2 |
 | **9.2.8** | **Verify that** approvals are cryptographically bound to action parameters, requester identity, execution context, and a unique single-use nonce. | 3 |
@@ -43,12 +43,12 @@ Constrain tool and plugin execution, loading, and outputs to prevent unauthorize
 
 | # | Description | Level |
 | :--: | --- | :---: |
-| **9.3.1** | **Verify that** each tool/plugin executes in a least-privilege sandbox or is otherwise isolated from the model operations. | 1 |
+| **9.3.1** | **Verify that** each tool/plugin executes in a least-privilege sandbox or is otherwise isolated from model operations. | 1 |
 | **9.3.2** | **Verify that** tool outputs are validated against schemas. | 1 |
 | **9.3.3** | **Verify that** tool manifests declare required privileges, resource limits, and output validation requirements. | 2 |
-| **9.3.4** | **Verify that** the runtime enforces that tool manifests define required privileges, resource limits, and output validation. | 2 |
+| **9.3.4** | **Verify that** the runtime enforces the privileges, resource limits, and output-validation requirements declared in tool manifests. | 2 |
 | **9.3.5** | **Verify that** components processing untrusted data are isolated from tool-calling capabilities, ensuring that compromised data processing cannot trigger unauthorized tool invocations. | 2 |
-| **9.3.6** | **Verify that** there is architectural separation between untrusted data processing of tool outputs and agent operations. | 2 |
+| **9.3.6** | **Verify that** there is architectural separation between processing of untrusted tool outputs and agent operations. | 2 |
 | **9.3.7** | **Verify that** external resources named in model output are verified against an approved allow-list or registry before the agent installs or invokes them. | 2 |
 | **9.3.8** | **Verify that** policy violations trigger automated tool containment. | 3 |
 
@@ -74,7 +74,7 @@ Ensure every action is authorized at execution time and constrained by scope.
 | # | Description | Level |
 | :--: | --- | :---: |
 | **9.5.1** | **Verify that** agent actions are authorized against fine-grained policies enforced by the runtime that restrict which tools an agent may invoke, and which parameter values it may supply. | 2 |
-| **9.5.2** | **Verify that** when an agent acts on a user's behalf, the runtime propagates an integrity-protected and scope-limited token that enforces that context at every downstream call. | 2 |
+| **9.5.2** | **Verify that** when an agent acts on a user's behalf, the runtime propagates an integrity-protected and scope-limited token that carries that context to every downstream call. | 2 |
 | **9.5.3** | **Verify that** all access control decisions are enforced by application logic or a policy engine, never by the AI model itself. | 2 |
 | **9.5.4** | **Verify that** secrets and credentials required by an agent at runtime are not exposed within the model's observable context, including the context window, system prompts, or tool call parameters. | 2 |
 | **9.5.5** | **Verify that** inter-agent task delegation is restricted by an explicit authorization policy. | 2 |
