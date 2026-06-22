@@ -50,6 +50,6 @@ Secure distributed AI deployments including edge computing, federated learning, 
 ## References
 
 * [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
-* [NVIDIA Multi-Instance GPU (MIG) Documentation](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/)
+* [NIST SP 800-190: Application Container Security Guide](https://csrc.nist.gov/pubs/sp/800/190/final)
+* [NSA/CISA Kubernetes Hardening Guidance](https://www.cisa.gov/news-events/alerts/2022/03/15/updated-kubernetes-hardening-guide)
 * [Confidential Computing Consortium](https://confidentialcomputing.io/)
-* [ARM TrustZone for AI](https://www.arm.com/technologies/trustzone-for-cortex-a)

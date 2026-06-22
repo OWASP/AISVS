@@ -51,4 +51,5 @@ Training data quality and security assurance controls help detect corruption, po
 * [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
 * [EU AI Act: Article 10: Data & Data Governance](https://artificialintelligenceact.eu/article/10/)
 * [CISA Advisory: Securing Data for AI Systems](https://www.cisa.gov/news-events/cybersecurity-advisories/aa25-142a)
-* [OpenAI Privacy Center: Data Deletion Controls](https://privacy.openai.com/policies?modal=take-control)
+* [MITRE ATLAS: Poison Training Data (AML.T0020)](https://atlas.mitre.org/techniques/AML.T0020)
+* [ISO/IEC 42001:2023 Artificial Intelligence Management System](https://www.iso.org/standard/42001)
