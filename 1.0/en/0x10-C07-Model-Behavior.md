@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-This chapter addresses constraining, validating, and monitoring model outputs so that unsafe, malformed, or high-risk responses cannot reach users or downstream systems. It covers output format enforcement, hallucination detection and mitigation, output safety, and source attribution and citation integrity.
+This chapter addresses constraining, validating, and monitoring model outputs so that unsafe, malformed, or high-risk responses cannot reach users or downstream systems.
 
 ---
 
