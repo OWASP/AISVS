@@ -2,13 +2,13 @@
 
 ## Control Objective
 
-AI supply-chain attacks exploit third-party models, frameworks, or datasets to embed backdoors, bias, or exploitable code. These controls ensure traceability, vetting, and monitoring of AI-specific supply chain artifacts throughout the model lifecycle. This chapter focuses on supply chain risks unique to AI: model artifact integrity, backdoor detection in pretrained weights, dataset poisoning, AI-specific bills of materials, and model-publisher trust.
+This chapter addresses AI supply chain attacks that exploit third-party models, frameworks, or datasets to embed backdoors, bias, or exploitable code. It covers the controls that ensure traceability, vetting, and monitoring of AI-specific supply chain artifacts throughout the model lifecycle: model artifact integrity, backdoor detection in pretrained weights, dataset poisoning, AI-specific bills of materials, and model-publisher trust.
 
 ---
 
 ## C6.1 Model Artifact Integrity
 
-Authenticate third-party model origins and check for hidden behavior before fine-tuning or deployment. Download AI artifacts only from approved sources.
+Third-party model origins must be authenticated and checked for hidden behavior before fine-tuning or deployment, and AI artifacts should be downloaded only from approved sources.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -21,7 +21,7 @@ Authenticate third-party model origins and check for hidden behavior before fine
 
 ## C6.2 AI BOM & Supply Chain Monitoring
 
-Generate and sign detailed AI-specific bills of materials and ensure readiness to respond to supply chain compromise events.
+Detailed AI-specific bills of materials must be generated and signed, with readiness to respond to supply chain compromise events.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
