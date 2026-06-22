@@ -2,13 +2,13 @@
 
 ## Control Objective
 
-AI systems introduce access control challenges beyond traditional application security: classification labels must follow data through AI-specific transformations (embeddings, caches, model outputs), multi-tenant inference infrastructure creates novel side channels, and retrieval-augmented pipelines must enforce caller entitlements at every stage. This chapter addresses AI-specific access control and identity concerns, including runtime isolation of the policy decision point from agent execution and authorization-aware output filtering where entitlements vary per caller.
+This chapter addresses access control challenges that AI systems introduce beyond traditional application security: classification labels must follow data through AI-specific transformations such as embeddings, caches, and model outputs; multi-tenant inference infrastructure creates novel side channels; and retrieval-augmented pipelines must enforce caller entitlements at every stage. It covers authentication, AI resource authorization and classification, and multi-tenant isolation, including runtime isolation of the policy decision point from agent execution and authorization-aware output filtering where entitlements vary per caller.
 
 ---
 
 ## C5.1 Authentication
 
-Ensure that AI agents and human users accessing resources are properly authenticated and authorized for that level of access.
+AI agents and human users accessing resources must be properly authenticated and authorized for their level of access.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
@@ -19,7 +19,7 @@ Ensure that AI agents and human users accessing resources are properly authentic
 
 ## C5.2 AI Resource Authorization & Classification
 
-Enforce the caller's authorization context through AI-specific query pipelines (RAG retrieval, embedding lookups, inference chains) so that the AI system does not return data that the caller is not entitled to access.
+The caller's authorization context must be enforced through AI-specific query pipelines (RAG retrieval, embedding lookups, inference chains) so the system does not return data the caller is not entitled to access.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
@@ -35,7 +35,7 @@ Enforce the caller's authorization context through AI-specific query pipelines (
 
 ## C5.3 Multi-Tenant Isolation
 
-Prevent cross-tenant information leakage through AI-specific shared infrastructure components such as inference caches and shared model state.
+Cross-tenant information leakage through AI-specific shared infrastructure, such as inference caches and shared model state, must be prevented.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
