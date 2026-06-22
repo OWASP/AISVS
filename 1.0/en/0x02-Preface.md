@@ -10,7 +10,7 @@ AISVS was created to give organizations a structured, testable set of security c
 
 ## Design Principles
 
-The standard is organized into 12 chapters (controls). Each chapter is divided into thematic sections that together address its control objective, and each section is divided into individual requirements. A section need not provide requirements for every level, and it must not repeat requirements found elsewhere in the standard.
+The standard is organized into 12 chapters, referred to as control families. Each control family is divided into focused sections that collectively address the family's control objective. Each section contains individual verification requirements. Sections are not required to define requirements for every assurance level, and requirements must not duplicate controls that are already specified elsewhere in the standard.
 
 Each requirement must address a single concern that can, in common scenarios, be implemented and audited as one technical mechanism. A requirement may specify progressively stricter criteria at higher levels; when present, these stricter criteria are represented as separate requirements in the section. Requirements must use clear, technology-neutral language to the extent possible, referencing well-known technologies as examples where helpful for clarity.
 
