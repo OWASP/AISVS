@@ -27,10 +27,10 @@ Detect AI-specific attack patterns (jailbreak, prompt injection, model extractio
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **12.2.1** | **Verify that** the system detects and alerts on known jailbreak patterns, prompt injection attempts, and adversarial inputs. | 1 |
 | **12.2.2** | **Verify that** behavioral anomaly detection identifies unusual conversation patterns, excessive retry attempts, or probing behaviors. | 2 |
-| **12.2.3** | **Verify that** custom rules detect AI-specific threat patterns for coordinated jailbreak attempts, prompt injection and system prompt extraction attempts. | 2 |
+| **12.2.3** | **Verify that** custom rules detect AI-specific threat patterns for coordinated jailbreak attempts, prompt injection, and system prompt extraction attempts. | 2 |
 | **12.2.4** | **Verify that** extraction-alert events include offending query metadata to support investigation. | 2 |
 | **12.2.5** | **Verify that** token usage is tracked at granular attribution levels including per user, per session, per feature endpoint, and per team or workspace. | 2 |
-| **12.2.6** | **Verify that** LLM API traffic is monitored for covert channel indicators and communication signatures to identify malware and command-and-control (C2) activity. | 3 |
+| **12.2.6** | **Verify that** LLM API traffic is monitored for covert-channel indicators and communication signatures to identify malware and command-and-control (C2) activity. | 3 |
 
 ---
 
@@ -51,7 +51,7 @@ Monitor and detect drift and degradation across model outputs, input distributio
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **12.4.1** | **Verify that** incident response plans specifically address AI-related security events with specific containment and investigation steps for each scenario. | 1 |
+| **12.4.1** | **Verify that** incident response plans address AI-related security events with containment and investigation steps for each scenario. | 1 |
 | **12.4.2** | **Verify that** incident response teams have access to forensic AI-specific capabilities. | 2 |
 | **12.4.3** | **Verify that** automated incident response workflows can isolate compromised models and block malicious users. | 2 |
 | **12.4.4** | **Verify that** post-incident analysis includes model retraining and safety filter updates. | 3 |
@@ -64,7 +64,7 @@ Detect and prevent security threats arising from proactive (agent-initiated) beh
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **12.5.1** | **Verify that** autonomous triggers include proactive behavior patterns, security evaluation and threat landscape assessment. | 2 |
+| **12.5.1** | **Verify that** autonomous action triggers include proactive behavior-pattern analysis, security evaluation, and threat-landscape assessment. | 2 |
 | **12.5.2** | **Verify that** audit logs capture security-critical proactive actions, including approver identity, timestamp, action parameters, and decision outcomes. | 2 |
 | **12.5.3** | **Verify that** kill-switch activations and override commands are logged. | 2 |
 
@@ -76,7 +76,7 @@ Ensure that the provenance and change history of training data, model artifacts,
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **12.6.1** | **Verify that** each dataset and its components, including all transformations, augmentations, and merges, is recorded. | 1 |
+| **12.6.1** | **Verify that** dataset lineage records each dataset and its components, including all transformations, augmentations, and merges. | 1 |
 | **12.6.2** | **Verify that** all labeling activities are recorded in logs. | 1 |
 | **12.6.3** | **Verify that** all model changes generate immutable audit records. | 2 |
 | **12.6.4** | **Verify that** every ingested document is tagged at write time with source, writer identity, and timestamp. | 2 |

@@ -6,13 +6,13 @@ Ensure that AI systems remain reliable, privacy-preserving, and abuse-resistant 
 
 ---
 
-## C11.1 Model Alignment, Safety and Robustness Testing and Training
+## C11.1 Model Alignment, Safety, and Robustness Testing and Training
 
 Increase resilience to manipulated inputs designed to cause misclassification or policy bypass. Adversarial testing and robustness benchmarking are the current best practices.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.1.1** | **Verify that** the model has been alignment and safety trained or fine-tuned to prevent the model from generating disallowed content categories. | 1 |
+| **11.1.1** | **Verify that** the model has undergone alignment and safety training or fine-tuning to prevent the model from generating disallowed content categories. | 1 |
 | **11.1.2** | **Verify that** a version-controlled alignment test suite is run on every model update or release. | 1 |
 | **11.1.3** | **Verify that** models are evaluated against known adversarial attack techniques relevant to their modality. | 1 |
 | **11.1.4** | **Verify that** models are hardened against adversarial inputs. | 2 |
@@ -30,7 +30,7 @@ Limit the ability to determine whether a specific record was in the training dat
 | **11.2.2** | **Verify that** inference endpoints enforce per-principal and global rate limits sized to the extraction threat model, and not solely as a generic API throttle. | 1 |
 | **11.2.3** | **Verify that** model outputs are calibrated to reduce overconfident predictions. | 2 |
 | **11.2.4** | **Verify that** training on sensitive datasets employs differentially-private optimization. | 2 |
-| **11.2.5** | **Verify that** membership-inference attack simulations demonstrate that attack accuracy does not exceed random guessing on data. | 3 |
+| **11.2.5** | **Verify that** membership-inference attack simulations demonstrate that attack accuracy does not exceed random guessing on evaluated data. | 3 |
 
 ---
 
@@ -55,7 +55,7 @@ Identify and neutralize manipulated, backdoored, or adversarial data entering th
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **11.4.1** | **Verify that** inputs from external or untrusted sources pass through anomaly detection before model inference. | 2 |
 | **11.4.2** | **Verify that** inputs flagged as anomalous trigger gating actions. | 2 |
-| **11.4.3** | **Verify that** the safety violation feedback pipeline includes poisoning detection, and human review gates to prevent adversarial manipulation of the improvement mechanism. | 3 |
+| **11.4.3** | **Verify that** the safety violation feedback pipeline includes poisoning detection and human review gates to prevent adversarial manipulation of the improvement mechanism. | 3 |
 
 ---
 
