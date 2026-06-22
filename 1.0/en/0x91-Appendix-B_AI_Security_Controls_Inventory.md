@@ -1,4 +1,4 @@
-# Appendix D: AI Security Controls Inventory
+# Appendix B: AI Security Controls Inventory
 
 ## Objective
 
