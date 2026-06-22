@@ -2,13 +2,13 @@
 
 ## Control Objective
 
-Ensure that AI systems remain reliable, privacy-preserving, and abuse-resistant when facing evasion, inference, extraction, or poisoning attacks. These controls cover model alignment testing, adversarial hardening, privacy attack resistance, model theft deterrence, and security adaptation for autonomous agents.
+This chapter addresses keeping AI systems reliable, privacy-preserving, and abuse-resistant when facing evasion, inference, extraction, or poisoning attacks. It covers model alignment, safety, and robustness testing and training, membership-inference and model-inversion mitigation, model-extraction defense, and model runtime anomaly detection.
 
 ---
 
 ## C11.1 Model Alignment, Safety, and Robustness Testing and Training
 
-Increase resilience to manipulated inputs designed to cause misclassification or policy bypass. Adversarial testing and robustness benchmarking are the current best practices.
+This section covers increasing model resilience to manipulated inputs designed to cause misclassification or policy bypass.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -22,7 +22,7 @@ Increase resilience to manipulated inputs designed to cause misclassification or
 
 ## C11.2 Membership-Inference and Model-Inversion Mitigation
 
-Limit the ability to determine whether a specific record was in the training data, and prevent reconstruction of private training data or sensitive attributes from model outputs. Differential privacy and output calibration are the most effective known defenses.
+This section covers limiting the ability to determine whether a specific record was in the training data, and preventing reconstruction of private training data or sensitive attributes from model outputs.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -36,7 +36,7 @@ Limit the ability to determine whether a specific record was in the training dat
 
 ## C11.3 Model-Extraction Defense
 
-Detect and deter unauthorized model cloning through API abuse. Rate limiting, query-pattern analysis, and watermarking are recommended defenses.
+This section covers detecting and deterring unauthorized model cloning through API abuse by implementing rate limiting, query-pattern analysis, and watermarking.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -49,7 +49,7 @@ Detect and deter unauthorized model cloning through API abuse. Rate limiting, qu
 
 ## C11.4 Model Runtime Anomaly Detection
 
-Identify and neutralize manipulated, backdoored, or adversarial data entering the model context at inference time via external sources.
+This section covers identifying and neutralizing manipulated, backdoored, or adversarial data entering the model context at inference time via external sources.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
