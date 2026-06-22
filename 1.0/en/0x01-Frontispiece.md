@@ -65,5 +65,4 @@ We gratefully acknowledge everyone who has helped build AISVS through pull reque
 * Hari Mukundhan ([harimukundhan](https://github.com/harimukundhan))
 * Sandhya
 * Starr Brown ([mamicidal](https://github.com/mamicidal))
-
-If a name or handle is wrong or missing, or you would like it shown differently, please open an issue or pull request on GitHub to be recognized in future updates.
+  
