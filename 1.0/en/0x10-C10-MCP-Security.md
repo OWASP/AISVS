@@ -2,11 +2,13 @@
 
 ## Control Objective
 
-Ensure secure discovery, authentication, authorization, transport, and use of MCP-based tool and resource integrations to prevent context confusion, unauthorized tool invocation, or cross-tenant data exposure. This chapter covers MCP-specific controls.
+This chapter addresses secure discovery, authentication, authorization, transport, and use of MCP-based tool and resource integrations to prevent context confusion, unauthorized tool invocation, and cross-tenant data exposure. It covers MCP component integrity, authentication and authorization, secure transport, and schema, message, and input validation.
 
 ---
 
 ## C10.1 Component Integrity
+
+This section covers ensuring that only trusted MCP components are used and that local servers are secured.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -17,6 +19,8 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 ---
 
 ## C10.2 Authentication & Authorization
+
+This section covers authenticating callers and authorizing access to MCP servers following protocol best practices.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -32,6 +36,8 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 
 ## C10.3 Secure Transport
 
+This section covers securing MCP communications following protocol best practices.
+
 | # | Description | Level |
 | :--: | --- | :---: |
 | **10.3.1** | **Verify that** authenticated, encrypted streamable HTTP is used for MCP transport for remote services. | 1 |
@@ -43,6 +49,8 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 ---
 
 ## C10.4 Schema, Message, and Input Validation
+
+This section covers schema, message, and input validation in both MCP servers and clients.
 
 | # | Description | Level |
 | :--: | --- | :---: |
