@@ -8,13 +8,13 @@
 
 ### What is [OWASP](https://owasp.org/)?
 
-The Open Worldwide Application Security Project (OWASP) is a nonprofit organization that works to improve the security of software. It has many programs to work towards this goal. One of those programs is the AISVS.
+The Open Worldwide Application Security Project (OWASP) is a nonprofit organization that works to improve the security of software. It has many programs that work toward this goal. One of those programs is the AISVS.
 
 ### What is the [AISVS](https://github.com/OWASP/www-project-artificial-intelligence-security-verification-standard-aisvs-docs)?
 
 The OWASP Artificial Intelligence Security Verification Standard (AISVS) focuses on providing developers, architects, and security professionals with a structured framework to evaluate and verify the security and ethical considerations of AI-driven applications. Modeled after existing OWASP standards (such as the ASVS for web applications), AISVS defines categories of requirements across 12 chapters covering areas including model behavior, supply chain integrity, agentic orchestration, adversarial robustness, and human oversight.
 
-### What is the Current Status of AISVS development?
+### What is the current status of AISVS development?
 
 **We are in the final stretch before the v1.0 requirement freeze.**
 
@@ -54,7 +54,7 @@ AISVS uses a two-part `v<MAJOR>.<MINOR>` version scheme and a published release 
 
 ## AI-Assisted Contributions
 
-AI tools are welcome as a productivity aid across the entire contribution workflow -- drafting issues, writing PR descriptions, sketching initial requirement text, spotting gaps, or formulating review comments. If it gets good ideas into the project faster, use it.
+AI tools are welcome as a productivity aid across the entire contribution workflow, including drafting issues, writing PR descriptions, sketching initial requirement text, spotting gaps, or formulating review comments. If it gets good ideas into the project faster, use it.
 
 The line is ownership and substance. Every contribution must reflect the contributor's own security judgment, whether that contribution is a requirement, a PR description, a review comment, or an issue. What we want to avoid:
 

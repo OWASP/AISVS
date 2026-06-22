@@ -27,7 +27,7 @@ AISVS is modeled after the [OWASP Application Security Verification Standard (AS
 
 ## Project Leaders
 
-This project was founded by [Jim Manico](https://linkedin.com/in/jmanico). Current project leadership includes [Jim Manico](https://linkedin.com/in/jmanico), [Otto Sulin](https://github.com/ottosulin), [Rico Komenda](https://github.com/RicoKomenda), [Russ Memisyazici](https://linkedin.com/in/vtxmm) and [Raza Sharif](mailto:raza@cybersecai.co.uk).
+This project was founded by [Jim Manico](https://linkedin.com/in/jmanico). Current project leadership includes [Jim Manico](https://linkedin.com/in/jmanico), [Otto Sulin](https://github.com/ottosulin), [Rico Komenda](https://github.com/RicoKomenda), [Russ Memisyazici](https://linkedin.com/in/vtxmm), and [Raza Sharif](mailto:raza@cybersecai.co.uk).
 
 ---
 
@@ -113,11 +113,11 @@ Each requirement has an identifier in the format `C<chapter>.<section>.<requirem
 
 > Verify that agent identity credentials rotate on a defined schedule.
 
-Since identifiers may change between versions of the standard, it is preferable for other documents, reports, or tools to use the following format: `v<version>-C<chapter>.<section>.<requirement>`, where 'version' is the AISVS version tag. For example: `v1.0-C9.4.3`.
+Since identifiers may change between versions of the standard, it is preferable for other documents, reports, or tools to use the following format: `v<version>-C<chapter>.<section>.<requirement>`, where `version` is the AISVS version tag. For example: `v1.0-C9.4.3`.
 
 Note: The `v` preceding the version number should always be lowercase.
 
-If identifiers are used without including the `v<version>` element they should be assumed to refer to the latest AISVS content. As the standard grows and changes this becomes problematic, which is why writers or developers should include the version element.
+If identifiers are used without including the `v<version>` element, they should be assumed to refer to the latest AISVS content. As the standard grows and changes, this becomes problematic, which is why writers or developers should include the version element.
 
 ---
 
@@ -125,7 +125,7 @@ If identifiers are used without including the `v<version>` element they should b
 
 AISVS uses a two-part version number, `v<MAJOR>.<MINOR>` (for example, `v1.0`, `v1.01`, `v2.0`). Major versions cover chapter and section changes, minor versions cover additions, removals, and material edits to requirements within the existing structure, and patch fixes ship in-branch without a separate version. The full policy is documented in [RELEASE.md](RELEASE.md).
 
-Each stable release of AISVS is published as a numbered folder in this repository. Once a version is released its folder is locked; all future work happens in a new folder. This mirrors the approach used by [OWASP ASVS](https://github.com/OWASP/ASVS).
+Each stable release of AISVS is published as a numbered folder in this repository. Once a version is released, its folder is locked; all future work happens in a new folder. This mirrors the approach used by [OWASP ASVS](https://github.com/OWASP/ASVS).
 
 ```text
 /
@@ -143,4 +143,4 @@ To report a security issue with the AISVS project itself, please follow the [Sec
 
 ## License
 
-The entire project content is under the **[Creative Commons Attribution-Share Alike v4.0](https://creativecommons.org/licenses/by-sa/4.0/)** license.
+The entire project content is under the **[Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/)** license.
