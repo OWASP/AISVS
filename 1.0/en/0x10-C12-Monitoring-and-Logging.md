@@ -8,7 +8,7 @@ This chapter addresses real-time and forensic visibility into what the model and
 
 ## C12.1 Request & Response Logging
 
-This section covers logging AI requests and responses to create an audit trail and support incident response.
+AI requests and responses must be logged to create an audit trail and support incident response.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -21,7 +21,7 @@ This section covers logging AI requests and responses to create an audit trail a
 
 ## C12.2 Detection and Alerting
 
-This section covers detecting AI-specific attack patterns (jailbreak, prompt injection, model extraction, multi-turn trajectory attacks, covert channels over LLM endpoints) and enriching security events with AI-specific context so that downstream detection and response systems can act on them.
+AI-specific attack patterns (jailbreak, prompt injection, model extraction, multi-turn trajectory attacks, covert channels over LLM endpoints) must be detected, and security events enriched with AI-specific context so downstream detection and response systems can act on them.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -36,7 +36,7 @@ This section covers detecting AI-specific attack patterns (jailbreak, prompt inj
 
 ## C12.3 Model, Data, and Performance Drift Detection
 
-This section covers monitoring and detecting drift and degradation across model outputs, input distributions, and data schemas to identify quality regressions and security-relevant behavioral shifts.
+Drift and degradation across model outputs, input distributions, and data schemas must be monitored to identify quality regressions and security-relevant behavioral shifts.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -49,7 +49,7 @@ This section covers monitoring and detecting drift and degradation across model 
 
 ## C12.4 AI Incident Response Planning & Execution
 
-This section covers planning and executing incident response for AI-specific security events.
+Incident response must be planned and executed for AI-specific security events.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -62,7 +62,7 @@ This section covers planning and executing incident response for AI-specific sec
 
 ## C12.5 Proactive Security Behavior Monitoring
 
-This section covers detecting and preventing security threats arising from proactive (agent-initiated) behavior, including pre-execution validation, behavior pattern analysis, and audit trails for approval of security-critical actions.
+Security threats arising from proactive (agent-initiated) behavior must be detected and prevented, including pre-execution validation, behavior pattern analysis, and audit trails for approval of security-critical actions.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -74,7 +74,7 @@ This section covers detecting and preventing security threats arising from proac
 
 ## C12.6 Training Data & Model Lifecycle Audit
 
-This section covers ensuring that the provenance and change history of training data, model artifacts, and knowledge sources are auditable throughout the AI development lifecycle.
+The provenance and change history of training data, model artifacts, and knowledge sources must be auditable throughout the AI development lifecycle.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
