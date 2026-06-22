@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-This chapter addresses control of model changes so that unauthorized or unsafe modifications cannot reach production, preserving integrity, traceability, and recoverability across the entire lifecycle from development through deployment to decommissioning. These controls enable rapid incident response and maintain accountability for every change. It covers model authorization and integrity, model validation and testing, controlled deployment and rollback, secure development practices, and pipeline fine-tuning.
+This chapter addresses control of model changes so that unauthorized or unsafe modifications cannot reach production. The goal is to preserving integrity, traceability, and recoverability across the entire lifecycle from development through deployment to decommissioning.
 
 ---
 
