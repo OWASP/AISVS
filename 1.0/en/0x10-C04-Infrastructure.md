@@ -8,7 +8,7 @@ This chapter addresses hardening AI-specific infrastructure components against m
 
 ## C4.1 AI Workload Sandboxing & Validation
 
-This section covers isolating untrusted AI models in secure sandboxes and protecting sensitive AI workloads using trusted execution environments (TEEs) and confidential computing technologies.
+Untrusted AI models must be isolated in secure sandboxes, and sensitive AI workloads protected using trusted execution environments (TEEs) and confidential computing technologies.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------ | :---: |
@@ -21,7 +21,7 @@ This section covers isolating untrusted AI models in secure sandboxes and protec
 
 ## C4.2 AI Hardware Security
 
-This section covers securing AI-specific hardware components, including GPUs, TPUs, and specialized AI accelerators.
+AI-specific hardware components, including GPUs, TPUs, and specialized AI accelerators, must be secured.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------ | :---: |
@@ -35,7 +35,7 @@ This section covers securing AI-specific hardware components, including GPUs, TP
 
 ## C4.3 Edge & Distributed AI Security
 
-This section covers securing distributed AI deployments, including edge computing, federated learning, and multi-site architectures.
+Distributed AI deployments, including edge computing, federated learning, and multi-site architectures, must be secured.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------ | :---: |
