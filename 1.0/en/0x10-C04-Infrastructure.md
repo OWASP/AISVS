@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-This chapter addresses hardening AI-specific infrastructure components against model theft, data leakage, and cross-tenant contamination. It covers AI workload sandboxing and validation, AI accelerator hardware security, and edge and distributed AI deployment security.
+This chapter addresses hardening AI-specific infrastructure components against model theft, data leakage, and cross-tenant contamination.
 
 ---
 
