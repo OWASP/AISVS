@@ -262,10 +262,10 @@ Manage model validation, deployment, rollback, and fine-tuning pipeline integrit
 | Rollout mechanisms with automated rollback triggers | C3.3.1 |
 | Complete model-state restoration on rollback | C3.3.2 |
 | Isolated runtime state for model versions running in parallel | C3.3.3 |
-| Versioned, integrity-verified RLHF reward models before a training run | C3.6.1 |
-| Detection of reward hacking or reward-model over-optimization in RLHF stages | C3.6.2 |
-| Stage-by-stage integrity verification in multi-stage fine-tuning pipelines | C3.6.3 |
-| Fine-tuning checkpoints registered as distinct artifacts | C3.6.4 |
+| Versioned, integrity-verified RLHF reward models before a training run | C3.5.1 |
+| Detection of reward hacking or reward-model over-optimization in RLHF stages | C3.5.2 |
+| Stage-by-stage integrity verification in multi-stage fine-tuning pipelines | C3.5.3 |
+| Fine-tuning checkpoints registered as distinct artifacts | C3.5.4 |
 
 **Common pitfalls:** not testing rollback before it is needed; leaving retired model artifacts in serving caches; treating reward models as static infrastructure rather than versioned, validated artifacts.
 
