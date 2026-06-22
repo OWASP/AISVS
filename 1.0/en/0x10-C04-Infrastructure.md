@@ -2,13 +2,13 @@
 
 ## Control Objective
 
-AI-specific infrastructure components must be hardened against model theft, data leakage, and cross-tenant contamination. This chapter covers AI workload sandboxing, AI accelerator hardware security, and edge/distributed AI deployment security.
+This chapter addresses hardening AI-specific infrastructure components against model theft, data leakage, and cross-tenant contamination. It covers AI workload sandboxing and validation, AI accelerator hardware security, and edge and distributed AI deployment security.
 
 ---
 
 ## C4.1 AI Workload Sandboxing & Validation
 
-Isolate untrusted AI models in secure sandboxes and protect sensitive AI workloads using trusted execution environments (TEEs) and confidential computing technologies.
+This section covers isolating untrusted AI models in secure sandboxes and protecting sensitive AI workloads using trusted execution environments (TEEs) and confidential computing technologies.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------ | :---: |
@@ -21,7 +21,7 @@ Isolate untrusted AI models in secure sandboxes and protect sensitive AI workloa
 
 ## C4.2 AI Hardware Security
 
-Secure AI-specific hardware components including GPUs, TPUs, and specialized AI accelerators.
+This section covers securing AI-specific hardware components, including GPUs, TPUs, and specialized AI accelerators.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------ | :---: |
@@ -35,7 +35,7 @@ Secure AI-specific hardware components including GPUs, TPUs, and specialized AI 
 
 ## C4.3 Edge & Distributed AI Security
 
-Secure distributed AI deployments including edge computing, federated learning, and multi-site architectures.
+This section covers securing distributed AI deployments, including edge computing, federated learning, and multi-site architectures.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------ | :---: |
