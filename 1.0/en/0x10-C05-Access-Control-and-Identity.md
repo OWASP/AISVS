@@ -8,6 +8,8 @@ AI systems introduce access control challenges beyond traditional application se
 
 ## C5.1 Authentication
 
+Enforce identity checking of AI agents or human users accessing resources have proper authentication and are allowed for such level of access.
+
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
 | **5.1.1** | **Verify that** high-risk AI operations (model deployment, weight export, training data access, production configuration changes) require step-up authentication. | 3 |
