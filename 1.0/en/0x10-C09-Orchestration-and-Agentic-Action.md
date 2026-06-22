@@ -8,7 +8,7 @@ This chapter addresses ensuring autonomous and multi-agent systems execute only 
 
 ## C9.1 Execution Budgets, Loop Control, and Circuit Breakers
 
-This section covers bounding runtime expansion (recursion, concurrency, cost) and halting safely on runaway behavior.
+Runtime expansion (recursion, concurrency, cost) must be bounded, with safe halting on runaway behavior.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -20,7 +20,7 @@ This section covers bounding runtime expansion (recursion, concurrency, cost) an
 
 ## C9.2 High-Impact Action Approval and Irreversibility Controls
 
-This section covers requiring trusted approval checkpoints for agent actions that are privileged, high-impact, or difficult to reverse.
+Privileged, high-impact, or hard-to-reverse agent actions must require trusted approval checkpoints.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -39,7 +39,7 @@ This section covers requiring trusted approval checkpoints for agent actions tha
 
 ## C9.3 Component Isolation and Tool Authorization
 
-This section covers constraining tool and plugin execution, loading, and outputs to prevent unauthorized system access and unsafe side effects.
+Tool and plugin execution, loading, and outputs must be constrained to prevent unauthorized system access and unsafe side effects.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -56,7 +56,7 @@ This section covers constraining tool and plugin execution, loading, and outputs
 
 ## C9.4 Agent and Orchestrator Identity
 
-This section covers making every action attributable and every mutation detectable.
+Every action must be attributable and every mutation detectable.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -69,7 +69,7 @@ This section covers making every action attributable and every mutation detectab
 
 ## C9.5 Agent Authorization, Delegation, and Continuous Enforcement
 
-This section covers ensuring every action is authorized at execution time and constrained by scope.
+Every action must be authorized at execution time and constrained by scope.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -84,7 +84,7 @@ This section covers ensuring every action is authorized at execution time and co
 
 ## C9.6 Shutdown and Graceful Degradation
 
-This section covers providing shutdown and graceful degradation paths under human control, with mechanisms that remain reliable.
+Shutdown and graceful degradation paths must remain under human control, with mechanisms that stay reliable and are exercised over time.
 
 | # | Description | Level |
 | :--: | --- | :---: |
