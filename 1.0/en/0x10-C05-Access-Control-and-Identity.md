@@ -8,7 +8,7 @@ This chapter addresses access control challenges that AI systems introduce beyon
 
 ## C5.1 Authentication
 
-This section covers ensuring that AI agents and human users accessing resources are properly authenticated and authorized for that level of access.
+AI agents and human users accessing resources must be properly authenticated and authorized for their level of access.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
@@ -19,7 +19,7 @@ This section covers ensuring that AI agents and human users accessing resources 
 
 ## C5.2 AI Resource Authorization & Classification
 
-This section covers enforcing the caller's authorization context in AI-specific query pipelines so that the AI system does not return data that the caller is not entitled to access.
+The caller's authorization context must be enforced through AI-specific query pipelines (RAG retrieval, embedding lookups, inference chains) so the system does not return data the caller is not entitled to access.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
@@ -35,7 +35,7 @@ This section covers enforcing the caller's authorization context in AI-specific 
 
 ## C5.3 Multi-Tenant Isolation
 
-This section covers preventing cross-tenant information leakage through AI-specific shared infrastructure components such as inference caches and shared model state.
+Cross-tenant information leakage through AI-specific shared infrastructure, such as inference caches and shared model state, must be prevented.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
