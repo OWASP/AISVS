@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-This chapter addresses real-time and forensic visibility into what the model and other AI components see, do, and return, so that AI-specific threats can be detected, triaged, and learned from. It covers request and response logging, detection and alerting, model, data, and performance drift detection, AI incident response planning and execution, proactive security behavior monitoring, and training data and model lifecycle audit.
+This chapter addresses real-time and forensic visibility into what the model and other AI components see, do, and return, so that AI-specific threats can be detected and triaged.
 
 ---
 
