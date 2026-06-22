@@ -6,8 +6,6 @@ This appendix is a consolidated, developer-facing inventory of the security cont
 
 This inventory is non-normative. It reorganizes existing requirements for ease of implementation and does not add, remove, or change any requirement. The requirement chapters (C1 through C12) remain the source of truth. Requirement IDs are written in canonical `C{chapter}.{section}.{requirement}` form (for example, `C5.1.1`). Every numbered requirement in the standard appears in exactly one control family below, so the inventory can be checked for completeness against the chapters.
 
-**Known source numbering issue:** the identifier `7.3.4` is used twice in C7 (once in C7.3 for hidden or encoded output detection, once in C7.4 for AI-generated media watermarking). Both controls are listed below under their respective families. The duplicate is flagged for correction and is not resolved here, since renumbering a requirement is a material change governed by the release policy.
-
 ---
 
 ## AD.1 Authentication & Identity
@@ -101,7 +99,7 @@ Verify authenticity and detect tampering of models, artifacts, messages, tool de
 | Integrity protection of agent state persisted between invocations | C9.4.4 |
 | Signed MCP tool responses with a unique nonce and timestamp for replay defense | C10.4.6 |
 | Tool-definition snapshotting with re-approval required on any change before invocation | C10.4.7 |
-| Watermarking of AI-generated media to prove it was AI-generated | C7.3.4 (see numbering note) |
+| Watermarking of AI-generated media to prove it was AI-generated | C7.4.4 |
 
 **Common pitfalls:** using mutable tags instead of immutable digests; not re-verifying tool definitions between MCP invocations; missing replay protection on tool responses.
 
@@ -165,7 +163,7 @@ Constrain, filter, and validate model outputs before they reach users or downstr
 | Automated classifiers that scan responses and block defined harmful-content categories | C7.3.1 |
 | Detection and blocking of responses that disclose system prompt content or backend data | C7.3.2 |
 | Prevention of model-generated output triggering outbound requests | C7.3.3 |
-| Detection of hidden, encoded, or misleading output (homoglyphs, formatting, metadata, structured fields) | C7.3.4 (see numbering note) |
+| Detection of hidden, encoded, or misleading output (homoglyphs, formatting, metadata, structured fields) | C7.3.4 |
 
 **Common pitfalls:** enforcing stop sequences in batch mode but not on streaming output; leaking the system prompt through paraphrase; treating a confidence score as available when the provider does not expose one.
 
