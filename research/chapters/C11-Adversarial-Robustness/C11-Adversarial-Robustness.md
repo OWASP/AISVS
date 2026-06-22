@@ -221,7 +221,6 @@ These numbers reinforce that adversarial robustness is not a theoretical concern
 
 - [C02-02 Pre-Tokenization Input Normalization](../C02-User-Input-Validation/C02-01-Prompt-Injection-Defense.md) — Handles the Unicode, invisible-text, metadata, and package-content carriers that often deliver prompt injection and adversarial context before C11 controls evaluate model behavior.
 - [C12-02 Abuse Detection Alerting](../C12-Monitoring-and-Logging/C12-02-Abuse-Detection-Alerting.md) — Turns C11 attack patterns into SOC telemetry, alerting, and response playbooks for prompt injection, jailbreaks, covert API use, and abusive automation.
-- [Appendix-B References](../../appendices/Appendix-B-References.md) — Provides the standards, incident, and research bibliography behind the NIST, MITRE, OWASP, EU AI Act, and tool references cited throughout this chapter.
 - [C11-01 Model Alignment, Safety and Robustness Testing and Training](C11-01-Model-Alignment-Safety.md) — Expands the hub's adaptive-testing discussion into row-level evidence for alignment evaluation, adversarial examples, certified robustness, multimodal testing, and post-training backdoor checks.
 - [C11-04 Model Runtime Anomaly Detection](C11-04-Model-Runtime-Anomaly-Detection.md) — Connects the chapter's adversarial robustness theme to runtime context contamination detection, RAG poisoning defenses, and anomaly-driven gating.
 

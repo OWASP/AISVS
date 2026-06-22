@@ -8,23 +8,23 @@ Welcome to the AISVS research wiki. This wiki provides structured research conte
 
 ## Chapters
 
-The standard is organized into 14 chapters spanning the full AI application security lifecycle, from training data through deployment, monitoring, and human oversight. Every chapter has per-section sub-pages for focused navigation, plus a hub page with cross-cutting threat landscape, tooling, and research context.
+The standard is organized into 12 chapters spanning the full AI application security lifecycle, from training data through deployment, monitoring, and human oversight. Every chapter has per-section sub-pages for focused navigation, plus a hub page with cross-cutting threat landscape, tooling, and research context.
 
 | # | Chapter | Reqs | Pages | Type | Updated |
 |---|---------|:----:|:-----:|------|:-------:|
-| C1 | Training Data Integrity & Traceability | 13 | [C01](chapters/C01-Training-Data/C01-Training-Data.md) | [3 sections](#c1-training-data-integrity-traceability) | 2026-06-20 |
+| C1 | Training Data Integrity & Traceability | 13 | [C01](chapters/C01-Training-Data/C01-Training-Data.md) | [3 sections](#c1-training-data-integrity-traceability) | 2026-06-22 |
 | C2 | Input Validation | 12 | [C02](chapters/C02-User-Input-Validation/C02-User-Input-Validation.md) | [2 sections](#c2-input-validation) | 2026-06-22 |
 | C3 | Model Lifecycle Management & Change Control | 15 | [C03](chapters/C03-Model-Lifecycle-Management/C03-Model-Lifecycle-Management.md) | [5 sections](#c3-model-lifecycle-management-change-control) | 2026-06-22 |
 | C4 | Infrastructure, Configuration & Deployment Security | 14 | [C04](chapters/C04-Infrastructure/C04-Infrastructure.md) | [3 sections](#c4-infrastructure-configuration-deployment-security) | 2026-06-22 |
 | C5 | Access Control & Identity for AI Components & Users | 11 | [C05](chapters/C05-Access-Control/C05-Access-Control.md) | [3 sections](#c5-access-control-identity-for-ai-components-users) | 2026-06-22 |
 | C6 | Supply Chain Security for Models | 7 | [C06](chapters/C06-Supply-Chain/C06-Supply-Chain.md) | [2 sections](#c6-supply-chain-security-for-models) | 2026-06-22 |
 | C7 | Model Behavior, Output Control & Safety Assurance | 13 | [C07](chapters/C07-Model-Behavior/C07-Model-Behavior.md) | [4 sections](#c7-model-behavior-output-control-safety-assurance) | 2026-06-22 |
-| C8 | Memory, Embeddings & Vector Database Security | 11 | [C08](chapters/C08-Memory-and-Embeddings/C08-Memory-and-Embeddings.md) | [3 sections](#c8-memory-embeddings-vector-database-security) | 2026-06-22 |
+| C8 | Memory, Embeddings & Vector Database Security | 11 | [C08](chapters/C08-Memory-and-Embeddings/C08-Memory-and-Embeddings.md) | [3 sections](#c8-memory-embeddings-vector-database-security) | 2026-06-23 |
 | C9 | Orchestration & Agentic Security | 34 | [C09](chapters/C09-Orchestration-and-Agents/C09-Orchestration-and-Agents.md) | [6 sections](#c9-orchestration-agentic-security) | 2026-06-22 |
 | C10 | Model Context Protocol (MCP) Security | 23 | [C10](chapters/C10-MCP-Security/C10-MCP-Security.md) | [4 sections](#c10-model-context-protocol-mcp-security) | 2026-06-22 |
 | C11 | Adversarial Robustness & Attack Resistance | 17 | [C11](chapters/C11-Adversarial-Robustness/C11-Adversarial-Robustness.md) | [4 sections](#c11-adversarial-robustness-attack-resistance) | 2026-06-22 |
-| C12 | Monitoring, Logging & Anomaly Detection | 48 | [C12](chapters/C12-Monitoring-and-Logging/C12-Monitoring-and-Logging.md) | [7 sections](#c12-monitoring-logging-anomaly-detection) | 2026-06-20 |
-| | **Total** | **218** | **62 pages** | | |
+| C12 | Monitoring, Logging & Anomaly Detection | 25 | [C12](chapters/C12-Monitoring-and-Logging/C12-Monitoring-and-Logging.md) | [6 sections](#c12-monitoring-logging-anomaly-detection) | 2026-06-23 |
+| | **Total** | **195** | **60 pages** | | |
 
 ---
 
@@ -102,7 +102,7 @@ Covers output format enforcement, hallucination detection, output safety and pri
 |---------|------|
 | C7.1 Output Format Enforcement | [C07-01](chapters/C07-Model-Behavior/C07-01-Output-Format-Enforcement.md) |
 | C7.2 Hallucination Detection & Mitigation | [C07-02](chapters/C07-Model-Behavior/C07-02-Hallucination-Detection.md) |
-| C7.3 Output Safety, Privacy & Explainability | [C07-03](chapters/C07-Model-Behavior/C07-03-Output-Safety-Privacy-Explainability.md) |
+| C7.3 Output Safety | [C07-03](chapters/C07-Model-Behavior/C07-03-Output-Safety-Privacy-Explainability.md) |
 | C7.4 Source Attribution & Citation Integrity | [C07-04](chapters/C07-Model-Behavior/C07-04-Source-Attribution-Citation-Integrity.md) |
 
 
@@ -114,7 +114,7 @@ Covers vector identifier and namespace isolation, retrieval scope enforcement, e
 |---------|------|
 | C8.1 Access Controls on Memory & RAG Indices | [C08-01](chapters/C08-Memory-and-Embeddings/C08-01-Access-Controls-Memory-RAG.md) |
 | C8.2 Embedding Sanitization & Validation | [C08-02](chapters/C08-Memory-and-Embeddings/C08-02-Embedding-Sanitization-Validation.md) |
-| C8.3 Memory Expiry, Revocation & Leakage Prevention | [C08-03](chapters/C08-Memory-and-Embeddings/C08-03-Memory-Expiry-Revocation-Leakage-Prevention.md) |
+| C8.3 Memory Expiry & Revocation | [C08-03](chapters/C08-Memory-and-Embeddings/C08-03-Memory-Expiry-Revocation-Leakage-Prevention.md) |
 
 
 ### C9: Orchestration & Agentic Security
@@ -149,7 +149,7 @@ Covers model alignment, adversarial-example hardening, membership inference and 
 
 | Section | Page |
 |---------|------|
-| C11.1 Model Alignment, Safety and Robustness Testing and Training | [C11-01](chapters/C11-Adversarial-Robustness/C11-01-Model-Alignment-Safety.md) |
+| C11.1 Model Alignment, Safety, and Robustness Testing and Training | [C11-01](chapters/C11-Adversarial-Robustness/C11-01-Model-Alignment-Safety.md) |
 | C11.2 Membership-Inference and Model-Inversion Mitigation | [C11-02](chapters/C11-Adversarial-Robustness/C11-02-Membership-Inference-Model-Inversion-Mitigation.md) |
 | C11.3 Model-Extraction Defense | [C11-03](chapters/C11-Adversarial-Robustness/C11-03-Model-Extraction-Defense.md) |
 | C11.4 Model Runtime Anomaly Detection | [C11-04](chapters/C11-Adversarial-Robustness/C11-04-Model-Runtime-Anomaly-Detection.md) |
@@ -162,24 +162,22 @@ Covers request and response logging, abuse detection, model and data drift detec
 | Section | Page |
 |---------|------|
 | C12.1 Request & Response Logging | [C12-01](chapters/C12-Monitoring-and-Logging/C12-01-Request-Response-Logging.md) |
-| C12.2 Abuse Detection and Alerting | [C12-02](chapters/C12-Monitoring-and-Logging/C12-02-Abuse-Detection-Alerting.md) |
+| C12.2 Detection and Alerting | [C12-02](chapters/C12-Monitoring-and-Logging/C12-02-Abuse-Detection-Alerting.md) |
 | C12.3 Model, Data, and Performance Drift Detection | [C12-03](chapters/C12-Monitoring-and-Logging/C12-03-Model-Drift-Detection.md) |
-| C12.4 Performance & Behavior Telemetry | [C12-04](chapters/C12-Monitoring-and-Logging/C12-04-Performance-Behavior-Telemetry.md) |
-| C12.5 AI Incident Response Planning & Execution | [C12-05](chapters/C12-Monitoring-and-Logging/C12-05-Incident-Response.md) |
-| C12.6 Proactive Security Behavior Monitoring | [C12-06](chapters/C12-Monitoring-and-Logging/C12-06-Proactive-Security-Behavior-Monitoring.md) |
-| C12.7 Training Data & Model Lifecycle Audit | [C12-07](chapters/C12-Monitoring-and-Logging/C12-07-Training-Data-Model-Lifecycle-Audit.md) |
+| C12.4 AI Incident Response Planning & Execution | [C12-04](chapters/C12-Monitoring-and-Logging/C12-04-Incident-Response.md) |
+| C12.5 Proactive Security Behavior Monitoring | [C12-05](chapters/C12-Monitoring-and-Logging/C12-05-Proactive-Security-Behavior-Monitoring.md) |
+| C12.6 Training Data & Model Lifecycle Audit | [C12-06](chapters/C12-Monitoring-and-Logging/C12-06-Training-Data-Model-Lifecycle-Audit.md) |
 
 
 ## Appendices
 
-The appendices provide supporting material including a glossary of AI security terms, a curated reference list, requirements for AI-assisted secure coding, and an inventory of security controls mapped to the standard.
+The appendices provide supporting material including a glossary of AI security terms, an inventory of security controls mapped to the standard, and requirements for AI-assisted secure coding.
 
 | Appendix | Page | Updated |
 |----------|------|:-------:|
 | A: Glossary | [Appendix A Glossary](appendices/Appendix-A-Glossary.md) | 2026-06-11 |
-| B: References | [Appendix B References](appendices/Appendix-B-References.md) | 2026-06-20 |
+| B: AI Security Controls Inventory | [Appendix B Controls Inventory](appendices/Appendix-B-Controls-Inventory.md) | 2026-06-22 |
 | C: AI-Assisted Secure Coding (68 reqs) | [Appendix C AI Secure Coding](appendices/Appendix-C-AI-Secure-Coding.md) | 2026-06-22 |
-| D: AI Security Controls Inventory | [Appendix D Controls Inventory](appendices/Appendix-D-Controls-Inventory.md) | 2026-06-20 |
 
 ---
 
