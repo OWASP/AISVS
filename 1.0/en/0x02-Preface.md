@@ -10,7 +10,7 @@ AISVS was created to give organizations a structured, testable set of security c
 
 ## Design Principles
 
-The standard is organized into 12 chapters (controls). Each chapter is split into thematic sections, which together provide a holistic approach to achieve the control objective. Sections are broken into requirements. A section may not provide requirements for each level and must not contain requirements present elsewhere in the standard.
+The standard is organized into 12 chapters (controls). Each chapter is split into thematic sections, which together provide a holistic approach to achieving the control objective. Sections are broken into requirements. A section may not provide requirements for each level and must not contain requirements present elsewhere in the standard.
 
 Each requirement must address a single concern that can, in common scenarios, be implemented and audited as one technical mechanism. A requirement may specify progressively stricter criteria at higher levels, which are, if present, represented as separate requirements in the section. Requirements must use clear, technology-neutral language to the extent possible, referencing well-known technologies as examples where deemed useful for clarity.
 
