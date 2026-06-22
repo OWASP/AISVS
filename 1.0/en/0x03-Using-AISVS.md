@@ -61,6 +61,6 @@ Individual chapters and sections do not enumerate which other AISVS chapters cov
 
 ## AISVS Requirements and Scope in Assessments
 
-When using AISVS to assess security of a system, often the organization developing the system is not in full control of the supply chain. AISVS does not prescribe a certain way to approach these situations.
+When using AISVS to assess the security of a system, the organization developing the system may not fully control its supply chain. AISVS does not prescribe one way to handle these situations.
 
-One option is to get this information from the vendors used in the supply chain. Often the requirements can be assessed using a combination of technical testing and referencing vendor documentation (e.g., model cards for AI models). Another option is to just mark requirements not in the organization's control as out of scope.
+One option is to obtain evidence from supply chain vendors. Requirements can often be assessed using a combination of technical testing and vendor documentation, such as model cards for AI models. Another option is to mark requirements outside the organization's control as out of scope.

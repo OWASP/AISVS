@@ -23,7 +23,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **10.2.1** | **Verify that** MCP servers validate access tokens for each request and do not rely on transport security alone. | 1 |
 | **10.2.2** | **Verify that** MCP servers validate the presented access token's issuer, audience, expiration, and scope claims in accordance with OAuth 2.1. | 1 |
 | **10.2.3** | **Verify that** MCP servers acting as OAuth 2.1 resource servers do not store or persist access tokens or user credentials. | 1 |
-| **10.2.4** | **Verify that** MCP tools/list only returns tools that the resource owners' authorized scopes allow. | 2 |
+| **10.2.4** | **Verify that** MCP tools/list returns only tools authorized by the requesting user's scopes. | 2 |
 | **10.2.5** | **Verify that** MCP servers enforce access control on every tool invocation, validating that the user's access token authorizes both the requested tool and the specific argument values supplied. | 2 |
 | **10.2.6** | **Verify that** MCP servers ensure all session artifacts are removed when a session terminates. | 2 |
 | **10.2.7** | **Verify that** MCP servers do not pass through access tokens received from clients to downstream APIs. | 2 |
@@ -51,7 +51,7 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | **10.4.3** | **Verify that** MCP servers reject unrecognized or oversized parameters in function calls. | 1 |
 | **10.4.4** | **Verify that** all MCP servers enforce strict schema validation. | 2 |
 | **10.4.5** | **Verify that** all MCP transports enforce maximum payload size limits. | 2 |
-| **10.4.6** | **Verify that** MCP servers sign tool responses with a unique nonce and timestamp so MCP clients can avoid replay attacks. | 2 |
+| **10.4.6** | **Verify that** MCP servers sign tool responses with a unique nonce and timestamp so MCP clients can detect replay attempts. | 2 |
 | **10.4.7** | **Verify that** MCP clients maintain a snapshot of tool definitions and that any change to a tool definition triggers re-approval before the modified tool can be invoked. | 3 |
 | **10.4.8** | **Verify that** MCP clients present users with explicit consent dialogue and cancellation options upon installation of a local MCP server. | 2 |
 

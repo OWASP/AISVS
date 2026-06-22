@@ -38,7 +38,7 @@ Enforce access decisions across users, agents, tools, and resources using policy
 | --- | --- |
 | Access controls on every AI resource (datasets, endpoints, vector collections, embedding indices, compute) with explicit allow-lists and default-deny | C5.2.1 |
 | End-user authorization context enforced at each retrieval and assembly stage, not the service account alone | C5.2.2 |
-| Post-inference filtering so responses exclude data the requestor is not entitled to receive | C5.2.4 |
+| Post-inference filtering so responses exclude data the requester is not entitled to receive | C5.2.4 |
 | Policy decision point isolated from the agent execution environment | C5.2.5 |
 | Just-in-time privileged access to model weights, training pipelines, and production configuration with automatic expiry | C5.2.6 |
 | Fine-grained, runtime-enforced authorization of agent actions (which tools, which parameter values) | C9.5.1 |
@@ -142,7 +142,7 @@ Screen prompts and training content against policy before they reach the model o
 | Control / Technique | Requirement IDs |
 | --- | --- |
 | Inbound content classification (violence, self-harm, hate, sexual) against configurable thresholds, with rejection or sanitization before model context | C2.2.1 |
-| Evaluation of content classification for languages that are not supported | C2.2.2 |
+| Evaluation of content classification for unsupported languages | C2.2.2 |
 | Detection and removal of disallowed content before training | C1.3.4 |
 
 **Common pitfalls:** deploying classifiers tuned only for one language; screening prompts but not the training corpus.
@@ -255,7 +255,7 @@ Manage model validation, deployment, rollback, and fine-tuning pipeline integrit
 | Control / Technique | Requirement IDs |
 | --- | --- |
 | Pre-deployment automated input-validation, safety-evaluation, and output-sanitization testing | C3.2.1 |
-| Re-evaluation of post-training-quantized models against the same safety and alignment test suite before deployment | C3.2.2 |
+| Re-evaluation of models subjected to post-training quantization against the same safety and alignment test suite before deployment | C3.2.2 |
 | Security re-evaluation triggered by provider model, version, or routing changes | C3.2.3 |
 | Rollout mechanisms with automated rollback triggers | C3.3.1 |
 | Complete model-state restoration on rollback | C3.3.2 |
@@ -380,7 +380,7 @@ Detect AI-specific abuse, drift, and anomalies, and respond to incidents.
 | AI-specific forensic tools and expertise for investigating model behavior | C12.4.2 |
 | Automated incident-response workflows that isolate compromised models and block malicious users | C12.4.3 |
 | Post-incident analysis feeding model retraining and safety filter updates | C12.4.4 |
-| Security evaluation and threat-landscape assessment on autonomous initiative triggers | C12.5.1 |
+| Security evaluation and threat-landscape assessment for autonomous action triggers | C12.5.1 |
 
 **Common pitfalls:** not correlating AI-specific events with broader SIEM alerts; treating drift as a scheduled check rather than continuous monitoring; lacking AI-specific forensic tooling during an incident.
 
