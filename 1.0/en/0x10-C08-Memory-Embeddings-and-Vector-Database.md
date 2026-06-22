@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-This chapter addresses embeddings and vector stores that act as semi-persistent and persistent "memory" for AI systems through Retrieval-Augmented Generation (RAG).
+This chapter addresses securing the embeddings and vector stores that act as semi-persistent and persistent "memory" for AI systems through Retrieval-Augmented Generation (RAG).
 
 ---
 
