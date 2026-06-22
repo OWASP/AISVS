@@ -51,35 +51,35 @@ Monitor and detect drift and degradation across model outputs, input distributio
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **12.5.1** | **Verify that** incident response plans specifically address AI-related security events with specific containment and investigation steps for each scenario. | 1 |
-| **12.5.2** | **Verify that** incident response teams have access to forensic AI-specific capabilities. | 2 |
-| **12.5.3** | **Verify that** automated incident response workflows can isolate compromised models and block malicious users. | 2 |
-| **12.5.4** | **Verify that** post-incident analysis includes model retraining, and safety filter updates. | 3 |
+| **12.4.1** | **Verify that** incident response plans specifically address AI-related security events with specific containment and investigation steps for each scenario. | 1 |
+| **12.4.2** | **Verify that** incident response teams have access to forensic AI-specific capabilities. | 2 |
+| **12.4.3** | **Verify that** automated incident response workflows can isolate compromised models and block malicious users. | 2 |
+| **12.4.4** | **Verify that** post-incident analysis includes model retraining, and safety filter updates. | 3 |
 
 ---
 
-## C12.6 Proactive Security Behavior Monitoring
+## C12.5 Proactive Security Behavior Monitoring
 
 Detect and prevent security threats arising from proactive (agent-initiated) behavior, including pre-execution validation, behavior pattern analysis, and audit trails for approval of security-critical actions.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **12.6.1** | **Verify that** autonomous triggers include proactive behavior patterns, security evaluation and threat landscape assessment. | 2 |
-| **12.6.2** | **Verify that** audit logs capture security-critical proactive actions, including approver identity, timestamp, action parameters, and decision outcomes. | 2 |
-| **12.6.3** | **Verify that** kill-switch activations and override commands are logged. | 2 |
+| **12.5.1** | **Verify that** autonomous triggers include proactive behavior patterns, security evaluation and threat landscape assessment. | 2 |
+| **12.5.2** | **Verify that** audit logs capture security-critical proactive actions, including approver identity, timestamp, action parameters, and decision outcomes. | 2 |
+| **12.5.3** | **Verify that** kill-switch activations and override commands are logged. | 2 |
 
 ---
 
-## C12.7 Training Data & Model Lifecycle Audit
+## C12.6 Training Data & Model Lifecycle Audit
 
 Ensure that the provenance and change history of training data, model artifacts, and knowledge sources are auditable throughout the AI development lifecycle.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **12.7.1** | **Verify that** each dataset and its components, including all transformations, augmentations, and merges, is recorded. | 1 |
-| **12.7.2** | **Verify that** all labeling activities are recorded in logs. | 1 |
-| **12.7.3** | **Verify that** all model changes generate immutable audit records. | 2 |
-| **12.7.4** | **Verify that** every ingested document is tagged at write time with source, writer identity, and timestamp. | 2 |
+| **12.6.1** | **Verify that** each dataset and its components, including all transformations, augmentations, and merges, is recorded. | 1 |
+| **12.6.2** | **Verify that** all labeling activities are recorded in logs. | 1 |
+| **12.6.3** | **Verify that** all model changes generate immutable audit records. | 2 |
+| **12.6.4** | **Verify that** every ingested document is tagged at write time with source, writer identity, and timestamp. | 2 |
 
 ---
 
