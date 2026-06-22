@@ -24,7 +24,7 @@ Models must pass defined security and safety validations before deployment.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------- | :---: |
-| **3.2.1** | **Verify that** models undergo automated input-validation, safety-evaluation, and output-sanitization testing before deployment. | 1 |
+| **3.2.1** | **Verify that** models undergo automated input validation testing, safety evaluation testing, and output sanitization testing before deployment. | 1 |
 | **3.2.2** | **Verify that** models subjected to post-training quantization are re-evaluated against the same safety and alignment test suite on the compressed artifact before deployment. | 2 |
 | **3.2.3** | **Verify that** provider model, version, or routing changes trigger security re-evaluation before continued use. | 3 |
 
