@@ -2,13 +2,13 @@
 
 ## Control Objective
 
-This chapter addresses the sourcing, handling, and maintenance of training data in a way that preserves origin traceability, integrity, and quality. The core security concern is ensuring data has not been tampered with, poisoned, or corrupted.
+This chapter addresses the sourcing, handling, and maintenance of training data so that origin traceability, integrity, and quality are preserved, and so that data has not been tampered with, poisoned, or corrupted. It covers training data origin and security, data labeling and annotation security, and training data quality and security assurance.
 
 ---
 
 ## C1.1 Training Data Origin & Data Security
 
-Training data origin and data security are critical to the security and trustworthiness of any AI system. Datasets must be sourced from verifiable origins and tracked across their full lifecycle so that tampering or unauthorized modification can be detected. Training data must be protected against tampering, corruption, and poisoning throughout its lifecycle.
+This section covers training data origin and data security, which are critical to the security and trustworthiness of any AI system. Datasets must be sourced from verifiable origins and tracked across their full lifecycle so that tampering or unauthorized modification can be detected, and training data must be protected against tampering, corruption, and poisoning throughout its lifecycle.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -22,7 +22,7 @@ Training data origin and data security are critical to the security and trustwor
 
 ## C1.2 Data Labeling and Annotation Security
 
-Labeling and annotation processes must be protected against unauthorized modification, data leakage, and integrity compromise. Annotation platforms should enforce access control, preserve auditability, and protect labeling artifacts and sensitive label content throughout the training pipeline.
+This section covers protecting labeling and annotation processes against unauthorized modification, data leakage, and integrity compromise. Annotation platforms should enforce access control, preserve auditability, and protect labeling artifacts and sensitive label content throughout the training pipeline.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
@@ -34,7 +34,7 @@ Labeling and annotation processes must be protected against unauthorized modific
 
 ## C1.3 Training Data Quality and Security Assurance
 
-Training data quality and security assurance controls help detect corruption, poisoning, labeling errors, and exploitable dataset patterns before they affect model behavior. Pipelines should combine automated validation, poisoning detection, label quality checks, and bias analysis.
+This section covers training data quality and security assurance controls that help detect corruption, poisoning, labeling errors, and exploitable dataset patterns before they affect model behavior. Pipelines should combine automated validation, poisoning detection, label quality checks, and bias analysis.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
