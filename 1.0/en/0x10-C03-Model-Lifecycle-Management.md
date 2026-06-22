@@ -2,7 +2,7 @@
 
 ## Control Objective
 
-AI systems must implement change control processes that prevent unauthorized or unsafe model modifications from reaching production. These controls enable rapid incident response and maintain accountability for all changes by ensuring model integrity through the entire lifecycle, from development through deployment to decommissioning. By employing controlled processes that maintain integrity, traceability, and recoverability, only authorized and validated models will reach production.
+AI systems must implement change control processes that prevent unauthorized or unsafe model modifications from reaching production. These controls enable rapid incident response and maintain accountability for all changes by ensuring model integrity through the entire lifecycle, from development through deployment to decommissioning. Controlled processes that maintain integrity, traceability, and recoverability ensure that only authorized and validated models reach production.
 
 ---
 
@@ -24,15 +24,15 @@ Models must pass defined security and safety validations before deployment.
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------- | :---: |
-| **3.2.1** | **Verify that** models undergo automated input validation testing, safety evaluation testing and output sanitization testing before deployment. | 1 |
-| **3.2.2** | **Verify that** models that are subjected to post-training quantization will be re-evaluated against the same safety and alignment test suite on the compressed artifact before deployment. | 2 |
+| **3.2.1** | **Verify that** models undergo automated input-validation, safety-evaluation, and output-sanitization testing before deployment. | 1 |
+| **3.2.2** | **Verify that** models subjected to post-training quantization are re-evaluated against the same safety and alignment test suite on the compressed artifact before deployment. | 2 |
 | **3.2.3** | **Verify that** provider model, version, or routing changes trigger security re-evaluation before continued use. | 3 |
 
 ---
 
 ## C3.3 Controlled Deployment & Rollback
 
-Model deployments must be controlled, monitored, and reversible for ease of managing model lifecycle.
+Model deployments must be controlled, monitored, and reversible to support model lifecycle management.
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
