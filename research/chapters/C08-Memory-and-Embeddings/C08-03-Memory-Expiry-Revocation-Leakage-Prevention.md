@@ -91,7 +91,7 @@ The OWASP Top 10 for Agentic Applications 2026, published 9 December 2025, forma
 - [C05-03: Multi-Tenant Isolation](../C05-Access-Control/C05-03-Multi-Tenant-Isolation.md) - Covers the fail-closed, tenant-scoped retrieval filters that must enforce expiry, quarantine, and access decisions at query time so deletion in one tenant cannot leak to another.
 - [C07-04: Source Attribution & Citation Integrity](../C07-Model-Behavior/C07-04-Source-Attribution-Citation-Integrity.md) - Helps auditors connect retained or quarantined chunks to source evidence and citation provenance during incident review.
 - [C12-01: Request & Response Logging](../C12-Monitoring-and-Logging/C12-01-Request-Response-Logging.md) - Hosts the immutable audit-log controls that quarantine, purge, and reset events depend on for evidentiary value under EU AI Act Articles 12 and 19.
-- [C12-04: Incident Response](../C12-Monitoring-and-Logging/C12-04-Incident-Response.md) - Treats memory reset and quarantine as rehearsed incident-response operations and frames the conflict between privacy erasure and security/log retention.
+- [C09-06: Shutdown & Graceful Degradation](../C09-Orchestration-and-Agents/C09-06-Shutdown-Graceful-Degradation.md) - Treats memory reset and quarantine as rehearsed containment operations and frames the conflict between privacy erasure and security/log retention.
 
 ---
 

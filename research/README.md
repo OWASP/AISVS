@@ -23,8 +23,8 @@ The standard is organized into 12 chapters spanning the full AI application secu
 | C9 | Orchestration & Agentic Security | 34 | [C09](chapters/C09-Orchestration-and-Agents/C09-Orchestration-and-Agents.md) | [6 sections](#c9-orchestration-agentic-security) | 2026-06-22 |
 | C10 | Model Context Protocol (MCP) Security | 23 | [C10](chapters/C10-MCP-Security/C10-MCP-Security.md) | [4 sections](#c10-model-context-protocol-mcp-security) | 2026-06-22 |
 | C11 | Adversarial Robustness & Attack Resistance | 17 | [C11](chapters/C11-Adversarial-Robustness/C11-Adversarial-Robustness.md) | [4 sections](#c11-adversarial-robustness-attack-resistance) | 2026-06-22 |
-| C12 | Monitoring, Logging & Anomaly Detection | 25 | [C12](chapters/C12-Monitoring-and-Logging/C12-Monitoring-and-Logging.md) | [6 sections](#c12-monitoring-logging-anomaly-detection) | 2026-06-23 |
-| | **Total** | **195** | **60 pages** | | |
+| C12 | Monitoring, Logging & Anomaly Detection | 21 | [C12](chapters/C12-Monitoring-and-Logging/C12-Monitoring-and-Logging.md) | [5 sections](#c12-monitoring-logging-anomaly-detection) | 2026-06-23 |
+| | **Total** | **191** | **59 pages** | | |
 
 ---
 
@@ -164,9 +164,8 @@ Covers request and response logging, abuse detection, model and data drift detec
 | C12.1 Request & Response Logging | [C12-01](chapters/C12-Monitoring-and-Logging/C12-01-Request-Response-Logging.md) |
 | C12.2 Detection and Alerting | [C12-02](chapters/C12-Monitoring-and-Logging/C12-02-Abuse-Detection-Alerting.md) |
 | C12.3 Model, Data, and Performance Drift Detection | [C12-03](chapters/C12-Monitoring-and-Logging/C12-03-Model-Drift-Detection.md) |
-| C12.4 AI Incident Response Planning & Execution | [C12-04](chapters/C12-Monitoring-and-Logging/C12-04-Incident-Response.md) |
-| C12.5 Proactive Security Behavior Monitoring | [C12-05](chapters/C12-Monitoring-and-Logging/C12-05-Proactive-Security-Behavior-Monitoring.md) |
-| C12.6 Training Data & Model Lifecycle Audit | [C12-06](chapters/C12-Monitoring-and-Logging/C12-06-Training-Data-Model-Lifecycle-Audit.md) |
+| C12.4 Proactive Security Behavior Monitoring | [C12-04](chapters/C12-Monitoring-and-Logging/C12-04-Proactive-Security-Behavior-Monitoring.md) |
+| C12.5 Training Data & Model Lifecycle Audit | [C12-05](chapters/C12-Monitoring-and-Logging/C12-05-Training-Data-Model-Lifecycle-Audit.md) |
 
 
 ## Appendices

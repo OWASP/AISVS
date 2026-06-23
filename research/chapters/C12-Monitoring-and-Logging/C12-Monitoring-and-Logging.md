@@ -1,11 +1,11 @@
 # C12: Monitoring, Logging & Anomaly Detection
 
 > **Source:** [`1.0/en/0x10-C12-Monitoring-and-Logging.md`](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C12-Monitoring-and-Logging.md)
-> **Requirements:** 25 | **Sections:** 6
+> **Requirements:** 21 | **Sections:** 5
 
 ## Control Objective
 
-Deliver real-time and forensic visibility into what the model and other AI components see, do, and return, so AI-specific threats can be detected, triaged, and learned from. The chapter scope is deliberately AI-specific: log content unique to AI systems (model identifier, token usage, safety filter outcomes, prompt/response handling), AI-specific abuse and attack detection (jailbreak, prompt injection, extraction, multi-turn trajectory, covert channels over LLM endpoints), model and data drift detection, AI telemetry signals (token attribution, output/input ratio anomalies), AI incident response, proactive agent behavior monitoring, and training-data and model-lifecycle audit logging.
+Deliver real-time and forensic visibility into what the model and other AI components see, do, and return, so AI-specific threats can be detected, triaged, and learned from. The chapter scope is deliberately AI-specific: log content unique to AI systems (model identifier, token usage, safety filter outcomes, prompt/response handling), AI-specific abuse and attack detection (jailbreak, prompt injection, extraction, multi-turn trajectory, covert channels over LLM endpoints), model and data drift detection, AI telemetry signals (token attribution, output/input ratio anomalies), proactive agent behavior monitoring, and training-data and model-lifecycle audit logging.
 
 ---
 
@@ -16,9 +16,8 @@ Deliver real-time and forensic visibility into what the model and other AI compo
 | C12.1 | Request & Response Logging | 4 | [C12-01-Request-Response-Logging](C12-01-Request-Response-Logging.md) |
 | C12.2 | Detection and Alerting | 6 | [C12-02-Abuse-Detection-Alerting](C12-02-Abuse-Detection-Alerting.md) |
 | C12.3 | Model, Data, and Performance Drift Detection | 4 | [C12-03-Model-Drift-Detection](C12-03-Model-Drift-Detection.md) |
-| C12.4 | AI Incident Response Planning & Execution | 4 | [C12-04-Incident-Response](C12-04-Incident-Response.md) |
-| C12.5 | Proactive Security Behavior Monitoring | 3 | [C12-05-Proactive-Security-Behavior-Monitoring](C12-05-Proactive-Security-Behavior-Monitoring.md) |
-| C12.6 | Training Data & Model Lifecycle Audit | 4 | [C12-06-Training-Data-Model-Lifecycle-Audit](C12-06-Training-Data-Model-Lifecycle-Audit.md) |
+| C12.4 | Proactive Security Behavior Monitoring | 3 | [C12-04-Proactive-Security-Behavior-Monitoring](C12-04-Proactive-Security-Behavior-Monitoring.md) |
+| C12.5 | Training Data & Model Lifecycle Audit | 4 | [C12-05-Training-Data-Model-Lifecycle-Audit](C12-05-Training-Data-Model-Lifecycle-Audit.md) |
 
 ---
 
@@ -188,7 +187,7 @@ _Space for contributor observations, discussion, and context that doesn't fit el
 - [C12-01 Request & Response Logging](C12-01-Request-Response-Logging.md) — covers the telemetry schema, tiered content capture, and privacy tradeoffs needed before the chapter-level monitoring patterns work.
 - [C07-03 Output Safety, Privacy & Explainability](../C07-Model-Behavior/C07-03-Output-Safety-Privacy-Explainability.md) — connects audit-ready explanations and safety-filter decisions to the evidence C12 expects monitoring systems to preserve.
 - [C09-04 Agent Identity and Audit](../C09-Orchestration-and-Agents/C09-04-Agent-Identity-and-Audit.md) — pairs agent identity binding and action audit trails with the proactive-behavior and tool-call monitoring discussed here.
-- [C12-06 Training Data & Model Lifecycle Audit](C12-06-Training-Data-Model-Lifecycle-Audit.md) — extends these monitoring patterns into provenance and change-history records for datasets, model artifacts, and knowledge sources across the AI development lifecycle.
+- [C12-05 Training Data & Model Lifecycle Audit](C12-05-Training-Data-Model-Lifecycle-Audit.md) — extends these monitoring patterns into provenance and change-history records for datasets, model artifacts, and knowledge sources across the AI development lifecycle.
 - [C02-01 Prompt Injection Defense](../C02-User-Input-Validation/C02-01-Prompt-Injection-Defense.md) — covers the prevention and runtime guardrail side of the prompt-injection activity that C12 detects and investigates.
 
 ---
