@@ -56,7 +56,6 @@ The latest stable version is **AISVS 1.0**, which can be found:
 | Format | Link |
 | --- | --- |
 | PDF | [AISVS 1.0 pre-release PDF](https://github.com/OWASP/AISVS/raw/main/1.0/dist/AISVS-1.0-pre-release.pdf) |
-| HTML | _(pending for 1.0 release)_ |
 | Markdown (source) | [Browse online](https://github.com/OWASP/AISVS/tree/main/1.0/en) |
 
 ---
