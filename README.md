@@ -111,7 +111,7 @@ For every requirement in the standard, the [Research Wiki](https://github.com/OW
 | **Verification Approach** | Concrete audit steps, tools, and evidence to collect |
 | **Gaps & Notes** | Tool maturity ratings, open research questions, and implementation caveats |
 
-The wiki covers all 195 requirements across 60 pages, with per-section threat landscape summaries, tooling recommendations, and references to current standards and research literature.
+The wiki covers all 191 requirements across 60 pages, with per-section threat landscape summaries, tooling recommendations, and references to current standards and research literature.
 
 ---
 
