@@ -101,6 +101,18 @@ Organizations should select a target level based on the risk profile of their AI
 * [Appendix B: AI Security Controls Inventory](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x91-Appendix-B_AI_Security_Controls_Inventory.md)
 * [Appendix C: AI-Assisted Secure Coding](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x92-Appendix-C_AI_for_Code_Generation.md)
 
+## Research Wiki
+
+For every requirement in the standard, the [Research Wiki](https://github.com/OWASP/AISVS/blob/main/research/README.md) provides implementation context beyond the requirement text:
+
+| Column | What it tells you |
+|--------|-------------------|
+| **Threat Mitigated** | Specific attack techniques, CVEs, and real-world incidents the control defends against |
+| **Verification Approach** | Concrete audit steps, tools, and evidence to collect |
+| **Gaps & Notes** | Tool maturity ratings, open research questions, and implementation caveats |
+
+The wiki covers all 195 requirements across 60 pages, with per-section threat landscape summaries, tooling recommendations, and references to current standards and research literature.
+
 ---
 
 ## How to Reference AISVS Requirements
