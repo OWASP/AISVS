@@ -106,7 +106,7 @@ Organizations should select a target level based on the risk profile of their AI
 For every requirement in the standard, the [Research Wiki](https://github.com/OWASP/AISVS/blob/main/research/README.md) provides implementation context beyond the requirement text:
 
 | Column | What it tells you |
-|--------|-------------------|
+| --- | --- |
 | **Threat Mitigated** | Specific attack techniques, CVEs, and real-world incidents the control defends against |
 | **Verification Approach** | Concrete audit steps, tools, and evidence to collect |
 | **Gaps & Notes** | Tool maturity ratings, open research questions, and implementation caveats |
