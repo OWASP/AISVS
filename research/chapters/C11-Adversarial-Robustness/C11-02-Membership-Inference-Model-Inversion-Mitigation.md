@@ -374,6 +374,6 @@ The MIA threat model is also expanding beyond standard text-completion APIs. USE
 - [C11.4 Model Runtime Anomaly Detection](C11-04-Model-Runtime-Anomaly-Detection.md) -- Provides the runtime detection layer that flags the adaptive query loops MIA and reconstruction attacks rely on.
 - [C08.3 Memory Expiry, Revocation & Leakage Prevention](../C08-Memory-and-Embeddings/C08-03-Memory-Expiry-Revocation-Leakage-Prevention.md) -- Covers adjacent representation-leakage and incomplete-deletion controls where inversion and MIA techniques target embeddings, RAG stores, and retained memory instead of model outputs.
 - [C01.1 Training-Data Origin & Traceability](../C01-Training-Data/C01-01-Training-Data-Origin-Traceability.md) -- Complements MIA mitigation with upstream provenance, purpose-bound field minimization, and reduced exposure of sensitive records before they reach training.
-- [C12.6 Training-Data & Model-Lifecycle Audit](../C12-Monitoring-and-Logging/C12-06-Training-Data-Model-Lifecycle-Audit.md) -- Captures the audit trail (DP budgets, MIA test plans, dataset splits, residual-risk decisions) that turns 11.2.4 and 11.2.5 into reviewable compliance evidence.
+- [C12.5 Training-Data & Model-Lifecycle Audit](../C12-Monitoring-and-Logging/C12-05-Training-Data-Model-Lifecycle-Audit.md) -- Captures the audit trail (DP budgets, MIA test plans, dataset splits, residual-risk decisions) that turns 11.2.4 and 11.2.5 into reviewable compliance evidence.
 
 ---

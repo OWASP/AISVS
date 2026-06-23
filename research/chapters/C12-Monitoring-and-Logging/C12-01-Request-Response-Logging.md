@@ -457,8 +457,8 @@ A practical 12.1 audit should ask for artifacts, not just logging policy text. T
 ## Related Pages
 
 - [C12.2 Abuse Detection & Alerting](C12-02-Abuse-Detection-Alerting.md) -- Consumes the request/response telemetry defined here to detect jailbreak, prompt-injection, extraction, and denial-of-wallet patterns, and is the primary downstream consumer of the security-trigger events in 12.1.2 and 12.1.3.
-- [C12.5 Proactive Security Behavior Monitoring](C12-05-Proactive-Security-Behavior-Monitoring.md) -- Reuses the same request/response and tool-call events to detect suspicious multi-step agent behavior before it becomes an incident.
-- [C12.6 Training-Data & Model Lifecycle Audit Logging](C12-06-Training-Data-Model-Lifecycle-Audit.md) -- Applies the same structured, tamper-evident logging discipline to training-data and model-lifecycle events rather than runtime inference.
+- [C12.4 Proactive Security Behavior Monitoring](C12-04-Proactive-Security-Behavior-Monitoring.md) -- Reuses the same request/response and tool-call events to detect suspicious multi-step agent behavior before it becomes an incident.
+- [C12.5 Training-Data & Model Lifecycle Audit Logging](C12-05-Training-Data-Model-Lifecycle-Audit.md) -- Applies the same structured, tamper-evident logging discipline to training-data and model-lifecycle events rather than runtime inference.
 - [C09.4 Agent Identity & Audit](../C09-Orchestration-and-Agents/C09-04-Agent-Identity-and-Audit.md) -- Supplies the per-agent cryptographic identity and chain-bound non-repudiation that make the agent/principal IDs in 12.1.1 meaningful and attributable.
 - [C02.1 Prompt Injection Defense](../C02-User-Input-Validation/C02-01-Prompt-Injection-Defense.md) -- Supplies the input-validation and injection-detection signals that should trigger conditional content capture and safety-event logging under 12.1.3.
 

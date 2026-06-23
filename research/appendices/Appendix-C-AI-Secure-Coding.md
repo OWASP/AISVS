@@ -499,6 +499,6 @@ _Discussion about AI-assisted coding security practices._
 - [C09-09 Data Flow Isolation & Origin Enforcement](../chapters/C09-Orchestration-and-Agents/C09-03-Tool-and-Plugin-Isolation.md) — complements the AC.3 and AC.8 guidance by isolating agent data flows and enforcing origin-aware tool use.
 - [C10 MCP Security (hub)](../chapters/C10-MCP-Security/C10-MCP-Security.md) — maps the MCP bridge, schema validation, authentication, and secure-transport concerns that show up in AutoJack and agent skill ecosystems.
 - [C06 Supply Chain (hub)](../chapters/C06-Supply-Chain/C06-Supply-Chain.md) — broader supply-chain controls for signed artifacts, AI-BOM evidence, CI/CD enforcement, and dependency risk in AI-assisted development workflows.
-- [C12-04 Incident Response](../chapters/C12-Monitoring-and-Logging/C12-04-Incident-Response.md) — general AI incident-response controls that the AC.14 compromise-containment family specializes for AI-in-pipeline scenarios.
+- [C09-06 Shutdown & Graceful Degradation](../chapters/C09-Orchestration-and-Agents/C09-06-Shutdown-Graceful-Degradation.md) — agent containment and graceful-degradation controls that the AC.14 compromise-containment family specializes for AI-in-pipeline scenarios.
 
 ---
