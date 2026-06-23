@@ -283,9 +283,9 @@ Source, vet, and document training data so tampering, poisoning, and corruption 
 | Confidence thresholds and consistency checks on automatically generated labels | C1.3.2 |
 | Bias evaluation for models used in security-relevant decisions | C1.3.3 |
 | Defenses against clean-label poisoning attacks | C1.3.5 |
-| Dataset lineage recording (transformations, augmentations, merges) | C12.6.1 |
-| Logging of all labeling activities | C12.6.2 |
-| Write-time tagging of every ingested document (source, writer identity, timestamp) | C12.6.4 |
+| Dataset lineage recording (transformations, augmentations, merges) | C12.5.1 |
+| Logging of all labeling activities | C12.5.2 |
+| Write-time tagging of every ingested document (source, writer identity, timestamp) | C12.5.4 |
 
 **Common pitfalls:** not scanning fine-tuning datasets for poisoning; collecting more attributes than the purpose requires; losing dataset lineage across transformations and merges.
 
@@ -349,9 +349,9 @@ Capture security-relevant events with sufficient context and integrity for foren
 | Logging of safety filtering and policy decisions in enough detail to audit content moderation | C12.1.2 |
 | Structured, interoperable log schema for inference events (model identifier, token usage, provider, operation type) | C12.1.3 |
 | Logging of RAG pipeline retrieval events (query, documents retrieved, knowledge source) | C12.1.4 |
-| Audit logs capturing the approval chain for security-critical proactive actions (approver identity, timestamp, parameters, outcome) | C12.5.2 |
-| Logging of kill-switch activations and override commands | C12.5.3 |
-| Immutable audit records for all model changes | C12.6.3 |
+| Audit logs capturing the approval chain for security-critical proactive actions (approver identity, timestamp, parameters, outcome) | C12.4.2 |
+| Logging of kill-switch activations and override commands | C12.4.3 |
+| Immutable audit records for all model changes | C12.5.3 |
 
 **Common pitfalls:** logging prompts without redaction; using mutable log storage without integrity protection; logging agent actions and approvals but not human-initiated overrides such as kill-switch activations.
 
