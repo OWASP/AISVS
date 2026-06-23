@@ -376,11 +376,7 @@ Detect AI-specific abuse, drift, and anomalies, and respond to incidents.
 | Hallucination detection monitoring of model outputs | C12.3.2 |
 | Hallucination rates tracked as continuous time-series metrics | C12.3.3 |
 | Distinction of unexplained behavioral shifts from gradual operational drift | C12.3.4 |
-| AI-specific incident response plans with per-scenario containment and investigation steps | C12.4.1 |
-| AI-specific forensic tools and expertise for investigating model behavior | C12.4.2 |
-| Automated incident-response workflows that isolate compromised models and block malicious users | C12.4.3 |
-| Post-incident analysis feeding model retraining and safety filter updates | C12.4.4 |
-| Security evaluation and threat-landscape assessment for autonomous action triggers | C12.5.1 |
+| Security evaluation and threat-landscape assessment for autonomous action triggers | C12.4.1 |
 
 **Common pitfalls:** not correlating AI-specific events with broader SIEM alerts; treating drift as a scheduled check rather than continuous monitoring; lacking AI-specific forensic tooling during an incident.
 
