@@ -16,27 +16,25 @@ The OWASP Artificial Intelligence Security Verification Standard (AISVS) focuses
 
 ### What is the current status of AISVS development?
 
-**We are in the final stretch before the v1.0 requirement freeze.**
-
-**1.0 Release Date: June 24, 2026** at the OWASP Global AppSec conference in Vienna.
+**AISVS 1.0 has been released.** The project now accepts patch-level fixes for the released 1.0 content and proposals for future minor or major versions, according to the release policy.
 
 ## How can I help?
 
-### High-priority contributions for the 1.0 release
+### High-priority contributions after the 1.0 release
 
-The most valuable thing you can do right now is review the existing controls and ask:
+The most valuable thing you can do right now is review the released controls and ask:
 
 - Is this requirement independently testable? Can a single auditor verify it with a single, specific piece of evidence?
 - Is the scope clear? Could this control be confused with a control in a different chapter?
 - Is anything missing? Are there attack surfaces, failure modes, or real-world AI security concerns that are not covered?
 - Is anything duplicated? Do two controls in the same or different chapters say the same thing?
 
-If you find issues, please open a GitHub issue first before submitting a pull request. Good issues describing the problem are just as valuable as PRs.
+If you find issues, please open a GitHub issue first before submitting a pull request, especially for changes that would alter the meaning, level, numbering, or scope of a requirement. Good issues describing the problem are just as valuable as PRs.
 
 ### Other ways to contribute
 
 - **Review open PRs**: Help us catch scope overlap, wording ambiguity, or controls that are hard to test in practice.
-- **Add missing controls**: If you know of a concrete, testable requirement that belongs in the standard and is not there yet, propose it.
+- **Propose missing controls**: If you know of a concrete, testable requirement that belongs in a future version of the standard and is not there yet, propose it.
 - **Fix compound requirements**: Controls that bundle two distinct testable concerns into one should be split. See our existing split PRs for examples of the expected format.
 - **Improve references**: Each chapter should reference the best available standards, frameworks, and research for its topic area.
 
