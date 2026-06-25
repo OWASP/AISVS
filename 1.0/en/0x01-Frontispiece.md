@@ -68,3 +68,4 @@ The list below reflects authored and edited content. It does not fully capture c
 * Hari Mukundhan ([harimukundhan](https://github.com/harimukundhan))
 * Sandhya ([sandhya13r](https://github.com/sandhya13r))
 * Starr Brown ([mamicidal](https://github.com/mamicidal))
+* Vlatko Kosturjak ([kost](https://github.com/kost))
