@@ -14,7 +14,7 @@ Runtime expansion (recursion, concurrency, cost) must be bounded, with safe halt
 | :--: | --- | :---: |
 | **9.1.1** | **Verify that** per-tool quotas and timeouts (e.g., CPU, memory, disk, egress, and execution time) are enforced. | 1 |
 | **9.1.2** | **Verify that** per-execution budgets (e.g., max recursion depth, token use, and monetary spend) are configured and enforced by the runtime. | 1 |
-| **9.1.3** | **Verify that** a swarm-level kill-switch exists that can halt all active agent instances. | 2 |
+| **9.1.3** | **Verify that** a fleet-wide kill-switch that can halt all active agent instances. | 2 |
 
 ---
 
