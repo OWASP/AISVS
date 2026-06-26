@@ -1,8 +1,9 @@
 name: Lock 1.0
 
 # The published AISVS v1.0 standard is frozen. This guard rejects any pull
-# request that modifies the requirement content under 1.0/en/ or the rendered
-# output under 1.0/dist/. See 1.0/LOCKED.md and RELEASE.md.
+# request that modifies the requirement content under 1.0/en/, the rendered
+# output under 1.0/dist/, or the research wiki under 1.0/research/.
+# See 1.0/LOCKED.md and RELEASE.md.
 
 on:
   pull_request: {}
@@ -26,6 +27,7 @@ jobs:
           files: |
             1.0/en/**
             1.0/dist/**
+            1.0/research/**
 
       - name: Fail if locked files changed
         if: steps.files.outputs.any_changed == 'true'
