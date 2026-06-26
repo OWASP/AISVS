@@ -102,7 +102,7 @@ Organizations should select a target level based on the risk profile of their AI
 
 ## Research Wiki
 
-For every requirement in the standard, the [Research Wiki](https://github.com/OWASP/AISVS/blob/main/research/README.md) provides implementation context beyond the requirement text:
+For every requirement in the standard, the [Research Wiki](https://github.com/OWASP/AISVS/blob/main/1.0/research/README.md) provides implementation context beyond the requirement text:
 
 | Column | What it tells you |
 | --- | --- |
