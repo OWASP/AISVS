@@ -1,0 +1,38 @@
+name: Lock 1.0
+
+# The published AISVS v1.0 standard is frozen. This guard rejects any pull
+# request that modifies the requirement content under 1.0/en/ or the rendered
+# output under 1.0/dist/. See 1.0/LOCKED.md and RELEASE.md.
+
+on:
+  pull_request: {}
+
+permissions:
+  contents: read
+
+jobs:
+  reject-1-0-changes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect changes to the locked 1.0 folder
+        id: files
+        uses: tj-actions/changed-files@v46
+        with:
+          files: |
+            1.0/en/**
+            1.0/dist/**
+
+      - name: Fail if locked files changed
+        if: steps.files.outputs.any_changed == 'true'
+        run: |
+          echo "::error::The AISVS 1.0 standard is locked. The following files under 1.0/ may not be modified:"
+          for file in ${{ steps.files.outputs.all_changed_files }}; do
+            echo "  - $file"
+          done
+          echo "Make changes in 1.01-dev/ or 2.0-dev/ instead. See 1.0/LOCKED.md."
+          exit 1
