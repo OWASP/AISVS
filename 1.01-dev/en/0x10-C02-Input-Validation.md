@@ -18,7 +18,7 @@ Prompt injection is one of the top risks for AI systems, and defending against i
 | **2.1.4** | **Verify that** input length controls prevent content from exceeding the context window. The controls must reject inputs that exceed token limits rather than truncating them. | 1 |
 | **2.1.5** | **Verify that** the system implements a character set restriction for all inputs. The restriction must use an allow-list approach that permits only characters that are explicitly required. | 1 |
 | **2.1.6** | **Verify that** the system enforces an instruction hierarchy in which system and developer messages override user instructions and other untrusted inputs, even after user instructions have been processed. | 2 |
-| **2.1.7** | **Verify that** reserved special tokens are canonicalized, escaped, or encoded as literal content before model-context assembly, so they cannot be interpreted as special tokens by the model or tokenizer. | 2 |
+| **2.1.7** | **Verify that** reserved special tokens are canonicalized, escaped, and encoded as literal content before model-context assembly, so they cannot be interpreted as special tokens by the model or tokenizer. | 2 |
 | **2.1.8** | **Verify that** the system can detect many-shot jailbreaking patterns. | 3 |
 
 ---
