@@ -22,7 +22,7 @@ While doing this stage, learn the language conventions and level of details used
 
 ### 3. Background research
 
-After surveing current state of the standard, you MUST do thorough background research on the Internet.
+After surveying current state of the standard, you MUST do thorough background research on the Internet.
 
 Unless doing language corrections or similar work, you MUST have access to sufficient background material for research. In the research consider:
 * What are the current recommended best practices for the protocol / technology / tool in question?
