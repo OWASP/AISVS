@@ -54,7 +54,7 @@ Security threats arising from proactive (agent-initiated) behavior must be detec
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
 | **12.4.1** | **Verify that** autonomous action triggers include proactive behavior-pattern analysis, security evaluation, and threat-landscape assessment. | 2 |
-| **12.4.2** | **Verify that** audit logs capture security-critical proactive actions, including approver identity, timestamp, action parameters, and decision outcomes. | 2 |
+| **12.4.2** | **Verify that** structured, tamper-evident audit records capture authorization, denial, and execution of security-critical proactive actions with enough context for incident response, including initiating agent or model identity, approver identity when applicable, timestamp, action parameters or scope, policy decision and policy version at decision time, a correlation identifier linking the decision record to the execution outcome, and the actual execution outcome. | 2 |
 | **12.4.3** | **Verify that** kill-switch activations and override commands are logged. | 2 |
 
 ---
