@@ -75,6 +75,7 @@ The following are intentionally out of scope and are not duplicated in AISVS cha
 * **General logging and monitoring.** Log storage access control, retention, backup, encryption, redaction, tamper protection, SIEM integration, and operational telemetry are defined by ASVS and standard observability practice.
 * **AI governance and risk management.** Organizational AI governance, AI impact assessments, fairness and ethics documentation, model cards, public transparency reports, and risk-management process design are defined by [ISO/IEC 42001](https://www.iso.org/standard/81230.html), [ISO/IEC 23894](https://www.iso.org/standard/77304.html), and the [NIST AI RMF](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10).
 * **Vendor-specific guidance.** AISVS is vendor-neutral. It specifies what to verify, not which product to use.
+* **AI Security Testing Guidance.** [The AI Testing Guide](https://owasp.org/www-project-ai-testing-guide/) is a hands-on guide for assessing the security of AI/ML systems which fills the gap of security testing of traditional information systems. AISVS does not show the specifics of actual security testing for threats and attacks against AI/ML systems. This guide follows the principles in the [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/).
 
 When verifying an AI application against AISVS, the equivalent level of those underlying standards should be verified in parallel.
 
