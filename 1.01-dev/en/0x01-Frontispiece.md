@@ -43,7 +43,7 @@ The list below reflects authored and edited content. It does not fully capture c
 * Joshua Beck ([Josh-Beck](https://github.com/Josh-Beck))
 * Vishal Jindal ([vishaljindal1990](https://github.com/vishaljindal1990))
 * Stefan Aeschbacher ([imix](https://github.com/imix))
-* DotDotSlash ([DotDotSlash](https://github.com/DotDotSlash))
+* Dhanith Krishna ([DotDotSlash](https://github.com/DotDotSlash))
 * Tetsuo Seto ([tetsuoseto](https://github.com/tetsuoseto))
 * Tametomo ([Tametomo](https://github.com/Tametomo))
 * Martin Bjerke ([kattn](https://github.com/kattn))
