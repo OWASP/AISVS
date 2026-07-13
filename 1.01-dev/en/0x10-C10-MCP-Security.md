@@ -30,7 +30,7 @@ Callers must be authenticated and access to MCP servers authorized, following pr
 | **10.2.4** | **Verify that** MCP tools/list returns only tools permitted by resource owners' authorized scopes. | 2 |
 | **10.2.5** | **Verify that** MCP servers enforce access control on every tool invocation, validating that the user's access token authorizes both the requested tool and the specific argument values supplied. | 2 |
 | **10.2.6** | **Verify that** MCP servers ensure all session artifacts are removed when a session terminates. | 2 |
-| **10.2.7** | **Verify that** MCP servers not accept any tokens that were not explicitly issued for them. | 2 |
+| **10.2.7** | **Verify that** MCP servers only accept tokens explicitly issued for them. | 2 |
 
 ---
 
