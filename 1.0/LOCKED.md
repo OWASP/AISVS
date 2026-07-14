@@ -6,9 +6,8 @@ The research wiki under `1.0/research/` is part of this snapshot. It maps each v
 
 Do not edit files under `1.0/en/`, `1.0/dist/`, or `1.0/research/`. A CI guard rejects pull requests that modify them.
 
-Future work happens in the next version folders:
+Future work happens in the next version folder:
 
 - `1.01-dev/en/` for the next minor release.
-- `2.0-dev/en/` for the next major release.
 
 See [RELEASE.md](../RELEASE.md) for the versioning and release policy.
