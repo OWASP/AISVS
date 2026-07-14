@@ -1,7 +1,7 @@
 # C3.4: Secure Development Practices
 
 > [Back to C03 Index](C03-Model-Lifecycle-Management.md)
-> **Last Researched:** 2026-07-12
+> **Last Researched:** 2026-07-14
 
 ## Purpose
 
@@ -108,17 +108,21 @@ New audit checks from this cycle:
 
 ## July 2026 Research Notes
 
-Two newly published implementation guides make the isolation checks more concrete and expose an important limitation in workstation-level sandbox claims.
+Current provider implementation guidance makes the isolation checks more concrete and exposes important limits in workstation- and container-level sandbox claims.
 
 - **Google Cloud MCP production deny policy (July 10, 2026):** Google Cloud's [AI security and safety guidance for MCP servers](https://docs.cloud.google.com/mcp/ai-security-safety) now recommends restricting MCP at the organization, folder, and project levels, periodically reviewing the tool inventory for silently added capabilities, and applying a deny policy that prevents read-write tool access to production resources. For 3.4.1, an assessor can turn this into a negative test: use a development agent identity to invoke each registered write-capable tool against a production resource and require policy denial, then compare the discovered tool list with the approved per-environment manifest.
 - **A shell sandbox is not full environment isolation:** Microsoft's current [VS Code agent sandboxing documentation](https://code.visualstudio.com/docs/agents/concepts/trust-and-safety) says its OS boundary applies to terminal subprocesses but not to built-in file tools, and recommends pairing sandboxing with a dev container for a boundary around the whole development environment. The accompanying [security guidance](https://code.visualstudio.com/docs/agents/security) also notes that extensions and MCP servers can execute code and access system resources broadly. For 3.4.1, test every execution path — built-in tools, extensions, local MCP processes, child processes, and network calls — rather than treating one sandbox toggle as proof that development cannot reach production.
 - **Provider-backed training isolation evidence:** Google Cloud's [AI and ML security architecture guidance](https://docs.cloud.google.com/architecture/framework/perspectives/ai-ml/security) recommends dedicated projects or VPCs for training, private connectivity for custom training jobs, workload isolation, and audit logs for model deployment and configuration changes. For 3.4.2, collect project/VPC identifiers, route and firewall policy, service-account bindings, private-endpoint configuration, and deployment audit records; then run a denied-path test from training compute to production data, inference, secret, and registry endpoints.
+- **The Foundry resource is the production boundary, not the project:** Microsoft's [baseline Foundry chat architecture](https://learn.microsoft.com/en-us/azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-chat) recommends a dedicated Foundry resource for each production workload because the resource is both the network and identity boundary; projects inside one resource share its private endpoints and network exposure. The same guidance warns that some built-in knowledge tools bypass the agent egress subnet. For 3.4.1, keep pre-production and production in different Foundry resources and exercise every built-in and external tool path rather than treating a project split or VNet diagram as proof of isolation.
+- **SageMaker account separation and container isolation are different controls:** AWS [MLOps account-management guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/strategy-unlock-value-data-financial-services/best-practices-ml-ops.html) recommends separate experimentation, development, test, and production accounts for each use case. SageMaker's [internet-free mode documentation](https://docs.aws.amazon.com/sagemaker/latest/dg/mkt-algo-model-internet-free.html) adds an important caveat: `EnableNetworkIsolation=True` removes outbound access and AWS credentials from the training container, but SageMaker still transfers training data and model artifacts with the job's execution role. For 3.4.2, the container flag is defense in depth; it does not replace separate accounts, VPCs, identities, stores, registries, or denied cross-environment access tests.
 
 New audit checks from this cycle:
 
 - On Google Cloud, verify a development agent's deny policy blocks every read-write MCP operation against production and that MCP use is constrained at the intended organization, folder, or project boundary.
 - For local coding-agent environments, exercise non-terminal file tools and MCP processes separately from shell commands; record which controls enforce each path and fail the control if any path reaches production credentials or endpoints.
 - For training platforms, require both configuration evidence and a live negative connectivity test. Separate projects or VPCs are insufficient when peering, shared service accounts, permissive routes, or a shared model registry reconnect the environments.
+- On Microsoft Foundry, compare resource IDs, private endpoints, delegated subnets, managed identities, and tool inventories across pre-production and production. From the pre-production agent, invoke each built-in, MCP, OpenAPI, and custom tool against a production canary resource and require denial; test tool paths that do not traverse the configured egress subnet separately.
+- On SageMaker, record the account ID, `VpcConfig`, `EnableNetworkIsolation` setting, execution-role trust policy, and the resource policies for production S3, ECR, KMS, model-registry, and inference resources. Attempts from the training account and execution role must be denied, and CloudTrail should show the expected failures without a successful alternate service path.
 
 ## Requirements
 

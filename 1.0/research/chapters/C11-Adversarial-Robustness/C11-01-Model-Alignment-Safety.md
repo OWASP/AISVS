@@ -2,7 +2,7 @@
 
 > **Chapter:** [C11 Adversarial Robustness & Attack Resistance](C11-Adversarial-Robustness.md)
 > **Requirements:** 5 | **IDs:** 11.1.1--11.1.5
-> **Last Researched:** 2026-07-12
+> **Last Researched:** 2026-07-14
 
 ## Purpose
 
@@ -48,16 +48,19 @@ AISVS treats alignment as defense-in-depth — no single control is sufficient.
 
 ### July 2026 verification delta
 
-Four July publications tighten how the five requirements should be tested in practice:
+Seven July publications tighten how the five requirements should be tested in practice:
 
 | Requirement | New evidence | Verification consequence |
 |-------------|--------------|--------------------------|
 | 11.1.2 | [AutoLanJail](https://aclanthology.org/2026.findings-acl.739.pdf) found that safety fine-tuning is strongly format-specific. Its automated language-game probes found at least one transformation above 90% attack success for every evaluated model except Qwen-2.5-32B; Qwen-2.5-7B reached 99%. | Version-controlled suites should generate and retain systematic phonetic, syntactic, and character-level variants, including held-out transformations. Passing familiar encodings does not establish generalization to a nearby unseen format. |
+| 11.1.2, 11.1.5 | [AgenticEval](https://aclanthology.org/2026.findings-acl.727/) generated tests from policy documents and iteratively refined them from observed failures. GPT-5's measured EU AI Act safety rate fell from 72.50% to 36.36% as the tests hardened; its automated judge reached 87.87%–89.79% F1 against 100 human-labeled cases for each of three policy frameworks. | Run adaptive discovery alongside, not in place of, the stable release gate. Preserve every generated input, rubric, judge configuration, and iteration; have reviewers validate new failures before promoting them into the next versioned suite. Calibrate the judge on local harm categories and route ambiguous or severe cases to humans. |
+| 11.1.2, 11.1.3 | [TROJail](https://aclanthology.org/2026.acl-long.2220/) treats multi-turn red-teaming as trajectory-level optimization: the final harmful response is the outcome reward, while process rewards discourage conspicuously harmful intermediate prompts that trigger refusal and steer the dialogue toward the target harm. | Include adaptive conversations whose early turns remain benign-looking. Score and retain the whole trajectory, but gate on the final policy outcome as well as turn-level detector results; independent single-turn mutations do not exercise the same failure mode. |
 | 11.1.3 | [SafeMT](https://aclanthology.org/2026.acl-long.1920/) contributes 10,000 image-grounded multi-turn samples spanning 17 scenarios and four jailbreak methods. Across 17 evaluated models, successful-attack risk rose as harmful dialogues became longer. | Exercise modality combinations over multiple turns and preserve dialogue state in the test artifact. A single-turn text proxy is not adequate evidence for an image-capable conversational model. |
+| 11.1.3 | ACL 2026's [Reference Attack](https://aclanthology.org/2026.acl-long.812/) split harmful instructions between non-text carriers such as images or spreadsheets and recursive symbolic references in text. It exceeded 93% attack success across the tested ChatGPT, Gemini, Claude, and LLaMA systems. | Add fixtures that require the model to reconstruct instructions across modalities and multiple reference hops. Preserve the original carrier, extracted representation, reference chain, and final response, and test moderation both before and after cross-modal reconstruction. |
 | 11.1.4 | Apple's [CC-Delta study](https://machinelearning.apple.com/research/sparse-autoencoders-jailbreak-mitigators) identifies jailbreak-relevant sparse-autoencoder features from paired harmful requests with and without jailbreak context, then steers those features at inference time. Across four aligned models and twelve attacks, it matched or improved on dense steering, with its clearest gains on out-of-distribution attacks. | For white-box deployments, compare sparse-feature steering with the existing hardening baseline on held-out attacks and benign utility. Treat the result as an experimental defense: the published scope is four instruction-tuned models, not evidence of universal protection. |
 | 11.1.5 | ACL 2026's [full-pipeline study](https://aclanthology.org/2026.findings-acl.20/) found that nearly every evaluated jailbreak technique was detectable by at least one input or output safety filter, while also identifying unresolved recall/precision trade-offs. Model-only testing can therefore overstate deployed attack success, while post-filter-only testing can hide a model regression behind the filter. | Record both raw-model and post-filter harmful-content rates, plus filter precision, recall, and false-negative slices. Alert separately when the base model regresses, the filter regresses, or end-to-end policy violations exceed threshold. |
 
-Together these results argue for a two-layer release gate: adversarial generalization at the model boundary, followed by the same corpus against the complete input-filter/model/output-filter path. Neither layer substitutes for the other.
+Together these results argue for a stable, reproducible release gate plus a separately versioned adaptive-discovery track. Run both at the model boundary and against the complete input-filter/model/output-filter path. Newly discovered failures become regression fixtures only after their expected result and scoring rubric are reviewed; otherwise a changing corpus or judge can make model-to-model rates incomparable.
 
 | Technique | Approach | Status |
 |-----------|----------|--------|
@@ -321,6 +324,9 @@ Together these results argue for a two-layer release gate: adversarial generaliz
 - [SafeMT: Multi-turn Safety for Multimodal Language Models (ACL 2026)](https://aclanthology.org/2026.acl-long.1920/)
 - [Apple: Sparse Autoencoders Are Capable LLM Jailbreak Mitigators (July 2026)](https://machinelearning.apple.com/research/sparse-autoencoders-jailbreak-mitigators)
 - [Jailbreaking Attacks vs. Content Safety Filters: How Far Are We in the LLM Safety Arms Race? (ACL Findings 2026)](https://aclanthology.org/2026.findings-acl.20/)
+- [AgenticEval: Toward Agentic and Self-Evolving Safety Evaluation of Large Language Models (ACL Findings 2026)](https://aclanthology.org/2026.findings-acl.727/)
+- [TROJail: Trajectory-Level Optimization for Multi-Turn Large Language Model Jailbreaks with Process Rewards (ACL 2026)](https://aclanthology.org/2026.acl-long.2220/)
+- [Reference Attack: A New Cross-Modal Jailbreaking Attack against Multimodal Large Language Models (ACL 2026)](https://aclanthology.org/2026.acl-long.812/)
 
 ---
 
