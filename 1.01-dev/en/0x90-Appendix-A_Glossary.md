@@ -218,6 +218,8 @@ This glossary defines key AI, ML, and security terms used throughout the AISVS t
 
 * **Remote Attestation** – A mechanism by which a trusted execution environment provides cryptographic proof to a remote party that specific code is running in a genuine, unmodified TEE.
 
+* **Reversibility Classification** – A trusted classification of a high-impact agent action by how hard its effect is to undo, along the scale read-only, reversible, externally reversible, or irreversible.
+
 * **Reward Model** – A machine learning model trained to predict human preference scores for AI outputs, used as a proxy reward signal in RLHF training pipelines. Because reward models are ML artifacts, they are subject to data poisoning attacks that can subvert alignment training outcomes.
 
 * **RLHF (Reinforcement Learning from Human Feedback)** – A training technique where a model is fine-tuned using human preference judgments as a reward signal to improve alignment with human values and safety requirements.
