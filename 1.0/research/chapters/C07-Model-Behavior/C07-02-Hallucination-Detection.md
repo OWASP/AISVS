@@ -1,13 +1,13 @@
 # C7.2: Hallucination Detection & Mitigation
 
 > [Back to C07 Index](C07-Model-Behavior.md)
-> **Last Researched:** 2026-07-12
+> **Last Researched:** 2026-07-14
 
 ## Purpose
 
 Hallucination - the generation of plausible-sounding but factually incorrect or fabricated content - is one of the most consequential failure modes of generative AI. NIST AI 600-1 uses the term "confabulation" and treats confidently stated false content as one of the primary generative AI risk categories, with special concern for healthcare, legal, financial, and other consequential decision-making contexts. OWASP LLM09:2025 frames the same failure mode as misinformation when model output is consumed as authoritative without grounding, validation, or human review.
 
-As of July 12, 2026, the best audit posture is to treat hallucination as both a reliability risk and a security signal. Columbia Journalism Review's March 2025 Tow Center study found that live AI search tools returned incorrect article citations in more than 60% of tested queries, with Perplexity wrong 37% of the time and Grok 3 wrong 94% of the time. The October 2024 Whisper reporting showed the same pattern outside chat: transcription systems can invent harmful text, including medical content. In software workflows, package hallucinations create a supply-chain path: Lasso Security's 2024 research found GPT-3.5 recommended at least one nonexistent package in nearly 30% of tested programming prompts, and MITRE ATLAS tracks the pattern through AML.T0062 (Discover LLM Hallucinations), AML.T0060 (Publish Hallucinated Entities), and AML.T0048.003 (User Harm). The Charlotin database snapshot from June 9, 2026 records **1,598 cases** of courts commenting on AI-generated hallucinations — up from 1,456 on May 18, roughly 6.5 new documented cases per day over the intervening three weeks, confirming the trend is still accelerating, not plateauing. The Ninth Circuit's precedential June 3, 2026 sanctions order (*LNU v. Blanche*) escalated the consequences from fines to suspension from practice plus a standing AI-use certification requirement for an entire firm.
+As of July 14, 2026, the best audit posture is to treat hallucination as both a reliability risk and a security signal. Columbia Journalism Review's March 2025 Tow Center study found that live AI search tools returned incorrect article citations in more than 60% of tested queries, with Perplexity wrong 37% of the time and Grok 3 wrong 94% of the time. The October 2024 Whisper reporting showed the same pattern outside chat: transcription systems can invent harmful text, including medical content. In software workflows, package hallucinations create a supply-chain path: Lasso Security's 2024 research found GPT-3.5 recommended at least one nonexistent package in nearly 30% of tested programming prompts, and MITRE ATLAS tracks the pattern through AML.T0062 (Discover LLM Hallucinations), AML.T0060 (Publish Hallucinated Entities), and AML.T0048.003 (User Harm). The Charlotin database snapshot from June 9, 2026 records **1,598 cases** of courts commenting on AI-generated hallucinations — up from 1,456 on May 18, roughly 6.5 new documented cases per day over the intervening three weeks, confirming the trend is still accelerating, not plateauing. The Ninth Circuit's precedential June 3, 2026 sanctions order (*LNU v. Blanche*) escalated the consequences from fines to suspension from practice plus a standing AI-use certification requirement for an entire firm.
 
 ### July 2026 Audit Signals
 
@@ -29,6 +29,14 @@ As of July 12, 2026, the best audit posture is to treat hallucination as both a 
 - Measure calibration and threshold behavior, not only ranking metrics such as AUROC. Record false accepts, false blocks, abstentions, latency, and cost at the operating point.
 - Add confident-confabulation cases in which the model is consistently wrong or assigns high token probability to a false answer. The June 2026 GI endoscopy benchmark found these defeat both consistency- and uncertainty-based methods.
 - For high-risk output, score the independent verification stages separately: claim decomposition, evidence retrieval, evidence evaluation, localization, and the final block, fallback, or human-review decision.
+
+### July 2026 Calibration and Evidence-Grounding Findings
+
+| Requirement | New audit evidence | Test consequence |
+|-------------|--------------------|------------------|
+| 7.2.1 confidence estimation | Two ACL 2026 studies found that single-turn calibration does not establish reliability across a conversation. [Confidence Estimation for LLMs in Multi-turn Interactions](https://aclanthology.org/2026.findings-acl.1280/) found that common methods struggle with per-turn calibration and with increasing confidence as useful evidence accumulates; [Confidence Should Be Calibrated More Than One Turn Deep](https://aclanthology.org/2026.acl-long.1787/) found that user persuasion can degrade calibration over later turns. | Replay representative conversations turn by turn. Measure calibration at each turn, check that relevant evidence raises confidence while filler does not, and include persuasive but unsupported user feedback as a negative test. |
+| 7.2.2 block or fallback threshold | [Principled Detection of Hallucinations via Multiple Testing](https://aclanthology.org/2026.findings-acl.1705/) treats detector outputs as hypothesis tests and aggregates multiple scores with conformal p-values to control the false-alarm rate. This gives auditors a measurable alternative to choosing a threshold from AUROC alone. | On a held-out calibration set, record false accepts, false blocks, and coverage at the deployed threshold. Then verify that the configured false-alarm budget still holds after changing the model, prompt, domain, or detector mix. |
+| 7.2.3 additional high-risk verification | [RLSeek](https://aclanthology.org/2026.acl-long.1492/) linked detector errors to reasoning that did not explicitly locate and check source evidence; requiring relevant quotations at each verification step improved span detection on RAGTruth and NewsSum, including out-of-domain tests. | Require the second step to return the source passage supporting each material claim and an entailment verdict. Seed high-risk responses with one unsupported or contradicted span and fail the control if the verifier approves it without locating evidence. |
 
 ---
 
@@ -281,6 +289,10 @@ Aggregate cross-domain scores can hide safety-critical failures. Calibrate hallu
 - [OpenHalDet reference implementation](https://github.com/Nellie179/Hallucination-Detection) — reproducible generation, annotation, scoring, and cost-aware comparison pipeline
 - [PROBE process-based benchmark (ACL 2026)](https://aclanthology.org/2026.findings-acl.2099/) — 12,000 cases that isolate four stages of hallucination detection
 - [GI endoscopy VLM hallucination benchmark (arXiv:2606.24115, June 2026)](https://arxiv.org/abs/2606.24115) — domain evidence on white-box performance and confident-confabulation failures
+- [Confidence Estimation for LLMs in Multi-turn Interactions (ACL 2026)](https://aclanthology.org/2026.findings-acl.1280/) — per-turn calibration, evidence monotonicity, and controlled multi-turn evaluation
+- [Confidence Should Be Calibrated More Than One Turn Deep (ACL 2026)](https://aclanthology.org/2026.acl-long.1787/) — calibration drift under user persuasion and a turn-conditioned calibration method
+- [Principled Detection of Hallucinations via Multiple Testing (ACL 2026)](https://aclanthology.org/2026.findings-acl.1705/) — conformal aggregation of detector scores with controlled false-alarm rate
+- [RLSeek: Evidence-Grounded Reasoning for RAG Hallucination Detection (ACL 2026)](https://aclanthology.org/2026.acl-long.1492/) — source-quotation requirements for span-level verification
 
 ---
 
