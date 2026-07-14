@@ -1,12 +1,12 @@
 name: Lock 1.0
 
-# The published AISVS v1.0 standard is frozen. This guard rejects any pull
-# request that modifies the requirement content under 1.0/en/, the rendered
-# output under 1.0/dist/, or the research wiki under 1.0/research/.
-# See 1.0/LOCKED.md and RELEASE.md.
+# The published AISVS v1.0 standard is frozen. Requirement content and rendered
+# output remain immutable. Research corrections are accepted only through the
+# repository's trusted research synchronization path.
 
 on:
-  pull_request: {}
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
 
 permissions:
   contents: read
@@ -20,21 +20,48 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Detect changes to the locked 1.0 folder
+      - name: Detect protected changes
         id: files
         uses: tj-actions/changed-files@v46
         with:
-          files: |
-            1.0/en/**
-            1.0/dist/**
-            1.0/research/**
+          files_yaml: |
+            immutable:
+              - 1.0/en/**
+              - 1.0/dist/**
+            research:
+              - 1.0/research/**
 
-      - name: Fail if locked files changed
-        if: steps.files.outputs.any_changed == 'true'
+      - name: Enforce the 1.0 policy
+        env:
+          IMMUTABLE_CHANGED: ${{ steps.files.outputs.immutable_any_changed }}
+          IMMUTABLE_FILES: ${{ steps.files.outputs.immutable_all_changed_files }}
+          RESEARCH_CHANGED: ${{ steps.files.outputs.research_any_changed }}
+          RESEARCH_FILES: ${{ steps.files.outputs.research_all_changed_files }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          AUTHOR_ASSOCIATION: ${{ github.event.pull_request.author_association }}
+          HAS_SYNC_LABEL: ${{ contains(github.event.pull_request.labels.*.name, 'research-sync') }}
         run: |
-          echo "::error::The AISVS 1.0 standard is locked. The following files under 1.0/ may not be modified:"
-          for file in ${{ steps.files.outputs.all_changed_files }}; do
-            echo "  - $file"
-          done
-          echo "Make changes in 1.01-dev/ instead. See 1.0/LOCKED.md."
-          exit 1
+          if [[ "$IMMUTABLE_CHANGED" == "true" ]]; then
+            echo "::error::The published AISVS 1.0 requirements and rendered output are locked:"
+            printf '%s\n' "$IMMUTABLE_FILES"
+            exit 1
+          fi
+
+          [[ "$RESEARCH_CHANGED" == "true" ]] || exit 0
+
+          case "$AUTHOR_ASSOCIATION" in
+            OWNER|MEMBER|COLLABORATOR) ;;
+            *)
+              echo "::error::Research corrections require an authorized OWASP/AISVS collaborator."
+              exit 1
+              ;;
+          esac
+
+          if [[ "$HEAD_REPO" != "OWASP/AISVS" ||
+                "$HEAD_REF" != wiki/sync-* ||
+                "$HAS_SYNC_LABEL" != "true" ]]; then
+            echo "::error::Research corrections require an internal wiki/sync-* PR with the research-sync label."
+            printf '%s\n' "$RESEARCH_FILES"
+            exit 1
+          fi
