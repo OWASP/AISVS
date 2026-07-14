@@ -4,15 +4,15 @@
 
 ## Overview
 
-The glossary defines 143 terms used throughout the AISVS, covering AI/ML concepts, security terminology, and domain-specific definitions. This research page cross-references every glossary term to the chapters that use it, identifies missing terms, flags definitions that could be improved, and tracks emerging terminology from the broader AI security community. Cross-references follow the AISVS **C01–C12** chapter structure: monitoring and logging terms map to **C12 (Monitoring and Logging)**, and explainability and human-oversight terms map to **C07 (Model Behavior)** for interpretability and **C09 (Orchestration and Agentic Action)** for oversight, kill-switches, and human-in-the-loop controls.
+The glossary defines 152 terms used throughout the AISVS, covering AI/ML concepts, security terminology, and domain-specific definitions. This research page cross-references every glossary term to the chapters that use it, identifies missing terms, flags definitions that could be improved, and tracks emerging terminology from the broader AI security community. Cross-references follow the AISVS **C01–C12** chapter structure: monitoring and logging terms map to **C12 (Monitoring and Logging)**, and explainability and human-oversight terms map to **C07 (Model Behavior)** for interpretability and **C09 (Orchestration and Agentic Action)** for oversight, kill-switches, and human-in-the-loop controls.
 
-As of June 2026, the analysis identifies 50 high-priority missing terms, 12 medium-priority missing terms, 12 definitions needing improvement, and 67 emerging terms from the 2025–2026 threat landscape that may warrant future inclusion.
+As of July 2026, the analysis identifies 49 high-priority missing terms, 12 medium-priority missing terms, 12 definitions needing improvement, and 66 emerging terms from the 2025–2026 threat landscape that may warrant future inclusion. The [June 22 glossary revision](https://github.com/OWASP/AISVS/commits/main/1.0/en/0x90-Appendix-A_Glossary.md) closed two previously tracked gaps by defining **System Prompt** and **Indirect Prompt Injection**, and added seven other security-relevant entries: **Alignment**, **DPoP**, **Excessive Agency**, **Inference**, **LLM**, **Sender-Constrained Token**, and **Trust Boundary**.
 
 MITRE ATLAS has settled into monthly releases. The May 4, 2026 v5.6.0 release added the Acquire Public AI Artifacts: AI Agent Configuration technique and the Deepfake-Assisted Phishing sub-technique, while the March 31, 2026 v5.5.0 release introduced twelve techniques covering agent tool poisoning persistence (AML.T0110), AI supply chain rug pulls (AML.T0109), reputation inflation (AML.T0111), AI service proxies (AML.T0008.005), agentic resource consumption (AML.T0034.002), and call chains (AML.T0084.003), plus five case studies including MCP server poisoning and model distillation campaigns. The May 6, 2026 Secure AI v2 release from MITRE's Center for Threat-Informed Defense (CTID) and Zenity Labs added more than 45 techniques and sub-techniques, more than 10 mitigations, and more than 20 case studies across the full 2025–2026 work cycle, plus a new Technique Maturity filter that lets defenders prioritize emerging versus mature threats and an interactive ATLAS Knowledge Graph. The OpenClaw investigation case studies (AML.CS0048–CS0051) documented exposed agent control interfaces, poisoned skills, one-click RCE, sandbox escape, and prompt-injection-driven command and control. On May 27, 2026, ATLAS retired the v5.x numbering in favor of a split content/format versioning scheme: the v2026.05 content release pairs with format v6.0.0, which restructures the data model (typed relationship objects, schema validation, a REST API) and adds a `platforms` field tagging every technique as Predictive AI, Generative AI, Agentic AI, or Enterprise — a structural release that introduced no new technique or case-study IDs.
 
 OWASP also stepped up the agentic and MCP guidance. The OWASP GenAI Security Project published *A Practical Guide for Secure MCP Server Development* in February 2026 with concrete controls for architecture, authentication, validation, session isolation, and hardened deployment; the OWASP MCP Top 10 (MCP01:2025 through MCP10:2025) continues to expand with categories such as token mismanagement, tool poisoning, shadow MCP servers, and context oversharing; and the March 2026 *OWASP GenAI Data Security Risks & Mitigations 2026 v1.0* introduced 21 data-layer risk categories (DSGAI01–DSGAI21) organized into Foundational, Hardening, and Advanced mitigation tiers. The April 20, 2026 disclosure of an Anthropic MCP design vulnerability — unsafe defaults in the stdio transport that enable arbitrary OS command execution across the Python, TypeScript, Java, and Rust SDKs, with related CVEs including CVE-2025-49596 (MCP Inspector) and CVE-2026-30623 (LiteLLM) — pushed practical MCP hardening to the top of agentic security priority lists. The pressure has not let up: CISA added the LiteLLM MCP test-endpoint command injection (CVE-2026-42271, patched May 8) to the Known Exploited Vulnerabilities catalog on June 9, 2026, and the NSA's Artificial Intelligence Security Center released its first MCP-specific Cybersecurity Information Sheet on May 20, 2026 (U/OO/6030316-26), recommending data-classification-zone segregation of tools and filtering egress proxies. OX Security framed the stdio command-execution problem as a systemic supply-chain flaw in its April 15, 2026 "Mother of All AI Supply Chains" advisory, reporting 10 Critical/High CVEs across popular MCP projects (including CVE-2026-30623 in LiteLLM, CVE-2026-30615 in Windsurf, CVE-2026-26015 in DocsGPT, and CVE-2026-33224 in Bisheng), 150M+ downloads of affected packages, 7,000+ publicly exposed servers, up to ~200,000 vulnerable instances, and successful compromise of 9 of 11 MCP registries in testing. The CVE stream has continued into June 2026 with unauthenticated MCP command-execution and injection flaws such as CVE-2026-33032 (nginx-ui MCP endpoint, CVSS 9.8) and CVE-2026-0755 (gemini-mcp-tool, CVSS 9.8), now tracked alongside dozens of others in the community-maintained Vulnerable MCP Project database. The MCP specification itself is evolving fast — the 2025-11-25 revision is now current (OIDC Discovery, Client ID Metadata Documents, mandatory 403 on invalid Origin), and the 2026-07-28 release candidate announced May 21, 2026 removes the session handshake entirely (stateless MCP), tightens OAuth alignment, and formally deprecates Roots, Sampling, and Logging. OWASP's *State of Agentic AI Security and Governance* v2.01 (June 1, 2026) rounds out the picture, mapping prompt injection to six of its ten agentic risk categories and popularizing Meta's "Agents Rule of Two" design constraint.
 
-On the regulatory side, NIST's draft Cyber AI Profile (IR 8596) moved through Spring 2026 working sessions on April 28, May 5, and May 12, 2026 after the January 30 comment-period close; as of June 11, 2026 the December 2025 preliminary draft remains the latest public version, with the initial public draft still expected later in 2026. The EU's transparency track hit two milestones in June 2026: the consultation on the draft Article 50 guidelines closed June 3, and the final Code of Practice on Transparency of AI-Generated Content was published June 10, 2026 — covering provider marking/detection duties under Article 50(2) and deployer disclosure duties under Article 50(4), accompanied by a standardized labelling icon set, with the Commission/AI Board adequacy assessment underway. The May 7, 2026 Digital Omnibus provisional trilogue agreement reshuffled the timeline: Annex III high-risk obligations slip from August 2, 2026 to December 2, 2027, Article 50 duties for systems already on the market defer to December 2, 2026, and a new prohibition on AI-generated non-consensual intimate imagery and CSAM takes effect December 2, 2026 — while GPAI enforcement powers (fines up to 3% of global turnover) still activate on August 2, 2026 as scheduled. Non-human identity (NHI) telemetry from CSA, DoControl, and ManageEngine has also matured: industry reports converged on NHI-to-human ratios of 45:1 to 100:1 (some Fortune 500 environments exceeding 500:1), with 50% of enterprises reporting an NHI-related breach and 68% of identity incidents involving machine identities.
+On the regulatory side, NIST's draft Cyber AI Profile (IR 8596) moved through Spring 2026 working sessions on April 28, May 5, and May 12, 2026 after the January 30 comment-period close; as of July 12, 2026 the December 2025 preliminary draft remains the latest public version, with the initial public draft still expected later in 2026. The EU's transparency track hit two milestones in June 2026: the consultation on the draft Article 50 guidelines closed June 3, and the final Code of Practice on Transparency of AI-Generated Content was published June 10, 2026 — covering provider marking/detection duties under Article 50(2) and deployer disclosure duties under Article 50(4), accompanied by a standardized labelling icon set, with the Commission/AI Board adequacy assessment underway. The Commission [opened the signing process](https://digital-strategy.ec.europa.eu/en/faqs/signing-code-practice-transparency-ai-generated-content) in July; providers seeking inclusion in the initial signatory list published before August 2 must submit their forms by July 22, 2026. The May 7, 2026 Digital Omnibus provisional trilogue agreement reshuffled the timeline: Annex III high-risk obligations slip from August 2, 2026 to December 2, 2027, Article 50 duties for systems already on the market defer to December 2, 2026, and a new prohibition on AI-generated non-consensual intimate imagery and CSAM takes effect December 2, 2026 — while GPAI enforcement powers (fines up to 3% of global turnover) still activate on August 2, 2026 as scheduled. Non-human identity (NHI) telemetry from CSA, DoControl, and ManageEngine has also matured: industry reports converged on NHI-to-human ratios of 45:1 to 100:1 (some Fortune 500 environments exceeding 500:1), with 50% of enterprises reporting an NHI-related breach and 68% of identity incidents involving machine identities.
 
 ---
 
@@ -28,6 +28,7 @@ Every glossary term mapped to the AISVS chapters that reference or rely on it.
 | Adversarial Training | C01, C02, C11 |
 | Agent | C02, C05, C09, C10, C11, C12 |
 | AI BOM / AIBOM / MBOM | C03, C06 |
+| Alignment | C03, C11 |
 | AppArmor | C04 |
 | Attention Map | C07 |
 | ABAC | C02, C05 |
@@ -64,10 +65,12 @@ Every glossary term mapped to the AISVS chapters that reference or rely on it.
 | DoS | C02, C04, C09, C12 |
 | Downgrade (response) | C12 |
 | DPIA | C12 |
+| DPoP (Demonstrating Proof-of-Possession) | C10 |
 | DP-SGD | C11 |
 | DRTM | C04 |
 | Embeddings | C05, C08 |
 | Embedding Inversion | C08 |
+| Excessive Agency | C07, C09 |
 | Exfiltration | C08, C09, C10, C12 |
 | Explainability | C07 |
 | Fail-Closed / Fail-Open | C03, C09, C10 |
@@ -80,6 +83,8 @@ Every glossary term mapped to the AISVS chapters that reference or rely on it.
 | Homoglyph | C02 |
 | HSM | C04 |
 | Human-in-the-Loop (HITL) | C02, C07, C09, C11 |
+| Indirect Prompt Injection | C02, C07, C08, C10 |
+| Inference | C04, C05, C09, C11, C12 |
 | Infrastructure as Code (IaC) | _(none — consider removing or linking to C04)_ |
 | Interval-Bound Propagation | C11 |
 | Jailbreak | C02, C11, C12 |
@@ -93,6 +98,7 @@ Every glossary term mapped to the AISVS chapters that reference or rely on it.
 | Least Privilege | C04, C09, C10 |
 | LIME | C07 |
 | Linkage Attack | C12 |
+| LLM (Large Language Model) | C02, C05, C12 |
 | Machine Unlearning | C12 |
 | Many-Shot Jailbreaking | C02, C07, C11 |
 | MCP | C02, C03, C09, C10 |
@@ -135,6 +141,7 @@ Every glossary term mapped to the AISVS chapters that reference or rely on it.
 | SMPC | C04 |
 | seccomp | C04 |
 | SELinux | C04 |
+| Sender-Constrained Token | C10 |
 | Sensitive Fields | C01, C08, C12 |
 | Shadow Deployment | C03 |
 | Shadow Model | C11, C12 |
@@ -150,12 +157,14 @@ Every glossary term mapped to the AISVS chapters that reference or rely on it.
 | Strong Authentication | C04, C05 |
 | Supply Chain Attack | C06 |
 | Synthetic Data | C01, C12 |
+| System Prompt | C07, C09, C12 |
 | TEE | C04 |
 | Temperature Scaling | C11 |
 | TLS | C04, C09, C10 |
 | Tokenizer | C02, C03 |
 | TPM | C04 |
 | Transfer Learning | C06 |
+| Trust Boundary | C02, C05, C09, C10 |
 | Vector Database | C05, C08 |
 | VRAM | C04 |
 | Vulnerability Scanning | C06 |
@@ -177,7 +186,6 @@ Terms used in AISVS chapters but not defined in the glossary. These should be ad
 | Term | Used In | Context |
 |------|---------|---------|
 | Instruction Hierarchy | C02 | Defense concept where system/developer messages take priority over user inputs |
-| System Prompt / System Message | C07, C12 | Critical concept for LLM security and logging |
 | Orchestrator / Orchestration | C03, C09 | Central to agentic AI architecture |
 | Delegation Context | C09 | Security concept for agent-to-agent authorization |
 | Capability Token | C05 | Scoped authorization mechanism for autonomous agents |
@@ -279,7 +287,6 @@ Terms gaining traction in the AI security community that may warrant future glos
 
 | Term | Definition | Relevant To |
 |------|-----------|-------------|
-| Indirect Prompt Injection | Adversarial instructions embedded in external data sources (documents, websites, tool outputs) that an LLM processes as trusted context; distinct from direct prompt injection | C02, C07, C08 |
 | RAG Poisoning | Injecting crafted documents into a knowledge base or vector store; research shows as few as 5 crafted documents among millions can achieve 90% attack success | C08, C01 |
 | Model Collapse | Progressive quality degradation when models train on synthetic data from other models, causing output distributions to narrow and amplify errors across generations | C01, C03 |
 | Crescendo Attack | Multi-turn jailbreak that progressively steers conversation from harmless topics toward prohibited content, exploiting conversational coherence tendencies; invisible to per-turn classifiers | C07, C11 |
@@ -458,8 +465,9 @@ Key MITRE ATLAS techniques that correspond to AISVS glossary terms. As of June 2
 - [A2A Protocol Releases](https://github.com/a2aproject/A2A/releases) — v1.0.0 (March 12, 2026) breaking release and v1.0.1 (May 28, 2026) patch
 - [CybelAngel: LiteLLM CVE-2026-42271 Analysis](https://cybelangel.com/blog/itellm-vulnerability-cve-2026-42271/) — MCP test-endpoint command injection, patched May 8, 2026, CISA KEV June 9, 2026
 - [EU Code of Practice on Transparency of AI-Generated Content (June 10, 2026)](https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content) — final code with provider marking/detection and deployer disclosure sections plus standardized labelling icons
+- [EU transparency Code of Practice signing process (July 2026)](https://digital-strategy.ec.europa.eu/en/faqs/signing-code-practice-transparency-ai-generated-content) — official submission process and July 22 cutoff for inclusion in the initial signatory list before Article 50 applies
 - [Gibson Dunn: EU AI Act Digital Omnibus Agreement (May 2026)](https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes/) — analysis of the May 7, 2026 provisional agreement deferring Annex III high-risk obligations to December 2, 2027
-- [NIST COSAiS: SP 800-53 Control Overlays for Securing AI Systems](https://csrc.nist.gov/projects/cosais) — five planned AI control overlays (IR 8605 series); predictive AI annotated outline published January 8, 2026
+- [NIST COSAiS: SP 800-53 Control Overlays for Securing AI Systems](https://csrc.nist.gov/Projects/cosais) — five planned AI control overlays (IR 8605 series); predictive AI annotated outline published January 8, 2026
 - [Okta Showcase 2026: Okta for AI Agents](https://www.okta.com/newsroom/press-releases/showcase-2026/) — agent discovery, Agent Gateway, Cross App Access, and Universal Logout for non-human identities
 - [Adversa AI: Top GenAI Security Resources June 2026](https://adversa.ai/blog/top-genai-security-resources-june-2026/) — roundup naming Tokenizer Tampering, ChatGPhish, response poisoning of exposed Ollama APIs, and recent jailbreak research
 - [Aperion Shield (open-sourced May 2026)](https://github.com/AperionAI/shield) — local Apache-2.0 guardrail that wraps MCP transports to block destructive tool calls before execution

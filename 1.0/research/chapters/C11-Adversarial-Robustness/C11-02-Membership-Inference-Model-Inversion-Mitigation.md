@@ -27,6 +27,12 @@ Limit the ability to determine whether a specific record was in the training dat
 
 A significant development is the **Ensemble Privacy Defense (EPD)** framework (December 2025), which operates entirely at inference time and requires no model retraining. EPD aggregates outputs from three components: the fine-tuned target model, an unmodified base LLM, and a judge model that synthesizes candidate answers while considering loss values. Against reference-based MIAs like LiRA, EPD achieves up to 27.8% MIA success rate reduction on fine-tuned models and up to 526.3% relative improvement on RAG models, while maintaining acceptable accuracy (EM/F1). This is particularly relevant because training-time defenses like DP-SGD are computationally prohibitive for large-scale LLMs.
 
+### Token-Level Differentially Private Inference (DP-Fusion)
+
+**DP-Fusion**, published at ICLR 2026, addresses a narrower but important 11.2.1 case: preventing sensitive tokens already present in a prompt, retrieved document, or tool response from influencing generated output enough to reveal their presence. It labels sensitive token groups, obtains a baseline distribution without them, and fuses that distribution with the sensitive-context distribution under a Rényi-divergence bound. The resulting epsilon controls how strongly each sensitive group can affect output; the paper reports six-times-lower perplexity than prior differentially private inference methods in its document-privatization evaluation. This is a formal output-control mechanism, not a substitute for DP-SGD: it protects designated inference context, while 11.2.4 protects training records.
+
+For verification, inventory which token spans the deployment labels as sensitive, inspect the public/baseline model and divergence-budget configuration, and reproduce the paper's member-versus-non-member test on held-out sensitive spans. Exercise paraphrasing, summarization, RAG, and tool-result paths because a direct PII string-match test is insufficient: the motivating attack inferred whether PII had influenced the output even when the value itself was absent. Track composition across repeated generations and fail closed when sensitive-span detection is uncertain. The current limitation is architectural -- DP-Fusion needs distribution-level model access and a reliable sensitive-token partition, so it does not drop cleanly into opaque third-party APIs.
+
 ### MIAs Beyond Overfitting
 
 Research published in late 2025 ("Membership Inference Attacks Beyond Overfitting") demonstrates that MIAs can succeed even on well-regularized models that do not exhibit classical overfitting. This challenges the assumption that standard regularization techniques (dropout, weight decay, early stopping) provide meaningful membership privacy. The finding strengthens the case for requirement 11.2.4's differential privacy approach as the only principled training-time defense, and supports the need for empirical MIA simulation testing (requirement 11.2.5) rather than relying on overfitting proxies.
@@ -81,7 +87,7 @@ Research published in May 2025 ("Exploring the Limits of Strong Membership Infer
 
 ### Scalable DP Training: fastDP and JAX-Privacy
 
-The practical barriers to deploying DP-SGD at scale continue to shrink. AWS's **fastDP** library (v2.1, October 2024) achieves nearly identical time and memory complexity to non-private training through mixed ghost norm and book-keeping techniques, with <20% memory overhead and <25% slowdown. It has been tested on models up to 100B parameters across 512 GPUs and supports all PyTorch optimizers with automatic clipping, eliminating manual threshold tuning. Google's **JAX-Privacy** framework provides similar scalability for the JAX/Keras ecosystem, with primitives for gradient clipping and correlated noise generation that work efficiently in distributed environments. Together these tools address the longstanding criticism that DP-SGD "doesn't scale" -- as of early 2026, the computational overhead for DP training is approaching a manageable 20-25% premium over standard training for well-supported architectures.
+The practical barriers to deploying DP-SGD at scale continue to shrink. AWS's **fastDP** library (v2.1, October 2024) achieves nearly identical time and memory complexity to non-private training through mixed ghost norm and book-keeping techniques, with <20% memory overhead and <25% slowdown. It has been tested on models up to 100B parameters across 512 GPUs and supports all PyTorch optimizers with automatic clipping, eliminating manual threshold tuning. Google's **JAX-Privacy** framework provides similar scalability for the JAX/Keras ecosystem, with primitives for gradient clipping and correlated noise generation that work efficiently in distributed environments. A Google engineering presentation at USENIX PEPR 2026 now documents the practical workflow around the library: define the protected fine-tuning dataset and privacy unit, compare memorization before and after private tuning, and retain the accounting and audit evidence with the released model. Together these tools address the longstanding criticism that DP-SGD "doesn't scale" -- as of mid-2026, the computational overhead for DP training is approaching a manageable 20-25% premium over standard training for well-supported architectures.
 
 ### Audit Tooling Updates
 
@@ -118,6 +124,12 @@ Wang et al. (CCS 2025) demonstrated that relying on a single MIA method for priv
 ### WeMem: Defending Pruned Models Against MIA (NDSS 2025)
 
 As of March 2026, model compression through iterative pruning is increasingly common for edge deployment, but **WeMem** (Shang et al., NDSS 2025) demonstrates that iterative pruning significantly increases model memorization, making pruned models substantially more vulnerable to membership inference than their unpruned counterparts. The framework identifies two key factors driving this increased memorization -- data reuse across pruning iterations and inherent memorability of certain training samples -- and designs three defense primitives tailored to different combinations of these factors. Comprehensive evaluation against ten adaptive MIA attacks shows WeMem outperforms five existing defenses in privacy-utility tradeoff and efficiency. This is directly relevant for organizations deploying compressed AI models: pruning without MIA-aware defenses creates a privacy regression that standard MIA testing on the unpruned model would miss entirely.
+
+### Compression Variants as a Joint MIA Surface (CompLeak)
+
+**CompLeak**, accepted for USENIX Security 2026, broadens that release-time warning beyond iterative pruning. It evaluates pruning, quantization, and weight clustering and shows that compressed variants can separate members from non-members differently. Its strongest setting combines signals across multiple compressed versions, with or without the original model, and improves membership inference across the evaluated image and text models, including BERT and GPT-2. The practical risk is cumulative: publishing a full-precision model plus several mobile or edge variants gives an attacker a comparative signal that no single-artifact audit measures.
+
+Requirement 11.2.5 evidence should therefore bind to the full release set, not just the canonical model. Re-run the same member/non-member split against every quantization level, pruning checkpoint, clustered-weight artifact, and distilled student; then test paired and multi-variant features such as confidence deltas at the stated low-FPR operating points. Record which artifacts were jointly available to the test. Passing each variant independently is not sufficient when multiple public variants can be combined, and the current CompLeak evaluation is limited to conventional classification and GPT-2/BERT-scale models rather than modern instruction-tuned frontier systems.
 
 ### User-Level Differential Privacy for LLM Fine-Tuning
 
@@ -241,8 +253,8 @@ The MIA threat model is also expanding beyond standard text-completion APIs. USE
 
 ## Related Standards & References
 
-- [MITRE ATLAS AML.T0024.000 -- Infer Training Data Membership](https://atlas.mitre.org/techniques/AML.T0024.000) -- Attack technique description and known cases
-- [MITRE ATLAS AML.T0024.001 -- Invert ML Model](https://atlas.mitre.org/techniques/AML.T0024.001) -- Model-inversion / reconstruction technique reference for requirement 11.2.1
+- [MITRE ATLAS AML.T0024.000 -- Infer Training Data Membership](https://atlas.mitre.org/) -- Attack technique description and known cases
+- [MITRE ATLAS AML.T0024.001 -- Invert ML Model](https://atlas.mitre.org/) -- Model-inversion / reconstruction technique reference for requirement 11.2.1
 - [Model Inversion Attacks: A Survey of Approaches and Countermeasures (arXiv:2411.10023)](https://arxiv.org/abs/2411.10023) -- Reconstruction-attack taxonomy and defense landscape underpinning the 11.2.1 verification approach
 - [CENSOR: Defense Against Gradient Inversion via Orthogonal Subspace Bayesian Sampling (NDSS 2025)](https://www.ndss-symposium.org/ndss-paper/censor-defense-against-gradient-inversion-via-orthogonal-subspace-bayesian-sampling/) -- Gradient-inversion defense relevant to attribute reconstruction
 - [To Trust or Not To Trust Prediction Scores for Membership Inference Attacks (arXiv:2111.09076)](https://arxiv.org/abs/2111.09076) -- Establishes the calibration vs MIA-defense tension behind requirement 11.2.3
@@ -255,6 +267,7 @@ The MIA threat model is also expanding beyond standard text-completion APIs. USE
 - [Privacy Meter](https://github.com/privacytrustlab/ml_privacy_meter) -- Data privacy audit library with MIA-based aggregate and per-record risk reporting
 - [OWASP LLM02:2025 Sensitive Information Disclosure](https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/)
 - [Ensemble Privacy Defense for Knowledge-Intensive LLMs (December 2025)](https://arxiv.org/abs/2512.03100) -- Training-free inference-time MIA defense using model ensemble and judge
+- [DP-Fusion: Token-Level Differentially Private Inference (ICLR 2026)](https://arxiv.org/abs/2507.04531) -- Formally bounds the influence of designated sensitive context tokens on generated output
 - [Membership Inference Attacks Beyond Overfitting (November 2025)](https://arxiv.org/abs/2511.16792) -- MIAs succeeding without classical overfitting
 - [Membership Inference Attacks Against In-Context Learning (CCS 2024)](https://yangzhangalmo.github.io/papers/CCS24-ICLMIA.pdf) -- MIAs targeting few-shot ICL demonstrations
 - [SOFT: Selective Data Obfuscation for LLM Fine-tuning (USENIX Security 2025)](https://www.usenix.org/system/files/usenixsecurity25-zhang-kaiyuan.pdf) -- Targeted obfuscation of MIA-vulnerable training samples
@@ -269,6 +282,7 @@ The MIA threat model is also expanding beyond standard text-completion APIs. USE
 - [Diffence: Fencing Membership Privacy with Diffusion Models (NDSS 2025)](https://www.ndss-symposium.org/ndss-paper/diffence-fencing-membership-privacy-with-diffusion-models/) -- Diffusion-based pre-inference MIA defense
 - [fastDP: Fast Differential Privacy (AWS, v2.1)](https://github.com/awslabs/fast-differential-privacy) -- Scalable DP training for PyTorch, tested up to 100B parameters
 - [JAX-Privacy (Google)](https://research.google/blog/differentially-private-machine-learning-at-scale-with-jax-privacy/) -- Scalable DP training for JAX/Keras ecosystems
+- [Private Tuning of LLMs in Practice (USENIX PEPR 2026)](https://www.usenix.org/conference/pepr26/presentation/sinha) -- Google engineering workflow for JAX-Privacy fine-tuning, memorization comparison, and deployment evidence
 - [IBM Adversarial Robustness Toolbox (ART)](https://github.com/Trusted-AI/adversarial-robustness-toolbox) -- MIA attack and defense implementations for standardized testing
 - [PMixED: Differentially Private Next-Token Prediction (NAACL 2024)](https://arxiv.org/abs/2403.15638) -- Prediction-time DP via ensemble distribution mixing with a public model
 - [AdaPMixED: Adaptively Private Next-Token Prediction (ICLR 2025)](https://arxiv.org/abs/2410.02016) -- Adaptive prediction-time DP scaling to 100K queries at epsilon = 5.248
@@ -279,6 +293,7 @@ The MIA threat model is also expanding beyond standard text-completion APIs. USE
 - [On Membership Inference Attacks in Knowledge Distillation (Cui et al., May 2025)](https://arxiv.org/abs/2505.11837) -- Distilled student models can be more vulnerable to MIA than teachers; proposes bottleneck projection and NoNorm mitigations
 - [Membership Inference Attacks as Privacy Tools: Reliability, Disparity and Ensemble (CCS 2025)](https://arxiv.org/abs/2506.13972) -- Ensemble MIA framework demonstrating single-attack auditing is unreliable; coverage and stability analysis
 - [WeMem: Defending Against MIA on Iteratively Pruned DNNs (NDSS 2025)](https://www.ndss-symposium.org/ndss-paper/defending-against-membership-inference-attacks-on-iteratively-pruned-deep-neural-networks/) -- Three defense primitives for pruning-induced memorization; tested against 10 adaptive MIAs
+- [CompLeak: Deep Learning Model Compression Exacerbates Privacy Leakage (USENIX Security 2026)](https://www.usenix.org/conference/usenixsecurity26/presentation/li-na) -- Joint MIA evaluation across pruning, quantization, weight clustering, and multiple released variants
 - [Mind the Privacy Unit! User-Level DP for LLM Fine-Tuning (COLM 2024)](https://arxiv.org/abs/2406.14322) -- User-level vs example-level DP accounting with substantially tighter noise bounds
 - [Dual-Priv Pruning: DP Fine-Tuning for Multimodal LLMs (2026)](https://arxiv.org/abs/2506.07077) -- First DP fine-tuning framework for MLLMs using visual token and gradient-update pruning
 - [HT-MIA: What Hard Tokens Reveal (January 2026)](https://arxiv.org/abs/2601.20885) -- Low-confidence-token MIA that beats seven baselines on medical and general benchmarks
