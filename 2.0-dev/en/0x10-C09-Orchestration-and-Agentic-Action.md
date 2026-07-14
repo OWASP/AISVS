@@ -24,7 +24,7 @@ Privileged, high-impact, or hard-to-reverse agent actions must require trusted a
 
 | # | Description | Level |
 | :--: | --- | :---: |
-| **9.2.1** | **Verify that** the agent runtime blocks execution of privileged or irreversible actions until explicit human approval is received and verified. | 1 |
+| **9.2.1** | **Verify that** the agent runtime blocks execution of privileged, high-impact, or irreversible actions until explicit human approval is received and verified. | 1 |
 | **9.2.2** | **Verify that** approval requests display canonicalized and complete action parameters, such as diffs, commands, recipients, amounts, resources, and scopes, without truncation or unsafe transformation. | 2 |
 | **9.2.3** | **Verify that** each high-impact action has a trusted reversibility classification, such as read-only, reversible, externally reversible, or irreversible. | 2 |
 | **9.2.4** | **Verify that** the agent runtime enforces reversibility classifications by blocking, requiring approval, or restricting actions based on their impact and ability to be reversed. | 2 |
