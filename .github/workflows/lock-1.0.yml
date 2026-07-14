@@ -36,5 +36,5 @@ jobs:
           for file in ${{ steps.files.outputs.all_changed_files }}; do
             echo "  - $file"
           done
-          echo "Make changes in 1.01-dev/ or 2.0-dev/ instead. See 1.0/LOCKED.md."
+          echo "Make changes in 1.01-dev/ instead. See 1.0/LOCKED.md."
           exit 1

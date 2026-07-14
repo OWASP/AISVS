@@ -35,7 +35,6 @@ jobs:
             README.md
             1.0/en/**/*.md
             1.01-dev/en/**/*.md
-            2.0-dev/en/**/*.md
 
       - name: Run markdownlint on changed files
         if: steps.files.outputs.any_changed == 'true'

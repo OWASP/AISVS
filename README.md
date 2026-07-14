@@ -142,7 +142,6 @@ Each stable release of AISVS is published as a numbered folder in this repositor
 /
 ├── 1.0/        <- published stable release (locked)
 ├── 1.01-dev/   <- next minor release (in progress)
-├── 2.0-dev/    <- next major release (in progress)
 ```
 
 ---
