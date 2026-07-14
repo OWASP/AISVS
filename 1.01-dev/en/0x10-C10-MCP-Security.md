@@ -30,7 +30,7 @@ Callers must be authenticated and access to MCP servers authorized, following pr
 | **10.2.4** | **Verify that** MCP tools/list returns only tools permitted by resource owners' authorized scopes. | 2 |
 | **10.2.5** | **Verify that** MCP servers enforce access control on every tool invocation, validating that the user's access token authorizes both the requested tool and the specific argument values supplied. | 2 |
 | **10.2.6** | **Verify that** MCP servers ensure all session artifacts are removed when a session terminates. | 2 |
-| **10.2.7** | **Verify that** MCP servers do not pass through access tokens received from clients to downstream APIs. | 2 |
+| **10.2.7** | **Verify that** MCP servers only accept tokens explicitly issued for them. | 2 |
 
 ---
 
@@ -62,6 +62,7 @@ Schema, message, and input validation must be enforced in both MCP servers and c
 | **10.4.6** | **Verify that** MCP servers sign tool responses with a unique nonce and timestamp so MCP clients can detect replay attempts. | 2 |
 | **10.4.7** | **Verify that** MCP clients present users with explicit consent dialogue and cancellation options upon installation of a local MCP server. | 2 |
 | **10.4.8** | **Verify that** MCP clients maintain a snapshot of tool definitions and that any change to a tool definition triggers re-approval before the modified tool can be invoked. | 3 |
+| **10.4.9** | **Verify that** MCP proxy servers using a shared upstream OAuth client identity do not allow a requesting MCP client to inherit authorization established for a different MCP client. | 2 |
 
 ---
 
