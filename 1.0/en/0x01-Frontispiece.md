@@ -27,7 +27,6 @@ AISVS v1.0 is the result of a collaborative effort by its project leads, working
 * Otto Sulin ([ottosulin](https://github.com/ottosulin))
 * Rico Komenda ([RicoKomenda](https://github.com/RicoKomenda))
 * Russ Memisyazici ([vtknightmare](https://github.com/vtknightmare))
-* Raza Sharif ([razashariff](https://github.com/razashariff))
 
 ## Contributors and Reviewers
 
