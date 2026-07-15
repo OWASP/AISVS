@@ -2,7 +2,7 @@
 
 ## About the Standard
 
-The **Artificial Intelligence Security Verification Standard (AISVS)** is a community-driven catalogue of testable security requirements for AI-enabled systems. It gives data scientists, MLOps engineers, software architects, developers, testers, security professionals, tool vendors, regulators, and consumers a common language for specifying security controls across the AI lifecycle. That lifecycle spans data collection and model development through deployment, monitoring, and retirement. With a shared vocabulary, organizations can measure and improve the resilience, privacy, and safety of their AI solutions.
+The **Artificial Intelligence Security Verification Standard (AISVS)** is a community-driven catalog of testable security requirements for AI-enabled systems. It gives data scientists, MLOps engineers, software architects, developers, testers, security professionals, tool vendors, regulators, and consumers a common language for specifying security controls across the AI lifecycle. That lifecycle spans data collection and model development through deployment, monitoring, and retirement. With a shared vocabulary, organizations can measure and improve the resilience, privacy, and safety of their AI solutions.
 
 Every requirement in AISVS has been developed from the ground up to reflect the AI threat landscape. While AISVS draws inspiration from broader security best practices, it is purpose-built for artificial intelligence systems and complements (rather than duplicates) governance frameworks such as NIST AI RMF and ISO/IEC 42001.
 
@@ -67,3 +67,4 @@ The list below reflects authored and edited content. It does not fully capture c
 * Hari Mukundhan ([harimukundhan](https://github.com/harimukundhan))
 * Sandhya ([sandhya13r](https://github.com/sandhya13r))
 * Starr Brown ([mamicidal](https://github.com/mamicidal))
+* Vlatko Kosturjak ([kost](https://github.com/kost))
