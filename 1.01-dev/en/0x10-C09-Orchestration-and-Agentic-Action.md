@@ -79,6 +79,7 @@ Every action must be authorized at execution time and constrained by scope.
 | **9.5.4** | **Verify that** secrets and credentials required by an agent at runtime are not exposed within the model's observable context, including the context window, system prompts, or tool call parameters. | 2 |
 | **9.5.5** | **Verify that** inter-agent task delegation is restricted by an explicit authorization policy. | 2 |
 | **9.5.6** | **Verify that** long-running agent sessions re-evaluate current backend authorization policy on every privileged action. | 3 |
+| **9.5.7** | **Verify that** authority granted to a delegated agent is a subset of the delegating agent's current authority, so that tool scope, resource access, and reversibility-class ceiling can only narrow, never widen, across a delegation chain. | 3 |
 
 ---
 
