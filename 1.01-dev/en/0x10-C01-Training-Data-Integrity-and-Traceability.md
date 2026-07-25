@@ -6,7 +6,7 @@ This chapter addresses protecting the integrity and traceability of training dat
 
 ---
 
-## C1.1 Training Data Origin & Data Security
+## C1.1 Training Data Origin and Security
 
 Training data origin and security are critical to the trustworthiness of any AI system. Datasets must be sourced from verifiable origins, tracked across their full lifecycle, and protected against tampering, corruption, and poisoning so that unauthorized modification can be detected.
 

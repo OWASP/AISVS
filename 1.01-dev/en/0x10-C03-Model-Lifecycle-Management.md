@@ -53,7 +53,7 @@ Model development environments must be separated from production environments.
 
 ---
 
-## C3.5 Pipeline Fine-Tuning
+## C3.5 Fine-Tuning Pipeline Security
 
 Fine-tuning pipelines are high-privilege operations that can alter deployed model behavior at scale. Multi-stage pipelines compound this risk because a compromise at any intermediate stage produces a subtly altered artifact that subsequent stages accept.
 
