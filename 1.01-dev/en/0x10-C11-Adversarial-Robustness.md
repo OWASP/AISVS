@@ -44,6 +44,7 @@ Unauthorized model cloning through API abuse must be detected and deterred using
 | **11.3.2** | **Verify that** raw model outputs are not directly exposed beyond the application backend, and that externally visible responses are calibrated to the extraction risk level. | 2 |
 | **11.3.3** | **Verify that** model watermarking or fingerprinting techniques are applied so that unauthorized copies can be identified. | 3 |
 | **11.3.4** | **Verify that** detection of suspected extraction triggers response measures. | 3 |
+| **11.3.5** | **Verify that** inference endpoints constrain sampling and decoding parameters supplied by untrusted callers (e.g., temperature, top-k, top-p, logit bias, candidate/n count) to server-side approved ranges and defaults, rejecting out-of-policy values. | 2 |
 
 ---
 
