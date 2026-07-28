@@ -333,6 +333,7 @@ Test for and defend against evasion, membership inference, model inversion, extr
 | Membership-inference attack simulation demonstrating accuracy no better than random guessing | C11.2.5 |
 | Raw model outputs not exposed beyond the backend, with externally visible responses calibrated to extraction risk | C11.3.2 |
 | Model watermarking or fingerprinting so unauthorized copies can be identified | C11.3.3 |
+| Server-side constraints on caller-supplied sampling and decoding parameters, with out-of-policy values rejected | C11.3.5 |
 | Poisoning detection and human review gates protecting the safety-violation feedback pipeline | C11.4.3 |
 
 **Common pitfalls:** testing only known jailbreak patterns without adaptive attacks; not re-running the alignment suite after model updates; exposing raw confidence vectors that accelerate extraction.
