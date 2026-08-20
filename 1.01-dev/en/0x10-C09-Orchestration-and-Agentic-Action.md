@@ -34,6 +34,8 @@ Privileged, high-impact, or hard-to-reverse agent actions must require trusted a
 | **9.2.8** | **Verify that** approvals are cryptographically bound to action parameters, requester identity, execution context, and a unique single-use nonce. | 3 |
 | **9.2.9** | **Verify that** cryptographic key material or credentials used to issue approvals are isolated from the agent runtime. | 3 |
 | **9.2.10** | **Verify that** approval gates for multi-step or multi-agent action chains enforce the highest-impact reversibility classification present anywhere in the chain. | 3 |
+| **9.2.11** | **Verify that** any approval or enforcement gate whose assurance rests on the absence of an event (for example, zero denials or zero blocks) is validated with a known-triggering input that is observed to activate the gate. | 1 |
+| **9.2.12** | **Verify that** the known-triggering input is injected and observed to activate the gate within the same assessment period as the results it qualifies, and that a period with no observed activation is recorded as unverified rather than passing. | 2 |
 
 ---
 
