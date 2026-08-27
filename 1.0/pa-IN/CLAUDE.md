@@ -24,6 +24,17 @@ rules and vocabulary so both standards read as one consistent corpus.
 
 Use **"Panjabi"** (not "Punjabi") per Sikhri.org and Panjab Digital Library standards.
 
+## No "(Gurmukhi)" qualifier in titles or prose (MANDATORY)
+
+Do not append "(Gurmukhi)" / "(ਗੁਰਮੁਖੀ)" after "Panjabi" in titles, edition
+labels, or descriptive prose. Panjabi in this project is always written in
+Gurmukhi script; pairing the two words reads as if they were naming two
+different things. Use plain "Panjabi". Same rule as the sibling ASVS
+corpus (`CLAUDE.md` there), applied here 2026-08-27.
+
+Exception: structural table column headers distinguishing a Gurmukhi-script
+column from a romanized column may still use "ਗੁਰਮੁਖੀ" as a bare label.
+
 ---
 
 ## Translation Dictionary Sources (MANDATORY)

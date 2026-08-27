@@ -1,9 +1,9 @@
-# OWASP AI Security Verification Standard 1.0 -- Panjabi (Gurmukhi) Bilingual Edition {#title-page}
+# OWASP AI Security Verification Standard 1.0 -- Panjabi Bilingual Edition {#title-page}
 
 **OWASP AI Security Verification Standard (AISVS) 1.0**
-**Panjabi (Gurmukhi) Bilingual Edition -- Print Draft**
+**Panjabi Bilingual Edition -- Print Draft**
 
-*ਓਵਾਸਪ AI ਸੁਰੱਖਿਆ ਪ੍ਰਮਾਣਿਕਤਾ ਮਿਆਰ 1.0 -- ਪੰਜਾਬੀ (ਗੁਰਮੁਖੀ) ਦੋਭਾਸ਼ੀ ਐਡੀਸ਼ਨ*
+*ਓਵਾਸਪ AI ਸੁਰੱਖਿਆ ਪ੍ਰਮਾਣਿਕਤਾ ਮਿਆਰ 1.0 -- ਪੰਜਾਬੀ ਦੋਭਾਸ਼ੀ ਐਡੀਸ਼ਨ*
 
 ---
 
