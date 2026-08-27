@@ -25,6 +25,20 @@ MIN_WORD_LEN = 4
 MAX_RARE_COUNT = 3
 DEFAULT_MIN_RATIO = 15
 
+# Confirmed false positives from the 2026-08-27 fresh-context review — all
+# 18 candidates checked in sentence context turned out to be legitimate
+# distinct words, idioms (e.g. ਮੇਲ ਖਾਂਦਾ = "matches"), or loanwords
+# (ਕਰਨਲ = "kernel", ਸਵਿੱਚ = "switch"). See commit history for the full
+# per-word reasoning. Suppressed here so re-runs stay quiet on
+# already-adjudicated pairs.
+CONFIRMED_FALSE_POSITIVES = {
+    ("ਖਾਂਦਾ", "ਜਾਂਦਾ"), ("ਸਵਿੱਚ", "ਵਿੱਚ"), ("ਪਹਿਲਾ", "ਪਹਿਲਾਂ"), ("ਪੱਤਰ", "ਪੱਧਰ"),
+    ("ਢਾਲੇ", "ਵਾਲੇ"), ("ਲਾਗਤ", "ਲਾਗੂ"), ("ਭਰਦਾ", "ਕਰਦਾ"), ("ਪਹੁੰਚੇ", "ਪਹੁੰਚ"),
+    ("ਜਾਪਦੀ", "ਜਾਂਦੀ"), ("ਕਿਤੇ", "ਕੀਤੇ"), ("ਕਿਤੇ", "ਕਿਸੇ"), ("ਨਵੀਂ", "ਨਹੀਂ"),
+    ("ਵਾਧੇ", "ਵਾਲੇ"), ("ਪਛਾਣਨ", "ਪਛਾਣ"), ("ਖਾਂਦੀ", "ਜਾਂਦੀ"), ("ਉੱਚੇ", "ਉੱਤੇ"),
+    ("ਖਾਂਦੇ", "ਜਾਂਦੇ"), ("ਕਰਨਲ", "ਕਰਨਾ"),
+}
+
 
 def edit_distance_1(a, b):
     if a == b:
@@ -84,6 +98,8 @@ def main():
     for rare in rare_words:
         for length in (len(rare) - 1, len(rare), len(rare) + 1):
             for common in by_len.get(length, []):
+                if (rare, common) in CONFIRMED_FALSE_POSITIVES:
+                    continue
                 if edit_distance_1(rare, common):
                     ratio = counts[common] / counts[rare]
                     if ratio >= min_ratio:
