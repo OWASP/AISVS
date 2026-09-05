@@ -399,7 +399,8 @@ Require human approval for high-impact actions and provide reliable, exercised s
 | Protection of the AI-augmented review mechanism against prompt-injection bypass | C9.2.7 |
 | Approvals cryptographically bound to parameters, requester identity, execution context, and a single-use nonce | C9.2.8 |
 | Isolation of approval-issuing key material or credentials from the agent runtime | C9.2.9 |
-| Multi-step or multi-agent chains enforcing the highest-impact reversibility classification in the chain | C9.2.10 |
+| Approval gates enforcing the highest-impact reversibility classification across action chains established outside the gated agent's control | C9.2.10 |
+| Blocking execution beyond an approved action chain until new approval enforces the highest-impact reversibility classification across the cumulative chain | C9.2.11 |
 | Manual kill-switch to immediately halt model inference and outputs | C9.6.1 |
 | Fail-closed blocking of a pending action when a human-approval gate is not satisfied within the defined time | C9.6.2 |
 | Kill-switch commands delivered through an out-of-band channel isolated from the agent runtime | C9.6.3 |

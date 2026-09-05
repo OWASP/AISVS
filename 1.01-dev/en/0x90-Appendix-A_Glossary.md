@@ -2,6 +2,8 @@
 
 This glossary defines key AI, ML, and security terms used throughout the AISVS to ensure clarity and common understanding.
 
+* **Action Chain** – A bounded set of related agent actions and their execution dependencies for a task, whether executed as multiple steps by one agent or delegated across multiple agents. The cumulative chain includes the original actions and all subsequent expansions.
+
 * **Adapter** – A lightweight module (e.g., LoRA, QLoRA) added to a pre-trained model to specialize its behavior on a specific task without modifying the original weights.
 
 * **Adversarial Example** – An input deliberately crafted to cause an AI model to make a mistake, often by adding subtle perturbations imperceptible to humans.
