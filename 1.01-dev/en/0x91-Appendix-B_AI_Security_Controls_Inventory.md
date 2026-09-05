@@ -403,6 +403,7 @@ Require human approval for high-impact actions and provide reliable, exercised s
 | Fail-closed blocking of a pending action when a human-approval gate is not satisfied within the defined time | C9.6.2 |
 | Kill-switch commands delivered through an out-of-band channel isolated from the agent runtime | C9.6.3 |
 | Explicit consent dialogue and cancellation option on installation of a local MCP server | C10.4.7 |
+| MCP client consent and authorization bound to the approved server connection endpoint, with user re-approval before further interaction after an endpoint change | C10.4.10 |
 
 **Common pitfalls:** documenting a high-risk action policy never wired to a runtime gate; binding approval to parameters without binding to identity or context; defaulting to fail-open when the approver does not respond; assuming an in-band kill-switch will work against a compromised agent; implementing a kill-switch that is never exercised.
 
