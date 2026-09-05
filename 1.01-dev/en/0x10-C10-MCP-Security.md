@@ -63,6 +63,7 @@ Schema, message, and input validation must be enforced in both MCP servers and c
 | **10.4.7** | **Verify that** MCP clients present users with explicit consent dialogue and cancellation options upon installation of a local MCP server. | 2 |
 | **10.4.8** | **Verify that** MCP clients maintain a snapshot of tool definitions and that any change to a tool definition triggers re-approval before the modified tool can be invoked. | 3 |
 | **10.4.9** | **Verify that** MCP proxy servers using a shared upstream OAuth client identity do not allow a requesting MCP client to inherit authorization established for a different MCP client. | 2 |
+| **10.4.10** | **Verify that** MCP clients bind each approved MCP server's granted consent and authorization to the connection endpoint approved for that server, and require user re-approval before any further interaction once that endpoint changes. | 2 |
 
 ---
 
