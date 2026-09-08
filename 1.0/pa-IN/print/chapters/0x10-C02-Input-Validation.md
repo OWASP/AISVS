@@ -1,0 +1,89 @@
+<!-- Translation Status: ✅ Complete -->
+<!-- Original: 1.0/en/0x10-C02-Input-Validation.md -->
+<!-- Translator: GeeksikhSecurity -->
+
+# C2 Input Validation
+# C2 ਇਨਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ
+
+## Control Objective
+## ਨਿਯੰਤਰਣ ਉਦੇਸ਼
+
+This chapter addresses validation of all inputs as a first-line defense against prompt injection, one of the most damaging attacks on AI systems.
+
+ਇਹ ਅਧਿਆਇ prompt ਇੰਜੈਕਸ਼ਨ[^0x10-C02-prompt-injection] — AI ਸਿਸਟਮਾਂ ਉੱਤੇ ਸਭ ਤੋਂ ਵੱਧ ਨੁਕਸਾਨਦੇਹ ਹਮਲਿਆਂ ਵਿੱਚੋਂ ਇੱਕ — ਦੇ ਵਿਰੁੱਧ ਪਹਿਲੀ-ਕਤਾਰ ਬਚਾਅ ਵਜੋਂ ਸਾਰੇ ਇਨਪੁੱਟਾਂ ਦੀ ਪ੍ਰਮਾਣਿਕਤਾ (validation) ਨੂੰ ਸੰਬੋਧਿਤ ਕਰਦਾ ਹੈ।
+
+---
+
+## C2.1 Prompt Injection Defenses
+## C2.1 Prompt ਇੰਜੈਕਸ਼ਨ ਬਚਾਅ
+
+Prompt injection is one of the top risks for AI systems, and defending against it requires a combination of pattern filters, data classifiers, and instruction hierarchy enforcement.
+
+Prompt ਇੰਜੈਕਸ਼ਨ AI ਸਿਸਟਮਾਂ ਲਈ ਸਭ ਤੋਂ ਵੱਡੇ ਜੋਖਮਾਂ ਵਿੱਚੋਂ ਇੱਕ ਹੈ, ਅਤੇ ਇਸ ਦੇ ਵਿਰੁੱਧ ਬਚਾਅ ਲਈ ਪੈਟਰਨ ਫ਼ਿਲਟਰਾਂ, ਡਾਟਾ ਵਰਗੀਕਾਰਾਂ (classifiers), ਅਤੇ ਹਦਾਇਤ ਲੜੀ-ਕ੍ਰਮ (instruction hierarchy) ਨੂੰ ਲਾਗੂ ਕਰਨ ਦੇ ਸੁਮੇਲ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ।
+
+| # | Description | Level |
+| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
+| **2.1.1** | **Verify that** input normalization is applied before tokenization or embedding. | 1 |
+| **2.1.2** | **Verify that** encoding and representation smuggling in inputs is detected and mitigated. Approved mitigations include canonicalization, strict schema validation, policy-based rejection, or explicit marking. | 1 |
+| **2.1.3** | **Verify that** all inputs that could steer model behavior are treated as untrusted and screened by a prompt injection detection ruleset or classifier, with flagged inputs blocked. | 1 |
+| **2.1.4** | **Verify that** input length controls prevent content from exceeding the context window. The controls must reject inputs that exceed token limits rather than truncating them. | 1 |
+| **2.1.5** | **Verify that** the system implements a character set restriction for all inputs. The restriction must use an allow-list approach that permits only characters that are explicitly required. | 1 |
+| **2.1.6** | **Verify that** the system enforces an instruction hierarchy in which system and developer messages override user instructions and other untrusted inputs, even after user instructions have been processed. | 2 |
+| **2.1.7** | **Verify that** reserved special tokens are encoded as literal characters and cannot be injected into the model context. | 2 |
+| **2.1.8** | **Verify that** the system can detect many-shot jailbreaking patterns. | 3 |
+
+| # | ਵੇਰਵਾ | ਪੱਧਰ |
+| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
+| **2.1.1** | **ਤਸਦੀਕ ਕਰੋ ਕਿ** ਟੋਕਨਾਈਜ਼ੇਸ਼ਨ[^0x10-C02-tokenization] (tokenization) ਜਾਂ embedding ਤੋਂ ਪਹਿਲਾਂ ਇਨਪੁੱਟ ਸਧਾਰਨੀਕਰਨ[^0x10-C02-input-normalization] (normalization) ਲਾਗੂ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 1 |
+| **2.1.2** | **ਤਸਦੀਕ ਕਰੋ ਕਿ** ਇਨਪੁੱਟਾਂ ਵਿੱਚ ਏਨਕੋਡਿੰਗ ਅਤੇ ਪ੍ਰਤੀਨਿਧਤਾ ਤਸਕਰੀ[^0x10-C02-representation-smuggling] (representation smuggling) ਦਾ ਪਤਾ ਲਗਾਇਆ ਜਾਂਦਾ ਹੈ ਅਤੇ ਇਸ ਨੂੰ ਘਟਾਇਆ ਜਾਂਦਾ ਹੈ। ਪ੍ਰਵਾਨਿਤ ਉਪਾਵਾਂ ਵਿੱਚ ਕੈਨੋਨੀਕਲਾਈਜ਼ੇਸ਼ਨ[^0x10-C02-canonicalization] (canonicalization), ਸਖ਼ਤ ਸਕੀਮਾ ਪ੍ਰਮਾਣਿਕਤਾ, ਨੀਤੀ-ਆਧਾਰਿਤ ਰੱਦਗੀ, ਜਾਂ ਸਪੱਸ਼ਟ ਨਿਸ਼ਾਨਦੇਹੀ ਸ਼ਾਮਲ ਹਨ। | 1 |
+| **2.1.3** | **ਤਸਦੀਕ ਕਰੋ ਕਿ** ਉਹ ਸਾਰੇ ਇਨਪੁੱਟ ਜੋ ਮਾਡਲ ਦੇ ਵਿਵਹਾਰ ਨੂੰ ਦਿਸ਼ਾ ਦੇ ਸਕਦੇ ਹਨ, ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਮੰਨੇ ਜਾਂਦੇ ਹਨ ਅਤੇ ਇੱਕ prompt ਇੰਜੈਕਸ਼ਨ ਪਛਾਣ ਨਿਯਮ-ਸਮੂਹ ਜਾਂ ਵਰਗੀਕਾਰ[^0x10-C02-classifier] ਦੁਆਰਾ ਛਾਣੇ ਜਾਂਦੇ ਹਨ, ਅਤੇ ਨਿਸ਼ਾਨਬੱਧ ਕੀਤੇ ਇਨਪੁੱਟ ਰੋਕ ਦਿੱਤੇ ਜਾਂਦੇ ਹਨ। | 1 |
+| **2.1.4** | **ਤਸਦੀਕ ਕਰੋ ਕਿ** ਇਨਪੁੱਟ ਲੰਬਾਈ ਨਿਯੰਤਰਣ ਸਮੱਗਰੀ ਨੂੰ ਸੰਦਰਭ ਵਿੰਡੋ[^0x10-C02-context-window] (context window) ਤੋਂ ਵੱਧ ਜਾਣ ਤੋਂ ਰੋਕਦੇ ਹਨ। ਇਹਨਾਂ ਨਿਯੰਤਰਣਾਂ ਲਈ ਟੋਕਨ ਸੀਮਾਵਾਂ ਤੋਂ ਵੱਧ ਜਾਣ ਵਾਲੇ ਇਨਪੁੱਟਾਂ ਨੂੰ ਕੱਟਣ (truncate) ਦੀ ਬਜਾਏ ਰੱਦ ਕਰਨਾ ਲਾਜ਼ਮੀ ਹੈ। | 1 |
+| **2.1.5** | **ਤਸਦੀਕ ਕਰੋ ਕਿ** ਸਿਸਟਮ ਸਾਰੇ ਇਨਪੁੱਟਾਂ ਲਈ ਇੱਕ ਅੱਖਰ-ਸਮੂਹ (character set) ਪਾਬੰਦੀ ਲਾਗੂ ਕਰਦਾ ਹੈ। ਇਸ ਪਾਬੰਦੀ ਲਈ allow-list ਤਰੀਕਾ ਵਰਤਣਾ ਲਾਜ਼ਮੀ ਹੈ ਜੋ ਸਿਰਫ਼ ਉਹਨਾਂ ਅੱਖਰਾਂ ਦੀ ਆਗਿਆ ਦਿੰਦਾ ਹੈ ਜੋ ਸਪੱਸ਼ਟ ਤੌਰ 'ਤੇ ਲੋੜੀਂਦੇ ਹਨ। | 1 |
+| **2.1.6** | **ਤਸਦੀਕ ਕਰੋ ਕਿ** ਸਿਸਟਮ ਇੱਕ ਹਦਾਇਤ ਲੜੀ-ਕ੍ਰਮ[^0x10-C02-instruction-hierarchy] (instruction hierarchy) ਲਾਗੂ ਕਰਦਾ ਹੈ ਜਿਸ ਵਿੱਚ ਸਿਸਟਮ ਅਤੇ ਡਿਵੈਲਪਰ ਸੁਨੇਹੇ ਉਪਭੋਗਤਾ ਹਦਾਇਤਾਂ ਅਤੇ ਹੋਰ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਇਨਪੁੱਟਾਂ ਉੱਤੇ ਭਾਰੂ ਰਹਿੰਦੇ ਹਨ, ਭਾਵੇਂ ਉਪਭੋਗਤਾ ਹਦਾਇਤਾਂ ਦੀ ਪ੍ਰਕਿਰਿਆ ਹੋ ਚੁੱਕੀ ਹੋਵੇ। | 2 |
+| **2.1.7** | **ਤਸਦੀਕ ਕਰੋ ਕਿ** ਰਾਖਵੇਂ ਵਿਸ਼ੇਸ਼ ਟੋਕਨ ਸ਼ਾਬਦਿਕ ਅੱਖਰਾਂ ਵਜੋਂ ਏਨਕੋਡ ਕੀਤੇ ਜਾਂਦੇ ਹਨ ਅਤੇ ਮਾਡਲ ਸੰਦਰਭ ਵਿੱਚ ਇੰਜੈਕਟ ਨਹੀਂ ਕੀਤੇ ਜਾ ਸਕਦੇ। | 2 |
+| **2.1.8** | **ਤਸਦੀਕ ਕਰੋ ਕਿ** ਸਿਸਟਮ many-shot jailbreaking[^0x10-C02-many-shot-jailbreaking] ਪੈਟਰਨਾਂ ਦਾ ਪਤਾ ਲਗਾ ਸਕਦਾ ਹੈ। | 3 |
+
+---
+
+## C2.2 Content & Policy Screening
+## C2.2 ਸਮੱਗਰੀ ਅਤੇ ਨੀਤੀ ਛਾਣਬੀਣ
+
+Syntactically valid prompts may still request disallowed content such as policy-violating instructions, harmful material, or restricted information. Input-side content screening prevents such prompts from reaching the model.
+
+ਵਾਕ-ਬਣਤਰ ਪੱਖੋਂ ਜਾਇਜ਼ prompt ਵੀ ਮਨਾਹੀ ਵਾਲੀ ਸਮੱਗਰੀ ਦੀ ਮੰਗ ਕਰ ਸਕਦੇ ਹਨ, ਜਿਵੇਂ ਕਿ ਨੀਤੀ ਦੀ ਉਲੰਘਣਾ ਕਰਨ ਵਾਲੀਆਂ ਹਦਾਇਤਾਂ, ਨੁਕਸਾਨਦੇਹ ਸਮੱਗਰੀ, ਜਾਂ ਪਾਬੰਦੀਸ਼ੁਦਾ ਜਾਣਕਾਰੀ। ਇਨਪੁੱਟ-ਪਾਸੇ ਦੀ ਸਮੱਗਰੀ ਛਾਣਬੀਣ ਅਜਿਹੇ prompt ਨੂੰ ਮਾਡਲ ਤੱਕ ਪਹੁੰਚਣ ਤੋਂ ਰੋਕਦੀ ਹੈ।
+
+| # | Description | Level |
+| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
+| **2.2.1** | **Verify that** every prompt is scored by a content classifier for violence, self-harm, hate, and sexual content against configurable thresholds. Prompts that exceed those thresholds are rejected or sanitized before reaching the model context. | 1 |
+| **2.2.2** | **Verify that** prompt content classification is evaluated for unsupported languages. | 1 |
+| **2.2.3** | **Verify that** non-text inputs (image/video/audio) are checked for adversarial perturbations, steganographic payloads, hidden or embedded content, or known attack patterns. | 2 |
+| **2.2.4** | **Verify that** coordinated attacks spanning multiple input types (e.g., steganographic payloads in images combined with prompt injection in text) are detected and blocked. | 3 |
+
+| # | ਵੇਰਵਾ | ਪੱਧਰ |
+| :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
+| **2.2.1** | **ਤਸਦੀਕ ਕਰੋ ਕਿ** ਹਰ prompt ਨੂੰ ਹਿੰਸਾ, ਸਵੈ-ਨੁਕਸਾਨ, ਨਫ਼ਰਤ, ਅਤੇ ਜਿਨਸੀ ਸਮੱਗਰੀ ਲਈ ਇੱਕ ਸਮੱਗਰੀ ਵਰਗੀਕਾਰ ਦੁਆਰਾ ਸੰਰਚਨਾਯੋਗ ਥ੍ਰੈਸ਼ਹੋਲਡਾਂ (thresholds) ਦੇ ਵਿਰੁੱਧ ਅੰਕ ਦਿੱਤੇ ਜਾਂਦੇ ਹਨ। ਜਿਹੜੇ prompt ਇਹਨਾਂ ਥ੍ਰੈਸ਼ਹੋਲਡਾਂ ਤੋਂ ਵੱਧ ਜਾਂਦੇ ਹਨ, ਉਹਨਾਂ ਨੂੰ ਮਾਡਲ ਸੰਦਰਭ ਤੱਕ ਪਹੁੰਚਣ ਤੋਂ ਪਹਿਲਾਂ ਰੱਦ ਜਾਂ ਸੈਨੀਟਾਈਜ਼ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 1 |
+| **2.2.2** | **ਤਸਦੀਕ ਕਰੋ ਕਿ** prompt ਸਮੱਗਰੀ ਵਰਗੀਕਰਨ ਦਾ ਗ਼ੈਰ-ਸਮਰਥਿਤ ਭਾਸ਼ਾਵਾਂ ਲਈ ਮੁਲਾਂਕਣ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 1 |
+| **2.2.3** | **ਤਸਦੀਕ ਕਰੋ ਕਿ** ਗ਼ੈਰ-ਲਿਖਤੀ ਇਨਪੁੱਟਾਂ (ਚਿੱਤਰ/ਵੀਡੀਓ/ਆਡੀਓ) ਦੀ ਵਿਰੋਧੀ ਵਿਗਾੜਾਂ[^0x10-C02-adversarial-perturbation] (adversarial perturbations), ਸਟੈਗਨੋਗ੍ਰਾਫ਼ਿਕ ਪੇਲੋਡਾਂ[^0x10-C02-steganographic-payload], ਲੁਕਵੀਂ ਜਾਂ ਜੜੀ ਹੋਈ ਸਮੱਗਰੀ, ਜਾਂ ਜਾਣੇ-ਪਛਾਣੇ ਹਮਲਾ ਪੈਟਰਨਾਂ ਲਈ ਜਾਂਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | 2 |
+| **2.2.4** | **ਤਸਦੀਕ ਕਰੋ ਕਿ** ਕਈ ਇਨਪੁੱਟ ਕਿਸਮਾਂ ਵਿੱਚ ਫੈਲੇ ਤਾਲਮੇਲ ਵਾਲੇ ਹਮਲਿਆਂ (ਜਿਵੇਂ, ਚਿੱਤਰਾਂ ਵਿੱਚ ਸਟੈਗਨੋਗ੍ਰਾਫ਼ਿਕ ਪੇਲੋਡ ਜੋ ਲਿਖਤ ਵਿੱਚ prompt ਇੰਜੈਕਸ਼ਨ ਨਾਲ ਜੋੜੇ ਗਏ ਹੋਣ) ਦਾ ਪਤਾ ਲਗਾਇਆ ਜਾਂਦਾ ਹੈ ਅਤੇ ਉਹਨਾਂ ਨੂੰ ਰੋਕਿਆ ਜਾਂਦਾ ਹੈ। | 3 |
+
+---
+
+## References
+## ਹਵਾਲੇ
+
+* [OWASP LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)
+* [LLM Prompt Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html)
+* [MITRE ATLAS: Adversarial Input Detection](https://atlas.mitre.org/mitigations/AML.M0015)
+* [MITRE ATLAS: LLM Prompt Injection (AML.T0051)](https://atlas.mitre.org/techniques/AML.T0051)
+
+[^0x10-C02-prompt-injection]: **prompt injection** (EN) -> prompt ਇੰਜੈਕਸ਼ਨ — "prompt" is kept in Latin script per the corpus's canonical hybrid, matching the sibling ASVS corpus's "SQL ਇੰਜੈਕਸ਼ਨ" and preserving searchability against OWASP LLM01:2025. Full discussion: OPEN-QUESTIONS.md Q26.
+[^0x10-C02-tokenization]: **tokenization** (EN) -> ਟੋਕਨਾਈਜ਼ੇਸ਼ਨ — extends the corpus's locked loan ਟੋਕਨ to the process; this is the ML tokenizer sense, distinct from the session/security-token sense used in the ASVS corpus. Full discussion: OPEN-QUESTIONS.md Q29.
+[^0x10-C02-input-normalization]: **input normalization** (EN) -> ਸਧਾਰਨੀਕਰਨ — kept deliberately distinct from ਕੈਨੋਨੀਕਲਾਈਜ਼ੇਸ਼ਨ (canonicalization) so the two operations named separately in 2.1.1 and 2.1.2 do not collapse into one Panjabi word. Full discussion: OPEN-QUESTIONS.md Q27.
+[^0x10-C02-representation-smuggling]: **representation smuggling** (EN) -> ਪ੍ਰਤੀਨਿਧਤਾ ਤਸਕਰੀ — ਤਸਕਰੀ (smuggling) carries the sense of moving something illicitly past a control, which the rejected alternative ਰੂਪ-ਲੁਕਾਈ ("concealment") does not. Full discussion: OPEN-QUESTIONS.md Q34.
+[^0x10-C02-canonicalization]: **canonicalization** (EN) -> ਕੈਨੋਨੀਕਲਾਈਜ਼ੇਸ਼ਨ — kept as a loan because the descriptive alternative ਪ੍ਰਮਾਣਿਕ ਰੂਪੀਕਰਨ would reuse a root already load-bearing for authentication and validation elsewhere in the corpus. Full discussion: OPEN-QUESTIONS.md Q28.
+[^0x10-C02-classifier]: **classifier** (EN) -> ਵਰਗੀਕਾਰ — the agent noun derived regularly from ਵਰਗੀਕਰਨ (classification), preferred over the loan ਕਲਾਸੀਫਾਇਰ because classification is an established technique, not a coined product name. Full discussion: OPEN-QUESTIONS.md Q33.
+[^0x10-C02-context-window]: **context window** (EN) -> ਸੰਦਰਭ ਵਿੰਡੋ — ਵਿੰਡੋ is the settled computing loan in Panjabi technical prose, preferred over the architectural-sounding ਖਿੜਕੀ. Full discussion: OPEN-QUESTIONS.md Q30.
+[^0x10-C02-instruction-hierarchy]: **instruction hierarchy** (EN) -> ਹਦਾਇਤ ਲੜੀ-ਕ੍ਰਮ — ਹਦਾਇਤ (directive) was chosen over ਨਿਰਦੇਸ਼, which drifts toward mere "guidance" and would weaken a hard override requirement. Full discussion: OPEN-QUESTIONS.md Q31.
+[^0x10-C02-many-shot-jailbreaking]: **many-shot jailbreaking** (EN) -> retained verbatim in Latin script — follows the corpus precedent of retaining named attacks and techniques so the term stays recognisable to a practitioner reading MITRE ATLAS. Full discussion: OPEN-QUESTIONS.md Q32.
+[^0x10-C02-adversarial-perturbation]: **adversarial perturbations** (EN) -> ਵਿਰੋਧੀ ਵਿਗਾੜ — ਵਿਰੋਧੀ (opposing) avoids the personal-enmity charge of ਦੁਸ਼ਮਣ, and ਵਿਗਾੜ denotes a crafted distortion rather than the accidental malfunction ਗੜਬੜੀ would imply. Full discussion: OPEN-QUESTIONS.md Q35.
+[^0x10-C02-steganographic-payload]: **steganographic payloads** (EN) -> ਸਟੈਗਨੋਗ੍ਰਾਫ਼ਿਕ ਪੇਲੋਡ — kept as a loan because the calque ਗੁਪਤ-ਲਿਖਤ would collide conceptually with encryption, blurring the hidden-channel threat this control targets. Full discussion: OPEN-QUESTIONS.md Q36.
