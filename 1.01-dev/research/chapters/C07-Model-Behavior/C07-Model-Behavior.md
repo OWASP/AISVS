@@ -1,7 +1,7 @@
 # C07: Model Behavior, Output Control & Safety Assurance
 
 > **Source:** [`1.01-dev/en/0x10-C07-Model-Behavior.md`](https://github.com/OWASP/AISVS/blob/main/1.01-dev/en/0x10-C07-Model-Behavior.md)
-> **Requirements:** 13 | **Sections:** 4
+> **Requirements:** 14 | **Sections:** 4
 
 ## Control Objective
 
@@ -13,7 +13,7 @@ This control category ensures that model outputs are technically constrained, va
 
 | Section | Title | Reqs | Page |
 |---------|-------|:----:|------|
-| C7.1 | Output Format Enforcement | 2 | [C07-01-Output-Format-Enforcement](C07-01-Output-Format-Enforcement.md) |
+| C7.1 | Output Format Enforcement | 3 | [C07-01-Output-Format-Enforcement](C07-01-Output-Format-Enforcement.md) |
 | C7.2 | Hallucination Detection & Mitigation | 3 | [C07-02-Hallucination-Detection](C07-02-Hallucination-Detection.md) |
 | C7.3 | Output Safety | 4 | [C07-03-Output-Safety-Privacy-Explainability](C07-03-Output-Safety-Privacy-Explainability.md) |
 | C7.4 | Source Attribution & Citation Integrity | 4 | [C07-04-Source-Attribution-Citation-Integrity](C07-04-Source-Attribution-Citation-Integrity.md) |
