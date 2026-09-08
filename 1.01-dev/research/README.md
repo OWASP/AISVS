@@ -2,7 +2,7 @@
 
 **OWASP AI Security Verification Standard: Research and Analysis Hub**
 
-Welcome to the AISVS research wiki. This wiki provides structured research context for every chapter and appendix in AISVS 1.0, helping developers, auditors, and security teams understand and implement each requirement. Every requirement is mapped to the threats it mitigates, the tools and techniques available to implement it, practical verification approaches, and open questions where tooling or research is still maturing. Whether you are building an AI application, auditing one, or evaluating your organization's AI security posture, this wiki is designed to help you get started.
+Welcome to the AISVS research wiki. This wiki provides structured research context for every chapter and appendix in AISVS 1.01, helping developers, auditors, and security teams understand and implement each requirement. Every requirement is mapped to the threats it mitigates, the tools and techniques available to implement it, practical verification approaches, and open questions where tooling or research is still maturing. Whether you are building an AI application, auditing one, or evaluating your organization's AI security posture, this wiki is designed to help you get started.
 
 ---
 
