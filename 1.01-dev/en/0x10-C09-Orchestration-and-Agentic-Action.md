@@ -51,7 +51,7 @@ Tool and plugin execution, loading, and outputs must be constrained to prevent u
 | **9.3.5** | **Verify that** components processing untrusted data are isolated from tool-calling capabilities, ensuring that compromised data processing cannot trigger unauthorized tool invocations. | 2 |
 | **9.3.6** | **Verify that** there is architectural separation between processing of untrusted tool outputs and agent operations. | 2 |
 | **9.3.7** | **Verify that** external resources named in model output are verified against an approved allow-list or registry before the agent installs or invokes them. | 2 |
-| **9.3.8** | **Verify that** policy violations trigger automated tool containment. | 3 |
+| **9.3.8** | **Verify that** policy violations trigger automatic containment of affected tools, such as stopping their execution, isolating them, or revoking their permissions. | 3 |
 
 ---
 
