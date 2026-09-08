@@ -83,11 +83,11 @@ The connector and copilot incidents over the past year keep validating these pri
 
 ## Cross-Chapter Links
 
-- [C05-03 Query-Time Security Enforcement](../C05-Access-Control/C05-02-AI-Resource-Authorization-Classification.md) — mandatory server-side filters and fail-closed query behavior that C8.1 retrieval depends on.
-- [C05-06 Multi-Tenant Isolation](../C05-Access-Control/C05-03-Multi-Tenant-Isolation.md) — the tenant-scoping primitives behind vector-store namespaces, payload partitions, and source-system ACL propagation.
+- [C05-02 AI Resource Authorization & Classification](../C05-Access-Control/C05-02-AI-Resource-Authorization-Classification.md) — mandatory server-side filters and fail-closed query behavior that C8.1 retrieval depends on.
+- [C05-03 Multi-Tenant Isolation](../C05-Access-Control/C05-03-Multi-Tenant-Isolation.md) — the tenant-scoping primitives behind vector-store namespaces, payload partitions, and source-system ACL propagation.
 - [C08-02 Embedding Sanitization & Validation](C08-02-Embedding-Sanitization-Validation.md) — write-path validation, loader-stage poisoning fixtures, and memory-write authorization that complement C8.1's read-path access controls.
 - [C08-03 Memory Expiry, Revocation & Leakage Prevention](C08-03-Memory-Expiry-Revocation-Leakage-Prevention.md) — TTL, revocation, and leakage-prevention semantics that keep authorization metadata aligned with source-system permission changes.
-- [C01-02 Training Data Security & Integrity](../C01-Training-Data/C01-01-Training-Data-Origin-Traceability.md) — provenance, integrity, and rollback evidence patterns that mirror RAG ingestion controls.
+- [C01-01 Training Data Origin & Data Security](../C01-Training-Data/C01-01-Training-Data-Origin-Traceability.md) — provenance, integrity, and rollback evidence patterns that mirror RAG ingestion controls.
 - [C12-01 Request and Response Logging](../C12-Monitoring-and-Logging/C12-01-Request-Response-Logging.md) — tamper-evident logging requirements that the retrieval-decision logs behind C8.1's scope enforcement inherit.
 
 ---
@@ -126,7 +126,7 @@ The connector and copilot incidents over the past year keep validating these pri
 * [MSRC - EchoLeak CVE-2025-32711](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-32711)
 * [Concentric AI - 2026 Copilot data risk report](https://concentric.ai/too-much-access-microsoft-copilot-data-risks-explained/)
 * [EPC Group - Copilot SharePoint oversharing fix guide (2026)](https://www.epcgroup.net/copilot-sharepoint-permissions-oversharing-fix-2026)
-* [HubScan: Detecting Hubness Poisoning in Retrieval-Augmented Generation Systems](https://arxiv.org/abs/2602.22427)
+* [Adversarial Hubness Detector: Detecting Hubness Poisoning in Retrieval-Augmented Generation Systems](https://arxiv.org/abs/2602.22427)
 * [Cisco AI Defense - adversarial-hubness-detector (HubScan)](https://github.com/cisco-ai-defense/adversarial-hubness-detector)
 * [Cisco blog - Adversarial Hubness in RAG Systems](https://blogs.cisco.com/ai/your-models-memory-has-been-compromised-adversarial-hubness-in-rag-systems)
 * [ReliabilityRAG: Effective and Provably Robust Defense for RAG-based Web-Search](https://arxiv.org/abs/2509.23519)
@@ -156,11 +156,11 @@ The connector and copilot incidents over the past year keep validating these pri
 
 ## Related Pages
 
-- [C05-03: Query-Time Security Enforcement](../C05-Access-Control/C05-02-AI-Resource-Authorization-Classification.md) - Covers mandatory security filters and fail-closed query behavior that C8.1 relies on for vector and search retrieval.
+- [C05-02: AI Resource Authorization & Classification](../C05-Access-Control/C05-02-AI-Resource-Authorization-Classification.md) - Covers mandatory security filters and fail-closed query behavior that C8.1 relies on for vector and search retrieval.
 - [C08-02: Embedding Sanitization & Validation](C08-02-Embedding-Sanitization-Validation.md) - Complements these read-path access controls with write-path validation, loader hardening, and memory-write authorization.
 - [C08: Memory, Embeddings & Vector Databases](C08-Memory-and-Embeddings.md) - Frames this page alongside embedding sanitization, retention, inversion defense, and multi-tenant scope enforcement.
-- [C01-02: Training Data Security & Integrity](../C01-Training-Data/C01-01-Training-Data-Origin-Traceability.md) - Links retrieval provenance back to the integrity controls, logging, and rollback evidence needed when indexed source data changes.
-- [C01-03: Data Labeling & Annotation Security](../C01-Training-Data/C01-02-Data-Labeling-Annotation-Security.md) - Connects provenance, label integrity, and annotator audit trails to the metadata that C8.1 preserves during ingestion.
+- [C01-01: Training Data Origin & Data Security](../C01-Training-Data/C01-01-Training-Data-Origin-Traceability.md) - Links retrieval provenance back to the integrity controls, logging, and rollback evidence needed when indexed source data changes.
+- [C01-02: Data Labeling & Annotation Security](../C01-Training-Data/C01-02-Data-Labeling-Annotation-Security.md) - Connects provenance, label integrity, and annotator audit trails to the metadata that C8.1 preserves during ingestion.
 
 ---
 

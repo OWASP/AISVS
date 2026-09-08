@@ -114,7 +114,7 @@ Threshold tuning (2.2.1) needs paired measurement of under-blocking and over-blo
 | Engine | Governance Body | Best For | Key Feature |
 |--------|----------------|----------|-------------|
 | **OPA / Rego** | CNCF Graduated | General ABAC policy enforcement | Sub-millisecond evaluation, decision caching, tamper-evident audit trails |
-| **Cedar** | CNCF Sandbox (Jan 2026) | Agent tool authorization, fine-grained ABAC | Formally verified safety properties, ephemeral credentials, natural policy syntax |
+| **Cedar** | CNCF Sandbox (Oct 2025) | Agent tool authorization, fine-grained ABAC | Formally verified safety properties, ephemeral credentials, natural policy syntax |
 
 ---
 

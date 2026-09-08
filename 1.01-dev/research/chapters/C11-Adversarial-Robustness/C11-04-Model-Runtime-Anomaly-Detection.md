@@ -1,6 +1,6 @@
 # C11.4: Model Runtime Anomaly Detection
 
-> **Chapter:** [C11 Adversarial Robustness & Attack Resistance](C11-Adversarial-Robustness.md)
+> **Chapter:** [C11 Adversarial Robustness](C11-Adversarial-Robustness.md)
 > **Requirements:** 3 | **IDs:** 11.4.1--11.4.3
 > **Last Researched:** 2026-07-14
 
@@ -36,7 +36,7 @@ As of 2025-2026, inference-time poisoning now extends beyond RAG corpora to incl
 
 ### Scalable RAG Poisoning: Eyes-On-Me
 
-**Eyes-On-Me** (October 2025) demonstrates scalable RAG poisoning through attention manipulation, showing that adversaries can craft poisoned documents that specifically target the retrieval and attention mechanisms of RAG pipelines. The attack is designed to maximize retrieval relevance scores for poisoned documents while embedding adversarial payloads, making detection through retrieval-score anomalies unreliable. This reinforces requirement 11.4.1's call for tuning against realistic adversarial validation sets -- detection methods that rely on retrieval-score outliers are specifically evadable, so validation sets must include attention-targeted attacks.
+**Eyes-On-Me** (October 2025) demonstrates scalable RAG poisoning through attention manipulation, showing that adversaries can craft poisoned documents that specifically target the retrieval and attention mechanisms of RAG pipelines. The attack is designed to maximize retrieval relevance scores for poisoned documents while embedding adversarial payloads, making detection through retrieval-score anomalies unreliable. This reinforces the need to tune 11.4.1 anomaly detection against realistic adversarial validation sets -- detection methods that rely on retrieval-score outliers are specifically evadable, so validation sets must include attention-targeted attacks.
 
 ### Corpus-Dependent Poisoning: Semantic Chameleon (March 2026)
 
@@ -110,7 +110,7 @@ Lakera Guard's policy model is explicit about the operational tradeoff: L1 is le
 
 NVIDIA NeMo Guardrails separates input, output, retrieval, and execution rails, including checks for tool inputs and tool outputs. This is important for runtime contamination detection because a clean user prompt can still become unsafe after retrieval or after an MCP/tool response. Measure false positives per rail and for the combined pipeline; otherwise one noisy retrieval rail can get disabled even if the input and output rails are performing well.
 
-The strongest research baselines remain environment-dependent. RevPRAG's ACL Findings 2025 version reports roughly 98% true-positive rate with close to 1% false-positive rate, but only where the defender can access model activations. For API-only deployments, the comparable evidence usually has to come from black-box replay suites, production shadow-mode runs, and manual review of blocked events.
+The strongest research baselines remain environment-dependent. RevPRAG's EMNLP Findings 2025 version reports roughly 98% true-positive rate with close to 1% false-positive rate, but only where the defender can access model activations. For API-only deployments, the comparable evidence usually has to come from black-box replay suites, production shadow-mode runs, and manual review of blocked events.
 
 ### Multimodal RAG Poisoning: MM-MEPA (February 2026)
 
@@ -130,7 +130,7 @@ Recent work conducted the first systematic security evaluation of **knowledge-gr
 - **Black-box threat model**: Attacker has no access to the retriever, LLM, or internal KG-RAG parameters -- only the target question
 - **Stealth**: All inserted triples use entities and relations already present in the KG, avoiding new-entity detection
 - **High retrieval coverage**: At least one adversarial triple is retrieved in over 90% of attacked questions
-- Tested against GPT-5.3, GPT-4o, Claude Sonnet 4.6, and Llama 4
+- Tested against GPT-4, GPT-3.5-turbo, LLaMA-2-7B, LLaMA-3.1-8B, and DeepSeek-V3
 
 This extends the inference-time poisoning threat model beyond text-based RAG to structured knowledge retrieval, and implies that requirement 11.4.1's anomaly detection should include graph-level consistency checks for KG-RAG deployments.
 
@@ -422,7 +422,7 @@ Two papers quantify how cheap and stealthy black-box inference-time poisoning ha
 - Universal attacks transferred across 21 of 41 behaviors and across model families
 - Correlation between general capability and injection robustness was **weak** -- newer, smarter models are not automatically safer
 
-The dataset was shared with frontier labs and the UK and US AI Safety Institutes. For 11.4.1 this is the most representative public adversarial validation corpus currently available, and the per-model ASR spread is direct evidence for why false-positive and false-negative rates must be documented per model version rather than assumed stable across upgrades.
+The dataset was shared with frontier labs and the UK AISI and US CAISI. For 11.4.1 this is the most representative public adversarial validation corpus currently available, and the per-model ASR spread is direct evidence for why false-positive and false-negative rates must be documented per model version rather than assumed stable across upgrades.
 
 ### GhostWriter and Dual-Boundary Memory Screening (July 2026)
 
@@ -474,7 +474,7 @@ Reported results across 43,774 test instances: a **6.50x average reduction in at
 
 The detection implication is concrete: schema quarantine and SHA-256 tool pinning (the OWASP MCP03 baseline) still catch the *modification* of the poisoned tool's description, but a detector that only inspects the *invoked* tool's arguments and response will see a clean, legitimate high-privilege call and miss the redirection entirely. For 11.4.1 this argues for cross-tool provenance -- tracking which tool description influenced a given invocation decision -- and for 11.4.2, it strengthens the case that auto-approval of "legitimate" high-privilege tools is itself the gating failure, independent of whether any individual tool description looks malicious in isolation.
 
-### Real-World Incident: Cursor Allowlist Bypass via Environment Poisoning (CVE-2026-22708, June 2026)
+### Real-World Incident: Cursor Allowlist Bypass via Environment Poisoning (CVE-2026-22708, January 2026)
 
 CVE-2026-22708 (Cursor, fixed in v2.3; GitHub advisory GHSA-82wg-qcm4-fp2w) is a clean illustration of why 11.4.2 gating has to cover the *execution* surface and not just the data surface. In Auto-Run mode with allowlist enforcement enabled, Cursor's server-side command evaluator implicitly trusted shell built-ins (`export`, `typeset`, `declare`) and executed them without user approval and without their appearing in the allowlist. Through direct or indirect prompt injection, an attacker used those built-ins to **poison environment variables** -- for example prepending an attacker-controlled directory to `PATH` -- so that a subsequently approved command like `git branch` or `python3 script.py` silently resolved to a malicious binary. Auto-approval of the "safe" allowlisted command is precisely what made the resulting RCE quiet.
 
@@ -493,7 +493,7 @@ This is the execution-layer analogue of the ATPA/MCP-ITP pattern: the dangerous 
 - [NIST AI 100-2e2023 -- Poisoning Attacks](https://csrc.nist.gov/pubs/ai/100/2/e2023/final) -- Poisoning attack taxonomy
 - [Greshake et al., "Not What You've Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection" (2023)](https://arxiv.org/abs/2302.12173) -- Indirect prompt injection through retrieved content
 - [PoisonedRAG (USENIX Security 2025)](https://www.usenix.org/system/files/usenixsecurity25-zou-poisonedrag.pdf) -- High-success-rate RAG poisoning with minimal injection volume
-- [Eyes-On-Me: Scalable RAG Poisoning Through Attention Manipulation (October 2025)](https://arxiv.org/abs/2510.00586) -- Attention-targeted RAG poisoning bypassing retrieval-score defenses
+- [Eyes-on-Me: Scalable RAG Poisoning through Transferable Attention-Steering Attractors (October 2025)](https://arxiv.org/abs/2510.00586) -- Attention-targeted RAG poisoning bypassing retrieval-score defenses
 - [Understanding Data Poisoning Attacks for RAG (2025)](https://openreview.net/forum?id=2aL6gcFX7q) -- Systematic analysis of RAG poisoning attack mechanisms
 - [Semantic Chameleon: Corpus-Dependent Poisoning Attacks and Defenses in RAG Systems (March 2026)](https://arxiv.org/abs/2603.18034) -- Dual-document poisoning and hybrid retrieval defenses
 - [RAGuard: A Layered Defense Framework for RAG Against Data Poisoning (NeurIPS 2025)](https://openreview.net/forum?id=onh7sLJ1kl) -- Two-layer defense with adversarial retriever training and counterfactual filtering
@@ -502,7 +502,7 @@ This is the execution-layer analogue of the ATPA/MCP-ITP pattern: the dangerous 
 - [RAGDefender: Efficient Defense Against Knowledge Corruption Attacks on RAG (ACSAC 2025)](https://arxiv.org/abs/2511.01268) -- Post-retrieval grouping and isolation defense using TF-IDF clustering
 - [ReliabilityRAG: Provably Robust Defense for RAG-based Web-Search (NeurIPS 2025)](https://arxiv.org/abs/2509.23519) -- Graph-theoretic contradiction filtering with formal robustness guarantees
 - [RevPRAG: Detecting RAG Poisoning Through LLM Activations (2024)](https://arxiv.org/abs/2411.18948) -- Activation-based poisoning detection with ~98% TPR
-- [RevPRAG: Revealing Poisoning Attacks in RAG Through LLM Activation Analysis (ACL Findings 2025)](https://aclanthology.org/2025.findings-emnlp.698/) -- Peer-reviewed version reporting ~98% TPR and close to 1% FPR
+- [RevPRAG: Revealing Poisoning Attacks in RAG Through LLM Activation Analysis (EMNLP Findings 2025)](https://aclanthology.org/2025.findings-emnlp.698/) -- Peer-reviewed version reporting ~98% TPR and close to 1% FPR
 - [MM-MEPA: Stealth Poisoning Attacks on Multimodal RAG via Metadata (February 2026)](https://arxiv.org/abs/2603.00172) -- Metadata-only poisoning achieving 91% success on MMQA
 - [KG-RAG Poisoning: Exploring Knowledge Poisoning Attacks to RAG (2025)](https://arxiv.org/abs/2507.08862) -- First systematic evaluation of data poisoning against knowledge-graph-based RAG
 - [Meta LlamaFirewall: Open Source Guardrail System for Secure AI Agents (2025)](https://arxiv.org/abs/2505.03574) -- Production guardrail framework with PromptGuard 2 and AlignmentCheck
@@ -626,6 +626,6 @@ This is the execution-layer analogue of the ATPA/MCP-ITP pattern: the dangerous 
 - [C09-03 Tool and Plugin Isolation](../C09-Orchestration-and-Agents/C09-03-Tool-and-Plugin-Isolation.md) -- Sandboxing and schema validation for tool/MCP calls is the enforcement counterpart to detecting poisoned tool outputs before inference.
 - [C12-03 Model Drift Detection](../C12-Monitoring-and-Logging/C12-03-Model-Drift-Detection.md) -- Provides the production telemetry and drift-alerting layer needed to detect when contamination defenses regress after model or retriever changes.
 - [C11-03 Model-Extraction Defense](C11-03-Model-Extraction-Defense.md) -- Shares the query-pattern anomaly analysis and rate-based gating techniques that also surface adversarial probing of the detector itself.
-- [C11 Adversarial Robustness & Attack Resistance](C11-Adversarial-Robustness.md) -- Places runtime anomaly detection alongside the broader adversarial robustness controls for alignment, privacy, and model extraction.
+- [C11 Adversarial Robustness](C11-Adversarial-Robustness.md) -- Places runtime anomaly detection alongside the broader adversarial robustness controls for alignment, privacy, and model extraction.
 
 ---
