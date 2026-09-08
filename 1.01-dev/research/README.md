@@ -22,7 +22,7 @@ The standard is organized into 12 chapters spanning the full AI application secu
 | C8 | Memory, Embeddings & Vector Database Security | 11 | [C08](chapters/C08-Memory-and-Embeddings/C08-Memory-and-Embeddings.md) | [3 sections](#c8-memory-embeddings-vector-database-security) | 2026-07-14 |
 | C9 | Orchestration & Agentic Security | 36 | [C09](chapters/C09-Orchestration-and-Agents/C09-Orchestration-and-Agents.md) | [6 sections](#c9-orchestration-agentic-security) | 2026-09-07 |
 | C10 | Model Context Protocol (MCP) Security | 25 | [C10](chapters/C10-MCP-Security/C10-MCP-Security.md) | [4 sections](#c10-model-context-protocol-mcp-security) | 2026-09-07 |
-| C11 | Adversarial Robustness & Attack Resistance | 18 | [C11](chapters/C11-Adversarial-Robustness/C11-Adversarial-Robustness.md) | [4 sections](#c11-adversarial-robustness-attack-resistance) | 2026-09-07 |
+| C11 | Adversarial Robustness | 18 | [C11](chapters/C11-Adversarial-Robustness/C11-Adversarial-Robustness.md) | [4 sections](#c11-adversarial-robustness) | 2026-09-07 |
 | C12 | Monitoring, Logging & Anomaly Detection | 21 | [C12](chapters/C12-Monitoring-and-Logging/C12-Monitoring-and-Logging.md) | [5 sections](#c12-monitoring-logging-anomaly-detection) | 2026-07-14 |
 | | **Total** | **196** | **59 pages** | | |
 
@@ -51,7 +51,7 @@ Covers prompt injection defense, pre-tokenization normalization, content and pol
 
 ### C3: Model Lifecycle Management & Change Control
 
-Covers model authorization and integrity, validation and testing, controlled deployment and rollback, secure development practices, hosted/provider-managed controls, and fine-tuning pipeline authorization.
+Covers model authorization and integrity, validation and testing, controlled deployment and rollback, secure development practices, hosted/provider-managed controls, and fine-tuning pipeline integrity.
 
 | Section | Page |
 |---------|------|
@@ -96,7 +96,7 @@ Covers model artifact scanning, approved-source enforcement, integrity verificat
 
 ### C7: Model Behavior, Output Control & Safety Assurance
 
-Covers output format enforcement, hallucination detection, output safety and privacy filtering, explainability, generative media safeguards, and source attribution.
+Covers output format enforcement, hallucination detection, output safety and privacy filtering, generative media safeguards, and source attribution.
 
 | Section | Page |
 |---------|------|
@@ -133,7 +133,7 @@ Covers execution budgets, approval gates for high-impact actions, component isol
 
 ### C10: Model Context Protocol (MCP) Security
 
-Covers MCP component integrity, authentication and authorization, transport security, schema and message validation, outbound access controls, and high-risk boundary restrictions.
+Covers MCP component integrity, authentication and authorization, transport security, and schema and message validation.
 
 | Section | Page |
 |---------|------|
@@ -143,9 +143,9 @@ Covers MCP component integrity, authentication and authorization, transport secu
 | C10.4 Schema, Message, and Input Validation | [C10-04](chapters/C10-MCP-Security/C10-04-Schema-Message-Validation.md) |
 
 
-### C11: Adversarial Robustness & Attack Resistance
+### C11: Adversarial Robustness
 
-Covers model alignment, adversarial-example hardening, membership inference and model inversion resistance, model extraction defense, runtime context contamination detection, security policy adaptation, agent self-assessment, autonomous update security, and adversarial bias exploitation defense.
+Covers model alignment and safety testing, adversarial hardening, membership inference and model inversion resistance, model extraction defense, and model runtime anomaly detection.
 
 | Section | Page |
 |---------|------|
@@ -188,7 +188,6 @@ Every wiki page follows a consistent format to make research easy to navigate. E
 |--------|---------|
 | **Requirement** | Full text from the AISVS standard |
 | **Level** | Verification level (1, 2, or 3) |
-| **Role** | Developer (D), Verifier (V), or both (D/V) |
 | **Threat Mitigated** | Specific attack technique, failure mode, or risk |
 | **Verification Approach** | Concrete audit steps, tools, and checks |
 | **Gaps / Notes** | Tooling maturity, open issues, implementation caveats |
