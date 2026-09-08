@@ -1,0 +1,259 @@
+# C3.1: Model Authorization & Integrity
+
+> [Back to C03 Index](C03-Model-Lifecycle-Management.md)
+> **Last Researched:** 2026-07-14
+
+## Purpose
+
+Only authorized models with verified integrity should reach production environments. This section addresses the foundational controls for model registries, cryptographic signing, lineage tracking, and provenance records that together ensure every deployed model artifact can be traced back to an authorized origin with verified integrity.
+
+The AI model supply chain has become a major attack surface: JFrog documented a 6.5x increase in malicious models on Hugging Face in 2024, and Protect AI's Guardian scanner -- which crossed 4.47 million model versions scanned across 1.41 million Hugging Face repositories by April 2025 -- identified 352K unsafe issues across 51.7K models. Four new detection modules (PAIT-ARV-100 for archive slip, PAIT-JOBLIB-101 for Joblib code execution, PAIT-TF-200 for TensorFlow backdoors, and PAIT-LMAFL-300 for Llamafile malicious inference) were added alongside 200+ crowdsourced vulnerability reports from the huntr platform. The pull path itself is also under attack: CVE-2026-33990 (Docker advisory March 30, 2026, CVSS v4 7.1, fixed in Docker Model Runner 1.1.25 and Docker Desktop 4.67.0) showed that the OCI registry token-exchange flow can be turned into an SSRF -- Model Runner followed the `realm` URL from a registry's `WWW-Authenticate` header without validating the scheme, hostname, or IP range, so a malicious registry could redirect requests at `http://127.0.0.1:3000/` or other internal addresses and reflect the full response body back to the caller, exposing host-local services and the bearer token used for the next leg of the pull. Mitiga Labs' analysis of 10,000 open-source ML projects found 70% contained at least one critical or high-severity CI/CD workflow issue, with 68.4% using unpinned third-party actions, 42.7% running overprivileged tokens, and 22.8% leaking credentials for model registries. March 2026 saw two major supply chain attacks in quick succession: the TeamPCP campaign backdoored LiteLLM PyPI packages with credential-stealing payloads affecting AI proxy infrastructure, and the Axios dependency compromise (March 31, 2026) led OpenAI to revoke its macOS app signing certificate after the widely-used HTTP client library was weaponized. TeamPCP's campaign has proven broader than initially understood: the group also compromised Aqua Security's Trivy vulnerability scanner (March 19, 2026) and Checkmarx's KICS GitHub Actions, with the Trivy attack serving as the initial access vector for the European Commission cloud breach. Wiz Research estimates LiteLLM was present in roughly 36% of all cloud environments, and the Mercor breach (a $10B AI training data startup serving OpenAI, Anthropic, and Meta) resulted in ~4TB of exfiltrated data including 40,000+ contractor records, proprietary source code, and AI training methodologies -- with Lapsus$ auctioning the stolen data. April 2026 added CVE-2026-1839 to the pile: HuggingFace Transformers' `Trainer._load_rng_state()` passes `rng_state.pth` to `torch.load()` without `weights_only=True`, so any attacker who can plant a checkpoint file executes arbitrary Python on import -- the issue affects all library versions supporting torch>=2.2 on PyTorch <2.6 and was resolved in Transformers v5.0.0rc3 (NVD published April 7, 2026). Cryptographic signing -- now production-ready via OpenSSF Model Signing (OMS) v1.0 and enforceable at the Kubernetes level via the Sigstore Model Validation Operator -- is the primary defense against these threats. Hugging Face contributed safetensors to the PyTorch Foundation in April 2026, making the safe serialization format an official part of the PyTorch ecosystem and reducing pickle-based attack surface. The OWASP AIBOM Generator (December 2025) provides standardized model transparency in CycloneDX format, while CycloneDX v1.7 (October 2025) added structured citations and provenance chain tracking. SPDX 3.0.1 introduced formal AI and Dataset profiles that describe ML components -- models, datasets, training configurations, and provenance data -- in a machine-readable format, and the OWASP AIBOM Prerequisites workstream continues evaluating gaps in both CycloneDX and SPDX for AI-specific use cases. NIST's Cyber AI Profile (IR 8596, December 2025), SP 800-218A (SSDF for GenAI), and the forthcoming SP 800-53 COSAiS overlays (drafts expected Q3 2026) all position model integrity and provenance as core controls. Intel Labs' Atlas framework (Spoczynski, Melara, Szyller; arXiv 2502.19567, published IEEE 2026) pushes the bar further by combining trusted-hardware measurements and transparency logs to produce fully attestable ML pipelines -- verifiable records span data processing, training, evaluation, and deployment, and the runtime monitor captures lineage metadata that SLSA-for-software alone cannot express. JFrog and Hugging Face launched an integrated scanning partnership: JFrog's deep decompilation and data-flow analysis now runs automatically on all public model repositories pushed to the Hub, with a "JFrog Certified" checkmark for verified-safe models -- their approach eliminates 96% of false positives from other scanners and identified 25 zero-day malicious models that no other scanner detected. CoSAI (Coalition for Secure AI) published a three-tier maturity model for model signing adoption: Level 1 (cryptographic protection of model binaries), Level 2 (dependency relationship tracking with provenance trails), and Level 3 (structured attestations integrated with AI governance frameworks for automated policy evaluation). The NIST COSAiS project released its first annotated outline in January 2026 for "Using and Fine-Tuning Predictive AI," mapping SP 800-53 Rev. 5 controls to AI model security -- key control families include SA-08 (supply chain risk management), CM-03/CM-05 (configuration change control and unauthorized change prevention), and SI-07 (software, firmware, and information integrity). Five COSAiS use cases are now scoped, including single-agent and multi-agent AI systems, with initial public drafts expected Q3 2026. The EU AI Office gains full enforcement powers from August 2, 2026, including authority to request information, order model recalls, mandate mitigations, and impose fines on GPAI providers who fail to meet Annex IV technical documentation requirements -- Article 101 caps penalties at €15 million or 3% of worldwide annual turnover, whichever is higher. Models placed on the market before August 2, 2025 have until August 2, 2027 to comply.
+
+## Current Research Notes
+
+Hugging Face's July 6, 2026 Kernels update supplies a useful end-to-end test case
+for all three controls. Kernel repositories now expose a curated
+`trustedKernelPublisher` signal, and their generated `metadata.json` records a
+per-file SHA-256 digest plus the source and builder commit SHAs and whether
+either source tree was dirty. For 3.1.1, registry inventory should retain those
+origin fields and reconcile them to the kernel revision actually loaded by each
+deployment. For 3.1.2, `kernel-builder` can sign kernels with Sigstore cosign's
+ephemeral keys and bind the signature to an approved GitHub repository and
+workflow. For 3.1.3, the important limitation is explicit: version 0.16.0 offers
+`kernels verify-signature`, but the loader does **not** yet verify signatures
+automatically. Admission and loader tests therefore need an explicit
+fail-closed verification step; checking only that the publisher is trusted does
+not cover a stolen Hub credential, while checking only the signature does not
+prove that the runtime invoked verification. Test both paths by substituting a
+kernel from an untrusted publisher (which should require an explicit
+`trust_remote_code=True` opt-in) and by altering one signed file (which should
+fail before native code is imported):
+https://huggingface.co/blog/revamped-kernels and
+https://huggingface.co/docs/kernels/kernel-requirements and
+https://github.com/huggingface/kernels/releases/tag/v0.16.0
+
+As of June 2026, the strongest new signal for 3.1.2 and 3.1.3 is that a model's
+*config file* and its *serving runtime* are now independent code-execution
+surfaces, distinct from the weights. CVE-2026-4372 (published May 24, 2026; NVD
+7.8 High; CWE-1066) is the clearest example: HuggingFace Transformers ran a
+generic `setattr` loop over every field in `config.json`, so an attacker could
+set the private `_attn_implementation_internal` attribute to an `owner/repo`
+string, and the optional `kernels` package's `get_kernel_hub()` would download
+and `importlib`-import arbitrary Python from the Hub -- full RCE on a plain
+`from_pretrained()` call with `trust_remote_code=False` still in force. Pluto
+Security's writeup measured a 187-day exposure window (v4.56.0 on 2025-08-29
+through the v5.3.0 fix on 2026-03-04), about 232 million vulnerable downloads
+(roughly 35% of all installs in that period, peaking at 13.7M installs the week
+of Feb 1, 2026), and the CVE only went public 81 days after the silent fix. For
+3.1.2 and 3.1.3 the takeaway is concrete: `config.json` and any auxiliary config
+must be inside the signed and verified artifact set and scanned for unexpected
+private attributes and kernel-repo references, because a signature over the
+`.safetensors` weights alone leaves this path wide open:
+https://pluto.security/blog/unauthenticated-remote-code-execution-in-huggingface-transformers-via-config-injection/
+and https://nvd.nist.gov/vuln/detail/CVE-2026-4372
+
+The serving runtime that loads a verified artifact is itself in scope for 3.1.3.
+Three 2026 vLLM CVEs show the inference client can be the RCE primitive even when
+the artifact is clean. CVE-2026-27893 (published March 27, 2026; CVSS 8.8)
+hardcoded `trust_remote_code=True` in two model files (`nemotron_vl.py` line 430
+and `kimi_k25.py` line 177), silently overriding an operator's
+`--trust-remote-code=False` for any Nemotron-VL or Kimi-K25 repository until the
+v0.18.0 fix -- the third such bypass CVE in vLLM, which the RAXE writeup calls a
+systemic trust-boundary problem. CVE-2026-22778 (disclosed Feb 2, 2026; affects
+0.8.3 through 0.14.0, fixed 0.14.1) chained a PIL info-leak with a JPEG2000 heap
+overflow in OpenCV's bundled FFmpeg 5.1.x to reach RCE from a single malicious
+video URL. And Oligo's "ShadowMQ" research traced a pickle-over-ZeroMQ
+`recv_pyobj()` pattern spread by literal code reuse across vLLM
+(CVE-2025-30165), SGLang (whose file opens with "Adapted from vLLM"), NVIDIA
+TensorRT-LLM (CVE-2025-23254), Meta Llama Stack (CVE-2024-50050), and Modular
+Max (CVE-2025-60455). Admission evaluations should pin and patch the serving
+runtime, disable `trust_remote_code` at the platform boundary rather than
+per-model, and confirm no copied deserialization path is reachable from the
+network: https://raxe.ai/labs/advisories/RAXE-2026-044
+https://www.ox.security/blog/cve-2026-22778-vllm-rce-vulnerability/
+https://www.oligo.security/blog/shadowmq-how-code-reuse-spread-critical-vulnerabilities-across-the-ai-ecosystem
+
+The integrity of the verifier itself is now a documented gap for 3.1.3.
+CVE-2026-31830 (disclosed March 10, 2026; CVSS 7.5; CWE-252) showed sigstore-ruby's
+`verify` method calling `verify_in_toto()` without checking its return value, so a
+failed digest check was discarded and verification returned success -- letting an
+attacker bind a legitimate Sigstore signature to a swapped artifact with no error
+in the logs (fixed in 0.2.3). CVE-2026-39984 in Sigstore Timestamp Authority
+similarly allowed forging certificate validation by prepending a forged
+certificate to the PKCS#7 bag, so the library validated against one certificate
+while authorizing against another. Pair these with the May 19, 2026 npm incident in
+which 633 malicious package versions passed Sigstore provenance verification using
+valid certificates minted from a compromised maintainer account. Together they
+argue that admission must pin verifier versions, run negative tests against
+known-bad artifacts, and treat a green signature or provenance check as necessary
+but not sufficient -- the same lesson Mini Shai-Hulud taught at the SLSA layer:
+https://cvereports.com/reports/CVE-2026-31830
+https://www.sentinelone.com/vulnerability-database/cve-2026-39984/
+https://venturebeat.com/security/npm-sigstore-provenance-stolen-identity-audit-grid-2026
+
+JFrog's 2026 Software Supply Chain Security report (May 20, 2026) quantifies the
+governance gap behind 3.1.1: 495 malicious models and 969 malicious AI agent
+skills surfaced on public hubs, 177K new malicious packages overall, and a 451%
+year-over-year jump in infected npm packages -- yet 97% of organizations claim to
+have AI governance while 53% still pull models directly from public registries
+where those payloads live. For a registry inventory to be meaningful it has to
+record the scanner verdict and policy decision for every public-origin artifact
+and block the "claimed-but-unenforced" path the report describes:
+https://jfrog.com/press-room/jfrog-report-warns-ai-governance-fails-as-software-supply-chain-attacks-hit-record-highs/
+and https://jfrog.com/blog/jfrog-and-hugging-face-join-forces/
+
+As of May 20, 2026, the Open-OSS/privacy-filter incident is the most concrete
+reminder that registry inventory and admission verification have to cover more
+than just the model weight files. HiddenLayer's research note describes a
+typosquatted "OpenAI Privacy Filter" repository that climbed to #1 on Hugging
+Face Trending in roughly 18 hours, racked up about 244,000 downloads and 667
+likes (very likely automation-inflated), and shipped a benign-looking
+`loader.py` plus `start.bat`; the loader fetched a base64-encoded URL hosted on
+JSONKeeper, ran a hidden PowerShell stage, and deployed a Rust-based
+infostealer that targeted Chromium and Firefox browser stores, Discord local
+state, FileZilla credentials, crypto wallets and seed phrases, OAuth/SSH keys,
+and host metadata while attempting to disable AMSI/ETW and Microsoft Defender.
+HiddenLayer documented six sibling repositories from the same account uploaded
+on April 24, 2026, all carrying near-identical `loader.py` payloads, which
+suggests an ongoing typosquat campaign rather than a one-off. For 3.1.1 and
+3.1.3, the auditable takeaway is that the registry record must include scanner
+coverage for every executable artifact in the repo (including helper Python,
+shell scripts, and notebook code), not just the `.bin`/`.safetensors`/`.pth`
+weights, and that "appears on trending" or "high download count" must not be
+treated as authorization signal: https://www.hiddenlayer.com/research/malware-found-in-trending-hugging-face-repository-open-oss-privacy-filter
+https://thehackernews.com/2026/05/fake-openai-privacy-filter-repo-hits-1.html
+https://www.bleepingcomputer.com/news/security/fake-openai-repository-on-hugging-face-pushes-infostealer-malware/
+
+The same week brought broader confirmation that AI hubs and agent-skill
+marketplaces are now systemically poisoned. Reporting on May 8, 2026 collated
+findings from Protect AI (about 352K unsafe issues across 51.7K models on
+Hugging Face), JFrog (100+ models capable of arbitrary code execution),
+ReversingLabs (the "nullifAI" technique using crafted pickle plus 7z
+compression to bypass PickleScan), Koi Security (341 malicious entries among
+2,857 skills on ClawHub via the "ClawHavoc" campaign), and Snyk (about 20% of
+ClawHub skills classified as malicious or hijacked for crypto mining). For
+3.1.1, this expands the registry inventory beyond models to agent skills,
+tools, and downstream consumers -- inventory and lineage tracking should be
+able to enumerate which agents and pipelines pull which skills, not only which
+services pull which model: https://thenextweb.com/news/hugging-face-clawhub-malware-ai-supply-chain
+
+Hugging Face's scanning partnerships have also broadened. The Hub now surfaces
+JFrog Xray, Protect AI Guardian, and Wiz signals on model pages, and Hugging
+Face's own JFrog integration documentation explains why a "Dangerous" flag is
+not the same as a confirmed verdict. For 3.1.1 and 3.1.3, a registry record
+should now capture multiple scanner results plus the policy decision and
+exception or waiver reference for each, rather than relying on a single
+scanner's verdict: https://huggingface.co/docs/hub/en/security-jfrog
+and https://jfrog.com/blog/jfrog-and-hugging-face-join-forces/
+
+CVE-2026-1839 has become a stronger signal for
+checkpoint-bundle verification than the initial advisory made clear. SentinelOne's
+vulnerability writeup confirms the entry point at `src/transformers/trainer.py`
+line 3059, where `torch.load()` is called without `weights_only=True`, and notes
+that PyTorch's `safe_globals()` context manager provides no protection on PyTorch
+versions below 2.6, so the same source code is exploitable across many deployed
+training stacks today: https://www.sentinelone.com/vulnerability-database/cve-2026-1839/
+ NVD's
+April 28 enrichment scores the Transformers `Trainer._load_rng_state()` issue
+as 7.8 High and lists affected CPEs for Transformers versions before 5.0.0,
+including 5.0.0 release candidates before rc3, while GitHub's reviewed advisory
+still preserves the huntr CNA's 6.5 Medium score. Auditors should treat the
+issue as high severity whenever training, resume, or fine-tuning jobs can load
+checkpoint sidecars from shared storage, model hubs, or user-controlled
+workspaces: https://nvd.nist.gov/vuln/detail/CVE-2026-1839 and
+https://github.com/advisories/GHSA-69w3-r845-3855
+
+Hugging Face's current Hub documentation shows JFrog scanner results directly
+in the model UI and explains why "Dangerous" flags are not the same thing as a
+confirmed malicious verdict; JFrog's Xray documentation now treats Hugging Face
+model scanning and AI Catalog approval as first-class governance evidence. For
+3.1.1 and 3.1.3, a useful test is to require the registry export to include the
+scanner result, policy decision, waiver or exception ticket, signed digest, and
+promotion record for each deployed model version: https://huggingface.co/docs/hub/en/security-jfrog
+and https://docs.jfrog.com/security/docs/detect-malicious-ai-models
+
+OpenSSF's Model Signing project page is explicit that model signatures should
+be checked when a model is uploaded to a hub, selected for deployment, and used
+as input to another model. That pushes 3.1.3 beyond one-time CI verification:
+Kubernetes admission checks such as Sigstore's Model Validation Operator should
+be paired with loader-level verification for direct SDK loads, batch jobs,
+fine-tuning workers, and offline evaluation pipelines that bypass admission
+controllers: https://openssf.org/projects/model-signing/ and
+https://blog.sigstore.dev/model-validation-operator-v1.0.1/
+
+The standards evidence is also converging on machine-readable provenance.
+CycloneDX v1.7 is now ECMA-424, 2nd Edition with explicit support for machine
+learning models, attestations, evidence, and formulation processes, while SPDX
+3.0.1 separates AI package metadata from Dataset profile metadata. For 3.1.1,
+registry trace records should cross-link the AIBOM or model BOM, SPDX AI/Dataset
+elements, signature certificate or transparency-log material, validation run
+IDs, deployment-environment approvals, and the EU AI Act technical-documentation
+evidence package: https://ecma-international.org/publications-and-standards/standards/ecma-424/
+https://spdx.github.io/spdx-spec/v3.0.1/model/AI/AI/
+https://spdx.github.io/spdx-spec/v3.0.1/model/Dataset/Dataset/
+
+As of May 2, 2026, the most useful update for this section is that model authorization controls need to cover the broader release pipeline, not just final model weights. Snyk's LiteLLM write-up and the Cloud Security Alliance research note document TeamPCP's March 2026 campaign against Trivy, LiteLLM, Telnyx, and related CI/CD paths; the practical audit point is to verify pinned actions, scoped publishing credentials, clean rebuilds, and artifact signatures for the whole model-serving stack, not only the registry entry: https://snyk.io/blog/poisoned-security-scanner-backdooring-litellm/ and https://labs.cloudsecurityalliance.org/research/csa-research-note-ai-ml-pypi-supply-chain-attack-teampcp-202/
+
+The April 2026 Axios incident reinforces the same point outside the model hub itself. OpenAI reported that a macOS app-signing workflow downloaded a malicious Axios 1.14.1 package on March 31, 2026, then rotated and revoked signing material even though it found no evidence of product or user-data compromise. For 3.1.2 and 3.1.3, that means auditors should ask whether model signing keys, notarization credentials, and admission policies are isolated from third-party build steps and whether package managers enforce immutable pins and minimum release-age rules: https://openai.com/index/axios-developer-tool-compromise/
+
+The Mini Shai-Hulud worm (May 11-12, 2026, now tracked as CVE-2026-45321 with a CVSS 9.6 critical score) extended TeamPCP's campaign directly into AI infrastructure dependencies. Within roughly six minutes the worm published 84 malicious versions across 42 `@tanstack/*` npm packages (including `@tanstack/react-router` at about 12M weekly downloads), and the wider sweep compromised over 170 npm and PyPI packages with about 518 million cumulative downloads -- on PyPI the AI-relevant casualties were `guardrails-ai==0.10.1` (PyPI quarantined the entire `guardrails-ai` project), `mistralai==2.4.6`, and packages from UiPath and OpenSearch. TanStack's post-mortem describes the credential theft path as "our own CI pipeline stole its own publish token for them, at the exact moment it was created, by way of a cache that everyone in the chain implicitly trusted," and the dropped Python payload uses hard-coded C2 plus a fallback called FIRESCALE that searches GitHub for alternative server URLs. The npm payload (`router_init.js`, roughly 2.3 MB) ran during install and harvested AWS IMDS credentials, GCP metadata, Kubernetes service-account tokens, Vault tokens, npm tokens from `~/.npmrc`, GitHub tokens, and SSH private keys. The malware also planted a `gh-token-monitor` daemon that polls `api.github.com/user` every 60 seconds and triggers `rm -rf ~/` on Linux/macOS (or the Windows equivalent) the moment its token returns a 40x response -- the destructive failsafe means responders cannot simply revoke the stolen token without first containing the compromised host. Two OpenAI employee devices and one Mistral developer device were impacted (no production or user-data compromise reported). The site `git-tanstack[.]com` carried a "With Love TeamPCP" message, tying this back to the same group behind the March 2026 Trivy/LiteLLM/KICS chain and the April 30, 2026 PyTorch Lightning compromise (versions 2.6.2 and 2.6.3 lived on PyPI for 42 minutes, dropping a `_runtime` directory with an obfuscated JS payload that harvested SSH keys, shell histories, cloud credentials, and GitHub/npm tokens). For 3.1.2, this argues that signing programs must cover safety/guardrail packages, ML training libraries, and provider SDKs in addition to model weights; for 3.1.1, the registry inventory must enumerate which agents, guardrail layers, and serving processes pull which AI provider SDKs and guardrail libraries per environment, not only which services pull which model: https://www.wiz.io/blog/mini-shai-hulud-strikes-again-tanstack-more-npm-packages-compromised https://thehackernews.com/2026/05/mini-shai-hulud-worm-compromises.html https://safedep.io/mass-npm-supply-chain-attack-tanstack-mistral/ https://socket.dev/blog/tanstack-npm-packages-compromised-mini-shai-hulud-supply-chain-attack https://snyk.io/blog/tanstack-npm-packages-compromised/ https://semgrep.dev/blog/2026/malicious-dependency-in-pytorch-lightning-used-for-ai-training/
+
+The most consequential nuance from the Mini Shai-Hulud post-mortems is that the malicious npm packages carried *valid* SLSA Build Level 3 provenance attestations -- the first documented npm worm to publish artifacts with legitimately minted attestation. The OIDC token was extracted from the GitHub Actions runner process memory at the exact moment it was issued, so packages were built by the correct repository, by the correct workflow, using a real Sigstore certificate chain. Phoenix Security, Corgea, and the Snyk/Wiz write-ups all underline the same conclusion: SLSA provenance attests that a workflow ran in a given repository, not that the workflow was authorized, that the triggering commit was legitimate, or that the build step itself was uncompromised. For 3.1.2 and 3.1.3, the practical takeaway is that signature verification and SLSA L3 provenance are still necessary but no longer sufficient on their own; admission policy should also require pinned source revisions, branch-protection evidence, minimum release-age gates, and out-of-band publish-token isolation (publish from a dedicated job with a fresh OIDC token, not from a cached workflow context that any other step can read): https://corgea.com/research/tanstack-supply-chain-attack-mini-shai-hulud https://phoenix.security/mini-shai-hulud-teampcp-tanstack/ https://venturebeat.com/security/shai-hulud-worm-172-npm-pypi-packages-valid-provenance-ci-cd-audit
+
+CVE-2026-33990 in Docker Model Runner (Docker security advisory March 30, 2026, fixed in 1.1.25 / Docker Desktop 4.67.0) is the cleanest 2026 example that admission verification has to include the model-pull client itself, not just the artifact it eventually deserializes. The OCI registry token-exchange flow followed an attacker-controlled `realm` URL from `WWW-Authenticate` and used the Bearer token from that hop on the next request, so a malicious registry could land arbitrary GETs against `127.0.0.1` and other internal addresses and pull back the full response body, including bearer tokens. Docker recommends upgrading and notes that Enhanced Container Isolation provides additional defense in depth, though ECI does not help when Model Runner is exposed over TCP to localhost. For 3.1.3, this means evaluations should cover the model fetcher (Docker Model Runner, Ollama, vLLM, OCI-aware MLflow plugins, custom registry clients) for URL-scheme allowlisting, IP-range checks, and bearer-token scoping, on top of signature verification of the artifact itself: https://github.com/docker/model-runner/security/advisories/GHSA-x2f5-332j-9xwq https://nvd.nist.gov/vuln/detail/cve-2026-33990 https://docs.docker.com/security/security-announcements/
+
+Recent model-file evidence is now strong enough to justify explicit bundle-wide verification. GitLab's advisory for CVE-2026-1839 describes arbitrary code execution in HuggingFace Transformers `Trainer._load_rng_state()` when a malicious `rng_state.pth` is loaded without `weights_only=True`, and the PyTorch Foundation's April 2026 Safetensors announcement explains why safe serialization reduces pickle-style code execution risk. Verification should include checkpoint sidecar files, optimizer state, RNG state, tokenizers, adapters, and policy models, not just the largest `.safetensors` or `.bin` file: https://advisories.gitlab.com/pypi/transformers/CVE-2026-1839/ and https://pytorch.org/blog/pytorch-foundation-announces-safetensors-as-newest-contributed-project-to-secure-ai-model-execution/
+
+Tooling has become more concrete, but still needs integration work. OpenSSF Model Signing defines a detached OMS signature format for multi-file model bundles, while Sigstore's Model Validation Operator brings signature verification into Kubernetes pod admission through an injected init container; the Sigstore operator remains alpha as of the v1.0.1 write-up, so production deployments should pair it with fallback admission policy and loader-level checks. Useful references: https://openssf.org/blog/2025/06/25/an-introduction-to-the-openssf-model-signing-oms-specification/ and https://blog.sigstore.dev/model-validation-operator-v1.0.1/
+
+Inventory and provenance standards are also more audit-ready than they were in early 2025. OWASP's AIBOM Generator produces CycloneDX output for Hugging Face models, ECMA-424 2nd edition standardizes CycloneDX v1.7 with machine learning model support, and SPDX 3.0.1 includes AI and Dataset profiles for model artifacts, datasets, training information, energy consumption, intended use, and known bias. These formats help satisfy 3.1.1, but they still need local evidence binding: registry exports should be cross-checked against deployed endpoints, signed build attestations, dataset checksums, and approval records. References: https://genai.owasp.org/resource/owasp-aibom-generator/ https://ecma-international.org/publications-and-standards/standards/ecma-424/ https://spdx.github.io/spdx-spec/v3.0.1/model/AI/AI/
+
+The compliance path is becoming clearer. NIST's COSAiS project published a January 2026 annotated outline for SP 800-53 control overlays that explicitly covers model weights, configuration settings, training and test data, and agent use cases. The European Commission's General-Purpose AI Code of Practice was published July 10, 2025 as a voluntary compliance tool, while Article 101 AI Act fines for GPAI providers apply from August 2, 2026. For 3.1.1, registry evidence should be traceable enough to answer both security and governance questions: who authorized the model, what data and code produced it, what validation passed, which certificate or signature binds it, and where it is approved to run. References: https://csrc.nist.gov/Projects/cosais https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-101
+
+As of June 2026, the "Hades" PyPI campaign is the freshest reminder that 3.1.1
+inventory and 3.1.2 signing have to reach the ML *packages* a model pulls in,
+not just the weight bundle. Orca Security's June 8, 2026 writeup tracked 26
+compromised PyPI projects shipping 37 malicious wheels across bioinformatics,
+graph-ML, deep-learning, and AI-agent ecosystems -- named casualties include
+`pantheon-agents` (0.6.1-0.6.2), `magique-ai`, `mflux-streamlit` (0.0.3-0.0.4),
+`ensmallen` (0.8.101), and `pyphetools`. The execution primitive is the same
+interpreter-startup trick that made the March 2026 LiteLLM `.pth` payload so
+dangerous: each package drops a `setup.pth` file, which Python auto-executes on
+interpreter init, that pulls the Bun JavaScript runtime from GitHub and runs an
+obfuscated 16-component payload. The harvester now explicitly targets *AI
+assistant configurations* alongside AWS/GCP/Azure tokens, Kubernetes secrets,
+GitHub Actions tokens, and PyPI/npm/RubyGems publishing credentials -- so a
+single poisoned ML dependency can both run code at import time and steal the
+publishing keys used to sign or promote the next model. Phoenix Security's
+mid-2026 analysis frames Hades and the related "IronWorm" self-propagating
+campaigns as the reason the first half of 2026 produced roughly 4.5x the
+malicious-package volume of all of 2025, with most campaigns carrying *no
+assigned CVE* during active exploitation -- which means admission and inventory
+cannot wait on a CVE feed to flag a poisoned dependency. For 3.1.1 the auditable
+point is that the registry record for a model has to enumerate (and carry
+scanner verdicts for) the Python packages installed in its serving image, since
+a clean signed `.safetensors` says nothing about a `setup.pth` in a sibling
+dependency; for 3.1.2 it reinforces that signing programs and minimum-release-age
+gates must cover the full ML dependency set, not only provider SDKs and weights:
+https://orca.security/resources/blog/hades-pypi-supply-chain-attack/ and
+https://phoenix.security/accelerating-supply-chain-attacks-npm-pypi-vsx-ai-enabled-2026/
+
+---
+
+## Requirements
+
+| # | Requirement | Level | Threat Mitigated | Verification Approach | Gaps / Notes |
+|---|-------------|:-----:|-----------------|----------------------|--------------|
+| **3.1.1** | **Verify that** a model registry maintains an inventory of all deployed model artifacts and their origin. | 1 | Untracked model deployments; inability to audit what is running in production; shadow AI. | Inspect model registry (MLflow, Vertex AI Model Registry, SageMaker Model Registry). Confirm MBOM/AIBOM export exists in SPDX or CycloneDX format. Validate completeness against deployed endpoints. Cross-check registry inventory against live serving infrastructure to detect shadow deployments. For public or mirrored models, confirm the registry record also captures scanner status, policy decision, approval or waiver reference, and the signed artifact digest. | CycloneDX ML BOM support has matured substantially: v1.5 introduced ML-BOM capabilities, and CycloneDX v1.7 (October 2025) added structured citations, attestations, evidence, formulation processes, and provenance chain tracking enabling verifiable audit trails across CI/CD enrichment steps. CycloneDX v1.7 was ratified as ECMA-424, 2nd Edition in December 2025. The OWASP AIBOM Generator (open-sourced December 2025) automatically extracts metadata from Hugging Face models and generates CycloneDX-format AIBOMs with completeness scoring. SPDX 3.0.1 introduced formal AI and Dataset profiles that extend the traditional SBOM to describe ML components (models, datasets, training configurations, provenance) in a machine-readable format, bringing SPDX closer to parity with CycloneDX for AI use cases. The OWASP AIBOM Prerequisites workstream continues evaluating gaps in both standards for AI-specific scenarios. Syft can generate SBOMs in both formats from container images. The NSA/CISA joint advisory (March 2026) explicitly recommends maintaining a "verified model registry" with integrity checks. NIST AI RMF expects organizations to maintain AI inventories describing model purpose, data sources, risk exposure, and deployment environments. The EU AI Office gains full enforcement powers from August 2, 2026, with authority to order model recalls and impose fines on GPAI providers who fail Annex IV technical documentation requirements. The NIST COSAiS project (January 2026 annotated outline) maps SP 800-53 CM-02 (baseline configuration) and CM-03 (configuration change control) directly to AI model registry requirements, providing a compliance pathway for organizations subject to FISMA. Fully automated MBOM generation remains aspirational -- organizations must typically combine provider model documentation with deployer use-case documentation, and neither MLflow nor SageMaker natively export AIBOM artifacts without custom pipeline integration. CycloneDX Attestations (CDXA) now provide a machine-readable way to bind assessments, evidence, and signed claims to BOM contents, so registry exports can be coupled to attestations that are optionally legally binding for B2B and B2G transactions -- a path toward EU AI Act Article 11 / Annex IV evidence. The NIST COSAiS series is now scoped as NISTIR 8605 (Overview and Methodology), 8605A (Using and Fine-Tuning Predictive AI), 8605B (Adapting and Using Generative AI), 8605C (Security Controls for AI Developers), and 8605D (Single-Agent and Multi-Agent AI), with the January 2026 annotated outline for 8605A mapping CM-02/CM-03 to model registry baseline and change control. JFrog's 2026 Software Supply Chain Security report (May 20, 2026) quantifies why inventory has to be enforced rather than merely claimed: it found 495 malicious models and 969 malicious AI agent skills on public hubs amid 177K new malicious packages and a 451% year-over-year rise in infected npm packages, yet 97% of surveyed organizations said they have AI governance while 53% still pull models directly from public registries -- so a registry record is only meaningful if it captures the scanner verdict and policy decision for every public-origin artifact and blocks the unenforced path. *(Updated 2026-06)* |
+| **3.1.2** | **Verify that** all model artifacts (weights, configurations, tokenizers, base models, fine-tunes, adapters, and safety/policy models) are cryptographically signed by authorized entities. | 2 | Supply chain tampering; loading of backdoored or poisoned model weights; man-in-the-middle substitution during artifact transfer (MITRE ATLAS AML.T0010). CVE-2026-1839 (April 7, 2026) extends the threat surface beyond weights to auxiliary checkpoint files: a malicious `rng_state.pth` crafted with pickle reducers executes arbitrary code during `Trainer.train()` -- any unsigned file that ships alongside the model and gets loaded during resume/checkpoint workflows becomes an RCE primitive, which is why signatures must cover the entire artifact set, not just the primary weights file. CVE-2026-4372 (published May 24, 2026; NVD 7.8 High; CWE-1066) pushes the same lesson onto the model *config*: HuggingFace Transformers `setattr`-loaded every field in `config.json`, so a poisoned `_attn_implementation_internal` attribute pointing at an `owner/repo` string caused the optional `kernels` package to download and import arbitrary Python from the Hub on a plain `from_pretrained()` call -- bypassing `trust_remote_code=False` across versions 4.56.0-5.2.x (fixed v5.3.0), with roughly 232 million vulnerable downloads during a 187-day exposure window. A signature scoped only to the weights file leaves both the checkpoint sidecars and the config wide open. | Verify signing workflow exists using OpenSSF Model Signing (OMS) v1.0, Sigstore cosign, in-toto attestations, or GPG. Test by deploying an unsigned or modified artifact and confirm it is rejected. Inspect admission controller or model loader code for signature verification logic. Validate that signing covers the full artifact set (weights, configs, tokenizers, optimizer state, and RNG state files) and not just the primary model file. For Transformers-based pipelines, confirm version >= v5.0.0rc3 (which adds `weights_only=True` to checkpoint loads) or PyTorch >=2.6 behavior, and verify that all checkpoint files are signed by the training pipeline before being written to shared storage. | OpenSSF Model Signing (OMS) v1.0 released April 2025 by Google, NVIDIA, and HiddenLayer provides a production-ready library and CLI for signing any model format via Sigstore; OMS is PKI-agnostic, supporting bare keys, PKI certificate chains, and identity-based keyless signing. NVIDIA has signed all NGC Catalog models with OMS since March 2025 -- the first major hub to do so. The OMS detached signature format handles multiple related artifacts (weights, configs, tokenizers) in a single verifiable unit, and the OMS specification is under active development to incorporate additional metadata for provenance verification and dataset integrity. CoSAI (Coalition for Secure AI, 40+ members including Anthropic, Google, Microsoft, NVIDIA, OpenAI) released model signing frameworks in 2025-2026 positioning signing as foundational to AI supply chain security. The NSA/CISA joint advisory (March 2026) explicitly recommends cryptographic signing across the model lifecycle. Hugging Face contributed safetensors to the PyTorch Foundation (April 2026), making safe serialization an official part of the PyTorch ecosystem, though the HiddenLayer "Silent Sabotage" disclosure (February 2024) showed that even safetensors conversion infrastructure was vulnerable when the SFconvertbot (42,657 contributions) could be hijacked via pickle deserialization in the conversion service. NVD's April 28, 2026 enrichment for CVE-2026-1839 raises the practical priority: the same checkpoint-sidecar weakness is scored 7.8 High by NVD even though the CNA/GitHub advisory score remains 6.5 Medium. CoSAI's three-tier model signing maturity framework provides a practical adoption roadmap: Level 1 (binary artifact signing), Level 2 (dependency tracking with provenance trails), Level 3 (structured attestations with automated governance policy evaluation). Compromise of a signing identity remains a residual risk: verification policy must bind the signature to the approved model-artifact revision and confirm that the signer was authorized for that release, not merely that a cryptographic chain is valid. Signing remains non-universal on public hubs. Note: digital signatures verify integrity/provenance only, not model quality, fairness, or safety. *(Updated 2026-06)* |
+| **3.1.3** | **Verify that** model cryptographic signatures are verified at deployment admission and on load. | 2 | Deploying tampered, backdoored, or unsigned model artifacts into production; man-in-the-middle substitution during artifact transfer; supply chain compromise going undetected at runtime (MITRE ATLAS AML.T0010). Protect AI Guardian has identified 352K unsafe issues across 51.7K models on Hugging Face as of April 2025, demonstrating the scale of malicious artifacts that admission controls must catch. CVE-2026-1839 (NVD April 2026) underlines that checkpoint and RNG state files reach `torch.load()` during resume workflows -- admission must verify signatures across every `.pth`/`.bin`/`.safetensors` in the artifact bundle, not just the headline weights file. The Open-OSS/privacy-filter incident (HiddenLayer, May 7-11 2026) demonstrates that admission must also cover non-weight executable code: the typosquat repo shipped no malicious weights at all -- the entire compromise came from a `loader.py` helper plus a `start.bat` that fetched a base64-encoded URL and ran an obfuscated PowerShell stage that dropped a Rust infostealer targeting browsers, crypto wallets, Discord, FileZilla, and SSH/OAuth keys. ReversingLabs' "nullifAI" technique compounds the problem by using crafted pickle plus 7z compression to slip past PickleScan, so admission cannot rely on a single scanner. CVE-2026-33990 (Docker advisory March 30, 2026, CVSS v4 7.1) demonstrates that the model-pull client is itself an admission-time attack surface: Docker Model Runner before 1.1.25 followed the `realm` URL from an OCI registry's `WWW-Authenticate` header without validating the scheme, hostname, or IP range, so a malicious registry could SSRF host-local services and reflect the bearer token back -- admission has to look at the fetcher (Model Runner, Ollama, custom OCI clients), not only the artifact. The serving runtime that loads a verified artifact is equally in scope: CVE-2026-27893 (March 27, 2026; CVSS 8.8) hardcoded `trust_remote_code=True` in vLLM's `nemotron_vl.py` and `kimi_k25.py`, silently overriding `--trust-remote-code=False` for those architectures until v0.18.0; CVE-2026-22778 (Feb 2, 2026; fixed 0.14.1) chained a PIL info-leak with a JPEG2000 heap overflow to RCE from a single video URL; and Oligo's "ShadowMQ" research showed a pickle-over-ZeroMQ `recv_pyobj()` pattern copied across vLLM (CVE-2025-30165), SGLang, NVIDIA TensorRT-LLM (CVE-2025-23254), Meta Llama Stack (CVE-2024-50050), and Modular Max (CVE-2025-60455). Finally, the verifier itself can fail open: CVE-2026-31830 (March 10, 2026; CVSS 7.5; CWE-252) had sigstore-ruby discard `verify_in_toto()`'s return value so a failed digest check still returned success, and CVE-2026-39984 let Sigstore Timestamp Authority validate one certificate while authorizing against a forged one. | Attempt to deploy an unsigned or modified model artifact and confirm the system rejects it. Review admission controller configuration (Sigstore policy-controller, Kyverno verifyImages rules, or Connaisseur). Inspect model loader code for `model_signing verify` calls or equivalent hash/signature checks. Test with a bit-flipped weight file to confirm rejection. Run Protect AI Guardian, JFrog Xray, Hugging Face scanner results, or equivalent scanner evidence against model artifacts pre-deployment to detect serialization-based attacks, and require an auditable waiver for any model promoted with an unresolved unsafe or dangerous finding. Confirm scanner coverage extends to helper Python, shell scripts, and notebook code in the repository (not only weight files), and that admission cross-checks at least two scanner verdicts -- the Open-OSS/privacy-filter incident shows a single trusted-looking scanner result on weights alone is no longer sufficient. Audit the model fetcher: enumerate every component that resolves and pulls a model URI (Docker Model Runner, Ollama, vLLM, MLflow registry plugins, custom OCI clients) and verify URL-scheme allowlists, IP-range egress controls, bearer-token scoping, and patch level -- Docker Model Runner must be 1.1.25 or later (Docker Desktop 4.67.0+) to address CVE-2026-33990. Confirm that loader code is running on PyTorch >=2.6 where `torch.load()` defaults to `weights_only=True`, or pins `weights_only=True` explicitly on every call site for older deployments. Extend signature/scanner coverage to `config.json` and reject unexpected private attributes (e.g. `_attn_implementation_internal`) and kernel-repo references -- confirm Transformers is >=5.3.0 to close CVE-2026-4372. Pin and patch the serving runtime (vLLM >=0.18.0 for the `trust_remote_code` bypass family, >=0.14.1 for the video-RCE chain) and disable `trust_remote_code` at the platform boundary rather than per-model. Negative-test the verifier itself: feed a known-bad or swapped artifact through the exact signature-verification code path and confirm it returns failure (CVE-2026-31830 showed a verifier that silently returned success on a failed check), and pin the verifier/timestamp-authority versions. For Hugging Face Kernels 0.16.0, run `kernels verify-signature` on the pinned repository revision in both the admission and loader paths, then modify one resolved build file and require rejection before native import. Also substitute a kernel from an untrusted publisher and confirm loading fails unless `trust_remote_code=True` is deliberately set. This must be an explicit gate: the July 2026 release supports signing and manual verification, but signature verification is not yet automatic on load (https://huggingface.co/blog/revamped-kernels; https://huggingface.co/docs/kernels/kernel-requirements; https://github.com/huggingface/kernels/releases/tag/v0.16.0). | OpenSSF Model Signing (OMS) v1.0 provides `model_signing verify` CLI for deployment-time checks, validating identity binding against Sigstore transparency logs; OpenSSF guidance calls for signature checks at hub upload, deployment selection, and each later use as an input to another model or pipeline. For containerized model serving, Kubernetes admission controllers (Sigstore policy-controller, Kyverno, Connaisseur) can enforce signature verification at pod creation. The Sigstore Model Validation Operator (v1.0.1, June 2025) adds purpose-built Kubernetes-native model verification: a mutating webhook intercepts pod creation, injects an init container that validates model signatures via the model-transparency CLI, and blocks startup on verification failure -- the first production-grade operator specifically designed for ML model admission gating. The operator uses a ModelValidation Custom Resource per namespace and supports both traditional key pairs and identity-based Sigstore signing. Its roadmap includes OCI artifact packaging and Policy Controller integration. GitHub added OPA Gatekeeper support for artifact attestation enforcement (June 2025). Protect AI Guardian now includes four specialized detection modules: PAIT-ARV-100 (archive slip attacks), PAIT-JOBLIB-101 (Joblib code execution), PAIT-TF-200 (TensorFlow backdoors), and PAIT-LMAFL-300 (Llamafile malicious inference), plus deep structure analysis for PyTorch and Pickle serialization. Over 200 crowdsourced vulnerability reports from the huntr platform have been incorporated. JFrog and Hugging Face launched an integrated scanning partnership where JFrog's deep decompilation and data-flow analysis runs automatically on all public model repositories, awarding a "JFrog Certified" checkmark to verified-safe models -- the approach eliminates 96% of false positives and identified 25 zero-day malicious models missed by all other scanners. The NIST COSAiS annotated outline (January 2026) maps SP 800-53 SI-07 (software, firmware, and information integrity) and CM-05 (unauthorized change prevention) to model admission controls, providing federal-sector compliance alignment. The gap remains that most MLOps platforms (MLflow, SageMaker, Vertex AI) do not natively enforce signature verification at model load -- teams must add custom verification hooks in serving pipelines, though the Model Validation Operator (now positioned as a Go-based Kubernetes/OpenShift operator that watches for ModelValidation custom resources and injects an init container to validate models via the model-transparency CLI before workload startup) closes this gap for Kubernetes-based deployments in both connected and disconnected environments. A newer gap is that admission now has to cover the *config-parsing* and *serving* code paths, not just the deserializer: CVE-2026-4372 turned `config.json` into an RCE vector and the 2026 vLLM CVE cluster turned the inference runtime into one, so scanner and patch-level checks must include the loader library version (Transformers >=5.3.0, vLLM >=0.18.0) and the verifier itself. *(Updated 2026-07)* |
+
+---
+
+## Related Pages
+
+- **[C06-01: Model Artifact Integrity](../C06-Supply-Chain/C06-01-Model-Artifact-Integrity.md)** — Expands the inventory side of 3.1.1 with CycloneDX, SPDX AI profiles, scanner provenance, completeness scoring, and deploy-time AIBOM verification.
+- **[C01-01: Training Data Origin Traceability](../C01-Training-Data/C01-01-Training-Data-Origin-Traceability.md)** — Connects model origin records to upstream dataset approval, source provenance, PII minimization, and fingerprinting evidence.
+- **[C06-02: AI BOM & Supply Chain Monitoring](../C06-Supply-Chain/C06-02-AI-BOM-Supply-Chain-Monitoring.md)** — Covers approved registries, key pinning, Sigstore/OMS checks, and typosquat controls that feed model authorization decisions.
+- **[C06: Supply Chain](../C06-Supply-Chain/C06-Supply-Chain.md)** — Places model authorization in the broader supply chain program covering trusted sources, model vetting, third-party datasets, CI/CD integrity, and attack monitoring.
+- **[C03-05: Pipeline Fine-Tuning](C03-05-Pipeline-Fine-Tuning.md)** — Carries the same signature, scanner, checkpoint, approval, and rollback evidence into fine-tuning and model adaptation workflows.
