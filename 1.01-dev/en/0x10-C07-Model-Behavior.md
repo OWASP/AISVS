@@ -14,6 +14,7 @@ Model outputs must be structured and validated to reduce downstream injection ri
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
 | **7.1.1** | **Verify that** the application validates all model outputs against a defined schema and rejects any output that does not match. | 1 |
 | **7.1.2** | **Verify that** model-generated output is bounded by length limits and termination controls. | 1 |
+| **7.1.3** | **Verify that**, when an application uses an AI response to decide whether to perform an action, it does not perform that action if the AI refuses the request, reports a failure, or returns a response the application cannot correctly read or understand. | 2 |
 
 ---
 
