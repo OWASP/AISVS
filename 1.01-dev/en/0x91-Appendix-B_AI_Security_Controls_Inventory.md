@@ -390,7 +390,7 @@ Require human approval for high-impact actions and provide reliable, exercised s
 | Control / Technique | Requirement IDs |
 | --- | --- |
 | Swarm-level kill-switch that halts all active agent instances | C9.1.3 |
-| Runtime blocking of privileged, high-impact, or irreversible actions until explicit human approval is received and verified | C9.2.1 |
+| Runtime blocking of privileged or irreversible actions until explicit human approval is received and verified | C9.2.1 |
 | Approval requests displaying canonicalized, complete action parameters (diffs, commands, recipients, amounts, resources, scopes) without truncation | C9.2.2 |
 | Trusted reversibility classification for each high-impact action (read-only, reversible, externally reversible, irreversible) | C9.2.3 |
 | Runtime enforcement of reversibility classifications (block, require approval, or restrict) | C9.2.4 |

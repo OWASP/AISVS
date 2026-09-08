@@ -20,21 +20,21 @@ Runtime expansion (recursion, concurrency, cost) must be bounded, with safe halt
 
 ## C9.2 High-Impact Action Approval and Irreversibility Controls
 
-Privileged, high-impact, or hard-to-reverse agent actions must require trusted approval checkpoints.
+Agent actions can use powerful permissions, cause serious harm, or make changes that are hard to undo. These actions need trusted approval checkpoints. An approval checkpoint blocks an action until the required approval has been verified. The agent runtime is the software that runs the agent and its tools.
 
 | # | Description | Level |
 | :--: | --- | :---: |
-| **9.2.1** | **Verify that** the agent runtime blocks execution of privileged or irreversible actions until explicit human approval is received and verified. | 1 |
-| **9.2.2** | **Verify that** approval requests display canonicalized and complete action parameters, such as diffs, commands, recipients, amounts, resources, and scopes, without truncation or unsafe transformation. | 2 |
-| **9.2.3** | **Verify that** each high-impact action has a trusted reversibility classification, such as read-only, reversible, externally reversible, or irreversible. | 2 |
-| **9.2.4** | **Verify that** the agent runtime enforces reversibility classifications by blocking, requiring approval, or restricting actions based on their impact and ability to be reversed. | 2 |
-| **9.2.5** | **Verify that** any self-modification capability (e.g., prompt rewriting, tool-list changes, parameter updates) is restricted by enforceable boundaries. | 2 |
-| **9.2.6** | **Verify that** agentic systems include an AI-augmented review of planned high-risk actions before execution that adds to, and does not replace, the deterministic policy gate. | 2 |
-| **9.2.7** | **Verify that** the AI-augmented review mechanism is protected against manipulation by adversarial inputs, and cannot be overridden or bypassed through prompt injection. | 2 |
-| **9.2.8** | **Verify that** approvals are cryptographically bound to action parameters, requester identity, execution context, and a unique single-use nonce. | 3 |
-| **9.2.9** | **Verify that** cryptographic key material or credentials used to issue approvals are isolated from the agent runtime. | 3 |
-| **9.2.10** | **Verify that** approval gates for multi-step or multi-agent action chains enforce the highest-impact reversibility classification present anywhere in the chain, where the chain is established by a component outside the control of the agent being gated. | 3 |
-| **9.2.11** | **Verify that** agent execution which would exceed the approved action chain is blocked until a new approval is obtained, and that the new approval enforces the highest-impact reversibility classification present across the cumulative chain. | 3 |
+| **9.2.1** | **Verify that** the agent runtime blocks actions that use elevated permissions or cannot be undone. These actions may run only after the runtime receives and verifies explicit human approval. | 1 |
+| **9.2.2** | **Verify that** approval requests show all action details in a standard, unambiguous form (canonicalized) that matches what will run. These details include, as applicable, proposed changes, commands, recipients, amounts, affected resources, and the access being granted or used. The display must not cut off details or transform them in a way that hides or changes their meaning. | 2 |
+| **9.2.3** | **Verify that** each high-impact action has a label describing whether and how its effects can be undone (its reversibility classification). The label must be created, maintained, and stored outside the agent's control. Examples are read-only (makes no changes), reversible (the system can undo it), externally reversible (can be undone only by another person or system), and irreversible (cannot be undone). | 2 |
+| **9.2.4** | **Verify that** the agent runtime enforces controls based on both an action's potential impact and its reversibility classification. The runtime must use these factors to block the action, require approval before it runs, or limit what it can do. | 2 |
+| **9.2.5** | **Verify that** the agent's ability to change itself is limited by controls it cannot bypass. This includes rewriting its prompts, changing its available tools, or updating values that control its behavior (parameters). Changes outside the allowed limits must be blocked by the runtime. | 2 |
+| **9.2.6** | **Verify that** planned high-risk actions receive an AI-assisted review before they run. This review must add to a separate check that enforces predefined security rules in code (the deterministic policy gate). The AI review must not replace or bypass that check. | 2 |
+| **9.2.7** | **Verify that** safeguards protect the AI-assisted review from inputs designed to mislead it. Instructions embedded in untrusted content, such as documents or tool output, must not override or bypass the review. Such attempts to redirect an AI system are called prompt injection. | 2 |
+| **9.2.8** | **Verify that** cryptographic protection ties each approval to the exact action details, who requested the action, and the execution context. The context describes where and under what conditions the action will run. The protection must also cover a unique value accepted only once (a nonce). The approval must be rejected if those details change or it is used again. | 3 |
+| **9.2.9** | **Verify that** secret keys or credentials used to issue approvals are isolated from the agent runtime. The runtime must not be able to read these secrets or use them to create its own approvals. | 3 |
+| **9.2.10** | **Verify that** approval checks cover the whole sequence of actions, whether one agent performs several steps or several agents share the work. The checks must apply the strictest controls required by the impact and reversibility of any action in that sequence. A component outside the checked agent's control must determine which actions belong to the sequence. | 3 |
+| **9.2.11** | **Verify that** the runtime blocks actions that go beyond the approved sequence until a new approval is obtained. The new approval must apply the strictest controls required by any action's impact and reversibility across the full sequence. This includes earlier actions and any proposed additions. | 3 |
 
 ---
 
