@@ -46,8 +46,10 @@ Enforce access decisions across users, agents, tools, and resources using policy
 | Access-control decisions enforced by application logic or a policy engine, never by the model | C9.5.3 |
 | Inter-agent task delegation restricted by an explicit authorization policy | C9.5.5 |
 | Re-evaluation of backend authorization on every privileged action in long-running sessions | C9.5.6 |
+| Delegated authority never exceeding the delegating agent's current authority | C9.5.7 |
 | Scope-filtered MCP tool discovery (tools/list returns only authorized tools) | C10.2.4 |
 | Per-invocation MCP access control validating both the tool and the supplied argument values | C10.2.5 |
+| MCP proxy servers sharing an upstream OAuth client identity do not let one MCP client inherit another client's authorization | C10.4.9 |
 
 **Common pitfalls:** relying on the service account's permissions instead of the caller's; letting model-generated output drive authorization; not re-checking authorization when context changes mid-session.
 
@@ -157,6 +159,7 @@ Constrain, filter, and validate model outputs before they reach users or downstr
 | --- | --- |
 | Schema validation of model outputs with rejection on mismatch | C7.1.1 |
 | Length limits and termination controls on generated output | C7.1.2 |
+| No action taken when the AI response used to decide it is a refusal, a reported failure, or a response the application cannot read | C7.1.3 |
 | Confidence or uncertainty estimation for generated answers | C7.2.1 |
 | Automatic blocking or fallback when confidence drops below a defined threshold | C7.2.2 |
 | Additional verification step for responses classified as high-risk by policy | C7.2.3 |
