@@ -23,7 +23,7 @@ This work is licensed under a
 
 The **Artificial Intelligence Security Verification Standard (AISVS)** is a community-driven catalogue of testable security requirements for AI-enabled systems. It gives developers, architects, security engineers, and auditors a structured framework to design, build, test, and verify the security of AI applications throughout their lifecycle, from data collection and model training to deployment, monitoring, and retirement.
 
-AISVS is modeled after the [OWASP Application Security Verification Standard (ASVS)](https://owasp.org/www-project-application-security-verification-standard/) and follows the same philosophy: every requirement should be **verifiable, testable, and implementable**.
+AISVS is modeled after the [OWASP Application Security Verification Standard (ASVS)](https://owasp.org/projects/asvs) and follows the same philosophy: every requirement should be **verifiable, testable, and implementable**.
 
 ## Project Leaders
 
@@ -110,7 +110,7 @@ For every requirement in the standard, the [Research Wiki](https://github.com/OW
 | **Verification Approach** | Concrete audit steps, tools, and evidence to collect |
 | **Gaps & Notes** | Tool maturity ratings, open research questions, and implementation caveats |
 
-The wiki covers all 191 requirements across 60 pages, with per-section threat landscape summaries, tooling recommendations, and references to current standards and research literature.
+The wiki tracks the in-progress 1.01 release and covers every requirement in it, with per-section threat landscape summaries, tooling recommendations, and references to current standards and research literature. The wiki for the released 1.0 standard is frozen under [1.0/research](https://github.com/OWASP/AISVS/blob/main/1.0/research/README.md).
 
 ---
 

@@ -10,13 +10,13 @@
 
 The Open Worldwide Application Security Project (OWASP) is a nonprofit organization that works to improve the security of software. It has many programs that work toward this goal. One of those programs is the AISVS.
 
-### What is the [AISVS](https://github.com/OWASP/www-project-artificial-intelligence-security-verification-standard-aisvs-docs)?
+### What is the [AISVS](https://owasp.org/projects/artificial-intelligence-security-verification-standard-aisvs-docs)?
 
 The OWASP Artificial Intelligence Security Verification Standard (AISVS) focuses on providing developers, architects, and security professionals with a structured framework to evaluate and verify the security and ethical considerations of AI-driven applications. Modeled after existing OWASP standards (such as the ASVS for web applications), AISVS defines categories of requirements across 12 chapters covering areas including model behavior, supply chain integrity, agentic orchestration, adversarial robustness, and human oversight.
 
 ### What is the current status of AISVS development?
 
-**AISVS 1.0 has been released** at the OWASP Global AppSec conference in Vienna. The project now accepts patch-level fixes for the released 1.0 content and proposals for future minor or major versions, according to the release policy.
+**AISVS 1.0 has been released** at the OWASP Global AppSec conference in Vienna, and the `1.0/` folder is locked. All work now lands in `1.01-dev/`: patch-level fixes, new requirements, and material changes to existing requirements, according to the release policy.
 
 ## How can I help?
 
@@ -44,7 +44,7 @@ We may also ask you to open a pull request, <https://github.com/OWASP/AISVS/pull
 
 ### Translations
 
-We are looking for help with translations after v1.0 is released!
+Translations of the released 1.0 standard are welcome. Please open an issue first so we can agree on the folder layout and file set before you start.
 
 ## Release Policy
 
