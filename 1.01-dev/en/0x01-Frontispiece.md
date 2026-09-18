@@ -68,6 +68,5 @@ The list below reflects authored and edited content. It does not fully capture c
 * Sandhya ([sandhya13r](https://github.com/sandhya13r))
 * Starr Brown ([mamicidal](https://github.com/mamicidal))
 * Amine Khazraj ([aminekhazraj](https://github.com/aminekhazraj))
-* Iman Sharaf ([ImanSharaf](https://github.com/ImanSharaf))
+* Iman ([ImanSharaf](https://github.com/ImanSharaf))
 * MRX ([MRX-72](https://github.com/MRX-72))
-* Hinotobi ([Hinotoi-agent](https://github.com/Hinotoi-agent))
