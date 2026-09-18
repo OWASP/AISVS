@@ -19,7 +19,7 @@ For any reuse or distribution, you must clearly communicate the license terms of
 
 ## Acknowledgments
 
-AISVS v1.0 is the result of a collaborative effort by its project leads, working group members, and community contributors. We thank everyone who has contributed requirements, reviews, and feedback to make this standard possible.
+AISVS v1.01 is the result of a collaborative effort by its project leads, working group members, and community contributors. We thank everyone who has contributed requirements, reviews, and feedback to make this standard possible.
 
 ## Project Leads
 
@@ -37,7 +37,7 @@ The list below reflects authored and edited content. It does not fully capture c
 * Vineeth Sai Narajala ([vineethsai](https://github.com/vineethsai))
 * RL Thornton ([thornshadow99](https://github.com/thornshadow99))
 * Almog Langleben ([almogbhl](https://github.com/almogbhl))
-* Khalid Al-Amri ([khalidwalidalamri](https://github.com/khalidwalidalamri))
+* Khalid Al-Amri
 * Barno Kaharova ([BarnoKa](https://github.com/BarnoKa))
 * Joshua Beck ([Josh-Beck](https://github.com/Josh-Beck))
 * Vishal Jindal ([vishaljindal1990](https://github.com/vishaljindal1990))
@@ -67,3 +67,7 @@ The list below reflects authored and edited content. It does not fully capture c
 * Hari Mukundhan ([harimukundhan](https://github.com/harimukundhan))
 * Sandhya ([sandhya13r](https://github.com/sandhya13r))
 * Starr Brown ([mamicidal](https://github.com/mamicidal))
+* Amine Khazraj ([aminekhazraj](https://github.com/aminekhazraj))
+* Iman Sharaf ([ImanSharaf](https://github.com/ImanSharaf))
+* MRX ([MRX-72](https://github.com/MRX-72))
+* Hinotobi ([Hinotoi-agent](https://github.com/Hinotoi-agent))

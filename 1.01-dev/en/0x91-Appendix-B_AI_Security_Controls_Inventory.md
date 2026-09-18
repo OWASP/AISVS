@@ -23,7 +23,7 @@ Verify the identity of users, agents, services, edge devices, and MCP clients/se
 | MCP access-token claim validation (issuer, audience, expiration, scope) per OAuth 2.1 | C10.2.2 |
 | MCP resource servers do not store or persist access tokens or user credentials | C10.2.3 |
 | Removal of all MCP session artifacts on session termination | C10.2.6 |
-| No pass-through of client access tokens to downstream APIs | C10.2.7 |
+| MCP servers accept only tokens explicitly issued for them | C10.2.7 |
 | Sender-constrained MCP access tokens (mTLS or DPoP) | C10.3.5 |
 
 **Common pitfalls:** reusing end-user credentials for agent-to-agent calls; not rotating agent credentials on suspected compromise; treating transport security as a substitute for per-request token validation.
@@ -393,7 +393,7 @@ Require human approval for high-impact actions and provide reliable, exercised s
 | Control / Technique | Requirement IDs |
 | --- | --- |
 | Swarm-level kill-switch that halts all active agent instances | C9.1.3 |
-| Runtime blocking of privileged, high-impact, or irreversible actions until explicit human approval is received and verified | C9.2.1 |
+| Runtime blocking of privileged or irreversible actions until explicit human approval is received and verified | C9.2.1 |
 | Approval requests displaying canonicalized, complete action parameters (diffs, commands, recipients, amounts, resources, scopes) without truncation | C9.2.2 |
 | Trusted reversibility classification for each high-impact action (read-only, reversible, externally reversible, irreversible) | C9.2.3 |
 | Runtime enforcement of reversibility classifications (block, require approval, or restrict) | C9.2.4 |
@@ -419,5 +419,5 @@ Require human approval for high-impact actions and provide reliable, exercised s
 * [NIST AI Risk Management Framework 1.0](https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf)
 * [ISO/IEC 42001:2023: AI Management Systems Requirements](https://www.iso.org/standard/42001)
 * [OWASP Top 10 for Large Language Model Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-* [OWASP Application Security Verification Standard (ASVS)](https://owasp.org/www-project-application-security-verification-standard/)
+* [OWASP Application Security Verification Standard (ASVS)](https://owasp.org/projects/asvs)
 * [NIST SP 800-218A: Secure Software Development Practices for Generative AI](https://csrc.nist.gov/pubs/sp/800/218/a/final)

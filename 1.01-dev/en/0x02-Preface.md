@@ -1,6 +1,6 @@
 # Preface
 
-Welcome to the **Artificial Intelligence Security Verification Standard (AISVS) version 1.0**.
+Welcome to the **Artificial Intelligence Security Verification Standard (AISVS) version 1.01**.
 
 By adopting AISVS, organizations can systematically evaluate and strengthen the security posture of their AI systems, building a foundation of secure AI engineering practices that evolves alongside the technology itself.
 
