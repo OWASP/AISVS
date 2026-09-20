@@ -69,7 +69,7 @@ Schema, message, and input validation must be enforced in both MCP servers and c
 | **10.4.10** | **Verify that** MCP clients bind each approved MCP server's granted consent and authorization to the connection endpoint approved for that server, and require user re-approval before any further interaction once that endpoint changes. | 2 |
 | **10.4.11** | **Verify that** MCP clients reject tool definitions containing invalid mirrored-header annotations and exclude only the affected tool from the tool list. | 1 |
 | **10.4.12** | **Verify that** MCP servers reject requests where mirrored request headers do not match the corresponding request body values, after decoding any encoded header values. | 2 |
-| **10.4.13** | **Verify that** MCP implementations apply resource bounds to schema validation, such as a maximum schema depth, a cap on total subschemas, or a per-validation time budget. | 2 |
+| **10.4.13** | **Verify that** MCP implementations apply resource bounds to schema validation, such as a maximum schema depth, a cap on the total number of nested schema elements, or a per-validation time budget. | 2 |
 | **10.4.14** | **Verify that** MCP implementations do not automatically dereference JSON Schema `$ref` values that resolve to network URIs, and that any opt-in external resolution is disabled by default and rejects loopback, link-local, and private network addresses. | 1 |
 | **10.4.15** | **Verify that** MCP implementations reject schemas that fail to validate due to an unresolved external `$ref` rather than treating them as permissive. | 2 |
 | **10.4.16** | **Verify that** MCP clients and gateways do not serve cached responses across authorization contexts and do not cache results of multi round-trip requests. | 2 |
@@ -89,5 +89,5 @@ Schema, message, and input validation must be enforced in both MCP servers and c
 * [OWASP MCP Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/MCP_Security_Cheat_Sheet.html)
 * [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final)
 * [OAuth 2.1 (IETF Draft)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-11)
-* [OWASP ASVS 5.0, V10 OAuth and OIDC](https://github.com/OWASP/ASVS) covers general OAuth client and authorization server controls, including PKCE and mix-up attack defence, which are not restated in this chapter
+* [OWASP ASVS 5.0, V10 OAuth and OIDC](https://github.com/OWASP/ASVS) covers general OAuth client and authorization server controls, including proof key for code exchange and mix-up attack defense, which are not restated in this chapter
 * [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026)
