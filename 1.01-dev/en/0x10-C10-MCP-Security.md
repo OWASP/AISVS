@@ -29,9 +29,9 @@ Callers must be authenticated and access to MCP servers authorized, following pr
 | **10.2.3** | **Verify that** MCP servers acting as OAuth 2.1 resource servers do not store or persist access tokens or user credentials. | 1 |
 | **10.2.4** | **Verify that** MCP tools/list returns only tools permitted by the requester's authorized scopes, and that list responses vary only by authorization context, never by connection. | 2 |
 | **10.2.5** | **Verify that** MCP servers enforce access control on every tool invocation, validating that the user's access token authorizes both the requested tool and the specific argument values supplied. | 2 |
-| **10.2.6** | **Verify that** MCP servers enforce single-use semantics server-side for state that must be consumed at most once. | 2 |
+| **10.2.6** | Requirement removed. | |
 | **10.2.7** | **Verify that** MCP servers only accept tokens explicitly issued for them and neither accept nor transit tokens issued for other services. | 1 |
-| **10.2.8** | **Verify that** MCP servers treat request state received from clients as attacker-controlled input, and that where such state influences authorization, resource access, or business logic, servers protect its integrity and reject state that fails verification. | 1 |
+| **10.2.8** | **Verify that** MCP servers treat request state received from clients as attacker-controlled input, and that where such state influences authorization, resource access, or business logic, servers protect its integrity, reject state that fails verification, and enforce single-use server-side where the state must be consumed at most once. | 1 |
 | **10.2.9** | **Verify that** MCP clients persisting OAuth client credentials associate those credentials with the authorization server that issued them, and re-register with the new authorization server rather than reusing credentials when the resource's authorization server changes. | 2 |
 
 ---
