@@ -73,7 +73,7 @@ Schema, message, and input validation must be enforced in both MCP servers and c
 | **10.4.14** | **Verify that** MCP implementations do not automatically dereference JSON Schema `$ref` values that resolve to network URIs, and that any opt-in external resolution is disabled by default and rejects loopback, link-local, and private network addresses. | 1 |
 | **10.4.15** | **Verify that** MCP implementations reject schemas that fail to validate due to an unresolved external `$ref` rather than treating them as permissive. | 2 |
 | **10.4.16** | **Verify that** MCP clients and gateways do not serve cached responses across authorization contexts and do not cache results of multi round-trip requests. | 2 |
-| **10.4.17** | **Verify that** MCP servers mark responses containing user-specific data as privately cacheable. | 2 |
+| **10.4.17** | **Verify that** MCP caches are not shared across authorization contexts, and that responses marked with a private cache scope are reused only within the authorization context that produced them. | 1 |
 | **10.4.18** | **Verify that** MCP servers do not use form-mode elicitation to request secrets or payment credentials, and that in URL-mode elicitation the user completing the flow is the same user who initiated it. | 2 |
 | **10.4.19** | **Verify that** MCP servers exclude end-user credentials and personal data from URL-mode elicitation URLs, and do not issue URLs that are pre-authenticated to a protected resource. | 1 |
 | **10.4.20** | **Verify that** MCP clients require explicit user consent and display the full URL before opening any URL-mode elicitation target, and do not pre-fetch the URL or its metadata. | 2 |
