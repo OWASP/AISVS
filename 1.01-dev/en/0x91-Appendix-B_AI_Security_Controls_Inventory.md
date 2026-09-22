@@ -397,11 +397,11 @@ Require human approval for high-impact actions and provide reliable, exercised s
 | Approval requests displaying canonicalized, complete action parameters (diffs, commands, recipients, amounts, resources, scopes) without truncation | C9.2.2 |
 | Trusted reversibility classification for each high-impact action (read-only, reversible, externally reversible, irreversible) | C9.2.3 |
 | Runtime enforcement of reversibility classifications (block, require approval, or restrict) | C9.2.4 |
-| Restriction and bounding of any self-modification capability (prompt rewriting, tool-list changes, parameter updates) | C9.2.5 |
+| Runtime-enforced boundaries on any self-modification capability (prompt rewriting, tool-list changes, parameter updates) that the agent cannot change or bypass | C9.2.5 |
 | AI-augmented review of planned high-risk actions, adding to (not replacing) the deterministic policy gate | C9.2.6 |
 | Protection of the AI-augmented review mechanism against prompt-injection bypass | C9.2.7 |
-| Approvals cryptographically bound to parameters, requester identity, execution context, and a single-use nonce | C9.2.8 |
-| Isolation of approval-issuing key material or credentials from the agent runtime | C9.2.9 |
+| Approvals cryptographically bound to parameters, requester identity, execution context, and a single-use nonce, and rejected if a bound value changes or the nonce is reused | C9.2.8 |
+| Isolation of approval-issuing key material or credentials so the agent runtime can neither read them nor use them to issue approvals | C9.2.9 |
 | Approval gates enforcing the highest-impact reversibility classification across action chains established outside the gated agent's control | C9.2.10 |
 | Blocking execution beyond an approved action chain until new approval enforces the highest-impact reversibility classification across the cumulative chain | C9.2.11 |
 | Manual kill-switch to immediately halt model inference and outputs | C9.6.1 |
