@@ -36,6 +36,8 @@ This glossary defines key AI, ML, and security terms used throughout the AISVS t
 
 * **Canary Deployment** – A deployment strategy that gradually routes a small percentage of traffic to a new model version to detect issues before full rollout.
 
+* **Canonicalization** – Converting data that can be written in more than one way, such as with different encodings, Unicode forms, escape sequences, or field orders, into a single standard form. When validation, signing, and display all use the canonical form, they see the same value, and alternate encodings cannot slip past checks. See also: NFC.
+
 * **Cedar** – An open-source policy language and evaluation engine for fine-grained permissions, originally created by Amazon. Used in implementing ABAC for AI systems.
 
 * **Certified Robustness** – A formal mathematical guarantee that a model's prediction will not change within a specified perturbation bound around an input, verified through techniques such as interval-bound propagation.
@@ -82,6 +84,8 @@ This glossary defines key AI, ML, and security terms used throughout the AISVS t
 
 * **Defensive Distillation** – A training technique where a model is trained on the soft probability outputs of another model to smooth decision boundaries and reduce susceptibility to adversarial perturbation.
 
+* **Deterministic Policy Gate** – A rule-based check, enforced by application logic or a policy engine rather than by a model, that allows, blocks, restricts, or requires approval for a proposed agent action. The same action and context always produce the same decision, and neither the model nor the content it processes can change the rules or override the decision. See also: PDP, Policy-as-Code.
+
 * **Differential Privacy** – A mathematically rigorous framework for releasing statistical information about datasets while protecting the privacy of individual data subjects, quantified by an epsilon (ε) privacy budget.
 
 * **DoS (Denial of Service)** – An attack that attempts to make a system unavailable by overwhelming it with requests or exhausting its resources.
@@ -101,6 +105,8 @@ This glossary defines key AI, ML, and security terms used throughout the AISVS t
 * **Embeddings** – Dense vector representations of data (text, images, etc.) that capture semantic meaning in a high-dimensional space.
 
 * **Excessive Agency** – A vulnerability class in which an AI agent is granted more capability, permission, or autonomy than its task requires, allowing benign or manipulated behavior to cause disproportionate harm. Mitigated by least privilege, scoped tools, and human-in-the-loop approval for high-impact actions.
+
+* **Execution Context** – The circumstances in which an agent action runs, such as the agent instance, session or action chain, and target host or environment. An approval bound to its execution context cannot be reused for the same action in a different context.
 
 * **Exfiltration** – The unauthorized transfer of data outside a system or security boundary. In AI systems, exfiltration paths include model outputs, covert channels in generated content, tool side effects, and memory or embedding leakage.
 
@@ -185,6 +191,8 @@ This glossary defines key AI, ML, and security terms used throughout the AISVS t
 * **Multi-agent System** – A system composed of multiple interacting AI agents, each with potentially different capabilities and goals.
 
 * **NFC (Normal Form Composed)** – A Unicode normalization form that decomposes characters and then recomposes them into a canonical representation, used to prevent encoding-based bypass attacks.
+
+* **Nonce** – A value used only once within a given scope, such as a random value, counter, or timestamp, included in signed or otherwise protected data so the receiver can detect and reject replays.
 
 * **Non-repudiation** – A security property ensuring that a party cannot credibly deny having performed an action. In AI systems, achieved through cryptographic signing of agent actions and audit log entries, enabling attribution of decisions to specific principals.
 
