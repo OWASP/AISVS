@@ -66,6 +66,7 @@ Two goals in this family. First: stop secrets, proprietary code, and personal da
 | **AC.3.4** | **Verify that** the AI tool enforces an instruction hierarchy, with system and developer messages taking precedence over untrusted repository content. This hierarchy has to hold across multi-turn conversations and tool-augmented workflows. | 1 |
 | **AC.3.5** | **Verify that** input length controls stop untrusted PR or repository content from crowding system instructions or safety directives out of the effective context window. Oversized inputs are rejected outright. Silent truncation is not acceptable. | 2 |
 | **AC.3.6** | **Verify that** prompts and AI responses are encrypted in transit and at rest, and retained per the data-classification policy. Tenants and projects are cryptographically separated from each other. | 3 |
+| **AC.3.7** | **Verify that** on-disk session records produced by approved AI coding agents are scanned for credential material on a defined schedule covering the full record retention window. | 2 |
 
 **Mappings & References:**
 
@@ -75,6 +76,7 @@ Two goals in this family. First: stop secrets, proprietary code, and personal da
 * **AC.3.4:** AISVS C2.1.2; OWASP LLM Top 10 (2025) LLM01; CISA Secure by Design.
 * **AC.3.5:** OWASP LLM Top 10 (2025) LLM10; AISVS C2.1.4.
 * **AC.3.6:** OWASP ASVS v5 V6 (Cryptography), V14 (Data Protection); ISO/IEC 27001:2022 A.8.24 (Use of Cryptography).
+* **AC.3.7:** OWASP LLM Top 10 (2025) LLM02 (Sensitive Information Disclosure); OWASP CI/CD Top 10 CICD-SEC-06 (Insufficient Credential Hygiene); ISO/IEC 27001:2022 A.8.12 (Data Leakage Prevention).
 
 ---
 
