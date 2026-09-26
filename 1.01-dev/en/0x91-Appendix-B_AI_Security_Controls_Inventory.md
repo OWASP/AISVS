@@ -206,6 +206,7 @@ Isolate models, tools, agents, and hardware workloads to contain failures and pr
 | Runtime enforcement of declared tool-manifest privileges and limits | C9.3.4 |
 | Isolation of untrusted-data processing from tool-calling capability | C9.3.5 |
 | Architectural separation of untrusted tool-output processing from agent operations | C9.3.6 |
+| Service-side enforcement of run, task, or tenant isolation on agent-writable state, including object names | C9.3.9 |
 | Least-privilege sandbox for locally launched MCP servers (restricted file system, network, system access) | C10.1.3 |
 | AI-specific runtime components not shared across environment boundaries (development, staging, production) | C3.4.1 |
 | Training and fine-tuning environments isolated from production | C3.4.2 |
