@@ -66,6 +66,7 @@ Two goals in this family. First: stop secrets, proprietary code, and personal da
 | **AC.3.4** | **Verify that** the AI tool enforces an instruction hierarchy, with system and developer messages taking precedence over untrusted repository content. This hierarchy has to hold across multi-turn conversations and tool-augmented workflows. | 1 |
 | **AC.3.5** | **Verify that** input length controls stop untrusted PR or repository content from crowding system instructions or safety directives out of the effective context window. Oversized inputs are rejected outright. Silent truncation is not acceptable. | 2 |
 | **AC.3.6** | **Verify that** prompts and AI responses are encrypted in transit and at rest, and retained per the data-classification policy. Tenants and projects are cryptographically separated from each other. | 3 |
+| **AC.3.7** | **Verify that** on-disk session records produced by approved AI coding agents are scanned for credential material on a defined schedule shorter than the record retention period. | 2 |
 
 **Mappings & References:**
 
@@ -75,6 +76,7 @@ Two goals in this family. First: stop secrets, proprietary code, and personal da
 * **AC.3.4:** AISVS C2.1.2; OWASP LLM Top 10 (2025) LLM01; CISA Secure by Design.
 * **AC.3.5:** OWASP LLM Top 10 (2025) LLM10; AISVS C2.1.4.
 * **AC.3.6:** OWASP ASVS v5 V6 (Cryptography), V14 (Data Protection); ISO/IEC 27001:2022 A.8.24 (Use of Cryptography).
+* **AC.3.7:** OWASP LLM Top 10 (2025) LLM02 (Sensitive Information Disclosure); OWASP CI/CD Top 10 CICD-SEC-06 (Insufficient Credential Hygiene); ISO/IEC 27001:2022 A.8.12 (Data Leakage Prevention).
 
 ---
 
@@ -316,7 +318,7 @@ Things go wrong eventually. When an AI-adjacent compromise (a prompt-injected bo
 | # | Description | Level |
 | --- | --- | --- |
 | **AC.14.1** | **Verify that** an incident-response playbook exists for AI-in-pipeline compromise. At minimum it covers: revoking AI-agent credentials, rotating every secret that touched the compromised workflow run, quarantining the compromised artifacts, notifying downstream consumers, notifying regulators where applicable, and preserving prompts, responses, and audit logs for forensics. | 1 |
-| **AC.14.2** | **Verify that** any secret that touched a workflow run associated with a suspicious PR, a prompt-injection event, or an AI-agent anomaly is automatically rotated, and that downstream issuers (cloud IAM, package registries, signing-key custodians) are notified of the rotation. | 1 |
+| **AC.14.2** | **Verify that** any secret that touched a workflow run associated with a suspicious PR, a prompt-injection event, or an AI-agent anomaly, or that is found in an agent session record, is automatically rotated, and that downstream issuers (cloud IAM, package registries, signing-key custodians) are notified of the rotation. | 1 |
 | **AC.14.3** | **Verify that** AI agent identities (keys, tokens, OIDC trust grants) can be rapidly revoked and quarantined, with a target time-to-revoke that is written down and tested at least once a year. | 2 |
 | **AC.14.4** | **Verify that** build provenance and AI BOM records are used during incident response to identify every downstream artifact produced under the suspect AI agent or the compromised pipeline run, so that recall, rebuild, or quarantine can be targeted. | 2 |
 | **AC.14.5** | **Verify that** automated remediation is tested in tabletop or live-fire exercises at least once a year. The scenarios include a prompt-injected reviewer bot, fork-PR secret exfiltration, and an AI-generated malicious workflow file. | 3 |
