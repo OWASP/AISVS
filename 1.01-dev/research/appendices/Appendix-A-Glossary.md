@@ -1,6 +1,8 @@
 # Appendix A: Glossary — Research Notes
 
 > **Source:** [`1.01-dev/en/0x90-Appendix-A_Glossary.md`](https://github.com/OWASP/AISVS/blob/main/1.01-dev/en/0x90-Appendix-A_Glossary.md)
+>
+> **Focused Update:** 2026-09-27 — corrected the protocol-downgrade and retired session-teardown references for [#1158](https://github.com/OWASP/AISVS/pull/1158); other glossary research unchanged.
 
 ## Overview
 
@@ -227,8 +229,8 @@ Terms used in AISVS chapters but not defined in the glossary. These should be ad
 | Retrieval-Based Grounding | C07 | Verification of model claims against authoritative retrieved sources (C07.2.3, C07.4.x) |
 | On-Behalf-Of Flow | C10 | OAuth delegation pattern where MCP server obtains downstream tokens rather than passing client tokens (C10.2.7) |
 | Dynamic Client Registration | C10 | MCP servers acting as OAuth proxies with per-client consent; prevents cached approval reuse (C10.4.9) |
-| Protocol Downgrade | C10 | Attack via header stripping (Mcp-Protocol-Version) on streamable-HTTP transports (C10.3.4) |
-| Session Teardown | C10 | Deterministic destruction of cached tokens, state, and resources on MCP session end (C10.2.6) |
+| Protocol Downgrade | C10 | Selection of a protocol version or legacy handshake below the client's configured security floor (C10.3.4), including compatibility retries |
+| Session Teardown | C10 (legacy) | Historical protocol-session cleanup concern; C10.2.6 is retired in 1.01 because MCP 2026-07-28 has no protocol sessions. Application-state lifecycle controls remain relevant. |
 | Intent Verification | C09 | Binding execution to user intent and hard constraints to prevent authorized-but-unintended actions (C09.2.x) |
 | Bias Probing | C01 | Systematic variation along single input dimensions to discover exploitable bias patterns (C01.3.3) |
 | RAG Credential Harvesting | C09, C10 | Agent using RAG or tool access to search for and collect credentials, secrets, or API keys inadvertently ingested into data stores (MITRE ATLAS AML.T0082) |

@@ -1,7 +1,13 @@
 # C10: Model Context Protocol (MCP) Security
 
 > **Source:** [`1.01-dev/en/0x10-C10-MCP-Security.md`](https://github.com/OWASP/AISVS/blob/main/1.01-dev/en/0x10-C10-MCP-Security.md)
-> **Requirements:** 25 | **Sections:** 4
+> **Requirements:** 39 active | **Sections:** 4
+>
+> **Focused Update:** 2026-09-27 — research synchronized with Otto Sulin's merged [MCP specification update (#1158)](https://github.com/OWASP/AISVS/pull/1158). Requirement text and levels follow the standard; this update does not change them.
+
+The baseline is [MCP revision 2026-07-28](https://modelcontextprotocol.io/specification/2026-07-28): 15 added requirements, four revised requirements, and retired ID 10.2.6. The three component-integrity requirements are unchanged. Earlier dated incident reports and implementation surveys below are historical context, not current product-support guarantees.
+
+Assessment evidence should identify deployed protocol and SDK versions and distinguish modern request handling from legacy compatibility. The [MCP Inspector](https://modelcontextprotocol.io/docs/2026-07-28/tools/inspector/protocol-eras) documents both eras; JSON Schema implementations such as [Ajv](https://ajv.js.org/security.html) and [jsonschema](https://python-jsonschema.readthedocs.io/en/stable/referencing/) expose relevant validation and resolver controls, but application integration still needs review. The L1 controls concern foundational validation and trust boundaries; L2 adds application state, cache, policy, and UI coordination. Independently versioned extensions and general OAuth controls deferred in #1158 are not new C10 requirements here.
 
 ## Control Objective
 
@@ -14,9 +20,9 @@ Ensure secure discovery, authentication, authorization, transport, and use of MC
 | Section | Title | Reqs | Page |
 |---------|-------|:----:|------|
 | C10.1 | Component Integrity | 3 | [C10-01-Component-Integrity](C10-01-Component-Integrity.md) |
-| C10.2 | Authentication & Authorization | 7 | [C10-02-Authentication-Authorization](C10-02-Authentication-Authorization.md) |
-| C10.3 | Secure Transport | 5 | [C10-03-Secure-Transport](C10-03-Secure-Transport.md) |
-| C10.4 | Schema, Message, and Input Validation | 10 | [C10-04-Schema-Message-Validation](C10-04-Schema-Message-Validation.md) |
+| C10.2 | Authentication & Authorization | 9 | [C10-02-Authentication-Authorization](C10-02-Authentication-Authorization.md) |
+| C10.3 | Secure Transport | 6 | [C10-03-Secure-Transport](C10-03-Secure-Transport.md) |
+| C10.4 | Schema, Message, and Input Validation | 21 | [C10-04-Schema-Message-Validation](C10-04-Schema-Message-Validation.md) |
 
 ---
 
