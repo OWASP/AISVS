@@ -2,7 +2,7 @@
 
 > **Source:** [`1.01-dev/en/0x91-Appendix-B_AI_Security_Controls_Inventory.md`](https://github.com/OWASP/AISVS/blob/main/1.01-dev/en/0x91-Appendix-B_AI_Security_Controls_Inventory.md)
 >
-> **Focused updates:** 2026-09-27 — synchronized counts and corrected NIST references, survey attribution, and a paper date. Other research remains under review in [#1109](https://github.com/OWASP/AISVS/issues/1109).
+> **Focused updates:** 2026-09-27 — synchronized counts and corrected NIST references, survey attribution and scope, and a paper date. Other research remains under review in [#1109](https://github.com/OWASP/AISVS/issues/1109).
 
 ## Overview
 
@@ -229,17 +229,17 @@ Overall adoption remains low — 94% of enterprises use AI in production, yet on
 | Enterprises using AI in production | 94% | CyberSecFeed AI Security Maturity Model |
 | Tech execs rating autonomous AI as high/essential priority | 97% | EY Autonomous AI Survey (Feb 2026) |
 | Orgs implementing any GenAI security controls | 47% | Microsoft Cyber Pulse AI Security Report |
-| Orgs enforcing AI security inline, at point of action | 23% | Industry aggregate |
+| Surveyed orgs enforcing AI security inline, at point of action | 23% | [Cybersecurity Insiders (2026)](https://www.cybersecurity-insiders.com/ai-risk-and-readiness-report-2026/) |
 | Orgs with comprehensive AI security governance | 25% | CSA AI Security & Governance Survey (Dec 2025) |
 | Orgs with advanced AI security strategy | 6% | Gartner (2026) |
-| Orgs with full security approval for AI agents | 14.4% | Gravitee State of AI Agent Security 2026 |
-| Orgs with real-time governance enforcement | 7% | Industry aggregate |
+| Surveyed orgs with full security approval for their entire AI-agent fleet | 14.4% | [Gravitee (2026)](https://www.gravitee.io/blog/state-of-ai-agent-security-2026-report-when-adoption-outpaces-control) |
+| Surveyed orgs with real-time governance enforcement | 7% | [Cybersecurity Insiders (2026)](https://www.cybersecurity-insiders.com/ai-risk-and-readiness-report-2026/) |
 | Dept-level AI initiatives without formal oversight | 52% | EY Autonomous AI Survey (Feb 2026) |
-| AI agents actively monitored/secured | 47.1% | Gravitee |
+| Average share of AI agents actively monitored or secured within surveyed orgs | 47.1% | [Gravitee (2026)](https://www.gravitee.io/blog/state-of-ai-agent-security-2026-report-when-adoption-outpaces-control) |
 | Models lacking security scanning | 67% | CyberSecFeed |
 | Models vulnerable to prompt attacks | 89% | CyberSecFeed |
 | Orgs using unvetted pre-trained models | 91% | CyberSecFeed |
-| Orgs reporting AI security incidents in past year | 88% | Gravitee |
+| Surveyed orgs reporting confirmed or suspected AI-agent security incidents in the past year | 88% | [Gravitee (2026)](https://www.gravitee.io/blog/state-of-ai-agent-security-2026-report-when-adoption-outpaces-control) |
 | Orgs with no visibility into AI data flows | 86% | HelpNetSecurity (March 2026) |
 | Confirmed/suspected sensitive data leak via unauthorized GenAI | 45% | EY (Feb 2026) |
 | Confirmed/suspected proprietary IP leak via unauthorized GenAI | 39% | EY (Feb 2026) |
