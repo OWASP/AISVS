@@ -4,7 +4,7 @@
 
 ## Overview
 
-The glossary defines 154 terms used throughout the AISVS, covering AI/ML concepts, security terminology, and domain-specific definitions. This research page cross-references every glossary term to the chapters that use it, identifies missing terms, flags definitions that could be improved, and tracks emerging terminology from the broader AI security community. Cross-references follow the AISVS **C01–C12** chapter structure: monitoring and logging terms map to **C12 (Monitoring and Logging)**, and explainability and human-oversight terms map to **C07 (Model Behavior)** for interpretability and **C09 (Orchestration and Agentic Action)** for oversight, kill-switches, and human-in-the-loop controls.
+The glossary defines 158 terms used throughout the AISVS, covering AI/ML concepts, security terminology, and domain-specific definitions. This research page cross-references every glossary term to the chapters that use it, identifies missing terms, flags definitions that could be improved, and tracks emerging terminology from the broader AI security community. Cross-references follow the AISVS **C01–C12** chapter structure: monitoring and logging terms map to **C12 (Monitoring and Logging)**, and explainability and human-oversight terms map to **C07 (Model Behavior)** for interpretability and **C09 (Orchestration and Agentic Action)** for oversight, kill-switches, and human-in-the-loop controls.
 
 As of July 2026, the analysis identifies 49 high-priority missing terms, 12 medium-priority missing terms, 12 definitions needing improvement, and 66 emerging terms from the 2025–2026 threat landscape that may warrant future inclusion. The [June 22 glossary revision](https://github.com/OWASP/AISVS/commits/main/1.01-dev/en/0x90-Appendix-A_Glossary.md) closed two previously tracked gaps by defining **System Prompt** and **Indirect Prompt Injection**, and added seven other security-relevant entries: **Alignment**, **DPoP**, **Excessive Agency**, **Inference**, **LLM**, **Sender-Constrained Token**, and **Trust Boundary**.
 
@@ -38,6 +38,7 @@ Every glossary term mapped to the AISVS chapters that reference or rely on it.
 | Blue-Green Deployment | C03 |
 | Byzantine Fault Tolerance | C04 |
 | Canary Deployment | C03 |
+| Canonicalization | C02, C09 |
 | Cedar | C05 |
 | Certified Robustness | C11 |
 | Chain of Thought | _(none — consider removing or linking to C07)_ |
@@ -61,6 +62,7 @@ Every glossary term mapped to the AISVS chapters that reference or rely on it.
 | Data Poisoning | C01, C06, C11 |
 | Defense-in-Depth | _(general principle, not cited by specific requirement)_ |
 | Defensive Distillation | C02 |
+| Deterministic Policy Gate | C09 |
 | Differential Privacy | C11 |
 | DoS | C02, C04, C09, C12 |
 | Downgrade (response) | C12 |
@@ -71,6 +73,7 @@ Every glossary term mapped to the AISVS chapters that reference or rely on it.
 | Embeddings | C05, C08 |
 | Embedding Inversion | C08 |
 | Excessive Agency | C07, C09 |
+| Execution Context | C09 |
 | Exfiltration | C08, C09, C10, C12 |
 | Explainability | C07 |
 | Fail-Closed / Fail-Open | C03, C09, C10 |
@@ -114,6 +117,7 @@ Every glossary term mapped to the AISVS chapters that reference or rely on it.
 | Multi-agent System | C08, C09, C11 |
 | Non-repudiation | C09, C12 |
 | NFC | C02 |
+| Nonce | C09, C10 |
 | NVLink | C04 |
 | OAuth 2.1 | C10 |
 | OIDC | C05 |
