@@ -344,6 +344,7 @@ Test for and defend against evasion, membership inference, model inversion, extr
 | Evaluation against known adversarial attack techniques relevant to the modality | C11.1.3 |
 | Hardening of models against adversarial inputs | C11.1.4 |
 | Automated evaluator that measures harmful-content rate and flags regressions beyond a threshold | C11.1.5 |
+| Adversarial evaluation results reported alongside no-attack results for the same tasks | C11.1.6 |
 | Suppression of directly returned model-inferred sensitive attributes | C11.2.1 |
 | Output calibration to reduce overconfident predictions exploitable by inference attacks | C11.2.3 |
 | Differentially-private optimization for training on sensitive datasets | C11.2.4 |
