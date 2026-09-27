@@ -1,7 +1,7 @@
 # C09: Orchestration & Agentic Security
 
 > **Source:** [`1.01-dev/en/0x10-C09-Orchestration-and-Agentic-Action.md`](https://github.com/OWASP/AISVS/blob/main/1.01-dev/en/0x10-C09-Orchestration-and-Agentic-Action.md)
-> **Requirements:** 36 | **Sections:** 6
+> **Requirements:** 37 | **Sections:** 6
 
 ## Control Objective
 
@@ -16,7 +16,7 @@ This chapter addresses ensuring autonomous and multi-agent systems execute only 
 |---------|-------|:----:|------|
 | C9.1 | Execution Budgets, Loop Control, and Circuit Breakers | 3 | [C09-01-Execution-Budgets](C09-01-Execution-Budgets.md) |
 | C9.2 | High-Impact Action Approval and Irreversibility Controls | 11 | [C09-02-High-Impact-Action-Approval](C09-02-High-Impact-Action-Approval.md) |
-| C9.3 | Component Isolation and Tool Authorization | 8 | [C09-03-Tool-and-Plugin-Isolation](C09-03-Tool-and-Plugin-Isolation.md) |
+| C9.3 | Component Isolation and Tool Authorization | 9 | [C09-03-Tool-and-Plugin-Isolation](C09-03-Tool-and-Plugin-Isolation.md) |
 | C9.4 | Agent and Orchestrator Identity | 4 | [C09-04-Agent-Identity-and-Audit](C09-04-Agent-Identity-and-Audit.md) |
 | C9.5 | Agent Authorization, Delegation, and Continuous Enforcement | 7 | [C09-05-Agent-Authorization-Delegation](C09-05-Agent-Authorization-Delegation.md) |
 | C9.6 | Shutdown and Graceful Degradation | 3 | [C09-06-Shutdown-Graceful-Degradation](C09-06-Shutdown-Graceful-Degradation.md) |
