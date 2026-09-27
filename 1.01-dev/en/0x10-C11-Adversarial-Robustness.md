@@ -17,6 +17,7 @@ Model resilience to manipulated inputs designed to cause misclassification or po
 | **11.1.3** | **Verify that** models are evaluated against known adversarial attack techniques relevant to their modality. | 1 |
 | **11.1.4** | **Verify that** models are hardened against adversarial inputs. | 2 |
 | **11.1.5** | **Verify that** an automated evaluator measures harmful-content rate and flags regressions beyond a defined threshold. | 3 |
+| **11.1.6** | **Verify that** adversarial evaluation results are reported alongside results for the same tasks, scored the same way, with no attack applied. | 2 |
 
 ---
 
