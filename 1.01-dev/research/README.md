@@ -177,7 +177,7 @@ The appendices provide supporting material including a glossary of AI security t
 | Appendix | Page | Updated |
 |----------|------|:-------:|
 | A: Glossary | [Appendix A Glossary](appendices/Appendix-A-Glossary.md) | 2026-09-27 |
-| B: AI Security Controls Inventory | [Appendix B Controls Inventory](appendices/Appendix-B-Controls-Inventory.md) | 2026-07-12 |
+| B: AI Security Controls Inventory | [Appendix B Controls Inventory](appendices/Appendix-B-Controls-Inventory.md) | 2026-09-27 |
 | C: AI-Assisted Secure Coding (69 reqs) | [Appendix C AI Secure Coding](appendices/Appendix-C-AI-Secure-Coding.md) | 2026-09-27 |
 
 ---
