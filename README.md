@@ -128,7 +128,7 @@ Since identifiers may change between versions of the standard, it is preferable 
 
 Note: The `v` preceding the version number should always be lowercase.
 
-If identifiers are used without including the `v<version>` element, they should be assumed to refer to the latest AISVS content. As the standard grows and changes, this becomes problematic, which is why writers or developers should include the version element.
+Identifiers without the `v<version>` element refer to the latest released minor version of AISVS, as defined in [RELEASE.md](RELEASE.md#referencing-across-versions). Include the version element in reports, tools, and other references that need to remain stable across releases.
 
 ---
 
