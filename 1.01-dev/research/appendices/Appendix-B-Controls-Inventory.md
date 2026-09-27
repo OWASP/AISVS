@@ -2,7 +2,7 @@
 
 > **Source:** [`1.01-dev/en/0x91-Appendix-B_AI_Security_Controls_Inventory.md`](https://github.com/OWASP/AISVS/blob/main/1.01-dev/en/0x91-Appendix-B_AI_Security_Controls_Inventory.md)
 >
-> **Counts synchronized:** 2026-09-27 — requirement counts only; other research is unchanged.
+> **Focused updates:** 2026-09-27 — synchronized counts and corrected NIST references, survey attribution, and a paper date. Other research remains under review in [#1109](https://github.com/OWASP/AISVS/issues/1109).
 
 ## Overview
 
@@ -70,6 +70,8 @@ Industry adoption data drawn from multiple sources including the Gravitee State 
 
 How the 19 AD families map to major external AI security frameworks. As of July 2026, the most actionable frameworks for control-level mapping are MITRE SAFE-AI (100 NIST 800-53 controls), CSA AICM (243 control objectives) plus the new CSAI Catastrophic Risk Annex, OWASP LLM Top 10 (2025), the OWASP Agentic AI Top 10 (2026), NIST IR 8596 (initial preliminary draft; comment period closed January 30, 2026), ISO/IEC 27090 (FDIS approval stage), and NIST's SP 800-53 Control Overlays for Securing AI Systems (COSAiS) project, which has begun publishing annotated outlines for predictive AI and is developing separate single-agent and multi-agent overlays. MITRE's 2026 ATLAS updates continue shifting attention from model-centric attacks to execution-layer exposure, with threat modeling now accounting for autonomous workflow chaining, delegated authority persistence, tool metadata poisoning, and API-level orchestration risk.
 
+The NIST column uses category identifiers from [CSF 2.0](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf).
+
 | Family | MITRE ATLAS Technique/Mitigation | NIST IR 8596 (Cyber AI Profile) | CSA AICM Domain | OWASP LLM Top 10 (2025) | OWASP Agentic Top 10 (2026) | EU AI Act |
 |--------|--------------------------------|-------------------------------|-----------------|------------------------|-----------------------------|-----------|
 | AD.1 Authentication & Identity | Mitigations for AML.T0053 (AI Agent Tool Invocation), AML.T0098 (Agent Tool Credential Harvesting) | PR.AA (Identity Management) | Identity & Access Management | — | ASI03 (Identity & Privilege Abuse) | — |
@@ -83,13 +85,13 @@ How the 19 AD families map to major external AI security frameworks. As of July 
 | AD.9 Rate Limiting, Budgets & Resource Control | AML.T0029 (Denial of AI Service), AML.T0034 (Cost Harvesting) | PR.IR | Model Security | LLM10 (Unbounded Consumption) | ASI08 (Cascading Failures) | Art. 15 §4 |
 | AD.10 Sandboxing & Workload Isolation | AML.T0080 (AI Agent Context Poisoning), AML.T0101 (Data Destruction via Agent Tool) | PR.PS | — | LLM06 (Excessive Agency) | ASI02 (Tool Misuse & Exploitation) | — |
 | AD.11 Network & Egress Control | — | PR.IR | — | — | — | — |
-| AD.12 Supply Chain & Artifact Integrity | AML.T0020, AML.T0084.002 (Activation Triggers), AML.T0099 (Agent Tool Data Poisoning) | ID.SC (Supply Chain) | Supply Chain Mgmt | LLM03 (Supply Chain) | ASI04 (Agentic Supply Chain Vulnerabilities) | Annex IV §2 |
+| AD.12 Supply Chain & Artifact Integrity | AML.T0020, AML.T0084.002 (Activation Triggers), AML.T0099 (Agent Tool Data Poisoning) | GV.SC (Cybersecurity Supply Chain Risk Management) | Supply Chain Mgmt | LLM03 (Supply Chain) | ASI04 (Agentic Supply Chain Vulnerabilities) | Annex IV §2 |
 | AD.13 Model Lifecycle, Deployment & Rollback | AML.T0020 | PR.PS (Platform Security) | — | — | — | Annex IV §6, §9 |
 | AD.14 Training Data Integrity & Governance | AML.T0020 (Poison Training Data), AML.T0019 (Publish Poisoned Datasets) | ID.AM, PR.DS | Data Security & Privacy | LLM04 (Data & Model Poisoning) | — | Art. 10, Annex IV §2 |
 | AD.15 Memory, Embeddings & RAG Security | AML.T0070 (RAG Poisoning), AML.T0080 (AI Agent Context Poisoning) | PR.DS, DE.CM | Data Security & Privacy; Model Security | LLM08 (Vector & Embedding Weaknesses) | ASI06 (Memory & Context Manipulation) | Art. 15 |
 | AD.16 Adversarial Robustness & Privacy Defense | AML.T0020, AML.T0024, AML.T0051, AML.T0059 | DE.CM, DE.AE, PR.DS | Model Security; Data Security & Privacy | LLM01, LLM02 (Sensitive Info Disclosure), LLM09 (Misinformation) | ASI01, ASI10 (Rogue Agents) | Art. 10, Art. 15 §5, Annex IV §2, §5 |
 | AD.17 Logging & Audit | — | DE.CM (Continuous Monitoring) | — | — | — | Art. 12 |
-| AD.18 Monitoring, Detection & Incident Response | AML.T0029 | DE.CM, DE.AE, RS.RP | — | LLM10 (Unbounded Consumption) | ASI10 (Rogue Agents) | Art. 15 §4, Annex IV §9 |
+| AD.18 Monitoring, Detection & Incident Response | AML.T0029 | DE.CM, DE.AE, RS.MA | — | LLM10 (Unbounded Consumption) | ASI10 (Rogue Agents) | Art. 15 §4, Annex IV §9 |
 | AD.19 Human Oversight & Shutdown Control | — | GV.RM (Risk Management) | Transparency & Accountability | LLM06 (Excessive Agency) | ASI09 (Human-Agent Trust Exploitation) | Art. 14 |
 
 **Key external frameworks referenced:**
@@ -265,7 +267,7 @@ Overall adoption remains low — 94% of enterprises use AI in production, yet on
 | Remote MCP servers exposing tools with no authentication | ~40% | Adversa AI MCP security roundup (June 4, 2026) |
 | Exposed MCP servers carrying CVSS 9.8 vulnerabilities | 1,467 | Trend Micro, via Adversa AI roundup (June 2026) |
 | MCP CVEs assigned via one automated taint-analysis study (VIPER-MCP) | 67 | arXiv 2605.21392 (May 20, 2026) |
-| Commercial LLM APIs sharing prompt caches globally across users | 7 of 8 caching APIs | Stanford prompt-cache audit, arXiv 2502.07776 (Feb 2026) |
+| Commercial LLM APIs sharing prompt caches globally across users | 7 of 8 caching APIs | Stanford prompt-cache audit, arXiv 2502.07776 (Feb 2025) |
 | Documents needed to backdoor an LLM regardless of model size | ~250 | Anthropic / UK AISI / Alan Turing (Oct 2025) |
 | Orgs lacking advanced AI security maturity required for autonomous agents | 92% | Salt Security 1H 2026 State of AI and API Security Report |
 | Orgs essentially blind to non-human (agent/API) traffic | 48.9% | Salt Security 1H 2026 |
@@ -281,7 +283,7 @@ Overall adoption remains low — 94% of enterprises use AI in production, yet on
 
 **Maturity distribution** (CyberSecFeed 5-level model): Level 0 (Unaware) 34%, Level 1 (Initial) 28%, Level 2 (Developing) 23%, Level 3 (Managed) 12%, Level 4 (Optimized) 3%.
 
-**The velocity paradox:** EY describes the structural mismatch where 73% of orgs deploy AI tools while only 7% govern them in real time. Gartner forecasts 40% of enterprise applications will feature task-specific AI agents by 2026, but only 6% of organizations have an advanced AI security strategy. Organizations with formal GenAI governance policies reduce data leakage incidents by up to 46% compared to those without controls, suggesting the gap is both measurable and remediable. A CSA/Google Cloud study (December 2025) found governance maturity is the strongest predictor of AI readiness — organizations with comprehensive policies are nearly twice as likely to report early agentic AI adoption (46%) compared to those with partial guidelines (25%).
+**The velocity paradox:** A [Cybersecurity Insiders survey](https://www.cybersecurity-insiders.com/ai-risk-and-readiness-report-2026/) found that 73% of respondents' organizations had deployed AI tools, while only 7% had governance enforcing security and policy in real time. Gartner forecasts 40% of enterprise applications will feature task-specific AI agents by 2026, but only 6% of organizations have an advanced AI security strategy. Organizations with formal GenAI governance policies reduce data leakage incidents by up to 46% compared to those without controls, suggesting the gap is both measurable and remediable. A CSA/Google Cloud study (December 2025) found governance maturity is the strongest predictor of AI readiness — organizations with comprehensive policies are nearly twice as likely to report early agentic AI adoption (46%) compared to those with partial guidelines (25%).
 
 **The authenticated-rogue-agent problem:** Salt Security's 1H 2026 *State of AI and API Security* report (327 security professionals, April 8, 2026) reframes the runtime gap in identity terms. 92% of organizations still lack the advanced security maturity needed to defend agentic environments; 48.9% are effectively blind to non-human traffic and 48.3% cannot reliably tell legitimate AI agents apart from malicious bots, yet 99% of attack attempts Salt Labs observed in this period originated from authenticated sources — which now increasingly means rogue agents operating with valid credentials, no rate limiting, and no behavioral guardrails. 78.6% of security leaders report increased executive scrutiny of AI security risks, only 23.5% find their legacy security tools effective against agent-driven threats, and 47% of organizations have already delayed a production release over agent-exposed API security. Combined with the EMA December 2025 finding that 79% of organizations with 500+ employees deploying agentic AI lack formal security policies, only 17% continuously monitor agent-to-agent (A2A) interactions, and only 20% have a tested AI incident-response plan, the operational picture is consistent: agent identity, agent-to-agent traffic, and agent-driven API surface are the under-instrumented frontier for AD.1, AD.2, AD.9, AD.17, AD.18, and AD.19.
 
