@@ -22,8 +22,8 @@ Verify the identity of users, agents, services, edge devices, and MCP clients/se
 | MCP per-request access-token validation (not transport security alone) | C10.2.1 |
 | MCP access-token claim validation (issuer, audience, expiration, scope) per OAuth 2.1 | C10.2.2 |
 | MCP resource servers do not store or persist access tokens or user credentials | C10.2.3 |
-| Removal of all MCP session artifacts on session termination | C10.2.6 |
-| MCP servers accept only tokens explicitly issued for them | C10.2.7 |
+| MCP servers accept only tokens explicitly issued for them, and do not pass tokens for other services to downstream APIs | C10.2.7 |
+| MCP clients bind persisted OAuth client credentials to the issuing authorization server | C10.2.9 |
 | Sender-constrained MCP access tokens (mTLS or DPoP) | C10.3.5 |
 
 **Common pitfalls:** reusing end-user credentials for agent-to-agent calls; not rotating agent credentials on suspected compromise; treating transport security as a substitute for per-request token validation.
@@ -65,6 +65,8 @@ Keep data within its authorization and tenancy boundaries as it flows through AI
 | Classification labels propagated to downstream resources (embeddings, prompt caches, model outputs) | C5.2.7 |
 | Cross-tenant isolation in shared model serving (fine-tuning, inference, embedding operations) | C5.3.1 |
 | Cross-tenant isolation across shared compute (hardware partitioning, confidential computing, or dedicated allocation) | C5.3.2 |
+| Cached MCP responses marked with a private cache scope reused only within the authorization context that produced them, and no caching of multi round-trip request results | C10.4.16 |
+| Server-side marking of cacheable MCP results containing user-specific or authorization-filtered data with a private cache scope | C10.4.17 |
 
 **Common pitfalls:** dropping classification labels when data is embedded or cached; assuming logical multi-tenancy is sufficient against side channels in shared inference caches.
 
@@ -81,6 +83,8 @@ Protect data and secrets at rest, in transit, and in the model's observable cont
 | Encryption of locally stored model weights and sensitive parameters using hardware-backed key stores or secure enclaves | C4.3.4 |
 | Encryption at rest of models packaged in mobile, IoT, or embedded apps, decrypted only inside a trusted runtime or secure enclave | C4.3.5 |
 | Secrets and credentials kept out of the model's observable context (context window, system prompts, tool-call parameters) | C9.5.4 |
+| Secrets and payment credentials never requested through form-mode MCP elicitation, with the user completing a URL-mode flow verified as the user who initiated it | C10.4.18 |
+| End-user credentials and personal data excluded from URL-mode MCP elicitation URLs, and no URL pre-authenticated to a protected resource | C10.4.19 |
 
 **Common pitfalls:** encrypting the database but not model checkpoints or embeddings; leaving model weights extractable from an app package; exposing API keys inside tool-call parameters.
 
@@ -101,6 +105,10 @@ Verify authenticity and detect tampering of models, artifacts, messages, tool de
 | Integrity protection of agent state persisted between invocations | C9.4.4 |
 | Signed MCP tool responses with a unique nonce and timestamp for replay defense | C10.4.6 |
 | Tool-definition snapshotting with re-approval required on any change before invocation | C10.4.8 |
+| Integrity protection of MCP `requestState` that influences authorization, resource access, or business logic, rejecting state that fails verification | C10.2.8 |
+| Server-side single-use enforcement for MCP `requestState` that must be consumed at most once | C10.2.10 |
+| Server-side validation that mirrored MCP request headers match the request body after decoding | C10.4.12 |
+| Client-side rejection of tool definitions carrying invalid mirrored-header annotations, scoped to the affected tool | C10.4.11 |
 | Watermarking of AI-generated media to prove it was AI-generated | C7.4.4 |
 
 **Common pitfalls:** using mutable tags instead of immutable digests; not re-verifying tool definitions between MCP invocations; missing replay protection on tool responses.
@@ -130,6 +138,9 @@ Validate, normalize, and constrain all inputs (including tool, MCP, and retrieve
 | Rejection of unrecognized or oversized MCP function-call parameters | C10.4.3 |
 | Strict MCP schema validation | C10.4.4 |
 | Maximum MCP payload size limits | C10.4.5 |
+| Resource bounds on MCP schema validation (maximum depth, element cap, or per-validation time budget) | C10.4.13 |
+| No automatic dereferencing of JSON Schema `$ref` values resolving to network URIs, with opt-in resolution disabled by default and internal address ranges rejected | C10.4.14 |
+| Rejection, rather than permissive treatment, of MCP schemas that fail to validate because an external `$ref` is unresolved | C10.4.15 |
 | Anomaly detection on external or untrusted inputs before inference | C11.4.1 |
 | Gating actions on inputs flagged as anomalous | C11.4.2 |
 
@@ -208,6 +219,7 @@ Isolate models, tools, agents, and hardware workloads to contain failures and pr
 | Architectural separation of untrusted tool-output processing from agent operations | C9.3.6 |
 | Service-side enforcement of run, task, or tenant isolation on agent-writable state, including object names | C9.3.9 |
 | Least-privilege sandbox for locally launched MCP servers (restricted file system, network, system access) | C10.1.3 |
+| URL-mode MCP elicitation targets opened so that neither the client nor the model can observe page contents or user input | C10.4.21 |
 | AI-specific runtime components not shared across environment boundaries (development, staging, production) | C3.4.1 |
 | Training and fine-tuning environments isolated from production | C3.4.2 |
 
@@ -225,6 +237,7 @@ Control network boundaries, transport security, and traffic flow for AI workload
 | stdio MCP transport restricted to controlled local environments | C10.3.2 |
 | Independent Origin and Host header validation on HTTP-based transports (DNS rebinding defense) | C10.3.3 |
 | MCP client minimum protocol-version enforcement (downgrade defense) | C10.3.4 |
+| MCP intermediaries confirm the protocol version requires header and body validation before enforcing policy on mirrored request headers | C10.3.6 |
 | Accelerator interconnects restricted to approved topologies and authenticated endpoints | C4.2.5 |
 
 **Common pitfalls:** exposing stdio or SSE transports beyond the local host; skipping Origin/Host validation and enabling DNS rebinding; accepting downgraded protocol versions.
@@ -410,6 +423,7 @@ Require human approval for high-impact actions and provide reliable, exercised s
 | Kill-switch commands delivered through an out-of-band channel isolated from the agent runtime | C9.6.3 |
 | Explicit consent dialogue and cancellation option on installation of a local MCP server | C10.4.7 |
 | MCP client consent and authorization bound to the approved server connection endpoint, with user re-approval before further interaction after an endpoint change | C10.4.10 |
+| Explicit user consent and full-URL display before opening a URL-mode MCP elicitation target, with no pre-fetch of the URL or its metadata | C10.4.20 |
 
 **Common pitfalls:** documenting a high-risk action policy never wired to a runtime gate; binding approval to parameters without binding to identity or context; defaulting to fail-open when the approver does not respond; assuming an in-band kill-switch will work against a compromised agent; implementing a kill-switch that is never exercised.
 
