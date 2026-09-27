@@ -22,9 +22,9 @@ The standard is organized into 12 chapters spanning the full AI application secu
 | C8 | Memory, Embeddings & Vector Database Security | 11 | [C08](chapters/C08-Memory-and-Embeddings/C08-Memory-and-Embeddings.md) | [3 sections](#c8-memory-embeddings-vector-database-security) | 2026-09-25 |
 | C9 | Orchestration & Agentic Security | 37 | [C09](chapters/C09-Orchestration-and-Agents/C09-Orchestration-and-Agents.md) | [6 sections](#c9-orchestration-agentic-security) | 2026-09-27 |
 | C10 | Model Context Protocol (MCP) Security | 39 | [C10](chapters/C10-MCP-Security/C10-MCP-Security.md) | [4 sections](#c10-model-context-protocol-mcp-security) | 2026-09-27 |
-| C11 | Adversarial Robustness | 18 | [C11](chapters/C11-Adversarial-Robustness/C11-Adversarial-Robustness.md) | [4 sections](#c11-adversarial-robustness) | 2026-09-07 |
+| C11 | Adversarial Robustness | 19 | [C11](chapters/C11-Adversarial-Robustness/C11-Adversarial-Robustness.md) | [4 sections](#c11-adversarial-robustness) | 2026-09-27 |
 | C12 | Monitoring, Logging & Anomaly Detection | 21 | [C12](chapters/C12-Monitoring-and-Logging/C12-Monitoring-and-Logging.md) | [5 sections](#c12-monitoring-logging-anomaly-detection) | 2026-07-14 |
-| | **Total** | **212** | **59 pages** | | |
+| | **Total** | **213** | **59 pages** | | |
 
 Counts reflect active requirements covered by the research pages; retired IDs are excluded. Remaining research review and synchronization with the 1.01 standard is tracked in [#1109](https://github.com/OWASP/AISVS/issues/1109).
 
