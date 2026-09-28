@@ -25,7 +25,7 @@ AI tooling has to slot into the existing SSDLC without weakening any of the secu
 
 * **AC.1.1:** NIST SSDF PO.1 (Define Security Requirements for Software Development); ISO/IEC 42001 Clauses 6, 8; OWASP SAMM Strategy & Metrics (SM), Policy & Compliance (PC).
 * **AC.1.2:** NIST SSDF PW.1, PW.7; OWASP SAMM Education & Guidance (EG); ISO/IEC 5338 Clause 6.
-* **AC.1.3:** MITRE ATLAS (Reconnaissance & Initial Access tactics); NIST AI 600-1 GOVERN; OWASP LLM Top 10 (2025) LLM03; OWASP Agentic Top 10 (2026) ASI04.
+* **AC.1.3:** MITRE ATLAS (Reconnaissance & Initial Access tactics); NIST AI 600-1 GOVERN; OWASP LLM Top 10 (2026) LLM04; OWASP Agentic Top 10 (2026) ASI04.
 * **AC.1.4:** NIST AI RMF MEASURE; ISO/IEC 42001 Clause 9; OWASP SAMM Strategy & Metrics (SM).
 
 ---
@@ -44,8 +44,8 @@ Do not adopt an AI coding tool until it has been evaluated. Three areas in parti
 
 **Mappings & References:**
 
-* **AC.2.1:** OWASP LLM Top 10 (2025) LLM01, LLM06; OWASP Agentic Top 10 (2026) ASI01, ASI02, ASI03; AISVS C9; MITRE ATLAS (Threat modeling).
-* **AC.2.2:** OWASP LLM Top 10 (2025) LLM03; OWASP Agentic Top 10 (2026) ASI04; NIST SSDF PO.1, PO.5; ISO/IEC 42001 Clause 8.
+* **AC.2.1:** OWASP LLM Top 10 (2026) LLM01, LLM03; OWASP Agentic Top 10 (2026) ASI01, ASI02, ASI03; AISVS C9; MITRE ATLAS (Threat modeling).
+* **AC.2.2:** OWASP LLM Top 10 (2026) LLM04; OWASP Agentic Top 10 (2026) ASI04; NIST SSDF PO.1, PO.5; ISO/IEC 42001 Clause 8.
 * **AC.2.3:** MITRE ATLAS (Adversarial ML testing); AISVS C2.1, C11.1; NIST AI 600-1 MEASURE.
 * **AC.2.4:** ISO/IEC 42001 Clause 9.2; NIST AI RMF GOVERN.
 
@@ -70,13 +70,13 @@ Two goals in this family. First: stop secrets, proprietary code, and personal da
 
 **Mappings & References:**
 
-* **AC.3.1:** OWASP LLM Top 10 (2025) LLM02 (Sensitive Information Disclosure); OWASP ASVS v5 V14 (Data Protection); ISO/IEC 27001:2022 A.8.12 (Data Leakage Prevention).
-* **AC.3.2:** AISVS C2.2; OWASP LLM Top 10 (2025) LLM02; NIST SSDF PW.3.
-* **AC.3.3:** AISVS C2.1; OWASP LLM Top 10 (2025) LLM01; OWASP Agentic Top 10 (2026) ASI06; MITRE ATLAS (Indirect prompt injection).
-* **AC.3.4:** AISVS C2.1.6; OWASP LLM Top 10 (2025) LLM01; CISA Secure by Design.
-* **AC.3.5:** OWASP LLM Top 10 (2025) LLM10; AISVS C2.1.4.
+* **AC.3.1:** OWASP LLM Top 10 (2026) LLM02 (Sensitive Information Disclosure); OWASP ASVS v5 V14 (Data Protection); ISO/IEC 27001:2022 A.8.12 (Data Leakage Prevention).
+* **AC.3.2:** AISVS C2.2; OWASP LLM Top 10 (2026) LLM02; NIST SSDF PW.3.
+* **AC.3.3:** AISVS C2.1; OWASP LLM Top 10 (2026) LLM01; OWASP Agentic Top 10 (2026) ASI06; MITRE ATLAS (Indirect prompt injection).
+* **AC.3.4:** AISVS C2.1.6; OWASP LLM Top 10 (2026) LLM01; CISA Secure by Design.
+* **AC.3.5:** OWASP LLM Top 10 (2026) LLM06; AISVS C2.1.4.
 * **AC.3.6:** OWASP ASVS v5 V11 (Cryptography), V14 (Data Protection); ISO/IEC 27001:2022 A.8.24 (Use of Cryptography).
-* **AC.3.7:** OWASP LLM Top 10 (2025) LLM02 (Sensitive Information Disclosure); OWASP CI/CD Top 10 CICD-SEC-06 (Insufficient Credential Hygiene); ISO/IEC 27001:2022 A.8.12 (Data Leakage Prevention).
+* **AC.3.7:** OWASP LLM Top 10 (2026) LLM02 (Sensitive Information Disclosure); OWASP CI/CD Top 10 CICD-SEC-06 (Insufficient Credential Hygiene); ISO/IEC 27001:2022 A.8.12 (Data Leakage Prevention).
 
 ---
 
@@ -117,7 +117,7 @@ Auditors, defenders, and the developers themselves need to be able to see why a 
 **Mappings & References:**
 
 * **AC.5.1:** ISO/IEC 42001 Clause 7.5 (Documented Information); OWASP ASVS v5 V16 (Security Logging and Error Handling); NIST SP 800-218A (Generative AI logging guidance).
-* **AC.5.2:** NIST AI RMF MEASURE; OWASP LLM Top 10 (2025) LLM03.
+* **AC.5.2:** NIST AI RMF MEASURE; OWASP LLM Top 10 (2026) LLM04.
 * **AC.5.3:** ISO/IEC 27001:2022 A.8.15 (Logging); NIST AI 600-1 MEASURE; ISO/IEC 42001 (traceability).
 
 ---
@@ -137,7 +137,7 @@ Improve model security over time. Watch for negative drift. Keep red-teaming the
 **Mappings & References:**
 
 * **AC.6.1:** NIST AI RMF MANAGE; ISO/IEC 42001 Clause 10; OWASP SAMM Defect Management (DM).
-* **AC.6.2:** OWASP LLM Top 10 (2025) LLM03; NIST SSDF PO.3.
+* **AC.6.2:** OWASP LLM Top 10 (2026) LLM04; NIST SSDF PO.3.
 * **AC.6.3:** MITRE ATLAS (Adversarial ML lifecycle); NIST AI 600-1 MEASURE 2.7; OWASP SAMM Security Testing (ST).
 * **AC.6.4:** ISO/IEC 42001 Clause 9.1; NIST AI RMF MEASURE.
 
@@ -245,12 +245,12 @@ AI code-review bots, PR-comment bots, MCP-driven assistants (Model Context Proto
 
 **Mappings & References:**
 
-* **AC.11.1:** AISVS C2.1; OWASP LLM Top 10 (2025) LLM01; OWASP Agentic Top 10 (2026) ASI01, ASI06.
-* **AC.11.2:** AISVS C2.1; OWASP LLM Top 10 (2025) LLM01; OWASP Agentic Top 10 (2026) ASI01.
-* **AC.11.3:** AISVS C7.1; OWASP LLM Top 10 (2025) LLM05; OWASP Agentic Top 10 (2026) ASI02, ASI05.
+* **AC.11.1:** AISVS C2.1; OWASP LLM Top 10 (2026) LLM01; OWASP Agentic Top 10 (2026) ASI01, ASI06.
+* **AC.11.2:** AISVS C2.1; OWASP LLM Top 10 (2026) LLM01; OWASP Agentic Top 10 (2026) ASI01.
+* **AC.11.3:** AISVS C7.1; OWASP LLM Top 10 (2026) LLM10; OWASP Agentic Top 10 (2026) ASI02, ASI05.
 * **AC.11.4:** AISVS C9.3; OWASP Agentic Top 10 (2026) ASI02, ASI03, ASI05; NIST SP 800-204D (Workload isolation).
 * **AC.11.5:** AISVS C9.5, C5.2.5; OWASP ASVS v5 V8 (Authorization); OWASP Agentic Top 10 (2026) ASI02, ASI03.
-* **AC.11.6:** OWASP ASVS v5 V16 (Security Logging and Error Handling); OWASP LLM Top 10 (2025) LLM02; ISO/IEC 27001:2022 A.8.15, A.8.16.
+* **AC.11.6:** OWASP ASVS v5 V16 (Security Logging and Error Handling); OWASP LLM Top 10 (2026) LLM02; ISO/IEC 27001:2022 A.8.15, A.8.16.
 * **AC.11.7:** GitHub Security Lab "Preventing pwn requests" series (Parts 1-4); OWASP Agentic Top 10 (2026) ASI01, ASI03, ASI09; OWASP CI/CD Top 10 CICD-SEC-01.
 * **AC.11.8:** MITRE ATLAS (Indirect prompt injection); AISVS C2.1, C11.1; OWASP SAMM Security Testing (ST).
 
@@ -303,10 +303,10 @@ The previous families were about defending your own AI from misuse. This one fli
 
 * **AC.13.1:** OWASP CI/CD Top 10 CICD-SEC-01; NIST AI RMF MANAGE; MITRE ATLAS (Reconnaissance).
 * **AC.13.2:** GitHub Docs (Approving workflow runs from public forks); OWASP CI/CD Top 10 CICD-SEC-01; NIST SSDF PW.4.
-* **AC.13.3:** OWASP LLM Top 10 (2025) LLM03; OWASP CI/CD Top 10 CICD-SEC-03 (Dependency Chain Abuse); NIST SSDF PW.4.
+* **AC.13.3:** OWASP LLM Top 10 (2026) LLM04; OWASP CI/CD Top 10 CICD-SEC-03 (Dependency Chain Abuse); NIST SSDF PW.4.
 * **AC.13.4:** MITRE ATT&CK T1195; MITRE ATLAS (Technique catalogue); OWASP SAMM Threat Assessment (TA).
 * **AC.13.5:** NIST AI RMF MANAGE; ISO/IEC 27001:2022 A.5.25 (Assessment of Information Security Events); OWASP SAMM Incident Management (IM).
-* **AC.13.6:** MITRE ATLAS (Adversarial ML output detection, research-edge); OWASP LLM Top 10 (2025) LLM03; NIST SSDF PW.8.
+* **AC.13.6:** MITRE ATLAS (Adversarial ML output detection, research-edge); OWASP LLM Top 10 (2026) LLM04; NIST SSDF PW.8.
 
 ---
 
