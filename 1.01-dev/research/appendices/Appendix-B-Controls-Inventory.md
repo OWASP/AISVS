@@ -222,7 +222,7 @@ The source deliberately places each requirement in exactly one family, but sever
 
 ## Industry Adoption Snapshot (June 2026)
 
-Overall adoption remains low — 94% of enterprises use AI in production, yet only 23% have mature security programs. As of June 2026, the governance gap is widening: 97% of tech executives view broad autonomous AI as a high or essential priority, but 52% of department-level AI initiatives operate without formal oversight (EY, February 2026). The Zscaler 2026 AI Security Report logged an 83% year-over-year increase in AI/ML traffic across more than 3,400 applications, with Finance/Insurance carrying 23% of volume and Technology and Education sectors growing 202% and 184% respectively. Shadow-AI exposure is now measurable in dollars: 98% of organizations have employees using unsanctioned AI tools, ~60% of orgs have experienced at least one data exposure event tied to public GenAI, and the average shadow-AI-related breach now runs about $4.63M (Authentech/Second Talent aggregates, 2026). The OX MCP disclosure, MCPTox benchmark, and Clinejection together add a sharper point: the riskiest adoption gap is no longer just model access, but ungoverned tool execution and developer-machine compromise via agent-adjacent packages.
+Overall adoption remains low — 94% of enterprises use AI in production, yet only 23% have mature security programs. As of June 2026, the governance gap is widening: 97% of tech executives view broad autonomous AI as a high or essential priority, but 52% of department-level AI initiatives operate without formal oversight (EY, February 2026). The Zscaler 2026 AI Security Report logged an 83% year-over-year increase in AI/ML traffic across more than 3,400 applications, with Finance/Insurance carrying 23% of volume and Technology and Education sectors growing 202% and 184% respectively. Shadow-AI exposure remains a concern: 98% of organizations have employees using unsanctioned AI tools and ~60% of orgs have experienced at least one data exposure event tied to public GenAI (Authentech/Second Talent aggregates, 2026). Separately, the [IBM Cost of a Data Breach Report 2025](https://www.bakerdonelson.com/webfiles/Publications/20250822_Cost-of-a-Data-Breach-Report-2025.pdf) studied 600 organizations breached between March 2024 and February 2025; breaches involving unsanctioned or shadow AI averaged USD 4.63 million (Figure 31). The OX MCP disclosure, MCPTox benchmark, and Clinejection together add a sharper point: the riskiest adoption gap is no longer just model access, but ungoverned tool execution and developer-machine compromise via agent-adjacent packages.
 
 | Metric | Percentage | Source |
 |--------|:----------:|--------|
@@ -246,14 +246,14 @@ Overall adoption remains low — 94% of enterprises use AI in production, yet on
 | Orgs with formal GenAI governance reducing data leakage | up to 46% reduction | Practical DevSecOps (March 2026) |
 | Cybersecurity pros identifying agentic AI as #1 attack vector | 48% | Dark Reading poll (2026) |
 | OWASP Agentic Top 10 categories that prompt injection maps to | 6 of 10 | OWASP State of Agentic AI Security & Governance v2.01 (June 1, 2026) |
-| Orgs with any policy to detect shadow AI | 37% | IBM, via OWASP State of Agentic AI v2.01 (June 2026) |
+| Studied breached orgs with governance policies to manage AI or detect shadow AI | 37% | [IBM Cost of a Data Breach Report (2025)](https://newsroom.ibm.com/2025-07-30-ibm-report-13-of-organizations-reported-breaches-of-ai-models-or-applications,-97-of-which-reported-lacking-proper-ai-access-controls) |
 | Enterprises with at least one AI workload in production | 72% | Cybersecurity Insiders AI Risk Report (Q1 2026) |
 | Orgs describing AI adoption as "mature" across functions | 28% | Cybersecurity Insiders AI Risk Report (Q1 2026) |
 | Year-over-year growth in enterprise AI/ML traffic | 83% | Zscaler 2026 AI Security Report |
 | Unique AI/ML applications observed in enterprise traffic | 3,400+ | Zscaler 2026 AI Security Report |
 | Orgs with employees using unsanctioned AI tools | 98% | Authentech / Second Talent Shadow AI Statistics 2026 |
 | Orgs that have experienced at least one shadow-AI data exposure | ~60% | Shadow AI aggregate (2026) |
-| Avg cost of a shadow-AI-related data breach | ~$4.63M | Shadow AI aggregate (2026) |
+| Avg cost of studied breaches involving unsanctioned or shadow AI | USD 4.63M | [IBM Cost of a Data Breach Report (2025), Figure 31](https://www.bakerdonelson.com/webfiles/Publications/20250822_Cost-of-a-Data-Breach-Report-2025.pdf) |
 | Orgs that can control agent actions with proper guardrails and live monitoring | 24% | Cisco AI Readiness Index (2026) |
 | NHI-to-human identity ratio in modern enterprises | ~45:1 | NHI Forum / industry aggregate (2026) |
 | NHI-to-human identity ratio in cloud-native / DevOps environments | ~144:1 | NHI Forum / industry aggregate (2026) |
