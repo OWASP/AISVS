@@ -33,7 +33,7 @@ Detailed AI-specific bills of materials must be generated and signed, with readi
 
 ## References
 
-* [OWASP LLM03:2025 Supply Chain](https://genai.owasp.org/llmrisk/llm032025-supply-chain/)
+* [OWASP LLM04:2026 Supply Chain](https://github.com/GenAI-Security-Project/GenAI-LLM-Top10/blob/main/2026/final/LLM04_SupplyChain.md)
 * [MITRE ATLAS: Supply Chain Compromise](https://atlas.mitre.org/techniques/AML.T0010)
 * [SBOM Overview: CISA](https://www.cisa.gov/sbom)
 * [CycloneDX: Machine Learning Bill of Materials](https://cyclonedx.org/capabilities/mlbom/)

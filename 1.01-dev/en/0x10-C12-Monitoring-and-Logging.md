@@ -74,7 +74,7 @@ The provenance and change history of training data, model artifacts, and knowled
 
 ## References
 
-* [OWASP Top 10 for LLM Applications 2025](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+* [OWASP Top 10 for LLM Applications 2026](https://github.com/GenAI-Security-Project/GenAI-LLM-Top10/tree/main/2026/final)
 * [MITRE ATLAS - Adversarial Threat Landscape for AI Systems](https://atlas.mitre.org/)
 * [NIST AI Risk Management Framework (AI RMF 1.0)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf)
 * [OWASP Agentic AI Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)
