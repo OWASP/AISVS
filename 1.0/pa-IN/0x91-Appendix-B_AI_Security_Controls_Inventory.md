@@ -23,7 +23,7 @@ This inventory is non-normative. It reorganizes existing requirements for ease o
 
 Verify the identity of users, agents, services, edge devices, and MCP clients/servers before granting access.
 
-ਪਹੁੰਚ ਦੇਣ ਤੋਂ ਪਹਿਲਾਂ ਉਪਭੋਗਤਾਵਾਂ, ਏਜੰਟਾਂ, ਸੇਵਾਵਾਂ, ਐਜ ਡਿਵਾਈਸਾਂ, ਅਤੇ MCP ਕਲਾਇੰਟਾਂ/ਸਰਵਰਾਂ ਦੀ ਪਛਾਣ ਦੀ ਤਸਦੀਕ ਕਰੋ।
+ਪਹੁੰਚ ਦੇਣ ਤੋਂ ਪਹਿਲਾਂ ਉਪਭੋਗਤਾਵਾਂ, ਏਜੰਟਾਂ, ਸੇਵਾਵਾਂ, ਐਜ ਡਿਵਾਈਸਾਂ, ਅਤੇ MCP ਕਲਾਇੰਟਾਂ/ਸਰਵਰਾਂ ਦੀ ਪਛਾਣ ਦੀ ਜਾਂਚ ਕਰੋ।
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
@@ -163,7 +163,7 @@ Protect data and secrets at rest, in transit, and in the model's observable cont
 
 Verify authenticity and detect tampering of models, artifacts, messages, tool definitions, and generated media.
 
-ਮਾਡਲਾਂ, ਆਰਟੀਫ਼ੈਕਟਾਂ, ਸੁਨੇਹਿਆਂ, ਟੂਲ ਪਰਿਭਾਸ਼ਾਵਾਂ, ਅਤੇ ਤਿਆਰ ਕੀਤੇ ਮੀਡੀਆ ਦੀ ਅਸਲੀਅਤ (authenticity) ਦੀ ਤਸਦੀਕ ਕਰੋ ਅਤੇ ਛੇੜਛਾੜ ਦਾ ਪਤਾ ਲਗਾਓ।
+ਮਾਡਲਾਂ, ਆਰਟੀਫ਼ੈਕਟਾਂ, ਸੁਨੇਹਿਆਂ, ਟੂਲ ਪਰਿਭਾਸ਼ਾਵਾਂ, ਅਤੇ ਤਿਆਰ ਕੀਤੇ ਮੀਡੀਆ ਦੀ ਅਸਲੀਅਤ (authenticity) ਦੀ ਜਾਂਚ ਕਰੋ ਅਤੇ ਛੇੜਛਾੜ ਦਾ ਪਤਾ ਲਗਾਓ।
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
@@ -428,7 +428,7 @@ AI ਵਰਕਲੋਡਾਂ ਅਤੇ MCP ਏਕੀਕਰਨਾਂ ਲਈ ਨੈ
 
 Verify origin and authenticity of models, datasets, frameworks, and MCP components, and maintain an AI bill of materials.
 
-ਮਾਡਲਾਂ, ਡਾਟਾਸੈੱਟਾਂ, ਫ੍ਰੇਮਵਰਕਾਂ, ਅਤੇ MCP ਕੰਪੋਨੈਂਟਾਂ ਦੇ ਮੂਲ ਅਤੇ ਅਸਲੀਅਤ ਦੀ ਤਸਦੀਕ ਕਰੋ, ਅਤੇ ਇੱਕ AI ਬਿਲ ਆਫ਼ ਮਟੀਰੀਅਲਜ਼ ਬਰਕਰਾਰ ਰੱਖੋ।
+ਮਾਡਲਾਂ, ਡਾਟਾਸੈੱਟਾਂ, ਫ੍ਰੇਮਵਰਕਾਂ, ਅਤੇ MCP ਕੰਪੋਨੈਂਟਾਂ ਦੇ ਮੂਲ ਅਤੇ ਅਸਲੀਅਤ ਦੀ ਜਾਂਚ ਕਰੋ, ਅਤੇ ਇੱਕ AI ਬਿਲ ਆਫ਼ ਮਟੀਰੀਅਲਜ਼ ਬਰਕਰਾਰ ਰੱਖੋ।
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
