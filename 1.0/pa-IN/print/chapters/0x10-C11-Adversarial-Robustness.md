@@ -3,7 +3,7 @@
 <!-- Translator: GeeksikhSecurity -->
 
 # C11 Adversarial Robustness
-# C11 ਵਿਰੋਧੀ ਮਜ਼ਬੂਤੀ[^0x10-C11-robustness]
+# C੧੧ ਵਿਰੋਧੀ ਮਜ਼ਬੂਤੀ[^0x10-C11-robustness]
 
 ## Control Objective
 ## ਨਿਯੰਤਰਣ ਉਦੇਸ਼
@@ -15,7 +15,7 @@ This chapter addresses keeping AI systems reliable and abuse-resistant when faci
 ---
 
 ## C11.1 Model Alignment, Safety, and Robustness Testing and Training
-## C11.1 ਮਾਡਲ ਅਲਾਈਨਮੈਂਟ[^0x10-C11-alignment], ਸਲਾਮਤੀ, ਅਤੇ ਮਜ਼ਬੂਤੀ ਟੈਸਟਿੰਗ ਅਤੇ ਸਿਖਲਾਈ
+## C੧੧.੧ ਮਾਡਲ ਅਲਾਈਨਮੈਂਟ[^0x10-C11-alignment], ਸਲਾਮਤੀ, ਅਤੇ ਮਜ਼ਬੂਤੀ ਟੈਸਟਿੰਗ ਅਤੇ ਸਿਖਲਾਈ
 
 Model resilience to manipulated inputs designed to cause misclassification or policy bypass must be increased, primarily through adversarial testing and robustness benchmarking.
 
@@ -31,16 +31,16 @@ Model resilience to manipulated inputs designed to cause misclassification or po
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.1.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਨੇ ਅਲਾਈਨਮੈਂਟ (alignment) ਅਤੇ ਸਲਾਮਤੀ ਸਿਖਲਾਈ ਜਾਂ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਕਰਵਾਈ ਹੈ ਤਾਂ ਜੋ ਮਾਡਲ ਨੂੰ ਮਨਾਹੀ ਵਾਲੀਆਂ ਸਮੱਗਰੀ ਸ਼੍ਰੇਣੀਆਂ ਤਿਆਰ ਕਰਨ ਤੋਂ ਰੋਕਿਆ ਜਾ ਸਕੇ। | 1 |
-| **11.1.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਮਾਡਲ ਅੱਪਡੇਟ ਜਾਂ ਰਿਲੀਜ਼ ਉੱਤੇ ਇੱਕ ਵਰਜ਼ਨ-ਨਿਯੰਤਰਿਤ ਅਲਾਈਨਮੈਂਟ ਟੈਸਟ ਸੂਟ ਚਲਾਇਆ ਜਾਂਦਾ ਹੈ। | 1 |
-| **11.1.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲਾਂ ਦਾ ਉਹਨਾਂ ਦੀ ਮਾਡੈਲਿਟੀ (modality) ਨਾਲ ਸੰਬੰਧਿਤ ਜਾਣੀਆਂ-ਪਛਾਣੀਆਂ ਵਿਰੋਧੀ ਹਮਲਾ ਤਕਨੀਕਾਂ ਦੇ ਵਿਰੁੱਧ ਮੁਲਾਂਕਣ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 1 |
-| **11.1.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲਾਂ ਨੂੰ ਵਿਰੋਧੀ ਇਨਪੁੱਟਾਂ ਵਿਰੁੱਧ ਸਖ਼ਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 2 |
-| **11.1.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇੱਕ ਸਵੈਚਾਲਿਤ ਮੁਲਾਂਕਣਕਾਰ (evaluator) ਨੁਕਸਾਨਦੇਹ-ਸਮੱਗਰੀ ਦਰ ਨੂੰ ਮਾਪਦਾ ਹੈ ਅਤੇ ਇੱਕ ਪਰਿਭਾਸ਼ਿਤ ਥ੍ਰੈਸ਼ਹੋਲਡ ਤੋਂ ਪਰੇ ਦੇ ਰਿਗਰੈਸ਼ਨਾਂ (regressions) ਨੂੰ ਨਿਸ਼ਾਨਬੱਧ ਕਰਦਾ ਹੈ। | 3 |
+| **੧੧.੧.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਨੇ ਅਲਾਈਨਮੈਂਟ (alignment) ਅਤੇ ਸਲਾਮਤੀ ਸਿਖਲਾਈ ਜਾਂ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਕਰਵਾਈ ਹੈ ਤਾਂ ਜੋ ਮਾਡਲ ਨੂੰ ਮਨਾਹੀ ਵਾਲੀਆਂ ਸਮੱਗਰੀ ਸ਼੍ਰੇਣੀਆਂ ਤਿਆਰ ਕਰਨ ਤੋਂ ਰੋਕਿਆ ਜਾ ਸਕੇ। | ੧ |
+| **੧੧.੧.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਮਾਡਲ ਅੱਪਡੇਟ ਜਾਂ ਰਿਲੀਜ਼ ਉੱਤੇ ਇੱਕ ਵਰਜ਼ਨ-ਨਿਯੰਤਰਿਤ ਅਲਾਈਨਮੈਂਟ ਟੈਸਟ ਸੂਟ ਚਲਾਇਆ ਜਾਂਦਾ ਹੈ। | ੧ |
+| **੧੧.੧.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲਾਂ ਦਾ ਉਹਨਾਂ ਦੀ ਮਾਡੈਲਿਟੀ (modality) ਨਾਲ ਸੰਬੰਧਿਤ ਜਾਣੀਆਂ-ਪਛਾਣੀਆਂ ਵਿਰੋਧੀ ਹਮਲਾ ਤਕਨੀਕਾਂ ਦੇ ਵਿਰੁੱਧ ਮੁਲਾਂਕਣ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੧ |
+| **੧੧.੧.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲਾਂ ਨੂੰ ਵਿਰੋਧੀ ਇਨਪੁੱਟਾਂ ਵਿਰੁੱਧ ਸਖ਼ਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੨ |
+| **੧੧.੧.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇੱਕ ਸਵੈਚਾਲਿਤ ਮੁਲਾਂਕਣਕਾਰ (evaluator) ਨੁਕਸਾਨਦੇਹ-ਸਮੱਗਰੀ ਦਰ ਨੂੰ ਮਾਪਦਾ ਹੈ ਅਤੇ ਇੱਕ ਪਰਿਭਾਸ਼ਿਤ ਥ੍ਰੈਸ਼ਹੋਲਡ ਤੋਂ ਪਰੇ ਦੇ ਰਿਗਰੈਸ਼ਨਾਂ (regressions) ਨੂੰ ਨਿਸ਼ਾਨਬੱਧ ਕਰਦਾ ਹੈ। | ੩ |
 
 ---
 
 ## C11.2 Membership-Inference and Model-Inversion Mitigation
-## C11.2 Membership-Inference ਅਤੇ Model-Inversion[^0x10-C11-model-inversion] ਨੂੰ ਘਟਾਉਣਾ
+## C੧੧.੨ Membership-Inference ਅਤੇ Model-Inversion[^0x10-C11-model-inversion] ਨੂੰ ਘਟਾਉਣਾ
 
 The ability to determine whether a specific record was in the training data must be limited, and reconstruction of private training data or sensitive attributes from model outputs prevented.
 
@@ -56,16 +56,16 @@ The ability to determine whether a specific record was in the training data must
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.2.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਦੁਆਰਾ ਅਨੁਮਾਨਿਤ ਸੰਵੇਦਨਸ਼ੀਲ ਗੁਣ ਸਿੱਧੇ ਤੌਰ 'ਤੇ ਆਊਟਪੁੱਟ ਵਿੱਚ ਵਾਪਸ ਨਹੀਂ ਕੀਤੇ ਜਾਂਦੇ। | 1 |
-| **11.2.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇਨਫ਼ਰੈਂਸ[^0x10-C11-inference] ਐਂਡਪੁਆਇੰਟ ਪ੍ਰਤੀ-ਪ੍ਰਿੰਸੀਪਲ[^0x10-C11-principal] (per-principal) ਅਤੇ ਸਮੁੱਚੀਆਂ ਦਰ ਸੀਮਾਵਾਂ ਲਾਗੂ ਕਰਦੇ ਹਨ ਜੋ extraction ਖ਼ਤਰਾ ਮਾਡਲ ਦੇ ਅਨੁਸਾਰ ਮਿਥੀਆਂ ਗਈਆਂ ਹੋਣ, ਨਾ ਕਿ ਸਿਰਫ਼ ਇੱਕ ਆਮ API ਥ੍ਰੌਟਲ (throttle) ਵਜੋਂ। | 1 |
-| **11.2.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹੱਦੋਂ ਵੱਧ ਭਰੋਸੇ ਵਾਲੇ ਪੂਰਵ-ਅਨੁਮਾਨਾਂ (overconfident predictions) ਨੂੰ ਘਟਾਉਣ ਲਈ ਮਾਡਲ ਆਊਟਪੁੱਟ ਨੂੰ ਕੈਲੀਬ੍ਰੇਟ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 2 |
-| **11.2.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸੰਵੇਦਨਸ਼ੀਲ ਡਾਟਾਸੈੱਟਾਂ ਉੱਤੇ ਸਿਖਲਾਈ differential privacy-ਆਧਾਰਿਤ ਅਨੁਕੂਲਨ (differentially-private optimization) ਵਰਤਦੀ ਹੈ। | 2 |
-| **11.2.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** membership-inference ਹਮਲੇ ਦੇ ਸਿਮੂਲੇਸ਼ਨ ਇਹ ਦਰਸਾਉਂਦੇ ਹਨ ਕਿ ਮੁਲਾਂਕਣ ਕੀਤੇ ਡਾਟੇ ਉੱਤੇ ਹਮਲੇ ਦੀ ਸਟੀਕਤਾ (accuracy) ਬੇਤਰਤੀਬ ਅੰਦਾਜ਼ੇ ਤੋਂ ਵੱਧ ਨਹੀਂ ਜਾਂਦੀ। | 3 |
+| **੧੧.੨.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਦੁਆਰਾ ਅਨੁਮਾਨਿਤ ਸੰਵੇਦਨਸ਼ੀਲ ਗੁਣ ਸਿੱਧੇ ਤੌਰ 'ਤੇ ਆਊਟਪੁੱਟ ਵਿੱਚ ਵਾਪਸ ਨਹੀਂ ਕੀਤੇ ਜਾਂਦੇ। | ੧ |
+| **੧੧.੨.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇਨਫ਼ਰੈਂਸ[^0x10-C11-inference] ਐਂਡਪੁਆਇੰਟ ਪ੍ਰਤੀ-ਪ੍ਰਿੰਸੀਪਲ[^0x10-C11-principal] (per-principal) ਅਤੇ ਸਮੁੱਚੀਆਂ ਦਰ ਸੀਮਾਵਾਂ ਲਾਗੂ ਕਰਦੇ ਹਨ ਜੋ extraction ਖ਼ਤਰਾ ਮਾਡਲ ਦੇ ਅਨੁਸਾਰ ਮਿਥੀਆਂ ਗਈਆਂ ਹੋਣ, ਨਾ ਕਿ ਸਿਰਫ਼ ਇੱਕ ਆਮ API ਥ੍ਰੌਟਲ (throttle) ਵਜੋਂ। | ੧ |
+| **੧੧.੨.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹੱਦੋਂ ਵੱਧ ਭਰੋਸੇ ਵਾਲੇ ਪੂਰਵ-ਅਨੁਮਾਨਾਂ (overconfident predictions) ਨੂੰ ਘਟਾਉਣ ਲਈ ਮਾਡਲ ਆਊਟਪੁੱਟ ਨੂੰ ਕੈਲੀਬ੍ਰੇਟ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੨ |
+| **੧੧.੨.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸੰਵੇਦਨਸ਼ੀਲ ਡਾਟਾਸੈੱਟਾਂ ਉੱਤੇ ਸਿਖਲਾਈ differential privacy-ਆਧਾਰਿਤ ਅਨੁਕੂਲਨ (differentially-private optimization) ਵਰਤਦੀ ਹੈ। | ੨ |
+| **੧੧.੨.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** membership-inference ਹਮਲੇ ਦੇ ਸਿਮੂਲੇਸ਼ਨ ਇਹ ਦਰਸਾਉਂਦੇ ਹਨ ਕਿ ਮੁਲਾਂਕਣ ਕੀਤੇ ਡਾਟੇ ਉੱਤੇ ਹਮਲੇ ਦੀ ਸਟੀਕਤਾ (accuracy) ਬੇਤਰਤੀਬ ਅੰਦਾਜ਼ੇ ਤੋਂ ਵੱਧ ਨਹੀਂ ਜਾਂਦੀ। | ੩ |
 
 ---
 
 ## C11.3 Model-Extraction Defense
-## C11.3 Model-Extraction[^0x10-C11-model-extraction] ਵਿਰੁੱਧ ਬਚਾਅ
+## C੧੧.੩ Model-Extraction[^0x10-C11-model-extraction] ਵਿਰੁੱਧ ਬਚਾਅ
 
 Unauthorized model cloning through API abuse must be detected and deterred using rate limiting, query-pattern analysis, and watermarking.
 
@@ -80,15 +80,15 @@ API ਦੀ ਦੁਰਵਰਤੋਂ ਰਾਹੀਂ ਅਣਅਧਿਕਾਰਤ 
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.3.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਕਿਊਰੀ-ਪੈਟਰਨ ਵਿਸ਼ਲੇਸ਼ਣ ਇੱਕ extraction-ਕੋਸ਼ਿਸ਼ ਡਿਟੈਕਟਰ (detector) ਨੂੰ ਇਨਪੁੱਟ ਦਿੰਦਾ ਹੈ। | 1 |
-| **11.3.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਕੱਚੇ ਮਾਡਲ ਆਊਟਪੁੱਟ ਐਪਲੀਕੇਸ਼ਨ ਬੈਕਐਂਡ ਤੋਂ ਪਰੇ ਸਿੱਧੇ ਤੌਰ 'ਤੇ ਜ਼ਾਹਰ ਨਹੀਂ ਕੀਤੇ ਜਾਂਦੇ, ਅਤੇ ਇਹ ਕਿ ਬਾਹਰੋਂ ਦਿਖਾਈ ਦੇਣ ਵਾਲੇ ਜਵਾਬ extraction ਜੋਖਮ ਪੱਧਰ ਦੇ ਅਨੁਸਾਰ ਕੈਲੀਬ੍ਰੇਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | 2 |
-| **11.3.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਵਾਟਰਮਾਰਕਿੰਗ ਜਾਂ ਫ਼ਿੰਗਰਪ੍ਰਿੰਟਿੰਗ ਤਕਨੀਕਾਂ ਲਾਗੂ ਕੀਤੀਆਂ ਜਾਂਦੀਆਂ ਹਨ ਤਾਂ ਜੋ ਅਣਅਧਿਕਾਰਤ ਨਕਲਾਂ ਦੀ ਪਛਾਣ ਕੀਤੀ ਜਾ ਸਕੇ। | 3 |
-| **11.3.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸ਼ੱਕੀ extraction ਦੀ ਪਛਾਣ ਜਵਾਬੀ ਉਪਾਵਾਂ ਨੂੰ ਸ਼ੁਰੂ ਕਰਦੀ ਹੈ। | 3 |
+| **੧੧.੩.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਕਿਊਰੀ-ਪੈਟਰਨ ਵਿਸ਼ਲੇਸ਼ਣ ਇੱਕ extraction-ਕੋਸ਼ਿਸ਼ ਡਿਟੈਕਟਰ (detector) ਨੂੰ ਇਨਪੁੱਟ ਦਿੰਦਾ ਹੈ। | ੧ |
+| **੧੧.੩.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਕੱਚੇ ਮਾਡਲ ਆਊਟਪੁੱਟ ਐਪਲੀਕੇਸ਼ਨ ਬੈਕਐਂਡ ਤੋਂ ਪਰੇ ਸਿੱਧੇ ਤੌਰ 'ਤੇ ਜ਼ਾਹਰ ਨਹੀਂ ਕੀਤੇ ਜਾਂਦੇ, ਅਤੇ ਇਹ ਕਿ ਬਾਹਰੋਂ ਦਿਖਾਈ ਦੇਣ ਵਾਲੇ ਜਵਾਬ extraction ਜੋਖਮ ਪੱਧਰ ਦੇ ਅਨੁਸਾਰ ਕੈਲੀਬ੍ਰੇਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | ੨ |
+| **੧੧.੩.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਵਾਟਰਮਾਰਕਿੰਗ ਜਾਂ ਫ਼ਿੰਗਰਪ੍ਰਿੰਟਿੰਗ ਤਕਨੀਕਾਂ ਲਾਗੂ ਕੀਤੀਆਂ ਜਾਂਦੀਆਂ ਹਨ ਤਾਂ ਜੋ ਅਣਅਧਿਕਾਰਤ ਨਕਲਾਂ ਦੀ ਪਛਾਣ ਕੀਤੀ ਜਾ ਸਕੇ। | ੩ |
+| **੧੧.੩.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸ਼ੱਕੀ extraction ਦੀ ਪਛਾਣ ਜਵਾਬੀ ਉਪਾਵਾਂ ਨੂੰ ਸ਼ੁਰੂ ਕਰਦੀ ਹੈ। | ੩ |
 
 ---
 
 ## C11.4 Model Runtime Anomaly Detection
-## C11.4 ਮਾਡਲ ਰਨਟਾਈਮ ਅਸਧਾਰਨਤਾ ਪਛਾਣ
+## C੧੧.੪ ਮਾਡਲ ਰਨਟਾਈਮ ਅਸਧਾਰਨਤਾ ਪਛਾਣ
 
 Manipulated, backdoored, or adversarial data entering the model context at inference time via external sources must be identified and neutralized.
 
@@ -102,9 +102,9 @@ Manipulated, backdoored, or adversarial data entering the model context at infer
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.4.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਬਾਹਰੀ ਜਾਂ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਸਰੋਤਾਂ ਤੋਂ ਆਏ ਇਨਪੁੱਟ ਮਾਡਲ ਇਨਫ਼ਰੈਂਸ ਤੋਂ ਪਹਿਲਾਂ ਅਸਧਾਰਨਤਾ ਪਛਾਣ (anomaly detection) ਵਿੱਚੋਂ ਲੰਘਦੇ ਹਨ। | 2 |
-| **11.4.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਅਸਧਾਰਨ ਵਜੋਂ ਨਿਸ਼ਾਨਬੱਧ ਕੀਤੇ ਇਨਪੁੱਟ ਗੇਟਿੰਗ ਕਾਰਵਾਈਆਂ (gating actions) ਸ਼ੁਰੂ ਕਰਦੇ ਹਨ। | 2 |
-| **11.4.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਲਾਮਤੀ ਉਲੰਘਣਾ ਫ਼ੀਡਬੈਕ ਪਾਈਪਲਾਈਨ ਵਿੱਚ poisoning[^0x10-C11-poisoning] ਪਛਾਣ ਅਤੇ ਮਨੁੱਖੀ ਸਮੀਖਿਆ ਗੇਟ ਸ਼ਾਮਲ ਹਨ ਤਾਂ ਜੋ ਸੁਧਾਰ ਵਿਧੀ ਨਾਲ ਵਿਰੋਧੀ ਹੇਰਾਫੇਰੀ ਨੂੰ ਰੋਕਿਆ ਜਾ ਸਕੇ। | 3 |
+| **੧੧.੪.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਬਾਹਰੀ ਜਾਂ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਸਰੋਤਾਂ ਤੋਂ ਆਏ ਇਨਪੁੱਟ ਮਾਡਲ ਇਨਫ਼ਰੈਂਸ ਤੋਂ ਪਹਿਲਾਂ ਅਸਧਾਰਨਤਾ ਪਛਾਣ (anomaly detection) ਵਿੱਚੋਂ ਲੰਘਦੇ ਹਨ। | ੨ |
+| **੧੧.੪.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਅਸਧਾਰਨ ਵਜੋਂ ਨਿਸ਼ਾਨਬੱਧ ਕੀਤੇ ਇਨਪੁੱਟ ਗੇਟਿੰਗ ਕਾਰਵਾਈਆਂ (gating actions) ਸ਼ੁਰੂ ਕਰਦੇ ਹਨ। | ੨ |
+| **੧੧.੪.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਲਾਮਤੀ ਉਲੰਘਣਾ ਫ਼ੀਡਬੈਕ ਪਾਈਪਲਾਈਨ ਵਿੱਚ poisoning[^0x10-C11-poisoning] ਪਛਾਣ ਅਤੇ ਮਨੁੱਖੀ ਸਮੀਖਿਆ ਗੇਟ ਸ਼ਾਮਲ ਹਨ ਤਾਂ ਜੋ ਸੁਧਾਰ ਵਿਧੀ ਨਾਲ ਵਿਰੋਧੀ ਹੇਰਾਫੇਰੀ ਨੂੰ ਰੋਕਿਆ ਜਾ ਸਕੇ। | ੩ |
 
 ---
 
@@ -122,6 +122,6 @@ Manipulated, backdoored, or adversarial data entering the model context at infer
 [^0x10-C11-model-inversion]: **model inversion** (EN) -> `Model-Inversion` retained verbatim — a named attack technique kept in English so it stays searchable against the cited threat-intel literature, matching the treatment given to *model extraction*. Full discussion: OPEN-QUESTIONS.md Q82.
 [^0x10-C11-output]: **output** (EN) -> ਆਊਟਪੁੱਟ — kept as a loan to mirror the ASVS corpus's ਇਨਪੁੱਟ/ਆਊਟਪੁੱਟ pairing rather than ਨਤੀਜਾ ("result"). Full discussion: OPEN-QUESTIONS.md Q78.
 [^0x10-C11-inference]: **inference** (EN) -> ਇਨਫ਼ਰੈਂਸ — kept as a loan because the native ਅਨੁਮਾਨ is already load-bearing elsewhere for "expected/anticipated," which would read as an estimate rather than model execution. Full discussion: OPEN-QUESTIONS.md Q18.
-[^0x10-C11-principal]: **principal** (per-principal) (EN) -> ਪ੍ਰਿੰਸੀਪਲ — an open corpus split: this loan form is used here while C09 9.4.1 uses the coined ਪਛਾਣ-ਇਕਾਈ for the identical concept; both should move together. Full discussion: OPEN-QUESTIONS.md Q124.
+[^0x10-C11-principal]: **principal** (per-principal) (EN) -> ਪ੍ਰਿੰਸੀਪਲ — an open corpus split: this loan form is used here while C੦੯ ੯.੪.੧ uses the coined ਪਛਾਣ-ਇਕਾਈ for the identical concept; both should move together. Full discussion: OPEN-QUESTIONS.md Q124.
 [^0x10-C11-model-extraction]: **model extraction** (EN) -> `Model-Extraction` retained verbatim — the technique name stays English while ਚੋਰੀ ("theft") is reserved elsewhere for the harm/outcome sense, a boundary this chapter must not blur. Full discussion: OPEN-QUESTIONS.md Q54.
 [^0x10-C11-poisoning]: **poisoning** (detection) (EN) -> retained as `poisoning`, hybridised as `poisoning ਪਛਾਣ` — kept in English after the corpus's first gloss so the term stays traceable to MITRE ATLAS AML.T0020. Full discussion: OPEN-QUESTIONS.md Q39.

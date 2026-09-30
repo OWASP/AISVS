@@ -3,7 +3,7 @@
 **OWASP AI Security Verification Standard (AISVS) 1.0**
 **Panjabi Bilingual Edition -- Print Draft**
 
-*ਓਵਾਸਪ AI ਸੁਰੱਖਿਆ ਪ੍ਰਮਾਣਿਕਤਾ ਮਿਆਰ 1.0 -- ਪੰਜਾਬੀ ਦੋਭਾਸ਼ੀ ਐਡੀਸ਼ਨ*
+*ਓਵਾਸਪ AI ਸੁਰੱਖਿਆ ਪ੍ਰਮਾਣਿਕਤਾ ਮਿਆਰ ੧.੦ -- ਪੰਜਾਬੀ ਦੋਭਾਸ਼ੀ ਐਡੀਸ਼ਨ*
 
 ---
 
@@ -21,7 +21,7 @@ This edition shares its translation framework and terminology base with the sibl
 term choices that carry over from that project are noted where relevant in the
 footnotes below.
 
-*ਇਹ ਐਡੀਸ਼ਨ ਆਪਣਾ ਅਨੁਵਾਦ ਢਾਂਚਾ ਅਤੇ ਸ਼ਬਦਾਵਲੀ ਆਧਾਰ ਸਹਿਯੋਗੀ **ਓਵਾਸਪ ਐਪਲੀਕੇਸ਼ਨ ਸੁਰੱਖਿਆ ਪ੍ਰਮਾਣਿਕਤਾ ਮਿਆਰ (ASVS) 5.0 -- ਪੰਜਾਬੀ ਐਡੀਸ਼ਨ** ਨਾਲ ਸਾਂਝਾ ਕਰਦੀ ਹੈ; ਉਸ ਪ੍ਰੋਜੈਕਟ ਤੋਂ ਲਿਆਂਦੀਆਂ ਸ਼ਬਦ ਚੋਣਾਂ ਨੂੰ ਹੇਠਾਂ ਦਿੱਤੇ ਫੁੱਟਨੋਟਾਂ ਵਿੱਚ ਸੰਬੰਧਿਤ ਥਾਵਾਂ 'ਤੇ ਨੋਟ ਕੀਤਾ ਗਿਆ ਹੈ।*
+*ਇਹ ਐਡੀਸ਼ਨ ਆਪਣਾ ਅਨੁਵਾਦ ਢਾਂਚਾ ਅਤੇ ਸ਼ਬਦਾਵਲੀ ਆਧਾਰ ਸਹਿਯੋਗੀ **ਓਵਾਸਪ ਐਪਲੀਕੇਸ਼ਨ ਸੁਰੱਖਿਆ ਪ੍ਰਮਾਣਿਕਤਾ ਮਿਆਰ (ASVS) ੫.੦ -- ਪੰਜਾਬੀ ਐਡੀਸ਼ਨ** ਨਾਲ ਸਾਂਝਾ ਕਰਦੀ ਹੈ; ਉਸ ਪ੍ਰੋਜੈਕਟ ਤੋਂ ਲਿਆਂਦੀਆਂ ਸ਼ਬਦ ਚੋਣਾਂ ਨੂੰ ਹੇਠਾਂ ਦਿੱਤੇ ਫੁੱਟਨੋਟਾਂ ਵਿੱਚ ਸੰਬੰਧਿਤ ਥਾਵਾਂ 'ਤੇ ਨੋਟ ਕੀਤਾ ਗਿਆ ਹੈ।*
 \newpage
 
 
@@ -35,18 +35,18 @@ footnotes below.
 
 ### Control Family Chapters (C01-C12) / ਨਿਯੰਤਰਣ ਪਰਿਵਾਰ ਅਧਿਆਇ (C01-C12)
 
-- [C1 Training Data Integrity & Traceability / C1 ਸਿਖਲਾਈ ਡਾਟਾ ਅਖੰਡਤਾ ਅਤੇ ਟਰੇਸਯੋਗਤਾ](#c01-en)
-- [C2 Input Validation / C2 ਇਨਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ](#c02-en)
-- [C3 Model Lifecycle Management & Change Control / C3 ਮਾਡਲ ਜੀਵਨ-ਚੱਕਰ ਪ੍ਰਬੰਧਨ ਅਤੇ ਤਬਦੀਲੀ ਨਿਯੰਤਰਣ](#c03-en)
-- [C4 Infrastructure, Configuration & Deployment Security / C4 ਬੁਨਿਆਦੀ ਢਾਂਚਾ, ਸੰਰਚਨਾ ਅਤੇ ਤੈਨਾਤੀ ਸੁਰੱਖਿਆ](#c04-en)
-- [C5 Access Control & Identity for AI Components & Users / C5 AI ਕੰਪੋਨੈਂਟਾਂ ਅਤੇ ਉਪਭੋਗਤਾਵਾਂ ਲਈ ਪਹੁੰਚ ਕੰਟਰੋਲ ਅਤੇ ਪਛਾਣ](#c05-en)
-- [C6 Supply Chain Security for Models / C6 ਮਾਡਲਾਂ ਲਈ ਸਪਲਾਈ ਚੇਨ ਸੁਰੱਖਿਆ](#c06-en)
-- [C7 Model Behavior, Output Control & Safety Assurance / C7 ਮਾਡਲ ਵਿਵਹਾਰ, ਆਊਟਪੁੱਟ ਨਿਯੰਤਰਣ ਅਤੇ ਸਲਾਮਤੀ ਭਰੋਸਾ](#c07-en)
-- [C8 Memory, Embeddings & Vector Database Security / C8 ਮੈਮੋਰੀ, Embeddings ਅਤੇ ਵੈਕਟਰ ਡਾਟਾਬੇਸ ਸੁਰੱਖਿਆ](#c08-en)
-- [C9 Orchestration & Agentic Security / C9 ਆਰਕੈਸਟ੍ਰੇਸ਼ਨ (orchestration) ਅਤੇ ਏਜੰਟ-ਆਧਾਰਿਤ ਸੁਰੱਖਿਆ](#c09-en)
-- [C10 Model Context Protocol (MCP) Security / C10 Model Context Protocol (MCP) ਸੁਰੱਖਿਆ](#c10-en)
-- [C11 Adversarial Robustness / C11 ਵਿਰੋਧੀ ਮਜ਼ਬੂਤੀ](#c11-en)
-- [C12 Monitoring, Logging & Anomaly Detection / C12 ਨਿਗਰਾਨੀ, ਲੌਗਿੰਗ ਅਤੇ ਅਸਧਾਰਨਤਾ ਪਛਾਣ](#c12-en)
+- [C੧ Training Data Integrity & Traceability / C੧ ਸਿਖਲਾਈ ਡਾਟਾ ਅਖੰਡਤਾ ਅਤੇ ਟਰੇਸਯੋਗਤਾ](#c01-en)
+- [C੨ Input Validation / C੨ ਇਨਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ](#c02-en)
+- [C੩ Model Lifecycle Management & Change Control / C੩ ਮਾਡਲ ਜੀਵਨ-ਚੱਕਰ ਪ੍ਰਬੰਧਨ ਅਤੇ ਤਬਦੀਲੀ ਨਿਯੰਤਰਣ](#c03-en)
+- [C੪ Infrastructure, Configuration & Deployment Security / C੪ ਬੁਨਿਆਦੀ ਢਾਂਚਾ, ਸੰਰਚਨਾ ਅਤੇ ਤੈਨਾਤੀ ਸੁਰੱਖਿਆ](#c04-en)
+- [C੫ Access Control & Identity for AI Components & Users / C੫ AI ਕੰਪੋਨੈਂਟਾਂ ਅਤੇ ਉਪਭੋਗਤਾਵਾਂ ਲਈ ਪਹੁੰਚ ਕੰਟਰੋਲ ਅਤੇ ਪਛਾਣ](#c05-en)
+- [C੬ Supply Chain Security for Models / C੬ ਮਾਡਲਾਂ ਲਈ ਸਪਲਾਈ ਚੇਨ ਸੁਰੱਖਿਆ](#c06-en)
+- [C੭ Model Behavior, Output Control & Safety Assurance / C੭ ਮਾਡਲ ਵਿਵਹਾਰ, ਆਊਟਪੁੱਟ ਨਿਯੰਤਰਣ ਅਤੇ ਸਲਾਮਤੀ ਭਰੋਸਾ](#c07-en)
+- [C੮ Memory, Embeddings & Vector Database Security / C੮ ਮੈਮੋਰੀ, Embeddings ਅਤੇ ਵੈਕਟਰ ਡਾਟਾਬੇਸ ਸੁਰੱਖਿਆ](#c08-en)
+- [C੯ Orchestration & Agentic Security / C੯ ਆਰਕੈਸਟ੍ਰੇਸ਼ਨ (orchestration) ਅਤੇ ਏਜੰਟ-ਆਧਾਰਿਤ ਸੁਰੱਖਿਆ](#c09-en)
+- [C੧੦ Model Context Protocol (MCP) Security / C੧੦ Model Context Protocol (MCP) ਸੁਰੱਖਿਆ](#c10-en)
+- [C੧੧ Adversarial Robustness / C੧੧ ਵਿਰੋਧੀ ਮਜ਼ਬੂਤੀ](#c11-en)
+- [C੧੨ Monitoring, Logging & Anomaly Detection / C੧੨ ਨਿਗਰਾਨੀ, ਲੌਗਿੰਗ ਅਤੇ ਅਸਧਾਰਨਤਾ ਪਛਾਣ](#c12-en)
 
 ### Appendices / ਅੰਤਿਕਾਵਾਂ
 
@@ -78,7 +78,7 @@ AISVS ਦੀ ਹਰ ਲੋੜ ਨੂੰ AI ਖ਼ਤਰਾ ਪਰਿਦ੍ਰਿ
 
 Version 1.0, 2026
 
-ਸੰਸਕਰਣ 1.0, 2026
+ਸੰਸਕਰਣ 1.0, ੨੦੨੬
 
 Copyright &copy; 2025-2026 The AISVS Project.
 
@@ -198,7 +198,7 @@ AISVS ਇਸ ਲਈ ਬਣਾਇਆ ਗਿਆ ਸੀ ਤਾਂ ਜੋ ਸੰਸ�
 
 AISVS is organized into 12 control families. Each control family is divided into focused sections that support its control objective. Each section contains verification requirements. AISVS defines three verification levels, defined under Using the AISVS; sections need not include requirements at every level.
 
-AISVS ਨੂੰ 12 ਨਿਯੰਤਰਣ ਪਰਿਵਾਰਾਂ[^0x02-Preface-control-family] (control families) ਵਿੱਚ ਵਿਵਸਥਿਤ ਕੀਤਾ ਗਿਆ ਹੈ। ਹਰ ਨਿਯੰਤਰਣ ਪਰਿਵਾਰ ਨੂੰ ਕੇਂਦ੍ਰਿਤ ਭਾਗਾਂ ਵਿੱਚ ਵੰਡਿਆ ਗਿਆ ਹੈ ਜੋ ਉਸ ਦੇ ਨਿਯੰਤਰਣ ਉਦੇਸ਼ ਦਾ ਸਮਰਥਨ ਕਰਦੇ ਹਨ। ਹਰ ਭਾਗ ਵਿੱਚ ਤਸਦੀਕ ਲੋੜਾਂ ਸ਼ਾਮਲ ਹਨ। AISVS ਤਿੰਨ ਤਸਦੀਕ ਪੱਧਰ ਪਰਿਭਾਸ਼ਿਤ ਕਰਦਾ ਹੈ, ਜੋ AISVS ਦੀ ਵਰਤੋਂ (Using the AISVS) ਹੇਠ ਪਰਿਭਾਸ਼ਿਤ ਕੀਤੇ ਗਏ ਹਨ; ਹਰ ਭਾਗ ਵਿੱਚ ਹਰ ਪੱਧਰ ਦੀਆਂ ਲੋੜਾਂ ਦਾ ਹੋਣਾ ਜ਼ਰੂਰੀ ਨਹੀਂ ਹੈ।
+AISVS ਨੂੰ ੧੨ ਨਿਯੰਤਰਣ ਪਰਿਵਾਰਾਂ[^0x02-Preface-control-family] (control families) ਵਿੱਚ ਵਿਵਸਥਿਤ ਕੀਤਾ ਗਿਆ ਹੈ। ਹਰ ਨਿਯੰਤਰਣ ਪਰਿਵਾਰ ਨੂੰ ਕੇਂਦ੍ਰਿਤ ਭਾਗਾਂ ਵਿੱਚ ਵੰਡਿਆ ਗਿਆ ਹੈ ਜੋ ਉਸ ਦੇ ਨਿਯੰਤਰਣ ਉਦੇਸ਼ ਦਾ ਸਮਰਥਨ ਕਰਦੇ ਹਨ। ਹਰ ਭਾਗ ਵਿੱਚ ਤਸਦੀਕ ਲੋੜਾਂ ਸ਼ਾਮਲ ਹਨ। AISVS ਤਿੰਨ ਤਸਦੀਕ ਪੱਧਰ ਪਰਿਭਾਸ਼ਿਤ ਕਰਦਾ ਹੈ, ਜੋ AISVS ਦੀ ਵਰਤੋਂ (Using the AISVS) ਹੇਠ ਪਰਿਭਾਸ਼ਿਤ ਕੀਤੇ ਗਏ ਹਨ; ਹਰ ਭਾਗ ਵਿੱਚ ਹਰ ਪੱਧਰ ਦੀਆਂ ਲੋੜਾਂ ਦਾ ਹੋਣਾ ਜ਼ਰੂਰੀ ਨਹੀਂ ਹੈ।
 
 Each requirement must address a single concern that can ordinarily be implemented and verified as one technical mechanism. Requirements must not duplicate controls defined elsewhere in AISVS. Higher assurance levels may introduce stricter criteria, but those criteria must be stated as separate requirements. Requirements should use clear, technology-neutral language, referencing specific technologies only as examples where they improve clarity.
 
@@ -259,7 +259,7 @@ Each of the 12 requirement chapters follows the same format:
 * **Sections.** Requirements are grouped into related sections, each with a short description of the defense goal.
 * **Requirement Tables.** Individual requirements are presented in tables with the following columns:
 
-12 ਲੋੜ ਅਧਿਆਵਾਂ ਵਿੱਚੋਂ ਹਰ ਇੱਕ ਇੱਕੋ ਫ਼ਾਰਮੈਟ[^0x03-Using-AISVS-format] ਦੀ ਪਾਲਣਾ ਕਰਦਾ ਹੈ:
+੧੨ ਲੋੜ ਅਧਿਆਵਾਂ ਵਿੱਚੋਂ ਹਰ ਇੱਕ ਇੱਕੋ ਫ਼ਾਰਮੈਟ[^0x03-Using-AISVS-format] ਦੀ ਪਾਲਣਾ ਕਰਦਾ ਹੈ:
 
 * **ਨਿਯੰਤਰਣ ਉਦੇਸ਼।** ਅਧਿਆਇ ਲਈ ਸੁਰੱਖਿਆ ਟੀਚੇ ਦਾ ਸੰਖੇਪ ਬਿਆਨ।
 * **ਭਾਗ।** ਲੋੜਾਂ ਨੂੰ ਸੰਬੰਧਿਤ ਭਾਗਾਂ ਵਿੱਚ ਵੰਡਿਆ ਗਿਆ ਹੈ, ਹਰ ਭਾਗ ਦੇ ਨਾਲ ਬਚਾਅ ਟੀਚੇ ਦਾ ਸੰਖੇਪ ਵੇਰਵਾ ਦਿੱਤਾ ਗਿਆ ਹੈ।
@@ -273,9 +273,9 @@ Each of the 12 requirement chapters follows the same format:
 
 | ਕਾਲਮ | ਅਰਥ |
 | --- | --- |
-| **#** | ਵਿਲੱਖਣ ਲੋੜ ਪਛਾਣਕਰਤਾ (ਜਿਵੇਂ, 1.1.1, 9.3.2)। |
+| **#** | ਵਿਲੱਖਣ ਲੋੜ ਪਛਾਣਕਰਤਾ (ਜਿਵੇਂ, ੧.੧.੧, ੯.੩.੨)। |
 | **ਵੇਰਵਾ** | ਲੋੜ ਦਾ ਪਾਠ, ਜੋ ਪਰਖਯੋਗਤਾ 'ਤੇ ਜ਼ੋਰ ਦੇਣ ਲਈ ਹਮੇਸ਼ਾ "ਜਾਂਚ ਕਰੋ ਕਿ" ਨਾਲ ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ। |
-| **ਪੱਧਰ** | ਤਸਦੀਕ ਪੱਧਰ (1, 2, ਜਾਂ 3) ਜੋ ਲੋੜੀਂਦੇ ਭਰੋਸੇ (assurance) ਦੀ ਡੂੰਘਾਈ ਦਰਸਾਉਂਦਾ ਹੈ; ਹੇਠਾਂ ਦਿੱਤੇ ਤਸਦੀਕ ਪੱਧਰ ਵੇਖੋ। |
+| **ਪੱਧਰ** | ਤਸਦੀਕ ਪੱਧਰ (੧, ੨, ਜਾਂ ੩) ਜੋ ਲੋੜੀਂਦੇ ਭਰੋਸੇ (assurance) ਦੀ ਡੂੰਘਾਈ ਦਰਸਾਉਂਦਾ ਹੈ; ਹੇਠਾਂ ਦਿੱਤੇ ਤਸਦੀਕ ਪੱਧਰ ਵੇਖੋ। |
 
 ### Appendices
 ### ਅੰਤਿਕਾਵਾਂ
@@ -301,7 +301,7 @@ AISVS ਸੁਰੱਖਿਆ ਤਸਦੀਕ ਦੇ ਤਿੰਨ ਵਧਦੇ ਕ
 
 Organizations may begin at Level 1 and progressively adopt higher levels as security maturity and threat exposure increase. AISVS levels are aligned with [ASVS](https://owasp.org/www-project-application-security-verification-standard/) levels and are intended to be applied at the matching ASVS level (see Alignment with ASVS Levels below).
 
-ਸੰਸਥਾਵਾਂ ਪੱਧਰ 1 ਤੋਂ ਸ਼ੁਰੂ ਕਰ ਸਕਦੀਆਂ ਹਨ ਅਤੇ ਸੁਰੱਖਿਆ ਪਰਿਪੱਕਤਾ ਅਤੇ ਖ਼ਤਰੇ ਦੇ ਸਾਹਮਣੇ ਆਉਣ ਵਿੱਚ ਵਾਧੇ ਦੇ ਨਾਲ-ਨਾਲ ਹੌਲੀ-ਹੌਲੀ ਉੱਚੇ ਪੱਧਰ ਅਪਣਾ ਸਕਦੀਆਂ ਹਨ। AISVS ਪੱਧਰ [ASVS](https://owasp.org/www-project-application-security-verification-standard/) ਪੱਧਰਾਂ ਨਾਲ ਇਕਸਾਰ ਹਨ ਅਤੇ ਇਹਨਾਂ ਨੂੰ ਮੇਲ ਖਾਂਦੇ ASVS ਪੱਧਰ 'ਤੇ ਲਾਗੂ ਕਰਨ ਦਾ ਇਰਾਦਾ ਹੈ (ਹੇਠਾਂ "ASVS ਪੱਧਰਾਂ ਨਾਲ ਇਕਸਾਰਤਾ" ਵੇਖੋ)।
+ਸੰਸਥਾਵਾਂ ਪੱਧਰ ੧ ਤੋਂ ਸ਼ੁਰੂ ਕਰ ਸਕਦੀਆਂ ਹਨ ਅਤੇ ਸੁਰੱਖਿਆ ਪਰਿਪੱਕਤਾ ਅਤੇ ਖ਼ਤਰੇ ਦੇ ਸਾਹਮਣੇ ਆਉਣ ਵਿੱਚ ਵਾਧੇ ਦੇ ਨਾਲ-ਨਾਲ ਹੌਲੀ-ਹੌਲੀ ਉੱਚੇ ਪੱਧਰ ਅਪਣਾ ਸਕਦੀਆਂ ਹਨ। AISVS ਪੱਧਰ [ASVS](https://owasp.org/www-project-application-security-verification-standard/) ਪੱਧਰਾਂ ਨਾਲ ਇਕਸਾਰ ਹਨ ਅਤੇ ਇਹਨਾਂ ਨੂੰ ਮੇਲ ਖਾਂਦੇ ASVS ਪੱਧਰ 'ਤੇ ਲਾਗੂ ਕਰਨ ਦਾ ਇਰਾਦਾ ਹੈ (ਹੇਠਾਂ "ASVS ਪੱਧਰਾਂ ਨਾਲ ਇਕਸਾਰਤਾ" ਵੇਖੋ)।
 
 ### Definition of the Levels
 ### ਪੱਧਰਾਂ ਦੀ ਪਰਿਭਾਸ਼ਾ
@@ -311,25 +311,25 @@ Each requirement in AISVS v1.0 is assigned to one of the following levels:
 AISVS v1.0 ਵਿੱਚ ਹਰ ਲੋੜ ਨੂੰ ਹੇਠ ਲਿਖੇ ਪੱਧਰਾਂ ਵਿੱਚੋਂ ਇੱਕ ਸੌਂਪਿਆ ਗਿਆ ਹੈ:
 
 #### Level 1 requirements
-#### ਪੱਧਰ 1 ਦੀਆਂ ਲੋੜਾਂ
+#### ਪੱਧਰ ੧ ਦੀਆਂ ਲੋੜਾਂ
 
 Level 1 includes the most critical and foundational security requirements. These focus on preventing common attacks that do not rely on other preconditions or vulnerabilities. Most Level 1 controls are either straightforward to implement or essential enough to justify the effort.
 
-ਪੱਧਰ 1 ਵਿੱਚ ਸਭ ਤੋਂ ਨਾਜ਼ੁਕ ਅਤੇ ਬੁਨਿਆਦੀ ਸੁਰੱਖਿਆ ਲੋੜਾਂ ਸ਼ਾਮਲ ਹਨ। ਇਹ ਉਹਨਾਂ ਆਮ ਹਮਲਿਆਂ ਨੂੰ ਰੋਕਣ 'ਤੇ ਕੇਂਦ੍ਰਿਤ ਹਨ ਜੋ ਹੋਰ ਪੂਰਵ-ਸ਼ਰਤਾਂ ਜਾਂ ਕਮਜ਼ੋਰੀਆਂ 'ਤੇ ਨਿਰਭਰ ਨਹੀਂ ਕਰਦੇ। ਜ਼ਿਆਦਾਤਰ ਪੱਧਰ 1 ਨਿਯੰਤਰਣ ਜਾਂ ਤਾਂ ਲਾਗੂ ਕਰਨ ਵਿੱਚ ਸਿੱਧੇ-ਸਾਦੇ ਹਨ ਜਾਂ ਇੰਨੇ ਜ਼ਰੂਰੀ ਹਨ ਕਿ ਉਹ ਲੱਗਣ ਵਾਲੀ ਮਿਹਨਤ ਨੂੰ ਜਾਇਜ਼ ਠਹਿਰਾਉਂਦੇ ਹਨ।
+ਪੱਧਰ ੧ ਵਿੱਚ ਸਭ ਤੋਂ ਨਾਜ਼ੁਕ ਅਤੇ ਬੁਨਿਆਦੀ ਸੁਰੱਖਿਆ ਲੋੜਾਂ ਸ਼ਾਮਲ ਹਨ। ਇਹ ਉਹਨਾਂ ਆਮ ਹਮਲਿਆਂ ਨੂੰ ਰੋਕਣ 'ਤੇ ਕੇਂਦ੍ਰਿਤ ਹਨ ਜੋ ਹੋਰ ਪੂਰਵ-ਸ਼ਰਤਾਂ ਜਾਂ ਕਮਜ਼ੋਰੀਆਂ 'ਤੇ ਨਿਰਭਰ ਨਹੀਂ ਕਰਦੇ। ਜ਼ਿਆਦਾਤਰ ਪੱਧਰ ੧ ਨਿਯੰਤਰਣ ਜਾਂ ਤਾਂ ਲਾਗੂ ਕਰਨ ਵਿੱਚ ਸਿੱਧੇ-ਸਾਦੇ ਹਨ ਜਾਂ ਇੰਨੇ ਜ਼ਰੂਰੀ ਹਨ ਕਿ ਉਹ ਲੱਗਣ ਵਾਲੀ ਮਿਹਨਤ ਨੂੰ ਜਾਇਜ਼ ਠਹਿਰਾਉਂਦੇ ਹਨ।
 
 #### Level 2 requirements
-#### ਪੱਧਰ 2 ਦੀਆਂ ਲੋੜਾਂ
+#### ਪੱਧਰ ੨ ਦੀਆਂ ਲੋੜਾਂ
 
 Level 2 addresses more advanced or less common attacks, as well as layered defenses against widespread threats. These requirements may involve more complex logic or target specific attack prerequisites.
 
-ਪੱਧਰ 2 ਵਧੇਰੇ ਉੱਨਤ ਜਾਂ ਘੱਟ ਆਮ ਹਮਲਿਆਂ ਨੂੰ, ਨਾਲ ਹੀ ਵਿਆਪਕ ਖ਼ਤਰਿਆਂ ਵਿਰੁੱਧ ਪਰਤਦਾਰ ਬਚਾਵਾਂ ਨੂੰ ਸੰਬੋਧਿਤ ਕਰਦਾ ਹੈ। ਇਹਨਾਂ ਲੋੜਾਂ ਵਿੱਚ ਵਧੇਰੇ ਗੁੰਝਲਦਾਰ ਤਰਕ ਸ਼ਾਮਲ ਹੋ ਸਕਦਾ ਹੈ ਜਾਂ ਇਹ ਖ਼ਾਸ ਹਮਲਾ ਪੂਰਵ-ਲੋੜਾਂ ਨੂੰ ਨਿਸ਼ਾਨਾ ਬਣਾ ਸਕਦੀਆਂ ਹਨ।
+ਪੱਧਰ ੨ ਵਧੇਰੇ ਉੱਨਤ ਜਾਂ ਘੱਟ ਆਮ ਹਮਲਿਆਂ ਨੂੰ, ਨਾਲ ਹੀ ਵਿਆਪਕ ਖ਼ਤਰਿਆਂ ਵਿਰੁੱਧ ਪਰਤਦਾਰ ਬਚਾਵਾਂ ਨੂੰ ਸੰਬੋਧਿਤ ਕਰਦਾ ਹੈ। ਇਹਨਾਂ ਲੋੜਾਂ ਵਿੱਚ ਵਧੇਰੇ ਗੁੰਝਲਦਾਰ ਤਰਕ ਸ਼ਾਮਲ ਹੋ ਸਕਦਾ ਹੈ ਜਾਂ ਇਹ ਖ਼ਾਸ ਹਮਲਾ ਪੂਰਵ-ਲੋੜਾਂ ਨੂੰ ਨਿਸ਼ਾਨਾ ਬਣਾ ਸਕਦੀਆਂ ਹਨ।
 
 #### Level 3 requirements
-#### ਪੱਧਰ 3 ਦੀਆਂ ਲੋੜਾਂ
+#### ਪੱਧਰ ੩ ਦੀਆਂ ਲੋੜਾਂ
 
 Level 3 includes controls that are typically harder to implement or situational in applicability. These often represent defense-in-depth mechanisms or mitigations against niche, targeted, or high-complexity attacks.
 
-ਪੱਧਰ 3 ਵਿੱਚ ਉਹ ਨਿਯੰਤਰਣ ਸ਼ਾਮਲ ਹਨ ਜੋ ਆਮ ਤੌਰ 'ਤੇ ਲਾਗੂ ਕਰਨੇ ਔਖੇ ਹੁੰਦੇ ਹਨ ਜਾਂ ਜਿਨ੍ਹਾਂ ਦੀ ਲਾਗੂ ਹੋਣ ਦੀ ਯੋਗਤਾ ਹਾਲਾਤ 'ਤੇ ਨਿਰਭਰ ਕਰਦੀ ਹੈ। ਇਹ ਅਕਸਰ ਡੂੰਘਾਈ ਵਿੱਚ ਬਚਾਅ (defense-in-depth)[^0x03-Using-AISVS-defense-in-depth] ਵਿਧੀਆਂ ਜਾਂ ਸੀਮਤ-ਦਾਇਰੇ, ਨਿਸ਼ਾਨਾਬੱਧ, ਜਾਂ ਉੱਚ-ਜਟਿਲਤਾ ਵਾਲੇ ਹਮਲਿਆਂ ਵਿਰੁੱਧ ਘਟਾਉਣ ਦੇ ਉਪਾਅ ਦਰਸਾਉਂਦੇ ਹਨ।
+ਪੱਧਰ ੩ ਵਿੱਚ ਉਹ ਨਿਯੰਤਰਣ ਸ਼ਾਮਲ ਹਨ ਜੋ ਆਮ ਤੌਰ 'ਤੇ ਲਾਗੂ ਕਰਨੇ ਔਖੇ ਹੁੰਦੇ ਹਨ ਜਾਂ ਜਿਨ੍ਹਾਂ ਦੀ ਲਾਗੂ ਹੋਣ ਦੀ ਯੋਗਤਾ ਹਾਲਾਤ 'ਤੇ ਨਿਰਭਰ ਕਰਦੀ ਹੈ। ਇਹ ਅਕਸਰ ਡੂੰਘਾਈ ਵਿੱਚ ਬਚਾਅ (defense-in-depth)[^0x03-Using-AISVS-defense-in-depth] ਵਿਧੀਆਂ ਜਾਂ ਸੀਮਤ-ਦਾਇਰੇ, ਨਿਸ਼ਾਨਾਬੱਧ, ਜਾਂ ਉੱਚ-ਜਟਿਲਤਾ ਵਾਲੇ ਹਮਲਿਆਂ ਵਿਰੁੱਧ ਘਟਾਉਣ ਦੇ ਉਪਾਅ ਦਰਸਾਉਂਦੇ ਹਨ।
 
 ## Alignment with ASVS Levels
 ## ASVS ਪੱਧਰਾਂ ਨਾਲ ਇਕਸਾਰਤਾ
@@ -346,9 +346,9 @@ AISVS ਪੱਧਰ [ASVS](https://owasp.org/www-project-application-security-ver
 
 | AISVS ਪੱਧਰ | ਸੰਬੰਧਿਤ ASVS ਪੱਧਰ | ਆਮ ਵਰਤੋਂ |
 | :---: | :---: | --- |
-| 1 | 1 | ਕਿਸੇ ਵੀ ਅਜਿਹੀ AI ਐਪਲੀਕੇਸ਼ਨ ਲਈ ਬੁਨਿਆਦੀ ਸੁਰੱਖਿਆ ਜੋ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਇਨਪੁੱਟ ਸੰਭਾਲਦੀ ਹੈ ਜਾਂ ਕਿਸੇ ਵੀ ਸੰਵੇਦਨਸ਼ੀਲਤਾ ਵਾਲੇ ਡਾਟੇ 'ਤੇ ਕੰਮ ਕਰਦੀ ਹੈ। |
-| 2 | 2 | ਸੰਵੇਦਨਸ਼ੀਲ ਕਾਰੋਬਾਰੀ ਡਾਟਾ ਜਾਂ ਨਿਯੰਤ੍ਰਿਤ ਡਾਟਾ ਸੰਭਾਲਣ ਵਾਲੀਆਂ, ਜਾਂ ਵਿਰੋਧੀ ਸੰਦਰਭਾਂ ਵਿੱਚ ਕੰਮ ਕਰਨ ਵਾਲੀਆਂ AI ਐਪਲੀਕੇਸ਼ਨਾਂ। |
-| 3 | 3 | ਉੱਚ-ਭਰੋਸੇ ਵਾਲੀਆਂ AI ਐਪਲੀਕੇਸ਼ਨਾਂ, ਜਿਵੇਂ ਕਿ ਜੀਵਨ-ਸਲਾਮਤੀ ਦੇ ਫ਼ੈਸਲੇ, ਨਾਜ਼ੁਕ ਬੁਨਿਆਦੀ ਢਾਂਚਾ, ਜਾਂ ਬਹੁਤ ਸੰਵੇਦਨਸ਼ੀਲ ਨਿੱਜੀ ਡਾਟਾ ਸੰਭਾਲਣ ਵਾਲੀਆਂ ਐਪਲੀਕੇਸ਼ਨਾਂ। |
+| ੧ | ੧ | ਕਿਸੇ ਵੀ ਅਜਿਹੀ AI ਐਪਲੀਕੇਸ਼ਨ ਲਈ ਬੁਨਿਆਦੀ ਸੁਰੱਖਿਆ ਜੋ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਇਨਪੁੱਟ ਸੰਭਾਲਦੀ ਹੈ ਜਾਂ ਕਿਸੇ ਵੀ ਸੰਵੇਦਨਸ਼ੀਲਤਾ ਵਾਲੇ ਡਾਟੇ 'ਤੇ ਕੰਮ ਕਰਦੀ ਹੈ। |
+| ੨ | ੨ | ਸੰਵੇਦਨਸ਼ੀਲ ਕਾਰੋਬਾਰੀ ਡਾਟਾ ਜਾਂ ਨਿਯੰਤ੍ਰਿਤ ਡਾਟਾ ਸੰਭਾਲਣ ਵਾਲੀਆਂ, ਜਾਂ ਵਿਰੋਧੀ ਸੰਦਰਭਾਂ ਵਿੱਚ ਕੰਮ ਕਰਨ ਵਾਲੀਆਂ AI ਐਪਲੀਕੇਸ਼ਨਾਂ। |
+| ੩ | ੩ | ਉੱਚ-ਭਰੋਸੇ ਵਾਲੀਆਂ AI ਐਪਲੀਕੇਸ਼ਨਾਂ, ਜਿਵੇਂ ਕਿ ਜੀਵਨ-ਸਲਾਮਤੀ ਦੇ ਫ਼ੈਸਲੇ, ਨਾਜ਼ੁਕ ਬੁਨਿਆਦੀ ਢਾਂਚਾ, ਜਾਂ ਬਹੁਤ ਸੰਵੇਦਨਸ਼ੀਲ ਨਿੱਜੀ ਡਾਟਾ ਸੰਭਾਲਣ ਵਾਲੀਆਂ ਐਪਲੀਕੇਸ਼ਨਾਂ। |
 
 If an AISVS requirement appears to overlap with an ASVS requirement, the AISVS version is restated only because it has AI-specific implementation details, attack surface, or evidence that an auditor needs to evaluate differently.
 
@@ -390,7 +390,7 @@ When verifying an AI application against AISVS, the equivalent level of those un
 
 AISVS chapters are organized by control family rather than by attack or component. As a result, defending against a given AI threat usually requires applying requirements from several chapters together. For example, defending against prompt injection in an agentic application combines requirements from C2 (input validation), C7 (model behavior), C9 (orchestration and agentic security), C10 (MCP-specific controls), C11 (adversarial robustness), and C12 (detection and logging).
 
-AISVS ਅਧਿਆਇ ਹਮਲੇ ਜਾਂ ਹਿੱਸੇ[^0x03-Using-AISVS-component] ਦੀ ਬਜਾਏ ਨਿਯੰਤਰਣ ਪਰਿਵਾਰ[^0x03-Using-AISVS-control-family] ਅਨੁਸਾਰ ਵਿਵਸਥਿਤ ਹਨ। ਨਤੀਜੇ ਵਜੋਂ, ਕਿਸੇ ਦਿੱਤੇ AI ਖ਼ਤਰੇ ਵਿਰੁੱਧ ਬਚਾਅ ਲਈ ਆਮ ਤੌਰ 'ਤੇ ਕਈ ਅਧਿਆਵਾਂ ਦੀਆਂ ਲੋੜਾਂ ਨੂੰ ਇਕੱਠੇ ਲਾਗੂ ਕਰਨਾ ਪੈਂਦਾ ਹੈ। ਉਦਾਹਰਨ ਲਈ, ਕਿਸੇ ਏਜੰਟ-ਆਧਾਰਿਤ (agentic)[^0x03-Using-AISVS-agent-based] ਐਪਲੀਕੇਸ਼ਨ ਵਿੱਚ prompt ਇੰਜੈਕਸ਼ਨ ਵਿਰੁੱਧ ਬਚਾਅ C2 (ਇਨਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ), C7 (ਮਾਡਲ ਵਿਵਹਾਰ), C9 (ਆਰਕੈਸਟ੍ਰੇਸ਼ਨ[^0x03-Using-AISVS-orchestration] ਅਤੇ ਏਜੰਟ-ਆਧਾਰਿਤ ਸੁਰੱਖਿਆ), C10 (MCP-ਵਿਸ਼ੇਸ਼ ਨਿਯੰਤਰਣ), C11 (ਵਿਰੋਧੀ ਮਜ਼ਬੂਤੀ[^0x03-Using-AISVS-adversarial-robustness]), ਅਤੇ C12 (ਪਛਾਣ ਅਤੇ ਲੌਗਿੰਗ) ਦੀਆਂ ਲੋੜਾਂ ਨੂੰ ਜੋੜਦਾ ਹੈ।
+AISVS ਅਧਿਆਇ ਹਮਲੇ ਜਾਂ ਹਿੱਸੇ[^0x03-Using-AISVS-component] ਦੀ ਬਜਾਏ ਨਿਯੰਤਰਣ ਪਰਿਵਾਰ[^0x03-Using-AISVS-control-family] ਅਨੁਸਾਰ ਵਿਵਸਥਿਤ ਹਨ। ਨਤੀਜੇ ਵਜੋਂ, ਕਿਸੇ ਦਿੱਤੇ AI ਖ਼ਤਰੇ ਵਿਰੁੱਧ ਬਚਾਅ ਲਈ ਆਮ ਤੌਰ 'ਤੇ ਕਈ ਅਧਿਆਵਾਂ ਦੀਆਂ ਲੋੜਾਂ ਨੂੰ ਇਕੱਠੇ ਲਾਗੂ ਕਰਨਾ ਪੈਂਦਾ ਹੈ। ਉਦਾਹਰਨ ਲਈ, ਕਿਸੇ ਏਜੰਟ-ਆਧਾਰਿਤ (agentic)[^0x03-Using-AISVS-agent-based] ਐਪਲੀਕੇਸ਼ਨ ਵਿੱਚ prompt ਇੰਜੈਕਸ਼ਨ ਵਿਰੁੱਧ ਬਚਾਅ C੨ (ਇਨਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ), C੭ (ਮਾਡਲ ਵਿਵਹਾਰ), C੯ (ਆਰਕੈਸਟ੍ਰੇਸ਼ਨ[^0x03-Using-AISVS-orchestration] ਅਤੇ ਏਜੰਟ-ਆਧਾਰਿਤ ਸੁਰੱਖਿਆ), C੧੦ (MCP-ਵਿਸ਼ੇਸ਼ ਨਿਯੰਤਰਣ), C੧੧ (ਵਿਰੋਧੀ ਮਜ਼ਬੂਤੀ[^0x03-Using-AISVS-adversarial-robustness]), ਅਤੇ C੧੨ (ਪਛਾਣ ਅਤੇ ਲੌਗਿੰਗ) ਦੀਆਂ ਲੋੜਾਂ ਨੂੰ ਜੋੜਦਾ ਹੈ।
 
 When applying AISVS, treat the standard as a whole and consult Appendix B (AI Security Controls Inventory) for a cross-cutting view of where each defense technique appears.
 
@@ -406,17 +406,17 @@ Requirements can often be assessed using a combination of technical testing and 
 [^0x03-Using-AISVS-format]: **format** (EN) -> ਫ਼ਾਰਮੈਟ — spelled with nukta (ਫ਼) for English /f/, correcting a corpus-wide split where "format" and "platform" appeared both with and without the nukta in different chapters. Full discussion: OPEN-QUESTIONS.md Q86.
 [^0x03-Using-AISVS-appendix]: **Appendix** (EN) -> ਅੰਤਿਕਾ — the settled Panjabi term for a document appendix; the division letter (A/B/C) stays Latin as a cross-reference target, matching how requirement IDs are kept unconverted. Full discussion: OPEN-QUESTIONS.md Q121.
 [^0x03-Using-AISVS-defense-in-depth]: **Defense-in-Depth** (EN, retained) -> ਡੂੰਘਾਈ ਵਿੱਚ ਬਚਾਅ — the named security doctrine keeps its fixed English name, as auditors and the NIST/CIS literature use it, with a literal Panjabi gloss; this file's hyphenation was normalised to match Appendix A after a corpus audit found it diverging. Full discussion: OPEN-QUESTIONS.md Q141.
-[^0x03-Using-AISVS-transport]: **transport security** (EN) -> ਟ੍ਰਾਂਸਪੋਰਟ ਸੁਰੱਖਿਆ — ਟ੍ਰਾਂਸਪੋਰਟ is kept a loan rather than translated (e.g. ਢੋਆ-ਢੁਆਈ, "freight," would be absurd for a protocol channel); this compound is the conformance anchor the C10 (MCP transport) chapter matches later. Full discussion: OPEN-QUESTIONS.md Q90.
+[^0x03-Using-AISVS-transport]: **transport security** (EN) -> ਟ੍ਰਾਂਸਪੋਰਟ ਸੁਰੱਖਿਆ — ਟ੍ਰਾਂਸਪੋਰਟ is kept a loan rather than translated (e.g. ਢੋਆ-ਢੁਆਈ, "freight," would be absurd for a protocol channel); this compound is the conformance anchor the C੧੦ (MCP transport) chapter matches later. Full discussion: OPEN-QUESTIONS.md Q90.
 [^0x03-Using-AISVS-provenance]: **provenance** (EN, in "build provenance") -> ਮੂਲ-ਸਰੋਤ ("root-source") — states "documented chain of origin" plainly, avoiding ਉਤਪਤੀ's creation-narrative/devotional overtone. Full discussion: OPEN-QUESTIONS.md Q73.
-[^0x03-Using-AISVS-immutable]: **immutability** (EN, "audit log immutability") -> ਅਪਰਿਵਰਤਨਸ਼ੀਲਤਾ — the settled adjective/noun form, kept consistent with C12 and Appendix C rather than paraphrased as "cannot be changed," so the term stays searchable across the corpus. Full discussion: OPEN-QUESTIONS.md Q112.
-[^0x03-Using-AISVS-consent]: **consent** (EN, "consent management platform") -> ਸਹਿਮਤੀ — fixes ਸਹਿਮਤੀ to *consent* corpus-wide, deliberately keeping ਮਨਜ਼ੂਰੀ free for *approval* so the two obligations do not collapse into one word in C10. Full discussion: OPEN-QUESTIONS.md Q93.
+[^0x03-Using-AISVS-immutable]: **immutability** (EN, "audit log immutability") -> ਅਪਰਿਵਰਤਨਸ਼ੀਲਤਾ — the settled adjective/noun form, kept consistent with C੧੨ and Appendix C rather than paraphrased as "cannot be changed," so the term stays searchable across the corpus. Full discussion: OPEN-QUESTIONS.md Q112.
+[^0x03-Using-AISVS-consent]: **consent** (EN, "consent management platform") -> ਸਹਿਮਤੀ — fixes ਸਹਿਮਤੀ to *consent* corpus-wide, deliberately keeping ਮਨਜ਼ੂਰੀ free for *approval* so the two obligations do not collapse into one word in C੧੦. Full discussion: OPEN-QUESTIONS.md Q93.
 [^0x03-Using-AISVS-model-card]: **model card** (EN) -> ਮਾਡਲ ਕਾਰਡ — kept as a loan pair rather than a descriptive phrase (e.g. "documentation") because a model card is a named artifact type with a fixed evidentiary meaning; a vaguer rendering would soften what an auditor can accept as proof. Full discussion: OPEN-QUESTIONS.md Q85.
 [^0x03-Using-AISVS-transparency]: **transparency** (EN, "public transparency reports") -> ਪਾਰਦਰਸ਼ਤਾ — reserved for *transparency* specifically so Appendix C can use a different word (ਵਿਆਖਿਆਯੋਗਤਾ) for the separate governance concept of *explainability*. Full discussion: OPEN-QUESTIONS.md Q120.
 [^0x03-Using-AISVS-component]: **component** (EN, "attack or component") -> ਹਿੱਸੇ — correct here because the source means a generic part, not a named system component; other chapters split between ਹਿੱਸਾ and the loan ਕੰਪੋਨੈਂਟ for the term-of-art sense, a corpus-wide split that is logged but not yet resolved. Full discussion: OPEN-QUESTIONS.md Q95.
 [^0x03-Using-AISVS-control-family]: **control family** (EN) -> ਨਿਯੰਤਰਣ ਪਰਿਵਾਰ — ਪਰਿਵਾਰ mirrors the English "family" metaphor and matches how NIST SP 800-53 control families are discussed in Panjabi security writing; recorded again here because the term recurs in every control chapter and must not drift. Full discussion: OPEN-QUESTIONS.md Q80.
 [^0x03-Using-AISVS-agent-based]: **agentic / agent-based** (EN) -> ਏਜੰਟ-ਆਧਾਰਿਤ — normalised to the long-vowel ਆਧਾਰਿਤ (never the short ਅਧਾਰਿਤ) after a cross-file audit found this file internally split between the two spellings for the same compound. Full discussion: OPEN-QUESTIONS.md Q71.
-[^0x03-Using-AISVS-orchestration]: **orchestration** (EN, C09 title) -> ਆਰਕੈਸਟ੍ਰੇਸ਼ਨ — kept as a loan because the nearest native word, ਤਾਲਮੇਲ ("coordination"), loses the specific sense of a control plane driving multi-step model/tool/agent execution. Full discussion: OPEN-QUESTIONS.md Q83.
-[^0x03-Using-AISVS-adversarial-robustness]: **adversarial robustness** (EN, C11 title) -> ਵਿਰੋਧੀ ਮਜ਼ਬੂਤੀ — ਮਜ਼ਬੂਤੀ ("sturdiness") was chosen over ਦ੍ਰਿੜ੍ਹਤਾ ("steadfastness/resolve"), which would ascribe an inner quality to a model. Full discussion: OPEN-QUESTIONS.md Q84.
+[^0x03-Using-AISVS-orchestration]: **orchestration** (EN, C੦੯ title) -> ਆਰਕੈਸਟ੍ਰੇਸ਼ਨ — kept as a loan because the nearest native word, ਤਾਲਮੇਲ ("coordination"), loses the specific sense of a control plane driving multi-step model/tool/agent execution. Full discussion: OPEN-QUESTIONS.md Q83.
+[^0x03-Using-AISVS-adversarial-robustness]: **adversarial robustness** (EN, C੧੧ title) -> ਵਿਰੋਧੀ ਮਜ਼ਬੂਤੀ — ਮਜ਼ਬੂਤੀ ("sturdiness") was chosen over ਦ੍ਰਿੜ੍ਹਤਾ ("steadfastness/resolve"), which would ascribe an inner quality to a model. Full discussion: OPEN-QUESTIONS.md Q84.
 
 \newpage
 <!-- Translation Status: ✅ Complete -->
@@ -424,7 +424,7 @@ Requirements can often be assessed using a combination of technical testing and 
 <!-- Translator: GeeksikhSecurity -->
 
 # C1 Training Data Integrity & Traceability
-# C1 ਸਿਖਲਾਈ ਡਾਟਾ[^0x10-C01-training-data] ਅਖੰਡਤਾ ਅਤੇ ਟਰੇਸਯੋਗਤਾ[^0x10-C01-traceability]
+# C੧ ਸਿਖਲਾਈ ਡਾਟਾ[^0x10-C01-training-data] ਅਖੰਡਤਾ ਅਤੇ ਟਰੇਸਯੋਗਤਾ[^0x10-C01-traceability]
 
 ## Control Objective
 ## ਨਿਯੰਤਰਣ ਉਦੇਸ਼
@@ -436,7 +436,7 @@ This chapter addresses protecting the integrity and traceability of training dat
 ---
 
 ## C1.1 Training Data Origin & Data Security
-## C1.1 ਸਿਖਲਾਈ ਡਾਟਾ ਦਾ ਮੂਲ ਅਤੇ ਡਾਟਾ ਸੁਰੱਖਿਆ
+## C੧.੧ ਸਿਖਲਾਈ ਡਾਟਾ ਦਾ ਮੂਲ ਅਤੇ ਡਾਟਾ ਸੁਰੱਖਿਆ
 
 Training data origin and security are critical to the trustworthiness of any AI system. Datasets must be sourced from verifiable origins, tracked across their full lifecycle, and protected against tampering, corruption, and poisoning so that unauthorized modification can be detected.
 
@@ -452,16 +452,16 @@ Training data origin and security are critical to the trustworthiness of any AI 
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **1.1.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਖਲਾਈ ਡਾਟਾ ਵਿੱਚ ਸਿਰਫ਼ ਉਹੀ ਫ਼ੀਚਰ[^0x10-C01-features] (features), ਗੁਣ, ਅਤੇ ਖੇਤਰ ਸ਼ਾਮਲ ਹਨ ਜੋ ਮਾਡਲ ਦੇ ਦੱਸੇ ਗਏ ਮਕਸਦ ਲਈ ਲੋੜੀਂਦੇ ਹਨ। | 1 |
-| **1.1.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਸਿਖਲਾਈ-ਡਾਟਾ ਸਰੋਤ ਦੀ ਇੱਕ ਅੱਪ-ਟੂ-ਡੇਟ ਇਨਵੈਂਟਰੀ ਰੱਖੀ ਜਾਂਦੀ ਹੈ, ਜਿਸ ਵਿੱਚ ਉਸਦਾ ਮੂਲ, ਜ਼ਿੰਮੇਵਾਰ ਧਿਰ, ਲਾਇਸੰਸ, ਇਕੱਤਰੀਕਰਨ ਵਿਧੀ, ਇੱਛਤ ਵਰਤੋਂ ਦੀਆਂ ਪਾਬੰਦੀਆਂ, ਅਤੇ ਪ੍ਰਕਿਰਿਆ ਇਤਿਹਾਸ ਸ਼ਾਮਲ ਹਨ। | 2 |
-| **1.1.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਜਦੋਂ ਸਿਖਲਾਈ ਡਾਟਾ ਦਾ ਭੰਡਾਰਨ ਅਤੇ ਪ੍ਰਸਾਰਣ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ਤਾਂ ਡਾਟਾ ਅਖੰਡਤਾ ਪ੍ਰਦਾਨ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | 2 |
-| **1.1.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਖਲਾਈ ਡਾਟਾ ਦੀਆਂ ਅਣਅਧਿਕਾਰਤ ਸੋਧਾਂ ਜਾਂ ਵਿਗਾੜ ਤੋਂ ਬਚਾਅ ਲਈ ਅਖੰਡਤਾ ਨਿਗਰਾਨੀ ਲਾਗੂ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | 2 |
-| **1.1.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਡਾਟਾਸੈੱਟਾਂ ਨੂੰ ਵਾਟਰਮਾਰਕ[^0x10-C01-watermarking] ਕੀਤਾ ਜਾਂਦਾ ਹੈ ਤਾਂ ਜੋ ਉਹਨਾਂ ਦੀ ਵਰਤੋਂ ਦਾ ਸਰੋਤ-ਨਿਰਧਾਰਨ[^0x10-C01-attribution] (attribution) ਕੀਤਾ ਜਾ ਸਕੇ ਅਤੇ ਕਿਸੇ ਵੀ ਅਣਅਧਿਕਾਰਤ ਵਰਤੋਂ ਦਾ ਪਤਾ ਲਗਾਇਆ ਜਾ ਸਕੇ। | 3 |
+| **੧.੧.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਖਲਾਈ ਡਾਟਾ ਵਿੱਚ ਸਿਰਫ਼ ਉਹੀ ਫ਼ੀਚਰ[^0x10-C01-features] (features), ਗੁਣ, ਅਤੇ ਖੇਤਰ ਸ਼ਾਮਲ ਹਨ ਜੋ ਮਾਡਲ ਦੇ ਦੱਸੇ ਗਏ ਮਕਸਦ ਲਈ ਲੋੜੀਂਦੇ ਹਨ। | ੧ |
+| **੧.੧.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਸਿਖਲਾਈ-ਡਾਟਾ ਸਰੋਤ ਦੀ ਇੱਕ ਅੱਪ-ਟੂ-ਡੇਟ ਇਨਵੈਂਟਰੀ ਰੱਖੀ ਜਾਂਦੀ ਹੈ, ਜਿਸ ਵਿੱਚ ਉਸਦਾ ਮੂਲ, ਜ਼ਿੰਮੇਵਾਰ ਧਿਰ, ਲਾਇਸੰਸ, ਇਕੱਤਰੀਕਰਨ ਵਿਧੀ, ਇੱਛਤ ਵਰਤੋਂ ਦੀਆਂ ਪਾਬੰਦੀਆਂ, ਅਤੇ ਪ੍ਰਕਿਰਿਆ ਇਤਿਹਾਸ ਸ਼ਾਮਲ ਹਨ। | ੨ |
+| **੧.੧.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਜਦੋਂ ਸਿਖਲਾਈ ਡਾਟਾ ਦਾ ਭੰਡਾਰਨ ਅਤੇ ਪ੍ਰਸਾਰਣ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ਤਾਂ ਡਾਟਾ ਅਖੰਡਤਾ ਪ੍ਰਦਾਨ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | ੨ |
+| **੧.੧.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਖਲਾਈ ਡਾਟਾ ਦੀਆਂ ਅਣਅਧਿਕਾਰਤ ਸੋਧਾਂ ਜਾਂ ਵਿਗਾੜ ਤੋਂ ਬਚਾਅ ਲਈ ਅਖੰਡਤਾ ਨਿਗਰਾਨੀ ਲਾਗੂ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | ੨ |
+| **੧.੧.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਡਾਟਾਸੈੱਟਾਂ ਨੂੰ ਵਾਟਰਮਾਰਕ[^0x10-C01-watermarking] ਕੀਤਾ ਜਾਂਦਾ ਹੈ ਤਾਂ ਜੋ ਉਹਨਾਂ ਦੀ ਵਰਤੋਂ ਦਾ ਸਰੋਤ-ਨਿਰਧਾਰਨ[^0x10-C01-attribution] (attribution) ਕੀਤਾ ਜਾ ਸਕੇ ਅਤੇ ਕਿਸੇ ਵੀ ਅਣਅਧਿਕਾਰਤ ਵਰਤੋਂ ਦਾ ਪਤਾ ਲਗਾਇਆ ਜਾ ਸਕੇ। | ੩ |
 
 ---
 
 ## C1.2 Data Labeling and Annotation Security
-## C1.2 ਡਾਟਾ ਲੇਬਲਿੰਗ[^0x10-C01-labeling-annotation] ਅਤੇ ਐਨੋਟੇਸ਼ਨ ਸੁਰੱਖਿਆ
+## C੧.੨ ਡਾਟਾ ਲੇਬਲਿੰਗ[^0x10-C01-labeling-annotation] ਅਤੇ ਐਨੋਟੇਸ਼ਨ ਸੁਰੱਖਿਆ
 
 Labeling and annotation processes must be protected against unauthorized modification, data leakage, and integrity compromise. Annotation platforms should enforce access control, preserve auditability, and protect labeling artifacts and sensitive label content throughout the training pipeline.
 
@@ -475,14 +475,14 @@ Labeling and annotation processes must be protected against unauthorized modific
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **1.2.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਲੇਬਲਿੰਗ ਪਲੇਟਫ਼ਾਰਮ ਅਜਿਹੇ ਪਹੁੰਚ ਕੰਟਰੋਲ ਲਾਗੂ ਕਰਦੇ ਹਨ ਜੋ ਇਹ ਸੀਮਤ ਕਰਦੇ ਹਨ ਕਿ ਕੌਣ ਐਨੋਟੇਸ਼ਨਾਂ ਬਣਾ, ਸੋਧ, ਜਾਂ ਮਨਜ਼ੂਰ ਕਰ ਸਕਦਾ ਹੈ। | 1 |
-| **1.2.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਲੇਬਲਿੰਗ ਆਰਟੀਫ਼ੈਕਟਾਂ ਉੱਤੇ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਅਖੰਡਤਾ ਲਾਗੂ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | 2 |
-| **1.2.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਲੇਬਲਾਂ ਵਿੱਚ ਮੌਜੂਦ ਸੰਵੇਦਨਸ਼ੀਲ ਜਾਣਕਾਰੀ ਨੂੰ ਕਿਸੇ ਵੀ ਲੇਬਲਿੰਗ ਆਰਟੀਫ਼ੈਕਟ ਵਿੱਚ ਵਰਤੇ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ ਰਿਡੈਕਟ (redacted), ਗੁਮਨਾਮ, ਜਾਂ ਏਨਕ੍ਰਿਪਟ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 2 |
+| **੧.੨.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਲੇਬਲਿੰਗ ਪਲੇਟਫ਼ਾਰਮ ਅਜਿਹੇ ਪਹੁੰਚ ਕੰਟਰੋਲ ਲਾਗੂ ਕਰਦੇ ਹਨ ਜੋ ਇਹ ਸੀਮਤ ਕਰਦੇ ਹਨ ਕਿ ਕੌਣ ਐਨੋਟੇਸ਼ਨਾਂ ਬਣਾ, ਸੋਧ, ਜਾਂ ਮਨਜ਼ੂਰ ਕਰ ਸਕਦਾ ਹੈ। | ੧ |
+| **੧.੨.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਲੇਬਲਿੰਗ ਆਰਟੀਫ਼ੈਕਟਾਂ ਉੱਤੇ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਅਖੰਡਤਾ ਲਾਗੂ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | ੨ |
+| **੧.੨.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਲੇਬਲਾਂ ਵਿੱਚ ਮੌਜੂਦ ਸੰਵੇਦਨਸ਼ੀਲ ਜਾਣਕਾਰੀ ਨੂੰ ਕਿਸੇ ਵੀ ਲੇਬਲਿੰਗ ਆਰਟੀਫ਼ੈਕਟ ਵਿੱਚ ਵਰਤੇ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ ਰਿਡੈਕਟ (redacted), ਗੁਮਨਾਮ, ਜਾਂ ਏਨਕ੍ਰਿਪਟ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੨ |
 
 ---
 
 ## C1.3 Training Data Quality and Security Assurance
-## C1.3 ਸਿਖਲਾਈ ਡਾਟਾ ਗੁਣਵੱਤਾ ਅਤੇ ਸੁਰੱਖਿਆ ਭਰੋਸਾ[^0x10-C01-assurance]
+## C੧.੩ ਸਿਖਲਾਈ ਡਾਟਾ ਗੁਣਵੱਤਾ ਅਤੇ ਸੁਰੱਖਿਆ ਭਰੋਸਾ[^0x10-C01-assurance]
 
 Quality and security assurance controls help detect corruption, poisoning, labeling errors, and exploitable dataset patterns before they affect model behavior. Pipelines should combine automated validation, poisoning detection, label quality checks, and bias analysis.
 
@@ -498,11 +498,11 @@ Quality and security assurance controls help detect corruption, poisoning, label
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **1.3.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਖਲਾਈ ਅਤੇ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ (fine-tuning) ਪਾਈਪਲਾਈਨਾਂ ਸਿਖਲਾਈ ਡਾਟਾ ਵਿੱਚ ਸੰਭਾਵੀ data poisoning (ਡਾਟਾ ਜ਼ਹਿਰੀਕਰਨ) ਜਾਂ ਅਣਇੱਛਤ ਵਿਗਾੜ ਦੀ ਪਛਾਣ ਕਰਨ ਲਈ poisoning ਪਛਾਣ ਤਕਨੀਕਾਂ ਲਾਗੂ ਕਰਦੀਆਂ ਹਨ। | 2 |
-| **1.3.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਵੈਚਾਲਿਤ ਢੰਗ ਨਾਲ ਪੈਦਾ ਕੀਤੇ ਲੇਬਲ ਗੁੰਮਰਾਹਕੁੰਨ ਜਾਂ ਘੱਟ-ਭਰੋਸੇ[^0x10-C01-confidence-threshold] ਵਾਲੇ ਲੇਬਲਾਂ ਦਾ ਪਤਾ ਲਗਾਉਣ ਲਈ ਭਰੋਸਾ ਥ੍ਰੈਸ਼ਹੋਲਡਾਂ ਅਤੇ ਇਕਸਾਰਤਾ ਜਾਂਚਾਂ ਦੇ ਅਧੀਨ ਹਨ। | 2 |
-| **1.3.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸੁਰੱਖਿਆ-ਸੰਬੰਧਿਤ ਫ਼ੈਸਲਿਆਂ ਵਿੱਚ ਵਰਤੇ ਜਾਣ ਵਾਲੇ ਮਾਡਲਾਂ ਦਾ ਪੱਖਪਾਤ (bias) ਪੈਟਰਨਾਂ ਲਈ ਮੁਲਾਂਕਣ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 2 |
-| **1.3.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਖਲਾਈ ਤੋਂ ਪਹਿਲਾਂ ਮਨਾਹੀ ਵਾਲੀ ਸਮੱਗਰੀ ਦਾ ਪਤਾ ਲਗਾਇਆ ਜਾਂਦਾ ਹੈ ਅਤੇ ਉਸਨੂੰ ਹਟਾਇਆ ਜਾਂਦਾ ਹੈ। | 2 |
-| **1.3.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** clean-label poisoning ਹਮਲਿਆਂ ਵਿਰੁੱਧ ਬਚਾਅ ਲਾਗੂ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | 3 |
+| **੧.੩.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਖਲਾਈ ਅਤੇ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ (fine-tuning) ਪਾਈਪਲਾਈਨਾਂ ਸਿਖਲਾਈ ਡਾਟਾ ਵਿੱਚ ਸੰਭਾਵੀ data poisoning (ਡਾਟਾ ਜ਼ਹਿਰੀਕਰਨ) ਜਾਂ ਅਣਇੱਛਤ ਵਿਗਾੜ ਦੀ ਪਛਾਣ ਕਰਨ ਲਈ poisoning ਪਛਾਣ ਤਕਨੀਕਾਂ ਲਾਗੂ ਕਰਦੀਆਂ ਹਨ। | ੨ |
+| **੧.੩.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਵੈਚਾਲਿਤ ਢੰਗ ਨਾਲ ਪੈਦਾ ਕੀਤੇ ਲੇਬਲ ਗੁੰਮਰਾਹਕੁੰਨ ਜਾਂ ਘੱਟ-ਭਰੋਸੇ[^0x10-C01-confidence-threshold] ਵਾਲੇ ਲੇਬਲਾਂ ਦਾ ਪਤਾ ਲਗਾਉਣ ਲਈ ਭਰੋਸਾ ਥ੍ਰੈਸ਼ਹੋਲਡਾਂ ਅਤੇ ਇਕਸਾਰਤਾ ਜਾਂਚਾਂ ਦੇ ਅਧੀਨ ਹਨ। | ੨ |
+| **੧.੩.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸੁਰੱਖਿਆ-ਸੰਬੰਧਿਤ ਫ਼ੈਸਲਿਆਂ ਵਿੱਚ ਵਰਤੇ ਜਾਣ ਵਾਲੇ ਮਾਡਲਾਂ ਦਾ ਪੱਖਪਾਤ (bias) ਪੈਟਰਨਾਂ ਲਈ ਮੁਲਾਂਕਣ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੨ |
+| **੧.੩.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਖਲਾਈ ਤੋਂ ਪਹਿਲਾਂ ਮਨਾਹੀ ਵਾਲੀ ਸਮੱਗਰੀ ਦਾ ਪਤਾ ਲਗਾਇਆ ਜਾਂਦਾ ਹੈ ਅਤੇ ਉਸਨੂੰ ਹਟਾਇਆ ਜਾਂਦਾ ਹੈ। | ੨ |
+| **੧.੩.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** clean-label poisoning ਹਮਲਿਆਂ ਵਿਰੁੱਧ ਬਚਾਅ ਲਾਗੂ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | ੩ |
 
 ---
 
@@ -532,7 +532,7 @@ Quality and security assurance controls help detect corruption, poisoning, label
 <!-- Translator: GeeksikhSecurity -->
 
 # C2 Input Validation
-# C2 ਇਨਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ
+# C੨ ਇਨਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ
 
 ## Control Objective
 ## ਨਿਯੰਤਰਣ ਉਦੇਸ਼
@@ -544,7 +544,7 @@ This chapter addresses validation of all inputs as a first-line defense against 
 ---
 
 ## C2.1 Prompt Injection Defenses
-## C2.1 Prompt ਇੰਜੈਕਸ਼ਨ ਬਚਾਅ
+## C੨.੧ Prompt ਇੰਜੈਕਸ਼ਨ ਬਚਾਅ
 
 Prompt injection is one of the top risks for AI systems, and defending against it requires a combination of pattern filters, data classifiers, and instruction hierarchy enforcement.
 
@@ -563,19 +563,19 @@ Prompt ਇੰਜੈਕਸ਼ਨ AI ਸਿਸਟਮਾਂ ਲਈ ਸਭ ਤੋਂ
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **2.1.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਟੋਕਨਾਈਜ਼ੇਸ਼ਨ[^0x10-C02-tokenization] (tokenization) ਜਾਂ embedding ਤੋਂ ਪਹਿਲਾਂ ਇਨਪੁੱਟ ਸਧਾਰਨੀਕਰਨ[^0x10-C02-input-normalization] (normalization) ਲਾਗੂ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 1 |
-| **2.1.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇਨਪੁੱਟਾਂ ਵਿੱਚ ਏਨਕੋਡਿੰਗ ਅਤੇ ਪ੍ਰਤੀਨਿਧਤਾ ਤਸਕਰੀ[^0x10-C02-representation-smuggling] (representation smuggling) ਦਾ ਪਤਾ ਲਗਾਇਆ ਜਾਂਦਾ ਹੈ ਅਤੇ ਇਸ ਨੂੰ ਘਟਾਇਆ ਜਾਂਦਾ ਹੈ। ਪ੍ਰਵਾਨਿਤ ਉਪਾਵਾਂ ਵਿੱਚ ਕੈਨੋਨੀਕਲਾਈਜ਼ੇਸ਼ਨ[^0x10-C02-canonicalization] (canonicalization), ਸਖ਼ਤ ਸਕੀਮਾ ਪ੍ਰਮਾਣਿਕਤਾ, ਨੀਤੀ-ਆਧਾਰਿਤ ਰੱਦਗੀ, ਜਾਂ ਸਪੱਸ਼ਟ ਨਿਸ਼ਾਨਦੇਹੀ ਸ਼ਾਮਲ ਹਨ। | 1 |
-| **2.1.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਉਹ ਸਾਰੇ ਇਨਪੁੱਟ ਜੋ ਮਾਡਲ ਦੇ ਵਿਵਹਾਰ ਨੂੰ ਦਿਸ਼ਾ ਦੇ ਸਕਦੇ ਹਨ, ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਮੰਨੇ ਜਾਂਦੇ ਹਨ ਅਤੇ ਇੱਕ prompt ਇੰਜੈਕਸ਼ਨ ਪਛਾਣ ਨਿਯਮ-ਸਮੂਹ ਜਾਂ ਵਰਗੀਕਾਰ[^0x10-C02-classifier] ਦੁਆਰਾ ਛਾਣੇ ਜਾਂਦੇ ਹਨ, ਅਤੇ ਨਿਸ਼ਾਨਬੱਧ ਕੀਤੇ ਇਨਪੁੱਟ ਰੋਕ ਦਿੱਤੇ ਜਾਂਦੇ ਹਨ। | 1 |
-| **2.1.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇਨਪੁੱਟ ਲੰਬਾਈ ਨਿਯੰਤਰਣ ਸਮੱਗਰੀ ਨੂੰ ਸੰਦਰਭ ਵਿੰਡੋ[^0x10-C02-context-window] (context window) ਤੋਂ ਵੱਧ ਜਾਣ ਤੋਂ ਰੋਕਦੇ ਹਨ। ਇਹਨਾਂ ਨਿਯੰਤਰਣਾਂ ਲਈ ਟੋਕਨ ਸੀਮਾਵਾਂ ਤੋਂ ਵੱਧ ਜਾਣ ਵਾਲੇ ਇਨਪੁੱਟਾਂ ਨੂੰ ਕੱਟਣ (truncate) ਦੀ ਬਜਾਏ ਰੱਦ ਕਰਨਾ ਲਾਜ਼ਮੀ ਹੈ। | 1 |
-| **2.1.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਸਟਮ ਸਾਰੇ ਇਨਪੁੱਟਾਂ ਲਈ ਇੱਕ ਅੱਖਰ-ਸਮੂਹ (character set) ਪਾਬੰਦੀ ਲਾਗੂ ਕਰਦਾ ਹੈ। ਇਸ ਪਾਬੰਦੀ ਲਈ allow-list ਤਰੀਕਾ ਵਰਤਣਾ ਲਾਜ਼ਮੀ ਹੈ ਜੋ ਸਿਰਫ਼ ਉਹਨਾਂ ਅੱਖਰਾਂ ਦੀ ਆਗਿਆ ਦਿੰਦਾ ਹੈ ਜੋ ਸਪੱਸ਼ਟ ਤੌਰ 'ਤੇ ਲੋੜੀਂਦੇ ਹਨ। | 1 |
-| **2.1.6** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਸਟਮ ਇੱਕ ਹਦਾਇਤ ਲੜੀ-ਕ੍ਰਮ[^0x10-C02-instruction-hierarchy] (instruction hierarchy) ਲਾਗੂ ਕਰਦਾ ਹੈ ਜਿਸ ਵਿੱਚ ਸਿਸਟਮ ਅਤੇ ਡਿਵੈਲਪਰ ਸੁਨੇਹੇ ਉਪਭੋਗਤਾ ਹਦਾਇਤਾਂ ਅਤੇ ਹੋਰ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਇਨਪੁੱਟਾਂ ਉੱਤੇ ਭਾਰੂ ਰਹਿੰਦੇ ਹਨ, ਭਾਵੇਂ ਉਪਭੋਗਤਾ ਹਦਾਇਤਾਂ ਦੀ ਪ੍ਰਕਿਰਿਆ ਹੋ ਚੁੱਕੀ ਹੋਵੇ। | 2 |
-| **2.1.7** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਰਾਖਵੇਂ ਵਿਸ਼ੇਸ਼ ਟੋਕਨ ਸ਼ਾਬਦਿਕ ਅੱਖਰਾਂ ਵਜੋਂ ਏਨਕੋਡ ਕੀਤੇ ਜਾਂਦੇ ਹਨ ਅਤੇ ਮਾਡਲ ਸੰਦਰਭ ਵਿੱਚ ਇੰਜੈਕਟ ਨਹੀਂ ਕੀਤੇ ਜਾ ਸਕਦੇ। | 2 |
-| **2.1.8** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਸਟਮ many-shot jailbreaking[^0x10-C02-many-shot-jailbreaking] ਪੈਟਰਨਾਂ ਦਾ ਪਤਾ ਲਗਾ ਸਕਦਾ ਹੈ। | 3 |
+| **੨.੧.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਟੋਕਨਾਈਜ਼ੇਸ਼ਨ[^0x10-C02-tokenization] (tokenization) ਜਾਂ embedding ਤੋਂ ਪਹਿਲਾਂ ਇਨਪੁੱਟ ਸਧਾਰਨੀਕਰਨ[^0x10-C02-input-normalization] (normalization) ਲਾਗੂ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੧ |
+| **੨.੧.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇਨਪੁੱਟਾਂ ਵਿੱਚ ਏਨਕੋਡਿੰਗ ਅਤੇ ਪ੍ਰਤੀਨਿਧਤਾ ਤਸਕਰੀ[^0x10-C02-representation-smuggling] (representation smuggling) ਦਾ ਪਤਾ ਲਗਾਇਆ ਜਾਂਦਾ ਹੈ ਅਤੇ ਇਸ ਨੂੰ ਘਟਾਇਆ ਜਾਂਦਾ ਹੈ। ਪ੍ਰਵਾਨਿਤ ਉਪਾਵਾਂ ਵਿੱਚ ਕੈਨੋਨੀਕਲਾਈਜ਼ੇਸ਼ਨ[^0x10-C02-canonicalization] (canonicalization), ਸਖ਼ਤ ਸਕੀਮਾ ਪ੍ਰਮਾਣਿਕਤਾ, ਨੀਤੀ-ਆਧਾਰਿਤ ਰੱਦਗੀ, ਜਾਂ ਸਪੱਸ਼ਟ ਨਿਸ਼ਾਨਦੇਹੀ ਸ਼ਾਮਲ ਹਨ। | ੧ |
+| **੨.੧.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਉਹ ਸਾਰੇ ਇਨਪੁੱਟ ਜੋ ਮਾਡਲ ਦੇ ਵਿਵਹਾਰ ਨੂੰ ਦਿਸ਼ਾ ਦੇ ਸਕਦੇ ਹਨ, ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਮੰਨੇ ਜਾਂਦੇ ਹਨ ਅਤੇ ਇੱਕ prompt ਇੰਜੈਕਸ਼ਨ ਪਛਾਣ ਨਿਯਮ-ਸਮੂਹ ਜਾਂ ਵਰਗੀਕਾਰ[^0x10-C02-classifier] ਦੁਆਰਾ ਛਾਣੇ ਜਾਂਦੇ ਹਨ, ਅਤੇ ਨਿਸ਼ਾਨਬੱਧ ਕੀਤੇ ਇਨਪੁੱਟ ਰੋਕ ਦਿੱਤੇ ਜਾਂਦੇ ਹਨ। | ੧ |
+| **੨.੧.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇਨਪੁੱਟ ਲੰਬਾਈ ਨਿਯੰਤਰਣ ਸਮੱਗਰੀ ਨੂੰ ਸੰਦਰਭ ਵਿੰਡੋ[^0x10-C02-context-window] (context window) ਤੋਂ ਵੱਧ ਜਾਣ ਤੋਂ ਰੋਕਦੇ ਹਨ। ਇਹਨਾਂ ਨਿਯੰਤਰਣਾਂ ਲਈ ਟੋਕਨ ਸੀਮਾਵਾਂ ਤੋਂ ਵੱਧ ਜਾਣ ਵਾਲੇ ਇਨਪੁੱਟਾਂ ਨੂੰ ਕੱਟਣ (truncate) ਦੀ ਬਜਾਏ ਰੱਦ ਕਰਨਾ ਲਾਜ਼ਮੀ ਹੈ। | ੧ |
+| **੨.੧.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਸਟਮ ਸਾਰੇ ਇਨਪੁੱਟਾਂ ਲਈ ਇੱਕ ਅੱਖਰ-ਸਮੂਹ (character set) ਪਾਬੰਦੀ ਲਾਗੂ ਕਰਦਾ ਹੈ। ਇਸ ਪਾਬੰਦੀ ਲਈ allow-list ਤਰੀਕਾ ਵਰਤਣਾ ਲਾਜ਼ਮੀ ਹੈ ਜੋ ਸਿਰਫ਼ ਉਹਨਾਂ ਅੱਖਰਾਂ ਦੀ ਆਗਿਆ ਦਿੰਦਾ ਹੈ ਜੋ ਸਪੱਸ਼ਟ ਤੌਰ 'ਤੇ ਲੋੜੀਂਦੇ ਹਨ। | ੧ |
+| **੨.੧.੬** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਸਟਮ ਇੱਕ ਹਦਾਇਤ ਲੜੀ-ਕ੍ਰਮ[^0x10-C02-instruction-hierarchy] (instruction hierarchy) ਲਾਗੂ ਕਰਦਾ ਹੈ ਜਿਸ ਵਿੱਚ ਸਿਸਟਮ ਅਤੇ ਡਿਵੈਲਪਰ ਸੁਨੇਹੇ ਉਪਭੋਗਤਾ ਹਦਾਇਤਾਂ ਅਤੇ ਹੋਰ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਇਨਪੁੱਟਾਂ ਉੱਤੇ ਭਾਰੂ ਰਹਿੰਦੇ ਹਨ, ਭਾਵੇਂ ਉਪਭੋਗਤਾ ਹਦਾਇਤਾਂ ਦੀ ਪ੍ਰਕਿਰਿਆ ਹੋ ਚੁੱਕੀ ਹੋਵੇ। | ੨ |
+| **੨.੧.੭** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਰਾਖਵੇਂ ਵਿਸ਼ੇਸ਼ ਟੋਕਨ ਸ਼ਾਬਦਿਕ ਅੱਖਰਾਂ ਵਜੋਂ ਏਨਕੋਡ ਕੀਤੇ ਜਾਂਦੇ ਹਨ ਅਤੇ ਮਾਡਲ ਸੰਦਰਭ ਵਿੱਚ ਇੰਜੈਕਟ ਨਹੀਂ ਕੀਤੇ ਜਾ ਸਕਦੇ। | ੨ |
+| **੨.੧.੮** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਸਟਮ many-shot jailbreaking[^0x10-C02-many-shot-jailbreaking] ਪੈਟਰਨਾਂ ਦਾ ਪਤਾ ਲਗਾ ਸਕਦਾ ਹੈ। | ੩ |
 
 ---
 
 ## C2.2 Content & Policy Screening
-## C2.2 ਸਮੱਗਰੀ ਅਤੇ ਨੀਤੀ ਛਾਣਬੀਣ
+## C੨.੨ ਸਮੱਗਰੀ ਅਤੇ ਨੀਤੀ ਛਾਣਬੀਣ
 
 Syntactically valid prompts may still request disallowed content such as policy-violating instructions, harmful material, or restricted information. Input-side content screening prevents such prompts from reaching the model.
 
@@ -590,10 +590,10 @@ Syntactically valid prompts may still request disallowed content such as policy-
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **2.2.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ prompt ਨੂੰ ਹਿੰਸਾ, ਸਵੈ-ਨੁਕਸਾਨ, ਨਫ਼ਰਤ, ਅਤੇ ਜਿਨਸੀ ਸਮੱਗਰੀ ਲਈ ਇੱਕ ਸਮੱਗਰੀ ਵਰਗੀਕਾਰ ਦੁਆਰਾ ਸੰਰਚਨਾਯੋਗ ਥ੍ਰੈਸ਼ਹੋਲਡਾਂ (thresholds) ਦੇ ਵਿਰੁੱਧ ਅੰਕ ਦਿੱਤੇ ਜਾਂਦੇ ਹਨ। ਜਿਹੜੇ prompt ਇਹਨਾਂ ਥ੍ਰੈਸ਼ਹੋਲਡਾਂ ਤੋਂ ਵੱਧ ਜਾਂਦੇ ਹਨ, ਉਹਨਾਂ ਨੂੰ ਮਾਡਲ ਸੰਦਰਭ ਤੱਕ ਪਹੁੰਚਣ ਤੋਂ ਪਹਿਲਾਂ ਰੱਦ ਜਾਂ ਸੈਨੀਟਾਈਜ਼ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 1 |
-| **2.2.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** prompt ਸਮੱਗਰੀ ਵਰਗੀਕਰਨ ਦਾ ਗ਼ੈਰ-ਸਮਰਥਿਤ ਭਾਸ਼ਾਵਾਂ ਲਈ ਮੁਲਾਂਕਣ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 1 |
-| **2.2.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਗ਼ੈਰ-ਲਿਖਤੀ ਇਨਪੁੱਟਾਂ (ਚਿੱਤਰ/ਵੀਡੀਓ/ਆਡੀਓ) ਦੀ ਵਿਰੋਧੀ ਵਿਗਾੜਾਂ[^0x10-C02-adversarial-perturbation] (adversarial perturbations), ਸਟੈਗਨੋਗ੍ਰਾਫ਼ਿਕ ਪੇਲੋਡਾਂ[^0x10-C02-steganographic-payload], ਲੁਕਵੀਂ ਜਾਂ ਜੜੀ ਹੋਈ ਸਮੱਗਰੀ, ਜਾਂ ਜਾਣੇ-ਪਛਾਣੇ ਹਮਲਾ ਪੈਟਰਨਾਂ ਲਈ ਜਾਂਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | 2 |
-| **2.2.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਕਈ ਇਨਪੁੱਟ ਕਿਸਮਾਂ ਵਿੱਚ ਫੈਲੇ ਤਾਲਮੇਲ ਵਾਲੇ ਹਮਲਿਆਂ (ਜਿਵੇਂ, ਚਿੱਤਰਾਂ ਵਿੱਚ ਸਟੈਗਨੋਗ੍ਰਾਫ਼ਿਕ ਪੇਲੋਡ ਜੋ ਲਿਖਤ ਵਿੱਚ prompt ਇੰਜੈਕਸ਼ਨ ਨਾਲ ਜੋੜੇ ਗਏ ਹੋਣ) ਦਾ ਪਤਾ ਲਗਾਇਆ ਜਾਂਦਾ ਹੈ ਅਤੇ ਉਹਨਾਂ ਨੂੰ ਰੋਕਿਆ ਜਾਂਦਾ ਹੈ। | 3 |
+| **੨.੨.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ prompt ਨੂੰ ਹਿੰਸਾ, ਸਵੈ-ਨੁਕਸਾਨ, ਨਫ਼ਰਤ, ਅਤੇ ਜਿਨਸੀ ਸਮੱਗਰੀ ਲਈ ਇੱਕ ਸਮੱਗਰੀ ਵਰਗੀਕਾਰ ਦੁਆਰਾ ਸੰਰਚਨਾਯੋਗ ਥ੍ਰੈਸ਼ਹੋਲਡਾਂ (thresholds) ਦੇ ਵਿਰੁੱਧ ਅੰਕ ਦਿੱਤੇ ਜਾਂਦੇ ਹਨ। ਜਿਹੜੇ prompt ਇਹਨਾਂ ਥ੍ਰੈਸ਼ਹੋਲਡਾਂ ਤੋਂ ਵੱਧ ਜਾਂਦੇ ਹਨ, ਉਹਨਾਂ ਨੂੰ ਮਾਡਲ ਸੰਦਰਭ ਤੱਕ ਪਹੁੰਚਣ ਤੋਂ ਪਹਿਲਾਂ ਰੱਦ ਜਾਂ ਸੈਨੀਟਾਈਜ਼ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੧ |
+| **੨.੨.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** prompt ਸਮੱਗਰੀ ਵਰਗੀਕਰਨ ਦਾ ਗ਼ੈਰ-ਸਮਰਥਿਤ ਭਾਸ਼ਾਵਾਂ ਲਈ ਮੁਲਾਂਕਣ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੧ |
+| **੨.੨.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਗ਼ੈਰ-ਲਿਖਤੀ ਇਨਪੁੱਟਾਂ (ਚਿੱਤਰ/ਵੀਡੀਓ/ਆਡੀਓ) ਦੀ ਵਿਰੋਧੀ ਵਿਗਾੜਾਂ[^0x10-C02-adversarial-perturbation] (adversarial perturbations), ਸਟੈਗਨੋਗ੍ਰਾਫ਼ਿਕ ਪੇਲੋਡਾਂ[^0x10-C02-steganographic-payload], ਲੁਕਵੀਂ ਜਾਂ ਜੜੀ ਹੋਈ ਸਮੱਗਰੀ, ਜਾਂ ਜਾਣੇ-ਪਛਾਣੇ ਹਮਲਾ ਪੈਟਰਨਾਂ ਲਈ ਜਾਂਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | ੨ |
+| **੨.੨.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਕਈ ਇਨਪੁੱਟ ਕਿਸਮਾਂ ਵਿੱਚ ਫੈਲੇ ਤਾਲਮੇਲ ਵਾਲੇ ਹਮਲਿਆਂ (ਜਿਵੇਂ, ਚਿੱਤਰਾਂ ਵਿੱਚ ਸਟੈਗਨੋਗ੍ਰਾਫ਼ਿਕ ਪੇਲੋਡ ਜੋ ਲਿਖਤ ਵਿੱਚ prompt ਇੰਜੈਕਸ਼ਨ ਨਾਲ ਜੋੜੇ ਗਏ ਹੋਣ) ਦਾ ਪਤਾ ਲਗਾਇਆ ਜਾਂਦਾ ਹੈ ਅਤੇ ਉਹਨਾਂ ਨੂੰ ਰੋਕਿਆ ਜਾਂਦਾ ਹੈ। | ੩ |
 
 ---
 
@@ -605,7 +605,7 @@ Syntactically valid prompts may still request disallowed content such as policy-
 * [MITRE ATLAS: Adversarial Input Detection](https://atlas.mitre.org/mitigations/AML.M0015)
 * [MITRE ATLAS: LLM Prompt Injection (AML.T0051)](https://atlas.mitre.org/techniques/AML.T0051)
 
-[^0x10-C02-prompt-injection]: **prompt injection** (EN) -> prompt ਇੰਜੈਕਸ਼ਨ — "prompt" is kept in Latin script per the corpus's canonical hybrid, matching the sibling ASVS corpus's "SQL ਇੰਜੈਕਸ਼ਨ" and preserving searchability against OWASP LLM01:2025. Full discussion: OPEN-QUESTIONS.md Q26.
+[^0x10-C02-prompt-injection]: **prompt injection** (EN) -> prompt ਇੰਜੈਕਸ਼ਨ — "prompt" is kept in Latin script per the corpus's canonical hybrid, matching the sibling ASVS corpus's "SQL ਇੰਜੈਕਸ਼ਨ" and preserving searchability against OWASP LLM01:੨੦੨੫. Full discussion: OPEN-QUESTIONS.md Q26.
 [^0x10-C02-tokenization]: **tokenization** (EN) -> ਟੋਕਨਾਈਜ਼ੇਸ਼ਨ — extends the corpus's locked loan ਟੋਕਨ to the process; this is the ML tokenizer sense, distinct from the session/security-token sense used in the ASVS corpus. Full discussion: OPEN-QUESTIONS.md Q29.
 [^0x10-C02-input-normalization]: **input normalization** (EN) -> ਸਧਾਰਨੀਕਰਨ — kept deliberately distinct from ਕੈਨੋਨੀਕਲਾਈਜ਼ੇਸ਼ਨ (canonicalization) so the two operations named separately in 2.1.1 and 2.1.2 do not collapse into one Panjabi word. Full discussion: OPEN-QUESTIONS.md Q27.
 [^0x10-C02-representation-smuggling]: **representation smuggling** (EN) -> ਪ੍ਰਤੀਨਿਧਤਾ ਤਸਕਰੀ — ਤਸਕਰੀ (smuggling) carries the sense of moving something illicitly past a control, which the rejected alternative ਰੂਪ-ਲੁਕਾਈ ("concealment") does not. Full discussion: OPEN-QUESTIONS.md Q34.
@@ -623,7 +623,7 @@ Syntactically valid prompts may still request disallowed content such as policy-
 <!-- Translator: GeeksikhSecurity -->
 
 # C3 Model Lifecycle Management & Change Control
-# C3 ਮਾਡਲ ਜੀਵਨ-ਚੱਕਰ ਪ੍ਰਬੰਧਨ ਅਤੇ ਤਬਦੀਲੀ ਨਿਯੰਤਰਣ
+# C੩ ਮਾਡਲ ਜੀਵਨ-ਚੱਕਰ ਪ੍ਰਬੰਧਨ ਅਤੇ ਤਬਦੀਲੀ ਨਿਯੰਤਰਣ
 
 ## Control Objective
 ## ਨਿਯੰਤਰਣ ਉਦੇਸ਼
@@ -635,7 +635,7 @@ This chapter addresses control of model changes so that unauthorized or unsafe m
 ---
 
 ## C3.1 Model Authorization & Integrity
-## C3.1 ਮਾਡਲ ਅਧਿਕਾਰੀਕਰਨ ਅਤੇ ਅਖੰਡਤਾ
+## C੩.੧ ਮਾਡਲ ਅਧਿਕਾਰੀਕਰਨ ਅਤੇ ਅਖੰਡਤਾ
 
 Only authorized models with verified integrity should reach production environments.
 
@@ -649,14 +649,14 @@ Only authorized models with verified integrity should reach production environme
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **3.1.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇੱਕ ਮਾਡਲ ਰਜਿਸਟਰੀ[^0x10-C03-model-registry] ਸਾਰੇ ਤੈਨਾਤ ਕੀਤੇ ਮਾਡਲ ਆਰਟੀਫ਼ੈਕਟਾਂ ਅਤੇ ਉਹਨਾਂ ਦੇ ਮੂਲ ਦੀ ਇਨਵੈਂਟਰੀ ਰੱਖਦੀ ਹੈ। | 1 |
-| **3.1.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਾਰੇ ਮਾਡਲ ਆਰਟੀਫ਼ੈਕਟ (ਵੇਟਸ (weights), ਸੰਰਚਨਾਵਾਂ, ਟੋਕਨਾਈਜ਼ਰ[^0x10-C03-tokenizer], ਬੇਸ ਮਾਡਲ, ਫ਼ਾਈਨ-ਟਿਊਨ, ਅਡੈਪਟਰ, ਅਤੇ ਸਲਾਮਤੀ (safety)/ਨੀਤੀ ਮਾਡਲ) ਅਧਿਕਾਰਤ ਇਕਾਈਆਂ ਦੁਆਰਾ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਤੌਰ 'ਤੇ ਦਸਤਖ਼ਤ ਕੀਤੇ ਗਏ ਹਨ। | 2 |
-| **3.1.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਦੇ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਦਸਤਖ਼ਤ ਤੈਨਾਤੀ ਦਾਖ਼ਲੇ ਸਮੇਂ ਅਤੇ ਲੋਡ ਹੋਣ ਸਮੇਂ ਤਸਦੀਕ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | 2 |
+| **੩.੧.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇੱਕ ਮਾਡਲ ਰਜਿਸਟਰੀ[^0x10-C03-model-registry] ਸਾਰੇ ਤੈਨਾਤ ਕੀਤੇ ਮਾਡਲ ਆਰਟੀਫ਼ੈਕਟਾਂ ਅਤੇ ਉਹਨਾਂ ਦੇ ਮੂਲ ਦੀ ਇਨਵੈਂਟਰੀ ਰੱਖਦੀ ਹੈ। | ੧ |
+| **੩.੧.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਾਰੇ ਮਾਡਲ ਆਰਟੀਫ਼ੈਕਟ (ਵੇਟਸ (weights), ਸੰਰਚਨਾਵਾਂ, ਟੋਕਨਾਈਜ਼ਰ[^0x10-C03-tokenizer], ਬੇਸ ਮਾਡਲ, ਫ਼ਾਈਨ-ਟਿਊਨ, ਅਡੈਪਟਰ, ਅਤੇ ਸਲਾਮਤੀ (safety)/ਨੀਤੀ ਮਾਡਲ) ਅਧਿਕਾਰਤ ਇਕਾਈਆਂ ਦੁਆਰਾ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਤੌਰ 'ਤੇ ਦਸਤਖ਼ਤ ਕੀਤੇ ਗਏ ਹਨ। | ੨ |
+| **੩.੧.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਦੇ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਦਸਤਖ਼ਤ ਤੈਨਾਤੀ ਦਾਖ਼ਲੇ ਸਮੇਂ ਅਤੇ ਲੋਡ ਹੋਣ ਸਮੇਂ ਤਸਦੀਕ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | ੨ |
 
 ---
 
 ## C3.2 Model Validation & Testing
-## C3.2 ਮਾਡਲ ਪ੍ਰਮਾਣਿਕਤਾ ਅਤੇ ਟੈਸਟਿੰਗ
+## C੩.੨ ਮਾਡਲ ਪ੍ਰਮਾਣਿਕਤਾ ਅਤੇ ਟੈਸਟਿੰਗ
 
 Models must pass defined security and safety validations before deployment.
 
@@ -670,14 +670,14 @@ Models must pass defined security and safety validations before deployment.
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | --------------------------------------------------------------------------------------------------------------- | :---: |
-| **3.2.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਤੈਨਾਤੀ ਤੋਂ ਪਹਿਲਾਂ ਸਵੈਚਲਿਤ ਇਨਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ ਟੈਸਟਿੰਗ, ਸਲਾਮਤੀ ਮੁਲਾਂਕਣ ਟੈਸਟਿੰਗ, ਅਤੇ ਆਊਟਪੁੱਟ ਸੈਨੀਟਾਈਜ਼ੇਸ਼ਨ ਟੈਸਟਿੰਗ ਵਿੱਚੋਂ ਲੰਘਦੇ ਹਨ। | 1 |
-| **3.2.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਖਲਾਈ-ਉਪਰੰਤ ਕੁਆਂਟਾਈਜ਼ੇਸ਼ਨ[^0x10-C03-quantization] (post-training quantization) ਵਿੱਚੋਂ ਲੰਘੇ ਮਾਡਲਾਂ ਦਾ, ਤੈਨਾਤੀ ਤੋਂ ਪਹਿਲਾਂ, ਸੰਕੁਚਿਤ ਆਰਟੀਫ਼ੈਕਟ ਉੱਤੇ ਉਸੇ ਸਲਾਮਤੀ ਅਤੇ ਅਲਾਈਨਮੈਂਟ[^0x10-C03-alignment] (alignment) ਟੈਸਟ ਸੂਟ ਦੇ ਵਿਰੁੱਧ ਮੁੜ-ਮੁਲਾਂਕਣ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 2 |
-| **3.2.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਪ੍ਰਦਾਤਾ ਦੇ ਮਾਡਲ, ਵਰਜ਼ਨ, ਜਾਂ ਰੂਟਿੰਗ ਵਿੱਚ ਤਬਦੀਲੀਆਂ ਵਰਤੋਂ ਜਾਰੀ ਰੱਖਣ ਤੋਂ ਪਹਿਲਾਂ ਸੁਰੱਖਿਆ ਮੁੜ-ਮੁਲਾਂਕਣ ਨੂੰ ਸ਼ੁਰੂ ਕਰਦੀਆਂ ਹਨ। | 3 |
+| **੩.੨.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਤੈਨਾਤੀ ਤੋਂ ਪਹਿਲਾਂ ਸਵੈਚਲਿਤ ਇਨਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ ਟੈਸਟਿੰਗ, ਸਲਾਮਤੀ ਮੁਲਾਂਕਣ ਟੈਸਟਿੰਗ, ਅਤੇ ਆਊਟਪੁੱਟ ਸੈਨੀਟਾਈਜ਼ੇਸ਼ਨ ਟੈਸਟਿੰਗ ਵਿੱਚੋਂ ਲੰਘਦੇ ਹਨ। | ੧ |
+| **੩.੨.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਖਲਾਈ-ਉਪਰੰਤ ਕੁਆਂਟਾਈਜ਼ੇਸ਼ਨ[^0x10-C03-quantization] (post-training quantization) ਵਿੱਚੋਂ ਲੰਘੇ ਮਾਡਲਾਂ ਦਾ, ਤੈਨਾਤੀ ਤੋਂ ਪਹਿਲਾਂ, ਸੰਕੁਚਿਤ ਆਰਟੀਫ਼ੈਕਟ ਉੱਤੇ ਉਸੇ ਸਲਾਮਤੀ ਅਤੇ ਅਲਾਈਨਮੈਂਟ[^0x10-C03-alignment] (alignment) ਟੈਸਟ ਸੂਟ ਦੇ ਵਿਰੁੱਧ ਮੁੜ-ਮੁਲਾਂਕਣ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੨ |
+| **੩.੨.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਪ੍ਰਦਾਤਾ ਦੇ ਮਾਡਲ, ਵਰਜ਼ਨ, ਜਾਂ ਰੂਟਿੰਗ ਵਿੱਚ ਤਬਦੀਲੀਆਂ ਵਰਤੋਂ ਜਾਰੀ ਰੱਖਣ ਤੋਂ ਪਹਿਲਾਂ ਸੁਰੱਖਿਆ ਮੁੜ-ਮੁਲਾਂਕਣ ਨੂੰ ਸ਼ੁਰੂ ਕਰਦੀਆਂ ਹਨ। | ੩ |
 
 ---
 
 ## C3.3 Controlled Deployment & Rollback
-## C3.3 ਨਿਯੰਤਰਿਤ ਤੈਨਾਤੀ ਅਤੇ ਰੋਲਬੈਕ
+## C੩.੩ ਨਿਯੰਤਰਿਤ ਤੈਨਾਤੀ ਅਤੇ ਰੋਲਬੈਕ
 
 Model deployments must be controlled, monitored, and reversible to support lifecycle management.
 
@@ -691,14 +691,14 @@ Model deployments must be controlled, monitored, and reversible to support lifec
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **3.3.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਉਤਪਾਦਨ ਤੈਨਾਤੀਆਂ ਸਵੈਚਲਿਤ ਰੋਲਬੈਕ[^0x10-C03-rollout-rollback] ਟ੍ਰਿਗਰਾਂ ਦੇ ਨਾਲ ਰੋਲਆਊਟ ਵਿਧੀਆਂ ਲਾਗੂ ਕਰਦੀਆਂ ਹਨ। | 2 |
-| **3.3.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਰੋਲਬੈਕ ਸਮਰੱਥਾਵਾਂ ਮਾਡਲ ਦੀ ਸੰਪੂਰਨ ਸਥਿਤੀ ਨੂੰ ਬਹਾਲ ਕਰਦੀਆਂ ਹਨ। | 2 |
-| **3.3.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਮਾਨਾਂਤਰ ਚੱਲ ਰਹੇ ਮਾਡਲ ਵਰਜ਼ਨ ਅਲੱਗ-ਥਲੱਗ ਕੀਤੀ ਰਨਟਾਈਮ ਸਥਿਤੀ ਵਰਤਦੇ ਹਨ ਤਾਂ ਜੋ AI-ਵਿਸ਼ੇਸ਼ ਸਾਂਝੇ ਸਰੋਤ ਵੱਖ-ਵੱਖ ਤੈਨਾਤੀਆਂ ਵਿਚਕਾਰ ਸਾਂਝੇ ਨਾ ਕੀਤੇ ਜਾਣ। | 2 |
+| **੩.੩.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਉਤਪਾਦਨ ਤੈਨਾਤੀਆਂ ਸਵੈਚਲਿਤ ਰੋਲਬੈਕ[^0x10-C03-rollout-rollback] ਟ੍ਰਿਗਰਾਂ ਦੇ ਨਾਲ ਰੋਲਆਊਟ ਵਿਧੀਆਂ ਲਾਗੂ ਕਰਦੀਆਂ ਹਨ। | ੨ |
+| **੩.੩.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਰੋਲਬੈਕ ਸਮਰੱਥਾਵਾਂ ਮਾਡਲ ਦੀ ਸੰਪੂਰਨ ਸਥਿਤੀ ਨੂੰ ਬਹਾਲ ਕਰਦੀਆਂ ਹਨ। | ੨ |
+| **੩.੩.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਮਾਨਾਂਤਰ ਚੱਲ ਰਹੇ ਮਾਡਲ ਵਰਜ਼ਨ ਅਲੱਗ-ਥਲੱਗ ਕੀਤੀ ਰਨਟਾਈਮ ਸਥਿਤੀ ਵਰਤਦੇ ਹਨ ਤਾਂ ਜੋ AI-ਵਿਸ਼ੇਸ਼ ਸਾਂਝੇ ਸਰੋਤ ਵੱਖ-ਵੱਖ ਤੈਨਾਤੀਆਂ ਵਿਚਕਾਰ ਸਾਂਝੇ ਨਾ ਕੀਤੇ ਜਾਣ। | ੨ |
 
 ---
 
 ## C3.4 Secure Development Practices
-## C3.4 ਸੁਰੱਖਿਅਤ ਵਿਕਾਸ ਅਮਲ
+## C੩.੪ ਸੁਰੱਖਿਅਤ ਵਿਕਾਸ ਅਮਲ
 
 Model development environments must be separated from production environments.
 
@@ -711,13 +711,13 @@ Model development environments must be separated from production environments.
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **3.4.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI-ਵਿਸ਼ੇਸ਼ ਰਨਟਾਈਮ ਹਿੱਸੇ[^0x10-C03-component] ਵਾਤਾਵਰਣ ਸੀਮਾਵਾਂ (ਜਿਵੇਂ, ਵਿਕਾਸ, ਸਟੇਜਿੰਗ, ਉਤਪਾਦਨ) ਦੇ ਆਰ-ਪਾਰ ਸਾਂਝੇ ਨਹੀਂ ਕੀਤੇ ਜਾਂਦੇ। | 1 |
-| **3.4.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਸਿਖਲਾਈ ਅਤੇ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਵਾਤਾਵਰਣ ਉਤਪਾਦਨ ਵਾਤਾਵਰਣਾਂ ਤੋਂ ਅਲੱਗ-ਥਲੱਗ ਕੀਤੇ ਗਏ ਹਨ। | 2 |
+| **੩.੪.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI-ਵਿਸ਼ੇਸ਼ ਰਨਟਾਈਮ ਹਿੱਸੇ[^0x10-C03-component] ਵਾਤਾਵਰਣ ਸੀਮਾਵਾਂ (ਜਿਵੇਂ, ਵਿਕਾਸ, ਸਟੇਜਿੰਗ, ਉਤਪਾਦਨ) ਦੇ ਆਰ-ਪਾਰ ਸਾਂਝੇ ਨਹੀਂ ਕੀਤੇ ਜਾਂਦੇ। | ੧ |
+| **੩.੪.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਸਿਖਲਾਈ ਅਤੇ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਵਾਤਾਵਰਣ ਉਤਪਾਦਨ ਵਾਤਾਵਰਣਾਂ ਤੋਂ ਅਲੱਗ-ਥਲੱਗ ਕੀਤੇ ਗਏ ਹਨ। | ੨ |
 
 ---
 
 ## C3.5 Pipeline Fine-Tuning
-## C3.5 ਪਾਈਪਲਾਈਨ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ
+## C੩.੫ ਪਾਈਪਲਾਈਨ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ
 
 Fine-tuning pipelines are high-privilege operations that can alter deployed model behavior at scale. Multi-stage pipelines compound this risk because a compromise at any intermediate stage produces a subtly altered artifact that subsequent stages accept.
 
@@ -732,10 +732,10 @@ Fine-tuning pipelines are high-privilege operations that can alter deployed mode
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **3.5.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** RLHF ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਵਿੱਚ ਵਰਤੇ ਜਾਂਦੇ ਮਾਡਲ ਕਿਸੇ ਸਿਖਲਾਈ ਦੌਰ (training run) ਵਿੱਚ ਵਰਤੋਂ ਤੋਂ ਪਹਿਲਾਂ ਵਰਜ਼ਨਬੱਧ ਕੀਤੇ ਜਾਂਦੇ ਹਨ ਅਤੇ ਉਹਨਾਂ ਦੀ ਅਖੰਡਤਾ ਤਸਦੀਕ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | 2 |
-| **3.5.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** RLHF ਸਿਖਲਾਈ ਪੜਾਵਾਂ ਵਿੱਚ reward hacking[^0x10-C03-reward-hacking] (ਇਨਾਮ ਦੀ ਦੁਰਵਰਤੋਂ) ਜਾਂ reward model (ਇਨਾਮ ਮਾਡਲ) ਦੇ ਹੱਦੋਂ ਵੱਧ ਅਨੁਕੂਲਨ (over-optimization) ਦੀ ਸਵੈਚਲਿਤ ਪਛਾਣ ਸ਼ਾਮਲ ਹੈ। | 3 |
-| **3.5.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਬਹੁ-ਪੜਾਵੀ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਪਾਈਪਲਾਈਨਾਂ ਵਿੱਚ, ਹਰ ਪੜਾਅ ਦੇ ਆਊਟਪੁੱਟ ਦੀ ਅਖੰਡਤਾ, ਅਗਲੇ ਪੜਾਅ ਦੁਆਰਾ ਵਰਤੇ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ, ਤਸਦੀਕ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | 3 |
-| **3.5.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਚੈੱਕਪੁਆਇੰਟ[^0x10-C03-checkpoint] ਵੱਖਰੇ ਆਰਟੀਫ਼ੈਕਟਾਂ ਵਜੋਂ ਰਜਿਸਟਰ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | 3 |
+| **੩.੫.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** RLHF ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਵਿੱਚ ਵਰਤੇ ਜਾਂਦੇ ਮਾਡਲ ਕਿਸੇ ਸਿਖਲਾਈ ਦੌਰ (training run) ਵਿੱਚ ਵਰਤੋਂ ਤੋਂ ਪਹਿਲਾਂ ਵਰਜ਼ਨਬੱਧ ਕੀਤੇ ਜਾਂਦੇ ਹਨ ਅਤੇ ਉਹਨਾਂ ਦੀ ਅਖੰਡਤਾ ਤਸਦੀਕ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | ੨ |
+| **੩.੫.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** RLHF ਸਿਖਲਾਈ ਪੜਾਵਾਂ ਵਿੱਚ reward hacking[^0x10-C03-reward-hacking] (ਇਨਾਮ ਦੀ ਦੁਰਵਰਤੋਂ) ਜਾਂ reward model (ਇਨਾਮ ਮਾਡਲ) ਦੇ ਹੱਦੋਂ ਵੱਧ ਅਨੁਕੂਲਨ (over-optimization) ਦੀ ਸਵੈਚਲਿਤ ਪਛਾਣ ਸ਼ਾਮਲ ਹੈ। | ੩ |
+| **੩.੫.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਬਹੁ-ਪੜਾਵੀ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਪਾਈਪਲਾਈਨਾਂ ਵਿੱਚ, ਹਰ ਪੜਾਅ ਦੇ ਆਊਟਪੁੱਟ ਦੀ ਅਖੰਡਤਾ, ਅਗਲੇ ਪੜਾਅ ਦੁਆਰਾ ਵਰਤੇ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ, ਤਸਦੀਕ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | ੩ |
+| **੩.੫.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਚੈੱਕਪੁਆਇੰਟ[^0x10-C03-checkpoint] ਵੱਖਰੇ ਆਰਟੀਫ਼ੈਕਟਾਂ ਵਜੋਂ ਰਜਿਸਟਰ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | ੩ |
 
 ---
 
@@ -763,7 +763,7 @@ Fine-tuning pipelines are high-privilege operations that can alter deployed mode
 <!-- Translator: GeeksikhSecurity -->
 
 # C4 Infrastructure, Configuration & Deployment Security
-# C4 ਬੁਨਿਆਦੀ ਢਾਂਚਾ, ਸੰਰਚਨਾ ਅਤੇ ਤੈਨਾਤੀ ਸੁਰੱਖਿਆ
+# C੪ ਬੁਨਿਆਦੀ ਢਾਂਚਾ, ਸੰਰਚਨਾ ਅਤੇ ਤੈਨਾਤੀ ਸੁਰੱਖਿਆ
 
 ## Control Objective
 ## ਨਿਯੰਤਰਣ ਉਦੇਸ਼
@@ -775,7 +775,7 @@ This chapter addresses hardening AI-specific infrastructure components against m
 ---
 
 ## C4.1 AI Workload Sandboxing & Validation
-## C4.1 AI ਵਰਕਲੋਡ ਸੈਂਡਬਾਕਸਿੰਗ ਅਤੇ ਪ੍ਰਮਾਣਿਕਤਾ
+## C੪.੧ AI ਵਰਕਲੋਡ ਸੈਂਡਬਾਕਸਿੰਗ ਅਤੇ ਪ੍ਰਮਾਣਿਕਤਾ
 
 Untrusted AI models must be isolated in secure sandboxes, and sensitive AI workloads protected using trusted execution environments (TEEs) and confidential computing technologies.
 
@@ -790,15 +790,15 @@ Untrusted AI models must be isolated in secure sandboxes, and sensitive AI workl
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------ | :---: |
-| **4.1.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਮਾਡਲ ਅਲੱਗ-ਥਲੱਗ ਕੀਤੇ ਸੈਂਡਬਾਕਸਾਂ ਵਿੱਚ ਚੱਲਦੇ ਹਨ। | 1 |
-| **4.1.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਆਰਟੀਫ਼ੈਕਟ ਲੋਡਿੰਗ ਸੀਰੀਅਲਾਈਜ਼ੇਸ਼ਨ ਫ਼ਾਰਮੈਟਾਂ ਦੀ ਇੱਕ ਸਪਸ਼ਟ allow-list ਲਾਗੂ ਕਰਦੀ ਹੈ ਜੋ ਡੀਸੀਰੀਅਲਾਈਜ਼ੇਸ਼ਨ ਦੌਰਾਨ ਮਨਮਰਜ਼ੀ ਕੋਡ ਐਗਜ਼ੀਕਿਊਸ਼ਨ (arbitrary code execution) ਦੀ ਆਗਿਆ ਨਹੀਂ ਦਿੰਦੇ। | 1 |
-| **4.1.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਲੋਡ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਵਰਕਲੋਡ ਅਟੈਸਟੇਸ਼ਨ[^0x10-C04-attestation] (workload attestation) ਕੀਤੀ ਜਾਂਦੀ ਹੈ ਤਾਂ ਜੋ ਇਹ ਸਬੂਤ ਮਿਲ ਸਕੇ ਕਿ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਵਾਤਾਵਰਣ ਨਾਲ ਛੇੜਛਾੜ ਨਹੀਂ ਕੀਤੀ ਗਈ। | 3 |
-| **4.1.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਗੁਪਤ ਇਨਫ਼ਰੈਂਸ ਸੇਵਾਵਾਂ ਅਲੱਗ-ਥਲੱਗ ਕੀਤੇ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਵਾਤਾਵਰਣਾਂ ਰਾਹੀਂ ਰਨਟਾਈਮ ਦੌਰਾਨ ਮਾਡਲ ਵੇਟਸ (model weights) ਦੀ ਸੁਰੱਖਿਆ ਕਰਦੀਆਂ ਹਨ। | 3 |
+| **੪.੧.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਮਾਡਲ ਅਲੱਗ-ਥਲੱਗ ਕੀਤੇ ਸੈਂਡਬਾਕਸਾਂ ਵਿੱਚ ਚੱਲਦੇ ਹਨ। | ੧ |
+| **੪.੧.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਆਰਟੀਫ਼ੈਕਟ ਲੋਡਿੰਗ ਸੀਰੀਅਲਾਈਜ਼ੇਸ਼ਨ ਫ਼ਾਰਮੈਟਾਂ ਦੀ ਇੱਕ ਸਪਸ਼ਟ allow-list ਲਾਗੂ ਕਰਦੀ ਹੈ ਜੋ ਡੀਸੀਰੀਅਲਾਈਜ਼ੇਸ਼ਨ ਦੌਰਾਨ ਮਨਮਰਜ਼ੀ ਕੋਡ ਐਗਜ਼ੀਕਿਊਸ਼ਨ (arbitrary code execution) ਦੀ ਆਗਿਆ ਨਹੀਂ ਦਿੰਦੇ। | ੧ |
+| **੪.੧.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਲੋਡ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਵਰਕਲੋਡ ਅਟੈਸਟੇਸ਼ਨ[^0x10-C04-attestation] (workload attestation) ਕੀਤੀ ਜਾਂਦੀ ਹੈ ਤਾਂ ਜੋ ਇਹ ਸਬੂਤ ਮਿਲ ਸਕੇ ਕਿ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਵਾਤਾਵਰਣ ਨਾਲ ਛੇੜਛਾੜ ਨਹੀਂ ਕੀਤੀ ਗਈ। | ੩ |
+| **੪.੧.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਗੁਪਤ ਇਨਫ਼ਰੈਂਸ ਸੇਵਾਵਾਂ ਅਲੱਗ-ਥਲੱਗ ਕੀਤੇ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਵਾਤਾਵਰਣਾਂ ਰਾਹੀਂ ਰਨਟਾਈਮ ਦੌਰਾਨ ਮਾਡਲ ਵੇਟਸ (model weights) ਦੀ ਸੁਰੱਖਿਆ ਕਰਦੀਆਂ ਹਨ। | ੩ |
 
 ---
 
 ## C4.2 AI Hardware Security
-## C4.2 AI ਹਾਰਡਵੇਅਰ ਸੁਰੱਖਿਆ
+## C੪.੨ AI ਹਾਰਡਵੇਅਰ ਸੁਰੱਖਿਆ
 
 AI-specific hardware components, including GPUs, TPUs, and specialized AI accelerators, must be secured.
 
@@ -814,16 +814,16 @@ AI-ਵਿਸ਼ੇਸ਼ ਹਾਰਡਵੇਅਰ ਹਿੱਸਿਆਂ ਨੂ�
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------ | :---: |
-| **4.2.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਐਕਸਲੇਰੇਟਰ (GPU) ਫ਼ਰਮਵੇਅਰ ਵਰਜ਼ਨ-ਪਿੰਨ ਕੀਤਾ, ਦਸਤਖ਼ਤ ਕੀਤਾ, ਅਤੇ ਬੂਟ ਵੇਲੇ ਅਟੈਸਟ ਕੀਤਾ ਗਿਆ ਹੈ। | 2 |
-| **4.2.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਭਰੋਸੇਯੋਗ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਵਾਤਾਵਰਣ (trusted execution environment, TEE) ਦੇ ਅੰਦਰ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਹਾਰਡਵੇਅਰ ਦੁਆਰਾ ਲਾਗੂ ਕੀਤੀ ਅਲੱਗ-ਥਲੱਗਤਾ, ਮੈਮੋਰੀ[^0x10-C04-memory] ਏਨਕ੍ਰਿਪਸ਼ਨ, ਅਤੇ ਅਖੰਡਤਾ (integrity) ਸੁਰੱਖਿਆ ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ। | 3 |
-| **4.2.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਵਰਕਲੋਡ ਦੇ ਚੱਲਣ ਤੋਂ ਪਹਿਲਾਂ AI ਐਕਸਲੇਰੇਟਰ (GPU) ਦੀ ਅਖੰਡਤਾ ਨੂੰ ਹਾਰਡਵੇਅਰ-ਆਧਾਰਿਤ ਅਟੈਸਟੇਸ਼ਨ ਵਿਧੀਆਂ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਪ੍ਰਮਾਣਿਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 3 |
-| **4.2.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਐਕਸਲੇਰੇਟਰ (GPU) ਮੈਮੋਰੀ ਨੂੰ ਵਰਕਲੋਡਾਂ ਦੇ ਵਿਚਕਾਰ ਵਿਭਾਜਨ ਵਿਧੀਆਂ ਰਾਹੀਂ ਅਲੱਗ-ਥਲੱਗ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਜਿਸ ਵਿੱਚ ਕੰਮਾਂ ਦੇ ਵਿਚਕਾਰ ਮੈਮੋਰੀ ਸੈਨੀਟਾਈਜ਼ੇਸ਼ਨ ਸ਼ਾਮਲ ਹੈ। | 3 |
-| **4.2.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਐਕਸਲੇਰੇਟਰ ਇੰਟਰਕਨੈਕਟ ਪ੍ਰਵਾਨਿਤ ਟੋਪੋਲੋਜੀਆਂ ਅਤੇ ਪ੍ਰਮਾਣੀਕਰਨ ਕੀਤੇ ਐਂਡਪੌਇੰਟਾਂ ਤੱਕ ਸੀਮਿਤ ਹਨ। | 3 |
+| **੪.੨.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਐਕਸਲੇਰੇਟਰ (GPU) ਫ਼ਰਮਵੇਅਰ ਵਰਜ਼ਨ-ਪਿੰਨ ਕੀਤਾ, ਦਸਤਖ਼ਤ ਕੀਤਾ, ਅਤੇ ਬੂਟ ਵੇਲੇ ਅਟੈਸਟ ਕੀਤਾ ਗਿਆ ਹੈ। | ੨ |
+| **੪.੨.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਭਰੋਸੇਯੋਗ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਵਾਤਾਵਰਣ (trusted execution environment, TEE) ਦੇ ਅੰਦਰ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਹਾਰਡਵੇਅਰ ਦੁਆਰਾ ਲਾਗੂ ਕੀਤੀ ਅਲੱਗ-ਥਲੱਗਤਾ, ਮੈਮੋਰੀ[^0x10-C04-memory] ਏਨਕ੍ਰਿਪਸ਼ਨ, ਅਤੇ ਅਖੰਡਤਾ (integrity) ਸੁਰੱਖਿਆ ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ। | ੩ |
+| **੪.੨.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਵਰਕਲੋਡ ਦੇ ਚੱਲਣ ਤੋਂ ਪਹਿਲਾਂ AI ਐਕਸਲੇਰੇਟਰ (GPU) ਦੀ ਅਖੰਡਤਾ ਨੂੰ ਹਾਰਡਵੇਅਰ-ਆਧਾਰਿਤ ਅਟੈਸਟੇਸ਼ਨ ਵਿਧੀਆਂ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਪ੍ਰਮਾਣਿਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੩ |
+| **੪.੨.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਐਕਸਲੇਰੇਟਰ (GPU) ਮੈਮੋਰੀ ਨੂੰ ਵਰਕਲੋਡਾਂ ਦੇ ਵਿਚਕਾਰ ਵਿਭਾਜਨ ਵਿਧੀਆਂ ਰਾਹੀਂ ਅਲੱਗ-ਥਲੱਗ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਜਿਸ ਵਿੱਚ ਕੰਮਾਂ ਦੇ ਵਿਚਕਾਰ ਮੈਮੋਰੀ ਸੈਨੀਟਾਈਜ਼ੇਸ਼ਨ ਸ਼ਾਮਲ ਹੈ। | ੩ |
+| **੪.੨.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਐਕਸਲੇਰੇਟਰ ਇੰਟਰਕਨੈਕਟ ਪ੍ਰਵਾਨਿਤ ਟੋਪੋਲੋਜੀਆਂ ਅਤੇ ਪ੍ਰਮਾਣੀਕਰਨ ਕੀਤੇ ਐਂਡਪੌਇੰਟਾਂ ਤੱਕ ਸੀਮਿਤ ਹਨ। | ੩ |
 
 ---
 
 ## C4.3 Edge & Distributed AI Security
-## C4.3 ਐਜ ਅਤੇ ਵੰਡੇ ਹੋਏ AI ਦੀ ਸੁਰੱਖਿਆ
+## C੪.੩ ਐਜ ਅਤੇ ਵੰਡੇ ਹੋਏ AI ਦੀ ਸੁਰੱਖਿਆ
 
 Distributed AI deployments, including edge computing, federated learning, and multi-site architectures, must be secured.
 
@@ -839,11 +839,11 @@ Distributed AI deployments, including edge computing, federated learning, and mu
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------ | :---: |
-| **4.3.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਐਜ AI ਡਿਵਾਈਸ ਮਜ਼ਬੂਤ ਪ੍ਰਮਾਣੀਕਰਨ ਵਿਧੀਆਂ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਕੇਂਦਰੀ ਬੁਨਿਆਦੀ ਢਾਂਚੇ ਨਾਲ ਪ੍ਰਮਾਣੀਕਰਨ ਕਰਦੇ ਹਨ। | 1 |
-| **4.3.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਐਜ ਜਾਂ ਮੋਬਾਈਲ ਡਿਵਾਈਸਾਂ 'ਤੇ ਤੈਨਾਤ ਕੀਤੇ ਮਾਡਲ ਪੈਕੇਜਿੰਗ ਦੌਰਾਨ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਤੌਰ 'ਤੇ ਦਸਤਖ਼ਤ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਅਤੇ ਇਹ ਕਿ ਡਿਵਾਈਸ 'ਤੇ ਮੌਜੂਦ ਰਨਟਾਈਮ ਲੋਡਿੰਗ ਜਾਂ ਇਨਫ਼ਰੈਂਸ ਤੋਂ ਪਹਿਲਾਂ ਇਹਨਾਂ ਦਸਤਖ਼ਤਾਂ ਜਾਂ ਚੈੱਕਸਮਾਂ ਨੂੰ ਪ੍ਰਮਾਣਿਤ ਕਰਦਾ ਹੈ। | 2 |
-| **4.3.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇਨਫ਼ਰੈਂਸ ਰਨਟਾਈਮ ਪ੍ਰਕਿਰਿਆ, ਮੈਮੋਰੀ, ਅਤੇ ਫ਼ਾਈਲ ਪਹੁੰਚ ਦੀ ਅਲੱਗ-ਥਲੱਗਤਾ ਲਾਗੂ ਕਰਦੇ ਹਨ। | 3 |
-| **4.3.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਸੰਭਾਲੇ ਮਾਡਲ ਵੇਟਸ ਅਤੇ ਸੰਵੇਦਨਸ਼ੀਲ ਪੈਰਾਮੀਟਰ ਹਾਰਡਵੇਅਰ-ਸਮਰਥਿਤ ਕੁੰਜੀ ਸਟੋਰਾਂ ਜਾਂ ਸੁਰੱਖਿਅਤ ਐਨਕਲੇਵਾਂ (secure enclaves) ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਏਨਕ੍ਰਿਪਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | 3 |
-| **4.3.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮੋਬਾਈਲ, IoT, ਜਾਂ ਏਮਬੈਡਡ ਐਪਲੀਕੇਸ਼ਨਾਂ ਦੇ ਅੰਦਰ ਪੈਕ ਕੀਤੇ ਮਾਡਲ ਸਥਿਰ ਸਥਿਤੀ ਵਿੱਚ (at rest) ਏਨਕ੍ਰਿਪਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਅਤੇ ਸਿਰਫ਼ ਇੱਕ ਭਰੋਸੇਯੋਗ ਰਨਟਾਈਮ ਜਾਂ ਸੁਰੱਖਿਅਤ ਐਨਕਲੇਵ ਦੇ ਅੰਦਰ ਹੀ ਡੀਕ੍ਰਿਪਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਜਿਸ ਨਾਲ ਐਪ ਪੈਕੇਜ ਜਾਂ ਫ਼ਾਈਲਸਿਸਟਮ ਤੋਂ ਸਿੱਧੇ ਕੱਢਣ ਨੂੰ ਰੋਕਿਆ ਜਾਂਦਾ ਹੈ। | 3 |
+| **੪.੩.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਐਜ AI ਡਿਵਾਈਸ ਮਜ਼ਬੂਤ ਪ੍ਰਮਾਣੀਕਰਨ ਵਿਧੀਆਂ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਕੇਂਦਰੀ ਬੁਨਿਆਦੀ ਢਾਂਚੇ ਨਾਲ ਪ੍ਰਮਾਣੀਕਰਨ ਕਰਦੇ ਹਨ। | ੧ |
+| **੪.੩.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਐਜ ਜਾਂ ਮੋਬਾਈਲ ਡਿਵਾਈਸਾਂ 'ਤੇ ਤੈਨਾਤ ਕੀਤੇ ਮਾਡਲ ਪੈਕੇਜਿੰਗ ਦੌਰਾਨ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਤੌਰ 'ਤੇ ਦਸਤਖ਼ਤ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਅਤੇ ਇਹ ਕਿ ਡਿਵਾਈਸ 'ਤੇ ਮੌਜੂਦ ਰਨਟਾਈਮ ਲੋਡਿੰਗ ਜਾਂ ਇਨਫ਼ਰੈਂਸ ਤੋਂ ਪਹਿਲਾਂ ਇਹਨਾਂ ਦਸਤਖ਼ਤਾਂ ਜਾਂ ਚੈੱਕਸਮਾਂ ਨੂੰ ਪ੍ਰਮਾਣਿਤ ਕਰਦਾ ਹੈ। | ੨ |
+| **੪.੩.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇਨਫ਼ਰੈਂਸ ਰਨਟਾਈਮ ਪ੍ਰਕਿਰਿਆ, ਮੈਮੋਰੀ, ਅਤੇ ਫ਼ਾਈਲ ਪਹੁੰਚ ਦੀ ਅਲੱਗ-ਥਲੱਗਤਾ ਲਾਗੂ ਕਰਦੇ ਹਨ। | ੩ |
+| **੪.੩.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਸੰਭਾਲੇ ਮਾਡਲ ਵੇਟਸ ਅਤੇ ਸੰਵੇਦਨਸ਼ੀਲ ਪੈਰਾਮੀਟਰ ਹਾਰਡਵੇਅਰ-ਸਮਰਥਿਤ ਕੁੰਜੀ ਸਟੋਰਾਂ ਜਾਂ ਸੁਰੱਖਿਅਤ ਐਨਕਲੇਵਾਂ (secure enclaves) ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਏਨਕ੍ਰਿਪਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | ੩ |
+| **੪.੩.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮੋਬਾਈਲ, IoT, ਜਾਂ ਏਮਬੈਡਡ ਐਪਲੀਕੇਸ਼ਨਾਂ ਦੇ ਅੰਦਰ ਪੈਕ ਕੀਤੇ ਮਾਡਲ ਸਥਿਰ ਸਥਿਤੀ ਵਿੱਚ (at rest) ਏਨਕ੍ਰਿਪਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਅਤੇ ਸਿਰਫ਼ ਇੱਕ ਭਰੋਸੇਯੋਗ ਰਨਟਾਈਮ ਜਾਂ ਸੁਰੱਖਿਅਤ ਐਨਕਲੇਵ ਦੇ ਅੰਦਰ ਹੀ ਡੀਕ੍ਰਿਪਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਜਿਸ ਨਾਲ ਐਪ ਪੈਕੇਜ ਜਾਂ ਫ਼ਾਈਲਸਿਸਟਮ ਤੋਂ ਸਿੱਧੇ ਕੱਢਣ ਨੂੰ ਰੋਕਿਆ ਜਾਂਦਾ ਹੈ। | ੩ |
 
 ---
 
@@ -855,7 +855,7 @@ Distributed AI deployments, including edge computing, federated learning, and mu
 * [NSA/CISA Kubernetes Hardening Guidance](https://www.cisa.gov/news-events/alerts/2022/03/15/updated-kubernetes-hardening-guide)
 * [Confidential Computing Consortium](https://confidentialcomputing.io/)
 
-[^0x10-C04-model-theft]: **model theft** (EN) -> ਮਾਡਲ ਚੋਰੀ — ਚੋਰੀ (theft) renders the source's plain harm/outcome sense directly, kept distinct from the named C11 technique "model extraction", which stays in English. Full discussion: OPEN-QUESTIONS.md Q54.
+[^0x10-C04-model-theft]: **model theft** (EN) -> ਮਾਡਲ ਚੋਰੀ — ਚੋਰੀ (theft) renders the source's plain harm/outcome sense directly, kept distinct from the named C੧੧ technique "model extraction", which stays in English. Full discussion: OPEN-QUESTIONS.md Q54.
 [^0x10-C04-contamination]: **cross-tenant contamination** (EN) -> ਟੈਨੈਂਟਾਂ ਵਿਚਕਾਰ ਦੂਸ਼ਣ — ਦੂਸ਼ਣ carries the neutral "one thing tainting another" sense used in scientific Panjabi, avoiding the moral shading of alternatives like ਮਿਲਾਵਟ. Full discussion: OPEN-QUESTIONS.md Q53.
 [^0x10-C04-component]: **components** (EN) -> ਹਿੱਸੇ — this chapter uses the native ਹਿੱਸਾ for "infrastructure/hardware components," while other AISVS chapters use the loan ਕੰਪੋਨੈਂਟ for the same term of art; the corpus audit flagged the split as unresolved rather than silently normalising it. Full discussion: OPEN-QUESTIONS.md Q95.
 [^0x10-C04-sandbox]: **sandbox, sandboxing** (EN) -> ਸੈਂਡਬਾਕਸ — kept as a loan because a sandbox is a named technical primitive (kernel-enforced process confinement), and a descriptive Panjabi rendering would leave the reader guessing at scope. Full discussion: OPEN-QUESTIONS.md Q47.
@@ -871,7 +871,7 @@ Distributed AI deployments, including edge computing, federated learning, and mu
 <!-- Translator: GeeksikhSecurity -->
 
 # C5 Access Control & Identity for AI Components & Users
-# C5 AI ਕੰਪੋਨੈਂਟਾਂ[^0x10-C05-component] ਅਤੇ ਉਪਭੋਗਤਾਵਾਂ ਲਈ ਪਹੁੰਚ ਕੰਟਰੋਲ ਅਤੇ ਪਛਾਣ
+# C੫ AI ਕੰਪੋਨੈਂਟਾਂ[^0x10-C05-component] ਅਤੇ ਉਪਭੋਗਤਾਵਾਂ ਲਈ ਪਹੁੰਚ ਕੰਟਰੋਲ ਅਤੇ ਪਛਾਣ
 
 ## Control Objective
 ## ਨਿਯੰਤਰਣ ਉਦੇਸ਼
@@ -883,7 +883,7 @@ This chapter addresses access control challenges that AI systems introduce beyon
 ---
 
 ## C5.1 Authentication
-## C5.1 ਪ੍ਰਮਾਣੀਕਰਨ
+## C੫.੧ ਪ੍ਰਮਾਣੀਕਰਨ
 
 AI agents and human users accessing resources must be properly authenticated and authorized for their level of access.
 
@@ -896,13 +896,13 @@ AI agents and human users accessing resources must be properly authenticated and
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
-| **5.1.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਉੱਚ-ਜੋਖਮ ਵਾਲੀਆਂ AI ਕਾਰਵਾਈਆਂ (ਮਾਡਲ ਤੈਨਾਤੀ, ਮਾਡਲ ਵੇਟਸ ਨਿਰਯਾਤ, ਸਿਖਲਾਈ ਡਾਟਾ ਪਹੁੰਚ, ਪ੍ਰੋਡਕਸ਼ਨ ਸੰਰਚਨਾ ਤਬਦੀਲੀਆਂ) ਲਈ ਸਟੈੱਪ-ਅੱਪ ਪ੍ਰਮਾਣੀਕਰਨ[^0x10-C05-stepup] (step-up authentication) ਲੋੜੀਂਦਾ ਹੈ। | 3 |
-| **5.1.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਫ਼ੈਡਰੇਟਿਡ[^0x10-C05-federated] ਜਾਂ ਬਹੁ-ਸਿਸਟਮ ਤੈਨਾਤੀਆਂ ਵਿੱਚ AI ਏਜੰਟ ਥੋੜ੍ਹੇ ਸਮੇਂ ਵਾਲੇ, ਘੱਟੋ-ਘੱਟ ਸਕੋਪ ਵਾਲੇ, ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਤੌਰ 'ਤੇ ਦਸਤਖ਼ਤ ਕੀਤੇ ਟੋਕਨਾਂ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਪ੍ਰਮਾਣੀਕਰਨ ਕਰਦੇ ਹਨ। | 3 |
+| **੫.੧.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਉੱਚ-ਜੋਖਮ ਵਾਲੀਆਂ AI ਕਾਰਵਾਈਆਂ (ਮਾਡਲ ਤੈਨਾਤੀ, ਮਾਡਲ ਵੇਟਸ ਨਿਰਯਾਤ, ਸਿਖਲਾਈ ਡਾਟਾ ਪਹੁੰਚ, ਪ੍ਰੋਡਕਸ਼ਨ ਸੰਰਚਨਾ ਤਬਦੀਲੀਆਂ) ਲਈ ਸਟੈੱਪ-ਅੱਪ ਪ੍ਰਮਾਣੀਕਰਨ[^0x10-C05-stepup] (step-up authentication) ਲੋੜੀਂਦਾ ਹੈ। | ੩ |
+| **੫.੧.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਫ਼ੈਡਰੇਟਿਡ[^0x10-C05-federated] ਜਾਂ ਬਹੁ-ਸਿਸਟਮ ਤੈਨਾਤੀਆਂ ਵਿੱਚ AI ਏਜੰਟ ਥੋੜ੍ਹੇ ਸਮੇਂ ਵਾਲੇ, ਘੱਟੋ-ਘੱਟ ਸਕੋਪ ਵਾਲੇ, ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਤੌਰ 'ਤੇ ਦਸਤਖ਼ਤ ਕੀਤੇ ਟੋਕਨਾਂ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਪ੍ਰਮਾਣੀਕਰਨ ਕਰਦੇ ਹਨ। | ੩ |
 
 ---
 
 ## C5.2 AI Resource Authorization & Classification
-## C5.2 AI ਸਰੋਤ ਅਧਿਕਾਰੀਕਰਨ ਅਤੇ ਵਰਗੀਕਰਨ
+## C੫.੨ AI ਸਰੋਤ ਅਧਿਕਾਰੀਕਰਨ ਅਤੇ ਵਰਗੀਕਰਨ
 
 The caller's authorization context must be enforced through AI-specific query pipelines (RAG retrieval, embedding lookups, inference chains) so the system does not return data the caller is not entitled to access.
 
@@ -920,18 +920,18 @@ The caller's authorization context must be enforced through AI-specific query pi
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
-| **5.2.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ AI ਸਰੋਤ (ਡਾਟਾਸੈੱਟ, ਐਂਡਪੁਆਇੰਟ, ਵੈਕਟਰ ਸੰਗ੍ਰਹਿ, embedding ਇੰਡੈਕਸ, ਕੰਪਿਊਟ ਇੰਸਟਾਂਸ) ਸਪੱਸ਼ਟ allow-list ਅਤੇ ਡਿਫ਼ਾਲਟ-ਇਨਕਾਰ ਨੀਤੀਆਂ ਨਾਲ ਪਹੁੰਚ ਕੰਟਰੋਲ ਲਾਗੂ ਕਰਦਾ ਹੈ। | 2 |
-| **5.2.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਪ੍ਰਾਪਤੀ ਪਾਈਪਲਾਈਨਾਂ (ਜਿਵੇਂ, RAG ਕਿਊਰੀਆਂ, embedding ਖੋਜਾਂ) ਸਿਰਫ਼ ਸੇਵਾ ਖਾਤੇ ਦੀਆਂ ਇਜਾਜ਼ਤਾਂ 'ਤੇ ਨਿਰਭਰ ਰਹਿਣ ਦੀ ਬਜਾਏ, ਹਰ ਪ੍ਰਾਪਤੀ ਅਤੇ ਅਸੈਂਬਲੀ ਪੜਾਅ 'ਤੇ ਅੰਤਮ-ਉਪਭੋਗਤਾ ਦੇ ਅਧਿਕਾਰੀਕਰਨ ਸੰਦਰਭ ਨੂੰ ਲਾਗੂ ਕਰਦੀਆਂ ਹਨ। | 2 |
-| **5.2.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸੰਵੇਦਨਸ਼ੀਲ ਡਾਟਾ ਮਾਡਲਾਂ ਵਿੱਚ ਸਥਾਈ ਭੰਡਾਰਨ ਨੂੰ ਰੋਕਣ ਲਈ ਪ੍ਰਾਪਤੀ ਪਾਈਪਲਾਈਨਾਂ (ਜਿਵੇਂ, RAG ਕਿਊਰੀਆਂ, embedding ਖੋਜਾਂ) ਰਾਹੀਂ ਪ੍ਰਾਪਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 2 |
-| **5.2.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇਨਫ਼ਰੈਂਸ-ਉਪਰੰਤ ਫ਼ਿਲਟਰਿੰਗ ਵਿਧੀਆਂ ਜਵਾਬਾਂ ਵਿੱਚ ਅਜਿਹਾ ਡਾਟਾ ਸ਼ਾਮਲ ਹੋਣ ਤੋਂ ਰੋਕਦੀਆਂ ਹਨ ਜਿਸਨੂੰ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ ਬੇਨਤੀਕਰਤਾ ਅਧਿਕਾਰਤ ਨਹੀਂ ਹੈ। | 2 |
-| **5.2.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਏਜੰਟ ਅਧਿਕਾਰੀਕਰਨ ਲਈ ਨੀਤੀ ਫ਼ੈਸਲਾ ਬਿੰਦੂ[^0x10-C05-pdp] (policy decision point) ਏਜੰਟ ਦੇ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਵਾਤਾਵਰਣ ਤੋਂ ਅਲੱਗ-ਥਲੱਗ ਹੈ। | 2 |
-| **5.2.6** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਵੇਟਸ (model weights), ਸਿਖਲਾਈ ਪਾਈਪਲਾਈਨਾਂ, ਅਤੇ ਪ੍ਰੋਡਕਸ਼ਨ AI ਸੰਰਚਨਾ ਤੱਕ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਪ੍ਰਾਪਤ ਪਹੁੰਚ ਇੱਕ ਪਰਿਭਾਸ਼ਿਤ ਵੱਧ ਤੋਂ ਵੱਧ ਸੈਸ਼ਨ ਮਿਆਦ ਅਤੇ ਆਪਣੇ-ਆਪ ਸਮਾਪਤੀ ਦੇ ਨਾਲ, ਸਿਰਫ਼ ਲੋੜ ਪੈਣ 'ਤੇ ਹੀ (just in time) ਦਿੱਤੀ ਜਾਂਦੀ ਹੈ। ਇਹਨਾਂ ਸਰੋਤਾਂ ਲਈ Zero Standing Privilege (ZSP)[^0x10-C05-zsp] ਨੂੰ ਉਤਸ਼ਾਹਿਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 3 |
-| **5.2.7** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਡਾਟਾ ਵਰਗੀਕਰਨ ਲੇਬਲ ਡਾਊਨਸਟ੍ਰੀਮ ਸਰੋਤਾਂ (embeddings, prompt ਕੈਸ਼[^0x10-C05-promptcache], ਮਾਡਲ ਆਊਟਪੁੱਟ) ਤੱਕ ਅੱਗੇ ਸੰਚਾਰਿਤ ਹੁੰਦੇ ਹਨ। | 3 |
+| **੫.੨.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ AI ਸਰੋਤ (ਡਾਟਾਸੈੱਟ, ਐਂਡਪੁਆਇੰਟ, ਵੈਕਟਰ ਸੰਗ੍ਰਹਿ, embedding ਇੰਡੈਕਸ, ਕੰਪਿਊਟ ਇੰਸਟਾਂਸ) ਸਪੱਸ਼ਟ allow-list ਅਤੇ ਡਿਫ਼ਾਲਟ-ਇਨਕਾਰ ਨੀਤੀਆਂ ਨਾਲ ਪਹੁੰਚ ਕੰਟਰੋਲ ਲਾਗੂ ਕਰਦਾ ਹੈ। | ੨ |
+| **੫.੨.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਪ੍ਰਾਪਤੀ ਪਾਈਪਲਾਈਨਾਂ (ਜਿਵੇਂ, RAG ਕਿਊਰੀਆਂ, embedding ਖੋਜਾਂ) ਸਿਰਫ਼ ਸੇਵਾ ਖਾਤੇ ਦੀਆਂ ਇਜਾਜ਼ਤਾਂ 'ਤੇ ਨਿਰਭਰ ਰਹਿਣ ਦੀ ਬਜਾਏ, ਹਰ ਪ੍ਰਾਪਤੀ ਅਤੇ ਅਸੈਂਬਲੀ ਪੜਾਅ 'ਤੇ ਅੰਤਮ-ਉਪਭੋਗਤਾ ਦੇ ਅਧਿਕਾਰੀਕਰਨ ਸੰਦਰਭ ਨੂੰ ਲਾਗੂ ਕਰਦੀਆਂ ਹਨ। | ੨ |
+| **੫.੨.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸੰਵੇਦਨਸ਼ੀਲ ਡਾਟਾ ਮਾਡਲਾਂ ਵਿੱਚ ਸਥਾਈ ਭੰਡਾਰਨ ਨੂੰ ਰੋਕਣ ਲਈ ਪ੍ਰਾਪਤੀ ਪਾਈਪਲਾਈਨਾਂ (ਜਿਵੇਂ, RAG ਕਿਊਰੀਆਂ, embedding ਖੋਜਾਂ) ਰਾਹੀਂ ਪ੍ਰਾਪਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੨ |
+| **੫.੨.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇਨਫ਼ਰੈਂਸ-ਉਪਰੰਤ ਫ਼ਿਲਟਰਿੰਗ ਵਿਧੀਆਂ ਜਵਾਬਾਂ ਵਿੱਚ ਅਜਿਹਾ ਡਾਟਾ ਸ਼ਾਮਲ ਹੋਣ ਤੋਂ ਰੋਕਦੀਆਂ ਹਨ ਜਿਸਨੂੰ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ ਬੇਨਤੀਕਰਤਾ ਅਧਿਕਾਰਤ ਨਹੀਂ ਹੈ। | ੨ |
+| **੫.੨.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਏਜੰਟ ਅਧਿਕਾਰੀਕਰਨ ਲਈ ਨੀਤੀ ਫ਼ੈਸਲਾ ਬਿੰਦੂ[^0x10-C05-pdp] (policy decision point) ਏਜੰਟ ਦੇ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਵਾਤਾਵਰਣ ਤੋਂ ਅਲੱਗ-ਥਲੱਗ ਹੈ। | ੨ |
+| **੫.੨.੬** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਵੇਟਸ (model weights), ਸਿਖਲਾਈ ਪਾਈਪਲਾਈਨਾਂ, ਅਤੇ ਪ੍ਰੋਡਕਸ਼ਨ AI ਸੰਰਚਨਾ ਤੱਕ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਪ੍ਰਾਪਤ ਪਹੁੰਚ ਇੱਕ ਪਰਿਭਾਸ਼ਿਤ ਵੱਧ ਤੋਂ ਵੱਧ ਸੈਸ਼ਨ ਮਿਆਦ ਅਤੇ ਆਪਣੇ-ਆਪ ਸਮਾਪਤੀ ਦੇ ਨਾਲ, ਸਿਰਫ਼ ਲੋੜ ਪੈਣ 'ਤੇ ਹੀ (just in time) ਦਿੱਤੀ ਜਾਂਦੀ ਹੈ। ਇਹਨਾਂ ਸਰੋਤਾਂ ਲਈ Zero Standing Privilege (ZSP)[^0x10-C05-zsp] ਨੂੰ ਉਤਸ਼ਾਹਿਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੩ |
+| **੫.੨.੭** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਡਾਟਾ ਵਰਗੀਕਰਨ ਲੇਬਲ ਡਾਊਨਸਟ੍ਰੀਮ ਸਰੋਤਾਂ (embeddings, prompt ਕੈਸ਼[^0x10-C05-promptcache], ਮਾਡਲ ਆਊਟਪੁੱਟ) ਤੱਕ ਅੱਗੇ ਸੰਚਾਰਿਤ ਹੁੰਦੇ ਹਨ। | ੩ |
 
 ---
 
 ## C5.3 Multi-Tenant Isolation
-## C5.3 ਬਹੁ-ਟੈਨੈਂਟ[^0x10-C05-tenant] ਅਲੱਗ-ਥਲੱਗਤਾ
+## C੫.੩ ਬਹੁ-ਟੈਨੈਂਟ[^0x10-C05-tenant] ਅਲੱਗ-ਥਲੱਗਤਾ
 
 Cross-tenant information leakage through AI-specific shared infrastructure, such as inference caches and shared model state, must be prevented.
 
@@ -944,8 +944,8 @@ AI-ਵਿਸ਼ੇਸ਼ ਸਾਂਝੇ ਬੁਨਿਆਦੀ ਢਾਂਚੇ, 
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
-| **5.3.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਾਂਝਾ ਮਾਡਲ ਸਰਵਿੰਗ ਬੁਨਿਆਦੀ ਢਾਂਚਾ ਇੱਕ ਟੈਨੈਂਟ ਦੀਆਂ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ, ਇਨਫ਼ਰੈਂਸ, ਜਾਂ embedding ਕਾਰਵਾਈਆਂ ਨੂੰ ਕਿਸੇ ਹੋਰ ਟੈਨੈਂਟ ਦੀਆਂ ਕਾਰਵਾਈਆਂ ਨੂੰ ਪ੍ਰਭਾਵਿਤ ਕਰਨ ਜਾਂ ਵੇਖਣ ਤੋਂ ਰੋਕਦਾ ਹੈ। | 2 |
-| **5.3.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇੱਕ ਟੈਨੈਂਟ ਸਾਂਝੇ ਕੰਪਿਊਟ ਸਰੋਤਾਂ ਰਾਹੀਂ ਕਿਸੇ ਹੋਰ ਟੈਨੈਂਟ ਦੀਆਂ ਕਾਰਵਾਈਆਂ ਨੂੰ ਪ੍ਰਭਾਵਿਤ ਨਹੀਂ ਕਰ ਸਕਦਾ ਜਾਂ ਵੇਖ ਨਹੀਂ ਸਕਦਾ। ਇਸ ਲੋੜ ਨੂੰ ਪੂਰਾ ਕਰਨ ਲਈ ਆਮ ਤੌਰ 'ਤੇ ਹਾਰਡਵੇਅਰ ਵਿਭਾਜਨ, ਗੁਪਤ ਕੰਪਿਊਟਿੰਗ[^0x10-C05-confidential] (confidential computing), ਜਾਂ ਪ੍ਰਤੀ-ਟੈਨੈਂਟ ਰਾਖਵੀਂ (dedicated) ਕੰਪਿਊਟ ਵੰਡ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ। | 3 |
+| **੫.੩.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਾਂਝਾ ਮਾਡਲ ਸਰਵਿੰਗ ਬੁਨਿਆਦੀ ਢਾਂਚਾ ਇੱਕ ਟੈਨੈਂਟ ਦੀਆਂ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ, ਇਨਫ਼ਰੈਂਸ, ਜਾਂ embedding ਕਾਰਵਾਈਆਂ ਨੂੰ ਕਿਸੇ ਹੋਰ ਟੈਨੈਂਟ ਦੀਆਂ ਕਾਰਵਾਈਆਂ ਨੂੰ ਪ੍ਰਭਾਵਿਤ ਕਰਨ ਜਾਂ ਵੇਖਣ ਤੋਂ ਰੋਕਦਾ ਹੈ। | ੨ |
+| **੫.੩.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇੱਕ ਟੈਨੈਂਟ ਸਾਂਝੇ ਕੰਪਿਊਟ ਸਰੋਤਾਂ ਰਾਹੀਂ ਕਿਸੇ ਹੋਰ ਟੈਨੈਂਟ ਦੀਆਂ ਕਾਰਵਾਈਆਂ ਨੂੰ ਪ੍ਰਭਾਵਿਤ ਨਹੀਂ ਕਰ ਸਕਦਾ ਜਾਂ ਵੇਖ ਨਹੀਂ ਸਕਦਾ। ਇਸ ਲੋੜ ਨੂੰ ਪੂਰਾ ਕਰਨ ਲਈ ਆਮ ਤੌਰ 'ਤੇ ਹਾਰਡਵੇਅਰ ਵਿਭਾਜਨ, ਗੁਪਤ ਕੰਪਿਊਟਿੰਗ[^0x10-C05-confidential] (confidential computing), ਜਾਂ ਪ੍ਰਤੀ-ਟੈਨੈਂਟ ਰਾਖਵੀਂ (dedicated) ਕੰਪਿਊਟ ਵੰਡ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ। | ੩ |
 
 ---
 
@@ -969,7 +969,7 @@ AI-ਵਿਸ਼ੇਸ਼ ਸਾਂਝੇ ਬੁਨਿਆਦੀ ਢਾਂਚੇ, 
 [^0x10-C05-zsp]: **Zero Standing Privilege (ZSP)** (EN) -> Zero Standing Privilege (ZSP) (retained verbatim) — kept in English as a named security model, the same treatment Zero Trust Architecture gets in the reference this chapter cites, while the surrounding "privileged access" prose is translated normally. Full discussion: OPEN-QUESTIONS.md Q25.
 [^0x10-C05-promptcache]: **prompt cache** (EN) -> `prompt` ਕੈਸ਼ — the head noun `prompt` stays in Latin script per the corpus-wide hybrid pattern already fixed for `prompt ਇੰਜੈਕਸ਼ਨ`, extended here to *cache*. Full discussion: OPEN-QUESTIONS.md Q21.
 [^0x10-C05-tenant]: **tenant / multi-tenant** (EN) -> ਟੈਨੈਂਟ / ਬਹੁ-ਟੈਨੈਂਟ — kept as a loan rather than ਕਿਰਾਏਦਾਰ ("renter"), because the literal dictionary word denotes a person renting property and would obscure the isolation boundary this section is about. Full discussion: OPEN-QUESTIONS.md Q22.
-[^0x10-C05-confidential]: **confidential computing** (EN) -> ਗੁਪਤ ਕੰਪਿਊਟਿੰਗ — normalised from an earlier loan rendering (ਕਾਨਫ਼ੀਡੈਂਸ਼ੀਅਲ ਕੰਪਿਊਟਿੰਗ) that was the corpus's only instance of that form and read two ways against the same requirement indexed in Appendix B; the fix also protects the three-way ਭਰੋਸੇਯੋਗ / ਸੁਰੱਖਿਅਤ / ਗੁਪਤ (trusted/secure/confidential) contrast the C4 sibling chapter depends on. Full discussion: OPEN-QUESTIONS.md Q50.
+[^0x10-C05-confidential]: **confidential computing** (EN) -> ਗੁਪਤ ਕੰਪਿਊਟਿੰਗ — normalised from an earlier loan rendering (ਕਾਨਫ਼ੀਡੈਂਸ਼ੀਅਲ ਕੰਪਿਊਟਿੰਗ) that was the corpus's only instance of that form and read two ways against the same requirement indexed in Appendix B; the fix also protects the three-way ਭਰੋਸੇਯੋਗ / ਸੁਰੱਖਿਅਤ / ਗੁਪਤ (trusted/secure/confidential) contrast the C੪ sibling chapter depends on. Full discussion: OPEN-QUESTIONS.md Q50.
 
 \newpage
 <!-- Translation Status: ✅ Complete -->
@@ -977,7 +977,7 @@ AI-ਵਿਸ਼ੇਸ਼ ਸਾਂਝੇ ਬੁਨਿਆਦੀ ਢਾਂਚੇ, 
 <!-- Translator: GeeksikhSecurity -->
 
 # C6 Supply Chain Security for Models
-# C6 ਮਾਡਲਾਂ ਲਈ ਸਪਲਾਈ ਚੇਨ[^0x10-C06-supplychain] ਸੁਰੱਖਿਆ
+# C੬ ਮਾਡਲਾਂ ਲਈ ਸਪਲਾਈ ਚੇਨ[^0x10-C06-supplychain] ਸੁਰੱਖਿਆ
 
 ## Control Objective
 ## ਨਿਯੰਤਰਣ ਉਦੇਸ਼
@@ -989,7 +989,7 @@ This chapter addresses defending against AI supply chain attacks that exploit th
 ---
 
 ## C6.1 Model Artifact Integrity
-## C6.1 ਮਾਡਲ ਆਰਟੀਫ਼ੈਕਟ ਅਖੰਡਤਾ
+## C੬.੧ ਮਾਡਲ ਆਰਟੀਫ਼ੈਕਟ ਅਖੰਡਤਾ
 
 Third-party model origins must be authenticated and checked for hidden behavior before fine-tuning or deployment, and AI artifacts should be downloaded only from approved sources.
 
@@ -1004,15 +1004,15 @@ Third-party model origins must be authenticated and checked for hidden behavior 
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **6.1.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲਾਂ ਨੂੰ ਆਯਾਤ (import) ਤੋਂ ਪਹਿਲਾਂ ਖ਼ਤਰਨਾਕ ਕੋਡ ਲਈ ਸਕੈਨ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 1 |
-| **6.1.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਵੇਟਸ[^0x10-C06-weights] (model weights), ਡਾਟਾਸੈੱਟ[^0x10-C06-dataset], ਅਤੇ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਅਡੈਪਟਰ[^0x10-C06-finetuning] ਸਿਰਫ਼ ਪ੍ਰਵਾਨਿਤ ਸਰੋਤਾਂ ਤੋਂ ਹੀ ਡਾਊਨਲੋਡ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | 1 |
-| **6.1.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਤੀਜੀ-ਧਿਰ ਮਾਡਲ ਆਰਟੀਫ਼ੈਕਟ ਦੀ ਅਖੰਡਤਾ (integrity) ਦੀ ਤਸਦੀਕ ਕੀਤੀ ਜਾ ਸਕਦੀ ਹੈ। | 2 |
-| **6.1.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਕਿਸੇ ਵੀ ਗ਼ੈਰ-ਵਿਕਾਸ ਵਾਤਾਵਰਣ ਵਿੱਚ ਤਰੱਕੀ ਦਿੱਤੇ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ ਇੱਕ ਵਿਵਹਾਰਕ ਸਵੀਕ੍ਰਿਤੀ ਟੈਸਟ ਸੂਟ ਪਾਸ ਕਰਦੇ ਹਨ। | 2 |
+| **੬.੧.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲਾਂ ਨੂੰ ਆਯਾਤ (import) ਤੋਂ ਪਹਿਲਾਂ ਖ਼ਤਰਨਾਕ ਕੋਡ ਲਈ ਸਕੈਨ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੧ |
+| **੬.੧.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਵੇਟਸ[^0x10-C06-weights] (model weights), ਡਾਟਾਸੈੱਟ[^0x10-C06-dataset], ਅਤੇ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਅਡੈਪਟਰ[^0x10-C06-finetuning] ਸਿਰਫ਼ ਪ੍ਰਵਾਨਿਤ ਸਰੋਤਾਂ ਤੋਂ ਹੀ ਡਾਊਨਲੋਡ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | ੧ |
+| **੬.੧.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਤੀਜੀ-ਧਿਰ ਮਾਡਲ ਆਰਟੀਫ਼ੈਕਟ ਦੀ ਅਖੰਡਤਾ (integrity) ਦੀ ਤਸਦੀਕ ਕੀਤੀ ਜਾ ਸਕਦੀ ਹੈ। | ੨ |
+| **੬.੧.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਕਿਸੇ ਵੀ ਗ਼ੈਰ-ਵਿਕਾਸ ਵਾਤਾਵਰਣ ਵਿੱਚ ਤਰੱਕੀ ਦਿੱਤੇ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ ਇੱਕ ਵਿਵਹਾਰਕ ਸਵੀਕ੍ਰਿਤੀ ਟੈਸਟ ਸੂਟ ਪਾਸ ਕਰਦੇ ਹਨ। | ੨ |
 
 ---
 
 ## C6.2 AI BOM & Supply Chain Monitoring
-## C6.2 AI BOM[^0x10-C06-aibom] ਅਤੇ ਸਪਲਾਈ ਚੇਨ ਨਿਗਰਾਨੀ
+## C੬.੨ AI BOM[^0x10-C06-aibom] ਅਤੇ ਸਪਲਾਈ ਚੇਨ ਨਿਗਰਾਨੀ
 
 Detailed AI-specific bills of materials must be generated and signed, with readiness to respond to supply chain compromise events.
 
@@ -1026,9 +1026,9 @@ Detailed AI-specific bills of materials must be generated and signed, with readi
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **6.2.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਮਾਡਲ ਆਰਟੀਫ਼ੈਕਟ ਇੱਕ ਵਰਜ਼ਨ-ਨਿਯੰਤਰਿਤ, ਮਸ਼ੀਨ-ਪੜ੍ਹਨਯੋਗ AI BOM ਪ੍ਰਕਾਸ਼ਿਤ ਕਰਦਾ ਹੈ ਜਿਸ ਵਿੱਚ ਡਾਟਾਸੈੱਟ, ਵੇਟਸ, ਲਾਇਸੈਂਸ, ਅਤੇ ਡਾਟਾ-ਮੂਲ ਬਿਆਨ ਸੂਚੀਬੱਧ ਹੁੰਦੇ ਹਨ। | 1 |
-| **6.2.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI BOM ਨੂੰ ਤੈਨਾਤੀ ਤੋਂ ਪਹਿਲਾਂ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਤੌਰ 'ਤੇ ਦਸਤਖ਼ਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 2 |
-| **6.2.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਜੇ ਕਿਸੇ ਕੰਪੋਨੈਂਟ[^0x10-C06-component] ਦਾ ਮੈਟਾਡਾਟਾ ਗ਼ੈਰ-ਮੌਜੂਦ ਹੋਵੇ ਤਾਂ AI BOM ਸੰਪੂਰਨਤਾ ਜਾਂਚਾਂ ਬਿਲਡ ਨੂੰ ਫ਼ੇਲ੍ਹ ਕਰ ਦਿੰਦੀਆਂ ਹਨ। | 2 |
+| **੬.੨.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਮਾਡਲ ਆਰਟੀਫ਼ੈਕਟ ਇੱਕ ਵਰਜ਼ਨ-ਨਿਯੰਤਰਿਤ, ਮਸ਼ੀਨ-ਪੜ੍ਹਨਯੋਗ AI BOM ਪ੍ਰਕਾਸ਼ਿਤ ਕਰਦਾ ਹੈ ਜਿਸ ਵਿੱਚ ਡਾਟਾਸੈੱਟ, ਵੇਟਸ, ਲਾਇਸੈਂਸ, ਅਤੇ ਡਾਟਾ-ਮੂਲ ਬਿਆਨ ਸੂਚੀਬੱਧ ਹੁੰਦੇ ਹਨ। | ੧ |
+| **੬.੨.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI BOM ਨੂੰ ਤੈਨਾਤੀ ਤੋਂ ਪਹਿਲਾਂ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਤੌਰ 'ਤੇ ਦਸਤਖ਼ਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੨ |
+| **੬.੨.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਜੇ ਕਿਸੇ ਕੰਪੋਨੈਂਟ[^0x10-C06-component] ਦਾ ਮੈਟਾਡਾਟਾ ਗ਼ੈਰ-ਮੌਜੂਦ ਹੋਵੇ ਤਾਂ AI BOM ਸੰਪੂਰਨਤਾ ਜਾਂਚਾਂ ਬਿਲਡ ਨੂੰ ਫ਼ੇਲ੍ਹ ਕਰ ਦਿੰਦੀਆਂ ਹਨ। | ੨ |
 
 ---
 
@@ -1056,7 +1056,7 @@ Detailed AI-specific bills of materials must be generated and signed, with readi
 <!-- Translator: GeeksikhSecurity -->
 
 # C7 Model Behavior, Output Control & Safety Assurance
-# C7 ਮਾਡਲ ਵਿਵਹਾਰ[^0x10-C07-behavior], ਆਊਟਪੁੱਟ[^0x10-C07-output] ਨਿਯੰਤਰਣ ਅਤੇ ਸਲਾਮਤੀ ਭਰੋਸਾ[^0x10-C07-assurance]
+# C੭ ਮਾਡਲ ਵਿਵਹਾਰ[^0x10-C07-behavior], ਆਊਟਪੁੱਟ[^0x10-C07-output] ਨਿਯੰਤਰਣ ਅਤੇ ਸਲਾਮਤੀ ਭਰੋਸਾ[^0x10-C07-assurance]
 
 ## Control Objective
 ## ਨਿਯੰਤਰਣ ਉਦੇਸ਼
@@ -1068,7 +1068,7 @@ This chapter addresses constraining, validating, and monitoring model outputs so
 ---
 
 ## C7.1 Output Format Enforcement
-## C7.1 ਆਊਟਪੁੱਟ ਫ਼ਾਰਮੈਟ ਲਾਗੂਕਰਨ
+## C੭.੧ ਆਊਟਪੁੱਟ ਫ਼ਾਰਮੈਟ ਲਾਗੂਕਰਨ
 
 Model outputs must be structured and validated to reduce downstream injection risk.
 
@@ -1081,13 +1081,13 @@ Model outputs must be structured and validated to reduce downstream injection ri
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **7.1.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਐਪਲੀਕੇਸ਼ਨ ਸਾਰੇ ਮਾਡਲ ਆਊਟਪੁੱਟ ਨੂੰ ਇੱਕ ਪਰਿਭਾਸ਼ਿਤ ਸਕੀਮਾ ਦੇ ਵਿਰੁੱਧ ਪ੍ਰਮਾਣਿਤ ਕਰਦੀ ਹੈ ਅਤੇ ਕਿਸੇ ਵੀ ਅਜਿਹੇ ਆਊਟਪੁੱਟ ਨੂੰ ਰੱਦ ਕਰਦੀ ਹੈ ਜੋ ਮੇਲ ਨਹੀਂ ਖਾਂਦਾ। | 1 |
-| **7.1.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਦੁਆਰਾ ਤਿਆਰ ਕੀਤਾ ਆਊਟਪੁੱਟ ਲੰਬਾਈ ਸੀਮਾਵਾਂ ਅਤੇ ਸਮਾਪਤੀ ਨਿਯੰਤਰਣਾਂ[^0x10-C07-controls] ਦੁਆਰਾ ਸੀਮਿਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 1 |
+| **੭.੧.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਐਪਲੀਕੇਸ਼ਨ ਸਾਰੇ ਮਾਡਲ ਆਊਟਪੁੱਟ ਨੂੰ ਇੱਕ ਪਰਿਭਾਸ਼ਿਤ ਸਕੀਮਾ ਦੇ ਵਿਰੁੱਧ ਪ੍ਰਮਾਣਿਤ ਕਰਦੀ ਹੈ ਅਤੇ ਕਿਸੇ ਵੀ ਅਜਿਹੇ ਆਊਟਪੁੱਟ ਨੂੰ ਰੱਦ ਕਰਦੀ ਹੈ ਜੋ ਮੇਲ ਨਹੀਂ ਖਾਂਦਾ। | ੧ |
+| **੭.੧.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਦੁਆਰਾ ਤਿਆਰ ਕੀਤਾ ਆਊਟਪੁੱਟ ਲੰਬਾਈ ਸੀਮਾਵਾਂ ਅਤੇ ਸਮਾਪਤੀ ਨਿਯੰਤਰਣਾਂ[^0x10-C07-controls] ਦੁਆਰਾ ਸੀਮਿਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੧ |
 
 ---
 
 ## C7.2 Hallucination Detection & Mitigation
-## C7.2 Hallucination[^0x10-C07-hallucination] ਦੀ ਪਛਾਣ ਅਤੇ ਘਟਾਉਣਾ
+## C੭.੨ Hallucination[^0x10-C07-hallucination] ਦੀ ਪਛਾਣ ਅਤੇ ਘਟਾਉਣਾ
 
 Potentially inaccurate or fabricated content must be detected so unreliable outputs do not reach users or downstream systems.
 
@@ -1101,14 +1101,14 @@ Potentially inaccurate or fabricated content must be detected so unreliable outp
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **7.2.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਸਟਮ ਇੱਕ ਭਰੋਸਾ ਅਨੁਮਾਨ ਵਿਧੀ[^0x10-C07-confidence] (confidence estimation) ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਤਿਆਰ ਕੀਤੇ ਜਵਾਬਾਂ ਦੀ ਭਰੋਸੇਯੋਗਤਾ ਦਾ ਮੁਲਾਂਕਣ ਕਰਦਾ ਹੈ। | 2 |
-| **7.2.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਜੇ ਭਰੋਸਾ ਸਕੋਰ ਇੱਕ ਪਰਿਭਾਸ਼ਿਤ ਥ੍ਰੈਸ਼ਹੋਲਡ[^0x10-C07-threshold] ਤੋਂ ਹੇਠਾਂ ਡਿੱਗ ਜਾਂਦਾ ਹੈ ਤਾਂ ਐਪਲੀਕੇਸ਼ਨ ਆਪਣੇ ਆਪ ਜਵਾਬਾਂ ਨੂੰ ਰੋਕ ਦਿੰਦੀ ਹੈ ਜਾਂ ਇੱਕ ਫ਼ਾਲਬੈਕ ਸੁਨੇਹੇ[^0x10-C07-fallback] 'ਤੇ ਬਦਲ ਜਾਂਦੀ ਹੈ। | 2 |
-| **7.2.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਨੀਤੀ ਦੁਆਰਾ ਉੱਚ-ਜੋਖਮ ਵਜੋਂ ਵਰਗੀਕ੍ਰਿਤ[^0x10-C07-classified] ਕੀਤੇ ਜਵਾਬਾਂ ਲਈ, ਸਿਸਟਮ ਇੱਕ ਵਾਧੂ ਤਸਦੀਕ ਪੜਾਅ ਕਰਦਾ ਹੈ। | 3 |
+| **੭.੨.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਸਟਮ ਇੱਕ ਭਰੋਸਾ ਅਨੁਮਾਨ ਵਿਧੀ[^0x10-C07-confidence] (confidence estimation) ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਤਿਆਰ ਕੀਤੇ ਜਵਾਬਾਂ ਦੀ ਭਰੋਸੇਯੋਗਤਾ ਦਾ ਮੁਲਾਂਕਣ ਕਰਦਾ ਹੈ। | ੨ |
+| **੭.੨.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਜੇ ਭਰੋਸਾ ਸਕੋਰ ਇੱਕ ਪਰਿਭਾਸ਼ਿਤ ਥ੍ਰੈਸ਼ਹੋਲਡ[^0x10-C07-threshold] ਤੋਂ ਹੇਠਾਂ ਡਿੱਗ ਜਾਂਦਾ ਹੈ ਤਾਂ ਐਪਲੀਕੇਸ਼ਨ ਆਪਣੇ ਆਪ ਜਵਾਬਾਂ ਨੂੰ ਰੋਕ ਦਿੰਦੀ ਹੈ ਜਾਂ ਇੱਕ ਫ਼ਾਲਬੈਕ ਸੁਨੇਹੇ[^0x10-C07-fallback] 'ਤੇ ਬਦਲ ਜਾਂਦੀ ਹੈ। | ੨ |
+| **੭.੨.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਨੀਤੀ ਦੁਆਰਾ ਉੱਚ-ਜੋਖਮ ਵਜੋਂ ਵਰਗੀਕ੍ਰਿਤ[^0x10-C07-classified] ਕੀਤੇ ਜਵਾਬਾਂ ਲਈ, ਸਿਸਟਮ ਇੱਕ ਵਾਧੂ ਤਸਦੀਕ ਪੜਾਅ ਕਰਦਾ ਹੈ। | ੩ |
 
 ---
 
 ## C7.3 Output Safety
-## C7.3 ਆਊਟਪੁੱਟ ਸਲਾਮਤੀ
+## C੭.੩ ਆਊਟਪੁੱਟ ਸਲਾਮਤੀ
 
 Technical controls must detect and remove unsafe content before it is shown to the user.
 
@@ -1123,15 +1123,15 @@ Technical controls must detect and remove unsafe content before it is shown to t
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **7.3.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਵੈਚਾਲਿਤ ਵਰਗੀਕਾਰ (classifiers) ਹਰ ਜਵਾਬ ਨੂੰ ਸਕੈਨ ਕਰਦੇ ਹਨ ਅਤੇ ਉਸ ਸਮੱਗਰੀ ਨੂੰ ਰੋਕਦੇ ਹਨ ਜੋ ਪਰਿਭਾਸ਼ਿਤ ਨੁਕਸਾਨਦੇਹ ਸਮੱਗਰੀ ਸ਼੍ਰੇਣੀਆਂ ਨਾਲ ਮੇਲ ਖਾਂਦੀ ਹੈ। | 1 |
-| **7.3.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਆਊਟਪੁੱਟ ਫ਼ਿਲਟਰ ਉਹਨਾਂ ਜਵਾਬਾਂ ਦੀ ਪਛਾਣ ਕਰਦੇ ਹਨ ਅਤੇ ਉਹਨਾਂ ਨੂੰ ਰੋਕਦੇ ਹਨ ਜੋ system prompt ਦੀ ਸਮੱਗਰੀ ਜਾਂ ਬੈਕਐਂਡ ਡਾਟਾ ਦਾ ਖੁਲਾਸਾ ਕਰਦੇ ਹਨ। | 2 |
-| **7.3.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਦੁਆਰਾ ਤਿਆਰ ਕੀਤੇ ਆਊਟਪੁੱਟ ਨੂੰ ਬਾਹਰ ਜਾਣ ਵਾਲੀਆਂ ਬੇਨਤੀਆਂ ਸ਼ੁਰੂ ਕਰਨ ਤੋਂ ਰੋਕਿਆ ਜਾਂਦਾ ਹੈ। | 2 |
-| **7.3.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਆਊਟਪੁੱਟ ਦੀ ਲੁਕੀ ਹੋਈ, ਏਨਕੋਡ ਕੀਤੀ, ਜਾਂ ਗੁਮਰਾਹਕੁਨ ਸਮੱਗਰੀ ਲਈ ਜਾਂਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ ਜੋ homoglyph[^0x10-C07-homoglyph] (ਸਮਰੂਪ ਅੱਖਰ), ਫ਼ਾਰਮੈਟਿੰਗ, ਮੈਟਾਡਾਟਾ, ਜਾਂ ਢਾਂਚਾਗਤ ਖੇਤਰਾਂ ਰਾਹੀਂ ਬਣਾਈ ਗਈ ਹੋਵੇ। | 3 |
+| **੭.੩.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਵੈਚਾਲਿਤ ਵਰਗੀਕਾਰ (classifiers) ਹਰ ਜਵਾਬ ਨੂੰ ਸਕੈਨ ਕਰਦੇ ਹਨ ਅਤੇ ਉਸ ਸਮੱਗਰੀ ਨੂੰ ਰੋਕਦੇ ਹਨ ਜੋ ਪਰਿਭਾਸ਼ਿਤ ਨੁਕਸਾਨਦੇਹ ਸਮੱਗਰੀ ਸ਼੍ਰੇਣੀਆਂ ਨਾਲ ਮੇਲ ਖਾਂਦੀ ਹੈ। | ੧ |
+| **੭.੩.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਆਊਟਪੁੱਟ ਫ਼ਿਲਟਰ ਉਹਨਾਂ ਜਵਾਬਾਂ ਦੀ ਪਛਾਣ ਕਰਦੇ ਹਨ ਅਤੇ ਉਹਨਾਂ ਨੂੰ ਰੋਕਦੇ ਹਨ ਜੋ system prompt ਦੀ ਸਮੱਗਰੀ ਜਾਂ ਬੈਕਐਂਡ ਡਾਟਾ ਦਾ ਖੁਲਾਸਾ ਕਰਦੇ ਹਨ। | ੨ |
+| **੭.੩.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਦੁਆਰਾ ਤਿਆਰ ਕੀਤੇ ਆਊਟਪੁੱਟ ਨੂੰ ਬਾਹਰ ਜਾਣ ਵਾਲੀਆਂ ਬੇਨਤੀਆਂ ਸ਼ੁਰੂ ਕਰਨ ਤੋਂ ਰੋਕਿਆ ਜਾਂਦਾ ਹੈ। | ੨ |
+| **੭.੩.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਆਊਟਪੁੱਟ ਦੀ ਲੁਕੀ ਹੋਈ, ਏਨਕੋਡ ਕੀਤੀ, ਜਾਂ ਗੁਮਰਾਹਕੁਨ ਸਮੱਗਰੀ ਲਈ ਜਾਂਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ ਜੋ homoglyph[^0x10-C07-homoglyph] (ਸਮਰੂਪ ਅੱਖਰ), ਫ਼ਾਰਮੈਟਿੰਗ, ਮੈਟਾਡਾਟਾ, ਜਾਂ ਢਾਂਚਾਗਤ ਖੇਤਰਾਂ ਰਾਹੀਂ ਬਣਾਈ ਗਈ ਹੋਵੇ। | ੩ |
 
 ---
 
 ## C7.4 Source Attribution & Citation Integrity
-## C7.4 ਸਰੋਤ-ਨਿਰਧਾਰਨ[^0x10-C07-attribution] ਅਤੇ ਹਵਾਲਾ ਅਖੰਡਤਾ
+## C੭.੪ ਸਰੋਤ-ਨਿਰਧਾਰਨ[^0x10-C07-attribution] ਅਤੇ ਹਵਾਲਾ ਅਖੰਡਤਾ
 
 RAG-grounded outputs must be traceable to their source documents, with cited claims verifiably supported by retrieved content.
 
@@ -1146,10 +1146,10 @@ RAG-ਆਧਾਰਿਤ[^0x10-C07-grounded] ਆਊਟਪੁੱਟ ਦਾ ਆਪ�
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :-------: | -------------------------------------------------------------------------------------------------------------------------------------------- | :---: |
-| **7.4.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** retrieval-augmented generation (RAG) ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਤਿਆਰ ਕੀਤੇ ਜਵਾਬਾਂ ਵਿੱਚ ਸਰੋਤ ਦਸਤਾਵੇਜ਼ਾਂ ਦਾ ਸਰੋਤ-ਨਿਰਧਾਰਨ (attribution) ਸ਼ਾਮਲ ਹੁੰਦਾ ਹੈ। | 1 |
-| **7.4.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** RAG ਸਰੋਤ-ਨਿਰਧਾਰਨ ਪ੍ਰਾਪਤੀ ਮੈਟਾਡਾਟਾ ਤੋਂ ਲਏ ਜਾਂਦੇ ਹਨ ਅਤੇ ਮਾਡਲ ਦੁਆਰਾ ਤਿਆਰ ਨਹੀਂ ਕੀਤੇ ਜਾਂਦੇ, ਤਾਂ ਜੋ ਮੂਲ-ਸਰੋਤ[^0x10-C07-provenance] (provenance) ਘੜਿਆ ਨਾ ਜਾ ਸਕੇ। | 1 |
-| **7.4.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇੱਕ RAG ਜਵਾਬ ਵਿਚਲੇ ਦਾਅਵਿਆਂ ਨੂੰ ਪ੍ਰਾਪਤ ਕੀਤੇ ਚੰਕ[^0x10-C07-chunk] (chunk) ਤੱਕ ਟਰੇਸ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ। | 2 |
-| **7.4.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਤਿਆਰ ਕੀਤੇ ਮੀਡੀਆ ਨੂੰ ਵਾਟਰਮਾਰਕ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ਤਾਂ ਜੋ ਇਹ ਸਾਬਤ ਹੋ ਸਕੇ ਕਿ ਇਹ AI ਦੁਆਰਾ ਤਿਆਰ ਕੀਤਾ ਗਿਆ ਸੀ। | 3 |
+| **੭.੪.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** retrieval-augmented generation (RAG) ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਤਿਆਰ ਕੀਤੇ ਜਵਾਬਾਂ ਵਿੱਚ ਸਰੋਤ ਦਸਤਾਵੇਜ਼ਾਂ ਦਾ ਸਰੋਤ-ਨਿਰਧਾਰਨ (attribution) ਸ਼ਾਮਲ ਹੁੰਦਾ ਹੈ। | ੧ |
+| **੭.੪.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** RAG ਸਰੋਤ-ਨਿਰਧਾਰਨ ਪ੍ਰਾਪਤੀ ਮੈਟਾਡਾਟਾ ਤੋਂ ਲਏ ਜਾਂਦੇ ਹਨ ਅਤੇ ਮਾਡਲ ਦੁਆਰਾ ਤਿਆਰ ਨਹੀਂ ਕੀਤੇ ਜਾਂਦੇ, ਤਾਂ ਜੋ ਮੂਲ-ਸਰੋਤ[^0x10-C07-provenance] (provenance) ਘੜਿਆ ਨਾ ਜਾ ਸਕੇ। | ੧ |
+| **੭.੪.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇੱਕ RAG ਜਵਾਬ ਵਿਚਲੇ ਦਾਅਵਿਆਂ ਨੂੰ ਪ੍ਰਾਪਤ ਕੀਤੇ ਚੰਕ[^0x10-C07-chunk] (chunk) ਤੱਕ ਟਰੇਸ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ। | ੨ |
+| **੭.੪.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਤਿਆਰ ਕੀਤੇ ਮੀਡੀਆ ਨੂੰ ਵਾਟਰਮਾਰਕ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ਤਾਂ ਜੋ ਇਹ ਸਾਬਤ ਹੋ ਸਕੇ ਕਿ ਇਹ AI ਦੁਆਰਾ ਤਿਆਰ ਕੀਤਾ ਗਿਆ ਸੀ। | ੩ |
 
 ---
 
@@ -1178,7 +1178,7 @@ RAG-ਆਧਾਰਿਤ[^0x10-C07-grounded] ਆਊਟਪੁੱਟ ਦਾ ਆਪ�
 [^0x10-C07-attribution]: **source attribution** (EN) -> ਸਰੋਤ-ਨਿਰਧਾਰਨ — reuses the rendering already fixed for dataset-use attribution, kept distinct from ਹਵਾਲਾ (citation) because 7.4.2 depends on that difference: attributions must come from retrieval metadata, not the model, while a citation is what the reader sees. Full discussion: OPEN-QUESTIONS.md Q72.
 [^0x10-C07-grounded]: **RAG-grounded** (EN) -> RAG-ਆਧਾਰਿਤ — "grounding" is a high-risk metaphor term, so the neutral technical sense ("anchored in retrieved evidence") is rendered as ਆਧਾਰਿਤ (based on) rather than any literal earth/ground calque that would import imagery the source does not intend. Full discussion: OPEN-QUESTIONS.md Q71.
 [^0x10-C07-provenance]: **provenance** (EN) -> ਮੂਲ-ਸਰੋਤ ("root-source") — states the "documented chain of origin" sense plainly, avoiding ਉਤਪਤੀ ("origination"), which carries creation-narrative overtones in Panjabi religious register. Full discussion: OPEN-QUESTIONS.md Q73.
-[^0x10-C07-chunk]: **chunk** (EN, retrieved chunk) -> ਚੰਕ — kept as a loan because a chunk is a specific RAG-pipeline retrieval unit, not a generic piece of text; ਖੰਡ ("segment") was additionally excluded for its near-collision with ਅਖੰਡਤਾ (integrity), the locked term appearing in this same chapter's C7.4 title. Full discussion: OPEN-QUESTIONS.md Q74.
+[^0x10-C07-chunk]: **chunk** (EN, retrieved chunk) -> ਚੰਕ — kept as a loan because a chunk is a specific RAG-pipeline retrieval unit, not a generic piece of text; ਖੰਡ ("segment") was additionally excluded for its near-collision with ਅਖੰਡਤਾ (integrity), the locked term appearing in this same chapter's C੭.੪ title. Full discussion: OPEN-QUESTIONS.md Q74.
 
 \newpage
 <!-- Translation Status: ✅ Complete -->
@@ -1186,7 +1186,7 @@ RAG-ਆਧਾਰਿਤ[^0x10-C07-grounded] ਆਊਟਪੁੱਟ ਦਾ ਆਪ�
 <!-- Translator: GeeksikhSecurity -->
 
 # C8 Memory, Embeddings & Vector Database Security
-# C8 ਮੈਮੋਰੀ[^0x10-C08-memory], Embeddings ਅਤੇ ਵੈਕਟਰ ਡਾਟਾਬੇਸ ਸੁਰੱਖਿਆ
+# C੮ ਮੈਮੋਰੀ[^0x10-C08-memory], Embeddings ਅਤੇ ਵੈਕਟਰ ਡਾਟਾਬੇਸ ਸੁਰੱਖਿਆ
 
 ## Control Objective
 ## ਨਿਯੰਤਰਣ ਉਦੇਸ਼
@@ -1198,7 +1198,7 @@ This chapter addresses securing the embeddings and vector stores that act as sem
 ---
 
 ## C8.1 Access Controls on Memory & RAG Indices
-## C8.1 ਮੈਮੋਰੀ ਅਤੇ RAG ਇੰਡੈਕਸਾਂ ਉੱਤੇ ਪਹੁੰਚ ਕੰਟਰੋਲ
+## C੮.੧ ਮੈਮੋਰੀ ਅਤੇ RAG ਇੰਡੈਕਸਾਂ ਉੱਤੇ ਪਹੁੰਚ ਕੰਟਰੋਲ
 
 Fine-grained access controls and query-time scope enforcement must be applied to every vector collection.
 
@@ -1212,14 +1212,14 @@ Fine-grained access controls and query-time scope enforcement must be applied to
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--: | --- | :---: |
-| **8.1.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਵੈਕਟਰ ਪਛਾਣਕਰਤਾ ਅਤੇ ਨੇਮਸਪੇਸ ਪ੍ਰਤੀ ਟੈਨੈਂਟ ਵਿਲੱਖਣਤਾ ਲਾਗੂ ਕਰਦੇ ਹਨ ਅਤੇ ਅੰਤਰ-ਟੈਨੈਂਟ ਟਕਰਾਵਾਂ (collisions) ਨੂੰ ਰੋਕਦੇ ਹਨ। | 1 |
-| **8.1.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਦਸਤਾਵੇਜ਼ ਮੈਟਾਡਾਟਾ ਟੈਗ ਸ਼ੁਰੂਆਤੀ ਲਿਖਤ ਤੋਂ ਬਾਅਦ ਅਪਰਿਵਰਤਨਸ਼ੀਲ[^0x10-C08-immutable] (immutable) ਹਨ। | 2 |
-| **8.1.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਪ੍ਰਾਪਤੀ ਕਾਰਵਾਈਆਂ ਸਕੋਪ ਪਾਬੰਦੀਆਂ ਲਾਗੂ ਕਰਦੀਆਂ ਹਨ। | 2 |
+| **੮.੧.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਵੈਕਟਰ ਪਛਾਣਕਰਤਾ ਅਤੇ ਨੇਮਸਪੇਸ ਪ੍ਰਤੀ ਟੈਨੈਂਟ ਵਿਲੱਖਣਤਾ ਲਾਗੂ ਕਰਦੇ ਹਨ ਅਤੇ ਅੰਤਰ-ਟੈਨੈਂਟ ਟਕਰਾਵਾਂ (collisions) ਨੂੰ ਰੋਕਦੇ ਹਨ। | ੧ |
+| **੮.੧.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਦਸਤਾਵੇਜ਼ ਮੈਟਾਡਾਟਾ ਟੈਗ ਸ਼ੁਰੂਆਤੀ ਲਿਖਤ ਤੋਂ ਬਾਅਦ ਅਪਰਿਵਰਤਨਸ਼ੀਲ[^0x10-C08-immutable] (immutable) ਹਨ। | ੨ |
+| **੮.੧.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਪ੍ਰਾਪਤੀ ਕਾਰਵਾਈਆਂ ਸਕੋਪ ਪਾਬੰਦੀਆਂ ਲਾਗੂ ਕਰਦੀਆਂ ਹਨ। | ੨ |
 
 ---
 
 ## C8.2 Embedding Sanitization & Validation
-## C8.2 Embedding ਸੈਨੀਟਾਈਜ਼ੇਸ਼ਨ ਅਤੇ ਪ੍ਰਮਾਣਿਕਤਾ
+## C੮.੨ Embedding ਸੈਨੀਟਾਈਜ਼ੇਸ਼ਨ ਅਤੇ ਪ੍ਰਮਾਣਿਕਤਾ
 
 Content must be pre-screened before vectorization, and memory writes treated as untrusted input, to prevent ingestion of unsafe payloads.
 
@@ -1235,16 +1235,16 @@ Content must be pre-screened before vectorization, and memory writes treated as 
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--: | --- | :---: |
-| **8.2.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸੰਵੇਦਨਸ਼ੀਲ ਖੇਤਰਾਂ ਦਾ embedding ਤੋਂ ਪਹਿਲਾਂ ਪਤਾ ਲਗਾਇਆ ਜਾਂਦਾ ਹੈ ਅਤੇ ਉਹਨਾਂ ਨੂੰ ਮਾਸਕ, ਟੋਕਨਾਈਜ਼, ਜਾਂ ਹਟਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ। | 1 |
-| **8.2.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਜਿਹੜੇ ਵੈਕਟਰ ਸਧਾਰਨ ਕਲੱਸਟਰਿੰਗ[^0x10-C08-clustering] (clustering) ਪੈਟਰਨਾਂ ਤੋਂ ਬਾਹਰ ਪੈਂਦੇ ਹਨ, ਉਹਨਾਂ ਨੂੰ ਉਤਪਾਦਨ ਇੰਡੈਕਸਾਂ ਵਿੱਚ ਦਾਖ਼ਲ ਹੋਣ ਤੋਂ ਪਹਿਲਾਂ ਨਿਸ਼ਾਨਬੱਧ ਅਤੇ ਕੁਆਰੰਟੀਨ[^0x10-C08-quarantine] (quarantine) ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 2 |
-| **8.2.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਏਜੰਟ ਆਊਟਪੁੱਟ ਅਤੇ ਟੂਲ ਆਊਟਪੁੱਟ ਸਪਸ਼ਟ ਸਰੋਤ ਪ੍ਰਮਾਣਿਕਤਾ ਤੋਂ ਬਿਨਾਂ ਆਪਣੇ ਆਪ ਭਰੋਸੇਯੋਗ ਏਜੰਟ ਮੈਮੋਰੀ ਵਿੱਚ ਨਹੀਂ ਲਿਖੇ ਜਾਂਦੇ। | 2 |
-| **8.2.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਪ੍ਰਾਪਤੀ ਨਤੀਜਿਆਂ ਨਾਲ ਹੇਰਾਫੇਰੀ ਕਰਨ ਲਈ ਘੜੀ ਗਈ ਸਮੱਗਰੀ ਦਾ ਪਤਾ ਲਗਾਇਆ ਜਾਂਦਾ ਹੈ ਅਤੇ ਉਸ ਨੂੰ ਵੈਕਟਰਾਈਜ਼ੇਸ਼ਨ[^0x10-C08-vectorization] ਤੋਂ ਪਹਿਲਾਂ ਰੱਦ ਜਾਂ ਕੁਆਰੰਟੀਨ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 3 |
-| **8.2.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮੈਮੋਰੀ ਵਿੱਚ ਲਿਖੀ ਜਾਣ ਵਾਲੀ ਨਵੀਂ ਸਮੱਗਰੀ ਦੀ ਪਹਿਲਾਂ ਤੋਂ ਸੰਭਾਲੀ ਹੋਈ ਸਮੱਗਰੀ ਨਾਲ ਵਿਰੋਧਾਭਾਸਾਂ ਲਈ ਜਾਂਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ, ਅਤੇ ਟਕਰਾਅ ਹੋਣ 'ਤੇ ਚੇਤਾਵਨੀਆਂ ਪੈਦਾ ਹੁੰਦੀਆਂ ਹਨ। | 3 |
+| **੮.੨.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸੰਵੇਦਨਸ਼ੀਲ ਖੇਤਰਾਂ ਦਾ embedding ਤੋਂ ਪਹਿਲਾਂ ਪਤਾ ਲਗਾਇਆ ਜਾਂਦਾ ਹੈ ਅਤੇ ਉਹਨਾਂ ਨੂੰ ਮਾਸਕ, ਟੋਕਨਾਈਜ਼, ਜਾਂ ਹਟਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ। | ੧ |
+| **੮.੨.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਜਿਹੜੇ ਵੈਕਟਰ ਸਧਾਰਨ ਕਲੱਸਟਰਿੰਗ[^0x10-C08-clustering] (clustering) ਪੈਟਰਨਾਂ ਤੋਂ ਬਾਹਰ ਪੈਂਦੇ ਹਨ, ਉਹਨਾਂ ਨੂੰ ਉਤਪਾਦਨ ਇੰਡੈਕਸਾਂ ਵਿੱਚ ਦਾਖ਼ਲ ਹੋਣ ਤੋਂ ਪਹਿਲਾਂ ਨਿਸ਼ਾਨਬੱਧ ਅਤੇ ਕੁਆਰੰਟੀਨ[^0x10-C08-quarantine] (quarantine) ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੨ |
+| **੮.੨.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਏਜੰਟ ਆਊਟਪੁੱਟ ਅਤੇ ਟੂਲ ਆਊਟਪੁੱਟ ਸਪਸ਼ਟ ਸਰੋਤ ਪ੍ਰਮਾਣਿਕਤਾ ਤੋਂ ਬਿਨਾਂ ਆਪਣੇ ਆਪ ਭਰੋਸੇਯੋਗ ਏਜੰਟ ਮੈਮੋਰੀ ਵਿੱਚ ਨਹੀਂ ਲਿਖੇ ਜਾਂਦੇ। | ੨ |
+| **੮.੨.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਪ੍ਰਾਪਤੀ ਨਤੀਜਿਆਂ ਨਾਲ ਹੇਰਾਫੇਰੀ ਕਰਨ ਲਈ ਘੜੀ ਗਈ ਸਮੱਗਰੀ ਦਾ ਪਤਾ ਲਗਾਇਆ ਜਾਂਦਾ ਹੈ ਅਤੇ ਉਸ ਨੂੰ ਵੈਕਟਰਾਈਜ਼ੇਸ਼ਨ[^0x10-C08-vectorization] ਤੋਂ ਪਹਿਲਾਂ ਰੱਦ ਜਾਂ ਕੁਆਰੰਟੀਨ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੩ |
+| **੮.੨.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮੈਮੋਰੀ ਵਿੱਚ ਲਿਖੀ ਜਾਣ ਵਾਲੀ ਨਵੀਂ ਸਮੱਗਰੀ ਦੀ ਪਹਿਲਾਂ ਤੋਂ ਸੰਭਾਲੀ ਹੋਈ ਸਮੱਗਰੀ ਨਾਲ ਵਿਰੋਧਾਭਾਸਾਂ ਲਈ ਜਾਂਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ, ਅਤੇ ਟਕਰਾਅ ਹੋਣ 'ਤੇ ਚੇਤਾਵਨੀਆਂ ਪੈਦਾ ਹੁੰਦੀਆਂ ਹਨ। | ੩ |
 
 ---
 
 ## C8.3 Memory Expiry & Revocation
-## C8.3 ਮੈਮੋਰੀ ਦੀ ਮਿਆਦ ਪੁੱਗਣਾ ਅਤੇ ਰੱਦਗੀ
+## C੮.੩ ਮੈਮੋਰੀ ਦੀ ਮਿਆਦ ਪੁੱਗਣਾ ਅਤੇ ਰੱਦਗੀ
 
 Retention and revocation must be explicit and enforceable for memory and RAG indices.
 
@@ -1258,9 +1258,9 @@ Retention and revocation must be explicit and enforceable for memory and RAG ind
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--: | --- | :---: |
-| **8.3.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਿਆਦ ਪੁੱਗ ਚੁੱਕੇ ਵੈਕਟਰ ਪ੍ਰਾਪਤੀ ਨਤੀਜਿਆਂ ਵਿੱਚੋਂ ਬਾਹਰ ਰੱਖੇ ਜਾਂਦੇ ਹਨ। | 2 |
-| **8.3.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮੈਮੋਰੀ ਨੂੰ ਰੀਸੈੱਟ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ। | 2 |
-| **8.3.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਕੁਆਰੰਟੀਨ ਕੀਤੀ ਸਮੱਗਰੀ ਦਾ ਧਾਰਨ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ਪਰ ਉਸ ਨੂੰ ਸਾਰੇ ਪ੍ਰਾਪਤੀ ਨਤੀਜਿਆਂ ਵਿੱਚੋਂ ਬਾਹਰ ਰੱਖਿਆ ਜਾਂਦਾ ਹੈ। | 3 |
+| **੮.੩.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਿਆਦ ਪੁੱਗ ਚੁੱਕੇ ਵੈਕਟਰ ਪ੍ਰਾਪਤੀ ਨਤੀਜਿਆਂ ਵਿੱਚੋਂ ਬਾਹਰ ਰੱਖੇ ਜਾਂਦੇ ਹਨ। | ੨ |
+| **੮.੩.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮੈਮੋਰੀ ਨੂੰ ਰੀਸੈੱਟ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ। | ੨ |
+| **੮.੩.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਕੁਆਰੰਟੀਨ ਕੀਤੀ ਸਮੱਗਰੀ ਦਾ ਧਾਰਨ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ਪਰ ਉਸ ਨੂੰ ਸਾਰੇ ਪ੍ਰਾਪਤੀ ਨਤੀਜਿਆਂ ਵਿੱਚੋਂ ਬਾਹਰ ਰੱਖਿਆ ਜਾਂਦਾ ਹੈ। | ੩ |
 
 ---
 
@@ -1286,7 +1286,7 @@ Retention and revocation must be explicit and enforceable for memory and RAG ind
 <!-- Translator: GeeksikhSecurity -->
 
 # C9 Orchestration & Agentic Security
-# C9 ਆਰਕੈਸਟ੍ਰੇਸ਼ਨ[^0x10-C09-orchestration] (orchestration) ਅਤੇ ਏਜੰਟ-ਆਧਾਰਿਤ[^0x10-C09-agent] ਸੁਰੱਖਿਆ
+# C੯ ਆਰਕੈਸਟ੍ਰੇਸ਼ਨ[^0x10-C09-orchestration] (orchestration) ਅਤੇ ਏਜੰਟ-ਆਧਾਰਿਤ[^0x10-C09-agent] ਸੁਰੱਖਿਆ
 
 ## Control Objective
 ## ਨਿਯੰਤਰਣ ਉਦੇਸ਼
@@ -1298,7 +1298,7 @@ This chapter addresses ensuring autonomous and multi-agent systems execute only 
 ---
 
 ## C9.1 Execution Budgets, Loop Control, and Circuit Breakers
-## C9.1 ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਬਜਟ, ਲੂਪ ਨਿਯੰਤਰਣ, ਅਤੇ ਸਰਕਟ ਬ੍ਰੇਕਰ
+## C੯.੧ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਬਜਟ, ਲੂਪ ਨਿਯੰਤਰਣ, ਅਤੇ ਸਰਕਟ ਬ੍ਰੇਕਰ
 
 Runtime expansion (recursion, concurrency, cost) must be bounded, with safe halting on runaway behavior.
 
@@ -1312,14 +1312,14 @@ Runtime expansion (recursion, concurrency, cost) must be bounded, with safe halt
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--: | --- | :---: |
-| **9.1.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਪ੍ਰਤੀ-ਟੂਲ ਕੋਟੇ ਅਤੇ ਟਾਈਮਆਊਟ (ਜਿਵੇਂ, CPU, ਮੈਮੋਰੀ, ਡਿਸਕ, ਬਾਹਰ ਜਾਣ ਵਾਲਾ ਟਰੈਫ਼ਿਕ (egress), ਅਤੇ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਸਮਾਂ) ਲਾਗੂ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | 1 |
-| **9.1.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਪ੍ਰਤੀ-ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਬਜਟ (ਜਿਵੇਂ, ਵੱਧ ਤੋਂ ਵੱਧ ਰੀਕਰਸ਼ਨ ਡੂੰਘਾਈ, ਟੋਕਨ ਵਰਤੋਂ, ਅਤੇ ਵਿੱਤੀ ਖ਼ਰਚ) ਰਨਟਾਈਮ ਦੁਆਰਾ ਸੰਰਚਿਤ ਅਤੇ ਲਾਗੂ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | 1 |
-| **9.1.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇੱਕ ਸਵਾਰਮ-ਪੱਧਰੀ (swarm-level) kill-switch (ਤੁਰੰਤ-ਬੰਦ ਸਵਿੱਚ) ਮੌਜੂਦ ਹੈ ਜੋ ਸਾਰੇ ਸਰਗਰਮ ਏਜੰਟ ਇੰਸਟਾਂਸਾਂ ਨੂੰ ਰੋਕ ਸਕਦਾ ਹੈ। | 2 |
+| **੯.੧.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਪ੍ਰਤੀ-ਟੂਲ ਕੋਟੇ ਅਤੇ ਟਾਈਮਆਊਟ (ਜਿਵੇਂ, CPU, ਮੈਮੋਰੀ, ਡਿਸਕ, ਬਾਹਰ ਜਾਣ ਵਾਲਾ ਟਰੈਫ਼ਿਕ (egress), ਅਤੇ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਸਮਾਂ) ਲਾਗੂ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | ੧ |
+| **੯.੧.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਪ੍ਰਤੀ-ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਬਜਟ (ਜਿਵੇਂ, ਵੱਧ ਤੋਂ ਵੱਧ ਰੀਕਰਸ਼ਨ ਡੂੰਘਾਈ, ਟੋਕਨ ਵਰਤੋਂ, ਅਤੇ ਵਿੱਤੀ ਖ਼ਰਚ) ਰਨਟਾਈਮ ਦੁਆਰਾ ਸੰਰਚਿਤ ਅਤੇ ਲਾਗੂ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | ੧ |
+| **੯.੧.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇੱਕ ਸਵਾਰਮ-ਪੱਧਰੀ (swarm-level) kill-switch (ਤੁਰੰਤ-ਬੰਦ ਸਵਿੱਚ) ਮੌਜੂਦ ਹੈ ਜੋ ਸਾਰੇ ਸਰਗਰਮ ਏਜੰਟ ਇੰਸਟਾਂਸਾਂ ਨੂੰ ਰੋਕ ਸਕਦਾ ਹੈ। | ੨ |
 
 ---
 
 ## C9.2 High-Impact Action Approval and Irreversibility Controls
-## C9.2 ਉੱਚ-ਪ੍ਰਭਾਵ ਕਾਰਵਾਈ ਮਨਜ਼ੂਰੀ ਅਤੇ ਗ਼ੈਰ-ਉਲਟਾਉਣਯੋਗਤਾ ਨਿਯੰਤਰਣ
+## C੯.੨ ਉੱਚ-ਪ੍ਰਭਾਵ ਕਾਰਵਾਈ ਮਨਜ਼ੂਰੀ ਅਤੇ ਗ਼ੈਰ-ਉਲਟਾਉਣਯੋਗਤਾ ਨਿਯੰਤਰਣ
 
 Privileged, high-impact, or hard-to-reverse agent actions must require trusted approval checkpoints.
 
@@ -1340,21 +1340,21 @@ Privileged, high-impact, or hard-to-reverse agent actions must require trusted a
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--: | --- | :---: |
-| **9.2.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਏਜੰਟ ਰਨਟਾਈਮ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਪ੍ਰਾਪਤ, ਉੱਚ-ਪ੍ਰਭਾਵ ਵਾਲੀਆਂ, ਜਾਂ ਗ਼ੈਰ-ਉਲਟਾਉਣਯੋਗ ਕਾਰਵਾਈਆਂ ਦੇ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਨੂੰ ਉਦੋਂ ਤੱਕ ਰੋਕਦਾ ਹੈ ਜਦੋਂ ਤੱਕ ਸਪੱਸ਼ਟ ਮਨੁੱਖੀ ਮਨਜ਼ੂਰੀ ਪ੍ਰਾਪਤ ਅਤੇ ਤਸਦੀਕ ਨਹੀਂ ਹੋ ਜਾਂਦੀ। | 1 |
-| **9.2.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਨਜ਼ੂਰੀ ਬੇਨਤੀਆਂ ਕਾਰਵਾਈ ਦੇ ਕੈਨੋਨੀਕਲਾਈਜ਼ ਕੀਤੇ ਅਤੇ ਸੰਪੂਰਨ ਪੈਰਾਮੀਟਰ — ਜਿਵੇਂ diff, ਕਮਾਂਡਾਂ, ਪ੍ਰਾਪਤਕਰਤਾ, ਰਕਮਾਂ, ਸਰੋਤ, ਅਤੇ ਸਕੋਪ — ਬਿਨਾਂ ਕਿਸੇ ਕਟੌਤੀ (truncation) ਜਾਂ ਗ਼ੈਰ-ਸਲਾਮਤ ਤਬਦੀਲੀ ਦੇ ਦਿਖਾਉਂਦੀਆਂ ਹਨ। | 2 |
-| **9.2.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਉੱਚ-ਪ੍ਰਭਾਵ ਵਾਲੀ ਕਾਰਵਾਈ ਦਾ ਇੱਕ ਭਰੋਸੇਯੋਗ ਉਲਟਾਉਣਯੋਗਤਾ ਵਰਗੀਕਰਨ (reversibility classification) ਹੈ, ਜਿਵੇਂ ਸਿਰਫ਼-ਪੜ੍ਹਨਯੋਗ, ਉਲਟਾਉਣਯੋਗ, ਬਾਹਰੀ ਤੌਰ 'ਤੇ ਉਲਟਾਉਣਯੋਗ, ਜਾਂ ਗ਼ੈਰ-ਉਲਟਾਉਣਯੋਗ। | 2 |
-| **9.2.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਏਜੰਟ ਰਨਟਾਈਮ ਕਾਰਵਾਈਆਂ ਦੇ ਪ੍ਰਭਾਵ ਅਤੇ ਉਹਨਾਂ ਦੇ ਉਲਟਾਏ ਜਾ ਸਕਣ ਦੀ ਸਮਰੱਥਾ ਦੇ ਆਧਾਰ 'ਤੇ ਉਹਨਾਂ ਨੂੰ ਰੋਕ ਕੇ, ਮਨਜ਼ੂਰੀ ਦੀ ਲੋੜ ਪਾ ਕੇ, ਜਾਂ ਸੀਮਤ ਕਰਕੇ ਉਲਟਾਉਣਯੋਗਤਾ ਵਰਗੀਕਰਨਾਂ ਨੂੰ ਲਾਗੂ ਕਰਦਾ ਹੈ। | 2 |
-| **9.2.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਕੋਈ ਵੀ ਸਵੈ-ਸੋਧ ਸਮਰੱਥਾ (ਜਿਵੇਂ, prompt ਨੂੰ ਮੁੜ-ਲਿਖਣਾ, ਟੂਲ-ਸੂਚੀ ਤਬਦੀਲੀਆਂ, ਪੈਰਾਮੀਟਰ ਅੱਪਡੇਟ) ਲਾਗੂਕਰਨਯੋਗ ਸੀਮਾਵਾਂ ਦੁਆਰਾ ਸੀਮਤ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | 2 |
-| **9.2.6** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਏਜੰਟ-ਆਧਾਰਿਤ ਸਿਸਟਮਾਂ ਵਿੱਚ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਤੋਂ ਪਹਿਲਾਂ ਯੋਜਨਾਬੱਧ ਉੱਚ-ਜੋਖਮ ਕਾਰਵਾਈਆਂ ਦੀ ਇੱਕ AI-ਸਹਾਇਤ ਪ੍ਰਾਪਤ ਸਮੀਖਿਆ (AI-augmented review) ਸ਼ਾਮਲ ਹੁੰਦੀ ਹੈ, ਜੋ ਨਿਸ਼ਚਿਤ (deterministic) ਨੀਤੀ ਗੇਟ ਵਿੱਚ ਵਾਧਾ ਕਰਦੀ ਹੈ, ਉਸ ਦੀ ਥਾਂ ਨਹੀਂ ਲੈਂਦੀ। | 2 |
-| **9.2.7** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI-ਸਹਾਇਤ ਪ੍ਰਾਪਤ ਸਮੀਖਿਆ ਵਿਧੀ ਵਿਰੋਧੀ ਇਨਪੁੱਟਾਂ ਦੁਆਰਾ ਹੇਰਾਫੇਰੀ ਤੋਂ ਸੁਰੱਖਿਅਤ ਹੈ, ਅਤੇ prompt ਇੰਜੈਕਸ਼ਨ ਰਾਹੀਂ ਇਸ ਨੂੰ ਓਵਰਰਾਈਡ ਜਾਂ ਬਾਈਪਾਸ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ। | 2 |
-| **9.2.8** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਨਜ਼ੂਰੀਆਂ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਤੌਰ 'ਤੇ ਕਾਰਵਾਈ ਦੇ ਪੈਰਾਮੀਟਰਾਂ, ਬੇਨਤੀਕਰਤਾ ਦੀ ਪਛਾਣ, ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਸੰਦਰਭ, ਅਤੇ ਇੱਕ ਵਿਲੱਖਣ ਇੱਕ-ਵਾਰੀ-ਵਰਤੋਂ ਵਾਲੇ ਨੌਂਸ (nonce) ਨਾਲ ਬੰਨ੍ਹੀਆਂ ਜਾਂਦੀਆਂ ਹਨ। | 3 |
-| **9.2.9** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਨਜ਼ੂਰੀਆਂ ਜਾਰੀ ਕਰਨ ਲਈ ਵਰਤੀ ਜਾਂਦੀ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਕੁੰਜੀ ਸਮੱਗਰੀ ਜਾਂ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ ਏਜੰਟ ਰਨਟਾਈਮ ਤੋਂ ਅਲੱਗ-ਥਲੱਗ ਹਨ। | 3 |
-| **9.2.10** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਬਹੁ-ਪੜਾਵੀ ਜਾਂ ਬਹੁ-ਏਜੰਟ ਕਾਰਵਾਈ ਲੜੀਆਂ ਲਈ ਮਨਜ਼ੂਰੀ ਗੇਟ ਲੜੀ ਵਿੱਚ ਕਿਤੇ ਵੀ ਮੌਜੂਦ ਸਭ ਤੋਂ ਉੱਚ-ਪ੍ਰਭਾਵ ਵਾਲਾ ਉਲਟਾਉਣਯੋਗਤਾ ਵਰਗੀਕਰਨ ਲਾਗੂ ਕਰਦੇ ਹਨ। | 3 |
+| **੯.੨.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਏਜੰਟ ਰਨਟਾਈਮ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਪ੍ਰਾਪਤ, ਉੱਚ-ਪ੍ਰਭਾਵ ਵਾਲੀਆਂ, ਜਾਂ ਗ਼ੈਰ-ਉਲਟਾਉਣਯੋਗ ਕਾਰਵਾਈਆਂ ਦੇ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਨੂੰ ਉਦੋਂ ਤੱਕ ਰੋਕਦਾ ਹੈ ਜਦੋਂ ਤੱਕ ਸਪੱਸ਼ਟ ਮਨੁੱਖੀ ਮਨਜ਼ੂਰੀ ਪ੍ਰਾਪਤ ਅਤੇ ਤਸਦੀਕ ਨਹੀਂ ਹੋ ਜਾਂਦੀ। | ੧ |
+| **੯.੨.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਨਜ਼ੂਰੀ ਬੇਨਤੀਆਂ ਕਾਰਵਾਈ ਦੇ ਕੈਨੋਨੀਕਲਾਈਜ਼ ਕੀਤੇ ਅਤੇ ਸੰਪੂਰਨ ਪੈਰਾਮੀਟਰ — ਜਿਵੇਂ diff, ਕਮਾਂਡਾਂ, ਪ੍ਰਾਪਤਕਰਤਾ, ਰਕਮਾਂ, ਸਰੋਤ, ਅਤੇ ਸਕੋਪ — ਬਿਨਾਂ ਕਿਸੇ ਕਟੌਤੀ (truncation) ਜਾਂ ਗ਼ੈਰ-ਸਲਾਮਤ ਤਬਦੀਲੀ ਦੇ ਦਿਖਾਉਂਦੀਆਂ ਹਨ। | ੨ |
+| **੯.੨.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਉੱਚ-ਪ੍ਰਭਾਵ ਵਾਲੀ ਕਾਰਵਾਈ ਦਾ ਇੱਕ ਭਰੋਸੇਯੋਗ ਉਲਟਾਉਣਯੋਗਤਾ ਵਰਗੀਕਰਨ (reversibility classification) ਹੈ, ਜਿਵੇਂ ਸਿਰਫ਼-ਪੜ੍ਹਨਯੋਗ, ਉਲਟਾਉਣਯੋਗ, ਬਾਹਰੀ ਤੌਰ 'ਤੇ ਉਲਟਾਉਣਯੋਗ, ਜਾਂ ਗ਼ੈਰ-ਉਲਟਾਉਣਯੋਗ। | ੨ |
+| **੯.੨.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਏਜੰਟ ਰਨਟਾਈਮ ਕਾਰਵਾਈਆਂ ਦੇ ਪ੍ਰਭਾਵ ਅਤੇ ਉਹਨਾਂ ਦੇ ਉਲਟਾਏ ਜਾ ਸਕਣ ਦੀ ਸਮਰੱਥਾ ਦੇ ਆਧਾਰ 'ਤੇ ਉਹਨਾਂ ਨੂੰ ਰੋਕ ਕੇ, ਮਨਜ਼ੂਰੀ ਦੀ ਲੋੜ ਪਾ ਕੇ, ਜਾਂ ਸੀਮਤ ਕਰਕੇ ਉਲਟਾਉਣਯੋਗਤਾ ਵਰਗੀਕਰਨਾਂ ਨੂੰ ਲਾਗੂ ਕਰਦਾ ਹੈ। | ੨ |
+| **੯.੨.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਕੋਈ ਵੀ ਸਵੈ-ਸੋਧ ਸਮਰੱਥਾ (ਜਿਵੇਂ, prompt ਨੂੰ ਮੁੜ-ਲਿਖਣਾ, ਟੂਲ-ਸੂਚੀ ਤਬਦੀਲੀਆਂ, ਪੈਰਾਮੀਟਰ ਅੱਪਡੇਟ) ਲਾਗੂਕਰਨਯੋਗ ਸੀਮਾਵਾਂ ਦੁਆਰਾ ਸੀਮਤ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | ੨ |
+| **੯.੨.੬** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਏਜੰਟ-ਆਧਾਰਿਤ ਸਿਸਟਮਾਂ ਵਿੱਚ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਤੋਂ ਪਹਿਲਾਂ ਯੋਜਨਾਬੱਧ ਉੱਚ-ਜੋਖਮ ਕਾਰਵਾਈਆਂ ਦੀ ਇੱਕ AI-ਸਹਾਇਤ ਪ੍ਰਾਪਤ ਸਮੀਖਿਆ (AI-augmented review) ਸ਼ਾਮਲ ਹੁੰਦੀ ਹੈ, ਜੋ ਨਿਸ਼ਚਿਤ (deterministic) ਨੀਤੀ ਗੇਟ ਵਿੱਚ ਵਾਧਾ ਕਰਦੀ ਹੈ, ਉਸ ਦੀ ਥਾਂ ਨਹੀਂ ਲੈਂਦੀ। | ੨ |
+| **੯.੨.੭** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI-ਸਹਾਇਤ ਪ੍ਰਾਪਤ ਸਮੀਖਿਆ ਵਿਧੀ ਵਿਰੋਧੀ ਇਨਪੁੱਟਾਂ ਦੁਆਰਾ ਹੇਰਾਫੇਰੀ ਤੋਂ ਸੁਰੱਖਿਅਤ ਹੈ, ਅਤੇ prompt ਇੰਜੈਕਸ਼ਨ ਰਾਹੀਂ ਇਸ ਨੂੰ ਓਵਰਰਾਈਡ ਜਾਂ ਬਾਈਪਾਸ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ। | ੨ |
+| **੯.੨.੮** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਨਜ਼ੂਰੀਆਂ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਤੌਰ 'ਤੇ ਕਾਰਵਾਈ ਦੇ ਪੈਰਾਮੀਟਰਾਂ, ਬੇਨਤੀਕਰਤਾ ਦੀ ਪਛਾਣ, ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਸੰਦਰਭ, ਅਤੇ ਇੱਕ ਵਿਲੱਖਣ ਇੱਕ-ਵਾਰੀ-ਵਰਤੋਂ ਵਾਲੇ ਨੌਂਸ (nonce) ਨਾਲ ਬੰਨ੍ਹੀਆਂ ਜਾਂਦੀਆਂ ਹਨ। | ੩ |
+| **੯.੨.੯** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਨਜ਼ੂਰੀਆਂ ਜਾਰੀ ਕਰਨ ਲਈ ਵਰਤੀ ਜਾਂਦੀ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਕੁੰਜੀ ਸਮੱਗਰੀ ਜਾਂ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ ਏਜੰਟ ਰਨਟਾਈਮ ਤੋਂ ਅਲੱਗ-ਥਲੱਗ ਹਨ। | ੩ |
+| **੯.੨.੧੦** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਬਹੁ-ਪੜਾਵੀ ਜਾਂ ਬਹੁ-ਏਜੰਟ ਕਾਰਵਾਈ ਲੜੀਆਂ ਲਈ ਮਨਜ਼ੂਰੀ ਗੇਟ ਲੜੀ ਵਿੱਚ ਕਿਤੇ ਵੀ ਮੌਜੂਦ ਸਭ ਤੋਂ ਉੱਚ-ਪ੍ਰਭਾਵ ਵਾਲਾ ਉਲਟਾਉਣਯੋਗਤਾ ਵਰਗੀਕਰਨ ਲਾਗੂ ਕਰਦੇ ਹਨ। | ੩ |
 
 ---
 
 ## C9.3 Component Isolation and Tool Authorization
-## C9.3 ਕੰਪੋਨੈਂਟ[^0x10-C09-component] ਅਲੱਗ-ਥਲੱਗਤਾ ਅਤੇ ਟੂਲ ਅਧਿਕਾਰੀਕਰਨ
+## C੯.੩ ਕੰਪੋਨੈਂਟ[^0x10-C09-component] ਅਲੱਗ-ਥਲੱਗਤਾ ਅਤੇ ਟੂਲ ਅਧਿਕਾਰੀਕਰਨ
 
 Tool and plugin execution, loading, and outputs must be constrained to prevent unauthorized system access and unsafe side effects.
 
@@ -1373,19 +1373,19 @@ Tool and plugin execution, loading, and outputs must be constrained to prevent u
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--: | --- | :---: |
-| **9.3.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਟੂਲ/ਪਲੱਗਇਨ ਘੱਟੋ-ਘੱਟ-ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ (least-privilege) ਸੈਂਡਬਾਕਸ ਵਿੱਚ ਚੱਲਦਾ ਹੈ ਜਾਂ ਕਿਸੇ ਹੋਰ ਢੰਗ ਨਾਲ ਮਾਡਲ ਕਾਰਵਾਈਆਂ ਤੋਂ ਅਲੱਗ-ਥਲੱਗ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 1 |
-| **9.3.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਟੂਲ ਆਊਟਪੁੱਟ ਨੂੰ ਸਕੀਮਾਵਾਂ ਦੇ ਵਿਰੁੱਧ ਪ੍ਰਮਾਣਿਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 1 |
-| **9.3.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਟੂਲ ਮੈਨੀਫ਼ੈਸਟ (tool manifests) ਲੋੜੀਂਦੇ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰਾਂ, ਸਰੋਤ ਸੀਮਾਵਾਂ, ਅਤੇ ਆਊਟਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ ਲੋੜਾਂ ਦੀ ਘੋਸ਼ਣਾ ਕਰਦੇ ਹਨ। | 2 |
-| **9.3.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਰਨਟਾਈਮ ਟੂਲ ਮੈਨੀਫ਼ੈਸਟਾਂ ਵਿੱਚ ਘੋਸ਼ਿਤ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰਾਂ, ਸਰੋਤ ਸੀਮਾਵਾਂ, ਅਤੇ ਆਊਟਪੁੱਟ-ਪ੍ਰਮਾਣਿਕਤਾ ਲੋੜਾਂ ਨੂੰ ਲਾਗੂ ਕਰਦਾ ਹੈ। | 2 |
-| **9.3.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਡਾਟਾ ਦੀ ਪ੍ਰਕਿਰਿਆ ਕਰਨ ਵਾਲੇ ਕੰਪੋਨੈਂਟ ਟੂਲ-ਕਾਲ ਕਰਨ ਦੀਆਂ ਸਮਰੱਥਾਵਾਂ ਤੋਂ ਅਲੱਗ-ਥਲੱਗ ਹਨ, ਜਿਸ ਨਾਲ ਇਹ ਯਕੀਨੀ ਬਣਦਾ ਹੈ ਕਿ ਭੇਦੀ ਹੋ ਗਈ ਡਾਟਾ ਪ੍ਰਕਿਰਿਆ ਅਣਅਧਿਕਾਰਤ ਟੂਲ ਸੱਦੇ (tool invocations) ਸ਼ੁਰੂ ਨਹੀਂ ਕਰ ਸਕਦੀ। | 2 |
-| **9.3.6** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਟੂਲ ਆਊਟਪੁੱਟ ਦੀ ਪ੍ਰਕਿਰਿਆ ਅਤੇ ਏਜੰਟ ਕਾਰਵਾਈਆਂ ਵਿਚਕਾਰ ਆਰਕੀਟੈਕਚਰਲ ਵਿਭਾਜਨ ਮੌਜੂਦ ਹੈ। | 2 |
-| **9.3.7** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਆਊਟਪੁੱਟ ਵਿੱਚ ਨਾਮਜ਼ਦ ਬਾਹਰੀ ਸਰੋਤਾਂ ਦੀ, ਏਜੰਟ ਦੁਆਰਾ ਉਹਨਾਂ ਨੂੰ ਸਥਾਪਤ ਕਰਨ ਜਾਂ ਸੱਦਣ ਤੋਂ ਪਹਿਲਾਂ, ਇੱਕ ਪ੍ਰਵਾਨਿਤ allow-list ਜਾਂ ਰਜਿਸਟਰੀ ਦੇ ਵਿਰੁੱਧ ਤਸਦੀਕ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | 2 |
-| **9.3.8** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਨੀਤੀ ਉਲੰਘਣਾਵਾਂ ਸਵੈਚਾਲਿਤ ਟੂਲ ਘੇਰਾਬੰਦੀ (tool containment) ਸ਼ੁਰੂ ਕਰਦੀਆਂ ਹਨ। | 3 |
+| **੯.੩.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਟੂਲ/ਪਲੱਗਇਨ ਘੱਟੋ-ਘੱਟ-ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ (least-privilege) ਸੈਂਡਬਾਕਸ ਵਿੱਚ ਚੱਲਦਾ ਹੈ ਜਾਂ ਕਿਸੇ ਹੋਰ ਢੰਗ ਨਾਲ ਮਾਡਲ ਕਾਰਵਾਈਆਂ ਤੋਂ ਅਲੱਗ-ਥਲੱਗ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੧ |
+| **੯.੩.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਟੂਲ ਆਊਟਪੁੱਟ ਨੂੰ ਸਕੀਮਾਵਾਂ ਦੇ ਵਿਰੁੱਧ ਪ੍ਰਮਾਣਿਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੧ |
+| **੯.੩.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਟੂਲ ਮੈਨੀਫ਼ੈਸਟ (tool manifests) ਲੋੜੀਂਦੇ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰਾਂ, ਸਰੋਤ ਸੀਮਾਵਾਂ, ਅਤੇ ਆਊਟਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ ਲੋੜਾਂ ਦੀ ਘੋਸ਼ਣਾ ਕਰਦੇ ਹਨ। | ੨ |
+| **੯.੩.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਰਨਟਾਈਮ ਟੂਲ ਮੈਨੀਫ਼ੈਸਟਾਂ ਵਿੱਚ ਘੋਸ਼ਿਤ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰਾਂ, ਸਰੋਤ ਸੀਮਾਵਾਂ, ਅਤੇ ਆਊਟਪੁੱਟ-ਪ੍ਰਮਾਣਿਕਤਾ ਲੋੜਾਂ ਨੂੰ ਲਾਗੂ ਕਰਦਾ ਹੈ। | ੨ |
+| **੯.੩.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਡਾਟਾ ਦੀ ਪ੍ਰਕਿਰਿਆ ਕਰਨ ਵਾਲੇ ਕੰਪੋਨੈਂਟ ਟੂਲ-ਕਾਲ ਕਰਨ ਦੀਆਂ ਸਮਰੱਥਾਵਾਂ ਤੋਂ ਅਲੱਗ-ਥਲੱਗ ਹਨ, ਜਿਸ ਨਾਲ ਇਹ ਯਕੀਨੀ ਬਣਦਾ ਹੈ ਕਿ ਭੇਦੀ ਹੋ ਗਈ ਡਾਟਾ ਪ੍ਰਕਿਰਿਆ ਅਣਅਧਿਕਾਰਤ ਟੂਲ ਸੱਦੇ (tool invocations) ਸ਼ੁਰੂ ਨਹੀਂ ਕਰ ਸਕਦੀ। | ੨ |
+| **੯.੩.੬** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਟੂਲ ਆਊਟਪੁੱਟ ਦੀ ਪ੍ਰਕਿਰਿਆ ਅਤੇ ਏਜੰਟ ਕਾਰਵਾਈਆਂ ਵਿਚਕਾਰ ਆਰਕੀਟੈਕਚਰਲ ਵਿਭਾਜਨ ਮੌਜੂਦ ਹੈ। | ੨ |
+| **੯.੩.੭** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਆਊਟਪੁੱਟ ਵਿੱਚ ਨਾਮਜ਼ਦ ਬਾਹਰੀ ਸਰੋਤਾਂ ਦੀ, ਏਜੰਟ ਦੁਆਰਾ ਉਹਨਾਂ ਨੂੰ ਸਥਾਪਤ ਕਰਨ ਜਾਂ ਸੱਦਣ ਤੋਂ ਪਹਿਲਾਂ, ਇੱਕ ਪ੍ਰਵਾਨਿਤ allow-list ਜਾਂ ਰਜਿਸਟਰੀ ਦੇ ਵਿਰੁੱਧ ਤਸਦੀਕ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | ੨ |
+| **੯.੩.੮** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਨੀਤੀ ਉਲੰਘਣਾਵਾਂ ਸਵੈਚਾਲਿਤ ਟੂਲ ਘੇਰਾਬੰਦੀ (tool containment) ਸ਼ੁਰੂ ਕਰਦੀਆਂ ਹਨ। | ੩ |
 
 ---
 
 ## C9.4 Agent and Orchestrator Identity
-## C9.4 ਏਜੰਟ ਅਤੇ ਆਰਕੈਸਟ੍ਰੇਟਰ (orchestrator) ਪਛਾਣ
+## C੯.੪ ਏਜੰਟ ਅਤੇ ਆਰਕੈਸਟ੍ਰੇਟਰ (orchestrator) ਪਛਾਣ
 
 Every action must be attributable and every mutation detectable.
 
@@ -1400,15 +1400,15 @@ Every action must be attributable and every mutation detectable.
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--: | --- | :---: |
-| **9.4.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਏਜੰਟ ਇੰਸਟਾਂਸ ਦੀ ਇੱਕ ਵਿਲੱਖਣ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਪਛਾਣ ਹੈ ਅਤੇ ਉਹ ਡਾਊਨਸਟ੍ਰੀਮ[^0x10-C09-downstream] ਸਿਸਟਮਾਂ ਲਈ ਇੱਕ ਪਹਿਲੇ-ਦਰਜੇ ਦੀ ਪਛਾਣ-ਇਕਾਈ[^0x10-C09-principal] (first-class principal) ਵਜੋਂ ਪ੍ਰਮਾਣੀਕਰਨ ਕਰਦਾ ਹੈ। | 2 |
-| **9.4.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਏਜੰਟ ਦੁਆਰਾ ਸ਼ੁਰੂ ਕੀਤੀਆਂ ਕਾਰਵਾਈਆਂ ਗ਼ੈਰ-ਇਨਕਾਰਯੋਗਤਾ (non-repudiation) ਲਈ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਲੜੀ ਦੇ ਹਰ ਪੜਾਅ ਨਾਲ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਤੌਰ 'ਤੇ ਬੰਨ੍ਹੀਆਂ ਜਾਂਦੀਆਂ ਹਨ। | 2 |
-| **9.4.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਏਜੰਟ ਪਛਾਣ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ ਇੱਕ ਪਰਿਭਾਸ਼ਿਤ ਸਮਾਂ-ਸਾਰਣੀ ਅਨੁਸਾਰ ਬਦਲੇ (rotate) ਜਾਂਦੇ ਹਨ। | 3 |
-| **9.4.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸੱਦਿਆਂ ਵਿਚਕਾਰ ਸਥਾਈ ਰੱਖੀ ਗਈ ਏਜੰਟ ਸਥਿਤੀ ਅਖੰਡਤਾ-ਸੁਰੱਖਿਅਤ ਹੈ। | 3 |
+| **੯.੪.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਏਜੰਟ ਇੰਸਟਾਂਸ ਦੀ ਇੱਕ ਵਿਲੱਖਣ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਪਛਾਣ ਹੈ ਅਤੇ ਉਹ ਡਾਊਨਸਟ੍ਰੀਮ[^0x10-C09-downstream] ਸਿਸਟਮਾਂ ਲਈ ਇੱਕ ਪਹਿਲੇ-ਦਰਜੇ ਦੀ ਪਛਾਣ-ਇਕਾਈ[^0x10-C09-principal] (first-class principal) ਵਜੋਂ ਪ੍ਰਮਾਣੀਕਰਨ ਕਰਦਾ ਹੈ। | ੨ |
+| **੯.੪.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਏਜੰਟ ਦੁਆਰਾ ਸ਼ੁਰੂ ਕੀਤੀਆਂ ਕਾਰਵਾਈਆਂ ਗ਼ੈਰ-ਇਨਕਾਰਯੋਗਤਾ (non-repudiation) ਲਈ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਲੜੀ ਦੇ ਹਰ ਪੜਾਅ ਨਾਲ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਤੌਰ 'ਤੇ ਬੰਨ੍ਹੀਆਂ ਜਾਂਦੀਆਂ ਹਨ। | ੨ |
+| **੯.੪.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਏਜੰਟ ਪਛਾਣ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ ਇੱਕ ਪਰਿਭਾਸ਼ਿਤ ਸਮਾਂ-ਸਾਰਣੀ ਅਨੁਸਾਰ ਬਦਲੇ (rotate) ਜਾਂਦੇ ਹਨ। | ੩ |
+| **੯.੪.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸੱਦਿਆਂ ਵਿਚਕਾਰ ਸਥਾਈ ਰੱਖੀ ਗਈ ਏਜੰਟ ਸਥਿਤੀ ਅਖੰਡਤਾ-ਸੁਰੱਖਿਅਤ ਹੈ। | ੩ |
 
 ---
 
 ## C9.5 Agent Authorization, Delegation, and Continuous Enforcement
-## C9.5 ਏਜੰਟ ਅਧਿਕਾਰੀਕਰਨ, ਸੌਂਪਣੀ, ਅਤੇ ਨਿਰੰਤਰ ਲਾਗੂਕਰਨ
+## C੯.੫ ਏਜੰਟ ਅਧਿਕਾਰੀਕਰਨ, ਸੌਂਪਣੀ, ਅਤੇ ਨਿਰੰਤਰ ਲਾਗੂਕਰਨ
 
 Every action must be authorized at execution time and constrained by scope.
 
@@ -1425,17 +1425,17 @@ Every action must be authorized at execution time and constrained by scope.
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--: | --- | :---: |
-| **9.5.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਏਜੰਟ ਕਾਰਵਾਈਆਂ ਦਾ ਰਨਟਾਈਮ ਦੁਆਰਾ ਲਾਗੂ ਕੀਤੀਆਂ ਬਾਰੀਕ-ਪੱਧਰੀ ਨੀਤੀਆਂ ਦੇ ਵਿਰੁੱਧ ਅਧਿਕਾਰੀਕਰਨ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਜੋ ਇਹ ਸੀਮਤ ਕਰਦੀਆਂ ਹਨ ਕਿ ਇੱਕ ਏਜੰਟ ਕਿਹੜੇ ਟੂਲ ਸੱਦ ਸਕਦਾ ਹੈ, ਅਤੇ ਕਿਹੜੇ ਪੈਰਾਮੀਟਰ ਮੁੱਲ ਦੇ ਸਕਦਾ ਹੈ। | 2 |
-| **9.5.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਜਦੋਂ ਕੋਈ ਏਜੰਟ ਕਿਸੇ ਉਪਭੋਗਤਾ ਵੱਲੋਂ ਕਾਰਵਾਈ ਕਰਦਾ ਹੈ, ਤਾਂ ਰਨਟਾਈਮ ਇੱਕ ਅਖੰਡਤਾ-ਸੁਰੱਖਿਅਤ, ਸਕੋਪ-ਸੀਮਿਤ ਟੋਕਨ ਅੱਗੇ ਸੰਚਾਰਿਤ ਕਰਦਾ ਹੈ ਜੋ ਉਪਭੋਗਤਾ ਦਾ ਅਧਿਕਾਰੀਕਰਨ ਸੰਦਰਭ ਲੈ ਕੇ ਜਾਂਦਾ ਹੈ ਅਤੇ ਹਰ ਡਾਊਨਸਟ੍ਰੀਮ ਕਾਲ 'ਤੇ ਲਾਗੂ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 2 |
-| **9.5.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਾਰੇ ਪਹੁੰਚ ਕੰਟਰੋਲ ਫ਼ੈਸਲੇ ਐਪਲੀਕੇਸ਼ਨ ਤਰਕ ਜਾਂ ਇੱਕ ਨੀਤੀ ਇੰਜਣ ਦੁਆਰਾ ਲਾਗੂ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਕਦੇ ਵੀ AI ਮਾਡਲ ਦੁਆਰਾ ਖ਼ੁਦ ਨਹੀਂ। | 2 |
-| **9.5.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਰਨਟਾਈਮ 'ਤੇ ਕਿਸੇ ਏਜੰਟ ਨੂੰ ਲੋੜੀਂਦੇ ਗੁਪਤ ਭੇਦ ਅਤੇ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ ਮਾਡਲ ਦੇ ਦੇਖਣਯੋਗ ਸੰਦਰਭ ਵਿੱਚ ਜ਼ਾਹਰ ਨਹੀਂ ਹੁੰਦੇ, ਜਿਸ ਵਿੱਚ ਸੰਦਰਭ ਵਿੰਡੋ, system prompt, ਜਾਂ ਟੂਲ ਕਾਲ ਪੈਰਾਮੀਟਰ ਸ਼ਾਮਲ ਹਨ। | 2 |
-| **9.5.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਏਜੰਟਾਂ ਵਿਚਕਾਰ ਕਾਰਜ ਸੌਂਪਣੀ (task delegation) ਇੱਕ ਸਪੱਸ਼ਟ ਅਧਿਕਾਰੀਕਰਨ ਨੀਤੀ ਦੁਆਰਾ ਸੀਮਤ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | 2 |
-| **9.5.6** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਲੰਬੇ ਸਮੇਂ ਤੱਕ ਚੱਲਣ ਵਾਲੇ ਏਜੰਟ ਸੈਸ਼ਨ ਹਰ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਪ੍ਰਾਪਤ ਕਾਰਵਾਈ 'ਤੇ ਮੌਜੂਦਾ ਬੈਕਐਂਡ ਅਧਿਕਾਰੀਕਰਨ ਨੀਤੀ ਦਾ ਮੁੜ-ਮੁਲਾਂਕਣ ਕਰਦੇ ਹਨ। | 3 |
+| **੯.੫.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਏਜੰਟ ਕਾਰਵਾਈਆਂ ਦਾ ਰਨਟਾਈਮ ਦੁਆਰਾ ਲਾਗੂ ਕੀਤੀਆਂ ਬਾਰੀਕ-ਪੱਧਰੀ ਨੀਤੀਆਂ ਦੇ ਵਿਰੁੱਧ ਅਧਿਕਾਰੀਕਰਨ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਜੋ ਇਹ ਸੀਮਤ ਕਰਦੀਆਂ ਹਨ ਕਿ ਇੱਕ ਏਜੰਟ ਕਿਹੜੇ ਟੂਲ ਸੱਦ ਸਕਦਾ ਹੈ, ਅਤੇ ਕਿਹੜੇ ਪੈਰਾਮੀਟਰ ਮੁੱਲ ਦੇ ਸਕਦਾ ਹੈ। | ੨ |
+| **੯.੫.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਜਦੋਂ ਕੋਈ ਏਜੰਟ ਕਿਸੇ ਉਪਭੋਗਤਾ ਵੱਲੋਂ ਕਾਰਵਾਈ ਕਰਦਾ ਹੈ, ਤਾਂ ਰਨਟਾਈਮ ਇੱਕ ਅਖੰਡਤਾ-ਸੁਰੱਖਿਅਤ, ਸਕੋਪ-ਸੀਮਿਤ ਟੋਕਨ ਅੱਗੇ ਸੰਚਾਰਿਤ ਕਰਦਾ ਹੈ ਜੋ ਉਪਭੋਗਤਾ ਦਾ ਅਧਿਕਾਰੀਕਰਨ ਸੰਦਰਭ ਲੈ ਕੇ ਜਾਂਦਾ ਹੈ ਅਤੇ ਹਰ ਡਾਊਨਸਟ੍ਰੀਮ ਕਾਲ 'ਤੇ ਲਾਗੂ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੨ |
+| **੯.੫.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਾਰੇ ਪਹੁੰਚ ਕੰਟਰੋਲ ਫ਼ੈਸਲੇ ਐਪਲੀਕੇਸ਼ਨ ਤਰਕ ਜਾਂ ਇੱਕ ਨੀਤੀ ਇੰਜਣ ਦੁਆਰਾ ਲਾਗੂ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਕਦੇ ਵੀ AI ਮਾਡਲ ਦੁਆਰਾ ਖ਼ੁਦ ਨਹੀਂ। | ੨ |
+| **੯.੫.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਰਨਟਾਈਮ 'ਤੇ ਕਿਸੇ ਏਜੰਟ ਨੂੰ ਲੋੜੀਂਦੇ ਗੁਪਤ ਭੇਦ ਅਤੇ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ ਮਾਡਲ ਦੇ ਦੇਖਣਯੋਗ ਸੰਦਰਭ ਵਿੱਚ ਜ਼ਾਹਰ ਨਹੀਂ ਹੁੰਦੇ, ਜਿਸ ਵਿੱਚ ਸੰਦਰਭ ਵਿੰਡੋ, system prompt, ਜਾਂ ਟੂਲ ਕਾਲ ਪੈਰਾਮੀਟਰ ਸ਼ਾਮਲ ਹਨ। | ੨ |
+| **੯.੫.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਏਜੰਟਾਂ ਵਿਚਕਾਰ ਕਾਰਜ ਸੌਂਪਣੀ (task delegation) ਇੱਕ ਸਪੱਸ਼ਟ ਅਧਿਕਾਰੀਕਰਨ ਨੀਤੀ ਦੁਆਰਾ ਸੀਮਤ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | ੨ |
+| **੯.੫.੬** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਲੰਬੇ ਸਮੇਂ ਤੱਕ ਚੱਲਣ ਵਾਲੇ ਏਜੰਟ ਸੈਸ਼ਨ ਹਰ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਪ੍ਰਾਪਤ ਕਾਰਵਾਈ 'ਤੇ ਮੌਜੂਦਾ ਬੈਕਐਂਡ ਅਧਿਕਾਰੀਕਰਨ ਨੀਤੀ ਦਾ ਮੁੜ-ਮੁਲਾਂਕਣ ਕਰਦੇ ਹਨ। | ੩ |
 
 ---
 
 ## C9.6 Shutdown and Graceful Degradation
-## C9.6 ਬੰਦ ਕਰਨਾ ਅਤੇ ਸੁਚੱਜੀ ਗਿਰਾਵਟ
+## C੯.੬ ਬੰਦ ਕਰਨਾ ਅਤੇ ਸੁਚੱਜੀ ਗਿਰਾਵਟ
 
 Shutdown and graceful degradation paths must remain under human control, with mechanisms that stay reliable and are exercised over time.
 
@@ -1449,9 +1449,9 @@ Shutdown and graceful degradation paths must remain under human control, with me
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--: | --- | :---: |
-| **9.6.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਮਾਡਲ ਦੇ ਇਨਫ਼ਰੈਂਸ ਅਤੇ ਆਊਟਪੁੱਟ ਨੂੰ ਤੁਰੰਤ ਰੋਕਣ ਲਈ ਇੱਕ ਹੱਥੀਂ ਚਲਾਈ ਜਾਣ ਵਾਲੀ kill-switch ਵਿਧੀ ਮੌਜੂਦ ਹੈ। | 1 |
-| **9.6.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਜਦੋਂ ਪਰਿਭਾਸ਼ਿਤ ਮਨਜ਼ੂਰੀ ਸਮੇਂ ਦੇ ਅੰਦਰ ਮਨੁੱਖੀ-ਮਨਜ਼ੂਰੀ ਗੇਟ ਪੂਰਾ ਨਹੀਂ ਹੁੰਦਾ, ਤਾਂ ਸਿਸਟਮ ਬਕਾਇਆ ਕਾਰਵਾਈ ਨੂੰ ਰੋਕ ਦਿੰਦਾ ਹੈ। | 2 |
-| **9.6.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** kill-switch ਕਮਾਂਡਾਂ ਇੱਕ ਆਊਟ-ਆਫ਼-ਬੈਂਡ (out-of-band) ਚੈਨਲ ਰਾਹੀਂ ਲਾਗੂ ਕੀਤੀਆਂ ਜਾਂਦੀਆਂ ਹਨ ਜੋ ਏਜੰਟ ਰਨਟਾਈਮ ਤੋਂ ਅਲੱਗ-ਥਲੱਗ ਹੈ। | 3 |
+| **੯.੬.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਮਾਡਲ ਦੇ ਇਨਫ਼ਰੈਂਸ ਅਤੇ ਆਊਟਪੁੱਟ ਨੂੰ ਤੁਰੰਤ ਰੋਕਣ ਲਈ ਇੱਕ ਹੱਥੀਂ ਚਲਾਈ ਜਾਣ ਵਾਲੀ kill-switch ਵਿਧੀ ਮੌਜੂਦ ਹੈ। | ੧ |
+| **੯.੬.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਜਦੋਂ ਪਰਿਭਾਸ਼ਿਤ ਮਨਜ਼ੂਰੀ ਸਮੇਂ ਦੇ ਅੰਦਰ ਮਨੁੱਖੀ-ਮਨਜ਼ੂਰੀ ਗੇਟ ਪੂਰਾ ਨਹੀਂ ਹੁੰਦਾ, ਤਾਂ ਸਿਸਟਮ ਬਕਾਇਆ ਕਾਰਵਾਈ ਨੂੰ ਰੋਕ ਦਿੰਦਾ ਹੈ। | ੨ |
+| **੯.੬.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** kill-switch ਕਮਾਂਡਾਂ ਇੱਕ ਆਊਟ-ਆਫ਼-ਬੈਂਡ (out-of-band) ਚੈਨਲ ਰਾਹੀਂ ਲਾਗੂ ਕੀਤੀਆਂ ਜਾਂਦੀਆਂ ਹਨ ਜੋ ਏਜੰਟ ਰਨਟਾਈਮ ਤੋਂ ਅਲੱਗ-ਥਲੱਗ ਹੈ। | ੩ |
 
 ---
 
@@ -1465,12 +1465,12 @@ Shutdown and graceful degradation paths must remain under human control, with me
 * [Regulation (EU) 2024/1689 (EU AI Act), Article 14: Human Oversight](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
 
 [^0x10-C09-orchestration]: **orchestration** (EN) -> ਆਰਕੈਸਟ੍ਰੇਸ਼ਨ — kept as a loan because the closer native words (ਤਾਲਮੇਲ, ਪ੍ਰਬੰਧ, ਸੰਚਾਲਨ) are all already reserved for other senses elsewhere in the corpus. Full discussion: OPEN-QUESTIONS.md Q83.
-[^0x10-C09-agent]: **agent** (EN) -> ਏਜੰਟ — transliterated rather than translated because the native candidates (ਦੂਤ, ਪ੍ਰਤੀਨਿਧ, ਕਾਰਕ) either carry devotional colour or lose the software-agent sense; C09 is the deciding chapter for this pick. Full discussion: OPEN-QUESTIONS.md Q17.
+[^0x10-C09-agent]: **agent** (EN) -> ਏਜੰਟ — transliterated rather than translated because the native candidates (ਦੂਤ, ਪ੍ਰਤੀਨਿਧ, ਕਾਰਕ) either carry devotional colour or lose the software-agent sense; C੦੯ is the deciding chapter for this pick. Full discussion: OPEN-QUESTIONS.md Q17.
 [^0x10-C09-autonomous]: **autonomous** (EN) -> ਖ਼ੁਦਮੁਖ਼ਤਾਰ — chosen over ਸਵੈ-ਚਾਲਿਤ ("automatic/unattended") because it captures deciding-and-acting without a human in the loop rather than merely running unattended. Full discussion: OPEN-QUESTIONS.md Q81.
-[^0x10-C09-component]: **component** (EN) -> ਕੰਪੋਨੈਂਟ — logged as an open corpus split: C09 and C10 use the loan ਕੰਪੋਨੈਂਟ while C03/C04/C12 use the native ਹਿੱਸਾ for the identical term-of-art sense. Full discussion: OPEN-QUESTIONS.md Q95.
+[^0x10-C09-component]: **component** (EN) -> ਕੰਪੋਨੈਂਟ — logged as an open corpus split: C੦੯ and C੧੦ use the loan ਕੰਪੋਨੈਂਟ while C03/C04/C12 use the native ਹਿੱਸਾ for the identical term-of-art sense. Full discussion: OPEN-QUESTIONS.md Q95.
 [^0x10-C09-output]: **output** (EN) -> ਆਊਟਪੁੱਟ — kept as a loan to mirror the ASVS corpus's ਇਨਪੁੱਟ/ਆਊਟਪੁੱਟ pairing rather than ਨਤੀਜਾ ("result"), which would collide with a different sense. Full discussion: OPEN-QUESTIONS.md Q78.
 [^0x10-C09-downstream]: **downstream** (EN) -> ਡਾਊਨਸਟ੍ਰੀਮ — kept as a loan because a literal water-flow rendering would mislead a reader into a physical-flow reading of pipeline data direction. Full discussion: OPEN-QUESTIONS.md Q77.
-[^0x10-C09-principal]: **principal** (EN) -> ਪਛਾਣ-ਇਕਾਈ — coined from ਪਛਾਣ (identity) rather than ਕਰਤਾ, which is rejected as load-bearing Sikh devotional vocabulary (ਕਰਤਾ ਪੁਰਖੁ); note C11.2.2 still uses the loan ਪ੍ਰਿੰਸੀਪਲ for the same concept, an open split. Full discussion: OPEN-QUESTIONS.md Q124.
+[^0x10-C09-principal]: **principal** (EN) -> ਪਛਾਣ-ਇਕਾਈ — coined from ਪਛਾਣ (identity) rather than ਕਰਤਾ, which is rejected as load-bearing Sikh devotional vocabulary (ਕਰਤਾ ਪੁਰਖੁ); note C੧੧.੨.੨ still uses the loan ਪ੍ਰਿੰਸੀਪਲ for the same concept, an open split. Full discussion: OPEN-QUESTIONS.md Q124.
 
 \newpage
 <!-- Translation Status: ✅ Complete -->
@@ -1478,7 +1478,7 @@ Shutdown and graceful degradation paths must remain under human control, with me
 <!-- Translator: GeeksikhSecurity -->
 
 # C10 Model Context Protocol (MCP) Security
-# C10 Model Context Protocol (MCP)[^0x10-C10-mcp] ਸੁਰੱਖਿਆ
+# C੧੦ Model Context Protocol (MCP)[^0x10-C10-mcp] ਸੁਰੱਖਿਆ
 
 ## Control Objective
 ## ਨਿਯੰਤਰਣ ਉਦੇਸ਼
@@ -1490,7 +1490,7 @@ This chapter addresses secure discovery, authentication, authorization, transpor
 ---
 
 ## C10.1 Component Integrity
-## C10.1 ਕੰਪੋਨੈਂਟ[^0x10-C10-component] ਅਖੰਡਤਾ
+## C੧੦.੧ ਕੰਪੋਨੈਂਟ[^0x10-C10-component] ਅਖੰਡਤਾ
 
 Only trusted MCP components must be used, and locally launched servers must be secured.
 
@@ -1504,14 +1504,14 @@ Only trusted MCP components must be used, and locally launched servers must be s
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--: | --- | :---: |
-| **10.1.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਕੰਪੋਨੈਂਟ ਸਿਰਫ਼ ਭਰੋਸੇਯੋਗ ਸਰੋਤਾਂ ਤੋਂ ਹੀ ਪ੍ਰਾਪਤ ਕੀਤੇ ਜਾਂਦੇ ਹਨ ਅਤੇ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਤੌਰ 'ਤੇ ਤਸਦੀਕ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | 1 |
-| **10.1.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਰਫ਼ allow-list ਵਿੱਚ ਸ਼ਾਮਲ MCP ਸਰਵਰਾਂ ਦੀ ਹੀ ਆਗਿਆ ਹੈ। | 2 |
-| **10.1.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਚਾਲੂ ਕੀਤੇ ਗਏ MCP ਸਰਵਰ ਸੀਮਤ ਫ਼ਾਈਲ ਸਿਸਟਮ, ਨੈੱਟਵਰਕ, ਅਤੇ ਸਿਸਟਮ ਪਹੁੰਚ ਵਾਲੇ ਘੱਟੋ-ਘੱਟ-ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ (least-privilege) ਸੈਂਡਬਾਕਸ ਵਿੱਚ ਚੱਲਦੇ ਹਨ। | 2 |
+| **੧੦.੧.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਕੰਪੋਨੈਂਟ ਸਿਰਫ਼ ਭਰੋਸੇਯੋਗ ਸਰੋਤਾਂ ਤੋਂ ਹੀ ਪ੍ਰਾਪਤ ਕੀਤੇ ਜਾਂਦੇ ਹਨ ਅਤੇ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਤੌਰ 'ਤੇ ਤਸਦੀਕ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | ੧ |
+| **੧੦.੧.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਰਫ਼ allow-list ਵਿੱਚ ਸ਼ਾਮਲ MCP ਸਰਵਰਾਂ ਦੀ ਹੀ ਆਗਿਆ ਹੈ। | ੨ |
+| **੧੦.੧.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਚਾਲੂ ਕੀਤੇ ਗਏ MCP ਸਰਵਰ ਸੀਮਤ ਫ਼ਾਈਲ ਸਿਸਟਮ, ਨੈੱਟਵਰਕ, ਅਤੇ ਸਿਸਟਮ ਪਹੁੰਚ ਵਾਲੇ ਘੱਟੋ-ਘੱਟ-ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ (least-privilege) ਸੈਂਡਬਾਕਸ ਵਿੱਚ ਚੱਲਦੇ ਹਨ। | ੨ |
 
 ---
 
 ## C10.2 Authentication & Authorization
-## C10.2 ਪ੍ਰਮਾਣੀਕਰਨ ਅਤੇ ਅਧਿਕਾਰੀਕਰਨ
+## C੧੦.੨ ਪ੍ਰਮਾਣੀਕਰਨ ਅਤੇ ਅਧਿਕਾਰੀਕਰਨ
 
 Callers must be authenticated and access to MCP servers authorized, following protocol best practices.
 
@@ -1529,18 +1529,18 @@ Callers must be authenticated and access to MCP servers authorized, following pr
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--: | --- | :---: |
-| **10.2.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਸਰਵਰ ਹਰ ਬੇਨਤੀ ਲਈ ਪਹੁੰਚ ਟੋਕਨ ਪ੍ਰਮਾਣਿਤ ਕਰਦੇ ਹਨ ਅਤੇ ਇਕੱਲੀ ਟ੍ਰਾਂਸਪੋਰਟ ਸੁਰੱਖਿਆ 'ਤੇ ਨਿਰਭਰ ਨਹੀਂ ਕਰਦੇ। | 1 |
-| **10.2.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਸਰਵਰ ਪੇਸ਼ ਕੀਤੇ ਗਏ ਪਹੁੰਚ ਟੋਕਨ ਦੇ ਜਾਰੀਕਰਤਾ (issuer), ਉਦੇਸ਼ਿਤ ਪ੍ਰਾਪਤਕਰਤਾ[^0x10-C10-audience] (audience), ਮਿਆਦ ਸਮਾਪਤੀ (expiration), ਅਤੇ ਸਕੋਪ ਦੇ ਦਾਅਵਿਆਂ (claims) ਨੂੰ OAuth 2.1 ਦੇ ਅਨੁਸਾਰ ਪ੍ਰਮਾਣਿਤ ਕਰਦੇ ਹਨ। | 1 |
-| **10.2.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** OAuth 2.1 ਸਰੋਤ ਸਰਵਰਾਂ (resource servers) ਵਜੋਂ ਕੰਮ ਕਰਨ ਵਾਲੇ MCP ਸਰਵਰ ਪਹੁੰਚ ਟੋਕਨ ਜਾਂ ਉਪਭੋਗਤਾ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ ਨਾ ਤਾਂ ਭੰਡਾਰ ਕਰਦੇ ਹਨ ਅਤੇ ਨਾ ਹੀ ਸਥਾਈ ਤੌਰ 'ਤੇ ਰੱਖਦੇ ਹਨ। | 1 |
-| **10.2.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP `tools/list` ਸਿਰਫ਼ ਉਹੀ ਟੂਲ ਵਾਪਸ ਕਰਦਾ ਹੈ ਜਿਨ੍ਹਾਂ ਦੀ ਸਰੋਤ ਮਾਲਕਾਂ (resource owners) ਦੇ ਅਧਿਕਾਰਤ ਸਕੋਪਾਂ ਦੁਆਰਾ ਆਗਿਆ ਹੈ। | 2 |
-| **10.2.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਸਰਵਰ ਹਰ ਟੂਲ ਸੱਦੇ (tool invocation) 'ਤੇ ਪਹੁੰਚ ਕੰਟਰੋਲ ਲਾਗੂ ਕਰਦੇ ਹਨ, ਅਤੇ ਇਹ ਪ੍ਰਮਾਣਿਤ ਕਰਦੇ ਹਨ ਕਿ ਉਪਭੋਗਤਾ ਦਾ ਪਹੁੰਚ ਟੋਕਨ ਬੇਨਤੀ ਕੀਤੇ ਟੂਲ ਅਤੇ ਦਿੱਤੇ ਗਏ ਖ਼ਾਸ ਆਰਗੂਮੈਂਟ ਮੁੱਲਾਂ, ਦੋਵਾਂ ਦਾ ਅਧਿਕਾਰੀਕਰਨ ਕਰਦਾ ਹੈ। | 2 |
-| **10.2.6** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਸਰਵਰ ਇਹ ਯਕੀਨੀ ਬਣਾਉਂਦੇ ਹਨ ਕਿ ਜਦੋਂ ਕੋਈ ਸੈਸ਼ਨ ਸਮਾਪਤ ਹੁੰਦਾ ਹੈ ਤਾਂ ਸਾਰੇ ਸੈਸ਼ਨ ਆਰਟੀਫ਼ੈਕਟ ਹਟਾ ਦਿੱਤੇ ਜਾਂਦੇ ਹਨ। | 2 |
-| **10.2.7** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਸਰਵਰ ਕਲਾਇੰਟਾਂ ਤੋਂ ਪ੍ਰਾਪਤ ਹੋਏ ਪਹੁੰਚ ਟੋਕਨ ਡਾਊਨਸਟ੍ਰੀਮ[^0x10-C10-downstream] API ਨੂੰ ਅੱਗੇ ਨਹੀਂ ਲੰਘਾਉਂਦੇ[^0x10-C10-passthrough] (pass through)। | 2 |
+| **੧੦.੨.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਸਰਵਰ ਹਰ ਬੇਨਤੀ ਲਈ ਪਹੁੰਚ ਟੋਕਨ ਪ੍ਰਮਾਣਿਤ ਕਰਦੇ ਹਨ ਅਤੇ ਇਕੱਲੀ ਟ੍ਰਾਂਸਪੋਰਟ ਸੁਰੱਖਿਆ 'ਤੇ ਨਿਰਭਰ ਨਹੀਂ ਕਰਦੇ। | ੧ |
+| **੧੦.੨.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਸਰਵਰ ਪੇਸ਼ ਕੀਤੇ ਗਏ ਪਹੁੰਚ ਟੋਕਨ ਦੇ ਜਾਰੀਕਰਤਾ (issuer), ਉਦੇਸ਼ਿਤ ਪ੍ਰਾਪਤਕਰਤਾ[^0x10-C10-audience] (audience), ਮਿਆਦ ਸਮਾਪਤੀ (expiration), ਅਤੇ ਸਕੋਪ ਦੇ ਦਾਅਵਿਆਂ (claims) ਨੂੰ OAuth 2.1 ਦੇ ਅਨੁਸਾਰ ਪ੍ਰਮਾਣਿਤ ਕਰਦੇ ਹਨ। | ੧ |
+| **੧੦.੨.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** OAuth 2.1 ਸਰੋਤ ਸਰਵਰਾਂ (resource servers) ਵਜੋਂ ਕੰਮ ਕਰਨ ਵਾਲੇ MCP ਸਰਵਰ ਪਹੁੰਚ ਟੋਕਨ ਜਾਂ ਉਪਭੋਗਤਾ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ ਨਾ ਤਾਂ ਭੰਡਾਰ ਕਰਦੇ ਹਨ ਅਤੇ ਨਾ ਹੀ ਸਥਾਈ ਤੌਰ 'ਤੇ ਰੱਖਦੇ ਹਨ। | ੧ |
+| **੧੦.੨.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP `tools/list` ਸਿਰਫ਼ ਉਹੀ ਟੂਲ ਵਾਪਸ ਕਰਦਾ ਹੈ ਜਿਨ੍ਹਾਂ ਦੀ ਸਰੋਤ ਮਾਲਕਾਂ (resource owners) ਦੇ ਅਧਿਕਾਰਤ ਸਕੋਪਾਂ ਦੁਆਰਾ ਆਗਿਆ ਹੈ। | ੨ |
+| **੧੦.੨.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਸਰਵਰ ਹਰ ਟੂਲ ਸੱਦੇ (tool invocation) 'ਤੇ ਪਹੁੰਚ ਕੰਟਰੋਲ ਲਾਗੂ ਕਰਦੇ ਹਨ, ਅਤੇ ਇਹ ਪ੍ਰਮਾਣਿਤ ਕਰਦੇ ਹਨ ਕਿ ਉਪਭੋਗਤਾ ਦਾ ਪਹੁੰਚ ਟੋਕਨ ਬੇਨਤੀ ਕੀਤੇ ਟੂਲ ਅਤੇ ਦਿੱਤੇ ਗਏ ਖ਼ਾਸ ਆਰਗੂਮੈਂਟ ਮੁੱਲਾਂ, ਦੋਵਾਂ ਦਾ ਅਧਿਕਾਰੀਕਰਨ ਕਰਦਾ ਹੈ। | ੨ |
+| **੧੦.੨.੬** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਸਰਵਰ ਇਹ ਯਕੀਨੀ ਬਣਾਉਂਦੇ ਹਨ ਕਿ ਜਦੋਂ ਕੋਈ ਸੈਸ਼ਨ ਸਮਾਪਤ ਹੁੰਦਾ ਹੈ ਤਾਂ ਸਾਰੇ ਸੈਸ਼ਨ ਆਰਟੀਫ਼ੈਕਟ ਹਟਾ ਦਿੱਤੇ ਜਾਂਦੇ ਹਨ। | ੨ |
+| **੧੦.੨.੭** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਸਰਵਰ ਕਲਾਇੰਟਾਂ ਤੋਂ ਪ੍ਰਾਪਤ ਹੋਏ ਪਹੁੰਚ ਟੋਕਨ ਡਾਊਨਸਟ੍ਰੀਮ[^0x10-C10-downstream] API ਨੂੰ ਅੱਗੇ ਨਹੀਂ ਲੰਘਾਉਂਦੇ[^0x10-C10-passthrough] (pass through)। | ੨ |
 
 ---
 
 ## C10.3 Secure Transport
-## C10.3 ਸੁਰੱਖਿਅਤ ਟ੍ਰਾਂਸਪੋਰਟ
+## C੧੦.੩ ਸੁਰੱਖਿਅਤ ਟ੍ਰਾਂਸਪੋਰਟ
 
 MCP communications must be secured following protocol best practices.
 
@@ -1556,16 +1556,16 @@ MCP communications must be secured following protocol best practices.
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--: | --- | :---: |
-| **10.3.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਰਿਮੋਟ ਸੇਵਾਵਾਂ ਲਈ MCP ਟ੍ਰਾਂਸਪੋਰਟ ਵਾਸਤੇ ਪ੍ਰਮਾਣੀਕਰਨ ਕੀਤਾ ਗਿਆ, ਏਨਕ੍ਰਿਪਟ ਕੀਤਾ ਗਿਆ streamable HTTP ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। | 1 |
-| **10.3.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** stdio ਟ੍ਰਾਂਸਪੋਰਟ ਦੀ ਆਗਿਆ ਸਿਰਫ਼ ਨਿਯੰਤਰਿਤ ਸਥਾਨਕ ਵਾਤਾਵਰਣਾਂ ਵਿੱਚ ਹੀ ਹੈ। | 1 |
-| **10.3.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਸਰਵਰ DNS rebinding[^0x10-C10-replay-dns] ਹਮਲਿਆਂ ਨੂੰ ਰੋਕਣ ਲਈ ਸਾਰੇ HTTP-ਆਧਾਰਿਤ ਟ੍ਰਾਂਸਪੋਰਟਾਂ ਉੱਤੇ `Origin` ਹੈੱਡਰ ਅਤੇ `Host` ਹੈੱਡਰ ਦੋਵਾਂ ਨੂੰ ਵੱਖਰੇ ਤੌਰ 'ਤੇ ਪ੍ਰਮਾਣਿਤ ਕਰਦੇ ਹਨ। | 2 |
-| **10.3.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਕਲਾਇੰਟ ਇੱਕ ਘੱਟੋ-ਘੱਟ ਸਵੀਕਾਰਯੋਗ ਪ੍ਰੋਟੋਕੋਲ ਸੰਸਕਰਣ ਲਾਗੂ ਕਰਦੇ ਹਨ ਅਤੇ ਉਹਨਾਂ `initialize` ਜਵਾਬਾਂ ਨੂੰ ਰੱਦ ਕਰਦੇ ਹਨ ਜੋ ਉਸ ਘੱਟੋ-ਘੱਟ ਤੋਂ ਹੇਠਲਾ ਸੰਸਕਰਣ ਪ੍ਰਸਤਾਵਿਤ ਕਰਦੇ ਹਨ। | 2 |
-| **10.3.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਕਲਾਇੰਟ ਅਤੇ ਸਰਵਰ ਵਿਚਕਾਰਲੇ ਪਹੁੰਚ ਟੋਕਨ mTLS ਜਾਂ DPoP ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਭੇਜਣ ਵਾਲੇ ਨਾਲ ਬੰਨ੍ਹੇ ਹੋਏ[^0x10-C10-sender-constrained] (sender-constrained) ਹਨ। | 3 |
+| **੧੦.੩.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਰਿਮੋਟ ਸੇਵਾਵਾਂ ਲਈ MCP ਟ੍ਰਾਂਸਪੋਰਟ ਵਾਸਤੇ ਪ੍ਰਮਾਣੀਕਰਨ ਕੀਤਾ ਗਿਆ, ਏਨਕ੍ਰਿਪਟ ਕੀਤਾ ਗਿਆ streamable HTTP ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। | ੧ |
+| **੧੦.੩.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** stdio ਟ੍ਰਾਂਸਪੋਰਟ ਦੀ ਆਗਿਆ ਸਿਰਫ਼ ਨਿਯੰਤਰਿਤ ਸਥਾਨਕ ਵਾਤਾਵਰਣਾਂ ਵਿੱਚ ਹੀ ਹੈ। | ੧ |
+| **੧੦.੩.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਸਰਵਰ DNS rebinding[^0x10-C10-replay-dns] ਹਮਲਿਆਂ ਨੂੰ ਰੋਕਣ ਲਈ ਸਾਰੇ HTTP-ਆਧਾਰਿਤ ਟ੍ਰਾਂਸਪੋਰਟਾਂ ਉੱਤੇ `Origin` ਹੈੱਡਰ ਅਤੇ `Host` ਹੈੱਡਰ ਦੋਵਾਂ ਨੂੰ ਵੱਖਰੇ ਤੌਰ 'ਤੇ ਪ੍ਰਮਾਣਿਤ ਕਰਦੇ ਹਨ। | ੨ |
+| **੧੦.੩.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਕਲਾਇੰਟ ਇੱਕ ਘੱਟੋ-ਘੱਟ ਸਵੀਕਾਰਯੋਗ ਪ੍ਰੋਟੋਕੋਲ ਸੰਸਕਰਣ ਲਾਗੂ ਕਰਦੇ ਹਨ ਅਤੇ ਉਹਨਾਂ `initialize` ਜਵਾਬਾਂ ਨੂੰ ਰੱਦ ਕਰਦੇ ਹਨ ਜੋ ਉਸ ਘੱਟੋ-ਘੱਟ ਤੋਂ ਹੇਠਲਾ ਸੰਸਕਰਣ ਪ੍ਰਸਤਾਵਿਤ ਕਰਦੇ ਹਨ। | ੨ |
+| **੧੦.੩.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਕਲਾਇੰਟ ਅਤੇ ਸਰਵਰ ਵਿਚਕਾਰਲੇ ਪਹੁੰਚ ਟੋਕਨ mTLS ਜਾਂ DPoP ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਭੇਜਣ ਵਾਲੇ ਨਾਲ ਬੰਨ੍ਹੇ ਹੋਏ[^0x10-C10-sender-constrained] (sender-constrained) ਹਨ। | ੩ |
 
 ---
 
 ## C10.4 Schema, Message, and Input Validation
-## C10.4 ਸਕੀਮਾ, ਸੁਨੇਹਾ, ਅਤੇ ਇਨਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ
+## C੧੦.੪ ਸਕੀਮਾ, ਸੁਨੇਹਾ, ਅਤੇ ਇਨਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ
 
 Schema, message, and input validation must be enforced in both MCP servers and clients.
 
@@ -1584,14 +1584,14 @@ MCP ਸਰਵਰਾਂ ਅਤੇ ਕਲਾਇੰਟਾਂ, ਦੋਵਾਂ ਵ�
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--: | --- | :---: |
-| **10.4.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP `tools/list` ਅਤੇ `tools/call` ਜਵਾਬਾਂ ਨੂੰ ਮਾਡਲ ਸੰਦਰਭ ਵਿੱਚ ਇੰਜੈਕਟ ਕੀਤੇ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ ਉਹਨਾਂ ਦੀਆਂ ਘੋਸ਼ਿਤ ਸਕੀਮਾਵਾਂ ਦੇ ਵਿਰੁੱਧ ਪ੍ਰਮਾਣਿਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 1 |
-| **10.4.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP `tools/list` ਅਤੇ `tools/call` ਜਵਾਬਾਂ ਦੀ, ਮਾਡਲ ਸੰਦਰਭ ਵਿੱਚ ਇੰਜੈਕਟ ਕੀਤੇ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ, ਅਸਿੱਧੇ prompt ਇੰਜੈਕਸ਼ਨ (indirect prompt injection) ਲਈ ਛਾਣਬੀਣ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | 1 |
-| **10.4.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਸਰਵਰ ਫ਼ੰਕਸ਼ਨ ਕਾਲਾਂ ਵਿੱਚ ਅਣਪਛਾਤੇ ਜਾਂ ਲੋੜੋਂ ਵੱਡੇ ਪੈਰਾਮੀਟਰਾਂ ਨੂੰ ਰੱਦ ਕਰਦੇ ਹਨ। | 1 |
-| **10.4.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਾਰੇ MCP ਸਰਵਰ ਸਖ਼ਤ ਸਕੀਮਾ ਪ੍ਰਮਾਣਿਕਤਾ ਲਾਗੂ ਕਰਦੇ ਹਨ। | 2 |
-| **10.4.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਾਰੇ MCP ਟ੍ਰਾਂਸਪੋਰਟ ਵੱਧ ਤੋਂ ਵੱਧ ਪੇਲੋਡ ਆਕਾਰ ਸੀਮਾਵਾਂ ਲਾਗੂ ਕਰਦੇ ਹਨ। | 2 |
-| **10.4.6** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਸਰਵਰ ਟੂਲ ਜਵਾਬਾਂ ਉੱਤੇ ਇੱਕ ਵਿਲੱਖਣ ਨੌਂਸ (nonce) ਅਤੇ ਟਾਈਮਸਟੈਂਪ ਨਾਲ ਦਸਤਖ਼ਤ ਕਰਦੇ ਹਨ ਤਾਂ ਜੋ MCP ਕਲਾਇੰਟ replay[^0x10-C10-replay-dns] (ਦੁਹਰਾਓ) ਕੋਸ਼ਿਸ਼ਾਂ ਦਾ ਪਤਾ ਲਗਾ ਸਕਣ। | 2 |
-| **10.4.7** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਕਲਾਇੰਟ ਕਿਸੇ ਸਥਾਨਕ MCP ਸਰਵਰ ਦੀ ਸਥਾਪਨਾ ਵੇਲੇ ਉਪਭੋਗਤਾਵਾਂ ਸਾਹਮਣੇ ਸਪੱਸ਼ਟ ਸਹਿਮਤੀ ਸੰਵਾਦ[^0x10-C10-consent] (consent dialogue) ਅਤੇ ਰੱਦ ਕਰਨ ਦੇ ਵਿਕਲਪ ਪੇਸ਼ ਕਰਦੇ ਹਨ। | 2 |
-| **10.4.8** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਕਲਾਇੰਟ ਟੂਲ ਪਰਿਭਾਸ਼ਾਵਾਂ ਦਾ ਇੱਕ ਸਨੈਪਸ਼ਾਟ ਬਰਕਰਾਰ ਰੱਖਦੇ ਹਨ, ਅਤੇ ਕਿਸੇ ਟੂਲ ਪਰਿਭਾਸ਼ਾ ਵਿੱਚ ਕੋਈ ਵੀ ਤਬਦੀਲੀ ਹੋਣ 'ਤੇ, ਸੋਧਿਆ ਹੋਇਆ ਟੂਲ ਸੱਦੇ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ ਮੁੜ-ਮਨਜ਼ੂਰੀ ਸ਼ੁਰੂ ਹੁੰਦੀ ਹੈ। | 3 |
+| **੧੦.੪.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP `tools/list` ਅਤੇ `tools/call` ਜਵਾਬਾਂ ਨੂੰ ਮਾਡਲ ਸੰਦਰਭ ਵਿੱਚ ਇੰਜੈਕਟ ਕੀਤੇ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ ਉਹਨਾਂ ਦੀਆਂ ਘੋਸ਼ਿਤ ਸਕੀਮਾਵਾਂ ਦੇ ਵਿਰੁੱਧ ਪ੍ਰਮਾਣਿਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੧ |
+| **੧੦.੪.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP `tools/list` ਅਤੇ `tools/call` ਜਵਾਬਾਂ ਦੀ, ਮਾਡਲ ਸੰਦਰਭ ਵਿੱਚ ਇੰਜੈਕਟ ਕੀਤੇ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ, ਅਸਿੱਧੇ prompt ਇੰਜੈਕਸ਼ਨ (indirect prompt injection) ਲਈ ਛਾਣਬੀਣ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | ੧ |
+| **੧੦.੪.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਸਰਵਰ ਫ਼ੰਕਸ਼ਨ ਕਾਲਾਂ ਵਿੱਚ ਅਣਪਛਾਤੇ ਜਾਂ ਲੋੜੋਂ ਵੱਡੇ ਪੈਰਾਮੀਟਰਾਂ ਨੂੰ ਰੱਦ ਕਰਦੇ ਹਨ। | ੧ |
+| **੧੦.੪.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਾਰੇ MCP ਸਰਵਰ ਸਖ਼ਤ ਸਕੀਮਾ ਪ੍ਰਮਾਣਿਕਤਾ ਲਾਗੂ ਕਰਦੇ ਹਨ। | ੨ |
+| **੧੦.੪.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਾਰੇ MCP ਟ੍ਰਾਂਸਪੋਰਟ ਵੱਧ ਤੋਂ ਵੱਧ ਪੇਲੋਡ ਆਕਾਰ ਸੀਮਾਵਾਂ ਲਾਗੂ ਕਰਦੇ ਹਨ। | ੨ |
+| **੧੦.੪.੬** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਸਰਵਰ ਟੂਲ ਜਵਾਬਾਂ ਉੱਤੇ ਇੱਕ ਵਿਲੱਖਣ ਨੌਂਸ (nonce) ਅਤੇ ਟਾਈਮਸਟੈਂਪ ਨਾਲ ਦਸਤਖ਼ਤ ਕਰਦੇ ਹਨ ਤਾਂ ਜੋ MCP ਕਲਾਇੰਟ replay[^0x10-C10-replay-dns] (ਦੁਹਰਾਓ) ਕੋਸ਼ਿਸ਼ਾਂ ਦਾ ਪਤਾ ਲਗਾ ਸਕਣ। | ੨ |
+| **੧੦.੪.੭** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਕਲਾਇੰਟ ਕਿਸੇ ਸਥਾਨਕ MCP ਸਰਵਰ ਦੀ ਸਥਾਪਨਾ ਵੇਲੇ ਉਪਭੋਗਤਾਵਾਂ ਸਾਹਮਣੇ ਸਪੱਸ਼ਟ ਸਹਿਮਤੀ ਸੰਵਾਦ[^0x10-C10-consent] (consent dialogue) ਅਤੇ ਰੱਦ ਕਰਨ ਦੇ ਵਿਕਲਪ ਪੇਸ਼ ਕਰਦੇ ਹਨ। | ੨ |
+| **੧੦.੪.੮** | **ਜਾਂਚ ਕਰੋ ਕਿ** MCP ਕਲਾਇੰਟ ਟੂਲ ਪਰਿਭਾਸ਼ਾਵਾਂ ਦਾ ਇੱਕ ਸਨੈਪਸ਼ਾਟ ਬਰਕਰਾਰ ਰੱਖਦੇ ਹਨ, ਅਤੇ ਕਿਸੇ ਟੂਲ ਪਰਿਭਾਸ਼ਾ ਵਿੱਚ ਕੋਈ ਵੀ ਤਬਦੀਲੀ ਹੋਣ 'ਤੇ, ਸੋਧਿਆ ਹੋਇਆ ਟੂਲ ਸੱਦੇ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ ਮੁੜ-ਮਨਜ਼ੂਰੀ ਸ਼ੁਰੂ ਹੁੰਦੀ ਹੈ। | ੩ |
 
 ---
 
@@ -1611,7 +1611,7 @@ MCP ਸਰਵਰਾਂ ਅਤੇ ਕਲਾਇੰਟਾਂ, ਦੋਵਾਂ ਵ�
 [^0x10-C10-transport]: **transport** (EN) -> ਟ੍ਰਾਂਸਪੋਰਟ — kept as a loan over literal "haulage" renderings, which would suggest physical goods rather than a protocol channel. Full discussion: OPEN-QUESTIONS.md Q90.
 [^0x10-C10-audience]: **audience** (token claim) (EN) -> ਉਦੇਸ਼ਿਤ ਪ੍ਰਾਪਤਕਰਤਾ ("intended recipient") — chosen over ਸਰੋਤੇ/ਦਰਸ਼ਕ ("listening/viewing public"), which would invert the OAuth meaning of a single intended token recipient. Full discussion: OPEN-QUESTIONS.md Q89.
 [^0x10-C10-downstream]: **downstream** (EN) -> ਡਾਊਨਸਟ੍ਰੀਮ — kept as a loan, consistent with the corpus's other pipeline/infrastructure loans, rather than a literal water-flow rendering. Full discussion: OPEN-QUESTIONS.md Q77.
-[^0x10-C10-passthrough]: **pass through** (EN) -> ਅੱਗੇ ਲੰਘਾਉਣਾ — deliberately kept distinct from ਅੱਗੇ ਸੰਚਾਰਿਤ ਕਰਨਾ (C09's *approved* delegation-token propagation) so a prohibition and an obligation don't read as the same act. Full discussion: OPEN-QUESTIONS.md Q101.
+[^0x10-C10-passthrough]: **pass through** (EN) -> ਅੱਗੇ ਲੰਘਾਉਣਾ — deliberately kept distinct from ਅੱਗੇ ਸੰਚਾਰਿਤ ਕਰਨਾ (C੦੯'s *approved* delegation-token propagation) so a prohibition and an obligation don't read as the same act. Full discussion: OPEN-QUESTIONS.md Q101.
 [^0x10-C10-replay-dns]: **DNS rebinding / replay** (EN) -> `DNS rebinding` retained verbatim; `replay` retained with a ਦੁਹਰਾਓ ("repetition") gloss — both are named attack classes kept searchable against the cited OWASP MCP Security Cheat Sheet. Full discussion: OPEN-QUESTIONS.md Q92.
 [^0x10-C10-sender-constrained]: **sender-constrained** (EN) -> ਭੇਜਣ ਵਾਲੇ ਨਾਲ ਬੰਨ੍ਹੇ ਹੋਏ — reuses the corpus's existing verb for cryptographic binding (ਬੰਨ੍ਹਣਾ) rather than ਸੀਮਿਤ, which would suggest scope-restriction, a different control. Full discussion: OPEN-QUESTIONS.md Q91.
 [^0x10-C10-consent]: **consent dialogue** (EN) -> ਸਪੱਸ਼ਟ ਸਹਿਮਤੀ ਸੰਵਾਦ — ਮਨਜ਼ੂਰੀ ("approval") was deliberately avoided because 10.4.8 already locks it to *re-approval*, and consent and re-approval are two separate obligations in this same section. Full discussion: OPEN-QUESTIONS.md Q93.
@@ -1622,7 +1622,7 @@ MCP ਸਰਵਰਾਂ ਅਤੇ ਕਲਾਇੰਟਾਂ, ਦੋਵਾਂ ਵ�
 <!-- Translator: GeeksikhSecurity -->
 
 # C11 Adversarial Robustness
-# C11 ਵਿਰੋਧੀ ਮਜ਼ਬੂਤੀ[^0x10-C11-robustness]
+# C੧੧ ਵਿਰੋਧੀ ਮਜ਼ਬੂਤੀ[^0x10-C11-robustness]
 
 ## Control Objective
 ## ਨਿਯੰਤਰਣ ਉਦੇਸ਼
@@ -1634,7 +1634,7 @@ This chapter addresses keeping AI systems reliable and abuse-resistant when faci
 ---
 
 ## C11.1 Model Alignment, Safety, and Robustness Testing and Training
-## C11.1 ਮਾਡਲ ਅਲਾਈਨਮੈਂਟ[^0x10-C11-alignment], ਸਲਾਮਤੀ, ਅਤੇ ਮਜ਼ਬੂਤੀ ਟੈਸਟਿੰਗ ਅਤੇ ਸਿਖਲਾਈ
+## C੧੧.੧ ਮਾਡਲ ਅਲਾਈਨਮੈਂਟ[^0x10-C11-alignment], ਸਲਾਮਤੀ, ਅਤੇ ਮਜ਼ਬੂਤੀ ਟੈਸਟਿੰਗ ਅਤੇ ਸਿਖਲਾਈ
 
 Model resilience to manipulated inputs designed to cause misclassification or policy bypass must be increased, primarily through adversarial testing and robustness benchmarking.
 
@@ -1650,16 +1650,16 @@ Model resilience to manipulated inputs designed to cause misclassification or po
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.1.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਨੇ ਅਲਾਈਨਮੈਂਟ (alignment) ਅਤੇ ਸਲਾਮਤੀ ਸਿਖਲਾਈ ਜਾਂ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਕਰਵਾਈ ਹੈ ਤਾਂ ਜੋ ਮਾਡਲ ਨੂੰ ਮਨਾਹੀ ਵਾਲੀਆਂ ਸਮੱਗਰੀ ਸ਼੍ਰੇਣੀਆਂ ਤਿਆਰ ਕਰਨ ਤੋਂ ਰੋਕਿਆ ਜਾ ਸਕੇ। | 1 |
-| **11.1.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਮਾਡਲ ਅੱਪਡੇਟ ਜਾਂ ਰਿਲੀਜ਼ ਉੱਤੇ ਇੱਕ ਵਰਜ਼ਨ-ਨਿਯੰਤਰਿਤ ਅਲਾਈਨਮੈਂਟ ਟੈਸਟ ਸੂਟ ਚਲਾਇਆ ਜਾਂਦਾ ਹੈ। | 1 |
-| **11.1.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲਾਂ ਦਾ ਉਹਨਾਂ ਦੀ ਮਾਡੈਲਿਟੀ (modality) ਨਾਲ ਸੰਬੰਧਿਤ ਜਾਣੀਆਂ-ਪਛਾਣੀਆਂ ਵਿਰੋਧੀ ਹਮਲਾ ਤਕਨੀਕਾਂ ਦੇ ਵਿਰੁੱਧ ਮੁਲਾਂਕਣ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 1 |
-| **11.1.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲਾਂ ਨੂੰ ਵਿਰੋਧੀ ਇਨਪੁੱਟਾਂ ਵਿਰੁੱਧ ਸਖ਼ਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 2 |
-| **11.1.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇੱਕ ਸਵੈਚਾਲਿਤ ਮੁਲਾਂਕਣਕਾਰ (evaluator) ਨੁਕਸਾਨਦੇਹ-ਸਮੱਗਰੀ ਦਰ ਨੂੰ ਮਾਪਦਾ ਹੈ ਅਤੇ ਇੱਕ ਪਰਿਭਾਸ਼ਿਤ ਥ੍ਰੈਸ਼ਹੋਲਡ ਤੋਂ ਪਰੇ ਦੇ ਰਿਗਰੈਸ਼ਨਾਂ (regressions) ਨੂੰ ਨਿਸ਼ਾਨਬੱਧ ਕਰਦਾ ਹੈ। | 3 |
+| **੧੧.੧.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਨੇ ਅਲਾਈਨਮੈਂਟ (alignment) ਅਤੇ ਸਲਾਮਤੀ ਸਿਖਲਾਈ ਜਾਂ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਕਰਵਾਈ ਹੈ ਤਾਂ ਜੋ ਮਾਡਲ ਨੂੰ ਮਨਾਹੀ ਵਾਲੀਆਂ ਸਮੱਗਰੀ ਸ਼੍ਰੇਣੀਆਂ ਤਿਆਰ ਕਰਨ ਤੋਂ ਰੋਕਿਆ ਜਾ ਸਕੇ। | ੧ |
+| **੧੧.੧.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਮਾਡਲ ਅੱਪਡੇਟ ਜਾਂ ਰਿਲੀਜ਼ ਉੱਤੇ ਇੱਕ ਵਰਜ਼ਨ-ਨਿਯੰਤਰਿਤ ਅਲਾਈਨਮੈਂਟ ਟੈਸਟ ਸੂਟ ਚਲਾਇਆ ਜਾਂਦਾ ਹੈ। | ੧ |
+| **੧੧.੧.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲਾਂ ਦਾ ਉਹਨਾਂ ਦੀ ਮਾਡੈਲਿਟੀ (modality) ਨਾਲ ਸੰਬੰਧਿਤ ਜਾਣੀਆਂ-ਪਛਾਣੀਆਂ ਵਿਰੋਧੀ ਹਮਲਾ ਤਕਨੀਕਾਂ ਦੇ ਵਿਰੁੱਧ ਮੁਲਾਂਕਣ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੧ |
+| **੧੧.੧.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲਾਂ ਨੂੰ ਵਿਰੋਧੀ ਇਨਪੁੱਟਾਂ ਵਿਰੁੱਧ ਸਖ਼ਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੨ |
+| **੧੧.੧.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇੱਕ ਸਵੈਚਾਲਿਤ ਮੁਲਾਂਕਣਕਾਰ (evaluator) ਨੁਕਸਾਨਦੇਹ-ਸਮੱਗਰੀ ਦਰ ਨੂੰ ਮਾਪਦਾ ਹੈ ਅਤੇ ਇੱਕ ਪਰਿਭਾਸ਼ਿਤ ਥ੍ਰੈਸ਼ਹੋਲਡ ਤੋਂ ਪਰੇ ਦੇ ਰਿਗਰੈਸ਼ਨਾਂ (regressions) ਨੂੰ ਨਿਸ਼ਾਨਬੱਧ ਕਰਦਾ ਹੈ। | ੩ |
 
 ---
 
 ## C11.2 Membership-Inference and Model-Inversion Mitigation
-## C11.2 Membership-Inference ਅਤੇ Model-Inversion[^0x10-C11-model-inversion] ਨੂੰ ਘਟਾਉਣਾ
+## C੧੧.੨ Membership-Inference ਅਤੇ Model-Inversion[^0x10-C11-model-inversion] ਨੂੰ ਘਟਾਉਣਾ
 
 The ability to determine whether a specific record was in the training data must be limited, and reconstruction of private training data or sensitive attributes from model outputs prevented.
 
@@ -1675,16 +1675,16 @@ The ability to determine whether a specific record was in the training data must
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.2.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਦੁਆਰਾ ਅਨੁਮਾਨਿਤ ਸੰਵੇਦਨਸ਼ੀਲ ਗੁਣ ਸਿੱਧੇ ਤੌਰ 'ਤੇ ਆਊਟਪੁੱਟ ਵਿੱਚ ਵਾਪਸ ਨਹੀਂ ਕੀਤੇ ਜਾਂਦੇ। | 1 |
-| **11.2.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇਨਫ਼ਰੈਂਸ[^0x10-C11-inference] ਐਂਡਪੁਆਇੰਟ ਪ੍ਰਤੀ-ਪ੍ਰਿੰਸੀਪਲ[^0x10-C11-principal] (per-principal) ਅਤੇ ਸਮੁੱਚੀਆਂ ਦਰ ਸੀਮਾਵਾਂ ਲਾਗੂ ਕਰਦੇ ਹਨ ਜੋ extraction ਖ਼ਤਰਾ ਮਾਡਲ ਦੇ ਅਨੁਸਾਰ ਮਿਥੀਆਂ ਗਈਆਂ ਹੋਣ, ਨਾ ਕਿ ਸਿਰਫ਼ ਇੱਕ ਆਮ API ਥ੍ਰੌਟਲ (throttle) ਵਜੋਂ। | 1 |
-| **11.2.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹੱਦੋਂ ਵੱਧ ਭਰੋਸੇ ਵਾਲੇ ਪੂਰਵ-ਅਨੁਮਾਨਾਂ (overconfident predictions) ਨੂੰ ਘਟਾਉਣ ਲਈ ਮਾਡਲ ਆਊਟਪੁੱਟ ਨੂੰ ਕੈਲੀਬ੍ਰੇਟ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 2 |
-| **11.2.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸੰਵੇਦਨਸ਼ੀਲ ਡਾਟਾਸੈੱਟਾਂ ਉੱਤੇ ਸਿਖਲਾਈ differential privacy-ਆਧਾਰਿਤ ਅਨੁਕੂਲਨ (differentially-private optimization) ਵਰਤਦੀ ਹੈ। | 2 |
-| **11.2.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** membership-inference ਹਮਲੇ ਦੇ ਸਿਮੂਲੇਸ਼ਨ ਇਹ ਦਰਸਾਉਂਦੇ ਹਨ ਕਿ ਮੁਲਾਂਕਣ ਕੀਤੇ ਡਾਟੇ ਉੱਤੇ ਹਮਲੇ ਦੀ ਸਟੀਕਤਾ (accuracy) ਬੇਤਰਤੀਬ ਅੰਦਾਜ਼ੇ ਤੋਂ ਵੱਧ ਨਹੀਂ ਜਾਂਦੀ। | 3 |
+| **੧੧.੨.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਦੁਆਰਾ ਅਨੁਮਾਨਿਤ ਸੰਵੇਦਨਸ਼ੀਲ ਗੁਣ ਸਿੱਧੇ ਤੌਰ 'ਤੇ ਆਊਟਪੁੱਟ ਵਿੱਚ ਵਾਪਸ ਨਹੀਂ ਕੀਤੇ ਜਾਂਦੇ। | ੧ |
+| **੧੧.੨.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇਨਫ਼ਰੈਂਸ[^0x10-C11-inference] ਐਂਡਪੁਆਇੰਟ ਪ੍ਰਤੀ-ਪ੍ਰਿੰਸੀਪਲ[^0x10-C11-principal] (per-principal) ਅਤੇ ਸਮੁੱਚੀਆਂ ਦਰ ਸੀਮਾਵਾਂ ਲਾਗੂ ਕਰਦੇ ਹਨ ਜੋ extraction ਖ਼ਤਰਾ ਮਾਡਲ ਦੇ ਅਨੁਸਾਰ ਮਿਥੀਆਂ ਗਈਆਂ ਹੋਣ, ਨਾ ਕਿ ਸਿਰਫ਼ ਇੱਕ ਆਮ API ਥ੍ਰੌਟਲ (throttle) ਵਜੋਂ। | ੧ |
+| **੧੧.੨.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹੱਦੋਂ ਵੱਧ ਭਰੋਸੇ ਵਾਲੇ ਪੂਰਵ-ਅਨੁਮਾਨਾਂ (overconfident predictions) ਨੂੰ ਘਟਾਉਣ ਲਈ ਮਾਡਲ ਆਊਟਪੁੱਟ ਨੂੰ ਕੈਲੀਬ੍ਰੇਟ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੨ |
+| **੧੧.੨.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸੰਵੇਦਨਸ਼ੀਲ ਡਾਟਾਸੈੱਟਾਂ ਉੱਤੇ ਸਿਖਲਾਈ differential privacy-ਆਧਾਰਿਤ ਅਨੁਕੂਲਨ (differentially-private optimization) ਵਰਤਦੀ ਹੈ। | ੨ |
+| **੧੧.੨.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** membership-inference ਹਮਲੇ ਦੇ ਸਿਮੂਲੇਸ਼ਨ ਇਹ ਦਰਸਾਉਂਦੇ ਹਨ ਕਿ ਮੁਲਾਂਕਣ ਕੀਤੇ ਡਾਟੇ ਉੱਤੇ ਹਮਲੇ ਦੀ ਸਟੀਕਤਾ (accuracy) ਬੇਤਰਤੀਬ ਅੰਦਾਜ਼ੇ ਤੋਂ ਵੱਧ ਨਹੀਂ ਜਾਂਦੀ। | ੩ |
 
 ---
 
 ## C11.3 Model-Extraction Defense
-## C11.3 Model-Extraction[^0x10-C11-model-extraction] ਵਿਰੁੱਧ ਬਚਾਅ
+## C੧੧.੩ Model-Extraction[^0x10-C11-model-extraction] ਵਿਰੁੱਧ ਬਚਾਅ
 
 Unauthorized model cloning through API abuse must be detected and deterred using rate limiting, query-pattern analysis, and watermarking.
 
@@ -1699,15 +1699,15 @@ API ਦੀ ਦੁਰਵਰਤੋਂ ਰਾਹੀਂ ਅਣਅਧਿਕਾਰਤ 
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.3.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਕਿਊਰੀ-ਪੈਟਰਨ ਵਿਸ਼ਲੇਸ਼ਣ ਇੱਕ extraction-ਕੋਸ਼ਿਸ਼ ਡਿਟੈਕਟਰ (detector) ਨੂੰ ਇਨਪੁੱਟ ਦਿੰਦਾ ਹੈ। | 1 |
-| **11.3.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਕੱਚੇ ਮਾਡਲ ਆਊਟਪੁੱਟ ਐਪਲੀਕੇਸ਼ਨ ਬੈਕਐਂਡ ਤੋਂ ਪਰੇ ਸਿੱਧੇ ਤੌਰ 'ਤੇ ਜ਼ਾਹਰ ਨਹੀਂ ਕੀਤੇ ਜਾਂਦੇ, ਅਤੇ ਇਹ ਕਿ ਬਾਹਰੋਂ ਦਿਖਾਈ ਦੇਣ ਵਾਲੇ ਜਵਾਬ extraction ਜੋਖਮ ਪੱਧਰ ਦੇ ਅਨੁਸਾਰ ਕੈਲੀਬ੍ਰੇਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | 2 |
-| **11.3.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਵਾਟਰਮਾਰਕਿੰਗ ਜਾਂ ਫ਼ਿੰਗਰਪ੍ਰਿੰਟਿੰਗ ਤਕਨੀਕਾਂ ਲਾਗੂ ਕੀਤੀਆਂ ਜਾਂਦੀਆਂ ਹਨ ਤਾਂ ਜੋ ਅਣਅਧਿਕਾਰਤ ਨਕਲਾਂ ਦੀ ਪਛਾਣ ਕੀਤੀ ਜਾ ਸਕੇ। | 3 |
-| **11.3.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸ਼ੱਕੀ extraction ਦੀ ਪਛਾਣ ਜਵਾਬੀ ਉਪਾਵਾਂ ਨੂੰ ਸ਼ੁਰੂ ਕਰਦੀ ਹੈ। | 3 |
+| **੧੧.੩.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਕਿਊਰੀ-ਪੈਟਰਨ ਵਿਸ਼ਲੇਸ਼ਣ ਇੱਕ extraction-ਕੋਸ਼ਿਸ਼ ਡਿਟੈਕਟਰ (detector) ਨੂੰ ਇਨਪੁੱਟ ਦਿੰਦਾ ਹੈ। | ੧ |
+| **੧੧.੩.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਕੱਚੇ ਮਾਡਲ ਆਊਟਪੁੱਟ ਐਪਲੀਕੇਸ਼ਨ ਬੈਕਐਂਡ ਤੋਂ ਪਰੇ ਸਿੱਧੇ ਤੌਰ 'ਤੇ ਜ਼ਾਹਰ ਨਹੀਂ ਕੀਤੇ ਜਾਂਦੇ, ਅਤੇ ਇਹ ਕਿ ਬਾਹਰੋਂ ਦਿਖਾਈ ਦੇਣ ਵਾਲੇ ਜਵਾਬ extraction ਜੋਖਮ ਪੱਧਰ ਦੇ ਅਨੁਸਾਰ ਕੈਲੀਬ੍ਰੇਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | ੨ |
+| **੧੧.੩.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਵਾਟਰਮਾਰਕਿੰਗ ਜਾਂ ਫ਼ਿੰਗਰਪ੍ਰਿੰਟਿੰਗ ਤਕਨੀਕਾਂ ਲਾਗੂ ਕੀਤੀਆਂ ਜਾਂਦੀਆਂ ਹਨ ਤਾਂ ਜੋ ਅਣਅਧਿਕਾਰਤ ਨਕਲਾਂ ਦੀ ਪਛਾਣ ਕੀਤੀ ਜਾ ਸਕੇ। | ੩ |
+| **੧੧.੩.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸ਼ੱਕੀ extraction ਦੀ ਪਛਾਣ ਜਵਾਬੀ ਉਪਾਵਾਂ ਨੂੰ ਸ਼ੁਰੂ ਕਰਦੀ ਹੈ। | ੩ |
 
 ---
 
 ## C11.4 Model Runtime Anomaly Detection
-## C11.4 ਮਾਡਲ ਰਨਟਾਈਮ ਅਸਧਾਰਨਤਾ ਪਛਾਣ
+## C੧੧.੪ ਮਾਡਲ ਰਨਟਾਈਮ ਅਸਧਾਰਨਤਾ ਪਛਾਣ
 
 Manipulated, backdoored, or adversarial data entering the model context at inference time via external sources must be identified and neutralized.
 
@@ -1721,9 +1721,9 @@ Manipulated, backdoored, or adversarial data entering the model context at infer
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **11.4.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਬਾਹਰੀ ਜਾਂ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਸਰੋਤਾਂ ਤੋਂ ਆਏ ਇਨਪੁੱਟ ਮਾਡਲ ਇਨਫ਼ਰੈਂਸ ਤੋਂ ਪਹਿਲਾਂ ਅਸਧਾਰਨਤਾ ਪਛਾਣ (anomaly detection) ਵਿੱਚੋਂ ਲੰਘਦੇ ਹਨ। | 2 |
-| **11.4.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਅਸਧਾਰਨ ਵਜੋਂ ਨਿਸ਼ਾਨਬੱਧ ਕੀਤੇ ਇਨਪੁੱਟ ਗੇਟਿੰਗ ਕਾਰਵਾਈਆਂ (gating actions) ਸ਼ੁਰੂ ਕਰਦੇ ਹਨ। | 2 |
-| **11.4.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਲਾਮਤੀ ਉਲੰਘਣਾ ਫ਼ੀਡਬੈਕ ਪਾਈਪਲਾਈਨ ਵਿੱਚ poisoning[^0x10-C11-poisoning] ਪਛਾਣ ਅਤੇ ਮਨੁੱਖੀ ਸਮੀਖਿਆ ਗੇਟ ਸ਼ਾਮਲ ਹਨ ਤਾਂ ਜੋ ਸੁਧਾਰ ਵਿਧੀ ਨਾਲ ਵਿਰੋਧੀ ਹੇਰਾਫੇਰੀ ਨੂੰ ਰੋਕਿਆ ਜਾ ਸਕੇ। | 3 |
+| **੧੧.੪.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਬਾਹਰੀ ਜਾਂ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਸਰੋਤਾਂ ਤੋਂ ਆਏ ਇਨਪੁੱਟ ਮਾਡਲ ਇਨਫ਼ਰੈਂਸ ਤੋਂ ਪਹਿਲਾਂ ਅਸਧਾਰਨਤਾ ਪਛਾਣ (anomaly detection) ਵਿੱਚੋਂ ਲੰਘਦੇ ਹਨ। | ੨ |
+| **੧੧.੪.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਅਸਧਾਰਨ ਵਜੋਂ ਨਿਸ਼ਾਨਬੱਧ ਕੀਤੇ ਇਨਪੁੱਟ ਗੇਟਿੰਗ ਕਾਰਵਾਈਆਂ (gating actions) ਸ਼ੁਰੂ ਕਰਦੇ ਹਨ। | ੨ |
+| **੧੧.੪.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਲਾਮਤੀ ਉਲੰਘਣਾ ਫ਼ੀਡਬੈਕ ਪਾਈਪਲਾਈਨ ਵਿੱਚ poisoning[^0x10-C11-poisoning] ਪਛਾਣ ਅਤੇ ਮਨੁੱਖੀ ਸਮੀਖਿਆ ਗੇਟ ਸ਼ਾਮਲ ਹਨ ਤਾਂ ਜੋ ਸੁਧਾਰ ਵਿਧੀ ਨਾਲ ਵਿਰੋਧੀ ਹੇਰਾਫੇਰੀ ਨੂੰ ਰੋਕਿਆ ਜਾ ਸਕੇ। | ੩ |
 
 ---
 
@@ -1741,7 +1741,7 @@ Manipulated, backdoored, or adversarial data entering the model context at infer
 [^0x10-C11-model-inversion]: **model inversion** (EN) -> `Model-Inversion` retained verbatim — a named attack technique kept in English so it stays searchable against the cited threat-intel literature, matching the treatment given to *model extraction*. Full discussion: OPEN-QUESTIONS.md Q82.
 [^0x10-C11-output]: **output** (EN) -> ਆਊਟਪੁੱਟ — kept as a loan to mirror the ASVS corpus's ਇਨਪੁੱਟ/ਆਊਟਪੁੱਟ pairing rather than ਨਤੀਜਾ ("result"). Full discussion: OPEN-QUESTIONS.md Q78.
 [^0x10-C11-inference]: **inference** (EN) -> ਇਨਫ਼ਰੈਂਸ — kept as a loan because the native ਅਨੁਮਾਨ is already load-bearing elsewhere for "expected/anticipated," which would read as an estimate rather than model execution. Full discussion: OPEN-QUESTIONS.md Q18.
-[^0x10-C11-principal]: **principal** (per-principal) (EN) -> ਪ੍ਰਿੰਸੀਪਲ — an open corpus split: this loan form is used here while C09 9.4.1 uses the coined ਪਛਾਣ-ਇਕਾਈ for the identical concept; both should move together. Full discussion: OPEN-QUESTIONS.md Q124.
+[^0x10-C11-principal]: **principal** (per-principal) (EN) -> ਪ੍ਰਿੰਸੀਪਲ — an open corpus split: this loan form is used here while C੦੯ ੯.੪.੧ uses the coined ਪਛਾਣ-ਇਕਾਈ for the identical concept; both should move together. Full discussion: OPEN-QUESTIONS.md Q124.
 [^0x10-C11-model-extraction]: **model extraction** (EN) -> `Model-Extraction` retained verbatim — the technique name stays English while ਚੋਰੀ ("theft") is reserved elsewhere for the harm/outcome sense, a boundary this chapter must not blur. Full discussion: OPEN-QUESTIONS.md Q54.
 [^0x10-C11-poisoning]: **poisoning** (detection) (EN) -> retained as `poisoning`, hybridised as `poisoning ਪਛਾਣ` — kept in English after the corpus's first gloss so the term stays traceable to MITRE ATLAS AML.T0020. Full discussion: OPEN-QUESTIONS.md Q39.
 
@@ -1751,7 +1751,7 @@ Manipulated, backdoored, or adversarial data entering the model context at infer
 <!-- Translator: GeeksikhSecurity -->
 
 # C12 Monitoring, Logging & Anomaly Detection
-# C12 ਨਿਗਰਾਨੀ, ਲੌਗਿੰਗ ਅਤੇ ਅਸਧਾਰਨਤਾ ਪਛਾਣ
+# C੧੨ ਨਿਗਰਾਨੀ, ਲੌਗਿੰਗ ਅਤੇ ਅਸਧਾਰਨਤਾ ਪਛਾਣ
 
 ## Control Objective
 ## ਨਿਯੰਤਰਣ ਉਦੇਸ਼
@@ -1763,7 +1763,7 @@ This chapter addresses real-time and forensic visibility into what the model and
 ---
 
 ## C12.1 Request & Response Logging
-## C12.1 ਬੇਨਤੀ ਅਤੇ ਜਵਾਬ ਲੌਗਿੰਗ
+## C੧੨.੧ ਬੇਨਤੀ ਅਤੇ ਜਵਾਬ ਲੌਗਿੰਗ
 
 AI requests and responses must be logged to create an audit trail and support incident response.
 
@@ -1778,15 +1778,15 @@ AI ਬੇਨਤੀਆਂ ਅਤੇ ਜਵਾਬਾਂ ਦਾ ਲੌਗ ਕੀਤ
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **12.1.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਪਰਸਪਰ-ਕਿਰਿਆਵਾਂ ਨੂੰ ਸੈਸ਼ਨ ਸੰਦਰਭ ਅਤੇ AI-ਵਿਸ਼ੇਸ਼ ਟੈਲੀਮੈਟਰੀ ਸਮੇਤ ਲੌਗ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 1 |
-| **12.1.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਲਾਮਤੀ ਫ਼ਿਲਟਰਿੰਗ ਅਤੇ ਨੀਤੀ ਫ਼ੈਸਲਿਆਂ ਨੂੰ ਇੰਨੇ ਵੇਰਵੇ ਨਾਲ ਲੌਗ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ਕਿ ਸਮੱਗਰੀ ਮਾਡਰੇਸ਼ਨ (content moderation) ਸਿਸਟਮਾਂ ਦੇ ਆਡਿਟ, ਡੀਬੱਗਿੰਗ, ਅਤੇ ਫ਼ੋਰੈਂਸਿਕ ਵਿਸ਼ਲੇਸ਼ਣ ਦਾ ਸਮਰਥਨ ਕੀਤਾ ਜਾ ਸਕੇ। | 2 |
-| **12.1.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਇਨਫ਼ਰੈਂਸ ਘਟਨਾਵਾਂ ਲਈ ਲੌਗ ਐਂਟਰੀਆਂ ਇੱਕ ਢਾਂਚਾਗਤ, ਅੰਤਰ-ਕਾਰਜਸ਼ੀਲ ਸਕੀਮਾ ਦੀ ਪਾਲਣਾ ਕਰਦੀਆਂ ਹਨ ਜਿਸ ਵਿੱਚ ਘੱਟੋ-ਘੱਟ ਮਾਡਲ ਪਛਾਣਕਰਤਾ, ਟੋਕਨ ਵਰਤੋਂ (ਇਨਪੁੱਟ ਅਤੇ ਆਊਟਪੁੱਟ), ਪ੍ਰਦਾਤਾ ਦਾ ਨਾਮ, ਅਤੇ ਸੰਚਾਲਨ ਕਿਸਮ ਸ਼ਾਮਲ ਹਨ। | 2 |
-| **12.1.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** RAG ਪਾਈਪਲਾਈਨ ਦੀਆਂ ਪ੍ਰਾਪਤੀ ਘਟਨਾਵਾਂ ਨੂੰ ਲੌਗ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਜਿਸ ਵਿੱਚ ਕਿਊਰੀ (query), ਪ੍ਰਾਪਤ ਕੀਤੇ ਦਸਤਾਵੇਜ਼, ਅਤੇ ਗਿਆਨ ਸਰੋਤ ਸ਼ਾਮਲ ਹਨ। | 2 |
+| **੧੨.੧.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਪਰਸਪਰ-ਕਿਰਿਆਵਾਂ ਨੂੰ ਸੈਸ਼ਨ ਸੰਦਰਭ ਅਤੇ AI-ਵਿਸ਼ੇਸ਼ ਟੈਲੀਮੈਟਰੀ ਸਮੇਤ ਲੌਗ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੧ |
+| **੧੨.੧.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਲਾਮਤੀ ਫ਼ਿਲਟਰਿੰਗ ਅਤੇ ਨੀਤੀ ਫ਼ੈਸਲਿਆਂ ਨੂੰ ਇੰਨੇ ਵੇਰਵੇ ਨਾਲ ਲੌਗ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ਕਿ ਸਮੱਗਰੀ ਮਾਡਰੇਸ਼ਨ (content moderation) ਸਿਸਟਮਾਂ ਦੇ ਆਡਿਟ, ਡੀਬੱਗਿੰਗ, ਅਤੇ ਫ਼ੋਰੈਂਸਿਕ ਵਿਸ਼ਲੇਸ਼ਣ ਦਾ ਸਮਰਥਨ ਕੀਤਾ ਜਾ ਸਕੇ। | ੨ |
+| **੧੨.੧.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਇਨਫ਼ਰੈਂਸ ਘਟਨਾਵਾਂ ਲਈ ਲੌਗ ਐਂਟਰੀਆਂ ਇੱਕ ਢਾਂਚਾਗਤ, ਅੰਤਰ-ਕਾਰਜਸ਼ੀਲ ਸਕੀਮਾ ਦੀ ਪਾਲਣਾ ਕਰਦੀਆਂ ਹਨ ਜਿਸ ਵਿੱਚ ਘੱਟੋ-ਘੱਟ ਮਾਡਲ ਪਛਾਣਕਰਤਾ, ਟੋਕਨ ਵਰਤੋਂ (ਇਨਪੁੱਟ ਅਤੇ ਆਊਟਪੁੱਟ), ਪ੍ਰਦਾਤਾ ਦਾ ਨਾਮ, ਅਤੇ ਸੰਚਾਲਨ ਕਿਸਮ ਸ਼ਾਮਲ ਹਨ। | ੨ |
+| **੧੨.੧.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** RAG ਪਾਈਪਲਾਈਨ ਦੀਆਂ ਪ੍ਰਾਪਤੀ ਘਟਨਾਵਾਂ ਨੂੰ ਲੌਗ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਜਿਸ ਵਿੱਚ ਕਿਊਰੀ (query), ਪ੍ਰਾਪਤ ਕੀਤੇ ਦਸਤਾਵੇਜ਼, ਅਤੇ ਗਿਆਨ ਸਰੋਤ ਸ਼ਾਮਲ ਹਨ। | ੨ |
 
 ---
 
 ## C12.2 Detection and Alerting
-## C12.2 ਪਛਾਣ ਅਤੇ ਚੇਤਾਵਨੀ
+## C੧੨.੨ ਪਛਾਣ ਅਤੇ ਚੇਤਾਵਨੀ
 
 AI-specific attack patterns (jailbreak, prompt injection, model extraction, multi-turn trajectory attacks, covert channels over LLM endpoints) must be detected, and security events enriched with AI-specific context so downstream detection and response systems can act on them.
 
@@ -1803,17 +1803,17 @@ AI-ਵਿਸ਼ੇਸ਼ ਹਮਲਾ ਪੈਟਰਨਾਂ (jailbreak, prompt �
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **12.2.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਸਟਮ ਜਾਣੇ-ਪਛਾਣੇ jailbreak ਪੈਟਰਨਾਂ, prompt ਇੰਜੈਕਸ਼ਨ ਦੀਆਂ ਕੋਸ਼ਿਸ਼ਾਂ, ਅਤੇ ਵਿਰੋਧੀ ਇਨਪੁੱਟਾਂ ਦਾ ਪਤਾ ਲਗਾਉਂਦਾ ਹੈ ਅਤੇ ਉਹਨਾਂ ਬਾਰੇ ਚੇਤਾਵਨੀ ਦਿੰਦਾ ਹੈ। | 1 |
-| **12.2.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਵਿਵਹਾਰਕ ਅਸਧਾਰਨਤਾ ਪਛਾਣ (anomaly detection) ਅਸਧਾਰਨ ਗੱਲਬਾਤ ਪੈਟਰਨਾਂ, ਹੱਦੋਂ ਵੱਧ ਮੁੜ-ਕੋਸ਼ਿਸ਼ਾਂ, ਜਾਂ ਟੋਹ ਲੈਣ ਵਾਲੇ ਵਿਵਹਾਰਾਂ ਦੀ ਪਛਾਣ ਕਰਦੀ ਹੈ। | 2 |
-| **12.2.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਕਸਟਮ ਨਿਯਮ ਤਾਲਮੇਲ ਵਾਲੀਆਂ jailbreak ਕੋਸ਼ਿਸ਼ਾਂ, prompt ਇੰਜੈਕਸ਼ਨ, ਅਤੇ system prompt ਕੱਢਣ (extraction) ਦੀਆਂ ਕੋਸ਼ਿਸ਼ਾਂ ਲਈ AI-ਵਿਸ਼ੇਸ਼ ਖ਼ਤਰਾ ਪੈਟਰਨਾਂ ਦਾ ਪਤਾ ਲਗਾਉਂਦੇ ਹਨ। | 2 |
-| **12.2.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** extraction (ਕੱਢਣ) ਦੀਆਂ ਚੇਤਾਵਨੀ ਘਟਨਾਵਾਂ ਵਿੱਚ ਤਫ਼ਤੀਸ਼ ਦਾ ਸਮਰਥਨ ਕਰਨ ਲਈ ਦੋਸ਼ੀ ਕਿਊਰੀ ਦਾ ਮੈਟਾਡਾਟਾ ਸ਼ਾਮਲ ਹੁੰਦਾ ਹੈ। | 2 |
-| **12.2.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਟੋਕਨ ਵਰਤੋਂ ਨੂੰ ਬਾਰੀਕ ਨਿਰਧਾਰਨ ਪੱਧਰਾਂ (attribution levels) ਉੱਤੇ ਟਰੈਕ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਜਿਸ ਵਿੱਚ ਪ੍ਰਤੀ ਉਪਭੋਗਤਾ, ਪ੍ਰਤੀ ਸੈਸ਼ਨ, ਪ੍ਰਤੀ ਫ਼ੀਚਰ ਐਂਡਪੁਆਇੰਟ, ਅਤੇ ਪ੍ਰਤੀ ਟੀਮ ਜਾਂ ਵਰਕਸਪੇਸ ਸ਼ਾਮਲ ਹਨ। | 2 |
-| **12.2.6** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਲਵੇਅਰ ਅਤੇ command-and-control (C2) ਗਤੀਵਿਧੀ ਦੀ ਪਛਾਣ ਕਰਨ ਲਈ LLM API ਟ੍ਰੈਫ਼ਿਕ ਦੀ ਲੁਕਵੇਂ-ਚੈਨਲ ਸੰਕੇਤਾਂ ਅਤੇ ਸੰਚਾਰ ਸਿਗਨੇਚਰਾਂ (signatures) ਲਈ ਨਿਗਰਾਨੀ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | 3 |
+| **੧੨.੨.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਸਟਮ ਜਾਣੇ-ਪਛਾਣੇ jailbreak ਪੈਟਰਨਾਂ, prompt ਇੰਜੈਕਸ਼ਨ ਦੀਆਂ ਕੋਸ਼ਿਸ਼ਾਂ, ਅਤੇ ਵਿਰੋਧੀ ਇਨਪੁੱਟਾਂ ਦਾ ਪਤਾ ਲਗਾਉਂਦਾ ਹੈ ਅਤੇ ਉਹਨਾਂ ਬਾਰੇ ਚੇਤਾਵਨੀ ਦਿੰਦਾ ਹੈ। | ੧ |
+| **੧੨.੨.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਵਿਵਹਾਰਕ ਅਸਧਾਰਨਤਾ ਪਛਾਣ (anomaly detection) ਅਸਧਾਰਨ ਗੱਲਬਾਤ ਪੈਟਰਨਾਂ, ਹੱਦੋਂ ਵੱਧ ਮੁੜ-ਕੋਸ਼ਿਸ਼ਾਂ, ਜਾਂ ਟੋਹ ਲੈਣ ਵਾਲੇ ਵਿਵਹਾਰਾਂ ਦੀ ਪਛਾਣ ਕਰਦੀ ਹੈ। | ੨ |
+| **੧੨.੨.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਕਸਟਮ ਨਿਯਮ ਤਾਲਮੇਲ ਵਾਲੀਆਂ jailbreak ਕੋਸ਼ਿਸ਼ਾਂ, prompt ਇੰਜੈਕਸ਼ਨ, ਅਤੇ system prompt ਕੱਢਣ (extraction) ਦੀਆਂ ਕੋਸ਼ਿਸ਼ਾਂ ਲਈ AI-ਵਿਸ਼ੇਸ਼ ਖ਼ਤਰਾ ਪੈਟਰਨਾਂ ਦਾ ਪਤਾ ਲਗਾਉਂਦੇ ਹਨ। | ੨ |
+| **੧੨.੨.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** extraction (ਕੱਢਣ) ਦੀਆਂ ਚੇਤਾਵਨੀ ਘਟਨਾਵਾਂ ਵਿੱਚ ਤਫ਼ਤੀਸ਼ ਦਾ ਸਮਰਥਨ ਕਰਨ ਲਈ ਦੋਸ਼ੀ ਕਿਊਰੀ ਦਾ ਮੈਟਾਡਾਟਾ ਸ਼ਾਮਲ ਹੁੰਦਾ ਹੈ। | ੨ |
+| **੧੨.੨.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਟੋਕਨ ਵਰਤੋਂ ਨੂੰ ਬਾਰੀਕ ਨਿਰਧਾਰਨ ਪੱਧਰਾਂ (attribution levels) ਉੱਤੇ ਟਰੈਕ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਜਿਸ ਵਿੱਚ ਪ੍ਰਤੀ ਉਪਭੋਗਤਾ, ਪ੍ਰਤੀ ਸੈਸ਼ਨ, ਪ੍ਰਤੀ ਫ਼ੀਚਰ ਐਂਡਪੁਆਇੰਟ, ਅਤੇ ਪ੍ਰਤੀ ਟੀਮ ਜਾਂ ਵਰਕਸਪੇਸ ਸ਼ਾਮਲ ਹਨ। | ੨ |
+| **੧੨.੨.੬** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਲਵੇਅਰ ਅਤੇ command-and-control (C੨) ਗਤੀਵਿਧੀ ਦੀ ਪਛਾਣ ਕਰਨ ਲਈ LLM API ਟ੍ਰੈਫ਼ਿਕ ਦੀ ਲੁਕਵੇਂ-ਚੈਨਲ ਸੰਕੇਤਾਂ ਅਤੇ ਸੰਚਾਰ ਸਿਗਨੇਚਰਾਂ (signatures) ਲਈ ਨਿਗਰਾਨੀ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | ੩ |
 
 ---
 
 ## C12.3 Model, Data, and Performance Drift Detection
-## C12.3 ਮਾਡਲ, ਡਾਟਾ, ਅਤੇ ਕਾਰਗੁਜ਼ਾਰੀ ਡ੍ਰਿਫ਼ਟ ਪਛਾਣ
+## C੧੨.੩ ਮਾਡਲ, ਡਾਟਾ, ਅਤੇ ਕਾਰਗੁਜ਼ਾਰੀ ਡ੍ਰਿਫ਼ਟ ਪਛਾਣ
 
 Drift and degradation across model outputs, input distributions, and data schemas must be monitored to identify quality regressions and security-relevant behavioral shifts.
 
@@ -1828,15 +1828,15 @@ Drift and degradation across model outputs, input distributions, and data schema
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **12.3.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਡਾਟਾ ਡ੍ਰਿਫ਼ਟ ਪਛਾਣ ਇਨਪੁੱਟ ਵੰਡ ਵਿੱਚ ਹੋਣ ਵਾਲੀਆਂ ਉਹਨਾਂ ਤਬਦੀਲੀਆਂ ਦੀ ਨਿਗਰਾਨੀ ਕਰਦੀ ਹੈ ਜੋ ਮਾਡਲ ਦੀ ਕਾਰਗੁਜ਼ਾਰੀ ਨੂੰ ਪ੍ਰਭਾਵਿਤ ਕਰ ਸਕਦੀਆਂ ਹਨ, ਅਤੇ ਇਸ ਲਈ ਇਨਪੁੱਟ ਡਾਟਾ ਦੀ ਕਿਸਮ ਨਾਲ ਮੇਲ ਖਾਂਦੀਆਂ ਅੰਕੜਾ-ਪੱਖੋਂ ਪ੍ਰਮਾਣਿਤ ਵਿਧੀਆਂ ਵਰਤਦੀ ਹੈ (ਜਿਵੇਂ, ਸਾਰਣੀਬੱਧ ਸੰਖਿਆਤਮਕ ਫ਼ੀਚਰਾਂ ਲਈ KS test ਜਾਂ PSI, ਟੈਕਸਟ ਜਾਂ ਚਿੱਤਰ ਲਈ embedding-ਦੂਰੀ ਮੈਟ੍ਰਿਕ)। | 1 |
-| **12.3.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** hallucination[^0x10-C12-hallucination] ਪਛਾਣ ਨਿਗਰਾਨ ਉਹਨਾਂ ਮਾਡਲ ਆਊਟਪੁੱਟਾਂ ਦੀ ਪਛਾਣ ਕਰਦੇ ਹਨ ਅਤੇ ਉਹਨਾਂ ਨੂੰ ਨਿਸ਼ਾਨਬੱਧ ਕਰਦੇ ਹਨ ਜਿਨ੍ਹਾਂ ਵਿੱਚ ਤੱਥਾਂ ਪੱਖੋਂ ਗ਼ਲਤ, ਅਸੰਗਤ, ਜਾਂ ਮਨਘੜਤ ਜਾਣਕਾਰੀ ਹੁੰਦੀ ਹੈ। | 2 |
-| **12.3.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** hallucination ਦਰਾਂ ਨੂੰ ਲਗਾਤਾਰ ਸਮਾਂ-ਲੜੀ ਮੈਟ੍ਰਿਕਾਂ ਵਜੋਂ ਟਰੈਕ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ਤਾਂ ਜੋ ਰੁਝਾਨ ਵਿਸ਼ਲੇਸ਼ਣ ਅਤੇ ਲਗਾਤਾਰ ਬਣੇ ਰਹਿਣ ਵਾਲੇ ਮਾਡਲ ਨਿਘਾਰ ਦੀ ਪਛਾਣ ਸੰਭਵ ਹੋ ਸਕੇ। | 2 |
-| **12.3.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਅਣ-ਵਿਆਖਿਆਤ ਵਿਵਹਾਰਕ ਤਬਦੀਲੀਆਂ ਨੂੰ ਹੌਲੀ-ਹੌਲੀ ਹੋਣ ਵਾਲੇ, ਅਨੁਮਾਨਿਤ ਸੰਚਾਲਨ ਡ੍ਰਿਫ਼ਟ ਤੋਂ ਵੱਖਰਾ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 3 |
+| **੧੨.੩.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਡਾਟਾ ਡ੍ਰਿਫ਼ਟ ਪਛਾਣ ਇਨਪੁੱਟ ਵੰਡ ਵਿੱਚ ਹੋਣ ਵਾਲੀਆਂ ਉਹਨਾਂ ਤਬਦੀਲੀਆਂ ਦੀ ਨਿਗਰਾਨੀ ਕਰਦੀ ਹੈ ਜੋ ਮਾਡਲ ਦੀ ਕਾਰਗੁਜ਼ਾਰੀ ਨੂੰ ਪ੍ਰਭਾਵਿਤ ਕਰ ਸਕਦੀਆਂ ਹਨ, ਅਤੇ ਇਸ ਲਈ ਇਨਪੁੱਟ ਡਾਟਾ ਦੀ ਕਿਸਮ ਨਾਲ ਮੇਲ ਖਾਂਦੀਆਂ ਅੰਕੜਾ-ਪੱਖੋਂ ਪ੍ਰਮਾਣਿਤ ਵਿਧੀਆਂ ਵਰਤਦੀ ਹੈ (ਜਿਵੇਂ, ਸਾਰਣੀਬੱਧ ਸੰਖਿਆਤਮਕ ਫ਼ੀਚਰਾਂ ਲਈ KS test ਜਾਂ PSI, ਟੈਕਸਟ ਜਾਂ ਚਿੱਤਰ ਲਈ embedding-ਦੂਰੀ ਮੈਟ੍ਰਿਕ)। | ੧ |
+| **੧੨.੩.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** hallucination[^0x10-C12-hallucination] ਪਛਾਣ ਨਿਗਰਾਨ ਉਹਨਾਂ ਮਾਡਲ ਆਊਟਪੁੱਟਾਂ ਦੀ ਪਛਾਣ ਕਰਦੇ ਹਨ ਅਤੇ ਉਹਨਾਂ ਨੂੰ ਨਿਸ਼ਾਨਬੱਧ ਕਰਦੇ ਹਨ ਜਿਨ੍ਹਾਂ ਵਿੱਚ ਤੱਥਾਂ ਪੱਖੋਂ ਗ਼ਲਤ, ਅਸੰਗਤ, ਜਾਂ ਮਨਘੜਤ ਜਾਣਕਾਰੀ ਹੁੰਦੀ ਹੈ। | ੨ |
+| **੧੨.੩.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** hallucination ਦਰਾਂ ਨੂੰ ਲਗਾਤਾਰ ਸਮਾਂ-ਲੜੀ ਮੈਟ੍ਰਿਕਾਂ ਵਜੋਂ ਟਰੈਕ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ਤਾਂ ਜੋ ਰੁਝਾਨ ਵਿਸ਼ਲੇਸ਼ਣ ਅਤੇ ਲਗਾਤਾਰ ਬਣੇ ਰਹਿਣ ਵਾਲੇ ਮਾਡਲ ਨਿਘਾਰ ਦੀ ਪਛਾਣ ਸੰਭਵ ਹੋ ਸਕੇ। | ੨ |
+| **੧੨.੩.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਅਣ-ਵਿਆਖਿਆਤ ਵਿਵਹਾਰਕ ਤਬਦੀਲੀਆਂ ਨੂੰ ਹੌਲੀ-ਹੌਲੀ ਹੋਣ ਵਾਲੇ, ਅਨੁਮਾਨਿਤ ਸੰਚਾਲਨ ਡ੍ਰਿਫ਼ਟ ਤੋਂ ਵੱਖਰਾ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੩ |
 
 ---
 
 ## C12.4 Proactive Security Behavior Monitoring
-## C12.4 ਪੂਰਵ-ਸਰਗਰਮ ਸੁਰੱਖਿਆ ਵਿਵਹਾਰ ਨਿਗਰਾਨੀ
+## C੧੨.੪ ਪੂਰਵ-ਸਰਗਰਮ ਸੁਰੱਖਿਆ ਵਿਵਹਾਰ ਨਿਗਰਾਨੀ
 
 Security threats arising from proactive (agent-initiated) behavior must be detected and prevented, including pre-execution validation, behavior pattern analysis, and audit trails for approval of security-critical actions.
 
@@ -1850,14 +1850,14 @@ Security threats arising from proactive (agent-initiated) behavior must be detec
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **12.4.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਖ਼ੁਦਮੁਖ਼ਤਾਰ ਕਾਰਵਾਈ ਦੇ ਟ੍ਰਿਗਰਾਂ ਵਿੱਚ ਪੂਰਵ-ਸਰਗਰਮ ਵਿਵਹਾਰ-ਪੈਟਰਨ ਵਿਸ਼ਲੇਸ਼ਣ, ਸੁਰੱਖਿਆ ਮੁਲਾਂਕਣ, ਅਤੇ ਖ਼ਤਰਾ-ਪਰਿਦ੍ਰਿਸ਼ ਮੁਲਾਂਕਣ ਸ਼ਾਮਲ ਹਨ। | 2 |
-| **12.4.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਆਡਿਟ ਲੌਗ ਸੁਰੱਖਿਆ-ਨਾਜ਼ੁਕ ਪੂਰਵ-ਸਰਗਰਮ ਕਾਰਵਾਈਆਂ ਨੂੰ ਦਰਜ ਕਰਦੇ ਹਨ, ਜਿਸ ਵਿੱਚ ਮਨਜ਼ੂਰੀ ਦੇਣ ਵਾਲੇ ਦੀ ਪਛਾਣ, ਟਾਈਮਸਟੈਂਪ, ਕਾਰਵਾਈ ਦੇ ਪੈਰਾਮੀਟਰ, ਅਤੇ ਫ਼ੈਸਲੇ ਦੇ ਨਤੀਜੇ ਸ਼ਾਮਲ ਹਨ। | 2 |
-| **12.4.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** kill-switch (ਤੁਰੰਤ-ਬੰਦ ਸਵਿੱਚ) ਦੀਆਂ ਸਰਗਰਮੀਆਂ ਅਤੇ ਓਵਰਰਾਈਡ ਕਮਾਂਡਾਂ ਨੂੰ ਲੌਗ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 2 |
+| **੧੨.੪.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਖ਼ੁਦਮੁਖ਼ਤਾਰ ਕਾਰਵਾਈ ਦੇ ਟ੍ਰਿਗਰਾਂ ਵਿੱਚ ਪੂਰਵ-ਸਰਗਰਮ ਵਿਵਹਾਰ-ਪੈਟਰਨ ਵਿਸ਼ਲੇਸ਼ਣ, ਸੁਰੱਖਿਆ ਮੁਲਾਂਕਣ, ਅਤੇ ਖ਼ਤਰਾ-ਪਰਿਦ੍ਰਿਸ਼ ਮੁਲਾਂਕਣ ਸ਼ਾਮਲ ਹਨ। | ੨ |
+| **੧੨.੪.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਆਡਿਟ ਲੌਗ ਸੁਰੱਖਿਆ-ਨਾਜ਼ੁਕ ਪੂਰਵ-ਸਰਗਰਮ ਕਾਰਵਾਈਆਂ ਨੂੰ ਦਰਜ ਕਰਦੇ ਹਨ, ਜਿਸ ਵਿੱਚ ਮਨਜ਼ੂਰੀ ਦੇਣ ਵਾਲੇ ਦੀ ਪਛਾਣ, ਟਾਈਮਸਟੈਂਪ, ਕਾਰਵਾਈ ਦੇ ਪੈਰਾਮੀਟਰ, ਅਤੇ ਫ਼ੈਸਲੇ ਦੇ ਨਤੀਜੇ ਸ਼ਾਮਲ ਹਨ। | ੨ |
+| **੧੨.੪.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** kill-switch (ਤੁਰੰਤ-ਬੰਦ ਸਵਿੱਚ) ਦੀਆਂ ਸਰਗਰਮੀਆਂ ਅਤੇ ਓਵਰਰਾਈਡ ਕਮਾਂਡਾਂ ਨੂੰ ਲੌਗ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੨ |
 
 ---
 
 ## C12.5 Training Data & Model Lifecycle Audit
-## C12.5 ਸਿਖਲਾਈ ਡਾਟਾ ਅਤੇ ਮਾਡਲ ਜੀਵਨ-ਚੱਕਰ ਆਡਿਟ
+## C੧੨.੫ ਸਿਖਲਾਈ ਡਾਟਾ ਅਤੇ ਮਾਡਲ ਜੀਵਨ-ਚੱਕਰ ਆਡਿਟ
 
 The provenance and change history of training data, model artifacts, and knowledge sources must be auditable throughout the AI development lifecycle.
 
@@ -1872,10 +1872,10 @@ The provenance and change history of training data, model artifacts, and knowled
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **12.5.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਡਾਟਾਸੈੱਟ ਵੰਸ਼ਾਵਲੀ (lineage) ਹਰ ਡਾਟਾਸੈੱਟ ਅਤੇ ਉਸ ਦੇ ਹਿੱਸਿਆਂ ਨੂੰ ਦਰਜ ਕਰਦੀ ਹੈ, ਜਿਸ ਵਿੱਚ ਸਾਰੇ ਪਰਿਵਰਤਨ, ਔਗਮੈਂਟੇਸ਼ਨ (augmentations), ਅਤੇ ਮਰਜ ਸ਼ਾਮਲ ਹਨ। | 1 |
-| **12.5.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਾਰੀਆਂ ਲੇਬਲਿੰਗ ਗਤੀਵਿਧੀਆਂ ਲੌਗਾਂ ਵਿੱਚ ਦਰਜ ਕੀਤੀਆਂ ਜਾਂਦੀਆਂ ਹਨ। | 1 |
-| **12.5.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਾਰੀਆਂ ਮਾਡਲ ਤਬਦੀਲੀਆਂ ਅਪਰਿਵਰਤਨਸ਼ੀਲ[^0x10-C12-immutable] (immutable) ਆਡਿਟ ਰਿਕਾਰਡ ਪੈਦਾ ਕਰਦੀਆਂ ਹਨ। | 2 |
-| **12.5.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਦਾਖ਼ਲ ਕੀਤੇ ਦਸਤਾਵੇਜ਼ ਨੂੰ ਲਿਖਣ ਦੇ ਸਮੇਂ ਸਰੋਤ, ਲਿਖਣ ਵਾਲੇ ਦੀ ਪਛਾਣ, ਅਤੇ ਟਾਈਮਸਟੈਂਪ ਨਾਲ ਟੈਗ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 2 |
+| **੧੨.੫.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਡਾਟਾਸੈੱਟ ਵੰਸ਼ਾਵਲੀ (lineage) ਹਰ ਡਾਟਾਸੈੱਟ ਅਤੇ ਉਸ ਦੇ ਹਿੱਸਿਆਂ ਨੂੰ ਦਰਜ ਕਰਦੀ ਹੈ, ਜਿਸ ਵਿੱਚ ਸਾਰੇ ਪਰਿਵਰਤਨ, ਔਗਮੈਂਟੇਸ਼ਨ (augmentations), ਅਤੇ ਮਰਜ ਸ਼ਾਮਲ ਹਨ। | ੧ |
+| **੧੨.੫.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਾਰੀਆਂ ਲੇਬਲਿੰਗ ਗਤੀਵਿਧੀਆਂ ਲੌਗਾਂ ਵਿੱਚ ਦਰਜ ਕੀਤੀਆਂ ਜਾਂਦੀਆਂ ਹਨ। | ੧ |
+| **੧੨.੫.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਾਰੀਆਂ ਮਾਡਲ ਤਬਦੀਲੀਆਂ ਅਪਰਿਵਰਤਨਸ਼ੀਲ[^0x10-C12-immutable] (immutable) ਆਡਿਟ ਰਿਕਾਰਡ ਪੈਦਾ ਕਰਦੀਆਂ ਹਨ। | ੨ |
+| **੧੨.੫.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਦਾਖ਼ਲ ਕੀਤੇ ਦਸਤਾਵੇਜ਼ ਨੂੰ ਲਿਖਣ ਦੇ ਸਮੇਂ ਸਰੋਤ, ਲਿਖਣ ਵਾਲੇ ਦੀ ਪਛਾਣ, ਅਤੇ ਟਾਈਮਸਟੈਂਪ ਨਾਲ ਟੈਗ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੨ |
 
 ---
 
@@ -1889,10 +1889,10 @@ The provenance and change history of training data, model artifacts, and knowled
 * [Microsoft Agent Governance Toolkit](https://github.com/microsoft/agent-governance-toolkit)
 * [NIST SP 800-207 Zero Trust Architecture](https://nvlpubs.nist.gov/nistpubs/specialpublications/NIST.SP.800-207.pdf)
 
-[^0x10-C12-component]: **component** (EN) -> ਹਿੱਸੇ — logged as an open corpus split: C12 uses the native ਹਿੱਸਾ here while C09/C10 use the loan ਕੰਪੋਨੈਂਟ for the identical term-of-art sense. Full discussion: OPEN-QUESTIONS.md Q95.
+[^0x10-C12-component]: **component** (EN) -> ਹਿੱਸੇ — logged as an open corpus split: C੧੨ uses the native ਹਿੱਸਾ here while C09/C10 use the loan ਕੰਪੋਨੈਂਟ for the identical term-of-art sense. Full discussion: OPEN-QUESTIONS.md Q95.
 [^0x10-C12-covert-channel]: **covert channel** (EN) -> ਲੁਕਵੇਂ ਚੈਨਲ — ਗੁਪਤ ("confidential") was deliberately avoided because it is already locked elsewhere for *confidential computing*, and reusing it here would merge the protective and adversarial senses of one adjective. Full discussion: OPEN-QUESTIONS.md Q128.
 [^0x10-C12-hallucination]: **hallucination** (EN) -> retained in Latin script, glossed ਮਨਘੜਤ ਸਮੱਗਰੀ ("fabricated content") — the native candidates (ਭਰਮ, ਭੁਲੇਖਾ, ਵਹਿਮ) all carry Gurbani-specific spiritual weight and were rejected on Gurmat-safety grounds. Full discussion: OPEN-QUESTIONS.md Q65.
-[^0x10-C12-immutable]: **immutable** (EN) -> ਅਪਰਿਵਰਤਨਸ਼ੀਲ — this requirement (12.5.3) is the corpus's cited precedent for the adjective form, later reused to correct a paraphrase found elsewhere in the corpus. Full discussion: OPEN-QUESTIONS.md Q112.
+[^0x10-C12-immutable]: **immutable** (EN) -> ਅਪਰਿਵਰਤਨਸ਼ੀਲ — this requirement (੧੨.੫.੩) is the corpus's cited precedent for the adjective form, later reused to correct a paraphrase found elsewhere in the corpus. Full discussion: OPEN-QUESTIONS.md Q112.
 
 \newpage
 <!-- Translation Status: ✅ Complete -->
@@ -2081,7 +2081,7 @@ This glossary defines key AI, ML, and security terms used throughout the AISVS t
 * **hallucination (ਮਨਘੜਤ ਸਮੱਗਰੀ)** – ਇੱਕ ਵਰਤਾਰਾ ਜਿਸ ਵਿੱਚ ਕੋਈ AI ਮਾਡਲ ਗ਼ਲਤ ਜਾਂ ਗੁੰਮਰਾਹਕੁੰਨ ਜਾਣਕਾਰੀ ਤਿਆਰ ਕਰਦਾ ਹੈ ਜੋ ਉਸ ਦੇ ਸਿਖਲਾਈ ਡਾਟੇ, ਪ੍ਰਾਪਤ ਕੀਤੇ ਸੰਦਰਭ, ਜਾਂ ਤੱਥਾਂ ਦੀ ਅਸਲੀਅਤ ਉੱਤੇ ਆਧਾਰਿਤ ਨਹੀਂ ਹੁੰਦੀ।
 
 * **Homoglyph** – A character that visually resembles another character from a different script or encoding (e.g., Cyrillic "а" U+0430 vs. Latin "a" U+0061), exploited in attacks to bypass text-based input validation.
-* **homoglyph (ਸਮਰੂਪ ਅੱਖਰ)** – ਅਜਿਹਾ ਅੱਖਰ ਜੋ ਕਿਸੇ ਵੱਖਰੀ ਲਿਪੀ ਜਾਂ ਏਨਕੋਡਿੰਗ ਦੇ ਕਿਸੇ ਹੋਰ ਅੱਖਰ ਵਰਗਾ ਦਿਸਦਾ ਹੈ (ਜਿਵੇਂ, ਸਿਰਿਲਿਕ "а" U+0430 ਬਨਾਮ ਲਾਤੀਨੀ "a" U+0061), ਅਤੇ ਲਿਖਤ-ਆਧਾਰਿਤ ਇਨਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ ਨੂੰ ਬਾਈਪਾਸ ਕਰਨ ਵਾਲੇ ਹਮਲਿਆਂ ਵਿੱਚ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ।
+* **homoglyph (ਸਮਰੂਪ ਅੱਖਰ)** – ਅਜਿਹਾ ਅੱਖਰ ਜੋ ਕਿਸੇ ਵੱਖਰੀ ਲਿਪੀ ਜਾਂ ਏਨਕੋਡਿੰਗ ਦੇ ਕਿਸੇ ਹੋਰ ਅੱਖਰ ਵਰਗਾ ਦਿਸਦਾ ਹੈ (ਜਿਵੇਂ, ਸਿਰਿਲਿਕ "а" U+੦੪੩੦ ਬਨਾਮ ਲਾਤੀਨੀ "a" U+੦੦੬੧), ਅਤੇ ਲਿਖਤ-ਆਧਾਰਿਤ ਇਨਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ ਨੂੰ ਬਾਈਪਾਸ ਕਰਨ ਵਾਲੇ ਹਮਲਿਆਂ ਵਿੱਚ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ।
 
 * **HSM (Hardware Security Module)** – A dedicated physical device that manages, processes, and stores cryptographic keys in a tamper-resistant environment.
 * **HSM (Hardware Security Module — ਹਾਰਡਵੇਅਰ ਸੁਰੱਖਿਆ ਮਾਡਿਊਲ)** – ਇੱਕ ਸਮਰਪਿਤ ਭੌਤਿਕ ਯੰਤਰ ਜੋ ਛੇੜਛਾੜ-ਰੋਧਕ ਵਾਤਾਵਰਣ ਵਿੱਚ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਕੁੰਜੀਆਂ ਦਾ ਪ੍ਰਬੰਧਨ, ਪ੍ਰਕਿਰਿਆ, ਅਤੇ ਭੰਡਾਰਨ ਕਰਦਾ ਹੈ।
@@ -2213,7 +2213,7 @@ This glossary defines key AI, ML, and security terms used throughout the AISVS t
 * **prompt ਟੈਂਪਲੇਟ (Prompt Template)** – ਇੱਕ ਢਾਂਚਾਗਤ ਲਿਖਤੀ ਪੈਟਰਨ ਜੋ AI ਮਾਡਲ ਨੂੰ ਭੇਜੇ ਜਾਣ ਵਾਲੇ prompt ਬਣਾਉਣ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ, ਅਤੇ ਜਿਸ ਵਿੱਚ ਸਥਿਰ ਹਦਾਇਤਾਂ, ਉਪਭੋਗਤਾ ਇਨਪੁੱਟਾਂ ਲਈ ਪਰਿਵਰਤਨਸ਼ੀਲ ਥਾਂ-ਧਾਰਕ, ਅਤੇ ਫ਼ਾਰਮੈਟਿੰਗ ਨਿਰਦੇਸ਼ ਹੁੰਦੇ ਹਨ। prompt ਟੈਂਪਲੇਟ AI-ਵਿਸ਼ੇਸ਼ ਸੰਰਚਨਾ ਆਰਟੀਫ਼ੈਕਟ ਹਨ ਜਿਨ੍ਹਾਂ ਲਈ ਸਰੋਤ ਕੋਡ ਦੇ ਬਰਾਬਰ ਵਰਜ਼ਨ ਨਿਯੰਤਰਣ, ਅਖੰਡਤਾ ਸੁਰੱਖਿਆ, ਅਤੇ ਪਹੁੰਚ ਕੰਟਰੋਲ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ।
 
 * **Quantization** – A post-training compression technique that reduces model weight precision (e.g., from 32-bit to 8-bit or 4-bit integers) to decrease memory footprint and inference latency. Quantization can alter model behavior, requiring safety and robustness properties to be re-evaluated after application.
-* **ਕੁਆਂਟਾਈਜ਼ੇਸ਼ਨ (Quantization)** – ਸਿਖਲਾਈ-ਉਪਰੰਤ ਸੰਕੁਚਨ ਦੀ ਇੱਕ ਤਕਨੀਕ ਜੋ ਮੈਮੋਰੀ ਦੀ ਖਪਤ ਅਤੇ ਇਨਫ਼ਰੈਂਸ ਦੀ ਦੇਰੀ ਘਟਾਉਣ ਲਈ ਮਾਡਲ ਵੇਟਸ ਦੀ ਸ਼ੁੱਧਤਾ ਘਟਾ ਦਿੰਦੀ ਹੈ (ਜਿਵੇਂ, 32-ਬਿੱਟ ਤੋਂ 8-ਬਿੱਟ ਜਾਂ 4-ਬਿੱਟ ਪੂਰਨ ਅੰਕਾਂ ਤੱਕ)। ਕੁਆਂਟਾਈਜ਼ੇਸ਼ਨ ਮਾਡਲ ਦਾ ਵਿਵਹਾਰ ਬਦਲ ਸਕਦੀ ਹੈ, ਇਸ ਲਈ ਇਸ ਨੂੰ ਲਾਗੂ ਕਰਨ ਤੋਂ ਬਾਅਦ ਸਲਾਮਤੀ ਅਤੇ ਮਜ਼ਬੂਤੀ ਦੇ ਗੁਣਾਂ ਦਾ ਮੁੜ-ਮੁਲਾਂਕਣ ਲਾਜ਼ਮੀ ਹੈ।
+* **ਕੁਆਂਟਾਈਜ਼ੇਸ਼ਨ (Quantization)** – ਸਿਖਲਾਈ-ਉਪਰੰਤ ਸੰਕੁਚਨ ਦੀ ਇੱਕ ਤਕਨੀਕ ਜੋ ਮੈਮੋਰੀ ਦੀ ਖਪਤ ਅਤੇ ਇਨਫ਼ਰੈਂਸ ਦੀ ਦੇਰੀ ਘਟਾਉਣ ਲਈ ਮਾਡਲ ਵੇਟਸ ਦੀ ਸ਼ੁੱਧਤਾ ਘਟਾ ਦਿੰਦੀ ਹੈ (ਜਿਵੇਂ, ੩੨-ਬਿੱਟ ਤੋਂ ੮-ਬਿੱਟ ਜਾਂ ੪-ਬਿੱਟ ਪੂਰਨ ਅੰਕਾਂ ਤੱਕ)। ਕੁਆਂਟਾਈਜ਼ੇਸ਼ਨ ਮਾਡਲ ਦਾ ਵਿਵਹਾਰ ਬਦਲ ਸਕਦੀ ਹੈ, ਇਸ ਲਈ ਇਸ ਨੂੰ ਲਾਗੂ ਕਰਨ ਤੋਂ ਬਾਅਦ ਸਲਾਮਤੀ ਅਤੇ ਮਜ਼ਬੂਤੀ ਦੇ ਗੁਣਾਂ ਦਾ ਮੁੜ-ਮੁਲਾਂਕਣ ਲਾਜ਼ਮੀ ਹੈ।
 
 * **RAG (Retrieval-Augmented Generation)** – A technique that enhances large language models by retrieving relevant information from external knowledge sources before generating a response.
 * **RAG (Retrieval-Augmented Generation)** – ਇੱਕ ਤਕਨੀਕ ਜੋ ਜਵਾਬ ਤਿਆਰ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਬਾਹਰੀ ਗਿਆਨ-ਸਰੋਤਾਂ ਤੋਂ ਸੰਬੰਧਿਤ ਜਾਣਕਾਰੀ ਦੀ ਪ੍ਰਾਪਤੀ ਕਰਕੇ ਵੱਡੇ ਭਾਸ਼ਾ ਮਾਡਲਾਂ ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਂਦੀ ਹੈ।
@@ -2377,8 +2377,8 @@ This glossary defines key AI, ML, and security terms used throughout the AISVS t
 [^0x90-data-minimization]: **Data Minimization** (EN) -> ਡਾਟਾ ਘੱਟੋ-ਘੱਟਕਰਨ — built on the corpus's settled ਘੱਟੋ-ਘੱਟ ("minimum/least"), not ਸੀਮਿਤਕਰਨ ("limiting"), because minimization is a floor obligation and "limiting" would soften it. Full discussion: OPEN-QUESTIONS.md Q130.
 [^0x90-defense-in-depth]: **Defense-in-Depth** (EN) -> retained, glossed ਡੂੰਘਾਈ ਵਿੱਚ ਬਚਾਅ — a named security doctrine (treated like Zero Trust), so the English string is kept for auditors and reference lists; normalised to un-hyphenated Panjabi for corpus consistency with the one other site that uses it. Full discussion: OPEN-QUESTIONS.md Q141.
 [^0x90-downgrade]: **Downgrade** (response) (EN) -> ਡਾਊਨਗ੍ਰੇਡ — kept as a loan and not ਨਿਘਾਰ, which this corpus already uses for *degradation* in the drift-monitoring sense; AISVS gives *downgrade* a precise, enumerated meaning that a narrower native word would soften. Full discussion: OPEN-QUESTIONS.md Q134.
-[^0x90-replay]: **replay** (EN) -> retained in Latin, glossed (ਦੁਹਰਾਓ) — corrected from an earlier draft's ਮੁੜ-ਵਰਤੋਂ, which collides with *reuse* elsewhere in the corpus; conforms to the C10 chapter's decision to keep *replay* searchable as a named attack class. Full discussion: OPEN-QUESTIONS.md Q144.
-[^0x90-excessive-agency]: **Excessive Agency** (EN) -> retained, glossed ਹੱਦੋਂ ਵੱਧ ਏਜੰਟ-ਸਮਰੱਥਾ — a named OWASP LLM06:2025 vulnerability class, so the English survives for catalogue cross-reference; the gloss avoids ਅਧਿਕਾਰ (already bound to *authorization*) and does not collapse to autonomy alone, since the source names three separate things that can be excessive. Full discussion: OPEN-QUESTIONS.md Q135.
+[^0x90-replay]: **replay** (EN) -> retained in Latin, glossed (ਦੁਹਰਾਓ) — corrected from an earlier draft's ਮੁੜ-ਵਰਤੋਂ, which collides with *reuse* elsewhere in the corpus; conforms to the C੧੦ chapter's decision to keep *replay* searchable as a named attack class. Full discussion: OPEN-QUESTIONS.md Q144.
+[^0x90-excessive-agency]: **Excessive Agency** (EN) -> retained, glossed ਹੱਦੋਂ ਵੱਧ ਏਜੰਟ-ਸਮਰੱਥਾ — a named OWASP LLM06:੨੦੨੫ vulnerability class, so the English survives for catalogue cross-reference; the gloss avoids ਅਧਿਕਾਰ (already bound to *authorization*) and does not collapse to autonomy alone, since the source names three separate things that can be excessive. Full discussion: OPEN-QUESTIONS.md Q135.
 [^0x90-side-effects]: **side effects** (EN) -> ਸਹਿ-ਪ੍ਰਭਾਵ — corrected from an earlier draft's ਮਾੜੇ ਪ੍ਰਭਾਵ ("adverse effects"), a value judgement the source does not make; matches the gloss already used elsewhere in the corpus for the same English term. Full discussion: OPEN-QUESTIONS.md Q144.
 [^0x90-explainability]: **Explainability** (EN) -> ਵਿਆਖਿਆਯੋਗਤਾ — built with the -ਯੋਗਤਾ property-noun suffix, matching how the corpus already forms ਟਰੇਸਯੋਗਤਾ (traceability); kept distinct from ਪਾਰਦਰਸ਼ਤਾ (*transparency*), a separate governance concept elsewhere in the corpus. Full discussion: OPEN-QUESTIONS.md Q120.
 [^0x90-fail-closed-open]: **Fail-Closed / Fail-Open** (EN) -> ਨਾਕਾਮੀ-'ਤੇ-ਬੰਦ / ਨਾਕਾਮੀ-'ਤੇ-ਖੁੱਲ੍ਹਾ — the literal compound pair was chosen over the shorter transliterated loan because the source states the control as one and names its opposite as the corresponding pitfall, and only the literal compound inverts cleanly for both. Full discussion: OPEN-QUESTIONS.md Q104.
@@ -2411,12 +2411,12 @@ This appendix is a consolidated, developer-facing inventory of the security cont
 
 This inventory is non-normative. It reorganizes existing requirements for ease of implementation and does not add, remove, or change any requirement. The requirement chapters (C1 through C12) remain the source of truth. Requirement IDs are written in canonical `C{chapter}.{section}.{requirement}` form (for example, `C5.1.1`). Every numbered requirement in the standard appears in exactly one control family below, so the inventory can be checked for completeness against the chapters.
 
-ਇਹ ਇਨਵੈਂਟਰੀ ਗ਼ੈਰ-ਨਿਯਮਬੱਧ[^0x91-non-normative] (non-normative) ਹੈ। ਇਹ ਮੌਜੂਦਾ ਲੋੜਾਂ ਨੂੰ ਲਾਗੂ ਕਰਨ ਦੀ ਸੌਖ ਲਈ ਮੁੜ-ਵਿਵਸਥਿਤ ਕਰਦੀ ਹੈ ਅਤੇ ਕਿਸੇ ਵੀ ਲੋੜ ਨੂੰ ਜੋੜਦੀ, ਹਟਾਉਂਦੀ, ਜਾਂ ਬਦਲਦੀ ਨਹੀਂ। ਲੋੜ ਅਧਿਆਇ (C1 ਤੋਂ C12) ਹੀ ਫ਼ੈਸਲਾਕੁੰਨ ਸਰੋਤ[^0x91-source-of-truth] (source of truth) ਬਣੇ ਰਹਿੰਦੇ ਹਨ। ਲੋੜ ID ਕੈਨੋਨੀਕਲ `C{chapter}.{section}.{requirement}` ਰੂਪ ਵਿੱਚ ਲਿਖੇ ਜਾਂਦੇ ਹਨ (ਉਦਾਹਰਨ ਲਈ, `C5.1.1`)। ਮਿਆਰ ਵਿਚਲੀ ਹਰ ਨੰਬਰ ਵਾਲੀ ਲੋੜ ਹੇਠਾਂ ਦਿੱਤੇ ਬਿਲਕੁਲ ਇੱਕ ਨਿਯੰਤਰਣ ਪਰਿਵਾਰ ਵਿੱਚ ਆਉਂਦੀ ਹੈ, ਇਸ ਲਈ ਇਨਵੈਂਟਰੀ ਦੀ ਸੰਪੂਰਨਤਾ ਨੂੰ ਅਧਿਆਵਾਂ ਦੇ ਵਿਰੁੱਧ ਜਾਂਚਿਆ ਜਾ ਸਕਦਾ ਹੈ।
+ਇਹ ਇਨਵੈਂਟਰੀ ਗ਼ੈਰ-ਨਿਯਮਬੱਧ[^0x91-non-normative] (non-normative) ਹੈ। ਇਹ ਮੌਜੂਦਾ ਲੋੜਾਂ ਨੂੰ ਲਾਗੂ ਕਰਨ ਦੀ ਸੌਖ ਲਈ ਮੁੜ-ਵਿਵਸਥਿਤ ਕਰਦੀ ਹੈ ਅਤੇ ਕਿਸੇ ਵੀ ਲੋੜ ਨੂੰ ਜੋੜਦੀ, ਹਟਾਉਂਦੀ, ਜਾਂ ਬਦਲਦੀ ਨਹੀਂ। ਲੋੜ ਅਧਿਆਇ (C੧ ਤੋਂ C੧੨) ਹੀ ਫ਼ੈਸਲਾਕੁੰਨ ਸਰੋਤ[^0x91-source-of-truth] (source of truth) ਬਣੇ ਰਹਿੰਦੇ ਹਨ। ਲੋੜ ID ਕੈਨੋਨੀਕਲ `C{chapter}.{section}.{requirement}` ਰੂਪ ਵਿੱਚ ਲਿਖੇ ਜਾਂਦੇ ਹਨ (ਉਦਾਹਰਨ ਲਈ, `C5.1.1`)। ਮਿਆਰ ਵਿਚਲੀ ਹਰ ਨੰਬਰ ਵਾਲੀ ਲੋੜ ਹੇਠਾਂ ਦਿੱਤੇ ਬਿਲਕੁਲ ਇੱਕ ਨਿਯੰਤਰਣ ਪਰਿਵਾਰ ਵਿੱਚ ਆਉਂਦੀ ਹੈ, ਇਸ ਲਈ ਇਨਵੈਂਟਰੀ ਦੀ ਸੰਪੂਰਨਤਾ ਨੂੰ ਅਧਿਆਵਾਂ ਦੇ ਵਿਰੁੱਧ ਜਾਂਚਿਆ ਜਾ ਸਕਦਾ ਹੈ।
 
 ---
 
 ## AD.1 Authentication & Identity
-## AD.1 ਪ੍ਰਮਾਣੀਕਰਨ ਅਤੇ ਪਛਾਣ
+## AD.੧ ਪ੍ਰਮਾਣੀਕਰਨ ਅਤੇ ਪਛਾਣ
 
 Verify the identity of users, agents, services, edge devices, and MCP clients/servers before granting access.
 
@@ -2438,17 +2438,17 @@ Verify the identity of users, agents, services, edge devices, and MCP clients/se
 
 | ਨਿਯੰਤਰਣ / ਤਕਨੀਕ | ਲੋੜ ID |
 | --- | --- |
-| ਉੱਚ-ਜੋਖਮ ਵਾਲੀਆਂ AI ਕਾਰਵਾਈਆਂ (ਮਾਡਲ ਤੈਨਾਤੀ, ਵੇਟਸ ਨਿਰਯਾਤ, ਸਿਖਲਾਈ-ਡਾਟਾ ਪਹੁੰਚ, ਪ੍ਰੋਡਕਸ਼ਨ ਸੰਰਚਨਾ ਤਬਦੀਲੀਆਂ) ਲਈ ਸਟੈੱਪ-ਅੱਪ ਪ੍ਰਮਾਣੀਕਰਨ | C5.1.1 |
-| ਫ਼ੈਡਰੇਟਿਡ ਜਾਂ ਬਹੁ-ਸਿਸਟਮ ਏਜੰਟ ਪ੍ਰਮਾਣੀਕਰਨ ਲਈ ਥੋੜ੍ਹੇ ਸਮੇਂ ਵਾਲੇ, ਘੱਟੋ-ਘੱਟ ਸਕੋਪ ਵਾਲੇ, ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਤੌਰ 'ਤੇ ਦਸਤਖ਼ਤ ਕੀਤੇ ਟੋਕਨ | C5.1.2 |
-| ਕੇਂਦਰੀ ਬੁਨਿਆਦੀ ਢਾਂਚੇ ਨਾਲ ਐਜ AI ਡਿਵਾਈਸਾਂ ਦਾ ਮਜ਼ਬੂਤ ਪ੍ਰਮਾਣੀਕਰਨ | C4.3.1 |
-| ਪ੍ਰਤੀ ਏਜੰਟ ਇੰਸਟਾਂਸ ਵਿਲੱਖਣ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਪਛਾਣ, ਜੋ ਡਾਊਨਸਟ੍ਰੀਮ ਸਿਸਟਮਾਂ ਲਈ ਪਹਿਲੇ-ਦਰਜੇ ਦੀ ਪਛਾਣ-ਇਕਾਈ[^0x91-principal-identity-entity] (first-class principal) ਵਜੋਂ ਪ੍ਰਮਾਣੀਕਰਨ ਕਰਦੀ ਹੈ | C9.4.1 |
-| ਏਜੰਟ ਪਛਾਣ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲਾਂ ਦੀ ਸਮਾਂ-ਸਾਰਣੀ ਅਨੁਸਾਰ ਅਦਲਾ-ਬਦਲੀ (rotation) | C9.4.3 |
-| MCP ਪ੍ਰਤੀ-ਬੇਨਤੀ ਪਹੁੰਚ-ਟੋਕਨ ਪ੍ਰਮਾਣਿਕਤਾ (ਸਿਰਫ਼ ਟ੍ਰਾਂਸਪੋਰਟ ਸੁਰੱਖਿਆ ਨਹੀਂ) | C10.2.1 |
-| OAuth 2.1 ਅਨੁਸਾਰ MCP ਪਹੁੰਚ-ਟੋਕਨ ਦੇ ਦਾਅਵਿਆਂ (claims) — ਜਾਰੀਕਰਤਾ, ਉਦੇਸ਼ਿਤ ਪ੍ਰਾਪਤਕਰਤਾ (audience), ਮਿਆਦ ਸਮਾਪਤੀ, ਸਕੋਪ — ਦੀ ਪ੍ਰਮਾਣਿਕਤਾ | C10.2.2 |
-| MCP ਸਰੋਤ ਸਰਵਰ ਪਹੁੰਚ ਟੋਕਨ ਜਾਂ ਉਪਭੋਗਤਾ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ ਨਾ ਤਾਂ ਭੰਡਾਰ ਕਰਦੇ ਹਨ ਅਤੇ ਨਾ ਹੀ ਸਥਾਈ ਤੌਰ 'ਤੇ ਰੱਖਦੇ ਹਨ | C10.2.3 |
-| ਸੈਸ਼ਨ ਸਮਾਪਤੀ 'ਤੇ ਸਾਰੇ MCP ਸੈਸ਼ਨ ਆਰਟੀਫ਼ੈਕਟਾਂ ਨੂੰ ਹਟਾਉਣਾ | C10.2.6 |
-| ਕਲਾਇੰਟ ਪਹੁੰਚ ਟੋਕਨਾਂ ਨੂੰ ਡਾਊਨਸਟ੍ਰੀਮ API ਤੱਕ ਅੱਗੇ ਨਾ ਲੰਘਾਉਣਾ[^0x91-pass-through] (pass-through) | C10.2.7 |
-| ਭੇਜਣ ਵਾਲੇ ਨਾਲ ਬੰਨ੍ਹੇ ਹੋਏ (sender-constrained) MCP ਪਹੁੰਚ ਟੋਕਨ (mTLS ਜਾਂ DPoP) | C10.3.5 |
+| ਉੱਚ-ਜੋਖਮ ਵਾਲੀਆਂ AI ਕਾਰਵਾਈਆਂ (ਮਾਡਲ ਤੈਨਾਤੀ, ਵੇਟਸ ਨਿਰਯਾਤ, ਸਿਖਲਾਈ-ਡਾਟਾ ਪਹੁੰਚ, ਪ੍ਰੋਡਕਸ਼ਨ ਸੰਰਚਨਾ ਤਬਦੀਲੀਆਂ) ਲਈ ਸਟੈੱਪ-ਅੱਪ ਪ੍ਰਮਾਣੀਕਰਨ | C੫.੧.੧ |
+| ਫ਼ੈਡਰੇਟਿਡ ਜਾਂ ਬਹੁ-ਸਿਸਟਮ ਏਜੰਟ ਪ੍ਰਮਾਣੀਕਰਨ ਲਈ ਥੋੜ੍ਹੇ ਸਮੇਂ ਵਾਲੇ, ਘੱਟੋ-ਘੱਟ ਸਕੋਪ ਵਾਲੇ, ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਤੌਰ 'ਤੇ ਦਸਤਖ਼ਤ ਕੀਤੇ ਟੋਕਨ | C੫.੧.੨ |
+| ਕੇਂਦਰੀ ਬੁਨਿਆਦੀ ਢਾਂਚੇ ਨਾਲ ਐਜ AI ਡਿਵਾਈਸਾਂ ਦਾ ਮਜ਼ਬੂਤ ਪ੍ਰਮਾਣੀਕਰਨ | C੪.੩.੧ |
+| ਪ੍ਰਤੀ ਏਜੰਟ ਇੰਸਟਾਂਸ ਵਿਲੱਖਣ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਪਛਾਣ, ਜੋ ਡਾਊਨਸਟ੍ਰੀਮ ਸਿਸਟਮਾਂ ਲਈ ਪਹਿਲੇ-ਦਰਜੇ ਦੀ ਪਛਾਣ-ਇਕਾਈ[^0x91-principal-identity-entity] (first-class principal) ਵਜੋਂ ਪ੍ਰਮਾਣੀਕਰਨ ਕਰਦੀ ਹੈ | C੯.੪.੧ |
+| ਏਜੰਟ ਪਛਾਣ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲਾਂ ਦੀ ਸਮਾਂ-ਸਾਰਣੀ ਅਨੁਸਾਰ ਅਦਲਾ-ਬਦਲੀ (rotation) | C੯.੪.੩ |
+| MCP ਪ੍ਰਤੀ-ਬੇਨਤੀ ਪਹੁੰਚ-ਟੋਕਨ ਪ੍ਰਮਾਣਿਕਤਾ (ਸਿਰਫ਼ ਟ੍ਰਾਂਸਪੋਰਟ ਸੁਰੱਖਿਆ ਨਹੀਂ) | C੧੦.੨.੧ |
+| OAuth 2.1 ਅਨੁਸਾਰ MCP ਪਹੁੰਚ-ਟੋਕਨ ਦੇ ਦਾਅਵਿਆਂ (claims) — ਜਾਰੀਕਰਤਾ, ਉਦੇਸ਼ਿਤ ਪ੍ਰਾਪਤਕਰਤਾ (audience), ਮਿਆਦ ਸਮਾਪਤੀ, ਸਕੋਪ — ਦੀ ਪ੍ਰਮਾਣਿਕਤਾ | C੧੦.੨.੨ |
+| MCP ਸਰੋਤ ਸਰਵਰ ਪਹੁੰਚ ਟੋਕਨ ਜਾਂ ਉਪਭੋਗਤਾ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ ਨਾ ਤਾਂ ਭੰਡਾਰ ਕਰਦੇ ਹਨ ਅਤੇ ਨਾ ਹੀ ਸਥਾਈ ਤੌਰ 'ਤੇ ਰੱਖਦੇ ਹਨ | C੧੦.੨.੩ |
+| ਸੈਸ਼ਨ ਸਮਾਪਤੀ 'ਤੇ ਸਾਰੇ MCP ਸੈਸ਼ਨ ਆਰਟੀਫ਼ੈਕਟਾਂ ਨੂੰ ਹਟਾਉਣਾ | C੧੦.੨.੬ |
+| ਕਲਾਇੰਟ ਪਹੁੰਚ ਟੋਕਨਾਂ ਨੂੰ ਡਾਊਨਸਟ੍ਰੀਮ API ਤੱਕ ਅੱਗੇ ਨਾ ਲੰਘਾਉਣਾ[^0x91-pass-through] (pass-through) | C੧੦.੨.੭ |
+| ਭੇਜਣ ਵਾਲੇ ਨਾਲ ਬੰਨ੍ਹੇ ਹੋਏ (sender-constrained) MCP ਪਹੁੰਚ ਟੋਕਨ (mTLS ਜਾਂ DPoP) | C੧੦.੩.੫ |
 
 **Common pitfalls:** reusing end-user credentials for agent-to-agent calls; not rotating agent credentials on suspected compromise; treating transport security as a substitute for per-request token validation.
 
@@ -2457,7 +2457,7 @@ Verify the identity of users, agents, services, edge devices, and MCP clients/se
 ---
 
 ## AD.2 Authorization & Access Control
-## AD.2 ਅਧਿਕਾਰੀਕਰਨ ਅਤੇ ਪਹੁੰਚ ਕੰਟਰੋਲ
+## AD.੨ ਅਧਿਕਾਰੀਕਰਨ ਅਤੇ ਪਹੁੰਚ ਕੰਟਰੋਲ
 
 Enforce access decisions across users, agents, tools, and resources using policy that the model cannot override.
 
@@ -2480,18 +2480,18 @@ Enforce access decisions across users, agents, tools, and resources using policy
 
 | ਨਿਯੰਤਰਣ / ਤਕਨੀਕ | ਲੋੜ ID |
 | --- | --- |
-| ਹਰ AI ਸਰੋਤ (ਡਾਟਾਸੈੱਟ, ਐਂਡਪੁਆਇੰਟ, ਵੈਕਟਰ ਸੰਗ੍ਰਹਿ, embedding ਇੰਡੈਕਸ, ਕੰਪਿਊਟ) ਉੱਤੇ ਸਪੱਸ਼ਟ allow-list ਅਤੇ ਡਿਫ਼ਾਲਟ-ਇਨਕਾਰ ਨਾਲ ਪਹੁੰਚ ਕੰਟਰੋਲ | C5.2.1 |
-| ਸਿਰਫ਼ ਸੇਵਾ ਖਾਤੇ ਦੀ ਬਜਾਏ, ਹਰ ਪ੍ਰਾਪਤੀ ਅਤੇ ਅਸੈਂਬਲੀ ਪੜਾਅ 'ਤੇ ਲਾਗੂ ਕੀਤਾ ਗਿਆ ਅੰਤਮ-ਉਪਭੋਗਤਾ ਅਧਿਕਾਰੀਕਰਨ ਸੰਦਰਭ | C5.2.2 |
-| ਇਨਫ਼ਰੈਂਸ-ਉਪਰੰਤ ਫ਼ਿਲਟਰਿੰਗ, ਤਾਂ ਜੋ ਜਵਾਬਾਂ ਵਿੱਚ ਉਹ ਡਾਟਾ ਸ਼ਾਮਲ ਨਾ ਹੋਵੇ ਜਿਸ ਨੂੰ ਪ੍ਰਾਪਤ ਕਰਨ ਦਾ ਬੇਨਤੀਕਰਤਾ ਹੱਕਦਾਰ ਨਹੀਂ | C5.2.4 |
-| ਏਜੰਟ ਦੇ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਵਾਤਾਵਰਣ ਤੋਂ ਅਲੱਗ-ਥਲੱਗ ਕੀਤਾ ਨੀਤੀ ਫ਼ੈਸਲਾ ਬਿੰਦੂ (policy decision point) | C5.2.5 |
-| ਮਾਡਲ ਵੇਟਸ, ਸਿਖਲਾਈ ਪਾਈਪਲਾਈਨਾਂ, ਅਤੇ ਪ੍ਰੋਡਕਸ਼ਨ ਸੰਰਚਨਾ ਤੱਕ ਆਪਣੇ-ਆਪ ਸਮਾਪਤੀ ਵਾਲੀ, ਸਿਰਫ਼ ਲੋੜ ਪੈਣ 'ਤੇ (just-in-time) ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਪ੍ਰਾਪਤ ਪਹੁੰਚ | C5.2.6 |
-| ਏਜੰਟ ਕਾਰਵਾਈਆਂ ਦਾ ਬਾਰੀਕ-ਪੱਧਰੀ, ਰਨਟਾਈਮ ਦੁਆਰਾ ਲਾਗੂ ਕੀਤਾ ਅਧਿਕਾਰੀਕਰਨ (ਕਿਹੜੇ ਟੂਲ, ਕਿਹੜੇ ਪੈਰਾਮੀਟਰ ਮੁੱਲ) | C9.5.1 |
-| ਹਰ ਡਾਊਨਸਟ੍ਰੀਮ ਕਾਲ ਤੱਕ ਅੱਗੇ ਸੰਚਾਰਿਤ ਕੀਤਾ ਅਖੰਡਤਾ-ਸੁਰੱਖਿਅਤ, ਸਕੋਪ-ਸੀਮਿਤ ਸੌਂਪਣੀ (delegation) ਟੋਕਨ | C9.5.2 |
-| ਐਪਲੀਕੇਸ਼ਨ ਤਰਕ ਜਾਂ ਨੀਤੀ ਇੰਜਣ ਦੁਆਰਾ ਲਾਗੂ ਕੀਤੇ ਪਹੁੰਚ ਕੰਟਰੋਲ ਫ਼ੈਸਲੇ, ਕਦੇ ਵੀ ਮਾਡਲ ਦੁਆਰਾ ਨਹੀਂ | C9.5.3 |
-| ਸਪੱਸ਼ਟ ਅਧਿਕਾਰੀਕਰਨ ਨੀਤੀ ਦੁਆਰਾ ਸੀਮਤ ਕੀਤੀ ਏਜੰਟਾਂ ਵਿਚਕਾਰ ਕਾਰਜ ਸੌਂਪਣੀ | C9.5.5 |
-| ਲੰਬੇ ਸਮੇਂ ਤੱਕ ਚੱਲਣ ਵਾਲੇ ਸੈਸ਼ਨਾਂ ਵਿੱਚ ਹਰ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਪ੍ਰਾਪਤ ਕਾਰਵਾਈ 'ਤੇ ਬੈਕਐਂਡ ਅਧਿਕਾਰੀਕਰਨ ਦਾ ਮੁੜ-ਮੁਲਾਂਕਣ | C9.5.6 |
-| ਸਕੋਪ-ਫ਼ਿਲਟਰ ਕੀਤੀ MCP ਟੂਲ ਖੋਜ (tools/list ਸਿਰਫ਼ ਅਧਿਕਾਰਤ ਟੂਲ ਵਾਪਸ ਕਰਦਾ ਹੈ) | C10.2.4 |
-| ਪ੍ਰਤੀ-ਸੱਦਾ MCP ਪਹੁੰਚ ਕੰਟਰੋਲ ਜੋ ਟੂਲ ਅਤੇ ਦਿੱਤੇ ਗਏ ਆਰਗੂਮੈਂਟ ਮੁੱਲ ਦੋਵਾਂ ਨੂੰ ਪ੍ਰਮਾਣਿਤ ਕਰਦਾ ਹੈ | C10.2.5 |
+| ਹਰ AI ਸਰੋਤ (ਡਾਟਾਸੈੱਟ, ਐਂਡਪੁਆਇੰਟ, ਵੈਕਟਰ ਸੰਗ੍ਰਹਿ, embedding ਇੰਡੈਕਸ, ਕੰਪਿਊਟ) ਉੱਤੇ ਸਪੱਸ਼ਟ allow-list ਅਤੇ ਡਿਫ਼ਾਲਟ-ਇਨਕਾਰ ਨਾਲ ਪਹੁੰਚ ਕੰਟਰੋਲ | C੫.੨.੧ |
+| ਸਿਰਫ਼ ਸੇਵਾ ਖਾਤੇ ਦੀ ਬਜਾਏ, ਹਰ ਪ੍ਰਾਪਤੀ ਅਤੇ ਅਸੈਂਬਲੀ ਪੜਾਅ 'ਤੇ ਲਾਗੂ ਕੀਤਾ ਗਿਆ ਅੰਤਮ-ਉਪਭੋਗਤਾ ਅਧਿਕਾਰੀਕਰਨ ਸੰਦਰਭ | C੫.੨.੨ |
+| ਇਨਫ਼ਰੈਂਸ-ਉਪਰੰਤ ਫ਼ਿਲਟਰਿੰਗ, ਤਾਂ ਜੋ ਜਵਾਬਾਂ ਵਿੱਚ ਉਹ ਡਾਟਾ ਸ਼ਾਮਲ ਨਾ ਹੋਵੇ ਜਿਸ ਨੂੰ ਪ੍ਰਾਪਤ ਕਰਨ ਦਾ ਬੇਨਤੀਕਰਤਾ ਹੱਕਦਾਰ ਨਹੀਂ | C੫.੨.੪ |
+| ਏਜੰਟ ਦੇ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਵਾਤਾਵਰਣ ਤੋਂ ਅਲੱਗ-ਥਲੱਗ ਕੀਤਾ ਨੀਤੀ ਫ਼ੈਸਲਾ ਬਿੰਦੂ (policy decision point) | C੫.੨.੫ |
+| ਮਾਡਲ ਵੇਟਸ, ਸਿਖਲਾਈ ਪਾਈਪਲਾਈਨਾਂ, ਅਤੇ ਪ੍ਰੋਡਕਸ਼ਨ ਸੰਰਚਨਾ ਤੱਕ ਆਪਣੇ-ਆਪ ਸਮਾਪਤੀ ਵਾਲੀ, ਸਿਰਫ਼ ਲੋੜ ਪੈਣ 'ਤੇ (just-in-time) ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਪ੍ਰਾਪਤ ਪਹੁੰਚ | C੫.੨.੬ |
+| ਏਜੰਟ ਕਾਰਵਾਈਆਂ ਦਾ ਬਾਰੀਕ-ਪੱਧਰੀ, ਰਨਟਾਈਮ ਦੁਆਰਾ ਲਾਗੂ ਕੀਤਾ ਅਧਿਕਾਰੀਕਰਨ (ਕਿਹੜੇ ਟੂਲ, ਕਿਹੜੇ ਪੈਰਾਮੀਟਰ ਮੁੱਲ) | C੯.੫.੧ |
+| ਹਰ ਡਾਊਨਸਟ੍ਰੀਮ ਕਾਲ ਤੱਕ ਅੱਗੇ ਸੰਚਾਰਿਤ ਕੀਤਾ ਅਖੰਡਤਾ-ਸੁਰੱਖਿਅਤ, ਸਕੋਪ-ਸੀਮਿਤ ਸੌਂਪਣੀ (delegation) ਟੋਕਨ | C੯.੫.੨ |
+| ਐਪਲੀਕੇਸ਼ਨ ਤਰਕ ਜਾਂ ਨੀਤੀ ਇੰਜਣ ਦੁਆਰਾ ਲਾਗੂ ਕੀਤੇ ਪਹੁੰਚ ਕੰਟਰੋਲ ਫ਼ੈਸਲੇ, ਕਦੇ ਵੀ ਮਾਡਲ ਦੁਆਰਾ ਨਹੀਂ | C੯.੫.੩ |
+| ਸਪੱਸ਼ਟ ਅਧਿਕਾਰੀਕਰਨ ਨੀਤੀ ਦੁਆਰਾ ਸੀਮਤ ਕੀਤੀ ਏਜੰਟਾਂ ਵਿਚਕਾਰ ਕਾਰਜ ਸੌਂਪਣੀ | C੯.੫.੫ |
+| ਲੰਬੇ ਸਮੇਂ ਤੱਕ ਚੱਲਣ ਵਾਲੇ ਸੈਸ਼ਨਾਂ ਵਿੱਚ ਹਰ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਪ੍ਰਾਪਤ ਕਾਰਵਾਈ 'ਤੇ ਬੈਕਐਂਡ ਅਧਿਕਾਰੀਕਰਨ ਦਾ ਮੁੜ-ਮੁਲਾਂਕਣ | C੯.੫.੬ |
+| ਸਕੋਪ-ਫ਼ਿਲਟਰ ਕੀਤੀ MCP ਟੂਲ ਖੋਜ (tools/list ਸਿਰਫ਼ ਅਧਿਕਾਰਤ ਟੂਲ ਵਾਪਸ ਕਰਦਾ ਹੈ) | C੧੦.੨.੪ |
+| ਪ੍ਰਤੀ-ਸੱਦਾ MCP ਪਹੁੰਚ ਕੰਟਰੋਲ ਜੋ ਟੂਲ ਅਤੇ ਦਿੱਤੇ ਗਏ ਆਰਗੂਮੈਂਟ ਮੁੱਲ ਦੋਵਾਂ ਨੂੰ ਪ੍ਰਮਾਣਿਤ ਕਰਦਾ ਹੈ | C੧੦.੨.੫ |
 
 **Common pitfalls:** relying on the service account's permissions instead of the caller's; letting model-generated output drive authorization; not re-checking authorization when context changes mid-session.
 
@@ -2500,7 +2500,7 @@ Enforce access decisions across users, agents, tools, and resources using policy
 ---
 
 ## AD.3 Data Classification & Tenant Isolation
-## AD.3 ਡਾਟਾ ਵਰਗੀਕਰਨ ਅਤੇ ਟੈਨੈਂਟ ਅਲੱਗ-ਥਲੱਗਤਾ
+## AD.੩ ਡਾਟਾ ਵਰਗੀਕਰਨ ਅਤੇ ਟੈਨੈਂਟ ਅਲੱਗ-ਥਲੱਗਤਾ
 
 Keep data within its authorization and tenancy boundaries as it flows through AI-specific transformations and shared infrastructure.
 
@@ -2515,10 +2515,10 @@ Keep data within its authorization and tenancy boundaries as it flows through AI
 
 | ਨਿਯੰਤਰਣ / ਤਕਨੀਕ | ਲੋੜ ID |
 | --- | --- |
-| ਸੰਵੇਦਨਸ਼ੀਲ ਡਾਟਾ ਮਾਡਲ ਵੇਟਸ ਵਿੱਚ ਸਥਾਈ ਰੱਖਣ ਦੀ ਬਜਾਏ ਪ੍ਰਾਪਤੀ ਪਾਈਪਲਾਈਨਾਂ ਰਾਹੀਂ ਦਿੱਤਾ ਜਾਣਾ | C5.2.3 |
-| ਵਰਗੀਕਰਨ ਲੇਬਲਾਂ ਦਾ ਡਾਊਨਸਟ੍ਰੀਮ ਸਰੋਤਾਂ (embeddings, prompt ਕੈਸ਼, ਮਾਡਲ ਆਊਟਪੁੱਟ) ਤੱਕ ਅੱਗੇ ਸੰਚਾਰ | C5.2.7 |
-| ਸਾਂਝੇ ਮਾਡਲ ਸਰਵਿੰਗ ਵਿੱਚ ਟੈਨੈਂਟਾਂ ਵਿਚਕਾਰ ਅਲੱਗ-ਥਲੱਗਤਾ (ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ, ਇਨਫ਼ਰੈਂਸ, embedding ਕਾਰਵਾਈਆਂ) | C5.3.1 |
-| ਸਾਂਝੇ ਕੰਪਿਊਟ ਦੇ ਆਰ-ਪਾਰ ਟੈਨੈਂਟਾਂ ਵਿਚਕਾਰ ਅਲੱਗ-ਥਲੱਗਤਾ (ਹਾਰਡਵੇਅਰ ਵਿਭਾਜਨ, ਗੁਪਤ ਕੰਪਿਊਟਿੰਗ, ਜਾਂ ਰਾਖਵੀਂ ਵੰਡ) | C5.3.2 |
+| ਸੰਵੇਦਨਸ਼ੀਲ ਡਾਟਾ ਮਾਡਲ ਵੇਟਸ ਵਿੱਚ ਸਥਾਈ ਰੱਖਣ ਦੀ ਬਜਾਏ ਪ੍ਰਾਪਤੀ ਪਾਈਪਲਾਈਨਾਂ ਰਾਹੀਂ ਦਿੱਤਾ ਜਾਣਾ | C੫.੨.੩ |
+| ਵਰਗੀਕਰਨ ਲੇਬਲਾਂ ਦਾ ਡਾਊਨਸਟ੍ਰੀਮ ਸਰੋਤਾਂ (embeddings, prompt ਕੈਸ਼, ਮਾਡਲ ਆਊਟਪੁੱਟ) ਤੱਕ ਅੱਗੇ ਸੰਚਾਰ | C੫.੨.੭ |
+| ਸਾਂਝੇ ਮਾਡਲ ਸਰਵਿੰਗ ਵਿੱਚ ਟੈਨੈਂਟਾਂ ਵਿਚਕਾਰ ਅਲੱਗ-ਥਲੱਗਤਾ (ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ, ਇਨਫ਼ਰੈਂਸ, embedding ਕਾਰਵਾਈਆਂ) | C੫.੩.੧ |
+| ਸਾਂਝੇ ਕੰਪਿਊਟ ਦੇ ਆਰ-ਪਾਰ ਟੈਨੈਂਟਾਂ ਵਿਚਕਾਰ ਅਲੱਗ-ਥਲੱਗਤਾ (ਹਾਰਡਵੇਅਰ ਵਿਭਾਜਨ, ਗੁਪਤ ਕੰਪਿਊਟਿੰਗ, ਜਾਂ ਰਾਖਵੀਂ ਵੰਡ) | C੫.੩.੨ |
 
 **Common pitfalls:** dropping classification labels when data is embedded or cached; assuming logical multi-tenancy is sufficient against side channels in shared inference caches.
 
@@ -2527,7 +2527,7 @@ Keep data within its authorization and tenancy boundaries as it flows through AI
 ---
 
 ## AD.4 Encryption & Data Protection
-## AD.4 ਏਨਕ੍ਰਿਪਸ਼ਨ ਅਤੇ ਡਾਟਾ ਸੁਰੱਖਿਆ
+## AD.੪ ਏਨਕ੍ਰਿਪਸ਼ਨ ਅਤੇ ਡਾਟਾ ਸੁਰੱਖਿਆ
 
 Protect data and secrets at rest, in transit, and in the model's observable context.
 
@@ -2543,11 +2543,11 @@ Protect data and secrets at rest, in transit, and in the model's observable cont
 
 | ਨਿਯੰਤਰਣ / ਤਕਨੀਕ | ਲੋੜ ID |
 | --- | --- |
-| ਸਿਖਲਾਈ ਡਾਟੇ ਦੇ ਭੰਡਾਰਨ ਅਤੇ ਪ੍ਰਸਾਰਣ ਦੌਰਾਨ ਉਸ ਦੀ ਅਖੰਡਤਾ ਦੀ ਸੁਰੱਖਿਆ | C1.1.3 |
-| ਕਿਸੇ ਵੀ ਲੇਬਲਿੰਗ ਆਰਟੀਫ਼ੈਕਟ ਵਿੱਚ ਵਰਤੋਂ ਤੋਂ ਪਹਿਲਾਂ ਲੇਬਲਾਂ ਵਿਚਲੀ ਸੰਵੇਦਨਸ਼ੀਲ ਜਾਣਕਾਰੀ ਦੀ ਰਿਡੈਕਸ਼ਨ, ਗੁਮਨਾਮੀਕਰਨ, ਜਾਂ ਏਨਕ੍ਰਿਪਸ਼ਨ | C1.2.3 |
-| ਹਾਰਡਵੇਅਰ-ਸਮਰਥਿਤ ਕੁੰਜੀ ਸਟੋਰਾਂ ਜਾਂ ਸੁਰੱਖਿਅਤ ਐਨਕਲੇਵਾਂ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਸੰਭਾਲੇ ਮਾਡਲ ਵੇਟਸ ਅਤੇ ਸੰਵੇਦਨਸ਼ੀਲ ਪੈਰਾਮੀਟਰਾਂ ਦੀ ਏਨਕ੍ਰਿਪਸ਼ਨ | C4.3.4 |
-| ਮੋਬਾਈਲ, IoT, ਜਾਂ ਏਮਬੈਡਡ ਐਪਾਂ ਵਿੱਚ ਪੈਕ ਕੀਤੇ ਮਾਡਲਾਂ ਦੀ ਸਥਿਰ ਸਥਿਤੀ ਵਿੱਚ ਏਨਕ੍ਰਿਪਸ਼ਨ, ਜੋ ਸਿਰਫ਼ ਭਰੋਸੇਯੋਗ ਰਨਟਾਈਮ ਜਾਂ ਸੁਰੱਖਿਅਤ ਐਨਕਲੇਵ ਦੇ ਅੰਦਰ ਹੀ ਡੀਕ੍ਰਿਪਟ ਹੁੰਦੇ ਹਨ | C4.3.5 |
-| ਗੁਪਤ ਭੇਦਾਂ ਅਤੇ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲਾਂ ਨੂੰ ਮਾਡਲ ਦੇ ਦੇਖਣਯੋਗ ਸੰਦਰਭ (ਸੰਦਰਭ ਵਿੰਡੋ, system prompt, ਟੂਲ-ਕਾਲ ਪੈਰਾਮੀਟਰ) ਤੋਂ ਬਾਹਰ ਰੱਖਣਾ | C9.5.4 |
+| ਸਿਖਲਾਈ ਡਾਟੇ ਦੇ ਭੰਡਾਰਨ ਅਤੇ ਪ੍ਰਸਾਰਣ ਦੌਰਾਨ ਉਸ ਦੀ ਅਖੰਡਤਾ ਦੀ ਸੁਰੱਖਿਆ | C੧.੧.੩ |
+| ਕਿਸੇ ਵੀ ਲੇਬਲਿੰਗ ਆਰਟੀਫ਼ੈਕਟ ਵਿੱਚ ਵਰਤੋਂ ਤੋਂ ਪਹਿਲਾਂ ਲੇਬਲਾਂ ਵਿਚਲੀ ਸੰਵੇਦਨਸ਼ੀਲ ਜਾਣਕਾਰੀ ਦੀ ਰਿਡੈਕਸ਼ਨ, ਗੁਮਨਾਮੀਕਰਨ, ਜਾਂ ਏਨਕ੍ਰਿਪਸ਼ਨ | C੧.੨.੩ |
+| ਹਾਰਡਵੇਅਰ-ਸਮਰਥਿਤ ਕੁੰਜੀ ਸਟੋਰਾਂ ਜਾਂ ਸੁਰੱਖਿਅਤ ਐਨਕਲੇਵਾਂ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਸੰਭਾਲੇ ਮਾਡਲ ਵੇਟਸ ਅਤੇ ਸੰਵੇਦਨਸ਼ੀਲ ਪੈਰਾਮੀਟਰਾਂ ਦੀ ਏਨਕ੍ਰਿਪਸ਼ਨ | C੪.੩.੪ |
+| ਮੋਬਾਈਲ, IoT, ਜਾਂ ਏਮਬੈਡਡ ਐਪਾਂ ਵਿੱਚ ਪੈਕ ਕੀਤੇ ਮਾਡਲਾਂ ਦੀ ਸਥਿਰ ਸਥਿਤੀ ਵਿੱਚ ਏਨਕ੍ਰਿਪਸ਼ਨ, ਜੋ ਸਿਰਫ਼ ਭਰੋਸੇਯੋਗ ਰਨਟਾਈਮ ਜਾਂ ਸੁਰੱਖਿਅਤ ਐਨਕਲੇਵ ਦੇ ਅੰਦਰ ਹੀ ਡੀਕ੍ਰਿਪਟ ਹੁੰਦੇ ਹਨ | C੪.੩.੫ |
+| ਗੁਪਤ ਭੇਦਾਂ ਅਤੇ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲਾਂ ਨੂੰ ਮਾਡਲ ਦੇ ਦੇਖਣਯੋਗ ਸੰਦਰਭ (ਸੰਦਰਭ ਵਿੰਡੋ, system prompt, ਟੂਲ-ਕਾਲ ਪੈਰਾਮੀਟਰ) ਤੋਂ ਬਾਹਰ ਰੱਖਣਾ | C੯.੫.੪ |
 
 **Common pitfalls:** encrypting the database but not model checkpoints or embeddings; leaving model weights extractable from an app package; exposing API keys inside tool-call parameters.
 
@@ -2556,7 +2556,7 @@ Protect data and secrets at rest, in transit, and in the model's observable cont
 ---
 
 ## AD.5 Integrity, Signing & Provenance
-## AD.5 ਅਖੰਡਤਾ, ਦਸਤਖ਼ਤ, ਅਤੇ ਮੂਲ-ਸਰੋਤ
+## AD.੫ ਅਖੰਡਤਾ, ਦਸਤਖ਼ਤ, ਅਤੇ ਮੂਲ-ਸਰੋਤ
 
 Verify authenticity and detect tampering of models, artifacts, messages, tool definitions, and generated media.
 
@@ -2577,16 +2577,16 @@ Verify authenticity and detect tampering of models, artifacts, messages, tool de
 
 | ਨਿਯੰਤਰਣ / ਤਕਨੀਕ | ਲੋੜ ID |
 | --- | --- |
-| ਅਣਅਧਿਕਾਰਤ ਸੋਧ ਜਾਂ ਵਿਗਾੜ ਵਿਰੁੱਧ ਸਿਖਲਾਈ ਡਾਟੇ ਦੀ ਅਖੰਡਤਾ ਨਿਗਰਾਨੀ | C1.1.4 |
-| ਲੇਬਲਿੰਗ ਆਰਟੀਫ਼ੈਕਟਾਂ ਲਈ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਅਖੰਡਤਾ | C1.2.2 |
-| ਸਾਰੇ ਮਾਡਲ ਆਰਟੀਫ਼ੈਕਟਾਂ (ਵੇਟਸ, ਸੰਰਚਨਾਵਾਂ, ਟੋਕਨਾਈਜ਼ਰ, ਬੇਸ ਮਾਡਲ, ਫ਼ਾਈਨ-ਟਿਊਨ, ਅਡੈਪਟਰ, ਸਲਾਮਤੀ/ਨੀਤੀ ਮਾਡਲ) ਦੇ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਦਸਤਖ਼ਤ | C3.1.2 |
-| ਤੈਨਾਤੀ ਦਾਖ਼ਲੇ ਸਮੇਂ ਅਤੇ ਲੋਡ ਹੋਣ ਸਮੇਂ ਦਸਤਖ਼ਤਾਂ ਦੀ ਤਸਦੀਕ | C3.1.3 |
-| ਦਸਤਖ਼ਤ ਕੀਤੇ ਐਜ/ਮੋਬਾਈਲ ਮਾਡਲ ਪੈਕੇਜ, ਜਿਨ੍ਹਾਂ ਦੇ ਦਸਤਖ਼ਤ ਜਾਂ ਚੈੱਕਸਮ ਲੋਡ ਤੋਂ ਪਹਿਲਾਂ ਡਿਵਾਈਸ ਉੱਤੇ ਹੀ ਪ੍ਰਮਾਣਿਤ ਹੁੰਦੇ ਹਨ | C4.3.2 |
-| ਗ਼ੈਰ-ਇਨਕਾਰਯੋਗਤਾ (non-repudiation) ਲਈ ਏਜੰਟ ਦੁਆਰਾ ਸ਼ੁਰੂ ਕੀਤੀਆਂ ਕਾਰਵਾਈਆਂ ਦਾ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਲੜੀ ਦੇ ਹਰ ਪੜਾਅ ਨਾਲ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਬੰਧਨ | C9.4.2 |
-| ਸੱਦਿਆਂ ਵਿਚਕਾਰ ਸਥਾਈ ਰੱਖੀ ਗਈ ਏਜੰਟ ਸਥਿਤੀ ਦੀ ਅਖੰਡਤਾ ਸੁਰੱਖਿਆ | C9.4.4 |
-| replay (ਦੁਹਰਾਓ)[^0x91-replay] ਵਿਰੁੱਧ ਬਚਾਅ ਲਈ ਵਿਲੱਖਣ ਨੌਂਸ (nonce) ਅਤੇ ਟਾਈਮਸਟੈਂਪ ਸਮੇਤ ਦਸਤਖ਼ਤ ਕੀਤੇ MCP ਟੂਲ ਜਵਾਬ | C10.4.6 |
-| ਟੂਲ ਪਰਿਭਾਸ਼ਾਵਾਂ ਦੀ ਸਨੈਪਸ਼ਾਟਿੰਗ, ਜਿਸ ਵਿੱਚ ਕਿਸੇ ਵੀ ਤਬਦੀਲੀ 'ਤੇ ਸੱਦੇ ਤੋਂ ਪਹਿਲਾਂ ਮੁੜ-ਮਨਜ਼ੂਰੀ ਲਾਜ਼ਮੀ ਹੈ | C10.4.8 |
-| AI ਦੁਆਰਾ ਤਿਆਰ ਕੀਤੇ ਮੀਡੀਆ ਦੀ ਵਾਟਰਮਾਰਕਿੰਗ ਤਾਂ ਜੋ ਇਹ ਸਾਬਤ ਹੋ ਸਕੇ ਕਿ ਇਹ AI ਦੁਆਰਾ ਤਿਆਰ ਕੀਤਾ ਗਿਆ ਸੀ | C7.4.4 |
+| ਅਣਅਧਿਕਾਰਤ ਸੋਧ ਜਾਂ ਵਿਗਾੜ ਵਿਰੁੱਧ ਸਿਖਲਾਈ ਡਾਟੇ ਦੀ ਅਖੰਡਤਾ ਨਿਗਰਾਨੀ | C੧.੧.੪ |
+| ਲੇਬਲਿੰਗ ਆਰਟੀਫ਼ੈਕਟਾਂ ਲਈ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਅਖੰਡਤਾ | C੧.੨.੨ |
+| ਸਾਰੇ ਮਾਡਲ ਆਰਟੀਫ਼ੈਕਟਾਂ (ਵੇਟਸ, ਸੰਰਚਨਾਵਾਂ, ਟੋਕਨਾਈਜ਼ਰ, ਬੇਸ ਮਾਡਲ, ਫ਼ਾਈਨ-ਟਿਊਨ, ਅਡੈਪਟਰ, ਸਲਾਮਤੀ/ਨੀਤੀ ਮਾਡਲ) ਦੇ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਦਸਤਖ਼ਤ | C੩.੧.੨ |
+| ਤੈਨਾਤੀ ਦਾਖ਼ਲੇ ਸਮੇਂ ਅਤੇ ਲੋਡ ਹੋਣ ਸਮੇਂ ਦਸਤਖ਼ਤਾਂ ਦੀ ਤਸਦੀਕ | C੩.੧.੩ |
+| ਦਸਤਖ਼ਤ ਕੀਤੇ ਐਜ/ਮੋਬਾਈਲ ਮਾਡਲ ਪੈਕੇਜ, ਜਿਨ੍ਹਾਂ ਦੇ ਦਸਤਖ਼ਤ ਜਾਂ ਚੈੱਕਸਮ ਲੋਡ ਤੋਂ ਪਹਿਲਾਂ ਡਿਵਾਈਸ ਉੱਤੇ ਹੀ ਪ੍ਰਮਾਣਿਤ ਹੁੰਦੇ ਹਨ | C੪.੩.੨ |
+| ਗ਼ੈਰ-ਇਨਕਾਰਯੋਗਤਾ (non-repudiation) ਲਈ ਏਜੰਟ ਦੁਆਰਾ ਸ਼ੁਰੂ ਕੀਤੀਆਂ ਕਾਰਵਾਈਆਂ ਦਾ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਲੜੀ ਦੇ ਹਰ ਪੜਾਅ ਨਾਲ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਬੰਧਨ | C੯.੪.੨ |
+| ਸੱਦਿਆਂ ਵਿਚਕਾਰ ਸਥਾਈ ਰੱਖੀ ਗਈ ਏਜੰਟ ਸਥਿਤੀ ਦੀ ਅਖੰਡਤਾ ਸੁਰੱਖਿਆ | C੯.੪.੪ |
+| replay (ਦੁਹਰਾਓ)[^0x91-replay] ਵਿਰੁੱਧ ਬਚਾਅ ਲਈ ਵਿਲੱਖਣ ਨੌਂਸ (nonce) ਅਤੇ ਟਾਈਮਸਟੈਂਪ ਸਮੇਤ ਦਸਤਖ਼ਤ ਕੀਤੇ MCP ਟੂਲ ਜਵਾਬ | C੧੦.੪.੬ |
+| ਟੂਲ ਪਰਿਭਾਸ਼ਾਵਾਂ ਦੀ ਸਨੈਪਸ਼ਾਟਿੰਗ, ਜਿਸ ਵਿੱਚ ਕਿਸੇ ਵੀ ਤਬਦੀਲੀ 'ਤੇ ਸੱਦੇ ਤੋਂ ਪਹਿਲਾਂ ਮੁੜ-ਮਨਜ਼ੂਰੀ ਲਾਜ਼ਮੀ ਹੈ | C੧੦.੪.੮ |
+| AI ਦੁਆਰਾ ਤਿਆਰ ਕੀਤੇ ਮੀਡੀਆ ਦੀ ਵਾਟਰਮਾਰਕਿੰਗ ਤਾਂ ਜੋ ਇਹ ਸਾਬਤ ਹੋ ਸਕੇ ਕਿ ਇਹ AI ਦੁਆਰਾ ਤਿਆਰ ਕੀਤਾ ਗਿਆ ਸੀ | C੭.੪.੪ |
 
 **Common pitfalls:** using mutable tags instead of immutable digests; not re-verifying tool definitions between MCP invocations; missing replay protection on tool responses.
 
@@ -2595,7 +2595,7 @@ Verify authenticity and detect tampering of models, artifacts, messages, tool de
 ---
 
 ## AD.6 Input Validation & Sanitization
-## AD.6 ਇਨਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ ਅਤੇ ਸੈਨੀਟਾਈਜ਼ੇਸ਼ਨ
+## AD.੬ ਇਨਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ ਅਤੇ ਸੈਨੀਟਾਈਜ਼ੇਸ਼ਨ
 
 Validate, normalize, and constrain all inputs (including tool, MCP, and retrieved content) before they reach the model or downstream systems.
 
@@ -2625,25 +2625,25 @@ Validate, normalize, and constrain all inputs (including tool, MCP, and retrieve
 
 | ਨਿਯੰਤਰਣ / ਤਕਨੀਕ | ਲੋੜ ID |
 | --- | --- |
-| ਟੋਕਨਾਈਜ਼ੇਸ਼ਨ ਜਾਂ embedding ਤੋਂ ਪਹਿਲਾਂ ਲਾਗੂ ਕੀਤਾ ਇਨਪੁੱਟ ਸਧਾਰਨੀਕਰਨ | C2.1.1 |
-| ਏਨਕੋਡਿੰਗ ਅਤੇ ਪ੍ਰਤੀਨਿਧਤਾ ਤਸਕਰੀ ਦੀ ਪਛਾਣ ਅਤੇ ਉਸ ਨੂੰ ਘਟਾਉਣਾ (ਕੈਨੋਨੀਕਲਾਈਜ਼ੇਸ਼ਨ, ਸਖ਼ਤ ਸਕੀਮਾ ਪ੍ਰਮਾਣਿਕਤਾ, ਨੀਤੀ-ਆਧਾਰਿਤ ਰੱਦਗੀ, ਜਾਂ ਸਪੱਸ਼ਟ ਨਿਸ਼ਾਨਦੇਹੀ) | C2.1.2 |
-| ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਇਨਪੁੱਟ ਦੀ prompt ਇੰਜੈਕਸ਼ਨ ਪਛਾਣ ਨਿਯਮ-ਸਮੂਹ ਜਾਂ ਵਰਗੀਕਾਰ ਦੁਆਰਾ ਛਾਣਬੀਣ, ਅਤੇ ਰੋਕ | C2.1.3 |
-| ਇਨਪੁੱਟ ਲੰਬਾਈ ਨਿਯੰਤਰਣ ਜੋ ਸੰਦਰਭ ਵਿੰਡੋ ਤੋਂ ਵੱਧ ਸਮੱਗਰੀ ਨੂੰ ਕੱਟਣ ਦੀ ਬਜਾਏ ਰੱਦ ਕਰਦੇ ਹਨ | C2.1.4 |
-| ਸਾਰੇ ਇਨਪੁੱਟਾਂ ਉੱਤੇ allow-list ਅੱਖਰ-ਸਮੂਹ ਪਾਬੰਦੀ | C2.1.5 |
-| ਹਦਾਇਤ ਲੜੀ-ਕ੍ਰਮ ਦਾ ਲਾਗੂਕਰਨ (ਸਿਸਟਮ ਅਤੇ ਡਿਵੈਲਪਰ ਸੁਨੇਹੇ ਉਪਭੋਗਤਾ ਅਤੇ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਇਨਪੁੱਟ ਉੱਤੇ ਭਾਰੂ ਰਹਿੰਦੇ ਹਨ) | C2.1.6 |
-| ਰਾਖਵੇਂ ਵਿਸ਼ੇਸ਼ ਟੋਕਨ ਸ਼ਾਬਦਿਕ ਅੱਖਰਾਂ ਵਜੋਂ ਏਨਕੋਡ ਕੀਤੇ ਜਾਣ ਅਤੇ ਸੰਦਰਭ ਵਿੱਚ ਇੰਜੈਕਟ ਨਾ ਕੀਤੇ ਜਾ ਸਕਣ | C2.1.7 |
-| many-shot jailbreaking ਪੈਟਰਨਾਂ ਦੀ ਪਛਾਣ | C2.1.8 |
-| ਗ਼ੈਰ-ਲਿਖਤੀ ਇਨਪੁੱਟਾਂ (ਚਿੱਤਰ, ਵੀਡੀਓ, ਆਡੀਓ) ਉੱਤੇ ਵਿਰੋਧੀ ਵਿਗਾੜ, ਸਟੈਗਨੋਗ੍ਰਾਫ਼ੀ, ਅਤੇ ਲੁਕਵੀਂ ਸਮੱਗਰੀ ਦੀਆਂ ਜਾਂਚਾਂ | C2.2.3 |
-| ਕਈ ਇਨਪੁੱਟ ਕਿਸਮਾਂ ਵਿੱਚ ਫੈਲੇ ਤਾਲਮੇਲ ਵਾਲੇ ਹਮਲਿਆਂ ਦੀ ਪਛਾਣ | C2.2.4 |
-| ਟੂਲ ਆਊਟਪੁੱਟ ਦੀ ਸਕੀਮਾ ਪ੍ਰਮਾਣਿਕਤਾ | C9.3.2 |
-| ਮਾਡਲ ਆਊਟਪੁੱਟ ਵਿੱਚ ਨਾਮਜ਼ਦ ਬਾਹਰੀ ਸਰੋਤਾਂ ਦੀ, ਸਥਾਪਨਾ ਜਾਂ ਸੱਦੇ ਤੋਂ ਪਹਿਲਾਂ, ਪ੍ਰਵਾਨਿਤ allow-list ਜਾਂ ਰਜਿਸਟਰੀ ਦੇ ਵਿਰੁੱਧ ਤਸਦੀਕ | C9.3.7 |
-| ਮਾਡਲ ਸੰਦਰਭ ਵਿੱਚ ਦਾਖ਼ਲ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ MCP ਜਵਾਬਾਂ ਦੀ ਸਕੀਮਾ ਪ੍ਰਮਾਣਿਕਤਾ | C10.4.1 |
-| ਮਾਡਲ ਸੰਦਰਭ ਵਿੱਚ ਦਾਖ਼ਲ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ MCP ਜਵਾਬਾਂ ਦੀ ਅਸਿੱਧੀ prompt ਇੰਜੈਕਸ਼ਨ ਲਈ ਛਾਣਬੀਣ | C10.4.2 |
-| ਅਣਪਛਾਤੇ ਜਾਂ ਹੱਦੋਂ ਵੱਧ ਵੱਡੇ MCP function-call ਪੈਰਾਮੀਟਰਾਂ ਦੀ ਰੱਦਗੀ | C10.4.3 |
-| ਸਖ਼ਤ MCP ਸਕੀਮਾ ਪ੍ਰਮਾਣਿਕਤਾ | C10.4.4 |
-| ਵੱਧ ਤੋਂ ਵੱਧ MCP ਪੇਲੋਡ ਆਕਾਰ ਸੀਮਾਵਾਂ | C10.4.5 |
-| ਇਨਫ਼ਰੈਂਸ ਤੋਂ ਪਹਿਲਾਂ ਬਾਹਰੀ ਜਾਂ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਇਨਪੁੱਟਾਂ ਉੱਤੇ ਅਸਧਾਰਨਤਾ ਪਛਾਣ | C11.4.1 |
-| ਅਸਧਾਰਨ ਵਜੋਂ ਨਿਸ਼ਾਨਬੱਧ ਇਨਪੁੱਟਾਂ ਉੱਤੇ ਗੇਟਿੰਗ ਕਾਰਵਾਈਆਂ | C11.4.2 |
+| ਟੋਕਨਾਈਜ਼ੇਸ਼ਨ ਜਾਂ embedding ਤੋਂ ਪਹਿਲਾਂ ਲਾਗੂ ਕੀਤਾ ਇਨਪੁੱਟ ਸਧਾਰਨੀਕਰਨ | C੨.੧.੧ |
+| ਏਨਕੋਡਿੰਗ ਅਤੇ ਪ੍ਰਤੀਨਿਧਤਾ ਤਸਕਰੀ ਦੀ ਪਛਾਣ ਅਤੇ ਉਸ ਨੂੰ ਘਟਾਉਣਾ (ਕੈਨੋਨੀਕਲਾਈਜ਼ੇਸ਼ਨ, ਸਖ਼ਤ ਸਕੀਮਾ ਪ੍ਰਮਾਣਿਕਤਾ, ਨੀਤੀ-ਆਧਾਰਿਤ ਰੱਦਗੀ, ਜਾਂ ਸਪੱਸ਼ਟ ਨਿਸ਼ਾਨਦੇਹੀ) | C੨.੧.੨ |
+| ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਇਨਪੁੱਟ ਦੀ prompt ਇੰਜੈਕਸ਼ਨ ਪਛਾਣ ਨਿਯਮ-ਸਮੂਹ ਜਾਂ ਵਰਗੀਕਾਰ ਦੁਆਰਾ ਛਾਣਬੀਣ, ਅਤੇ ਰੋਕ | C੨.੧.੩ |
+| ਇਨਪੁੱਟ ਲੰਬਾਈ ਨਿਯੰਤਰਣ ਜੋ ਸੰਦਰਭ ਵਿੰਡੋ ਤੋਂ ਵੱਧ ਸਮੱਗਰੀ ਨੂੰ ਕੱਟਣ ਦੀ ਬਜਾਏ ਰੱਦ ਕਰਦੇ ਹਨ | C੨.੧.੪ |
+| ਸਾਰੇ ਇਨਪੁੱਟਾਂ ਉੱਤੇ allow-list ਅੱਖਰ-ਸਮੂਹ ਪਾਬੰਦੀ | C੨.੧.੫ |
+| ਹਦਾਇਤ ਲੜੀ-ਕ੍ਰਮ ਦਾ ਲਾਗੂਕਰਨ (ਸਿਸਟਮ ਅਤੇ ਡਿਵੈਲਪਰ ਸੁਨੇਹੇ ਉਪਭੋਗਤਾ ਅਤੇ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਇਨਪੁੱਟ ਉੱਤੇ ਭਾਰੂ ਰਹਿੰਦੇ ਹਨ) | C੨.੧.੬ |
+| ਰਾਖਵੇਂ ਵਿਸ਼ੇਸ਼ ਟੋਕਨ ਸ਼ਾਬਦਿਕ ਅੱਖਰਾਂ ਵਜੋਂ ਏਨਕੋਡ ਕੀਤੇ ਜਾਣ ਅਤੇ ਸੰਦਰਭ ਵਿੱਚ ਇੰਜੈਕਟ ਨਾ ਕੀਤੇ ਜਾ ਸਕਣ | C੨.੧.੭ |
+| many-shot jailbreaking ਪੈਟਰਨਾਂ ਦੀ ਪਛਾਣ | C੨.੧.੮ |
+| ਗ਼ੈਰ-ਲਿਖਤੀ ਇਨਪੁੱਟਾਂ (ਚਿੱਤਰ, ਵੀਡੀਓ, ਆਡੀਓ) ਉੱਤੇ ਵਿਰੋਧੀ ਵਿਗਾੜ, ਸਟੈਗਨੋਗ੍ਰਾਫ਼ੀ, ਅਤੇ ਲੁਕਵੀਂ ਸਮੱਗਰੀ ਦੀਆਂ ਜਾਂਚਾਂ | C੨.੨.੩ |
+| ਕਈ ਇਨਪੁੱਟ ਕਿਸਮਾਂ ਵਿੱਚ ਫੈਲੇ ਤਾਲਮੇਲ ਵਾਲੇ ਹਮਲਿਆਂ ਦੀ ਪਛਾਣ | C੨.੨.੪ |
+| ਟੂਲ ਆਊਟਪੁੱਟ ਦੀ ਸਕੀਮਾ ਪ੍ਰਮਾਣਿਕਤਾ | C੯.੩.੨ |
+| ਮਾਡਲ ਆਊਟਪੁੱਟ ਵਿੱਚ ਨਾਮਜ਼ਦ ਬਾਹਰੀ ਸਰੋਤਾਂ ਦੀ, ਸਥਾਪਨਾ ਜਾਂ ਸੱਦੇ ਤੋਂ ਪਹਿਲਾਂ, ਪ੍ਰਵਾਨਿਤ allow-list ਜਾਂ ਰਜਿਸਟਰੀ ਦੇ ਵਿਰੁੱਧ ਤਸਦੀਕ | C੯.੩.੭ |
+| ਮਾਡਲ ਸੰਦਰਭ ਵਿੱਚ ਦਾਖ਼ਲ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ MCP ਜਵਾਬਾਂ ਦੀ ਸਕੀਮਾ ਪ੍ਰਮਾਣਿਕਤਾ | C੧੦.੪.੧ |
+| ਮਾਡਲ ਸੰਦਰਭ ਵਿੱਚ ਦਾਖ਼ਲ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ MCP ਜਵਾਬਾਂ ਦੀ ਅਸਿੱਧੀ prompt ਇੰਜੈਕਸ਼ਨ ਲਈ ਛਾਣਬੀਣ | C੧੦.੪.੨ |
+| ਅਣਪਛਾਤੇ ਜਾਂ ਹੱਦੋਂ ਵੱਧ ਵੱਡੇ MCP function-call ਪੈਰਾਮੀਟਰਾਂ ਦੀ ਰੱਦਗੀ | C੧੦.੪.੩ |
+| ਸਖ਼ਤ MCP ਸਕੀਮਾ ਪ੍ਰਮਾਣਿਕਤਾ | C੧੦.੪.੪ |
+| ਵੱਧ ਤੋਂ ਵੱਧ MCP ਪੇਲੋਡ ਆਕਾਰ ਸੀਮਾਵਾਂ | C੧੦.੪.੫ |
+| ਇਨਫ਼ਰੈਂਸ ਤੋਂ ਪਹਿਲਾਂ ਬਾਹਰੀ ਜਾਂ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਇਨਪੁੱਟਾਂ ਉੱਤੇ ਅਸਧਾਰਨਤਾ ਪਛਾਣ | C੧੧.੪.੧ |
+| ਅਸਧਾਰਨ ਵਜੋਂ ਨਿਸ਼ਾਨਬੱਧ ਇਨਪੁੱਟਾਂ ਉੱਤੇ ਗੇਟਿੰਗ ਕਾਰਵਾਈਆਂ | C੧੧.੪.੨ |
 
 **Common pitfalls:** validating only the text modality while ignoring image/audio channels; relying on regex alone without semantic detection; not validating tool and MCP outputs before they re-enter agent context.
 
@@ -2652,7 +2652,7 @@ Validate, normalize, and constrain all inputs (including tool, MCP, and retrieve
 ---
 
 ## AD.7 Inbound Content & Policy Screening
-## AD.7 ਆਉਣ ਵਾਲੀ ਸਮੱਗਰੀ ਅਤੇ ਨੀਤੀ ਛਾਣਬੀਣ
+## AD.੭ ਆਉਣ ਵਾਲੀ ਸਮੱਗਰੀ ਅਤੇ ਨੀਤੀ ਛਾਣਬੀਣ
 
 Screen prompts and training content against policy before they reach the model or the training pipeline.
 
@@ -2666,9 +2666,9 @@ prompt ਅਤੇ ਸਿਖਲਾਈ ਸਮੱਗਰੀ ਨੂੰ ਮਾਡਲ �
 
 | ਨਿਯੰਤਰਣ / ਤਕਨੀਕ | ਲੋੜ ID |
 | --- | --- |
-| ਸੰਰਚਨਾਯੋਗ ਥ੍ਰੈਸ਼ਹੋਲਡਾਂ ਦੇ ਵਿਰੁੱਧ ਆਉਣ ਵਾਲੀ ਸਮੱਗਰੀ ਦਾ ਵਰਗੀਕਰਨ (ਹਿੰਸਾ, ਸਵੈ-ਨੁਕਸਾਨ, ਨਫ਼ਰਤ, ਜਿਨਸੀ), ਅਤੇ ਮਾਡਲ ਸੰਦਰਭ ਤੋਂ ਪਹਿਲਾਂ ਰੱਦਗੀ ਜਾਂ ਸੈਨੀਟਾਈਜ਼ੇਸ਼ਨ | C2.2.1 |
-| ਗ਼ੈਰ-ਸਮਰਥਿਤ ਭਾਸ਼ਾਵਾਂ ਲਈ ਸਮੱਗਰੀ ਵਰਗੀਕਰਨ ਦਾ ਮੁਲਾਂਕਣ | C2.2.2 |
-| ਸਿਖਲਾਈ ਤੋਂ ਪਹਿਲਾਂ ਮਨਾਹੀ ਵਾਲੀ ਸਮੱਗਰੀ ਦੀ ਪਛਾਣ ਅਤੇ ਉਸ ਨੂੰ ਹਟਾਉਣਾ | C1.3.4 |
+| ਸੰਰਚਨਾਯੋਗ ਥ੍ਰੈਸ਼ਹੋਲਡਾਂ ਦੇ ਵਿਰੁੱਧ ਆਉਣ ਵਾਲੀ ਸਮੱਗਰੀ ਦਾ ਵਰਗੀਕਰਨ (ਹਿੰਸਾ, ਸਵੈ-ਨੁਕਸਾਨ, ਨਫ਼ਰਤ, ਜਿਨਸੀ), ਅਤੇ ਮਾਡਲ ਸੰਦਰਭ ਤੋਂ ਪਹਿਲਾਂ ਰੱਦਗੀ ਜਾਂ ਸੈਨੀਟਾਈਜ਼ੇਸ਼ਨ | C੨.੨.੧ |
+| ਗ਼ੈਰ-ਸਮਰਥਿਤ ਭਾਸ਼ਾਵਾਂ ਲਈ ਸਮੱਗਰੀ ਵਰਗੀਕਰਨ ਦਾ ਮੁਲਾਂਕਣ | C੨.੨.੨ |
+| ਸਿਖਲਾਈ ਤੋਂ ਪਹਿਲਾਂ ਮਨਾਹੀ ਵਾਲੀ ਸਮੱਗਰੀ ਦੀ ਪਛਾਣ ਅਤੇ ਉਸ ਨੂੰ ਹਟਾਉਣਾ | C੧.੩.੪ |
 
 **Common pitfalls:** deploying classifiers tuned only for one language; screening prompts but not the training corpus.
 
@@ -2677,7 +2677,7 @@ prompt ਅਤੇ ਸਿਖਲਾਈ ਸਮੱਗਰੀ ਨੂੰ ਮਾਡਲ �
 ---
 
 ## AD.8 Output Handling & Safety
-## AD.8 ਆਊਟਪੁੱਟ ਪ੍ਰਬੰਧਨ ਅਤੇ ਸਲਾਮਤੀ
+## AD.੮ ਆਊਟਪੁੱਟ ਪ੍ਰਬੰਧਨ ਅਤੇ ਸਲਾਮਤੀ
 
 Constrain, filter, and validate model outputs before they reach users or downstream systems.
 
@@ -2697,15 +2697,15 @@ Constrain, filter, and validate model outputs before they reach users or downstr
 
 | ਨਿਯੰਤਰਣ / ਤਕਨੀਕ | ਲੋੜ ID |
 | --- | --- |
-| ਮਾਡਲ ਆਊਟਪੁੱਟ ਦੀ ਸਕੀਮਾ ਪ੍ਰਮਾਣਿਕਤਾ, ਅਤੇ ਮੇਲ ਨਾ ਖਾਣ 'ਤੇ ਰੱਦਗੀ | C7.1.1 |
-| ਤਿਆਰ ਕੀਤੇ ਆਊਟਪੁੱਟ ਉੱਤੇ ਲੰਬਾਈ ਸੀਮਾਵਾਂ ਅਤੇ ਸਮਾਪਤੀ ਨਿਯੰਤਰਣ | C7.1.2 |
-| ਤਿਆਰ ਕੀਤੇ ਜਵਾਬਾਂ ਲਈ ਭਰੋਸਾ ਜਾਂ ਅਨਿਸ਼ਚਿਤਤਾ ਦਾ ਅਨੁਮਾਨ | C7.2.1 |
-| ਭਰੋਸਾ ਇੱਕ ਪਰਿਭਾਸ਼ਿਤ ਥ੍ਰੈਸ਼ਹੋਲਡ ਤੋਂ ਹੇਠਾਂ ਡਿੱਗਣ 'ਤੇ ਆਪਣੇ-ਆਪ ਰੋਕ ਜਾਂ ਫ਼ਾਲਬੈਕ | C7.2.2 |
-| ਨੀਤੀ ਦੁਆਰਾ ਉੱਚ-ਜੋਖਮ ਵਜੋਂ ਵਰਗੀਕ੍ਰਿਤ ਜਵਾਬਾਂ ਲਈ ਵਾਧੂ ਤਸਦੀਕ ਪੜਾਅ | C7.2.3 |
-| ਸਵੈਚਾਲਿਤ ਵਰਗੀਕਾਰ ਜੋ ਜਵਾਬਾਂ ਨੂੰ ਸਕੈਨ ਕਰਦੇ ਹਨ ਅਤੇ ਪਰਿਭਾਸ਼ਿਤ ਨੁਕਸਾਨਦੇਹ-ਸਮੱਗਰੀ ਸ਼੍ਰੇਣੀਆਂ ਨੂੰ ਰੋਕਦੇ ਹਨ | C7.3.1 |
-| system prompt ਦੀ ਸਮੱਗਰੀ ਜਾਂ ਬੈਕਐਂਡ ਡਾਟੇ ਦਾ ਖੁਲਾਸਾ ਕਰਨ ਵਾਲੇ ਜਵਾਬਾਂ ਦੀ ਪਛਾਣ ਅਤੇ ਰੋਕ | C7.3.2 |
-| ਮਾਡਲ ਦੁਆਰਾ ਤਿਆਰ ਕੀਤੇ ਆਊਟਪੁੱਟ ਦੁਆਰਾ ਬਾਹਰ ਜਾਣ ਵਾਲੀਆਂ ਬੇਨਤੀਆਂ ਸ਼ੁਰੂ ਕਰਨ ਦੀ ਰੋਕਥਾਮ | C7.3.3 |
-| ਲੁਕੇ ਹੋਏ, ਏਨਕੋਡ ਕੀਤੇ, ਜਾਂ ਗੁਮਰਾਹਕੁਨ ਆਊਟਪੁੱਟ ਦੀ ਪਛਾਣ (homoglyph, ਫ਼ਾਰਮੈਟਿੰਗ, ਮੈਟਾਡਾਟਾ, ਢਾਂਚਾਗਤ ਖੇਤਰ) | C7.3.4 |
+| ਮਾਡਲ ਆਊਟਪੁੱਟ ਦੀ ਸਕੀਮਾ ਪ੍ਰਮਾਣਿਕਤਾ, ਅਤੇ ਮੇਲ ਨਾ ਖਾਣ 'ਤੇ ਰੱਦਗੀ | C੭.੧.੧ |
+| ਤਿਆਰ ਕੀਤੇ ਆਊਟਪੁੱਟ ਉੱਤੇ ਲੰਬਾਈ ਸੀਮਾਵਾਂ ਅਤੇ ਸਮਾਪਤੀ ਨਿਯੰਤਰਣ | C੭.੧.੨ |
+| ਤਿਆਰ ਕੀਤੇ ਜਵਾਬਾਂ ਲਈ ਭਰੋਸਾ ਜਾਂ ਅਨਿਸ਼ਚਿਤਤਾ ਦਾ ਅਨੁਮਾਨ | C੭.੨.੧ |
+| ਭਰੋਸਾ ਇੱਕ ਪਰਿਭਾਸ਼ਿਤ ਥ੍ਰੈਸ਼ਹੋਲਡ ਤੋਂ ਹੇਠਾਂ ਡਿੱਗਣ 'ਤੇ ਆਪਣੇ-ਆਪ ਰੋਕ ਜਾਂ ਫ਼ਾਲਬੈਕ | C੭.੨.੨ |
+| ਨੀਤੀ ਦੁਆਰਾ ਉੱਚ-ਜੋਖਮ ਵਜੋਂ ਵਰਗੀਕ੍ਰਿਤ ਜਵਾਬਾਂ ਲਈ ਵਾਧੂ ਤਸਦੀਕ ਪੜਾਅ | C੭.੨.੩ |
+| ਸਵੈਚਾਲਿਤ ਵਰਗੀਕਾਰ ਜੋ ਜਵਾਬਾਂ ਨੂੰ ਸਕੈਨ ਕਰਦੇ ਹਨ ਅਤੇ ਪਰਿਭਾਸ਼ਿਤ ਨੁਕਸਾਨਦੇਹ-ਸਮੱਗਰੀ ਸ਼੍ਰੇਣੀਆਂ ਨੂੰ ਰੋਕਦੇ ਹਨ | C੭.੩.੧ |
+| system prompt ਦੀ ਸਮੱਗਰੀ ਜਾਂ ਬੈਕਐਂਡ ਡਾਟੇ ਦਾ ਖੁਲਾਸਾ ਕਰਨ ਵਾਲੇ ਜਵਾਬਾਂ ਦੀ ਪਛਾਣ ਅਤੇ ਰੋਕ | C੭.੩.੨ |
+| ਮਾਡਲ ਦੁਆਰਾ ਤਿਆਰ ਕੀਤੇ ਆਊਟਪੁੱਟ ਦੁਆਰਾ ਬਾਹਰ ਜਾਣ ਵਾਲੀਆਂ ਬੇਨਤੀਆਂ ਸ਼ੁਰੂ ਕਰਨ ਦੀ ਰੋਕਥਾਮ | C੭.੩.੩ |
+| ਲੁਕੇ ਹੋਏ, ਏਨਕੋਡ ਕੀਤੇ, ਜਾਂ ਗੁਮਰਾਹਕੁਨ ਆਊਟਪੁੱਟ ਦੀ ਪਛਾਣ (homoglyph, ਫ਼ਾਰਮੈਟਿੰਗ, ਮੈਟਾਡਾਟਾ, ਢਾਂਚਾਗਤ ਖੇਤਰ) | C੭.੩.੪ |
 
 **Common pitfalls:** enforcing stop sequences in batch mode but not on streaming output; leaking the system prompt through paraphrase; treating a confidence score as available when the provider does not expose one.
 
@@ -2714,7 +2714,7 @@ Constrain, filter, and validate model outputs before they reach users or downstr
 ---
 
 ## AD.9 Rate Limiting, Budgets & Resource Control
-## AD.9 ਦਰ ਸੀਮਾ, ਬਜਟ, ਅਤੇ ਸਰੋਤ ਨਿਯੰਤਰਣ
+## AD.੯ ਦਰ ਸੀਮਾ, ਬਜਟ, ਅਤੇ ਸਰੋਤ ਨਿਯੰਤਰਣ
 
 Bound consumption to prevent abuse, runaway execution, denial of service, and model extraction.
 
@@ -2728,9 +2728,9 @@ Bound consumption to prevent abuse, runaway execution, denial of service, and mo
 
 | ਨਿਯੰਤਰਣ / ਤਕਨੀਕ | ਲੋੜ ID |
 | --- | --- |
-| ਪ੍ਰਤੀ-ਟੂਲ ਕੋਟੇ ਅਤੇ ਟਾਈਮਆਊਟ (CPU, ਮੈਮੋਰੀ, ਡਿਸਕ, ਬਾਹਰ ਜਾਣ ਵਾਲਾ ਟਰੈਫ਼ਿਕ, ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਸਮਾਂ) | C9.1.1 |
-| ਰਨਟਾਈਮ ਦੁਆਰਾ ਲਾਗੂ ਕੀਤੇ ਪ੍ਰਤੀ-ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਬਜਟ (ਵੱਧ ਤੋਂ ਵੱਧ ਰੀਕਰਸ਼ਨ ਡੂੰਘਾਈ, ਟੋਕਨ ਵਰਤੋਂ, ਵਿੱਤੀ ਖ਼ਰਚ) | C9.1.2 |
-| ਪ੍ਰਤੀ-ਪ੍ਰਿੰਸੀਪਲ[^0x91-principal-loan] ਅਤੇ ਸਮੁੱਚੀਆਂ ਇਨਫ਼ਰੈਂਸ ਦਰ ਸੀਮਾਵਾਂ, ਜੋ ਆਮ API ਥ੍ਰੌਟਲ ਦੀ ਬਜਾਏ extraction ਖ਼ਤਰਾ ਮਾਡਲ ਦੇ ਅਨੁਸਾਰ ਮਿਥੀਆਂ ਗਈਆਂ ਹੋਣ | C11.2.2 |
+| ਪ੍ਰਤੀ-ਟੂਲ ਕੋਟੇ ਅਤੇ ਟਾਈਮਆਊਟ (CPU, ਮੈਮੋਰੀ, ਡਿਸਕ, ਬਾਹਰ ਜਾਣ ਵਾਲਾ ਟਰੈਫ਼ਿਕ, ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਸਮਾਂ) | C੯.੧.੧ |
+| ਰਨਟਾਈਮ ਦੁਆਰਾ ਲਾਗੂ ਕੀਤੇ ਪ੍ਰਤੀ-ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਬਜਟ (ਵੱਧ ਤੋਂ ਵੱਧ ਰੀਕਰਸ਼ਨ ਡੂੰਘਾਈ, ਟੋਕਨ ਵਰਤੋਂ, ਵਿੱਤੀ ਖ਼ਰਚ) | C੯.੧.੨ |
+| ਪ੍ਰਤੀ-ਪ੍ਰਿੰਸੀਪਲ[^0x91-principal-loan] ਅਤੇ ਸਮੁੱਚੀਆਂ ਇਨਫ਼ਰੈਂਸ ਦਰ ਸੀਮਾਵਾਂ, ਜੋ ਆਮ API ਥ੍ਰੌਟਲ ਦੀ ਬਜਾਏ extraction ਖ਼ਤਰਾ ਮਾਡਲ ਦੇ ਅਨੁਸਾਰ ਮਿਥੀਆਂ ਗਈਆਂ ਹੋਣ | C੧੧.੨.੨ |
 
 **Common pitfalls:** rate-limiting per endpoint but not per agent session; ignoring tool fan-out when sizing budgets; treating extraction defense as ordinary throttling.
 
@@ -2739,7 +2739,7 @@ Bound consumption to prevent abuse, runaway execution, denial of service, and mo
 ---
 
 ## AD.10 Sandboxing & Workload Isolation
-## AD.10 ਸੈਂਡਬਾਕਸਿੰਗ ਅਤੇ ਵਰਕਲੋਡ ਅਲੱਗ-ਥਲੱਗਤਾ
+## AD.੧੦ ਸੈਂਡਬਾਕਸਿੰਗ ਅਤੇ ਵਰਕਲੋਡ ਅਲੱਗ-ਥਲੱਗਤਾ
 
 Isolate models, tools, agents, and hardware workloads to contain failures and prevent lateral movement.
 
@@ -2767,23 +2767,23 @@ Isolate models, tools, agents, and hardware workloads to contain failures and pr
 
 | ਨਿਯੰਤਰਣ / ਤਕਨੀਕ | ਲੋੜ ID |
 | --- | --- |
-| AI ਮਾਡਲਾਂ ਦਾ ਅਲੱਗ-ਥਲੱਗ ਕੀਤੇ ਸੈਂਡਬਾਕਸਾਂ ਵਿੱਚ ਐਗਜ਼ੀਕਿਊਸ਼ਨ | C4.1.1 |
-| ਅਜਿਹੇ ਸੀਰੀਅਲਾਈਜ਼ੇਸ਼ਨ ਫ਼ਾਰਮੈਟਾਂ ਦੀ allow-list ਜੋ ਡੀਸੀਰੀਅਲਾਈਜ਼ੇਸ਼ਨ ਦੌਰਾਨ ਕੋਡ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਦੀ ਆਗਿਆ ਨਹੀਂ ਦਿੰਦੇ | C4.1.2 |
-| ਮਾਡਲ ਲੋਡ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਵਰਕਲੋਡ ਅਟੈਸਟੇਸ਼ਨ | C4.1.3 |
-| ਗੁਪਤ ਇਨਫ਼ਰੈਂਸ, ਜੋ ਅਲੱਗ-ਥਲੱਗ ਕੀਤੇ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਰਾਹੀਂ ਰਨਟਾਈਮ ਦੌਰਾਨ ਮਾਡਲ ਵੇਟਸ ਦੀ ਸੁਰੱਖਿਆ ਕਰਦਾ ਹੈ | C4.1.4 |
-| ਹਾਰਡਵੇਅਰ ਦੁਆਰਾ ਲਾਗੂ ਕੀਤੀ ਅਲੱਗ-ਥਲੱਗਤਾ, ਮੈਮੋਰੀ ਏਨਕ੍ਰਿਪਸ਼ਨ, ਅਤੇ ਅਖੰਡਤਾ ਸੁਰੱਖਿਆ ਵਾਲਾ ਭਰੋਸੇਯੋਗ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਵਾਤਾਵਰਣ (TEE) | C4.2.2 |
-| ਹਰ ਵਰਕਲੋਡ ਤੋਂ ਪਹਿਲਾਂ ਹਾਰਡਵੇਅਰ ਅਟੈਸਟੇਸ਼ਨ ਰਾਹੀਂ GPU ਅਖੰਡਤਾ ਦੀ ਪ੍ਰਮਾਣਿਕਤਾ | C4.2.3 |
-| ਕੰਮਾਂ ਦੇ ਵਿਚਕਾਰ ਸੈਨੀਟਾਈਜ਼ੇਸ਼ਨ ਸਮੇਤ GPU ਮੈਮੋਰੀ ਦਾ ਵਿਭਾਜਨ | C4.2.4 |
-| ਵਰਜ਼ਨ-ਪਿੰਨ ਕੀਤਾ, ਦਸਤਖ਼ਤ ਕੀਤਾ, ਬੂਟ ਵੇਲੇ ਅਟੈਸਟ ਕੀਤਾ ਐਕਸਲੇਰੇਟਰ ਫ਼ਰਮਵੇਅਰ | C4.2.1 |
-| ਐਜ ਇਨਫ਼ਰੈਂਸ ਰਨਟਾਈਮਾਂ ਵਿੱਚ ਪ੍ਰਕਿਰਿਆ, ਮੈਮੋਰੀ, ਅਤੇ ਫ਼ਾਈਲ-ਪਹੁੰਚ ਦੀ ਅਲੱਗ-ਥਲੱਗਤਾ | C4.3.3 |
-| ਹਰ ਟੂਲ ਜਾਂ ਪਲੱਗਇਨ ਲਈ ਘੱਟੋ-ਘੱਟ-ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਸੈਂਡਬਾਕਸ ਜਾਂ ਅਲੱਗ-ਥਲੱਗਤਾ | C9.3.1 |
-| ਲੋੜੀਂਦੇ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰਾਂ, ਸਰੋਤ ਸੀਮਾਵਾਂ, ਅਤੇ ਆਊਟਪੁੱਟ-ਪ੍ਰਮਾਣਿਕਤਾ ਲੋੜਾਂ ਦੀ ਘੋਸ਼ਣਾ ਕਰਨ ਵਾਲੇ ਟੂਲ ਮੈਨੀਫ਼ੈਸਟ | C9.3.3 |
-| ਟੂਲ ਮੈਨੀਫ਼ੈਸਟਾਂ ਵਿੱਚ ਘੋਸ਼ਿਤ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰਾਂ ਅਤੇ ਸੀਮਾਵਾਂ ਦਾ ਰਨਟਾਈਮ ਲਾਗੂਕਰਨ | C9.3.4 |
-| ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਡਾਟਾ ਪ੍ਰਕਿਰਿਆ ਦੀ ਟੂਲ-ਕਾਲ ਕਰਨ ਦੀ ਸਮਰੱਥਾ ਤੋਂ ਅਲੱਗ-ਥਲੱਗਤਾ | C9.3.5 |
-| ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਟੂਲ-ਆਊਟਪੁੱਟ ਪ੍ਰਕਿਰਿਆ ਦਾ ਏਜੰਟ ਕਾਰਵਾਈਆਂ ਤੋਂ ਆਰਕੀਟੈਕਚਰਲ ਵਿਭਾਜਨ | C9.3.6 |
-| ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਚਲਾਏ ਗਏ MCP ਸਰਵਰਾਂ ਲਈ ਘੱਟੋ-ਘੱਟ-ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਸੈਂਡਬਾਕਸ (ਸੀਮਿਤ ਫ਼ਾਈਲਸਿਸਟਮ, ਨੈੱਟਵਰਕ, ਸਿਸਟਮ ਪਹੁੰਚ) | C10.1.3 |
-| AI-ਵਿਸ਼ੇਸ਼ ਰਨਟਾਈਮ ਕੰਪੋਨੈਂਟ ਵਾਤਾਵਰਣ ਸੀਮਾਵਾਂ (ਵਿਕਾਸ, ਸਟੇਜਿੰਗ, ਪ੍ਰੋਡਕਸ਼ਨ) ਦੇ ਆਰ-ਪਾਰ ਸਾਂਝੇ ਨਾ ਕੀਤੇ ਜਾਣ | C3.4.1 |
-| ਸਿਖਲਾਈ ਅਤੇ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਵਾਤਾਵਰਣਾਂ ਦਾ ਪ੍ਰੋਡਕਸ਼ਨ ਤੋਂ ਅਲੱਗ-ਥਲੱਗ ਹੋਣਾ | C3.4.2 |
+| AI ਮਾਡਲਾਂ ਦਾ ਅਲੱਗ-ਥਲੱਗ ਕੀਤੇ ਸੈਂਡਬਾਕਸਾਂ ਵਿੱਚ ਐਗਜ਼ੀਕਿਊਸ਼ਨ | C੪.੧.੧ |
+| ਅਜਿਹੇ ਸੀਰੀਅਲਾਈਜ਼ੇਸ਼ਨ ਫ਼ਾਰਮੈਟਾਂ ਦੀ allow-list ਜੋ ਡੀਸੀਰੀਅਲਾਈਜ਼ੇਸ਼ਨ ਦੌਰਾਨ ਕੋਡ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਦੀ ਆਗਿਆ ਨਹੀਂ ਦਿੰਦੇ | C੪.੧.੨ |
+| ਮਾਡਲ ਲੋਡ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਵਰਕਲੋਡ ਅਟੈਸਟੇਸ਼ਨ | C੪.੧.੩ |
+| ਗੁਪਤ ਇਨਫ਼ਰੈਂਸ, ਜੋ ਅਲੱਗ-ਥਲੱਗ ਕੀਤੇ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਰਾਹੀਂ ਰਨਟਾਈਮ ਦੌਰਾਨ ਮਾਡਲ ਵੇਟਸ ਦੀ ਸੁਰੱਖਿਆ ਕਰਦਾ ਹੈ | C੪.੧.੪ |
+| ਹਾਰਡਵੇਅਰ ਦੁਆਰਾ ਲਾਗੂ ਕੀਤੀ ਅਲੱਗ-ਥਲੱਗਤਾ, ਮੈਮੋਰੀ ਏਨਕ੍ਰਿਪਸ਼ਨ, ਅਤੇ ਅਖੰਡਤਾ ਸੁਰੱਖਿਆ ਵਾਲਾ ਭਰੋਸੇਯੋਗ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਵਾਤਾਵਰਣ (TEE) | C੪.੨.੨ |
+| ਹਰ ਵਰਕਲੋਡ ਤੋਂ ਪਹਿਲਾਂ ਹਾਰਡਵੇਅਰ ਅਟੈਸਟੇਸ਼ਨ ਰਾਹੀਂ GPU ਅਖੰਡਤਾ ਦੀ ਪ੍ਰਮਾਣਿਕਤਾ | C੪.੨.੩ |
+| ਕੰਮਾਂ ਦੇ ਵਿਚਕਾਰ ਸੈਨੀਟਾਈਜ਼ੇਸ਼ਨ ਸਮੇਤ GPU ਮੈਮੋਰੀ ਦਾ ਵਿਭਾਜਨ | C੪.੨.੪ |
+| ਵਰਜ਼ਨ-ਪਿੰਨ ਕੀਤਾ, ਦਸਤਖ਼ਤ ਕੀਤਾ, ਬੂਟ ਵੇਲੇ ਅਟੈਸਟ ਕੀਤਾ ਐਕਸਲੇਰੇਟਰ ਫ਼ਰਮਵੇਅਰ | C੪.੨.੧ |
+| ਐਜ ਇਨਫ਼ਰੈਂਸ ਰਨਟਾਈਮਾਂ ਵਿੱਚ ਪ੍ਰਕਿਰਿਆ, ਮੈਮੋਰੀ, ਅਤੇ ਫ਼ਾਈਲ-ਪਹੁੰਚ ਦੀ ਅਲੱਗ-ਥਲੱਗਤਾ | C੪.੩.੩ |
+| ਹਰ ਟੂਲ ਜਾਂ ਪਲੱਗਇਨ ਲਈ ਘੱਟੋ-ਘੱਟ-ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਸੈਂਡਬਾਕਸ ਜਾਂ ਅਲੱਗ-ਥਲੱਗਤਾ | C੯.੩.੧ |
+| ਲੋੜੀਂਦੇ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰਾਂ, ਸਰੋਤ ਸੀਮਾਵਾਂ, ਅਤੇ ਆਊਟਪੁੱਟ-ਪ੍ਰਮਾਣਿਕਤਾ ਲੋੜਾਂ ਦੀ ਘੋਸ਼ਣਾ ਕਰਨ ਵਾਲੇ ਟੂਲ ਮੈਨੀਫ਼ੈਸਟ | C੯.੩.੩ |
+| ਟੂਲ ਮੈਨੀਫ਼ੈਸਟਾਂ ਵਿੱਚ ਘੋਸ਼ਿਤ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰਾਂ ਅਤੇ ਸੀਮਾਵਾਂ ਦਾ ਰਨਟਾਈਮ ਲਾਗੂਕਰਨ | C੯.੩.੪ |
+| ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਡਾਟਾ ਪ੍ਰਕਿਰਿਆ ਦੀ ਟੂਲ-ਕਾਲ ਕਰਨ ਦੀ ਸਮਰੱਥਾ ਤੋਂ ਅਲੱਗ-ਥਲੱਗਤਾ | C੯.੩.੫ |
+| ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਟੂਲ-ਆਊਟਪੁੱਟ ਪ੍ਰਕਿਰਿਆ ਦਾ ਏਜੰਟ ਕਾਰਵਾਈਆਂ ਤੋਂ ਆਰਕੀਟੈਕਚਰਲ ਵਿਭਾਜਨ | C੯.੩.੬ |
+| ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਚਲਾਏ ਗਏ MCP ਸਰਵਰਾਂ ਲਈ ਘੱਟੋ-ਘੱਟ-ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਸੈਂਡਬਾਕਸ (ਸੀਮਿਤ ਫ਼ਾਈਲਸਿਸਟਮ, ਨੈੱਟਵਰਕ, ਸਿਸਟਮ ਪਹੁੰਚ) | C੧੦.੧.੩ |
+| AI-ਵਿਸ਼ੇਸ਼ ਰਨਟਾਈਮ ਕੰਪੋਨੈਂਟ ਵਾਤਾਵਰਣ ਸੀਮਾਵਾਂ (ਵਿਕਾਸ, ਸਟੇਜਿੰਗ, ਪ੍ਰੋਡਕਸ਼ਨ) ਦੇ ਆਰ-ਪਾਰ ਸਾਂਝੇ ਨਾ ਕੀਤੇ ਜਾਣ | C੩.੪.੧ |
+| ਸਿਖਲਾਈ ਅਤੇ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਵਾਤਾਵਰਣਾਂ ਦਾ ਪ੍ਰੋਡਕਸ਼ਨ ਤੋਂ ਅਲੱਗ-ਥਲੱਗ ਹੋਣਾ | C੩.੪.੨ |
 
 **Common pitfalls:** sharing infrastructure between dev and prod; granting tool sandboxes more capability than needed; allowing untrusted data processing to reach tool-calling paths.
 
@@ -2792,7 +2792,7 @@ Isolate models, tools, agents, and hardware workloads to contain failures and pr
 ---
 
 ## AD.11 Network & Egress Control
-## AD.11 ਨੈੱਟਵਰਕ ਅਤੇ ਬਾਹਰ ਜਾਣ ਵਾਲੇ ਟਰੈਫ਼ਿਕ (egress) ਦਾ ਨਿਯੰਤਰਣ
+## AD.੧੧ ਨੈੱਟਵਰਕ ਅਤੇ ਬਾਹਰ ਜਾਣ ਵਾਲੇ ਟਰੈਫ਼ਿਕ (egress) ਦਾ ਨਿਯੰਤਰਣ
 
 Control network boundaries, transport security, and traffic flow for AI workloads and MCP integrations.
 
@@ -2808,11 +2808,11 @@ AI ਵਰਕਲੋਡਾਂ ਅਤੇ MCP ਏਕੀਕਰਨਾਂ ਲਈ ਨੈ
 
 | ਨਿਯੰਤਰਣ / ਤਕਨੀਕ | ਲੋੜ ID |
 | --- | --- |
-| ਰਿਮੋਟ MCP ਟ੍ਰਾਂਸਪੋਰਟ ਲਈ ਪ੍ਰਮਾਣੀਕਰਨ ਕੀਤਾ, ਏਨਕ੍ਰਿਪਟ ਕੀਤਾ streamable HTTP | C10.3.1 |
-| stdio MCP ਟ੍ਰਾਂਸਪੋਰਟ ਸਿਰਫ਼ ਨਿਯੰਤਰਿਤ ਸਥਾਨਕ ਵਾਤਾਵਰਣਾਂ ਤੱਕ ਸੀਮਿਤ | C10.3.2 |
-| HTTP-ਆਧਾਰਿਤ ਟ੍ਰਾਂਸਪੋਰਟਾਂ ਉੱਤੇ Origin ਅਤੇ Host header ਦੀ ਸੁਤੰਤਰ ਪ੍ਰਮਾਣਿਕਤਾ (DNS rebinding ਵਿਰੁੱਧ ਬਚਾਅ) | C10.3.3 |
-| MCP ਕਲਾਇੰਟ ਦੁਆਰਾ ਘੱਟੋ-ਘੱਟ ਪ੍ਰੋਟੋਕੋਲ-ਵਰਜ਼ਨ ਦਾ ਲਾਗੂਕਰਨ (ਡਾਊਨਗ੍ਰੇਡ[^0x91-downgrade] ਵਿਰੁੱਧ ਬਚਾਅ) | C10.3.4 |
-| ਐਕਸਲੇਰੇਟਰ ਇੰਟਰਕਨੈਕਟਾਂ ਦਾ ਪ੍ਰਵਾਨਿਤ ਟੋਪੋਲੋਜੀਆਂ ਅਤੇ ਪ੍ਰਮਾਣੀਕਰਨ ਕੀਤੇ ਐਂਡਪੁਆਇੰਟਾਂ ਤੱਕ ਸੀਮਿਤ ਹੋਣਾ | C4.2.5 |
+| ਰਿਮੋਟ MCP ਟ੍ਰਾਂਸਪੋਰਟ ਲਈ ਪ੍ਰਮਾਣੀਕਰਨ ਕੀਤਾ, ਏਨਕ੍ਰਿਪਟ ਕੀਤਾ streamable HTTP | C੧੦.੩.੧ |
+| stdio MCP ਟ੍ਰਾਂਸਪੋਰਟ ਸਿਰਫ਼ ਨਿਯੰਤਰਿਤ ਸਥਾਨਕ ਵਾਤਾਵਰਣਾਂ ਤੱਕ ਸੀਮਿਤ | C੧੦.੩.੨ |
+| HTTP-ਆਧਾਰਿਤ ਟ੍ਰਾਂਸਪੋਰਟਾਂ ਉੱਤੇ Origin ਅਤੇ Host header ਦੀ ਸੁਤੰਤਰ ਪ੍ਰਮਾਣਿਕਤਾ (DNS rebinding ਵਿਰੁੱਧ ਬਚਾਅ) | C੧੦.੩.੩ |
+| MCP ਕਲਾਇੰਟ ਦੁਆਰਾ ਘੱਟੋ-ਘੱਟ ਪ੍ਰੋਟੋਕੋਲ-ਵਰਜ਼ਨ ਦਾ ਲਾਗੂਕਰਨ (ਡਾਊਨਗ੍ਰੇਡ[^0x91-downgrade] ਵਿਰੁੱਧ ਬਚਾਅ) | C੧੦.੩.੪ |
+| ਐਕਸਲੇਰੇਟਰ ਇੰਟਰਕਨੈਕਟਾਂ ਦਾ ਪ੍ਰਵਾਨਿਤ ਟੋਪੋਲੋਜੀਆਂ ਅਤੇ ਪ੍ਰਮਾਣੀਕਰਨ ਕੀਤੇ ਐਂਡਪੁਆਇੰਟਾਂ ਤੱਕ ਸੀਮਿਤ ਹੋਣਾ | C੪.੨.੫ |
 
 **Common pitfalls:** exposing stdio or SSE transports beyond the local host; skipping Origin/Host validation and enabling DNS rebinding; accepting downgraded protocol versions.
 
@@ -2821,7 +2821,7 @@ AI ਵਰਕਲੋਡਾਂ ਅਤੇ MCP ਏਕੀਕਰਨਾਂ ਲਈ ਨੈ
 ---
 
 ## AD.12 Supply Chain & Artifact Integrity
-## AD.12 ਸਪਲਾਈ ਚੇਨ ਅਤੇ ਆਰਟੀਫ਼ੈਕਟ ਅਖੰਡਤਾ
+## AD.੧੨ ਸਪਲਾਈ ਚੇਨ ਅਤੇ ਆਰਟੀਫ਼ੈਕਟ ਅਖੰਡਤਾ
 
 Verify origin and authenticity of models, datasets, frameworks, and MCP components, and maintain an AI bill of materials.
 
@@ -2842,16 +2842,16 @@ Verify origin and authenticity of models, datasets, frameworks, and MCP componen
 
 | ਨਿਯੰਤਰਣ / ਤਕਨੀਕ | ਲੋੜ ID |
 | --- | --- |
-| ਸਾਰੇ ਤੈਨਾਤ ਕੀਤੇ ਮਾਡਲ ਆਰਟੀਫ਼ੈਕਟਾਂ ਅਤੇ ਉਹਨਾਂ ਦੇ ਮੂਲ ਦੀ ਮਾਡਲ ਰਜਿਸਟਰੀ ਇਨਵੈਂਟਰੀ | C3.1.1 |
-| ਆਯਾਤ ਤੋਂ ਪਹਿਲਾਂ ਮਾਡਲਾਂ ਦੀ ਖ਼ਤਰਨਾਕ ਕੋਡ ਲਈ ਸਕੈਨਿੰਗ | C6.1.1 |
-| ਮਾਡਲ ਵੇਟਸ, ਡਾਟਾਸੈੱਟਾਂ, ਅਤੇ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਅਡੈਪਟਰਾਂ ਦਾ ਸਿਰਫ਼ ਪ੍ਰਵਾਨਿਤ ਸਰੋਤਾਂ ਤੋਂ ਡਾਊਨਲੋਡ | C6.1.2 |
-| ਹਰ ਤੀਜੀ-ਧਿਰ ਮਾਡਲ ਆਰਟੀਫ਼ੈਕਟ ਦੀ ਅਖੰਡਤਾ ਦੀ ਤਸਦੀਕ | C6.1.3 |
-| ਵਿਕਾਸ ਤੋਂ ਪਰੇ ਤਰੱਕੀ ਤੋਂ ਪਹਿਲਾਂ ਵਿਵਹਾਰਕ ਸਵੀਕ੍ਰਿਤੀ ਟੈਸਟ ਸੂਟ ਦਾ ਪਾਸ ਹੋਣਾ | C6.1.4 |
-| ਪ੍ਰਤੀ ਮਾਡਲ ਆਰਟੀਫ਼ੈਕਟ ਵਰਜ਼ਨ-ਨਿਯੰਤਰਿਤ, ਮਸ਼ੀਨ-ਪੜ੍ਹਨਯੋਗ AI BOM (ਡਾਟਾਸੈੱਟ, ਵੇਟਸ, ਲਾਇਸੈਂਸ, ਡਾਟਾ-ਮੂਲ ਬਿਆਨ) | C6.2.1 |
-| ਤੈਨਾਤੀ ਤੋਂ ਪਹਿਲਾਂ AI BOM ਦੇ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਦਸਤਖ਼ਤ | C6.2.2 |
-| ਕੰਪੋਨੈਂਟ ਮੈਟਾਡਾਟਾ ਗ਼ੈਰ-ਮੌਜੂਦ ਹੋਣ 'ਤੇ ਬਿਲਡ ਨੂੰ ਫ਼ੇਲ੍ਹ ਕਰਨ ਵਾਲੀਆਂ AI BOM ਸੰਪੂਰਨਤਾ ਜਾਂਚਾਂ | C6.2.3 |
-| MCP ਕੰਪੋਨੈਂਟ ਸਿਰਫ਼ ਭਰੋਸੇਯੋਗ ਸਰੋਤਾਂ ਤੋਂ ਪ੍ਰਾਪਤ ਕੀਤੇ ਅਤੇ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਤੌਰ 'ਤੇ ਤਸਦੀਕ ਕੀਤੇ ਜਾਣ | C10.1.1 |
-| ਸਿਰਫ਼ allow-list ਕੀਤੇ MCP ਸਰਵਰ | C10.1.2 |
+| ਸਾਰੇ ਤੈਨਾਤ ਕੀਤੇ ਮਾਡਲ ਆਰਟੀਫ਼ੈਕਟਾਂ ਅਤੇ ਉਹਨਾਂ ਦੇ ਮੂਲ ਦੀ ਮਾਡਲ ਰਜਿਸਟਰੀ ਇਨਵੈਂਟਰੀ | C੩.੧.੧ |
+| ਆਯਾਤ ਤੋਂ ਪਹਿਲਾਂ ਮਾਡਲਾਂ ਦੀ ਖ਼ਤਰਨਾਕ ਕੋਡ ਲਈ ਸਕੈਨਿੰਗ | C੬.੧.੧ |
+| ਮਾਡਲ ਵੇਟਸ, ਡਾਟਾਸੈੱਟਾਂ, ਅਤੇ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਅਡੈਪਟਰਾਂ ਦਾ ਸਿਰਫ਼ ਪ੍ਰਵਾਨਿਤ ਸਰੋਤਾਂ ਤੋਂ ਡਾਊਨਲੋਡ | C੬.੧.੨ |
+| ਹਰ ਤੀਜੀ-ਧਿਰ ਮਾਡਲ ਆਰਟੀਫ਼ੈਕਟ ਦੀ ਅਖੰਡਤਾ ਦੀ ਤਸਦੀਕ | C੬.੧.੩ |
+| ਵਿਕਾਸ ਤੋਂ ਪਰੇ ਤਰੱਕੀ ਤੋਂ ਪਹਿਲਾਂ ਵਿਵਹਾਰਕ ਸਵੀਕ੍ਰਿਤੀ ਟੈਸਟ ਸੂਟ ਦਾ ਪਾਸ ਹੋਣਾ | C੬.੧.੪ |
+| ਪ੍ਰਤੀ ਮਾਡਲ ਆਰਟੀਫ਼ੈਕਟ ਵਰਜ਼ਨ-ਨਿਯੰਤਰਿਤ, ਮਸ਼ੀਨ-ਪੜ੍ਹਨਯੋਗ AI BOM (ਡਾਟਾਸੈੱਟ, ਵੇਟਸ, ਲਾਇਸੈਂਸ, ਡਾਟਾ-ਮੂਲ ਬਿਆਨ) | C੬.੨.੧ |
+| ਤੈਨਾਤੀ ਤੋਂ ਪਹਿਲਾਂ AI BOM ਦੇ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਦਸਤਖ਼ਤ | C੬.੨.੨ |
+| ਕੰਪੋਨੈਂਟ ਮੈਟਾਡਾਟਾ ਗ਼ੈਰ-ਮੌਜੂਦ ਹੋਣ 'ਤੇ ਬਿਲਡ ਨੂੰ ਫ਼ੇਲ੍ਹ ਕਰਨ ਵਾਲੀਆਂ AI BOM ਸੰਪੂਰਨਤਾ ਜਾਂਚਾਂ | C੬.੨.੩ |
+| MCP ਕੰਪੋਨੈਂਟ ਸਿਰਫ਼ ਭਰੋਸੇਯੋਗ ਸਰੋਤਾਂ ਤੋਂ ਪ੍ਰਾਪਤ ਕੀਤੇ ਅਤੇ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਤੌਰ 'ਤੇ ਤਸਦੀਕ ਕੀਤੇ ਜਾਣ | C੧੦.੧.੧ |
+| ਸਿਰਫ਼ allow-list ਕੀਤੇ MCP ਸਰਵਰ | C੧੦.੧.੨ |
 
 **Common pitfalls:** treating AI BOMs as static documents rather than signed, version-controlled artifacts; not scanning pretrained weights for backdoors; pulling models from unapproved registries.
 
@@ -2860,7 +2860,7 @@ Verify origin and authenticity of models, datasets, frameworks, and MCP componen
 ---
 
 ## AD.13 Model Lifecycle, Deployment & Rollback
-## AD.13 ਮਾਡਲ ਜੀਵਨ-ਚੱਕਰ, ਤੈਨਾਤੀ, ਅਤੇ ਰੋਲਬੈਕ
+## AD.੧੩ ਮਾਡਲ ਜੀਵਨ-ਚੱਕਰ, ਤੈਨਾਤੀ, ਅਤੇ ਰੋਲਬੈਕ
 
 Manage model validation, deployment, rollback, and fine-tuning pipeline integrity.
 
@@ -2881,16 +2881,16 @@ Manage model validation, deployment, rollback, and fine-tuning pipeline integrit
 
 | ਨਿਯੰਤਰਣ / ਤਕਨੀਕ | ਲੋੜ ID |
 | --- | --- |
-| ਤੈਨਾਤੀ ਤੋਂ ਪਹਿਲਾਂ ਸਵੈਚਲਿਤ ਇਨਪੁੱਟ-ਪ੍ਰਮਾਣਿਕਤਾ, ਸਲਾਮਤੀ-ਮੁਲਾਂਕਣ, ਅਤੇ ਆਊਟਪੁੱਟ-ਸੈਨੀਟਾਈਜ਼ੇਸ਼ਨ ਟੈਸਟਿੰਗ | C3.2.1 |
-| ਸਿਖਲਾਈ-ਉਪਰੰਤ ਕੁਆਂਟਾਈਜ਼ੇਸ਼ਨ ਵਿੱਚੋਂ ਲੰਘੇ ਮਾਡਲਾਂ ਦਾ, ਤੈਨਾਤੀ ਤੋਂ ਪਹਿਲਾਂ, ਉਸੇ ਸਲਾਮਤੀ ਅਤੇ ਅਲਾਈਨਮੈਂਟ ਟੈਸਟ ਸੂਟ ਦੇ ਵਿਰੁੱਧ ਮੁੜ-ਮੁਲਾਂਕਣ | C3.2.2 |
-| ਪ੍ਰਦਾਤਾ ਦੇ ਮਾਡਲ, ਵਰਜ਼ਨ, ਜਾਂ ਰੂਟਿੰਗ ਵਿੱਚ ਤਬਦੀਲੀਆਂ ਦੁਆਰਾ ਸ਼ੁਰੂ ਕੀਤਾ ਸੁਰੱਖਿਆ ਮੁੜ-ਮੁਲਾਂਕਣ | C3.2.3 |
-| ਸਵੈਚਲਿਤ ਰੋਲਬੈਕ ਟ੍ਰਿਗਰਾਂ ਸਮੇਤ ਰੋਲਆਊਟ ਵਿਧੀਆਂ | C3.3.1 |
-| ਰੋਲਬੈਕ 'ਤੇ ਮਾਡਲ ਦੀ ਸੰਪੂਰਨ ਸਥਿਤੀ ਦੀ ਬਹਾਲੀ | C3.3.2 |
-| ਸਮਾਨਾਂਤਰ ਚੱਲ ਰਹੇ ਮਾਡਲ ਵਰਜ਼ਨਾਂ ਲਈ ਅਲੱਗ-ਥਲੱਗ ਕੀਤੀ ਰਨਟਾਈਮ ਸਥਿਤੀ | C3.3.3 |
-| ਸਿਖਲਾਈ ਦੌਰ ਤੋਂ ਪਹਿਲਾਂ ਵਰਜ਼ਨਬੱਧ, ਅਖੰਡਤਾ-ਤਸਦੀਕਸ਼ੁਦਾ RLHF ਇਨਾਮ ਮਾਡਲ | C3.5.1 |
-| RLHF ਪੜਾਵਾਂ ਵਿੱਚ reward hacking ਜਾਂ ਇਨਾਮ ਮਾਡਲ ਦੇ ਹੱਦੋਂ ਵੱਧ ਅਨੁਕੂਲਨ ਦੀ ਪਛਾਣ | C3.5.2 |
-| ਬਹੁ-ਪੜਾਵੀ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਪਾਈਪਲਾਈਨਾਂ ਵਿੱਚ ਪੜਾਅ-ਦਰ-ਪੜਾਅ ਅਖੰਡਤਾ ਤਸਦੀਕ | C3.5.3 |
-| ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਚੈੱਕਪੁਆਇੰਟਾਂ ਦਾ ਵੱਖਰੇ ਆਰਟੀਫ਼ੈਕਟਾਂ ਵਜੋਂ ਰਜਿਸਟਰ ਹੋਣਾ | C3.5.4 |
+| ਤੈਨਾਤੀ ਤੋਂ ਪਹਿਲਾਂ ਸਵੈਚਲਿਤ ਇਨਪੁੱਟ-ਪ੍ਰਮਾਣਿਕਤਾ, ਸਲਾਮਤੀ-ਮੁਲਾਂਕਣ, ਅਤੇ ਆਊਟਪੁੱਟ-ਸੈਨੀਟਾਈਜ਼ੇਸ਼ਨ ਟੈਸਟਿੰਗ | C੩.੨.੧ |
+| ਸਿਖਲਾਈ-ਉਪਰੰਤ ਕੁਆਂਟਾਈਜ਼ੇਸ਼ਨ ਵਿੱਚੋਂ ਲੰਘੇ ਮਾਡਲਾਂ ਦਾ, ਤੈਨਾਤੀ ਤੋਂ ਪਹਿਲਾਂ, ਉਸੇ ਸਲਾਮਤੀ ਅਤੇ ਅਲਾਈਨਮੈਂਟ ਟੈਸਟ ਸੂਟ ਦੇ ਵਿਰੁੱਧ ਮੁੜ-ਮੁਲਾਂਕਣ | C੩.੨.੨ |
+| ਪ੍ਰਦਾਤਾ ਦੇ ਮਾਡਲ, ਵਰਜ਼ਨ, ਜਾਂ ਰੂਟਿੰਗ ਵਿੱਚ ਤਬਦੀਲੀਆਂ ਦੁਆਰਾ ਸ਼ੁਰੂ ਕੀਤਾ ਸੁਰੱਖਿਆ ਮੁੜ-ਮੁਲਾਂਕਣ | C੩.੨.੩ |
+| ਸਵੈਚਲਿਤ ਰੋਲਬੈਕ ਟ੍ਰਿਗਰਾਂ ਸਮੇਤ ਰੋਲਆਊਟ ਵਿਧੀਆਂ | C੩.੩.੧ |
+| ਰੋਲਬੈਕ 'ਤੇ ਮਾਡਲ ਦੀ ਸੰਪੂਰਨ ਸਥਿਤੀ ਦੀ ਬਹਾਲੀ | C੩.੩.੨ |
+| ਸਮਾਨਾਂਤਰ ਚੱਲ ਰਹੇ ਮਾਡਲ ਵਰਜ਼ਨਾਂ ਲਈ ਅਲੱਗ-ਥਲੱਗ ਕੀਤੀ ਰਨਟਾਈਮ ਸਥਿਤੀ | C੩.੩.੩ |
+| ਸਿਖਲਾਈ ਦੌਰ ਤੋਂ ਪਹਿਲਾਂ ਵਰਜ਼ਨਬੱਧ, ਅਖੰਡਤਾ-ਤਸਦੀਕਸ਼ੁਦਾ RLHF ਇਨਾਮ ਮਾਡਲ | C੩.੫.੧ |
+| RLHF ਪੜਾਵਾਂ ਵਿੱਚ reward hacking ਜਾਂ ਇਨਾਮ ਮਾਡਲ ਦੇ ਹੱਦੋਂ ਵੱਧ ਅਨੁਕੂਲਨ ਦੀ ਪਛਾਣ | C੩.੫.੨ |
+| ਬਹੁ-ਪੜਾਵੀ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਪਾਈਪਲਾਈਨਾਂ ਵਿੱਚ ਪੜਾਅ-ਦਰ-ਪੜਾਅ ਅਖੰਡਤਾ ਤਸਦੀਕ | C੩.੫.੩ |
+| ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਚੈੱਕਪੁਆਇੰਟਾਂ ਦਾ ਵੱਖਰੇ ਆਰਟੀਫ਼ੈਕਟਾਂ ਵਜੋਂ ਰਜਿਸਟਰ ਹੋਣਾ | C੩.੫.੪ |
 
 **Common pitfalls:** not testing rollback before it is needed; leaving retired model artifacts in serving caches; treating reward models as static infrastructure rather than versioned, validated artifacts.
 
@@ -2899,7 +2899,7 @@ Manage model validation, deployment, rollback, and fine-tuning pipeline integrit
 ---
 
 ## AD.14 Training Data Integrity & Governance
-## AD.14 ਸਿਖਲਾਈ ਡਾਟਾ ਅਖੰਡਤਾ ਅਤੇ ਸ਼ਾਸਨ
+## AD.੧੪ ਸਿਖਲਾਈ ਡਾਟਾ ਅਖੰਡਤਾ ਅਤੇ ਸ਼ਾਸਨ
 
 Source, vet, and document training data so tampering, poisoning, and corruption can be detected and traced.
 
@@ -2921,17 +2921,17 @@ Source, vet, and document training data so tampering, poisoning, and corruption 
 
 | ਨਿਯੰਤਰਣ / ਤਕਨੀਕ | ਲੋੜ ID |
 | --- | --- |
-| ਡਾਟਾ ਨੂੰ ਸਿਰਫ਼ ਦੱਸੇ ਗਏ ਮਕਸਦ ਲਈ ਲੋੜੀਂਦੇ ਫ਼ੀਚਰਾਂ, ਗੁਣਾਂ, ਅਤੇ ਖੇਤਰਾਂ ਤੱਕ ਘਟਾਉਣਾ | C1.1.1 |
-| ਹਰ ਸਿਖਲਾਈ-ਡਾਟਾ ਸਰੋਤ ਦੀ ਅੱਪ-ਟੂ-ਡੇਟ ਇਨਵੈਂਟਰੀ (ਮੂਲ, ਜ਼ਿੰਮੇਵਾਰ ਧਿਰ, ਲਾਇਸੰਸ, ਇਕੱਤਰੀਕਰਨ ਵਿਧੀ, ਵਰਤੋਂ ਪਾਬੰਦੀਆਂ, ਪ੍ਰਕਿਰਿਆ ਇਤਿਹਾਸ) | C1.1.2 |
-| ਵਰਤੋਂ ਦੇ ਸਰੋਤ-ਨਿਰਧਾਰਨ ਅਤੇ ਅਣਅਧਿਕਾਰਤ ਵਰਤੋਂ ਦੀ ਪਛਾਣ ਲਈ ਡਾਟਾਸੈੱਟ ਵਾਟਰਮਾਰਕਿੰਗ | C1.1.5 |
-| ਲੇਬਲਿੰਗ-ਪਲੇਟਫ਼ਾਰਮ ਪਹੁੰਚ ਕੰਟਰੋਲ ਜੋ ਇਹ ਸੀਮਤ ਕਰਦੇ ਹਨ ਕਿ ਕੌਣ ਐਨੋਟੇਸ਼ਨਾਂ ਬਣਾ, ਸੋਧ, ਜਾਂ ਮਨਜ਼ੂਰ ਕਰ ਸਕਦਾ ਹੈ | C1.2.1 |
-| ਸਿਖਲਾਈ ਅਤੇ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਪਾਈਪਲਾਈਨਾਂ ਵਿੱਚ poisoning ਪਛਾਣ | C1.3.1 |
-| ਸਵੈਚਾਲਿਤ ਢੰਗ ਨਾਲ ਪੈਦਾ ਕੀਤੇ ਲੇਬਲਾਂ ਉੱਤੇ ਭਰੋਸਾ ਥ੍ਰੈਸ਼ਹੋਲਡ ਅਤੇ ਇਕਸਾਰਤਾ ਜਾਂਚਾਂ | C1.3.2 |
-| ਸੁਰੱਖਿਆ-ਸੰਬੰਧਿਤ ਫ਼ੈਸਲਿਆਂ ਵਿੱਚ ਵਰਤੇ ਜਾਣ ਵਾਲੇ ਮਾਡਲਾਂ ਲਈ ਪੱਖਪਾਤ ਮੁਲਾਂਕਣ | C1.3.3 |
-| clean-label poisoning ਹਮਲਿਆਂ ਵਿਰੁੱਧ ਬਚਾਅ | C1.3.5 |
-| ਡਾਟਾਸੈੱਟ ਵੰਸ਼ਾਵਲੀ ਦਾ ਦਰਜ ਹੋਣਾ (ਪਰਿਵਰਤਨ, ਔਗਮੈਂਟੇਸ਼ਨ, ਮਰਜ) | C12.5.1 |
-| ਸਾਰੀਆਂ ਲੇਬਲਿੰਗ ਗਤੀਵਿਧੀਆਂ ਦੀ ਲੌਗਿੰਗ | C12.5.2 |
-| ਹਰ ਦਾਖ਼ਲ ਕੀਤੇ ਦਸਤਾਵੇਜ਼ ਦੀ ਲਿਖਣ-ਸਮੇਂ ਟੈਗਿੰਗ (ਸਰੋਤ, ਲਿਖਣ ਵਾਲੇ ਦੀ ਪਛਾਣ, ਟਾਈਮਸਟੈਂਪ) | C12.5.4 |
+| ਡਾਟਾ ਨੂੰ ਸਿਰਫ਼ ਦੱਸੇ ਗਏ ਮਕਸਦ ਲਈ ਲੋੜੀਂਦੇ ਫ਼ੀਚਰਾਂ, ਗੁਣਾਂ, ਅਤੇ ਖੇਤਰਾਂ ਤੱਕ ਘਟਾਉਣਾ | C੧.੧.੧ |
+| ਹਰ ਸਿਖਲਾਈ-ਡਾਟਾ ਸਰੋਤ ਦੀ ਅੱਪ-ਟੂ-ਡੇਟ ਇਨਵੈਂਟਰੀ (ਮੂਲ, ਜ਼ਿੰਮੇਵਾਰ ਧਿਰ, ਲਾਇਸੰਸ, ਇਕੱਤਰੀਕਰਨ ਵਿਧੀ, ਵਰਤੋਂ ਪਾਬੰਦੀਆਂ, ਪ੍ਰਕਿਰਿਆ ਇਤਿਹਾਸ) | C੧.੧.੨ |
+| ਵਰਤੋਂ ਦੇ ਸਰੋਤ-ਨਿਰਧਾਰਨ ਅਤੇ ਅਣਅਧਿਕਾਰਤ ਵਰਤੋਂ ਦੀ ਪਛਾਣ ਲਈ ਡਾਟਾਸੈੱਟ ਵਾਟਰਮਾਰਕਿੰਗ | C੧.੧.੫ |
+| ਲੇਬਲਿੰਗ-ਪਲੇਟਫ਼ਾਰਮ ਪਹੁੰਚ ਕੰਟਰੋਲ ਜੋ ਇਹ ਸੀਮਤ ਕਰਦੇ ਹਨ ਕਿ ਕੌਣ ਐਨੋਟੇਸ਼ਨਾਂ ਬਣਾ, ਸੋਧ, ਜਾਂ ਮਨਜ਼ੂਰ ਕਰ ਸਕਦਾ ਹੈ | C੧.੨.੧ |
+| ਸਿਖਲਾਈ ਅਤੇ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਪਾਈਪਲਾਈਨਾਂ ਵਿੱਚ poisoning ਪਛਾਣ | C੧.੩.੧ |
+| ਸਵੈਚਾਲਿਤ ਢੰਗ ਨਾਲ ਪੈਦਾ ਕੀਤੇ ਲੇਬਲਾਂ ਉੱਤੇ ਭਰੋਸਾ ਥ੍ਰੈਸ਼ਹੋਲਡ ਅਤੇ ਇਕਸਾਰਤਾ ਜਾਂਚਾਂ | C੧.੩.੨ |
+| ਸੁਰੱਖਿਆ-ਸੰਬੰਧਿਤ ਫ਼ੈਸਲਿਆਂ ਵਿੱਚ ਵਰਤੇ ਜਾਣ ਵਾਲੇ ਮਾਡਲਾਂ ਲਈ ਪੱਖਪਾਤ ਮੁਲਾਂਕਣ | C੧.੩.੩ |
+| clean-label poisoning ਹਮਲਿਆਂ ਵਿਰੁੱਧ ਬਚਾਅ | C੧.੩.੫ |
+| ਡਾਟਾਸੈੱਟ ਵੰਸ਼ਾਵਲੀ ਦਾ ਦਰਜ ਹੋਣਾ (ਪਰਿਵਰਤਨ, ਔਗਮੈਂਟੇਸ਼ਨ, ਮਰਜ) | C੧੨.੫.੧ |
+| ਸਾਰੀਆਂ ਲੇਬਲਿੰਗ ਗਤੀਵਿਧੀਆਂ ਦੀ ਲੌਗਿੰਗ | C੧੨.੫.੨ |
+| ਹਰ ਦਾਖ਼ਲ ਕੀਤੇ ਦਸਤਾਵੇਜ਼ ਦੀ ਲਿਖਣ-ਸਮੇਂ ਟੈਗਿੰਗ (ਸਰੋਤ, ਲਿਖਣ ਵਾਲੇ ਦੀ ਪਛਾਣ, ਟਾਈਮਸਟੈਂਪ) | C੧੨.੫.੪ |
 
 **Common pitfalls:** not scanning fine-tuning datasets for poisoning; collecting more attributes than the purpose requires; losing dataset lineage across transformations and merges.
 
@@ -2940,7 +2940,7 @@ Source, vet, and document training data so tampering, poisoning, and corruption 
 ---
 
 ## AD.15 Memory, Embeddings & RAG Security
-## AD.15 ਮੈਮੋਰੀ, embeddings, ਅਤੇ RAG ਸੁਰੱਖਿਆ
+## AD.੧੫ ਮੈਮੋਰੀ, embeddings, ਅਤੇ RAG ਸੁਰੱਖਿਆ
 
 Harden vector stores, memory pipelines, and retrieval-augmented generation against leakage, poisoning, and fabricated provenance.
 
@@ -2965,20 +2965,20 @@ Harden vector stores, memory pipelines, and retrieval-augmented generation again
 
 | ਨਿਯੰਤਰਣ / ਤਕਨੀਕ | ਲੋੜ ID |
 | --- | --- |
-| ਵੈਕਟਰ ਪਛਾਣਕਰਤਾਵਾਂ ਅਤੇ ਨੇਮਸਪੇਸਾਂ ਦੀ ਪ੍ਰਤੀ-ਟੈਨੈਂਟ ਵਿਲੱਖਣਤਾ, ਜੋ ਟੈਨੈਂਟਾਂ ਵਿਚਕਾਰ ਟਕਰਾਵਾਂ ਨੂੰ ਰੋਕਦੀ ਹੈ | C8.1.1 |
-| ਸ਼ੁਰੂਆਤੀ ਲਿਖਤ ਤੋਂ ਬਾਅਦ ਦਸਤਾਵੇਜ਼ ਮੈਟਾਡਾਟਾ ਟੈਗਾਂ ਦੀ ਅਪਰਿਵਰਤਨਸ਼ੀਲਤਾ[^0x91-immutable] | C8.1.2 |
-| ਪ੍ਰਾਪਤੀ ਕਾਰਵਾਈਆਂ ਉੱਤੇ ਲਾਗੂ ਕੀਤੀਆਂ ਸਕੋਪ ਪਾਬੰਦੀਆਂ | C8.1.3 |
-| embedding ਤੋਂ ਪਹਿਲਾਂ ਸੰਵੇਦਨਸ਼ੀਲ ਖੇਤਰਾਂ ਦੀ ਪਛਾਣ ਅਤੇ ਉਹਨਾਂ ਦੀ ਮਾਸਕਿੰਗ, ਟੋਕਨਾਈਜ਼ੇਸ਼ਨ, ਜਾਂ ਹਟਾਈ | C8.2.1 |
-| ਵੈਕਟਰਾਈਜ਼ੇਸ਼ਨ ਤੋਂ ਪਹਿਲਾਂ ਪ੍ਰਾਪਤੀ-ਹੇਰਾਫੇਰੀ ਵਾਲੀ ਸਮੱਗਰੀ ਦੀ ਪਛਾਣ, ਰੱਦਗੀ, ਜਾਂ ਕੁਆਰੰਟੀਨ | C8.2.4 |
-| ਬਾਹਰਲੇ (outlier) ਵੈਕਟਰਾਂ ਦਾ ਉਤਪਾਦਨ ਇੰਡੈਕਸਾਂ ਵਿੱਚ ਦਾਖ਼ਲ ਹੋਣ ਤੋਂ ਪਹਿਲਾਂ ਨਿਸ਼ਾਨਬੱਧ ਹੋਣਾ ਅਤੇ ਕੁਆਰੰਟੀਨ | C8.2.2 |
-| ਏਜੰਟ ਜਾਂ ਟੂਲ ਆਊਟਪੁੱਟ ਦੇ ਭਰੋਸੇਯੋਗ ਮੈਮੋਰੀ ਵਿੱਚ ਲਿਖੇ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ ਸਰੋਤ ਪ੍ਰਮਾਣਿਕਤਾ | C8.2.3 |
-| ਨਵੀਆਂ ਮੈਮੋਰੀ ਲਿਖਤਾਂ ਉੱਤੇ ਵਿਰੋਧਾਭਾਸ ਜਾਂਚਾਂ, ਅਤੇ ਟਕਰਾਅ 'ਤੇ ਚੇਤਾਵਨੀਆਂ | C8.2.5 |
-| ਮਿਆਦ ਪੁੱਗ ਚੁੱਕੇ ਵੈਕਟਰਾਂ ਨੂੰ ਪ੍ਰਾਪਤੀ ਨਤੀਜਿਆਂ ਵਿੱਚੋਂ ਬਾਹਰ ਰੱਖਣਾ | C8.3.1 |
-| ਮੈਮੋਰੀ ਰੀਸੈੱਟ ਦੀ ਸਮਰੱਥਾ | C8.3.2 |
-| ਕੁਆਰੰਟੀਨ ਕੀਤੀ ਸਮੱਗਰੀ ਦਾ ਧਾਰਨ, ਪਰ ਉਸ ਨੂੰ ਸਾਰੇ ਪ੍ਰਾਪਤੀ ਨਤੀਜਿਆਂ ਵਿੱਚੋਂ ਬਾਹਰ ਰੱਖਣਾ | C8.3.3 |
-| RAG ਜਵਾਬਾਂ ਦਾ ਉਹਨਾਂ ਦੇ ਸਰੋਤ ਦਸਤਾਵੇਜ਼ਾਂ ਤੱਕ ਸਰੋਤ-ਨਿਰਧਾਰਨ | C7.4.1 |
-| RAG ਸਰੋਤ-ਨਿਰਧਾਰਨ ਪ੍ਰਾਪਤੀ ਮੈਟਾਡਾਟਾ ਤੋਂ ਲਏ ਜਾਣ, ਮਾਡਲ ਦੁਆਰਾ ਤਿਆਰ ਨਾ ਕੀਤੇ ਜਾਣ | C7.4.2 |
-| RAG ਦਾਅਵਿਆਂ ਦੀ ਪ੍ਰਾਪਤ ਕੀਤੇ ਚੰਕ ਤੱਕ ਟਰੇਸਯੋਗਤਾ | C7.4.3 |
+| ਵੈਕਟਰ ਪਛਾਣਕਰਤਾਵਾਂ ਅਤੇ ਨੇਮਸਪੇਸਾਂ ਦੀ ਪ੍ਰਤੀ-ਟੈਨੈਂਟ ਵਿਲੱਖਣਤਾ, ਜੋ ਟੈਨੈਂਟਾਂ ਵਿਚਕਾਰ ਟਕਰਾਵਾਂ ਨੂੰ ਰੋਕਦੀ ਹੈ | C੮.੧.੧ |
+| ਸ਼ੁਰੂਆਤੀ ਲਿਖਤ ਤੋਂ ਬਾਅਦ ਦਸਤਾਵੇਜ਼ ਮੈਟਾਡਾਟਾ ਟੈਗਾਂ ਦੀ ਅਪਰਿਵਰਤਨਸ਼ੀਲਤਾ[^0x91-immutable] | C੮.੧.੨ |
+| ਪ੍ਰਾਪਤੀ ਕਾਰਵਾਈਆਂ ਉੱਤੇ ਲਾਗੂ ਕੀਤੀਆਂ ਸਕੋਪ ਪਾਬੰਦੀਆਂ | C੮.੧.੩ |
+| embedding ਤੋਂ ਪਹਿਲਾਂ ਸੰਵੇਦਨਸ਼ੀਲ ਖੇਤਰਾਂ ਦੀ ਪਛਾਣ ਅਤੇ ਉਹਨਾਂ ਦੀ ਮਾਸਕਿੰਗ, ਟੋਕਨਾਈਜ਼ੇਸ਼ਨ, ਜਾਂ ਹਟਾਈ | C੮.੨.੧ |
+| ਵੈਕਟਰਾਈਜ਼ੇਸ਼ਨ ਤੋਂ ਪਹਿਲਾਂ ਪ੍ਰਾਪਤੀ-ਹੇਰਾਫੇਰੀ ਵਾਲੀ ਸਮੱਗਰੀ ਦੀ ਪਛਾਣ, ਰੱਦਗੀ, ਜਾਂ ਕੁਆਰੰਟੀਨ | C੮.੨.੪ |
+| ਬਾਹਰਲੇ (outlier) ਵੈਕਟਰਾਂ ਦਾ ਉਤਪਾਦਨ ਇੰਡੈਕਸਾਂ ਵਿੱਚ ਦਾਖ਼ਲ ਹੋਣ ਤੋਂ ਪਹਿਲਾਂ ਨਿਸ਼ਾਨਬੱਧ ਹੋਣਾ ਅਤੇ ਕੁਆਰੰਟੀਨ | C੮.੨.੨ |
+| ਏਜੰਟ ਜਾਂ ਟੂਲ ਆਊਟਪੁੱਟ ਦੇ ਭਰੋਸੇਯੋਗ ਮੈਮੋਰੀ ਵਿੱਚ ਲਿਖੇ ਜਾਣ ਤੋਂ ਪਹਿਲਾਂ ਸਰੋਤ ਪ੍ਰਮਾਣਿਕਤਾ | C੮.੨.੩ |
+| ਨਵੀਆਂ ਮੈਮੋਰੀ ਲਿਖਤਾਂ ਉੱਤੇ ਵਿਰੋਧਾਭਾਸ ਜਾਂਚਾਂ, ਅਤੇ ਟਕਰਾਅ 'ਤੇ ਚੇਤਾਵਨੀਆਂ | C੮.੨.੫ |
+| ਮਿਆਦ ਪੁੱਗ ਚੁੱਕੇ ਵੈਕਟਰਾਂ ਨੂੰ ਪ੍ਰਾਪਤੀ ਨਤੀਜਿਆਂ ਵਿੱਚੋਂ ਬਾਹਰ ਰੱਖਣਾ | C੮.੩.੧ |
+| ਮੈਮੋਰੀ ਰੀਸੈੱਟ ਦੀ ਸਮਰੱਥਾ | C੮.੩.੨ |
+| ਕੁਆਰੰਟੀਨ ਕੀਤੀ ਸਮੱਗਰੀ ਦਾ ਧਾਰਨ, ਪਰ ਉਸ ਨੂੰ ਸਾਰੇ ਪ੍ਰਾਪਤੀ ਨਤੀਜਿਆਂ ਵਿੱਚੋਂ ਬਾਹਰ ਰੱਖਣਾ | C੮.੩.੩ |
+| RAG ਜਵਾਬਾਂ ਦਾ ਉਹਨਾਂ ਦੇ ਸਰੋਤ ਦਸਤਾਵੇਜ਼ਾਂ ਤੱਕ ਸਰੋਤ-ਨਿਰਧਾਰਨ | C੭.੪.੧ |
+| RAG ਸਰੋਤ-ਨਿਰਧਾਰਨ ਪ੍ਰਾਪਤੀ ਮੈਟਾਡਾਟਾ ਤੋਂ ਲਏ ਜਾਣ, ਮਾਡਲ ਦੁਆਰਾ ਤਿਆਰ ਨਾ ਕੀਤੇ ਜਾਣ | C੭.੪.੨ |
+| RAG ਦਾਅਵਿਆਂ ਦੀ ਪ੍ਰਾਪਤ ਕੀਤੇ ਚੰਕ ਤੱਕ ਟਰੇਸਯੋਗਤਾ | C੭.੪.੩ |
 
 **Common pitfalls:** auto-writing tool output into trusted memory without validation; serving expired or quarantined vectors; letting the model fabricate citations instead of deriving them from retrieval metadata.
 
@@ -2987,7 +2987,7 @@ Harden vector stores, memory pipelines, and retrieval-augmented generation again
 ---
 
 ## AD.16 Adversarial Robustness & Privacy Defense
-## AD.16 ਵਿਰੋਧੀ ਮਜ਼ਬੂਤੀ ਅਤੇ ਨਿੱਜਤਾ ਬਚਾਅ
+## AD.੧੬ ਵਿਰੋਧੀ ਮਜ਼ਬੂਤੀ ਅਤੇ ਨਿੱਜਤਾ ਬਚਾਅ
 
 Test for and defend against evasion, membership inference, model inversion, extraction, and poisoning of the improvement loop.
 
@@ -3010,18 +3010,18 @@ evasion (ਪਛਾਣ ਤੋਂ ਬਚ ਨਿਕਲਣਾ), membership inference
 
 | ਨਿਯੰਤਰਣ / ਤਕਨੀਕ | ਲੋੜ ID |
 | --- | --- |
-| ਮਨਾਹੀ ਵਾਲੀਆਂ ਸਮੱਗਰੀ ਸ਼੍ਰੇਣੀਆਂ ਨੂੰ ਦਬਾਉਣ ਲਈ ਅਲਾਈਨਮੈਂਟ ਅਤੇ ਸਲਾਮਤੀ ਸਿਖਲਾਈ ਜਾਂ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ | C11.1.1 |
-| ਹਰ ਮਾਡਲ ਅੱਪਡੇਟ ਜਾਂ ਰਿਲੀਜ਼ ਉੱਤੇ ਚਲਾਇਆ ਜਾਣ ਵਾਲਾ ਵਰਜ਼ਨ-ਨਿਯੰਤਰਿਤ ਅਲਾਈਨਮੈਂਟ ਟੈਸਟ ਸੂਟ | C11.1.2 |
-| ਮਾਡੈਲਿਟੀ ਨਾਲ ਸੰਬੰਧਿਤ ਜਾਣੀਆਂ-ਪਛਾਣੀਆਂ ਵਿਰੋਧੀ ਹਮਲਾ ਤਕਨੀਕਾਂ ਦੇ ਵਿਰੁੱਧ ਮੁਲਾਂਕਣ | C11.1.3 |
-| ਵਿਰੋਧੀ ਇਨਪੁੱਟਾਂ ਵਿਰੁੱਧ ਮਾਡਲਾਂ ਨੂੰ ਸਖ਼ਤ ਕਰਨਾ | C11.1.4 |
-| ਸਵੈਚਾਲਿਤ ਮੁਲਾਂਕਣਕਾਰ ਜੋ ਨੁਕਸਾਨਦੇਹ-ਸਮੱਗਰੀ ਦਰ ਮਾਪਦਾ ਹੈ ਅਤੇ ਇੱਕ ਥ੍ਰੈਸ਼ਹੋਲਡ ਤੋਂ ਪਰੇ ਦੇ ਰਿਗਰੈਸ਼ਨਾਂ ਨੂੰ ਨਿਸ਼ਾਨਬੱਧ ਕਰਦਾ ਹੈ | C11.1.5 |
-| ਮਾਡਲ ਦੁਆਰਾ ਅਨੁਮਾਨਿਤ ਸੰਵੇਦਨਸ਼ੀਲ ਗੁਣਾਂ ਦੇ ਸਿੱਧੇ ਵਾਪਸ ਕੀਤੇ ਜਾਣ ਦੀ ਰੋਕਥਾਮ | C11.2.1 |
-| ਇਨਫ਼ਰੈਂਸ ਹਮਲਿਆਂ ਦੁਆਰਾ ਵਰਤੇ ਜਾ ਸਕਣ ਵਾਲੇ ਹੱਦੋਂ ਵੱਧ ਭਰੋਸੇ ਵਾਲੇ ਪੂਰਵ-ਅਨੁਮਾਨਾਂ ਨੂੰ ਘਟਾਉਣ ਲਈ ਆਊਟਪੁੱਟ ਕੈਲੀਬ੍ਰੇਸ਼ਨ | C11.2.3 |
-| ਸੰਵੇਦਨਸ਼ੀਲ ਡਾਟਾਸੈੱਟਾਂ ਉੱਤੇ ਸਿਖਲਾਈ ਲਈ differential privacy-ਆਧਾਰਿਤ ਅਨੁਕੂਲਨ | C11.2.4 |
-| membership-inference ਹਮਲੇ ਦਾ ਸਿਮੂਲੇਸ਼ਨ ਜੋ ਦਰਸਾਏ ਕਿ ਸਟੀਕਤਾ ਬੇਤਰਤੀਬ ਅੰਦਾਜ਼ੇ ਤੋਂ ਵੱਧ ਨਹੀਂ | C11.2.5 |
-| ਕੱਚੇ ਮਾਡਲ ਆਊਟਪੁੱਟ ਦਾ ਬੈਕਐਂਡ ਤੋਂ ਪਰੇ ਜ਼ਾਹਰ ਨਾ ਹੋਣਾ, ਅਤੇ ਬਾਹਰੋਂ ਦਿਖਾਈ ਦੇਣ ਵਾਲੇ ਜਵਾਬਾਂ ਦਾ extraction ਜੋਖਮ ਅਨੁਸਾਰ ਕੈਲੀਬ੍ਰੇਟ ਹੋਣਾ | C11.3.2 |
-| ਮਾਡਲ ਵਾਟਰਮਾਰਕਿੰਗ ਜਾਂ ਫ਼ਿੰਗਰਪ੍ਰਿੰਟਿੰਗ ਤਾਂ ਜੋ ਅਣਅਧਿਕਾਰਤ ਨਕਲਾਂ ਦੀ ਪਛਾਣ ਹੋ ਸਕੇ | C11.3.3 |
-| ਸਲਾਮਤੀ-ਉਲੰਘਣਾ ਫ਼ੀਡਬੈਕ ਪਾਈਪਲਾਈਨ ਦੀ ਰਾਖੀ ਕਰਨ ਵਾਲੇ poisoning ਪਛਾਣ ਅਤੇ ਮਨੁੱਖੀ ਸਮੀਖਿਆ ਗੇਟ | C11.4.3 |
+| ਮਨਾਹੀ ਵਾਲੀਆਂ ਸਮੱਗਰੀ ਸ਼੍ਰੇਣੀਆਂ ਨੂੰ ਦਬਾਉਣ ਲਈ ਅਲਾਈਨਮੈਂਟ ਅਤੇ ਸਲਾਮਤੀ ਸਿਖਲਾਈ ਜਾਂ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ | C੧੧.੧.੧ |
+| ਹਰ ਮਾਡਲ ਅੱਪਡੇਟ ਜਾਂ ਰਿਲੀਜ਼ ਉੱਤੇ ਚਲਾਇਆ ਜਾਣ ਵਾਲਾ ਵਰਜ਼ਨ-ਨਿਯੰਤਰਿਤ ਅਲਾਈਨਮੈਂਟ ਟੈਸਟ ਸੂਟ | C੧੧.੧.੨ |
+| ਮਾਡੈਲਿਟੀ ਨਾਲ ਸੰਬੰਧਿਤ ਜਾਣੀਆਂ-ਪਛਾਣੀਆਂ ਵਿਰੋਧੀ ਹਮਲਾ ਤਕਨੀਕਾਂ ਦੇ ਵਿਰੁੱਧ ਮੁਲਾਂਕਣ | C੧੧.੧.੩ |
+| ਵਿਰੋਧੀ ਇਨਪੁੱਟਾਂ ਵਿਰੁੱਧ ਮਾਡਲਾਂ ਨੂੰ ਸਖ਼ਤ ਕਰਨਾ | C੧੧.੧.੪ |
+| ਸਵੈਚਾਲਿਤ ਮੁਲਾਂਕਣਕਾਰ ਜੋ ਨੁਕਸਾਨਦੇਹ-ਸਮੱਗਰੀ ਦਰ ਮਾਪਦਾ ਹੈ ਅਤੇ ਇੱਕ ਥ੍ਰੈਸ਼ਹੋਲਡ ਤੋਂ ਪਰੇ ਦੇ ਰਿਗਰੈਸ਼ਨਾਂ ਨੂੰ ਨਿਸ਼ਾਨਬੱਧ ਕਰਦਾ ਹੈ | C੧੧.੧.੫ |
+| ਮਾਡਲ ਦੁਆਰਾ ਅਨੁਮਾਨਿਤ ਸੰਵੇਦਨਸ਼ੀਲ ਗੁਣਾਂ ਦੇ ਸਿੱਧੇ ਵਾਪਸ ਕੀਤੇ ਜਾਣ ਦੀ ਰੋਕਥਾਮ | C੧੧.੨.੧ |
+| ਇਨਫ਼ਰੈਂਸ ਹਮਲਿਆਂ ਦੁਆਰਾ ਵਰਤੇ ਜਾ ਸਕਣ ਵਾਲੇ ਹੱਦੋਂ ਵੱਧ ਭਰੋਸੇ ਵਾਲੇ ਪੂਰਵ-ਅਨੁਮਾਨਾਂ ਨੂੰ ਘਟਾਉਣ ਲਈ ਆਊਟਪੁੱਟ ਕੈਲੀਬ੍ਰੇਸ਼ਨ | C੧੧.੨.੩ |
+| ਸੰਵੇਦਨਸ਼ੀਲ ਡਾਟਾਸੈੱਟਾਂ ਉੱਤੇ ਸਿਖਲਾਈ ਲਈ differential privacy-ਆਧਾਰਿਤ ਅਨੁਕੂਲਨ | C੧੧.੨.੪ |
+| membership-inference ਹਮਲੇ ਦਾ ਸਿਮੂਲੇਸ਼ਨ ਜੋ ਦਰਸਾਏ ਕਿ ਸਟੀਕਤਾ ਬੇਤਰਤੀਬ ਅੰਦਾਜ਼ੇ ਤੋਂ ਵੱਧ ਨਹੀਂ | C੧੧.੨.੫ |
+| ਕੱਚੇ ਮਾਡਲ ਆਊਟਪੁੱਟ ਦਾ ਬੈਕਐਂਡ ਤੋਂ ਪਰੇ ਜ਼ਾਹਰ ਨਾ ਹੋਣਾ, ਅਤੇ ਬਾਹਰੋਂ ਦਿਖਾਈ ਦੇਣ ਵਾਲੇ ਜਵਾਬਾਂ ਦਾ extraction ਜੋਖਮ ਅਨੁਸਾਰ ਕੈਲੀਬ੍ਰੇਟ ਹੋਣਾ | C੧੧.੩.੨ |
+| ਮਾਡਲ ਵਾਟਰਮਾਰਕਿੰਗ ਜਾਂ ਫ਼ਿੰਗਰਪ੍ਰਿੰਟਿੰਗ ਤਾਂ ਜੋ ਅਣਅਧਿਕਾਰਤ ਨਕਲਾਂ ਦੀ ਪਛਾਣ ਹੋ ਸਕੇ | C੧੧.੩.੩ |
+| ਸਲਾਮਤੀ-ਉਲੰਘਣਾ ਫ਼ੀਡਬੈਕ ਪਾਈਪਲਾਈਨ ਦੀ ਰਾਖੀ ਕਰਨ ਵਾਲੇ poisoning ਪਛਾਣ ਅਤੇ ਮਨੁੱਖੀ ਸਮੀਖਿਆ ਗੇਟ | C੧੧.੪.੩ |
 
 **Common pitfalls:** testing only known jailbreak patterns without adaptive attacks; not re-running the alignment suite after model updates; exposing raw confidence vectors that accelerate extraction.
 
@@ -3030,7 +3030,7 @@ evasion (ਪਛਾਣ ਤੋਂ ਬਚ ਨਿਕਲਣਾ), membership inference
 ---
 
 ## AD.17 Logging & Audit
-## AD.17 ਲੌਗਿੰਗ ਅਤੇ ਆਡਿਟ
+## AD.੧੭ ਲੌਗਿੰਗ ਅਤੇ ਆਡਿਟ
 
 Capture security-relevant events with sufficient context and integrity for forensic reconstruction and accountability.
 
@@ -3048,13 +3048,13 @@ Capture security-relevant events with sufficient context and integrity for foren
 
 | ਨਿਯੰਤਰਣ / ਤਕਨੀਕ | ਲੋੜ ID |
 | --- | --- |
-| ਸੈਸ਼ਨ ਸੰਦਰਭ ਅਤੇ AI-ਵਿਸ਼ੇਸ਼ ਟੈਲੀਮੈਟਰੀ ਸਮੇਤ AI ਪਰਸਪਰ-ਕਿਰਿਆਵਾਂ ਦੀ ਲੌਗਿੰਗ | C12.1.1 |
-| ਸਲਾਮਤੀ ਫ਼ਿਲਟਰਿੰਗ ਅਤੇ ਨੀਤੀ ਫ਼ੈਸਲਿਆਂ ਦੀ ਇੰਨੇ ਵੇਰਵੇ ਨਾਲ ਲੌਗਿੰਗ ਕਿ ਸਮੱਗਰੀ ਮਾਡਰੇਸ਼ਨ ਦਾ ਆਡਿਟ ਹੋ ਸਕੇ | C12.1.2 |
-| ਇਨਫ਼ਰੈਂਸ ਘਟਨਾਵਾਂ ਲਈ ਢਾਂਚਾਗਤ, ਅੰਤਰ-ਕਾਰਜਸ਼ੀਲ ਲੌਗ ਸਕੀਮਾ (ਮਾਡਲ ਪਛਾਣਕਰਤਾ, ਟੋਕਨ ਵਰਤੋਂ, ਪ੍ਰਦਾਤਾ, ਸੰਚਾਲਨ ਕਿਸਮ) | C12.1.3 |
-| RAG ਪਾਈਪਲਾਈਨ ਦੀਆਂ ਪ੍ਰਾਪਤੀ ਘਟਨਾਵਾਂ ਦੀ ਲੌਗਿੰਗ (ਕਿਊਰੀ, ਪ੍ਰਾਪਤ ਕੀਤੇ ਦਸਤਾਵੇਜ਼, ਗਿਆਨ ਸਰੋਤ) | C12.1.4 |
-| ਸੁਰੱਖਿਆ-ਨਾਜ਼ੁਕ ਪੂਰਵ-ਸਰਗਰਮ ਕਾਰਵਾਈਆਂ ਦੀ ਮਨਜ਼ੂਰੀ ਲੜੀ ਦਰਜ ਕਰਨ ਵਾਲੇ ਆਡਿਟ ਲੌਗ (ਮਨਜ਼ੂਰੀ ਦੇਣ ਵਾਲੇ ਦੀ ਪਛਾਣ, ਟਾਈਮਸਟੈਂਪ, ਪੈਰਾਮੀਟਰ, ਨਤੀਜਾ) | C12.4.2 |
-| kill-switch ਦੀਆਂ ਸਰਗਰਮੀਆਂ ਅਤੇ ਓਵਰਰਾਈਡ ਕਮਾਂਡਾਂ ਦੀ ਲੌਗਿੰਗ | C12.4.3 |
-| ਸਾਰੀਆਂ ਮਾਡਲ ਤਬਦੀਲੀਆਂ ਲਈ ਅਪਰਿਵਰਤਨਸ਼ੀਲ ਆਡਿਟ ਰਿਕਾਰਡ | C12.5.3 |
+| ਸੈਸ਼ਨ ਸੰਦਰਭ ਅਤੇ AI-ਵਿਸ਼ੇਸ਼ ਟੈਲੀਮੈਟਰੀ ਸਮੇਤ AI ਪਰਸਪਰ-ਕਿਰਿਆਵਾਂ ਦੀ ਲੌਗਿੰਗ | C੧੨.੧.੧ |
+| ਸਲਾਮਤੀ ਫ਼ਿਲਟਰਿੰਗ ਅਤੇ ਨੀਤੀ ਫ਼ੈਸਲਿਆਂ ਦੀ ਇੰਨੇ ਵੇਰਵੇ ਨਾਲ ਲੌਗਿੰਗ ਕਿ ਸਮੱਗਰੀ ਮਾਡਰੇਸ਼ਨ ਦਾ ਆਡਿਟ ਹੋ ਸਕੇ | C੧੨.੧.੨ |
+| ਇਨਫ਼ਰੈਂਸ ਘਟਨਾਵਾਂ ਲਈ ਢਾਂਚਾਗਤ, ਅੰਤਰ-ਕਾਰਜਸ਼ੀਲ ਲੌਗ ਸਕੀਮਾ (ਮਾਡਲ ਪਛਾਣਕਰਤਾ, ਟੋਕਨ ਵਰਤੋਂ, ਪ੍ਰਦਾਤਾ, ਸੰਚਾਲਨ ਕਿਸਮ) | C੧੨.੧.੩ |
+| RAG ਪਾਈਪਲਾਈਨ ਦੀਆਂ ਪ੍ਰਾਪਤੀ ਘਟਨਾਵਾਂ ਦੀ ਲੌਗਿੰਗ (ਕਿਊਰੀ, ਪ੍ਰਾਪਤ ਕੀਤੇ ਦਸਤਾਵੇਜ਼, ਗਿਆਨ ਸਰੋਤ) | C੧੨.੧.੪ |
+| ਸੁਰੱਖਿਆ-ਨਾਜ਼ੁਕ ਪੂਰਵ-ਸਰਗਰਮ ਕਾਰਵਾਈਆਂ ਦੀ ਮਨਜ਼ੂਰੀ ਲੜੀ ਦਰਜ ਕਰਨ ਵਾਲੇ ਆਡਿਟ ਲੌਗ (ਮਨਜ਼ੂਰੀ ਦੇਣ ਵਾਲੇ ਦੀ ਪਛਾਣ, ਟਾਈਮਸਟੈਂਪ, ਪੈਰਾਮੀਟਰ, ਨਤੀਜਾ) | C੧੨.੪.੨ |
+| kill-switch ਦੀਆਂ ਸਰਗਰਮੀਆਂ ਅਤੇ ਓਵਰਰਾਈਡ ਕਮਾਂਡਾਂ ਦੀ ਲੌਗਿੰਗ | C੧੨.੪.੩ |
+| ਸਾਰੀਆਂ ਮਾਡਲ ਤਬਦੀਲੀਆਂ ਲਈ ਅਪਰਿਵਰਤਨਸ਼ੀਲ ਆਡਿਟ ਰਿਕਾਰਡ | C੧੨.੫.੩ |
 
 **Common pitfalls:** logging prompts without redaction; using mutable log storage without integrity protection; logging agent actions and approvals but not human-initiated overrides such as kill-switch activations.
 
@@ -3063,7 +3063,7 @@ Capture security-relevant events with sufficient context and integrity for foren
 ---
 
 ## AD.18 Monitoring, Detection & Incident Response
-## AD.18 ਨਿਗਰਾਨੀ, ਪਛਾਣ, ਅਤੇ ਘਟਨਾ ਪ੍ਰਤੀਕਿਰਿਆ
+## AD.੧੮ ਨਿਗਰਾਨੀ, ਪਛਾਣ, ਅਤੇ ਘਟਨਾ ਪ੍ਰਤੀਕਿਰਿਆ
 
 Detect AI-specific abuse, drift, and anomalies, and respond to incidents.
 
@@ -3088,20 +3088,20 @@ AI-ਵਿਸ਼ੇਸ਼ ਦੁਰਵਰਤੋਂ, ਡ੍ਰਿਫ਼ਟ, ਅਤ
 
 | ਨਿਯੰਤਰਣ / ਤਕਨੀਕ | ਲੋੜ ID |
 | --- | --- |
-| ਨੀਤੀ ਉਲੰਘਣਾਵਾਂ ਦੁਆਰਾ ਸ਼ੁਰੂ ਕੀਤੀ ਸਵੈਚਾਲਿਤ ਟੂਲ ਘੇਰਾਬੰਦੀ | C9.3.8 |
-| ਕਿਊਰੀ-ਪੈਟਰਨ ਵਿਸ਼ਲੇਸ਼ਣ ਤੋਂ ਇਨਪੁੱਟ ਲੈਣ ਵਾਲਾ extraction-ਕੋਸ਼ਿਸ਼ ਡਿਟੈਕਟਰ | C11.3.1 |
-| ਸ਼ੱਕੀ model extraction ਦੀ ਪਛਾਣ ਹੋਣ 'ਤੇ ਸ਼ੁਰੂ ਹੋਣ ਵਾਲੇ ਜਵਾਬੀ ਉਪਾਅ | C11.3.4 |
-| jailbreak ਪੈਟਰਨਾਂ, prompt ਇੰਜੈਕਸ਼ਨ, ਅਤੇ ਵਿਰੋਧੀ ਇਨਪੁੱਟਾਂ ਉੱਤੇ ਸਿਗਨੇਚਰ-ਆਧਾਰਿਤ ਪਛਾਣ ਅਤੇ ਚੇਤਾਵਨੀ | C12.2.1 |
-| ਵਿਵਹਾਰਕ ਅਸਧਾਰਨਤਾ ਪਛਾਣ (ਅਸਧਾਰਨ ਗੱਲਬਾਤ ਪੈਟਰਨ, ਹੱਦੋਂ ਵੱਧ ਮੁੜ-ਕੋਸ਼ਿਸ਼ਾਂ, ਵਿਵਸਥਿਤ ਟੋਹ) | C12.2.2 |
-| AI-ਵਿਸ਼ੇਸ਼ ਖ਼ਤਰਾ ਪੈਟਰਨਾਂ ਲਈ ਕਸਟਮ ਪਛਾਣ ਨਿਯਮ (ਤਾਲਮੇਲ ਵਾਲੀਆਂ jailbreak ਕੋਸ਼ਿਸ਼ਾਂ, prompt ਇੰਜੈਕਸ਼ਨ, system prompt extraction) | C12.2.3 |
-| ਦੋਸ਼ੀ ਕਿਊਰੀ ਦਾ ਮੈਟਾਡਾਟਾ ਸ਼ਾਮਲ ਕਰਨ ਵਾਲੀਆਂ extraction-ਚੇਤਾਵਨੀ ਘਟਨਾਵਾਂ | C12.2.4 |
-| ਬਾਰੀਕ ਟੋਕਨ-ਵਰਤੋਂ ਨਿਰਧਾਰਨ (ਪ੍ਰਤੀ ਉਪਭੋਗਤਾ, ਸੈਸ਼ਨ, ਫ਼ੀਚਰ ਐਂਡਪੁਆਇੰਟ, ਟੀਮ ਜਾਂ ਵਰਕਸਪੇਸ) | C12.2.5 |
-| ਲੁਕਵੇਂ-ਚੈਨਲ ਅਤੇ command-and-control ਸੰਕੇਤਾਂ ਲਈ LLM API ਟਰੈਫ਼ਿਕ ਦੀ ਨਿਗਰਾਨੀ | C12.2.6 |
-| ਇਨਪੁੱਟ ਕਿਸਮ ਨਾਲ ਮੇਲ ਖਾਂਦੀਆਂ ਵਿਧੀਆਂ ਵਰਤ ਕੇ ਡਾਟਾ ਡ੍ਰਿਫ਼ਟ ਪਛਾਣ (ਸਾਰਣੀਬੱਧ ਲਈ KS test ਜਾਂ PSI, ਟੈਕਸਟ/ਚਿੱਤਰ ਲਈ embedding-ਦੂਰੀ) | C12.3.1 |
-| ਮਾਡਲ ਆਊਟਪੁੱਟ ਦੀ hallucination (ਮਨਘੜਤ ਸਮੱਗਰੀ) ਪਛਾਣ ਨਿਗਰਾਨੀ | C12.3.2 |
-| hallucination ਦਰਾਂ ਦਾ ਲਗਾਤਾਰ ਸਮਾਂ-ਲੜੀ ਮੈਟ੍ਰਿਕਾਂ ਵਜੋਂ ਟਰੈਕ ਹੋਣਾ | C12.3.3 |
-| ਅਣ-ਵਿਆਖਿਆਤ ਵਿਵਹਾਰਕ ਤਬਦੀਲੀਆਂ ਨੂੰ ਹੌਲੀ-ਹੌਲੀ ਹੋਣ ਵਾਲੇ ਸੰਚਾਲਨ ਡ੍ਰਿਫ਼ਟ ਤੋਂ ਵੱਖ ਕਰਨਾ | C12.3.4 |
-| ਖ਼ੁਦਮੁਖ਼ਤਾਰ ਕਾਰਵਾਈ ਦੇ ਟ੍ਰਿਗਰਾਂ ਲਈ ਸੁਰੱਖਿਆ ਮੁਲਾਂਕਣ ਅਤੇ ਖ਼ਤਰਾ-ਪਰਿਦ੍ਰਿਸ਼ ਮੁਲਾਂਕਣ | C12.4.1 |
+| ਨੀਤੀ ਉਲੰਘਣਾਵਾਂ ਦੁਆਰਾ ਸ਼ੁਰੂ ਕੀਤੀ ਸਵੈਚਾਲਿਤ ਟੂਲ ਘੇਰਾਬੰਦੀ | C੯.੩.੮ |
+| ਕਿਊਰੀ-ਪੈਟਰਨ ਵਿਸ਼ਲੇਸ਼ਣ ਤੋਂ ਇਨਪੁੱਟ ਲੈਣ ਵਾਲਾ extraction-ਕੋਸ਼ਿਸ਼ ਡਿਟੈਕਟਰ | C੧੧.੩.੧ |
+| ਸ਼ੱਕੀ model extraction ਦੀ ਪਛਾਣ ਹੋਣ 'ਤੇ ਸ਼ੁਰੂ ਹੋਣ ਵਾਲੇ ਜਵਾਬੀ ਉਪਾਅ | C੧੧.੩.੪ |
+| jailbreak ਪੈਟਰਨਾਂ, prompt ਇੰਜੈਕਸ਼ਨ, ਅਤੇ ਵਿਰੋਧੀ ਇਨਪੁੱਟਾਂ ਉੱਤੇ ਸਿਗਨੇਚਰ-ਆਧਾਰਿਤ ਪਛਾਣ ਅਤੇ ਚੇਤਾਵਨੀ | C੧੨.੨.੧ |
+| ਵਿਵਹਾਰਕ ਅਸਧਾਰਨਤਾ ਪਛਾਣ (ਅਸਧਾਰਨ ਗੱਲਬਾਤ ਪੈਟਰਨ, ਹੱਦੋਂ ਵੱਧ ਮੁੜ-ਕੋਸ਼ਿਸ਼ਾਂ, ਵਿਵਸਥਿਤ ਟੋਹ) | C੧੨.੨.੨ |
+| AI-ਵਿਸ਼ੇਸ਼ ਖ਼ਤਰਾ ਪੈਟਰਨਾਂ ਲਈ ਕਸਟਮ ਪਛਾਣ ਨਿਯਮ (ਤਾਲਮੇਲ ਵਾਲੀਆਂ jailbreak ਕੋਸ਼ਿਸ਼ਾਂ, prompt ਇੰਜੈਕਸ਼ਨ, system prompt extraction) | C੧੨.੨.੩ |
+| ਦੋਸ਼ੀ ਕਿਊਰੀ ਦਾ ਮੈਟਾਡਾਟਾ ਸ਼ਾਮਲ ਕਰਨ ਵਾਲੀਆਂ extraction-ਚੇਤਾਵਨੀ ਘਟਨਾਵਾਂ | C੧੨.੨.੪ |
+| ਬਾਰੀਕ ਟੋਕਨ-ਵਰਤੋਂ ਨਿਰਧਾਰਨ (ਪ੍ਰਤੀ ਉਪਭੋਗਤਾ, ਸੈਸ਼ਨ, ਫ਼ੀਚਰ ਐਂਡਪੁਆਇੰਟ, ਟੀਮ ਜਾਂ ਵਰਕਸਪੇਸ) | C੧੨.੨.੫ |
+| ਲੁਕਵੇਂ-ਚੈਨਲ ਅਤੇ command-and-control ਸੰਕੇਤਾਂ ਲਈ LLM API ਟਰੈਫ਼ਿਕ ਦੀ ਨਿਗਰਾਨੀ | C੧੨.੨.੬ |
+| ਇਨਪੁੱਟ ਕਿਸਮ ਨਾਲ ਮੇਲ ਖਾਂਦੀਆਂ ਵਿਧੀਆਂ ਵਰਤ ਕੇ ਡਾਟਾ ਡ੍ਰਿਫ਼ਟ ਪਛਾਣ (ਸਾਰਣੀਬੱਧ ਲਈ KS test ਜਾਂ PSI, ਟੈਕਸਟ/ਚਿੱਤਰ ਲਈ embedding-ਦੂਰੀ) | C੧੨.੩.੧ |
+| ਮਾਡਲ ਆਊਟਪੁੱਟ ਦੀ hallucination (ਮਨਘੜਤ ਸਮੱਗਰੀ) ਪਛਾਣ ਨਿਗਰਾਨੀ | C੧੨.੩.੨ |
+| hallucination ਦਰਾਂ ਦਾ ਲਗਾਤਾਰ ਸਮਾਂ-ਲੜੀ ਮੈਟ੍ਰਿਕਾਂ ਵਜੋਂ ਟਰੈਕ ਹੋਣਾ | C੧੨.੩.੩ |
+| ਅਣ-ਵਿਆਖਿਆਤ ਵਿਵਹਾਰਕ ਤਬਦੀਲੀਆਂ ਨੂੰ ਹੌਲੀ-ਹੌਲੀ ਹੋਣ ਵਾਲੇ ਸੰਚਾਲਨ ਡ੍ਰਿਫ਼ਟ ਤੋਂ ਵੱਖ ਕਰਨਾ | C੧੨.੩.੪ |
+| ਖ਼ੁਦਮੁਖ਼ਤਾਰ ਕਾਰਵਾਈ ਦੇ ਟ੍ਰਿਗਰਾਂ ਲਈ ਸੁਰੱਖਿਆ ਮੁਲਾਂਕਣ ਅਤੇ ਖ਼ਤਰਾ-ਪਰਿਦ੍ਰਿਸ਼ ਮੁਲਾਂਕਣ | C੧੨.੪.੧ |
 
 **Common pitfalls:** not correlating AI-specific events with broader SIEM alerts; treating drift as a scheduled check rather than continuous monitoring; lacking AI-specific forensic tooling during an incident.
 
@@ -3110,7 +3110,7 @@ AI-ਵਿਸ਼ੇਸ਼ ਦੁਰਵਰਤੋਂ, ਡ੍ਰਿਫ਼ਟ, ਅਤ
 ---
 
 ## AD.19 Human Oversight & Shutdown Control
-## AD.19 ਮਨੁੱਖੀ ਨਿਗਰਾਨੀ ਅਤੇ ਬੰਦ ਕਰਨ ਦਾ ਨਿਯੰਤਰਣ
+## AD.੧੯ ਮਨੁੱਖੀ ਨਿਗਰਾਨੀ ਅਤੇ ਬੰਦ ਕਰਨ ਦਾ ਨਿਯੰਤਰਣ
 
 Require human approval for high-impact actions and provide reliable, exercised shutdown and graceful-degradation paths under human control.
 
@@ -3136,21 +3136,21 @@ Require human approval for high-impact actions and provide reliable, exercised s
 
 | ਨਿਯੰਤਰਣ / ਤਕਨੀਕ | ਲੋੜ ID |
 | --- | --- |
-| ਸਵਾਰਮ-ਪੱਧਰੀ kill-switch ਜੋ ਸਾਰੇ ਸਰਗਰਮ ਏਜੰਟ ਇੰਸਟਾਂਸਾਂ ਨੂੰ ਰੋਕ ਦਿੰਦਾ ਹੈ | C9.1.3 |
-| ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਪ੍ਰਾਪਤ, ਉੱਚ-ਪ੍ਰਭਾਵ ਵਾਲੀਆਂ, ਜਾਂ ਗ਼ੈਰ-ਉਲਟਾਉਣਯੋਗ ਕਾਰਵਾਈਆਂ ਦੀ ਰਨਟਾਈਮ ਰੋਕ, ਜਦੋਂ ਤੱਕ ਸਪੱਸ਼ਟ ਮਨੁੱਖੀ ਮਨਜ਼ੂਰੀ ਪ੍ਰਾਪਤ ਅਤੇ ਤਸਦੀਕ ਨਾ ਹੋ ਜਾਵੇ | C9.2.1 |
-| ਮਨਜ਼ੂਰੀ ਬੇਨਤੀਆਂ ਜੋ ਕੈਨੋਨੀਕਲਾਈਜ਼ ਕੀਤੇ, ਸੰਪੂਰਨ ਕਾਰਵਾਈ ਪੈਰਾਮੀਟਰ (diff, ਕਮਾਂਡਾਂ, ਪ੍ਰਾਪਤਕਰਤਾ, ਰਕਮਾਂ, ਸਰੋਤ, ਸਕੋਪ) ਬਿਨਾਂ ਕਟੌਤੀ ਦੇ ਦਿਖਾਉਂਦੀਆਂ ਹਨ | C9.2.2 |
-| ਹਰ ਉੱਚ-ਪ੍ਰਭਾਵ ਵਾਲੀ ਕਾਰਵਾਈ ਲਈ ਭਰੋਸੇਯੋਗ ਉਲਟਾਉਣਯੋਗਤਾ ਵਰਗੀਕਰਨ (ਸਿਰਫ਼-ਪੜ੍ਹਨਯੋਗ, ਉਲਟਾਉਣਯੋਗ, ਬਾਹਰੀ ਤੌਰ 'ਤੇ ਉਲਟਾਉਣਯੋਗ, ਗ਼ੈਰ-ਉਲਟਾਉਣਯੋਗ) | C9.2.3 |
-| ਉਲਟਾਉਣਯੋਗਤਾ ਵਰਗੀਕਰਨਾਂ ਦਾ ਰਨਟਾਈਮ ਲਾਗੂਕਰਨ (ਰੋਕਣਾ, ਮਨਜ਼ੂਰੀ ਦੀ ਲੋੜ ਪਾਉਣੀ, ਜਾਂ ਸੀਮਤ ਕਰਨਾ) | C9.2.4 |
-| ਕਿਸੇ ਵੀ ਸਵੈ-ਸੋਧ ਸਮਰੱਥਾ (prompt ਮੁੜ-ਲਿਖਣਾ, ਟੂਲ-ਸੂਚੀ ਤਬਦੀਲੀਆਂ, ਪੈਰਾਮੀਟਰ ਅੱਪਡੇਟ) ਦੀ ਪਾਬੰਦੀ ਅਤੇ ਸੀਮਾਬੰਦੀ | C9.2.5 |
-| ਯੋਜਨਾਬੱਧ ਉੱਚ-ਜੋਖਮ ਕਾਰਵਾਈਆਂ ਦੀ AI-ਸਹਾਇਤ ਪ੍ਰਾਪਤ ਸਮੀਖਿਆ, ਜੋ ਨਿਸ਼ਚਿਤ ਨੀਤੀ ਗੇਟ ਵਿੱਚ ਵਾਧਾ ਕਰਦੀ ਹੈ (ਉਸ ਦੀ ਥਾਂ ਨਹੀਂ ਲੈਂਦੀ) | C9.2.6 |
-| AI-ਸਹਾਇਤ ਪ੍ਰਾਪਤ ਸਮੀਖਿਆ ਵਿਧੀ ਦੀ prompt ਇੰਜੈਕਸ਼ਨ ਰਾਹੀਂ ਬਾਈਪਾਸ ਵਿਰੁੱਧ ਸੁਰੱਖਿਆ | C9.2.7 |
-| ਮਨਜ਼ੂਰੀਆਂ ਦਾ ਪੈਰਾਮੀਟਰਾਂ, ਬੇਨਤੀਕਰਤਾ ਦੀ ਪਛਾਣ, ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਸੰਦਰਭ, ਅਤੇ ਇੱਕ-ਵਾਰੀ-ਵਰਤੋਂ ਵਾਲੇ ਨੌਂਸ ਨਾਲ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਬੰਧਨ | C9.2.8 |
-| ਮਨਜ਼ੂਰੀ ਜਾਰੀ ਕਰਨ ਵਾਲੀ ਕੁੰਜੀ ਸਮੱਗਰੀ ਜਾਂ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲਾਂ ਦੀ ਏਜੰਟ ਰਨਟਾਈਮ ਤੋਂ ਅਲੱਗ-ਥਲੱਗਤਾ | C9.2.9 |
-| ਬਹੁ-ਪੜਾਵੀ ਜਾਂ ਬਹੁ-ਏਜੰਟ ਲੜੀਆਂ ਵਿੱਚ ਲੜੀ ਦੇ ਸਭ ਤੋਂ ਉੱਚ-ਪ੍ਰਭਾਵ ਵਾਲੇ ਉਲਟਾਉਣਯੋਗਤਾ ਵਰਗੀਕਰਨ ਦਾ ਲਾਗੂਕਰਨ | C9.2.10 |
-| ਮਾਡਲ ਇਨਫ਼ਰੈਂਸ ਅਤੇ ਆਊਟਪੁੱਟ ਨੂੰ ਤੁਰੰਤ ਰੋਕਣ ਲਈ ਹੱਥੀਂ ਚਲਾਈ ਜਾਣ ਵਾਲੀ kill-switch | C9.6.1 |
-| ਪਰਿਭਾਸ਼ਿਤ ਸਮੇਂ ਦੇ ਅੰਦਰ ਮਨੁੱਖੀ-ਮਨਜ਼ੂਰੀ ਗੇਟ ਪੂਰਾ ਨਾ ਹੋਣ 'ਤੇ ਬਕਾਇਆ ਕਾਰਵਾਈ ਦੀ ਨਾਕਾਮੀ-'ਤੇ-ਬੰਦ[^0x91-fail-closed] (fail-closed) ਰੋਕ | C9.6.2 |
-| ਏਜੰਟ ਰਨਟਾਈਮ ਤੋਂ ਅਲੱਗ-ਥਲੱਗ ਆਊਟ-ਆਫ਼-ਬੈਂਡ ਚੈਨਲ ਰਾਹੀਂ ਦਿੱਤੀਆਂ ਜਾਣ ਵਾਲੀਆਂ kill-switch ਕਮਾਂਡਾਂ | C9.6.3 |
-| ਸਥਾਨਕ MCP ਸਰਵਰ ਦੀ ਸਥਾਪਨਾ 'ਤੇ ਸਪੱਸ਼ਟ ਸਹਿਮਤੀ ਸੰਵਾਦ ਅਤੇ ਰੱਦ ਕਰਨ ਦਾ ਵਿਕਲਪ | C10.4.7 |
+| ਸਵਾਰਮ-ਪੱਧਰੀ kill-switch ਜੋ ਸਾਰੇ ਸਰਗਰਮ ਏਜੰਟ ਇੰਸਟਾਂਸਾਂ ਨੂੰ ਰੋਕ ਦਿੰਦਾ ਹੈ | C੯.੧.੩ |
+| ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਪ੍ਰਾਪਤ, ਉੱਚ-ਪ੍ਰਭਾਵ ਵਾਲੀਆਂ, ਜਾਂ ਗ਼ੈਰ-ਉਲਟਾਉਣਯੋਗ ਕਾਰਵਾਈਆਂ ਦੀ ਰਨਟਾਈਮ ਰੋਕ, ਜਦੋਂ ਤੱਕ ਸਪੱਸ਼ਟ ਮਨੁੱਖੀ ਮਨਜ਼ੂਰੀ ਪ੍ਰਾਪਤ ਅਤੇ ਤਸਦੀਕ ਨਾ ਹੋ ਜਾਵੇ | C੯.੨.੧ |
+| ਮਨਜ਼ੂਰੀ ਬੇਨਤੀਆਂ ਜੋ ਕੈਨੋਨੀਕਲਾਈਜ਼ ਕੀਤੇ, ਸੰਪੂਰਨ ਕਾਰਵਾਈ ਪੈਰਾਮੀਟਰ (diff, ਕਮਾਂਡਾਂ, ਪ੍ਰਾਪਤਕਰਤਾ, ਰਕਮਾਂ, ਸਰੋਤ, ਸਕੋਪ) ਬਿਨਾਂ ਕਟੌਤੀ ਦੇ ਦਿਖਾਉਂਦੀਆਂ ਹਨ | C੯.੨.੨ |
+| ਹਰ ਉੱਚ-ਪ੍ਰਭਾਵ ਵਾਲੀ ਕਾਰਵਾਈ ਲਈ ਭਰੋਸੇਯੋਗ ਉਲਟਾਉਣਯੋਗਤਾ ਵਰਗੀਕਰਨ (ਸਿਰਫ਼-ਪੜ੍ਹਨਯੋਗ, ਉਲਟਾਉਣਯੋਗ, ਬਾਹਰੀ ਤੌਰ 'ਤੇ ਉਲਟਾਉਣਯੋਗ, ਗ਼ੈਰ-ਉਲਟਾਉਣਯੋਗ) | C੯.੨.੩ |
+| ਉਲਟਾਉਣਯੋਗਤਾ ਵਰਗੀਕਰਨਾਂ ਦਾ ਰਨਟਾਈਮ ਲਾਗੂਕਰਨ (ਰੋਕਣਾ, ਮਨਜ਼ੂਰੀ ਦੀ ਲੋੜ ਪਾਉਣੀ, ਜਾਂ ਸੀਮਤ ਕਰਨਾ) | C੯.੨.੪ |
+| ਕਿਸੇ ਵੀ ਸਵੈ-ਸੋਧ ਸਮਰੱਥਾ (prompt ਮੁੜ-ਲਿਖਣਾ, ਟੂਲ-ਸੂਚੀ ਤਬਦੀਲੀਆਂ, ਪੈਰਾਮੀਟਰ ਅੱਪਡੇਟ) ਦੀ ਪਾਬੰਦੀ ਅਤੇ ਸੀਮਾਬੰਦੀ | C੯.੨.੫ |
+| ਯੋਜਨਾਬੱਧ ਉੱਚ-ਜੋਖਮ ਕਾਰਵਾਈਆਂ ਦੀ AI-ਸਹਾਇਤ ਪ੍ਰਾਪਤ ਸਮੀਖਿਆ, ਜੋ ਨਿਸ਼ਚਿਤ ਨੀਤੀ ਗੇਟ ਵਿੱਚ ਵਾਧਾ ਕਰਦੀ ਹੈ (ਉਸ ਦੀ ਥਾਂ ਨਹੀਂ ਲੈਂਦੀ) | C੯.੨.੬ |
+| AI-ਸਹਾਇਤ ਪ੍ਰਾਪਤ ਸਮੀਖਿਆ ਵਿਧੀ ਦੀ prompt ਇੰਜੈਕਸ਼ਨ ਰਾਹੀਂ ਬਾਈਪਾਸ ਵਿਰੁੱਧ ਸੁਰੱਖਿਆ | C੯.੨.੭ |
+| ਮਨਜ਼ੂਰੀਆਂ ਦਾ ਪੈਰਾਮੀਟਰਾਂ, ਬੇਨਤੀਕਰਤਾ ਦੀ ਪਛਾਣ, ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਸੰਦਰਭ, ਅਤੇ ਇੱਕ-ਵਾਰੀ-ਵਰਤੋਂ ਵਾਲੇ ਨੌਂਸ ਨਾਲ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਬੰਧਨ | C੯.੨.੮ |
+| ਮਨਜ਼ੂਰੀ ਜਾਰੀ ਕਰਨ ਵਾਲੀ ਕੁੰਜੀ ਸਮੱਗਰੀ ਜਾਂ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲਾਂ ਦੀ ਏਜੰਟ ਰਨਟਾਈਮ ਤੋਂ ਅਲੱਗ-ਥਲੱਗਤਾ | C੯.੨.੯ |
+| ਬਹੁ-ਪੜਾਵੀ ਜਾਂ ਬਹੁ-ਏਜੰਟ ਲੜੀਆਂ ਵਿੱਚ ਲੜੀ ਦੇ ਸਭ ਤੋਂ ਉੱਚ-ਪ੍ਰਭਾਵ ਵਾਲੇ ਉਲਟਾਉਣਯੋਗਤਾ ਵਰਗੀਕਰਨ ਦਾ ਲਾਗੂਕਰਨ | C੯.੨.੧੦ |
+| ਮਾਡਲ ਇਨਫ਼ਰੈਂਸ ਅਤੇ ਆਊਟਪੁੱਟ ਨੂੰ ਤੁਰੰਤ ਰੋਕਣ ਲਈ ਹੱਥੀਂ ਚਲਾਈ ਜਾਣ ਵਾਲੀ kill-switch | C੯.੬.੧ |
+| ਪਰਿਭਾਸ਼ਿਤ ਸਮੇਂ ਦੇ ਅੰਦਰ ਮਨੁੱਖੀ-ਮਨਜ਼ੂਰੀ ਗੇਟ ਪੂਰਾ ਨਾ ਹੋਣ 'ਤੇ ਬਕਾਇਆ ਕਾਰਵਾਈ ਦੀ ਨਾਕਾਮੀ-'ਤੇ-ਬੰਦ[^0x91-fail-closed] (fail-closed) ਰੋਕ | C੯.੬.੨ |
+| ਏਜੰਟ ਰਨਟਾਈਮ ਤੋਂ ਅਲੱਗ-ਥਲੱਗ ਆਊਟ-ਆਫ਼-ਬੈਂਡ ਚੈਨਲ ਰਾਹੀਂ ਦਿੱਤੀਆਂ ਜਾਣ ਵਾਲੀਆਂ kill-switch ਕਮਾਂਡਾਂ | C੯.੬.੩ |
+| ਸਥਾਨਕ MCP ਸਰਵਰ ਦੀ ਸਥਾਪਨਾ 'ਤੇ ਸਪੱਸ਼ਟ ਸਹਿਮਤੀ ਸੰਵਾਦ ਅਤੇ ਰੱਦ ਕਰਨ ਦਾ ਵਿਕਲਪ | C੧੦.੪.੭ |
 
 **Common pitfalls:** documenting a high-risk action policy never wired to a runtime gate; binding approval to parameters without binding to identity or context; defaulting to fail-open when the approver does not respond; assuming an in-band kill-switch will work against a compromised agent; implementing a kill-switch that is never exercised.
 
@@ -3174,11 +3174,11 @@ Require human approval for high-impact actions and provide reliable, exercised s
 [^0x91-pass-through]: **pass-through** (of client access tokens) (EN) -> ਅੱਗੇ ਲੰਘਾਉਣਾ — states the mechanism the control forbids (relaying a client's token unchanged downstream), deliberately kept distinct from ਅੱਗੇ ਸੰਚਾਰਿਤ ਕਰਨਾ, which names the *approved* propagation of a scope-limited delegation token elsewhere in this file. Full discussion: OPEN-QUESTIONS.md Q101.
 [^0x91-common-pitfalls]: **Common pitfalls** (EN) -> ਆਮ ਗਲਤੀਆਂ — a recurring implementation mistake, not a vulnerability class or an attacker's trap, so the plain word (spelled without nukta, matching the corpus's existing ਗਲਤੀ ਪ੍ਰਬੰਧਨ) is the honest one; ਫੰਦਾ and ਭੁਲੇਖਾ were rejected as devotionally loaded or already spoken for. Full discussion: OPEN-QUESTIONS.md Q98.
 [^0x91-authenticity]: **authenticity** (EN) -> ਅਸਲੀਅਤ — a sixth distinct verb-precision term alongside the already-locked verify/validate/authenticate/certify/attest cluster; kept clear of ਪ੍ਰਮਾਣਿਕਤਾ, which renders *validation* throughout the corpus including elsewhere in this same appendix. Full discussion: OPEN-QUESTIONS.md Q99.
-[^0x91-replay]: **replay** (EN) -> retained in Latin, glossed (ਦੁਹਰਾਓ) — conforms to the C10 chapter's decision so the named attack class stays searchable across the corpus; an earlier draft's transliterated ਰੀਪਲੇ was normalised away. Full discussion: OPEN-QUESTIONS.md Q102.
+[^0x91-replay]: **replay** (EN) -> retained in Latin, glossed (ਦੁਹਰਾਓ) — conforms to the C੧੦ chapter's decision so the named attack class stays searchable across the corpus; an earlier draft's transliterated ਰੀਪਲੇ was normalised away. Full discussion: OPEN-QUESTIONS.md Q102.
 [^0x91-lateral-movement]: **lateral movement** (EN) -> retained in Latin, glossed ਪਾਸੇ-ਵੱਲ ਫੈਲਾਅ ("spread sideways") — a MITRE ATT&CK tactic name, so the English stays for cross-reference against the threat-intel literature while the gloss carries the descriptive sense. Full discussion: OPEN-QUESTIONS.md Q103.
-[^0x91-downgrade]: **downgrade** (protocol) (EN) -> ਡਾਊਨਗ੍ਰੇਡ — the one term in this control row not already settled by the C10 chapter's transport vocabulary; kept as a loan since it names a forced protocol-version rollback, consistent with the corpus's treatment of protocol-layer terms. Full discussion: OPEN-QUESTIONS.md Q100.
-[^0x91-immutable]: **immutable** (EN) -> ਅਪਰਿਵਰਤਨਸ਼ੀਲਤਾ — this exact requirement (C8.1.2) was found paraphrased elsewhere in the corpus as "cannot be changed," which hid the term from a reader searching for it beside this file's own index entry; this site is the corpus's standing form. Full discussion: OPEN-QUESTIONS.md Q112.
-[^0x91-principal-loan]: **per-principal** (EN) -> ਪ੍ਰਿੰਸੀਪਲ (loan) — a recorded, still-open corpus split: this site and C11.2.2 use the loan, while C9.4.1 and another site in this same file use ਪਛਾਣ-ਇਕਾਈ for the same underlying concept; flagged for a reviewer rather than silently resolved. Full discussion: OPEN-QUESTIONS.md Q124.
+[^0x91-downgrade]: **downgrade** (protocol) (EN) -> ਡਾਊਨਗ੍ਰੇਡ — the one term in this control row not already settled by the C੧੦ chapter's transport vocabulary; kept as a loan since it names a forced protocol-version rollback, consistent with the corpus's treatment of protocol-layer terms. Full discussion: OPEN-QUESTIONS.md Q100.
+[^0x91-immutable]: **immutable** (EN) -> ਅਪਰਿਵਰਤਨਸ਼ੀਲਤਾ — this exact requirement (C੮.੧.੨) was found paraphrased elsewhere in the corpus as "cannot be changed," which hid the term from a reader searching for it beside this file's own index entry; this site is the corpus's standing form. Full discussion: OPEN-QUESTIONS.md Q112.
+[^0x91-principal-loan]: **per-principal** (EN) -> ਪ੍ਰਿੰਸੀਪਲ (loan) — a recorded, still-open corpus split: this site and C੧੧.੨.੨ use the loan, while C੯.੪.੧ and another site in this same file use ਪਛਾਣ-ਇਕਾਈ for the same underlying concept; flagged for a reviewer rather than silently resolved. Full discussion: OPEN-QUESTIONS.md Q124.
 [^0x91-fail-closed]: **fail-closed** (EN) -> ਨਾਕਾਮੀ-'ਤੇ-ਬੰਦ — the literal compound was chosen over the shorter transliterated loan because the control states fail-closed and names fail-open as its pitfall in the same family, and only the literal compound inverts cleanly for both. Full discussion: OPEN-QUESTIONS.md Q104.
 [^0x91-fail-open]: **fail-open** (EN) -> ਨਾਕਾਮੀ-'ਤੇ-ਖੁੱਲ੍ਹਾ — the inverse of ਨਾਕਾਮੀ-'ਤੇ-ਬੰਦ, deliberately not rendered as "safe failure," which would name the desirable outcome rather than the mechanism and make this pitfall untranslatable as fail-closed's opposite. Full discussion: OPEN-QUESTIONS.md Q104.
 
@@ -3203,7 +3203,7 @@ This appendix lists organizational controls for using AI coding tools safely. Th
 ---
 
 ## AC.1 AI-Assisted Secure-Coding Workflow
-## AC.1 AI-ਸਹਾਇਤ ਪ੍ਰਾਪਤ ਸੁਰੱਖਿਅਤ-ਕੋਡਿੰਗ ਵਰਕਫ਼ਲੋ
+## AC.੧ AI-ਸਹਾਇਤ ਪ੍ਰਾਪਤ ਸੁਰੱਖਿਅਤ-ਕੋਡਿੰਗ ਵਰਕਫ਼ਲੋ
 
 AI tooling has to slot into the existing SSDLC without weakening any of the security gates already in place. Equally important: write down the adversarial-AI threat scenarios that justify each guardrail. Doing this up front is much easier than reconstructing it after the fact.
 
@@ -3219,10 +3219,10 @@ AI ਟੂਲਿੰਗ ਨੂੰ ਮੌਜੂਦਾ SSDLC ਵਿੱਚ ਇਸ ਤ
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | --- | --- | --- |
-| **AC.1.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇੱਕ ਲਿਖਤੀ ਵਰਕਫ਼ਲੋ[^0x92-workflow] (workflow) ਦੱਸਦਾ ਹੈ ਕਿ AI ਟੂਲ ਕਦੋਂ ਕੋਡ ਤਿਆਰ ਕਰ ਸਕਦੇ ਹਨ, ਮੁੜ-ਸੰਗਠਿਤ (refactor) ਕਰ ਸਕਦੇ ਹਨ, ਜਾਂ ਉਸ ਦੀ ਸਮੀਖਿਆ ਕਰ ਸਕਦੇ ਹਨ। ਵਰਕਫ਼ਲੋ ਪ੍ਰਵਾਨਿਤ ਟੂਲਾਂ, ਵਰਜਿਤ ਵਰਤੋਂ-ਮਾਮਲਿਆਂ, ਅਤੇ ਉਹਨਾਂ ਡਾਟਾ ਵਰਗੀਕਰਨਾਂ ਦੇ ਨਾਂ ਦੱਸਦਾ ਹੈ ਜਿਨ੍ਹਾਂ ਨੂੰ ਇਨਪੁੱਟ ਵਜੋਂ ਦੇਣ ਦੀ ਇਜਾਜ਼ਤ ਹੈ। | 1 |
-| **AC.1.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਵਰਕਫ਼ਲੋ ਡਿਜ਼ਾਈਨ ਅਤੇ ਲਾਗੂਕਰਨ ਤੋਂ ਲੈ ਕੇ ਕੋਡ ਸਮੀਖਿਆ, ਟੈਸਟਿੰਗ, ਤੈਨਾਤੀ, ਅਤੇ ਤੈਨਾਤੀ-ਉਪਰੰਤ ਨਿਗਰਾਨੀ ਤੱਕ ਹਰ SSDLC ਪੜਾਅ ਨੂੰ ਢੱਕਦਾ ਹੈ, ਅਤੇ ਉਹਨਾਂ ਸੁਰੱਖਿਆ ਗੇਟਾਂ ਦੇ ਨਾਂ ਦੱਸਦਾ ਹੈ ਜੋ AI ਦੇ ਸ਼ਾਮਲ ਹੋਣ ਜਾਂ ਨਾ ਹੋਣ ਦੇ ਬਾਵਜੂਦ ਲਾਜ਼ਮੀ ਰਹਿੰਦੇ ਹਨ। | 2 |
-| **AC.1.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਵਰਕਫ਼ਲੋ ਉਹਨਾਂ ਵਿਰੋਧੀ-AI ਖ਼ਤਰਾ ਦ੍ਰਿਸ਼ਾਂ ਦੇ ਨਾਂ ਦੱਸਦਾ ਹੈ ਜਿਨ੍ਹਾਂ ਨੂੰ ਘਟਾਉਣ ਲਈ ਇਹ ਬਣਾਇਆ ਗਿਆ ਹੈ। ਇਸ ਸੂਚੀ ਵਿੱਚ PR ਸਮੱਗਰੀ ਰਾਹੀਂ ਪਹੁੰਚਾਇਆ ਗਿਆ prompt ਇੰਜੈਕਸ਼ਨ, AI ਦੁਆਰਾ ਤਿਆਰ ਸਪਲਾਈ ਚੇਨ ਪੇਲੋਡ, ਆਪਣੇ ਹੀ ਕੰਮ ਨੂੰ ਮਨਜ਼ੂਰੀ ਦਿੰਦੇ ਖ਼ੁਦਮੁਖ਼ਤਾਰ ਏਜੰਟ, ਫ਼ੋਰਕ-PR[^0x92-fork] ਰਾਹੀਂ ਗੁਪਤ ਭੇਦ ਬਾਹਰ ਕੱਢਣਾ (exfiltration), ਅਤੇ ਮਾਡਲ ਸਪਲਾਈ ਚੇਨ ਦਾ ਭੇਦੀ ਹੋਣਾ (compromise) ਸ਼ਾਮਲ ਹੋਣੇ ਚਾਹੀਦੇ ਹਨ। | 2 |
-| **AC.1.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਦੁਆਰਾ ਤਿਆਰ ਕੀਤੇ ਅਤੇ AI-ਵਿਚੋਲਗੀ ਵਾਲੇ ਕੋਡ ਬਾਰੇ ਮੈਟ੍ਰਿਕਸ (metrics) ਇਕੱਠੇ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਅਤੇ ਨਤੀਜਿਆਂ ਦੀ ਤੁਲਨਾ ਸਿਰਫ਼-ਮਨੁੱਖੀ ਬੇਸਲਾਈਨ ਨਾਲ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। ਕਮਜ਼ੋਰੀ ਘਣਤਾ, ਔਸਤ-ਪਛਾਣ-ਸਮਾਂ, AI ਨੂੰ ਸਰੋਤ-ਨਿਰਧਾਰਿਤ ਕੀਤੀ ਜਾ ਸਕਣ ਵਾਲੀ ਨੁਕਸ ਦਰ, prompt ਇੰਜੈਕਸ਼ਨ ਪਛਾਣ ਦਰ, ਅਤੇ ਫ਼ੋਰਕ-PR ਰੱਦਗੀ ਦਰ — ਇਹ ਸਾਰੇ ਲਾਭਦਾਇਕ ਹਨ। | 3 |
+| **AC.੧.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇੱਕ ਲਿਖਤੀ ਵਰਕਫ਼ਲੋ[^0x92-workflow] (workflow) ਦੱਸਦਾ ਹੈ ਕਿ AI ਟੂਲ ਕਦੋਂ ਕੋਡ ਤਿਆਰ ਕਰ ਸਕਦੇ ਹਨ, ਮੁੜ-ਸੰਗਠਿਤ (refactor) ਕਰ ਸਕਦੇ ਹਨ, ਜਾਂ ਉਸ ਦੀ ਸਮੀਖਿਆ ਕਰ ਸਕਦੇ ਹਨ। ਵਰਕਫ਼ਲੋ ਪ੍ਰਵਾਨਿਤ ਟੂਲਾਂ, ਵਰਜਿਤ ਵਰਤੋਂ-ਮਾਮਲਿਆਂ, ਅਤੇ ਉਹਨਾਂ ਡਾਟਾ ਵਰਗੀਕਰਨਾਂ ਦੇ ਨਾਂ ਦੱਸਦਾ ਹੈ ਜਿਨ੍ਹਾਂ ਨੂੰ ਇਨਪੁੱਟ ਵਜੋਂ ਦੇਣ ਦੀ ਇਜਾਜ਼ਤ ਹੈ। | ੧ |
+| **AC.੧.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਵਰਕਫ਼ਲੋ ਡਿਜ਼ਾਈਨ ਅਤੇ ਲਾਗੂਕਰਨ ਤੋਂ ਲੈ ਕੇ ਕੋਡ ਸਮੀਖਿਆ, ਟੈਸਟਿੰਗ, ਤੈਨਾਤੀ, ਅਤੇ ਤੈਨਾਤੀ-ਉਪਰੰਤ ਨਿਗਰਾਨੀ ਤੱਕ ਹਰ SSDLC ਪੜਾਅ ਨੂੰ ਢੱਕਦਾ ਹੈ, ਅਤੇ ਉਹਨਾਂ ਸੁਰੱਖਿਆ ਗੇਟਾਂ ਦੇ ਨਾਂ ਦੱਸਦਾ ਹੈ ਜੋ AI ਦੇ ਸ਼ਾਮਲ ਹੋਣ ਜਾਂ ਨਾ ਹੋਣ ਦੇ ਬਾਵਜੂਦ ਲਾਜ਼ਮੀ ਰਹਿੰਦੇ ਹਨ। | ੨ |
+| **AC.੧.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਵਰਕਫ਼ਲੋ ਉਹਨਾਂ ਵਿਰੋਧੀ-AI ਖ਼ਤਰਾ ਦ੍ਰਿਸ਼ਾਂ ਦੇ ਨਾਂ ਦੱਸਦਾ ਹੈ ਜਿਨ੍ਹਾਂ ਨੂੰ ਘਟਾਉਣ ਲਈ ਇਹ ਬਣਾਇਆ ਗਿਆ ਹੈ। ਇਸ ਸੂਚੀ ਵਿੱਚ PR ਸਮੱਗਰੀ ਰਾਹੀਂ ਪਹੁੰਚਾਇਆ ਗਿਆ prompt ਇੰਜੈਕਸ਼ਨ, AI ਦੁਆਰਾ ਤਿਆਰ ਸਪਲਾਈ ਚੇਨ ਪੇਲੋਡ, ਆਪਣੇ ਹੀ ਕੰਮ ਨੂੰ ਮਨਜ਼ੂਰੀ ਦਿੰਦੇ ਖ਼ੁਦਮੁਖ਼ਤਾਰ ਏਜੰਟ, ਫ਼ੋਰਕ-PR[^0x92-fork] ਰਾਹੀਂ ਗੁਪਤ ਭੇਦ ਬਾਹਰ ਕੱਢਣਾ (exfiltration), ਅਤੇ ਮਾਡਲ ਸਪਲਾਈ ਚੇਨ ਦਾ ਭੇਦੀ ਹੋਣਾ (compromise) ਸ਼ਾਮਲ ਹੋਣੇ ਚਾਹੀਦੇ ਹਨ। | ੨ |
+| **AC.੧.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਦੁਆਰਾ ਤਿਆਰ ਕੀਤੇ ਅਤੇ AI-ਵਿਚੋਲਗੀ ਵਾਲੇ ਕੋਡ ਬਾਰੇ ਮੈਟ੍ਰਿਕਸ (metrics) ਇਕੱਠੇ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਅਤੇ ਨਤੀਜਿਆਂ ਦੀ ਤੁਲਨਾ ਸਿਰਫ਼-ਮਨੁੱਖੀ ਬੇਸਲਾਈਨ ਨਾਲ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। ਕਮਜ਼ੋਰੀ ਘਣਤਾ, ਔਸਤ-ਪਛਾਣ-ਸਮਾਂ, AI ਨੂੰ ਸਰੋਤ-ਨਿਰਧਾਰਿਤ ਕੀਤੀ ਜਾ ਸਕਣ ਵਾਲੀ ਨੁਕਸ ਦਰ, prompt ਇੰਜੈਕਸ਼ਨ ਪਛਾਣ ਦਰ, ਅਤੇ ਫ਼ੋਰਕ-PR ਰੱਦਗੀ ਦਰ — ਇਹ ਸਾਰੇ ਲਾਭਦਾਇਕ ਹਨ। | ੩ |
 
 **Mappings & References:**
 
@@ -3236,7 +3236,7 @@ AI ਟੂਲਿੰਗ ਨੂੰ ਮੌਜੂਦਾ SSDLC ਵਿੱਚ ਇਸ ਤ
 ---
 
 ## AC.2 AI Tool Qualification & Threat Modeling
-## AC.2 AI ਟੂਲ ਯੋਗਤਾ-ਨਿਰਧਾਰਨ ਅਤੇ ਖ਼ਤਰਾ ਮਾਡਲਿੰਗ
+## AC.੨ AI ਟੂਲ ਯੋਗਤਾ-ਨਿਰਧਾਰਨ ਅਤੇ ਖ਼ਤਰਾ ਮਾਡਲਿੰਗ
 
 Do not adopt an AI coding tool until it has been evaluated. Three areas in particular: its security capabilities, its resistance to adversarial input, and the risk inherited from its supply chain.
 
@@ -3252,10 +3252,10 @@ Do not adopt an AI coding tool until it has been evaluated. Three areas in parti
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | --- | --- | --- |
-| **AC.2.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ AI ਟੂਲ ਦਾ — ਭਾਵੇਂ ਉਹ ਸਹਾਇਕ ਹੋਵੇ, ਸਮੀਖਿਅਕ, ਏਜੰਟ, ਜਾਂ MCP ਸਰਵਰ — ਇੱਕ ਖ਼ਤਰਾ ਮਾਡਲ ਹੈ। ਇਹ ਖ਼ਤਰਾ ਮਾਡਲ ਦੁਰਵਰਤੋਂ, model inversion, ਸਿਖਲਾਈ-ਡਾਟਾ ਲੀਕੇਜ, ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਇਨਪੁੱਟ ਤੋਂ prompt ਇੰਜੈਕਸ਼ਨ, ਗ਼ੈਰ-ਸੁਰੱਖਿਅਤ ਆਊਟਪੁੱਟ ਪ੍ਰਬੰਧਨ, ਲੋੜ ਤੋਂ ਵੱਧ ਏਜੰਸੀ (excessive agency), ਅਤੇ ਉਸ ਦੀ ਡਿਪੈਂਡੈਂਸੀ ਲੜੀ ਤੋਂ ਵਿਰਸੇ ਵਿੱਚ ਮਿਲੇ ਜੋਖਮ ਨੂੰ ਢੱਕਦਾ ਹੈ। | 1 |
-| **AC.2.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਟੂਲ ਦਾ ਮੁਲਾਂਕਣ ਸਥਾਨਕ ਕੰਪੋਨੈਂਟਾਂ (ਸਥਿਰ ਅਤੇ ਗਤੀਸ਼ੀਲ ਵਿਸ਼ਲੇਸ਼ਣ), SaaS ਐਂਡਪੁਆਇੰਟਾਂ (TLS, AuthN/AuthZ, ਲੌਗਿੰਗ, ਡਾਟਾ ਨਿਵਾਸ), ਅਤੇ ਵਿਕਰੇਤਾ ਦੀ ਮਾਡਲ ਸਪਲਾਈ ਚੇਨ (ਸਿਖਲਾਈ-ਡਾਟਾ ਦਾ ਮੂਲ-ਸਰੋਤ, ਫ਼ਾਈਨ-ਟਿਊਨ ਇਤਿਹਾਸ, RAG ਸਰੋਤ) ਨੂੰ ਢੱਕਦਾ ਹੈ। ਇਹਨਾਂ ਵਿੱਚੋਂ ਹਰੇਕ ਦੀ ਸਮੀਖਿਆ ਕੀਤੀ ਜਾਂਦੀ ਹੈ ਅਤੇ ਸਮੀਖਿਆ ਲਿਖਤੀ ਰੂਪ ਵਿੱਚ ਦਰਜ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | 2 |
-| **AC.2.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਟੂਲ ਨੂੰ ਸ਼ਾਮਲ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਵਿਰੋਧੀ ਮਜ਼ਬੂਤੀ (adversarial robustness) ਟੈਸਟਿੰਗ ਵਿੱਚੋਂ ਲੰਘਾਇਆ ਜਾਂਦਾ ਹੈ। ਮਾਡਲ ਜਾਂ ਸਿਸਟਮ prompt ਵਿੱਚ ਕਿਸੇ ਵੀ ਮਹੱਤਵਪੂਰਨ ਤਬਦੀਲੀ ਤੋਂ ਬਾਅਦ ਇਹ ਟੈਸਟਿੰਗ ਦੁਹਰਾਈ ਜਾਂਦੀ ਹੈ। ਇਸ ਦੇ ਘੇਰੇ ਵਿੱਚ ਸਵੈਚਾਲਿਤ prompt ਇੰਜੈਕਸ਼ਨ ਪੜਤਾਲਾਂ, jailbreak ਸੂਟ, ਅਤੇ ਅਸਲੀਅਤ ਵਰਗੀਆਂ PR ਤੇ ਮੁੱਦਾ ਸਤ੍ਹਾਵਾਂ ਰਾਹੀਂ ਪਹੁੰਚਾਏ ਗਏ ਅਸਿੱਧੇ-ਇੰਜੈਕਸ਼ਨ ਕਾਰਪੋਰਾ ਸ਼ਾਮਲ ਹਨ। | 2 |
-| **AC.2.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮੁਲਾਂਕਣ ਕਿਸੇ ਮਾਨਤਾ-ਪ੍ਰਾਪਤ ਫ੍ਰੇਮਵਰਕ ਦੀ ਪਾਲਣਾ ਕਰਦੇ ਹਨ, ਜਿਵੇਂ NIST AI RMF, NIST AI 600-1 Generative AI Profile, ਜਾਂ ISO/IEC 42001। ਵੱਡੀ ਵਰਜ਼ਨ ਤਬਦੀਲੀ, ਵਿਕਰੇਤਾ ਦੀ ਕਿਸੇ ਘਟਨਾ, ਜਾਂ ਟੂਲ ਸ਼੍ਰੇਣੀ ਨਾਲ ਸੰਬੰਧਿਤ ਨਵੀਂ ਖ਼ਤਰਾ ਖ਼ੁਫ਼ੀਆ ਜਾਣਕਾਰੀ ਤੋਂ ਬਾਅਦ ਮੁਲਾਂਕਣ ਦੁਹਰਾਏ ਜਾਂਦੇ ਹਨ। | 3 |
+| **AC.੨.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ AI ਟੂਲ ਦਾ — ਭਾਵੇਂ ਉਹ ਸਹਾਇਕ ਹੋਵੇ, ਸਮੀਖਿਅਕ, ਏਜੰਟ, ਜਾਂ MCP ਸਰਵਰ — ਇੱਕ ਖ਼ਤਰਾ ਮਾਡਲ ਹੈ। ਇਹ ਖ਼ਤਰਾ ਮਾਡਲ ਦੁਰਵਰਤੋਂ, model inversion, ਸਿਖਲਾਈ-ਡਾਟਾ ਲੀਕੇਜ, ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਇਨਪੁੱਟ ਤੋਂ prompt ਇੰਜੈਕਸ਼ਨ, ਗ਼ੈਰ-ਸੁਰੱਖਿਅਤ ਆਊਟਪੁੱਟ ਪ੍ਰਬੰਧਨ, ਲੋੜ ਤੋਂ ਵੱਧ ਏਜੰਸੀ (excessive agency), ਅਤੇ ਉਸ ਦੀ ਡਿਪੈਂਡੈਂਸੀ ਲੜੀ ਤੋਂ ਵਿਰਸੇ ਵਿੱਚ ਮਿਲੇ ਜੋਖਮ ਨੂੰ ਢੱਕਦਾ ਹੈ। | ੧ |
+| **AC.੨.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਟੂਲ ਦਾ ਮੁਲਾਂਕਣ ਸਥਾਨਕ ਕੰਪੋਨੈਂਟਾਂ (ਸਥਿਰ ਅਤੇ ਗਤੀਸ਼ੀਲ ਵਿਸ਼ਲੇਸ਼ਣ), SaaS ਐਂਡਪੁਆਇੰਟਾਂ (TLS, AuthN/AuthZ, ਲੌਗਿੰਗ, ਡਾਟਾ ਨਿਵਾਸ), ਅਤੇ ਵਿਕਰੇਤਾ ਦੀ ਮਾਡਲ ਸਪਲਾਈ ਚੇਨ (ਸਿਖਲਾਈ-ਡਾਟਾ ਦਾ ਮੂਲ-ਸਰੋਤ, ਫ਼ਾਈਨ-ਟਿਊਨ ਇਤਿਹਾਸ, RAG ਸਰੋਤ) ਨੂੰ ਢੱਕਦਾ ਹੈ। ਇਹਨਾਂ ਵਿੱਚੋਂ ਹਰੇਕ ਦੀ ਸਮੀਖਿਆ ਕੀਤੀ ਜਾਂਦੀ ਹੈ ਅਤੇ ਸਮੀਖਿਆ ਲਿਖਤੀ ਰੂਪ ਵਿੱਚ ਦਰਜ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | ੨ |
+| **AC.੨.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਟੂਲ ਨੂੰ ਸ਼ਾਮਲ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਵਿਰੋਧੀ ਮਜ਼ਬੂਤੀ (adversarial robustness) ਟੈਸਟਿੰਗ ਵਿੱਚੋਂ ਲੰਘਾਇਆ ਜਾਂਦਾ ਹੈ। ਮਾਡਲ ਜਾਂ ਸਿਸਟਮ prompt ਵਿੱਚ ਕਿਸੇ ਵੀ ਮਹੱਤਵਪੂਰਨ ਤਬਦੀਲੀ ਤੋਂ ਬਾਅਦ ਇਹ ਟੈਸਟਿੰਗ ਦੁਹਰਾਈ ਜਾਂਦੀ ਹੈ। ਇਸ ਦੇ ਘੇਰੇ ਵਿੱਚ ਸਵੈਚਾਲਿਤ prompt ਇੰਜੈਕਸ਼ਨ ਪੜਤਾਲਾਂ, jailbreak ਸੂਟ, ਅਤੇ ਅਸਲੀਅਤ ਵਰਗੀਆਂ PR ਤੇ ਮੁੱਦਾ ਸਤ੍ਹਾਵਾਂ ਰਾਹੀਂ ਪਹੁੰਚਾਏ ਗਏ ਅਸਿੱਧੇ-ਇੰਜੈਕਸ਼ਨ ਕਾਰਪੋਰਾ ਸ਼ਾਮਲ ਹਨ। | ੨ |
+| **AC.੨.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮੁਲਾਂਕਣ ਕਿਸੇ ਮਾਨਤਾ-ਪ੍ਰਾਪਤ ਫ੍ਰੇਮਵਰਕ ਦੀ ਪਾਲਣਾ ਕਰਦੇ ਹਨ, ਜਿਵੇਂ NIST AI RMF, NIST AI 600-1 Generative AI Profile, ਜਾਂ ISO/IEC 42001। ਵੱਡੀ ਵਰਜ਼ਨ ਤਬਦੀਲੀ, ਵਿਕਰੇਤਾ ਦੀ ਕਿਸੇ ਘਟਨਾ, ਜਾਂ ਟੂਲ ਸ਼੍ਰੇਣੀ ਨਾਲ ਸੰਬੰਧਿਤ ਨਵੀਂ ਖ਼ਤਰਾ ਖ਼ੁਫ਼ੀਆ ਜਾਣਕਾਰੀ ਤੋਂ ਬਾਅਦ ਮੁਲਾਂਕਣ ਦੁਹਰਾਏ ਜਾਂਦੇ ਹਨ। | ੩ |
 
 **Mappings & References:**
 
@@ -3269,7 +3269,7 @@ Do not adopt an AI coding tool until it has been evaluated. Three areas in parti
 ---
 
 ## AC.3 Secure Prompt & Context Management
-## AC.3 ਸੁਰੱਖਿਅਤ prompt ਅਤੇ ਸੰਦਰਭ ਪ੍ਰਬੰਧਨ
+## AC.੩ ਸੁਰੱਖਿਅਤ prompt ਅਤੇ ਸੰਦਰਭ ਪ੍ਰਬੰਧਨ
 
 Two goals in this family. First: stop secrets, proprietary code, and personal data from leaking into prompts. Second: treat any content sourced from the repository, a PR, or a third party as untrusted input. Any of it can carry a prompt-injection payload, and most of it usually does not, which is part of what makes the rare hostile case easy to miss.
 
@@ -3277,7 +3277,7 @@ Two goals in this family. First: stop secrets, proprietary code, and personal da
 
 > **Relationship to AISVS C2.1:** AC.3.3, AC.3.4, and AC.3.5 apply AISVS C2.1 (Prompt Injection Defenses) to the secure-coding case. If a finding here is something that C2.1 verification did not already close, count it as an additional gap (specific to coding-tool prompt construction). If C2.1 already closed it, do not count it twice.
 
-> **AISVS C2.1 ਨਾਲ ਸੰਬੰਧ:** AC.3.3, AC.3.4, ਅਤੇ AC.3.5 AISVS C2.1 (Prompt Injection Defenses) ਨੂੰ ਸੁਰੱਖਿਅਤ-ਕੋਡਿੰਗ ਦੇ ਮਾਮਲੇ ਉੱਤੇ ਲਾਗੂ ਕਰਦੇ ਹਨ। ਜੇ ਇੱਥੋਂ ਦਾ ਕੋਈ ਖੋਜ-ਨਤੀਜਾ ਅਜਿਹਾ ਹੈ ਜਿਸ ਨੂੰ C2.1 ਦੀ ਤਸਦੀਕ ਨੇ ਪਹਿਲਾਂ ਹੀ ਬੰਦ ਨਹੀਂ ਕੀਤਾ ਸੀ, ਤਾਂ ਉਸ ਨੂੰ ਇੱਕ ਵਾਧੂ ਪਾੜੇ ਵਜੋਂ ਗਿਣੋ (ਜੋ ਕੋਡਿੰਗ-ਟੂਲ ਦੇ prompt ਨਿਰਮਾਣ ਲਈ ਵਿਸ਼ੇਸ਼ ਹੈ)। ਜੇ C2.1 ਨੇ ਉਸ ਨੂੰ ਪਹਿਲਾਂ ਹੀ ਬੰਦ ਕਰ ਦਿੱਤਾ ਸੀ, ਤਾਂ ਉਸ ਨੂੰ ਦੋ ਵਾਰ ਨਾ ਗਿਣੋ।
+> **AISVS C੨.੧ ਨਾਲ ਸੰਬੰਧ:** AC.੩.੩, AC.੩.੪, ਅਤੇ AC.੩.੫ AISVS C੨.੧ (Prompt Injection Defenses) ਨੂੰ ਸੁਰੱਖਿਅਤ-ਕੋਡਿੰਗ ਦੇ ਮਾਮਲੇ ਉੱਤੇ ਲਾਗੂ ਕਰਦੇ ਹਨ। ਜੇ ਇੱਥੋਂ ਦਾ ਕੋਈ ਖੋਜ-ਨਤੀਜਾ ਅਜਿਹਾ ਹੈ ਜਿਸ ਨੂੰ C੨.੧ ਦੀ ਤਸਦੀਕ ਨੇ ਪਹਿਲਾਂ ਹੀ ਬੰਦ ਨਹੀਂ ਕੀਤਾ ਸੀ, ਤਾਂ ਉਸ ਨੂੰ ਇੱਕ ਵਾਧੂ ਪਾੜੇ ਵਜੋਂ ਗਿਣੋ (ਜੋ ਕੋਡਿੰਗ-ਟੂਲ ਦੇ prompt ਨਿਰਮਾਣ ਲਈ ਵਿਸ਼ੇਸ਼ ਹੈ)। ਜੇ C੨.੧ ਨੇ ਉਸ ਨੂੰ ਪਹਿਲਾਂ ਹੀ ਬੰਦ ਕਰ ਦਿੱਤਾ ਸੀ, ਤਾਂ ਉਸ ਨੂੰ ਦੋ ਵਾਰ ਨਾ ਗਿਣੋ।
 
 <!-- markdownlint-disable MD013 -->
 | # | Description | Level |
@@ -3291,12 +3291,12 @@ Two goals in this family. First: stop secrets, proprietary code, and personal da
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | --- | --- | --- |
-| **AC.3.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਲਿਖਤੀ ਮਾਰਗਦਰਸ਼ਨ AI ਟੂਲ ਨੂੰ ਭੇਜੇ ਜਾਂਦੇ ਕਿਸੇ ਵੀ prompt ਵਿੱਚ ਗੁਪਤ ਭੇਦ, ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ, PII, ਜਾਂ ਵਰਗੀਕ੍ਰਿਤ ਡਾਟਾ ਪਾਉਣ ਤੋਂ ਵਰਜਦਾ ਹੈ। ਇਹ ਮਾਰਗਦਰਸ਼ਨ pre-commit ਹੁੱਕਾਂ, IDE ਏਕੀਕਰਨਾਂ, ਅਤੇ CI ਵਿੱਚ ਲਾਗੂ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 1 |
-| **AC.3.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਤਕਨੀਕੀ ਨਿਯੰਤਰਣ AI ਟੂਲ ਨੂੰ ਭੇਜੀ ਜਾਂਦੀ ਕਿਸੇ ਵੀ ਸੰਦਰਭ ਵਿੰਡੋ (context window) ਵਿੱਚੋਂ ਸੰਵੇਦਨਸ਼ੀਲ ਸਮੱਗਰੀ ਆਪਣੇ-ਆਪ ਹਟਾ ਦਿੰਦੇ ਹਨ। ਕਲਾਇੰਟ-ਪਾਸੇ ਦੀ ਰਿਡੈਕਸ਼ਨ, ਪ੍ਰਵਾਨਿਤ ਸੰਦਰਭ ਫ਼ਿਲਟਰ, ਅਤੇ prompt-ਤੋਂ-ਪਹਿਲਾਂ ਵਾਲੀਆਂ ਹੁੱਕਾਂ ਵਾਲੇ ਗੁਪਤ-ਭੇਦ ਸਕੈਨਰ — ਇਹ ਸਾਰੇ ਯੋਗ ਹਨ। | 1 |
-| **AC.3.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਟੂਲ ਨੂੰ ਦਿੱਤੇ ਜਾ ਰਹੇ ਕਿਸੇ ਵੀ ਬਾਹਰੀ ਸਰੋਤ ਵਾਲੇ ਸੰਦਰਭ ਨੂੰ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਮੰਨਿਆ ਜਾਂਦਾ ਹੈ ਅਤੇ prompt ਤੱਕ ਪਹੁੰਚਣ ਤੋਂ ਪਹਿਲਾਂ prompt ਇੰਜੈਕਸ਼ਨ ਲਈ ਛਾਣਿਆ ਜਾਂਦਾ ਹੈ। ਢੱਕੇ ਜਾਣ ਵਾਲੇ ਸਰੋਤ: PR ਵੇਰਵੇ ਅਤੇ ਟਿੱਪਣੀਆਂ, ਫ਼ੋਰਕ ਤੋਂ ਦਿੱਤੇ diff, ਮੁੱਦਿਆਂ ਦਾ ਮਜ਼ਮੂਨ, ਕਮਿਟ ਸੁਨੇਹੇ, ਤੀਜੀ-ਧਿਰ ਦਸਤਾਵੇਜ਼ੀਕਰਨ, ਵੈੱਬ ਖੋਜ ਨਤੀਜੇ, ਅਤੇ MCP ਟੂਲ ਆਊਟਪੁੱਟ। | 1 |
-| **AC.3.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਟੂਲ ਇੱਕ ਹਦਾਇਤ ਲੜੀ-ਕ੍ਰਮ (instruction hierarchy) ਲਾਗੂ ਕਰਦਾ ਹੈ, ਜਿਸ ਵਿੱਚ ਸਿਸਟਮ ਅਤੇ ਡਿਵੈਲਪਰ ਸੁਨੇਹਿਆਂ ਨੂੰ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਰਿਪੌਜ਼ਟਰੀ ਸਮੱਗਰੀ ਉੱਤੇ ਪਹਿਲ ਮਿਲਦੀ ਹੈ। ਇਹ ਲੜੀ-ਕ੍ਰਮ ਬਹੁ-ਵਾਰੀ ਗੱਲਬਾਤਾਂ ਅਤੇ ਟੂਲ-ਸਹਾਇਤ ਪ੍ਰਾਪਤ ਵਰਕਫ਼ਲੋ ਵਿੱਚ ਵੀ ਕਾਇਮ ਰਹਿਣਾ ਚਾਹੀਦਾ ਹੈ। | 1 |
-| **AC.3.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇਨਪੁੱਟ ਲੰਬਾਈ ਨਿਯੰਤਰਣ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ PR ਜਾਂ ਰਿਪੌਜ਼ਟਰੀ ਸਮੱਗਰੀ ਨੂੰ ਸਿਸਟਮ ਹਦਾਇਤਾਂ ਜਾਂ ਸਲਾਮਤੀ ਨਿਰਦੇਸ਼ਾਂ ਨੂੰ ਅਸਰਦਾਰ ਸੰਦਰਭ ਵਿੰਡੋ ਵਿੱਚੋਂ ਧੱਕ ਦੇਣ ਤੋਂ ਰੋਕਦੇ ਹਨ। ਲੋੜੋਂ ਵੱਡੇ ਇਨਪੁੱਟ ਸਿੱਧੇ ਰੱਦ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। ਚੁੱਪ-ਚਾਪ ਕਟੌਤੀ (truncation) ਪ੍ਰਵਾਨ ਨਹੀਂ ਹੈ। | 2 |
-| **AC.3.6** | **ਜਾਂਚ ਕਰੋ ਕਿ** prompt ਅਤੇ AI ਜਵਾਬ ਪ੍ਰਸਾਰਣ ਅਤੇ ਭੰਡਾਰਨ ਦੋਵਾਂ ਵਿੱਚ ਏਨਕ੍ਰਿਪਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਅਤੇ ਡਾਟਾ-ਵਰਗੀਕਰਨ ਨੀਤੀ ਅਨੁਸਾਰ ਧਾਰਨ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। ਟੈਨੈਂਟ ਅਤੇ ਪ੍ਰੋਜੈਕਟ ਇੱਕ-ਦੂਜੇ ਤੋਂ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਤੌਰ 'ਤੇ ਵੱਖ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | 3 |
+| **AC.੩.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਲਿਖਤੀ ਮਾਰਗਦਰਸ਼ਨ AI ਟੂਲ ਨੂੰ ਭੇਜੇ ਜਾਂਦੇ ਕਿਸੇ ਵੀ prompt ਵਿੱਚ ਗੁਪਤ ਭੇਦ, ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ, PII, ਜਾਂ ਵਰਗੀਕ੍ਰਿਤ ਡਾਟਾ ਪਾਉਣ ਤੋਂ ਵਰਜਦਾ ਹੈ। ਇਹ ਮਾਰਗਦਰਸ਼ਨ pre-commit ਹੁੱਕਾਂ, IDE ਏਕੀਕਰਨਾਂ, ਅਤੇ CI ਵਿੱਚ ਲਾਗੂ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੧ |
+| **AC.੩.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਤਕਨੀਕੀ ਨਿਯੰਤਰਣ AI ਟੂਲ ਨੂੰ ਭੇਜੀ ਜਾਂਦੀ ਕਿਸੇ ਵੀ ਸੰਦਰਭ ਵਿੰਡੋ (context window) ਵਿੱਚੋਂ ਸੰਵੇਦਨਸ਼ੀਲ ਸਮੱਗਰੀ ਆਪਣੇ-ਆਪ ਹਟਾ ਦਿੰਦੇ ਹਨ। ਕਲਾਇੰਟ-ਪਾਸੇ ਦੀ ਰਿਡੈਕਸ਼ਨ, ਪ੍ਰਵਾਨਿਤ ਸੰਦਰਭ ਫ਼ਿਲਟਰ, ਅਤੇ prompt-ਤੋਂ-ਪਹਿਲਾਂ ਵਾਲੀਆਂ ਹੁੱਕਾਂ ਵਾਲੇ ਗੁਪਤ-ਭੇਦ ਸਕੈਨਰ — ਇਹ ਸਾਰੇ ਯੋਗ ਹਨ। | ੧ |
+| **AC.੩.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਟੂਲ ਨੂੰ ਦਿੱਤੇ ਜਾ ਰਹੇ ਕਿਸੇ ਵੀ ਬਾਹਰੀ ਸਰੋਤ ਵਾਲੇ ਸੰਦਰਭ ਨੂੰ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਮੰਨਿਆ ਜਾਂਦਾ ਹੈ ਅਤੇ prompt ਤੱਕ ਪਹੁੰਚਣ ਤੋਂ ਪਹਿਲਾਂ prompt ਇੰਜੈਕਸ਼ਨ ਲਈ ਛਾਣਿਆ ਜਾਂਦਾ ਹੈ। ਢੱਕੇ ਜਾਣ ਵਾਲੇ ਸਰੋਤ: PR ਵੇਰਵੇ ਅਤੇ ਟਿੱਪਣੀਆਂ, ਫ਼ੋਰਕ ਤੋਂ ਦਿੱਤੇ diff, ਮੁੱਦਿਆਂ ਦਾ ਮਜ਼ਮੂਨ, ਕਮਿਟ ਸੁਨੇਹੇ, ਤੀਜੀ-ਧਿਰ ਦਸਤਾਵੇਜ਼ੀਕਰਨ, ਵੈੱਬ ਖੋਜ ਨਤੀਜੇ, ਅਤੇ MCP ਟੂਲ ਆਊਟਪੁੱਟ। | ੧ |
+| **AC.੩.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਟੂਲ ਇੱਕ ਹਦਾਇਤ ਲੜੀ-ਕ੍ਰਮ (instruction hierarchy) ਲਾਗੂ ਕਰਦਾ ਹੈ, ਜਿਸ ਵਿੱਚ ਸਿਸਟਮ ਅਤੇ ਡਿਵੈਲਪਰ ਸੁਨੇਹਿਆਂ ਨੂੰ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਰਿਪੌਜ਼ਟਰੀ ਸਮੱਗਰੀ ਉੱਤੇ ਪਹਿਲ ਮਿਲਦੀ ਹੈ। ਇਹ ਲੜੀ-ਕ੍ਰਮ ਬਹੁ-ਵਾਰੀ ਗੱਲਬਾਤਾਂ ਅਤੇ ਟੂਲ-ਸਹਾਇਤ ਪ੍ਰਾਪਤ ਵਰਕਫ਼ਲੋ ਵਿੱਚ ਵੀ ਕਾਇਮ ਰਹਿਣਾ ਚਾਹੀਦਾ ਹੈ। | ੧ |
+| **AC.੩.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇਨਪੁੱਟ ਲੰਬਾਈ ਨਿਯੰਤਰਣ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ PR ਜਾਂ ਰਿਪੌਜ਼ਟਰੀ ਸਮੱਗਰੀ ਨੂੰ ਸਿਸਟਮ ਹਦਾਇਤਾਂ ਜਾਂ ਸਲਾਮਤੀ ਨਿਰਦੇਸ਼ਾਂ ਨੂੰ ਅਸਰਦਾਰ ਸੰਦਰਭ ਵਿੰਡੋ ਵਿੱਚੋਂ ਧੱਕ ਦੇਣ ਤੋਂ ਰੋਕਦੇ ਹਨ। ਲੋੜੋਂ ਵੱਡੇ ਇਨਪੁੱਟ ਸਿੱਧੇ ਰੱਦ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। ਚੁੱਪ-ਚਾਪ ਕਟੌਤੀ (truncation) ਪ੍ਰਵਾਨ ਨਹੀਂ ਹੈ। | ੨ |
+| **AC.੩.੬** | **ਜਾਂਚ ਕਰੋ ਕਿ** prompt ਅਤੇ AI ਜਵਾਬ ਪ੍ਰਸਾਰਣ ਅਤੇ ਭੰਡਾਰਨ ਦੋਵਾਂ ਵਿੱਚ ਏਨਕ੍ਰਿਪਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਅਤੇ ਡਾਟਾ-ਵਰਗੀਕਰਨ ਨੀਤੀ ਅਨੁਸਾਰ ਧਾਰਨ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। ਟੈਨੈਂਟ ਅਤੇ ਪ੍ਰੋਜੈਕਟ ਇੱਕ-ਦੂਜੇ ਤੋਂ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਤੌਰ 'ਤੇ ਵੱਖ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | ੩ |
 
 **Mappings & References:**
 
@@ -3312,7 +3312,7 @@ Two goals in this family. First: stop secrets, proprietary code, and personal da
 ---
 
 ## AC.4 Validation of AI-Generated Code
-## AC.4 AI ਦੁਆਰਾ ਤਿਆਰ ਕੋਡ ਦੀ ਪ੍ਰਮਾਣਿਕਤਾ
+## AC.੪ AI ਦੁਆਰਾ ਤਿਆਰ ਕੋਡ ਦੀ ਪ੍ਰਮਾਣਿਕਤਾ
 
 Catch the vulnerabilities AI output introduces. Fix them before the code reaches a merge or a deployment.
 
@@ -3329,11 +3329,11 @@ AI ਆਊਟਪੁੱਟ ਵੱਲੋਂ ਪੇਸ਼ ਕੀਤੀਆਂ ਕਮ�
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | --- | --- | --- |
-| **AC.4.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਦੁਆਰਾ ਤਿਆਰ ਕੋਡ ਹਮੇਸ਼ਾ ਕਿਸੇ ਯੋਗ ਮਨੁੱਖੀ ਇੰਜੀਨੀਅਰ ਦੀ ਕੋਡ ਸਮੀਖਿਆ ਵਿੱਚੋਂ ਲੰਘਦਾ ਹੈ। ਸਮੀਖਿਅਕ ਉਹੀ ਪਛਾਣ ਲਾਜ਼ਮੀ ਤੌਰ 'ਤੇ ਨਹੀਂ ਹੋਣੀ ਚਾਹੀਦੀ ਜਿਸ ਨੇ ਪਹਿਲਾਂ AI ਤੋਂ ਕੋਡ ਤਿਆਰ ਕਰਵਾਇਆ ਸੀ (ਕਰਤੱਵਾਂ ਦੀ ਵੰਡ[^0x92-separation-of-duties], separation of duties)। ਅਤੇ AI ਏਜੰਟ ਆਪ ਮਨੁੱਖੀ ਸਮੀਖਿਅਕ ਵਜੋਂ ਨਹੀਂ ਗਿਣਿਆ ਜਾਂਦਾ। | 1 |
-| **AC.4.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਦੁਆਰਾ ਤਿਆਰ ਕੋਡ ਵਾਲੀ ਹਰ ਪੁੱਲ ਰਿਕੁਐਸਟ[^0x92-pull-request] (pull request) ਉੱਤੇ ਸਵੈਚਾਲਿਤ ਸੁਰੱਖਿਆ ਟੈਸਟਿੰਗ ਚੱਲਦੀ ਹੈ: SAST, IAST, DAST, ਗੁਪਤ-ਭੇਦ ਸਕੈਨਿੰਗ, IaC ਸਕੈਨਿੰਗ, ਅਤੇ SCA। ਜਿੱਥੇ ਸਕੈਨਰ ਸਮਰਥਨ ਕਰਦਾ ਹੈ, ਉੱਥੇ AI-ਸਰੋਤ-ਨਿਰਧਾਰਨ ਨੂੰ ਪਛਾਣਨ ਵਾਲੇ ਨਿਯਮ ਚਾਲੂ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | 2 |
-| **AC.4.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਜਦੋਂ ਕੋਈ ਸਵੈਚਾਲਿਤ ਸਕੈਨ ਕੋਈ ਨਾਜ਼ੁਕ ਸੁਰੱਖਿਆ ਖੋਜ-ਨਤੀਜਾ ਸਾਹਮਣੇ ਲਿਆਉਂਦਾ ਹੈ — ਜਿਸ ਦੀ ਪਰਿਭਾਸ਼ਾ CVSS >= 9.0 ਜਾਂ ਸੰਸਥਾ ਦੀ ਕਮਜ਼ੋਰੀ-ਗੰਭੀਰਤਾ ਨੀਤੀ ਵਿਚਲਾ ਬਰਾਬਰ ਦਾ ਥ੍ਰੈਸ਼ਹੋਲਡ ਹੈ — ਤਾਂ AI ਦੁਆਰਾ ਤਿਆਰ ਕੋਡ ਵਾਲੀਆਂ ਪੁੱਲ ਰਿਕੁਐਸਟਾਂ ਨੂੰ ਮਰਜ ਹੋਣ ਤੋਂ ਰੋਕ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ। ਇਸ ਰੋਕ ਨੂੰ ਬਾਈਪਾਸ ਕਰਨ ਲਈ ਕਿਸੇ ਅਧਿਕਾਰਤ ਮਨੁੱਖ ਵੱਲੋਂ ਮਨਜ਼ੂਰ ਕੀਤੀ ਲਿਖਤੀ ਛੋਟ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ। | 2 |
-| **AC.4.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਜਦੋਂ ਸੁਰੱਖਿਆ-ਨਾਜ਼ੁਕ ਫ਼ਾਈਲਾਂ AI ਨੇ ਤਿਆਰ ਜਾਂ ਸੋਧੀਆਂ ਹੋਣ, ਤਾਂ ਉਹਨਾਂ ਲਈ ਉੱਚਾ ਸਮੀਖਿਆ ਥ੍ਰੈਸ਼ਹੋਲਡ ਲਾਜ਼ਮੀ ਹੁੰਦਾ ਹੈ: ਦੋ-ਵਿਅਕਤੀ ਸਮੀਖਿਆ, ਸੁਰੱਖਿਆ-ਟੀਮ ਦੀ ਮਨਜ਼ੂਰੀ, ਜਾਂ ਇਸ ਤੋਂ ਵੀ ਸਖ਼ਤ। ਇੱਥੇ ਸੁਰੱਖਿਆ-ਨਾਜ਼ੁਕ ਫ਼ਾਈਲਾਂ ਵਿੱਚ ਪ੍ਰਮਾਣੀਕਰਨ, ਅਧਿਕਾਰੀਕਰਨ, ਅਤੇ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ੀ ਕੋਡ; IAM ਨੀਤੀ; CI/CD ਵਰਕਫ਼ਲੋ ਪਰਿਭਾਸ਼ਾਵਾਂ; ਤੈਨਾਤੀ ਮੈਨੀਫ਼ੈਸਟ; ਅਤੇ ਸੈਂਡਬਾਕਸ ਜਾਂ ਨੈੱਟਵਰਕ ਨੀਤੀ ਆਰਟੀਫ਼ੈਕਟ ਸ਼ਾਮਲ ਹਨ। | 2 |
-| **AC.4.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਡਿਫ਼ਰੈਂਸ਼ੀਅਲ ਫ਼ਜ਼ ਟੈਸਟਿੰਗ (differential fuzz testing) ਜਾਂ ਵਿਸ਼ੇਸ਼ਤਾ-ਆਧਾਰਿਤ ਟੈਸਟ AI ਦੁਆਰਾ ਤਿਆਰ ਕੋਡ ਦੇ ਸੁਰੱਖਿਆ-ਨਾਜ਼ੁਕ ਵਿਵਹਾਰਾਂ ਨੂੰ ਢੱਕਦੇ ਹਨ: ਇਨਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ, ਅਧਿਕਾਰੀਕਰਨ ਤਰਕ, ਅਤੇ ਡੀਸੀਰੀਅਲਾਈਜ਼ੇਸ਼ਨ ਸਲਾਮਤੀ। | 3 |
+| **AC.੪.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਦੁਆਰਾ ਤਿਆਰ ਕੋਡ ਹਮੇਸ਼ਾ ਕਿਸੇ ਯੋਗ ਮਨੁੱਖੀ ਇੰਜੀਨੀਅਰ ਦੀ ਕੋਡ ਸਮੀਖਿਆ ਵਿੱਚੋਂ ਲੰਘਦਾ ਹੈ। ਸਮੀਖਿਅਕ ਉਹੀ ਪਛਾਣ ਲਾਜ਼ਮੀ ਤੌਰ 'ਤੇ ਨਹੀਂ ਹੋਣੀ ਚਾਹੀਦੀ ਜਿਸ ਨੇ ਪਹਿਲਾਂ AI ਤੋਂ ਕੋਡ ਤਿਆਰ ਕਰਵਾਇਆ ਸੀ (ਕਰਤੱਵਾਂ ਦੀ ਵੰਡ[^0x92-separation-of-duties], separation of duties)। ਅਤੇ AI ਏਜੰਟ ਆਪ ਮਨੁੱਖੀ ਸਮੀਖਿਅਕ ਵਜੋਂ ਨਹੀਂ ਗਿਣਿਆ ਜਾਂਦਾ। | ੧ |
+| **AC.੪.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਦੁਆਰਾ ਤਿਆਰ ਕੋਡ ਵਾਲੀ ਹਰ ਪੁੱਲ ਰਿਕੁਐਸਟ[^0x92-pull-request] (pull request) ਉੱਤੇ ਸਵੈਚਾਲਿਤ ਸੁਰੱਖਿਆ ਟੈਸਟਿੰਗ ਚੱਲਦੀ ਹੈ: SAST, IAST, DAST, ਗੁਪਤ-ਭੇਦ ਸਕੈਨਿੰਗ, IaC ਸਕੈਨਿੰਗ, ਅਤੇ SCA। ਜਿੱਥੇ ਸਕੈਨਰ ਸਮਰਥਨ ਕਰਦਾ ਹੈ, ਉੱਥੇ AI-ਸਰੋਤ-ਨਿਰਧਾਰਨ ਨੂੰ ਪਛਾਣਨ ਵਾਲੇ ਨਿਯਮ ਚਾਲੂ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | ੨ |
+| **AC.੪.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਜਦੋਂ ਕੋਈ ਸਵੈਚਾਲਿਤ ਸਕੈਨ ਕੋਈ ਨਾਜ਼ੁਕ ਸੁਰੱਖਿਆ ਖੋਜ-ਨਤੀਜਾ ਸਾਹਮਣੇ ਲਿਆਉਂਦਾ ਹੈ — ਜਿਸ ਦੀ ਪਰਿਭਾਸ਼ਾ CVSS >= ੯.੦ ਜਾਂ ਸੰਸਥਾ ਦੀ ਕਮਜ਼ੋਰੀ-ਗੰਭੀਰਤਾ ਨੀਤੀ ਵਿਚਲਾ ਬਰਾਬਰ ਦਾ ਥ੍ਰੈਸ਼ਹੋਲਡ ਹੈ — ਤਾਂ AI ਦੁਆਰਾ ਤਿਆਰ ਕੋਡ ਵਾਲੀਆਂ ਪੁੱਲ ਰਿਕੁਐਸਟਾਂ ਨੂੰ ਮਰਜ ਹੋਣ ਤੋਂ ਰੋਕ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ। ਇਸ ਰੋਕ ਨੂੰ ਬਾਈਪਾਸ ਕਰਨ ਲਈ ਕਿਸੇ ਅਧਿਕਾਰਤ ਮਨੁੱਖ ਵੱਲੋਂ ਮਨਜ਼ੂਰ ਕੀਤੀ ਲਿਖਤੀ ਛੋਟ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ। | ੨ |
+| **AC.੪.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਜਦੋਂ ਸੁਰੱਖਿਆ-ਨਾਜ਼ੁਕ ਫ਼ਾਈਲਾਂ AI ਨੇ ਤਿਆਰ ਜਾਂ ਸੋਧੀਆਂ ਹੋਣ, ਤਾਂ ਉਹਨਾਂ ਲਈ ਉੱਚਾ ਸਮੀਖਿਆ ਥ੍ਰੈਸ਼ਹੋਲਡ ਲਾਜ਼ਮੀ ਹੁੰਦਾ ਹੈ: ਦੋ-ਵਿਅਕਤੀ ਸਮੀਖਿਆ, ਸੁਰੱਖਿਆ-ਟੀਮ ਦੀ ਮਨਜ਼ੂਰੀ, ਜਾਂ ਇਸ ਤੋਂ ਵੀ ਸਖ਼ਤ। ਇੱਥੇ ਸੁਰੱਖਿਆ-ਨਾਜ਼ੁਕ ਫ਼ਾਈਲਾਂ ਵਿੱਚ ਪ੍ਰਮਾਣੀਕਰਨ, ਅਧਿਕਾਰੀਕਰਨ, ਅਤੇ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ੀ ਕੋਡ; IAM ਨੀਤੀ; CI/CD ਵਰਕਫ਼ਲੋ ਪਰਿਭਾਸ਼ਾਵਾਂ; ਤੈਨਾਤੀ ਮੈਨੀਫ਼ੈਸਟ; ਅਤੇ ਸੈਂਡਬਾਕਸ ਜਾਂ ਨੈੱਟਵਰਕ ਨੀਤੀ ਆਰਟੀਫ਼ੈਕਟ ਸ਼ਾਮਲ ਹਨ। | ੨ |
+| **AC.੪.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਡਿਫ਼ਰੈਂਸ਼ੀਅਲ ਫ਼ਜ਼ ਟੈਸਟਿੰਗ (differential fuzz testing) ਜਾਂ ਵਿਸ਼ੇਸ਼ਤਾ-ਆਧਾਰਿਤ ਟੈਸਟ AI ਦੁਆਰਾ ਤਿਆਰ ਕੋਡ ਦੇ ਸੁਰੱਖਿਆ-ਨਾਜ਼ੁਕ ਵਿਵਹਾਰਾਂ ਨੂੰ ਢੱਕਦੇ ਹਨ: ਇਨਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ, ਅਧਿਕਾਰੀਕਰਨ ਤਰਕ, ਅਤੇ ਡੀਸੀਰੀਅਲਾਈਜ਼ੇਸ਼ਨ ਸਲਾਮਤੀ। | ੩ |
 
 **Mappings & References:**
 
@@ -3348,7 +3348,7 @@ AI ਆਊਟਪੁੱਟ ਵੱਲੋਂ ਪੇਸ਼ ਕੀਤੀਆਂ ਕਮ�
 ---
 
 ## AC.5 Explainability & Traceability of Code Suggestions
-## AC.5 ਕੋਡ ਸੁਝਾਵਾਂ ਦੀ ਵਿਆਖਿਆਯੋਗਤਾ[^0x92-explainability] ਅਤੇ ਟਰੇਸਯੋਗਤਾ
+## AC.੫ ਕੋਡ ਸੁਝਾਵਾਂ ਦੀ ਵਿਆਖਿਆਯੋਗਤਾ[^0x92-explainability] ਅਤੇ ਟਰੇਸਯੋਗਤਾ
 
 Auditors, defenders, and the developers themselves need to be able to see why a given AI suggestion was made, and how it ended up in a shipped artifact.
 
@@ -3363,9 +3363,9 @@ Auditors, defenders, and the developers themselves need to be able to see why a 
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | --- | --- | --- |
-| **AC.5.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** prompt-ਅਤੇ-ਜਵਾਬ ਜੋੜੇ ਸਥਿਰ ਸਹਿ-ਸੰਬੰਧ ਪਛਾਣਕਰਤਾਵਾਂ ਨਾਲ ਲੌਗ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਤਾਂ ਜੋ ਕੋਈ ਤਫ਼ਤੀਸ਼ਕਾਰ ਬਾਅਦ ਵਿੱਚ ਪੂਰੀ ਲੜੀ ਮੁੜ ਚਲਾ ਸਕੇ: prompt -> ਜਵਾਬ -> ਕਮਿਟ -> ਬਿਲਡ -> ਤੈਨਾਤੀ। | 1 |
-| **AC.5.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਡਿਵੈਲਪਰ ਉਹ ਹਵਾਲੇ (ਸਿਖਲਾਈ ਦੇ ਟੁਕੜੇ, ਪ੍ਰਾਪਤ ਕੀਤੇ ਦਸਤਾਵੇਜ਼, MCP ਟੂਲ ਆਊਟਪੁੱਟ) ਸਾਹਮਣੇ ਲਿਆ ਸਕਦੇ ਹਨ ਜੋ ਕਿਸੇ ਸੁਝਾਅ ਦਾ ਆਧਾਰ ਬਣਦੇ ਹਨ, ਅਤੇ ਇਹ ਹਵਾਲਾ ਲੜੀ ਆਰਟੀਫ਼ੈਕਟ ਦੇ ਨਾਲ-ਨਾਲ ਸਫ਼ਰ ਕਰਦੀ ਹੈ। | 3 |
-| **AC.5.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਵਿਆਖਿਆਯੋਗਤਾ ਰਿਪੋਰਟਾਂ, AI-ਘਟਨਾ ਲੌਗ, ਅਤੇ ਹਵਾਲਾ ਰਿਕਾਰਡ ਛੇੜਛਾੜ-ਪ੍ਰਗਟ[^0x92-tamper-evident] (tamper-evident) ਭੰਡਾਰਨ ਵਿੱਚ ਰੱਖੇ ਜਾਂਦੇ ਹਨ (ਸਿਰਫ਼-ਜੋੜਨਯੋਗ, WORM, ਜਾਂ ਕੋਈ ਅਪਰਿਵਰਤਨਸ਼ੀਲ ਲੌਗ ਸਟੋਰ) ਅਤੇ ਸੁਰੱਖਿਆ ਸਮੀਖਿਆਵਾਂ ਦੌਰਾਨ ਉਹਨਾਂ ਦਾ ਹਵਾਲਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ। | 3 |
+| **AC.੫.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** prompt-ਅਤੇ-ਜਵਾਬ ਜੋੜੇ ਸਥਿਰ ਸਹਿ-ਸੰਬੰਧ ਪਛਾਣਕਰਤਾਵਾਂ ਨਾਲ ਲੌਗ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਤਾਂ ਜੋ ਕੋਈ ਤਫ਼ਤੀਸ਼ਕਾਰ ਬਾਅਦ ਵਿੱਚ ਪੂਰੀ ਲੜੀ ਮੁੜ ਚਲਾ ਸਕੇ: prompt -> ਜਵਾਬ -> ਕਮਿਟ -> ਬਿਲਡ -> ਤੈਨਾਤੀ। | ੧ |
+| **AC.੫.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਡਿਵੈਲਪਰ ਉਹ ਹਵਾਲੇ (ਸਿਖਲਾਈ ਦੇ ਟੁਕੜੇ, ਪ੍ਰਾਪਤ ਕੀਤੇ ਦਸਤਾਵੇਜ਼, MCP ਟੂਲ ਆਊਟਪੁੱਟ) ਸਾਹਮਣੇ ਲਿਆ ਸਕਦੇ ਹਨ ਜੋ ਕਿਸੇ ਸੁਝਾਅ ਦਾ ਆਧਾਰ ਬਣਦੇ ਹਨ, ਅਤੇ ਇਹ ਹਵਾਲਾ ਲੜੀ ਆਰਟੀਫ਼ੈਕਟ ਦੇ ਨਾਲ-ਨਾਲ ਸਫ਼ਰ ਕਰਦੀ ਹੈ। | ੩ |
+| **AC.੫.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਵਿਆਖਿਆਯੋਗਤਾ ਰਿਪੋਰਟਾਂ, AI-ਘਟਨਾ ਲੌਗ, ਅਤੇ ਹਵਾਲਾ ਰਿਕਾਰਡ ਛੇੜਛਾੜ-ਪ੍ਰਗਟ[^0x92-tamper-evident] (tamper-evident) ਭੰਡਾਰਨ ਵਿੱਚ ਰੱਖੇ ਜਾਂਦੇ ਹਨ (ਸਿਰਫ਼-ਜੋੜਨਯੋਗ, WORM, ਜਾਂ ਕੋਈ ਅਪਰਿਵਰਤਨਸ਼ੀਲ ਲੌਗ ਸਟੋਰ) ਅਤੇ ਸੁਰੱਖਿਆ ਸਮੀਖਿਆਵਾਂ ਦੌਰਾਨ ਉਹਨਾਂ ਦਾ ਹਵਾਲਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ। | ੩ |
 
 **Mappings & References:**
 
@@ -3378,7 +3378,7 @@ Auditors, defenders, and the developers themselves need to be able to see why a 
 ---
 
 ## AC.6 Continuous Feedback, Adversarial Testing & Model Fine-Tuning
-## AC.6 ਲਗਾਤਾਰ ਫ਼ੀਡਬੈਕ, ਵਿਰੋਧੀ ਟੈਸਟਿੰਗ, ਅਤੇ ਮਾਡਲ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ
+## AC.੬ ਲਗਾਤਾਰ ਫ਼ੀਡਬੈਕ, ਵਿਰੋਧੀ ਟੈਸਟਿੰਗ, ਅਤੇ ਮਾਡਲ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ
 
 Improve model security over time. Watch for negative drift. Keep red-teaming the AI tooling. The red-team scope in this family is the AI tooling itself; the underlying systems and services the tooling depends on are handled by separate programs.
 
@@ -3394,10 +3394,10 @@ Improve model security over time. Watch for negative drift. Keep red-teaming the
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | --- | --- | --- |
-| **AC.6.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਡਿਵੈਲਪਰ ਅਤੇ ਸਮੀਖਿਅਕ ਗ਼ੈਰ-ਸੁਰੱਖਿਅਤ ਜਾਂ ਗ਼ੈਰ-ਅਨੁਕੂਲ ਸੁਝਾਵਾਂ ਨੂੰ ਨਿਸ਼ਾਨਬੱਧ ਕਰ ਸਕਦੇ ਹਨ, ਅਤੇ ਹਰ ਨਿਸ਼ਾਨਦੇਹੀ ਨੂੰ ਬੰਦ ਹੋਣ ਤੱਕ ਟਰੈਕ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਜਿਸ ਵਿੱਚ ਪਿੱਛੇ ਮੂਲ prompt ਤੇ ਜਵਾਬ ਅਤੇ ਅੱਗੇ ਕਿਸੇ ਵੀ ਡਾਊਨਸਟ੍ਰੀਮ ਆਰਟੀਫ਼ੈਕਟ ਤੱਕ ਦੇ ਲਿੰਕ ਹੁੰਦੇ ਹਨ। | 1 |
-| **AC.6.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇਕੱਤਰ ਕੀਤਾ ਫ਼ੀਡਬੈਕ ਸਮੇਂ-ਸਮੇਂ ਸਿਰ ਸਿਸਟਮ-prompt ਅੱਪਡੇਟਾਂ ਵਿੱਚ, ਜਾਂ ਪਰਖੇ ਹੋਏ ਸੁਰੱਖਿਅਤ-ਕੋਡਿੰਗ ਕਾਰਪੋਰਾ (OWASP Cheat Sheets, ਅੰਦਰੂਨੀ ਕੋਡਿੰਗ ਮਿਆਰ) ਦੇ ਵਿਰੁੱਧ RAG (retrieval-augmented generation) ਵਿੱਚ ਪਾਇਆ ਜਾਂਦਾ ਹੈ। ਜਿੱਥੇ ਸੰਸਥਾ ਦਾ ਮਾਡਲ ਸਿਖਲਾਈ ਬੁਨਿਆਦੀ ਢਾਂਚੇ ਉੱਤੇ ਨਿਯੰਤਰਣ ਹੈ, ਉੱਥੇ ਉਸੇ ਫ਼ੀਡਬੈਕ ਕਾਰਪਸ ਉੱਤੇ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਵੀ ਲਾਜ਼ਮੀ ਹੈ। | 2 |
-| **AC.6.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਮਾਂ-ਸਾਰਣੀ ਅਨੁਸਾਰ ਹੋਣ ਵਾਲੀਆਂ ਰੈੱਡ-ਟੀਮ ਮਸ਼ਕਾਂ ਦਾ ਨਿਸ਼ਾਨਾ ਖ਼ੁਦ AI ਟੂਲਿੰਗ ਹੁੰਦੀ ਹੈ। ਇਹਨਾਂ ਮਸ਼ਕਾਂ ਵਿੱਚ ਅਸਲੀਅਤ ਵਰਗੀਆਂ PR, ਮੁੱਦਾ, ਅਤੇ ਟਿੱਪਣੀ ਸਤ੍ਹਾਵਾਂ ਰਾਹੀਂ ਪਹੁੰਚਾਈਆਂ ਸਿੱਧੀਆਂ ਤੇ ਅਸਿੱਧੀਆਂ prompt ਇੰਜੈਕਸ਼ਨ ਪੜਤਾਲਾਂ, jailbreak ਕਾਰਪੋਰਾ, ਅਤੇ ਸਪਲਾਈ ਚੇਨ ਪੇਲੋਡ ਤਿਆਰੀ ਸ਼ਾਮਲ ਹਨ। ਖੋਜ-ਨਤੀਜਿਆਂ ਨੂੰ ਟਰੈਕ ਕੀਤੇ ਗੰਭੀਰਤਾ SLA ਦੇ ਅਧੀਨ ਦਰੁਸਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 2 |
-| **AC.6.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਫ਼ਾਈਨ-ਟਿਊਨ, ਸਿਸਟਮ-prompt ਤਬਦੀਲੀ, ਜਾਂ ਮਾਡਲ ਅੱਪਗ੍ਰੇਡ ਤੋਂ ਬਾਅਦ ਇੱਕ ਬੰਦ-ਲੂਪ ਮੁਲਾਂਕਣ ਹਾਰਨੈੱਸ (closed-loop evaluation harness) ਰਿਗਰੈਸ਼ਨ ਟੈਸਟ ਚਲਾਉਂਦਾ ਹੈ। ਤੈਨਾਤੀ ਤੋਂ ਪਹਿਲਾਂ ਸੁਰੱਖਿਆ ਮੈਟ੍ਰਿਕਸ ਦਾ ਪਿਛਲੀ ਬੇਸਲਾਈਨ ਦੇ ਬਰਾਬਰ ਜਾਂ ਉਸ ਤੋਂ ਉੱਤੇ ਹੋਣਾ ਲਾਜ਼ਮੀ ਹੈ। | 3 |
+| **AC.੬.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਡਿਵੈਲਪਰ ਅਤੇ ਸਮੀਖਿਅਕ ਗ਼ੈਰ-ਸੁਰੱਖਿਅਤ ਜਾਂ ਗ਼ੈਰ-ਅਨੁਕੂਲ ਸੁਝਾਵਾਂ ਨੂੰ ਨਿਸ਼ਾਨਬੱਧ ਕਰ ਸਕਦੇ ਹਨ, ਅਤੇ ਹਰ ਨਿਸ਼ਾਨਦੇਹੀ ਨੂੰ ਬੰਦ ਹੋਣ ਤੱਕ ਟਰੈਕ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਜਿਸ ਵਿੱਚ ਪਿੱਛੇ ਮੂਲ prompt ਤੇ ਜਵਾਬ ਅਤੇ ਅੱਗੇ ਕਿਸੇ ਵੀ ਡਾਊਨਸਟ੍ਰੀਮ ਆਰਟੀਫ਼ੈਕਟ ਤੱਕ ਦੇ ਲਿੰਕ ਹੁੰਦੇ ਹਨ। | ੧ |
+| **AC.੬.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇਕੱਤਰ ਕੀਤਾ ਫ਼ੀਡਬੈਕ ਸਮੇਂ-ਸਮੇਂ ਸਿਰ ਸਿਸਟਮ-prompt ਅੱਪਡੇਟਾਂ ਵਿੱਚ, ਜਾਂ ਪਰਖੇ ਹੋਏ ਸੁਰੱਖਿਅਤ-ਕੋਡਿੰਗ ਕਾਰਪੋਰਾ (OWASP Cheat Sheets, ਅੰਦਰੂਨੀ ਕੋਡਿੰਗ ਮਿਆਰ) ਦੇ ਵਿਰੁੱਧ RAG (retrieval-augmented generation) ਵਿੱਚ ਪਾਇਆ ਜਾਂਦਾ ਹੈ। ਜਿੱਥੇ ਸੰਸਥਾ ਦਾ ਮਾਡਲ ਸਿਖਲਾਈ ਬੁਨਿਆਦੀ ਢਾਂਚੇ ਉੱਤੇ ਨਿਯੰਤਰਣ ਹੈ, ਉੱਥੇ ਉਸੇ ਫ਼ੀਡਬੈਕ ਕਾਰਪਸ ਉੱਤੇ ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਵੀ ਲਾਜ਼ਮੀ ਹੈ। | ੨ |
+| **AC.੬.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਮਾਂ-ਸਾਰਣੀ ਅਨੁਸਾਰ ਹੋਣ ਵਾਲੀਆਂ ਰੈੱਡ-ਟੀਮ ਮਸ਼ਕਾਂ ਦਾ ਨਿਸ਼ਾਨਾ ਖ਼ੁਦ AI ਟੂਲਿੰਗ ਹੁੰਦੀ ਹੈ। ਇਹਨਾਂ ਮਸ਼ਕਾਂ ਵਿੱਚ ਅਸਲੀਅਤ ਵਰਗੀਆਂ PR, ਮੁੱਦਾ, ਅਤੇ ਟਿੱਪਣੀ ਸਤ੍ਹਾਵਾਂ ਰਾਹੀਂ ਪਹੁੰਚਾਈਆਂ ਸਿੱਧੀਆਂ ਤੇ ਅਸਿੱਧੀਆਂ prompt ਇੰਜੈਕਸ਼ਨ ਪੜਤਾਲਾਂ, jailbreak ਕਾਰਪੋਰਾ, ਅਤੇ ਸਪਲਾਈ ਚੇਨ ਪੇਲੋਡ ਤਿਆਰੀ ਸ਼ਾਮਲ ਹਨ। ਖੋਜ-ਨਤੀਜਿਆਂ ਨੂੰ ਟਰੈਕ ਕੀਤੇ ਗੰਭੀਰਤਾ SLA ਦੇ ਅਧੀਨ ਦਰੁਸਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੨ |
+| **AC.੬.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਫ਼ਾਈਨ-ਟਿਊਨ, ਸਿਸਟਮ-prompt ਤਬਦੀਲੀ, ਜਾਂ ਮਾਡਲ ਅੱਪਗ੍ਰੇਡ ਤੋਂ ਬਾਅਦ ਇੱਕ ਬੰਦ-ਲੂਪ ਮੁਲਾਂਕਣ ਹਾਰਨੈੱਸ (closed-loop evaluation harness) ਰਿਗਰੈਸ਼ਨ ਟੈਸਟ ਚਲਾਉਂਦਾ ਹੈ। ਤੈਨਾਤੀ ਤੋਂ ਪਹਿਲਾਂ ਸੁਰੱਖਿਆ ਮੈਟ੍ਰਿਕਸ ਦਾ ਪਿਛਲੀ ਬੇਸਲਾਈਨ ਦੇ ਬਰਾਬਰ ਜਾਂ ਉਸ ਤੋਂ ਉੱਤੇ ਹੋਣਾ ਲਾਜ਼ਮੀ ਹੈ। | ੩ |
 
 **Mappings & References:**
 
@@ -3411,7 +3411,7 @@ Improve model security over time. Watch for negative drift. Keep red-teaming the
 ---
 
 ## AC.7 AI-Generated Infrastructure & Pipeline Artifacts
-## AC.7 AI ਦੁਆਰਾ ਤਿਆਰ ਬੁਨਿਆਦੀ ਢਾਂਚਾ ਅਤੇ ਪਾਈਪਲਾਈਨ ਆਰਟੀਫ਼ੈਕਟ
+## AC.੭ AI ਦੁਆਰਾ ਤਿਆਰ ਬੁਨਿਆਦੀ ਢਾਂਚਾ ਅਤੇ ਪਾਈਪਲਾਈਨ ਆਰਟੀਫ਼ੈਕਟ
 
 Infrastructure code, CI/CD workflow files, deployment manifests, and security policy artifacts each have outsized impact when they are wrong. When AI has generated them, the validation needs to be correspondingly stricter than for ordinary application code.
 
@@ -3428,11 +3428,11 @@ Infrastructure code, CI/CD workflow files, deployment manifests, and security po
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | --- | --- | --- |
-| **AC.7.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਦੁਆਰਾ ਤਿਆਰ ਜਾਂ AI ਦੁਆਰਾ ਸੋਧੇ ਆਰਟੀਫ਼ੈਕਟਾਂ ਉੱਤੇ ਸਪੱਸ਼ਟ ਲੇਬਲ ਲੱਗਦਾ ਹੈ ਅਤੇ ਉਹਨਾਂ ਨੂੰ ਉਸੇ ਤਰ੍ਹਾਂ ਟਰੈਕ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। ਦਾਇਰੇ ਵਿਚਲੀਆਂ ਆਰਟੀਫ਼ੈਕਟ ਸ਼੍ਰੇਣੀਆਂ ਵਿੱਚ infrastructure-as-code (Terraform, CloudFormation, Pulumi, Bicep), CI/CD ਵਰਕਫ਼ਲੋ ਫ਼ਾਈਲਾਂ (GitHub Actions, GitLab CI, Jenkinsfile, Argo Workflows, Tekton), ਕੰਟੇਨਰ ਅਤੇ ਆਰਕੈਸਟ੍ਰੇਸ਼ਨ ਮੈਨੀਫ਼ੈਸਟ (Dockerfile, Kubernetes, Helm), ਅਤੇ ਸੁਰੱਖਿਆ ਨੀਤੀ ਆਰਟੀਫ਼ੈਕਟ (IAM, OPA/Rego, NetworkPolicy, admission controllers) ਸ਼ਾਮਲ ਹਨ। | 1 |
-| **AC.7.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਦੁਆਰਾ ਤਿਆਰ ਬੁਨਿਆਦੀ ਢਾਂਚਾ ਅਤੇ ਪਾਈਪਲਾਈਨ ਸੰਰਚਨਾਵਾਂ ਨੂੰ ਪੂਰੀ ਤਰ੍ਹਾਂ ਸੀਲਬੰਦ (hermetic) ਸੈਂਡਬਾਕਸ ਤੋਂ ਬਾਹਰ ਕਿਸੇ ਵੀ ਵਾਤਾਵਰਣ ਵਿੱਚ ਚੱਲਣ ਤੋਂ ਪਹਿਲਾਂ ਮਨੁੱਖੀ ਸਮੀਖਿਆ ਅਤੇ ਮਨਜ਼ੂਰੀ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ। | 2 |
-| **AC.7.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਦੁਆਰਾ ਤਿਆਰ ਬੁਨਿਆਦੀ ਢਾਂਚਾ ਅਤੇ ਵਰਕਫ਼ਲੋ ਤਬਦੀਲੀਆਂ ਕੋਡ-ਵਜੋਂ-ਨੀਤੀ[^0x92-policy-as-code] (policy-as-code) ਲਾਗੂਕਰਨ (OPA, Conftest, Checkov, tfsec, KICS, kube-linter) ਨੂੰ ਮਨੁੱਖ-ਲਿਖਤ ਤਬਦੀਲੀਆਂ ਦੇ ਬਰਾਬਰ ਜਾਂ ਉਸ ਤੋਂ ਸਖ਼ਤ ਪੱਧਰ ਉੱਤੇ ਪਾਸ ਕਰਦੀਆਂ ਹਨ। ਨੀਤੀ ਦੀਆਂ ਉਲੰਘਣਾਵਾਂ ਤਰੱਕੀ ਨੂੰ ਰੋਕ ਦਿੰਦੀਆਂ ਹਨ। | 2 |
-| **AC.7.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਉੱਚ-ਪ੍ਰਭਾਵ ਵਾਲੀਆਂ ਪਾਈਪਲਾਈਨ ਟ੍ਰਿਗਰ ਸੰਰਚਨਾਵਾਂ ਵਿੱਚ ਤਬਦੀਲੀਆਂ ਲਈ ਦੋਹਰਾ ਨਿਯੰਤਰਣ[^0x92-dual-control] (dual control) ਅਤੇ ਸੁਰੱਖਿਆ-ਟੀਮ ਦੀ ਸਮੀਖਿਆ ਦੋਵੇਂ ਲਾਜ਼ਮੀ ਹਨ, ਭਾਵੇਂ ਤਬਦੀਲੀ ਕਿਸੇ ਨੇ ਵੀ ਜਾਂ ਕਿਸੇ ਵੀ ਚੀਜ਼ ਨੇ ਕੀਤੀ ਹੋਵੇ। ਦਾਇਰੇ ਵਿਚਲੀਆਂ ਸੰਰਚਨਾਵਾਂ ਵਿੱਚ GitHub Actions ਦੇ `pull_request_target` ਅਤੇ `workflow_run`, ਸਵੈ-ਹੋਸਟ ਕੀਤੇ ਰਨਰ[^0x92-runner] ਲੇਬਲ, ਵਰਕਫ਼ਲੋ ਦੇ `permissions:` ਬਲਾਕ, OIDC ਭਰੋਸਾ ਨੀਤੀਆਂ, ਅਤੇ ਗੁਪਤ-ਭੇਦ ਤੋਂ ਵਾਤਾਵਰਣ ਦੀਆਂ ਮੈਪਿੰਗਾਂ ਸ਼ਾਮਲ ਹਨ। | 2 |
-| **AC.7.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਡ੍ਰਿਫ਼ਟ ਪਛਾਣ ਤੈਨਾਤ ਬੁਨਿਆਦੀ ਢਾਂਚੇ ਅਤੇ ਜਿਊਂਦੀਆਂ ਵਰਕਫ਼ਲੋ ਸੰਰਚਨਾਵਾਂ ਦੀ ਤੁਲਨਾ ਦਸਤਖ਼ਤ ਕੀਤੀਆਂ, AI ਨੂੰ ਸਰੋਤ-ਨਿਰਧਾਰਿਤ ਬੇਸਲਾਈਨਾਂ ਨਾਲ ਕਰਦੀ ਹੈ, ਅਤੇ ਕਿਸੇ ਵੀ ਅਣਅਧਿਕਾਰਤ ਸੋਧ ਉੱਤੇ ਚੇਤਾਵਨੀ ਦਿੰਦੀ ਹੈ। | 3 |
+| **AC.੭.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਦੁਆਰਾ ਤਿਆਰ ਜਾਂ AI ਦੁਆਰਾ ਸੋਧੇ ਆਰਟੀਫ਼ੈਕਟਾਂ ਉੱਤੇ ਸਪੱਸ਼ਟ ਲੇਬਲ ਲੱਗਦਾ ਹੈ ਅਤੇ ਉਹਨਾਂ ਨੂੰ ਉਸੇ ਤਰ੍ਹਾਂ ਟਰੈਕ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। ਦਾਇਰੇ ਵਿਚਲੀਆਂ ਆਰਟੀਫ਼ੈਕਟ ਸ਼੍ਰੇਣੀਆਂ ਵਿੱਚ infrastructure-as-code (Terraform, CloudFormation, Pulumi, Bicep), CI/CD ਵਰਕਫ਼ਲੋ ਫ਼ਾਈਲਾਂ (GitHub Actions, GitLab CI, Jenkinsfile, Argo Workflows, Tekton), ਕੰਟੇਨਰ ਅਤੇ ਆਰਕੈਸਟ੍ਰੇਸ਼ਨ ਮੈਨੀਫ਼ੈਸਟ (Dockerfile, Kubernetes, Helm), ਅਤੇ ਸੁਰੱਖਿਆ ਨੀਤੀ ਆਰਟੀਫ਼ੈਕਟ (IAM, OPA/Rego, NetworkPolicy, admission controllers) ਸ਼ਾਮਲ ਹਨ। | ੧ |
+| **AC.੭.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਦੁਆਰਾ ਤਿਆਰ ਬੁਨਿਆਦੀ ਢਾਂਚਾ ਅਤੇ ਪਾਈਪਲਾਈਨ ਸੰਰਚਨਾਵਾਂ ਨੂੰ ਪੂਰੀ ਤਰ੍ਹਾਂ ਸੀਲਬੰਦ (hermetic) ਸੈਂਡਬਾਕਸ ਤੋਂ ਬਾਹਰ ਕਿਸੇ ਵੀ ਵਾਤਾਵਰਣ ਵਿੱਚ ਚੱਲਣ ਤੋਂ ਪਹਿਲਾਂ ਮਨੁੱਖੀ ਸਮੀਖਿਆ ਅਤੇ ਮਨਜ਼ੂਰੀ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ। | ੨ |
+| **AC.੭.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਦੁਆਰਾ ਤਿਆਰ ਬੁਨਿਆਦੀ ਢਾਂਚਾ ਅਤੇ ਵਰਕਫ਼ਲੋ ਤਬਦੀਲੀਆਂ ਕੋਡ-ਵਜੋਂ-ਨੀਤੀ[^0x92-policy-as-code] (policy-as-code) ਲਾਗੂਕਰਨ (OPA, Conftest, Checkov, tfsec, KICS, kube-linter) ਨੂੰ ਮਨੁੱਖ-ਲਿਖਤ ਤਬਦੀਲੀਆਂ ਦੇ ਬਰਾਬਰ ਜਾਂ ਉਸ ਤੋਂ ਸਖ਼ਤ ਪੱਧਰ ਉੱਤੇ ਪਾਸ ਕਰਦੀਆਂ ਹਨ। ਨੀਤੀ ਦੀਆਂ ਉਲੰਘਣਾਵਾਂ ਤਰੱਕੀ ਨੂੰ ਰੋਕ ਦਿੰਦੀਆਂ ਹਨ। | ੨ |
+| **AC.੭.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਉੱਚ-ਪ੍ਰਭਾਵ ਵਾਲੀਆਂ ਪਾਈਪਲਾਈਨ ਟ੍ਰਿਗਰ ਸੰਰਚਨਾਵਾਂ ਵਿੱਚ ਤਬਦੀਲੀਆਂ ਲਈ ਦੋਹਰਾ ਨਿਯੰਤਰਣ[^0x92-dual-control] (dual control) ਅਤੇ ਸੁਰੱਖਿਆ-ਟੀਮ ਦੀ ਸਮੀਖਿਆ ਦੋਵੇਂ ਲਾਜ਼ਮੀ ਹਨ, ਭਾਵੇਂ ਤਬਦੀਲੀ ਕਿਸੇ ਨੇ ਵੀ ਜਾਂ ਕਿਸੇ ਵੀ ਚੀਜ਼ ਨੇ ਕੀਤੀ ਹੋਵੇ। ਦਾਇਰੇ ਵਿਚਲੀਆਂ ਸੰਰਚਨਾਵਾਂ ਵਿੱਚ GitHub Actions ਦੇ `pull_request_target` ਅਤੇ `workflow_run`, ਸਵੈ-ਹੋਸਟ ਕੀਤੇ ਰਨਰ[^0x92-runner] ਲੇਬਲ, ਵਰਕਫ਼ਲੋ ਦੇ `permissions:` ਬਲਾਕ, OIDC ਭਰੋਸਾ ਨੀਤੀਆਂ, ਅਤੇ ਗੁਪਤ-ਭੇਦ ਤੋਂ ਵਾਤਾਵਰਣ ਦੀਆਂ ਮੈਪਿੰਗਾਂ ਸ਼ਾਮਲ ਹਨ। | ੨ |
+| **AC.੭.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਡ੍ਰਿਫ਼ਟ ਪਛਾਣ ਤੈਨਾਤ ਬੁਨਿਆਦੀ ਢਾਂਚੇ ਅਤੇ ਜਿਊਂਦੀਆਂ ਵਰਕਫ਼ਲੋ ਸੰਰਚਨਾਵਾਂ ਦੀ ਤੁਲਨਾ ਦਸਤਖ਼ਤ ਕੀਤੀਆਂ, AI ਨੂੰ ਸਰੋਤ-ਨਿਰਧਾਰਿਤ ਬੇਸਲਾਈਨਾਂ ਨਾਲ ਕਰਦੀ ਹੈ, ਅਤੇ ਕਿਸੇ ਵੀ ਅਣਅਧਿਕਾਰਤ ਸੋਧ ਉੱਤੇ ਚੇਤਾਵਨੀ ਦਿੰਦੀ ਹੈ। | ੩ |
 
 **Mappings & References:**
 
@@ -3447,7 +3447,7 @@ Infrastructure code, CI/CD workflow files, deployment manifests, and security po
 ---
 
 ## AC.8 Autonomous Agent Change Control Constraints
-## AC.8 ਖ਼ੁਦਮੁਖ਼ਤਾਰ ਏਜੰਟ ਤਬਦੀਲੀ-ਨਿਯੰਤਰਣ ਪਾਬੰਦੀਆਂ
+## AC.੮ ਖ਼ੁਦਮੁਖ਼ਤਾਰ ਏਜੰਟ ਤਬਦੀਲੀ-ਨਿਯੰਤਰਣ ਪਾਬੰਦੀਆਂ
 
 Autonomous AI agents that generate code or configuration get the same separation-of-duties treatment that humans do. They cannot approve, merge, or promote their own work. This applies at the policy layer and at the technical layer.
 
@@ -3463,10 +3463,10 @@ Autonomous AI agents that generate code or configuration get the same separation
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | --- | --- | --- |
-| **AC.8.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਖ਼ੁਦਮੁਖ਼ਤਾਰ ਏਜੰਟ ਉਹਨਾਂ ਆਰਟੀਫ਼ੈਕਟਾਂ ਨੂੰ ਮਨਜ਼ੂਰੀ ਨਹੀਂ ਦੇ ਸਕਦੇ, ਮਰਜ ਨਹੀਂ ਕਰ ਸਕਦੇ, ਦਸਤਖ਼ਤ ਨਹੀਂ ਕਰ ਸਕਦੇ, ਜਾਂ ਤੈਨਾਤ ਨਹੀਂ ਕਰ ਸਕਦੇ ਜੋ ਉਹਨਾਂ ਨੇ ਆਪ ਤਿਆਰ ਕੀਤੇ ਸਨ, ਅਤੇ ਇਹ ਪਾਬੰਦੀ ਸਰੋਤ-ਨਿਯੰਤਰਣ ਸਿਸਟਮ, CI ਸਿਸਟਮ, ਅਤੇ ਆਰਟੀਫ਼ੈਕਟ ਰਜਿਸਟਰੀ ਦੁਆਰਾ ਲਾਗੂ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। ਇਕੱਲੀ ਨੀਤੀ ਇਸ ਨਿਯੰਤਰਣ ਨੂੰ ਪੂਰਾ ਨਹੀਂ ਕਰਦੀ। | 1 |
-| **AC.8.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਸਿਸਟਮ ਸੀਮਿਤ ਦਾਇਰੇ ਵਾਲੀਆਂ, ਗ਼ੈਰ-ਮਨੁੱਖੀ ਪਛਾਣਾਂ (ਸੇਵਾ ਖਾਤੇ, ਵਰਕਲੋਡ ਪਛਾਣਾਂ, OIDC ਦੁਆਰਾ ਜਾਰੀ ਥੋੜ੍ਹ-ਚਿਰੇ ਟੋਕਨ) ਨਾਲ ਚੱਲਦੇ ਹਨ, ਅਤੇ ਇਹ ਪਛਾਣਾਂ ਆਪਣੇ ਹੀ ਤਿਆਰ ਕੀਤੇ ਆਰਟੀਫ਼ੈਕਟਾਂ ਨੂੰ ਵਾਤਾਵਰਣਾਂ ਵਿਚਕਾਰ ਤਰੱਕੀ ਦੇਣ ਲਈ ਨਹੀਂ ਵਰਤੀਆਂ ਜਾ ਸਕਦੀਆਂ। | 2 |
-| **AC.8.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਖ਼ੁਦਮੁਖ਼ਤਾਰ ਏਜੰਟ ਬ੍ਰਾਂਚ ਸੁਰੱਖਿਆ, ਲੋੜੀਂਦੀਆਂ ਸਮੀਖਿਆਵਾਂ, ਲੋੜੀਂਦੀਆਂ ਸਥਿਤੀ ਜਾਂਚਾਂ, ਦਸਤਖ਼ਤ-ਕੀਤੇ-ਕਮਿਟ ਦੀਆਂ ਲੋੜਾਂ, ਜਾਂ ਮਰਜ ਕਤਾਰਾਂ ਨੂੰ ਬਾਈਪਾਸ ਨਹੀਂ ਕਰ ਸਕਦੇ। ਕਿਸੇ ਏਜੰਟ ਵੱਲੋਂ ਇਹ ਸੈਟਿੰਗਾਂ ਬਦਲਣ ਦੀ ਕੋਈ ਵੀ ਕੋਸ਼ਿਸ਼ ਸੁਰੱਖਿਆ ਚੇਤਾਵਨੀ ਪੈਦਾ ਕਰਦੀ ਹੈ। | 2 |
-| **AC.8.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਦੁਆਰਾ ਤਿਆਰ ਕਿਸੇ ਤਬਦੀਲੀ ਦੇ ਸਾਰੇ ਪੜਾਵਾਂ ਵਿੱਚ ਕਰਤੱਵਾਂ ਦੀ ਵੰਡ ਕਾਇਮ ਰਹਿੰਦੀ ਹੈ। ਹਰ ਪੜਾਅ (ਤਿਆਰੀ, ਸਮੀਖਿਆ, ਮਨਜ਼ੂਰੀ, ਤੈਨਾਤੀ) ਇੱਕ ਵੱਖਰੀ ਪਛਾਣ-ਇਕਾਈ[^0x92-principal] (principal) ਦੁਆਰਾ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਭਾਵੇਂ ਉਹ ਮਨੁੱਖ ਹੋਵੇ ਜਾਂ ਸਿਸਟਮ। | 3 |
+| **AC.੮.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਖ਼ੁਦਮੁਖ਼ਤਾਰ ਏਜੰਟ ਉਹਨਾਂ ਆਰਟੀਫ਼ੈਕਟਾਂ ਨੂੰ ਮਨਜ਼ੂਰੀ ਨਹੀਂ ਦੇ ਸਕਦੇ, ਮਰਜ ਨਹੀਂ ਕਰ ਸਕਦੇ, ਦਸਤਖ਼ਤ ਨਹੀਂ ਕਰ ਸਕਦੇ, ਜਾਂ ਤੈਨਾਤ ਨਹੀਂ ਕਰ ਸਕਦੇ ਜੋ ਉਹਨਾਂ ਨੇ ਆਪ ਤਿਆਰ ਕੀਤੇ ਸਨ, ਅਤੇ ਇਹ ਪਾਬੰਦੀ ਸਰੋਤ-ਨਿਯੰਤਰਣ ਸਿਸਟਮ, CI ਸਿਸਟਮ, ਅਤੇ ਆਰਟੀਫ਼ੈਕਟ ਰਜਿਸਟਰੀ ਦੁਆਰਾ ਲਾਗੂ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। ਇਕੱਲੀ ਨੀਤੀ ਇਸ ਨਿਯੰਤਰਣ ਨੂੰ ਪੂਰਾ ਨਹੀਂ ਕਰਦੀ। | ੧ |
+| **AC.੮.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਸਿਸਟਮ ਸੀਮਿਤ ਦਾਇਰੇ ਵਾਲੀਆਂ, ਗ਼ੈਰ-ਮਨੁੱਖੀ ਪਛਾਣਾਂ (ਸੇਵਾ ਖਾਤੇ, ਵਰਕਲੋਡ ਪਛਾਣਾਂ, OIDC ਦੁਆਰਾ ਜਾਰੀ ਥੋੜ੍ਹ-ਚਿਰੇ ਟੋਕਨ) ਨਾਲ ਚੱਲਦੇ ਹਨ, ਅਤੇ ਇਹ ਪਛਾਣਾਂ ਆਪਣੇ ਹੀ ਤਿਆਰ ਕੀਤੇ ਆਰਟੀਫ਼ੈਕਟਾਂ ਨੂੰ ਵਾਤਾਵਰਣਾਂ ਵਿਚਕਾਰ ਤਰੱਕੀ ਦੇਣ ਲਈ ਨਹੀਂ ਵਰਤੀਆਂ ਜਾ ਸਕਦੀਆਂ। | ੨ |
+| **AC.੮.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਖ਼ੁਦਮੁਖ਼ਤਾਰ ਏਜੰਟ ਬ੍ਰਾਂਚ ਸੁਰੱਖਿਆ, ਲੋੜੀਂਦੀਆਂ ਸਮੀਖਿਆਵਾਂ, ਲੋੜੀਂਦੀਆਂ ਸਥਿਤੀ ਜਾਂਚਾਂ, ਦਸਤਖ਼ਤ-ਕੀਤੇ-ਕਮਿਟ ਦੀਆਂ ਲੋੜਾਂ, ਜਾਂ ਮਰਜ ਕਤਾਰਾਂ ਨੂੰ ਬਾਈਪਾਸ ਨਹੀਂ ਕਰ ਸਕਦੇ। ਕਿਸੇ ਏਜੰਟ ਵੱਲੋਂ ਇਹ ਸੈਟਿੰਗਾਂ ਬਦਲਣ ਦੀ ਕੋਈ ਵੀ ਕੋਸ਼ਿਸ਼ ਸੁਰੱਖਿਆ ਚੇਤਾਵਨੀ ਪੈਦਾ ਕਰਦੀ ਹੈ। | ੨ |
+| **AC.੮.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਦੁਆਰਾ ਤਿਆਰ ਕਿਸੇ ਤਬਦੀਲੀ ਦੇ ਸਾਰੇ ਪੜਾਵਾਂ ਵਿੱਚ ਕਰਤੱਵਾਂ ਦੀ ਵੰਡ ਕਾਇਮ ਰਹਿੰਦੀ ਹੈ। ਹਰ ਪੜਾਅ (ਤਿਆਰੀ, ਸਮੀਖਿਆ, ਮਨਜ਼ੂਰੀ, ਤੈਨਾਤੀ) ਇੱਕ ਵੱਖਰੀ ਪਛਾਣ-ਇਕਾਈ[^0x92-principal] (principal) ਦੁਆਰਾ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਭਾਵੇਂ ਉਹ ਮਨੁੱਖ ਹੋਵੇ ਜਾਂ ਸਿਸਟਮ। | ੩ |
 
 **Mappings & References:**
 
@@ -3480,7 +3480,7 @@ Autonomous AI agents that generate code or configuration get the same separation
 ---
 
 ## AC.9 AI Artifact Origin Validation for Deployment
-## AC.9 ਤੈਨਾਤੀ ਲਈ AI ਆਰਟੀਫ਼ੈਕਟ ਮੂਲ ਦੀ ਪ੍ਰਮਾਣਿਕਤਾ
+## AC.੯ ਤੈਨਾਤੀ ਲਈ AI ਆਰਟੀਫ਼ੈਕਟ ਮੂਲ ਦੀ ਪ੍ਰਮਾਣਿਕਤਾ
 
 Deployment and promotion pipelines need to validate the cryptographic origin and the generation history of AI-generated artifacts. They do this before letting the artifact through.
 
@@ -3495,9 +3495,9 @@ Deployment and promotion pipelines need to validate the cryptographic origin and
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | --- | --- | --- |
-| **AC.9.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਦੁਆਰਾ ਤਿਆਰ ਆਰਟੀਫ਼ੈਕਟ ਦਸਤਖ਼ਤ ਕੀਤਾ ਮੂਲ ਅਤੇ ਤਿਆਰੀ ਮੈਟਾਡਾਟਾ (in-toto ਜਾਂ SLSA ਮੂਲ-ਸਰੋਤ ਅਟੈਸਟੇਸ਼ਨ, AI BOM ਇੰਦਰਾਜ) ਨਾਲ ਲੈ ਕੇ ਚੱਲਦੇ ਹਨ, ਜੋ ਉਹਨਾਂ ਨੂੰ ਪੈਦਾ ਕਰਨ ਵਾਲੇ AI ਸਿਸਟਮ, ਤਿਆਰੀ ਦੇ ਸੰਦਰਭ, ਸ਼ਾਮਲ ਮਨੁੱਖਾਂ, ਅਤੇ ਸੰਬੰਧਿਤ ਆਡਿਟ ਰਿਕਾਰਡਾਂ ਦੀ ਪਛਾਣ ਕਰਾਉਂਦਾ ਹੈ। | 2 |
-| **AC.9.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਤੈਨਾਤੀ ਪਾਈਪਲਾਈਨਾਂ ਤਰੱਕੀ ਤੋਂ ਪਹਿਲਾਂ AI ਦੁਆਰਾ ਤਿਆਰ ਆਰਟੀਫ਼ੈਕਟਾਂ ਉੱਤੇ ਮੂਲ ਅਤੇ ਤਿਆਰੀ ਮੈਟਾਡਾਟਾ ਦੀ ਮੌਜੂਦਗੀ, ਦਸਤਖ਼ਤ, ਅਤੇ ਅਖੰਡਤਾ ਦੀ ਜਾਂਚ ਕਿਸੇ ਭਰੋਸੇਯੋਗ ਤਸਦੀਕਕਾਰ (Sigstore/cosign, in-toto ਤਸਦੀਕ) ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਕਰਦੀਆਂ ਹਨ। | 3 |
-| **AC.9.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਜਿਹੜੇ ਆਰਟੀਫ਼ੈਕਟਾਂ ਵਿੱਚ ਲੋੜੀਂਦੀ ਮੂਲ ਅਤੇ ਤਿਆਰੀ ਜਾਣਕਾਰੀ ਗ਼ੈਰ-ਮੌਜੂਦ ਹੈ, ਜੋ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਕੁੰਜੀਆਂ ਨਾਲ ਦਸਤਖ਼ਤ ਕੀਤੇ ਗਏ ਹਨ, ਜਾਂ ਜੋ ਕਿਸੇ ਗ਼ੈਰ-ਪ੍ਰਵਾਨਿਤ AI ਸਿਸਟਮ ਜਾਂ ਵਾਤਾਵਰਣ ਨੇ ਪੈਦਾ ਕੀਤੇ ਹਨ, ਉਹਨਾਂ ਨੂੰ ਤੈਨਾਤੀ ਵੇਲੇ ਰੱਦ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ਅਤੇ ਸਮੀਖਿਆ ਲਈ ਕੁਆਰੰਟੀਨ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 3 |
+| **AC.੯.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਦੁਆਰਾ ਤਿਆਰ ਆਰਟੀਫ਼ੈਕਟ ਦਸਤਖ਼ਤ ਕੀਤਾ ਮੂਲ ਅਤੇ ਤਿਆਰੀ ਮੈਟਾਡਾਟਾ (in-toto ਜਾਂ SLSA ਮੂਲ-ਸਰੋਤ ਅਟੈਸਟੇਸ਼ਨ, AI BOM ਇੰਦਰਾਜ) ਨਾਲ ਲੈ ਕੇ ਚੱਲਦੇ ਹਨ, ਜੋ ਉਹਨਾਂ ਨੂੰ ਪੈਦਾ ਕਰਨ ਵਾਲੇ AI ਸਿਸਟਮ, ਤਿਆਰੀ ਦੇ ਸੰਦਰਭ, ਸ਼ਾਮਲ ਮਨੁੱਖਾਂ, ਅਤੇ ਸੰਬੰਧਿਤ ਆਡਿਟ ਰਿਕਾਰਡਾਂ ਦੀ ਪਛਾਣ ਕਰਾਉਂਦਾ ਹੈ। | ੨ |
+| **AC.੯.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਤੈਨਾਤੀ ਪਾਈਪਲਾਈਨਾਂ ਤਰੱਕੀ ਤੋਂ ਪਹਿਲਾਂ AI ਦੁਆਰਾ ਤਿਆਰ ਆਰਟੀਫ਼ੈਕਟਾਂ ਉੱਤੇ ਮੂਲ ਅਤੇ ਤਿਆਰੀ ਮੈਟਾਡਾਟਾ ਦੀ ਮੌਜੂਦਗੀ, ਦਸਤਖ਼ਤ, ਅਤੇ ਅਖੰਡਤਾ ਦੀ ਜਾਂਚ ਕਿਸੇ ਭਰੋਸੇਯੋਗ ਤਸਦੀਕਕਾਰ (Sigstore/cosign, in-toto ਤਸਦੀਕ) ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਕਰਦੀਆਂ ਹਨ। | ੩ |
+| **AC.੯.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਜਿਹੜੇ ਆਰਟੀਫ਼ੈਕਟਾਂ ਵਿੱਚ ਲੋੜੀਂਦੀ ਮੂਲ ਅਤੇ ਤਿਆਰੀ ਜਾਣਕਾਰੀ ਗ਼ੈਰ-ਮੌਜੂਦ ਹੈ, ਜੋ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਕੁੰਜੀਆਂ ਨਾਲ ਦਸਤਖ਼ਤ ਕੀਤੇ ਗਏ ਹਨ, ਜਾਂ ਜੋ ਕਿਸੇ ਗ਼ੈਰ-ਪ੍ਰਵਾਨਿਤ AI ਸਿਸਟਮ ਜਾਂ ਵਾਤਾਵਰਣ ਨੇ ਪੈਦਾ ਕੀਤੇ ਹਨ, ਉਹਨਾਂ ਨੂੰ ਤੈਨਾਤੀ ਵੇਲੇ ਰੱਦ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ਅਤੇ ਸਮੀਖਿਆ ਲਈ ਕੁਆਰੰਟੀਨ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੩ |
 
 **Mappings & References:**
 
@@ -3510,7 +3510,7 @@ Deployment and promotion pipelines need to validate the cryptographic origin and
 ---
 
 ## AC.10 Generation Audit Trail Completeness and Validation
-## AC.10 ਤਿਆਰੀ ਆਡਿਟ ਟ੍ਰੇਲ ਦੀ ਸੰਪੂਰਨਤਾ ਅਤੇ ਪ੍ਰਮਾਣਿਕਤਾ
+## AC.੧੦ ਤਿਆਰੀ ਆਡਿਟ ਟ੍ਰੇਲ ਦੀ ਸੰਪੂਰਨਤਾ ਅਤੇ ਪ੍ਰਮਾਣਿਕਤਾ
 
 AI-generated artifacts need complete and consistent origin and generation records, validated before integration or deployment. The reason matters. Policy-based enforcement of origin tracking only works if the recorded information is itself complete and consistent. When records are missing fields, or when the fields they do have contradict each other, detections get missed and enforcement opens gaps. So origin tracking is treated as a first-class requirement here, and validated before an artifact is accepted.
 
@@ -3525,9 +3525,9 @@ AI ਦੁਆਰਾ ਤਿਆਰ ਆਰਟੀਫ਼ੈਕਟਾਂ ਲਈ ਸੰ�
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | --- | --- | --- |
-| **AC.10.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਦੁਆਰਾ ਤਿਆਰ ਆਰਟੀਫ਼ੈਕਟ ਲੋੜੀਂਦੇ ਮੂਲ ਅਤੇ ਤਿਆਰੀ ਖੇਤਰ ਨਾਲ ਲੈ ਕੇ ਚੱਲਦੇ ਹਨ: ਮਾਡਲ ਦੀ ਪਛਾਣ ਤੇ ਵਰਜ਼ਨ, ਟੂਲ ਜਾਂ ਏਜੰਟ ਦੀ ਪਛਾਣ, ਤਿਆਰੀ ਦਾ ਸੰਦਰਭ, prompt ਹੈਸ਼, ਮਨੁੱਖੀ ਸ਼ਮੂਲੀਅਤ, ਸੈਸ਼ਨ ਪਛਾਣਕਰਤਾ, ਅਤੇ ਸਹਿ-ਸੰਬੰਧ ID। | 1 |
-| **AC.10.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮੂਲ ਅਤੇ ਤਿਆਰੀ ਮੈਟਾਡਾਟੇ ਦੀ ਸੰਪੂਰਨਤਾ ਅਤੇ ਇਕਸਾਰਤਾ ਲਈ ਜਾਂਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ: ਕੋਈ ਗ਼ੈਰ-ਮੌਜੂਦ ਜਾਂ ਦੁਵਿਧਾਪੂਰਨ ਖੇਤਰ ਨਾ ਹੋਵੇ, ਮੁੱਲ ਇੱਕੋ ਪ੍ਰਤੀਨਿਧਤਾ ਵਿੱਚ ਸਧਾਰਨੀਕ੍ਰਿਤ ਹੋਣ, ਅਤੇ ਦਸਤਖ਼ਤ ਲੜੀ ਪਿੱਛੇ ਕਿਸੇ ਭਰੋਸੇਯੋਗ ਰੂਟ ਤੱਕ ਪ੍ਰਮਾਣਿਤ ਹੁੰਦੀ ਹੋਵੇ। | 2 |
-| **AC.10.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਅਧੂਰੇ, ਬੇਮੇਲ, ਜਾਂ ਤਸਦੀਕ ਨਾ ਕੀਤੇ ਜਾ ਸਕਣ ਵਾਲੇ ਮੂਲ ਤੇ ਤਿਆਰੀ ਮੈਟਾਡਾਟੇ ਵਾਲੇ ਆਰਟੀਫ਼ੈਕਟ ਮਰਜ ਜਾਂ ਤੈਨਾਤੀ ਤੋਂ ਪਹਿਲਾਂ ਰੱਦ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਅਤੇ ਰੱਦਗੀ ਦੀ ਘਟਨਾ ਲੌਗ ਕੀਤੀ ਜਾਂਦੀ ਹੈ ਤਾਂ ਜੋ ਰੁਝਾਨ ਟਰੈਕ ਕੀਤੇ ਜਾ ਸਕਣ। ਰੱਦਗੀ ਤਸਦੀਕਕਾਰ ਵਾਲੇ ਪਾਸੇ ਹੁੰਦੀ ਹੈ, SLSA ਵਿੱਚ ਪਰਿਭਾਸ਼ਿਤ ਅਟੈਸਟੇਸ਼ਨ ਜਾਂ ਸਬੂਤ ਮਾਡਲ ਅਤੇ ISO/IEC 42001 ਦੇ ਤਸਦੀਕ ਮਾਪਦੰਡਾਂ ਦੇ ਵਿਰੁੱਧ। | 3 |
+| **AC.੧੦.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਦੁਆਰਾ ਤਿਆਰ ਆਰਟੀਫ਼ੈਕਟ ਲੋੜੀਂਦੇ ਮੂਲ ਅਤੇ ਤਿਆਰੀ ਖੇਤਰ ਨਾਲ ਲੈ ਕੇ ਚੱਲਦੇ ਹਨ: ਮਾਡਲ ਦੀ ਪਛਾਣ ਤੇ ਵਰਜ਼ਨ, ਟੂਲ ਜਾਂ ਏਜੰਟ ਦੀ ਪਛਾਣ, ਤਿਆਰੀ ਦਾ ਸੰਦਰਭ, prompt ਹੈਸ਼, ਮਨੁੱਖੀ ਸ਼ਮੂਲੀਅਤ, ਸੈਸ਼ਨ ਪਛਾਣਕਰਤਾ, ਅਤੇ ਸਹਿ-ਸੰਬੰਧ ID। | ੧ |
+| **AC.੧੦.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮੂਲ ਅਤੇ ਤਿਆਰੀ ਮੈਟਾਡਾਟੇ ਦੀ ਸੰਪੂਰਨਤਾ ਅਤੇ ਇਕਸਾਰਤਾ ਲਈ ਜਾਂਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ: ਕੋਈ ਗ਼ੈਰ-ਮੌਜੂਦ ਜਾਂ ਦੁਵਿਧਾਪੂਰਨ ਖੇਤਰ ਨਾ ਹੋਵੇ, ਮੁੱਲ ਇੱਕੋ ਪ੍ਰਤੀਨਿਧਤਾ ਵਿੱਚ ਸਧਾਰਨੀਕ੍ਰਿਤ ਹੋਣ, ਅਤੇ ਦਸਤਖ਼ਤ ਲੜੀ ਪਿੱਛੇ ਕਿਸੇ ਭਰੋਸੇਯੋਗ ਰੂਟ ਤੱਕ ਪ੍ਰਮਾਣਿਤ ਹੁੰਦੀ ਹੋਵੇ। | ੨ |
+| **AC.੧੦.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਅਧੂਰੇ, ਬੇਮੇਲ, ਜਾਂ ਤਸਦੀਕ ਨਾ ਕੀਤੇ ਜਾ ਸਕਣ ਵਾਲੇ ਮੂਲ ਤੇ ਤਿਆਰੀ ਮੈਟਾਡਾਟੇ ਵਾਲੇ ਆਰਟੀਫ਼ੈਕਟ ਮਰਜ ਜਾਂ ਤੈਨਾਤੀ ਤੋਂ ਪਹਿਲਾਂ ਰੱਦ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਅਤੇ ਰੱਦਗੀ ਦੀ ਘਟਨਾ ਲੌਗ ਕੀਤੀ ਜਾਂਦੀ ਹੈ ਤਾਂ ਜੋ ਰੁਝਾਨ ਟਰੈਕ ਕੀਤੇ ਜਾ ਸਕਣ। ਰੱਦਗੀ ਤਸਦੀਕਕਾਰ ਵਾਲੇ ਪਾਸੇ ਹੁੰਦੀ ਹੈ, SLSA ਵਿੱਚ ਪਰਿਭਾਸ਼ਿਤ ਅਟੈਸਟੇਸ਼ਨ ਜਾਂ ਸਬੂਤ ਮਾਡਲ ਅਤੇ ISO/IEC 42001 ਦੇ ਤਸਦੀਕ ਮਾਪਦੰਡਾਂ ਦੇ ਵਿਰੁੱਧ। | ੩ |
 
 **Mappings & References:**
 
@@ -3540,7 +3540,7 @@ AI ਦੁਆਰਾ ਤਿਆਰ ਆਰਟੀਫ਼ੈਕਟਾਂ ਲਈ ਸੰ�
 ---
 
 ## AC.11 AI Code-Review & Assistant Bot Hardening
-## AC.11 AI ਕੋਡ-ਸਮੀਖਿਆ ਅਤੇ ਸਹਾਇਕ ਬੋਟਾਂ[^0x92-bot] ਦਾ ਸਖ਼ਤੀਕਰਨ
+## AC.੧੧ AI ਕੋਡ-ਸਮੀਖਿਆ ਅਤੇ ਸਹਾਇਕ ਬੋਟਾਂ[^0x92-bot] ਦਾ ਸਖ਼ਤੀਕਰਨ
 
 AI code-review bots, PR-comment bots, MCP-driven assistants (Model Context Protocol), and IDE copilots are all reachable through untrusted repository content. The reachable surfaces include PR diffs, descriptions, comments, issues, and any workflow files supplied from a fork. This family covers the case where an attacker uses one of those surfaces to push a defender's own AI agent into approving, ignoring, or actively assisting a supply-chain attack.
 
@@ -3548,7 +3548,7 @@ AI ਕੋਡ-ਸਮੀਖਿਆ ਬੋਟ, PR-ਟਿੱਪਣੀ ਬੋਟ, MCP-
 
 > **Relationship to AISVS C2.1, C9.3, and C9.5:** AC.11.1 through AC.11.5 are applications of three AISVS chapter controls to the specific case of AI code-review and assistant bots operating over untrusted PR content. The three chapter controls are C2.1 (Prompt Injection Defenses), C9.3 (Component Isolation and Tool Authorization), and C9.5 (Agent Authorization, Delegation, and Continuous Enforcement). The appendix restates each one with bot-specific guidance. Counting rule is the same as elsewhere: a finding here is either an additional gap that the upstream chapter did not close, or it is already counted under the chapter. Not both.
 
-> **AISVS C2.1, C9.3, ਅਤੇ C9.5 ਨਾਲ ਸੰਬੰਧ:** AC.11.1 ਤੋਂ AC.11.5 ਤੱਕ ਤਿੰਨ AISVS ਅਧਿਆਇ ਨਿਯੰਤਰਣਾਂ ਦੇ ਉਸ ਖ਼ਾਸ ਮਾਮਲੇ ਉੱਤੇ ਲਾਗੂਕਰਨ ਹਨ ਜਿੱਥੇ AI ਕੋਡ-ਸਮੀਖਿਆ ਅਤੇ ਸਹਾਇਕ ਬੋਟ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ PR ਸਮੱਗਰੀ ਉੱਤੇ ਕੰਮ ਕਰਦੇ ਹਨ। ਉਹ ਤਿੰਨ ਅਧਿਆਇ ਨਿਯੰਤਰਣ ਹਨ C2.1 (Prompt Injection Defenses), C9.3 (Component Isolation and Tool Authorization), ਅਤੇ C9.5 (Agent Authorization, Delegation, and Continuous Enforcement)। ਇਹ ਅੰਤਿਕਾ ਹਰੇਕ ਨੂੰ ਬੋਟ-ਵਿਸ਼ੇਸ਼ ਮਾਰਗਦਰਸ਼ਨ ਨਾਲ ਦੁਬਾਰਾ ਬਿਆਨ ਕਰਦੀ ਹੈ। ਗਿਣਤੀ ਦਾ ਨਿਯਮ ਬਾਕੀ ਥਾਵਾਂ ਵਾਲਾ ਹੀ ਹੈ: ਇੱਥੋਂ ਦਾ ਖੋਜ-ਨਤੀਜਾ ਜਾਂ ਤਾਂ ਇੱਕ ਵਾਧੂ ਪਾੜਾ ਹੈ ਜਿਸ ਨੂੰ ਉੱਪਰਲੇ ਅਧਿਆਇ ਨੇ ਬੰਦ ਨਹੀਂ ਕੀਤਾ, ਜਾਂ ਉਹ ਪਹਿਲਾਂ ਹੀ ਉਸ ਅਧਿਆਇ ਹੇਠ ਗਿਣਿਆ ਜਾ ਚੁੱਕਾ ਹੈ। ਦੋਵੇਂ ਨਹੀਂ।
+> **AISVS C੨.੧, C੯.੩, ਅਤੇ C੯.੫ ਨਾਲ ਸੰਬੰਧ:** AC.੧੧.੧ ਤੋਂ AC.੧੧.੫ ਤੱਕ ਤਿੰਨ AISVS ਅਧਿਆਇ ਨਿਯੰਤਰਣਾਂ ਦੇ ਉਸ ਖ਼ਾਸ ਮਾਮਲੇ ਉੱਤੇ ਲਾਗੂਕਰਨ ਹਨ ਜਿੱਥੇ AI ਕੋਡ-ਸਮੀਖਿਆ ਅਤੇ ਸਹਾਇਕ ਬੋਟ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ PR ਸਮੱਗਰੀ ਉੱਤੇ ਕੰਮ ਕਰਦੇ ਹਨ। ਉਹ ਤਿੰਨ ਅਧਿਆਇ ਨਿਯੰਤਰਣ ਹਨ C੨.੧ (Prompt Injection Defenses), C੯.੩ (Component Isolation and Tool Authorization), ਅਤੇ C੯.੫ (Agent Authorization, Delegation, and Continuous Enforcement)। ਇਹ ਅੰਤਿਕਾ ਹਰੇਕ ਨੂੰ ਬੋਟ-ਵਿਸ਼ੇਸ਼ ਮਾਰਗਦਰਸ਼ਨ ਨਾਲ ਦੁਬਾਰਾ ਬਿਆਨ ਕਰਦੀ ਹੈ। ਗਿਣਤੀ ਦਾ ਨਿਯਮ ਬਾਕੀ ਥਾਵਾਂ ਵਾਲਾ ਹੀ ਹੈ: ਇੱਥੋਂ ਦਾ ਖੋਜ-ਨਤੀਜਾ ਜਾਂ ਤਾਂ ਇੱਕ ਵਾਧੂ ਪਾੜਾ ਹੈ ਜਿਸ ਨੂੰ ਉੱਪਰਲੇ ਅਧਿਆਇ ਨੇ ਬੰਦ ਨਹੀਂ ਕੀਤਾ, ਜਾਂ ਉਹ ਪਹਿਲਾਂ ਹੀ ਉਸ ਅਧਿਆਇ ਹੇਠ ਗਿਣਿਆ ਜਾ ਚੁੱਕਾ ਹੈ। ਦੋਵੇਂ ਨਹੀਂ।
 
 <!-- markdownlint-disable MD013 -->
 | # | Description | Level |
@@ -3564,14 +3564,14 @@ AI ਕੋਡ-ਸਮੀਖਿਆ ਬੋਟ, PR-ਟਿੱਪਣੀ ਬੋਟ, MCP-
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | --- | --- | --- |
-| **AC.11.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਸਮੀਖਿਆ ਅਤੇ ਸਹਾਇਕ ਬੋਟ PR ਤੋਂ ਆਈ ਹਰ ਸਮੱਗਰੀ (diff, ਸਿਰਲੇਖ, ਵੇਰਵਾ, ਟਿੱਪਣੀਆਂ, ਫ਼ਾਈਲ ਸਮੱਗਰੀ, ਕਮਿਟ ਸੁਨੇਹੇ, ਲਿੰਕ ਕੀਤੇ ਬਾਹਰੀ URL) ਨੂੰ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਇਨਪੁੱਟ ਵਜੋਂ ਲੈਂਦੇ ਹਨ, ਅਤੇ AISVS C2.1 ਦੇ prompt ਇੰਜੈਕਸ਼ਨ ਬਚਾਅ ਲਾਗੂ ਕਰਦੇ ਹਨ: ਹਦਾਇਤ ਲੜੀ-ਕ੍ਰਮ ਦਾ ਲਾਗੂਕਰਨ, ਸਮੱਗਰੀ ਸੈਨੀਟਾਈਜ਼ੇਸ਼ਨ[^0x92-sanitization], ਅਤੇ ਅਸਿੱਧੇ-ਇੰਜੈਕਸ਼ਨ ਦੀ ਪਛਾਣ। | 1 |
-| **AC.11.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਸਮੀਖਿਆ ਅਤੇ ਸਹਾਇਕ ਬੋਟਾਂ ਦੇ ਸਿਸਟਮ prompt ਅਤੇ ਨੀਤੀ ਸੰਰਚਨਾਵਾਂ ਦੀ ਲੋਡ ਹੋਣ ਵੇਲੇ ਅਖੰਡਤਾ ਜਾਂਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ (ਦਸਤਖ਼ਤ ਕੀਤੇ, ਹੈਸ਼-ਪਿੰਨ ਕੀਤੇ), ਅਤੇ ਰਿਪੌਜ਼ਟਰੀ ਵਿਚਲੀ ਕੋਈ ਚੀਜ਼, ਬ੍ਰਾਂਚ ਦੀ ਸਮੱਗਰੀ, PR ਤੋਂ ਆਏ ਵਾਤਾਵਰਣ ਵੇਰੀਏਬਲ, ਜਾਂ ਕੋਈ ਹੋਰ ਵਰਤੋਂਕਾਰ-ਨਿਯੰਤਰਿਤ ਇਨਪੁੱਟ ਉਹਨਾਂ ਨੂੰ ਸੋਧ ਨਹੀਂ ਸਕਦਾ। | 1 |
-| **AC.11.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਸਮੀਖਿਆ ਅਤੇ ਸਹਾਇਕ ਬੋਟ ਸਿਰਫ਼ ਢਾਂਚਾਗਤ, ਸਕੀਮਾ-ਪ੍ਰਮਾਣਿਤ ਆਊਟਪੁੱਟ ਹੀ ਦਿੰਦੇ ਹਨ (ਖੇਤਰਾਂ ਅਤੇ ਕਾਰਵਾਈਆਂ ਦੀ ਇਜਾਜ਼ਤ-ਸੂਚੀ ਵਾਲਾ JSON)। ਕਿਸੇ ਵੀ ਖੁੱਲ੍ਹੇ-ਰੂਪ ਆਊਟਪੁੱਟ ਨੂੰ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਮੰਨਿਆ ਜਾਂਦਾ ਹੈ ਅਤੇ ਉਸ ਨੂੰ ਕਦੇ ਵੀ ਕਮਾਂਡ, ਕਿਊਰੀ, ਸ਼ੈੱਲ ਟੁਕੜੇ, ਜਾਂ ਵਰਕਫ਼ਲੋ ਪੜਾਅ ਵਜੋਂ ਨਹੀਂ ਚਲਾਇਆ ਜਾਂਦਾ। | 1 |
-| **AC.11.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਸਮੀਖਿਆ ਅਤੇ ਸਹਾਇਕ ਬੋਟ ਨੈੱਟਵਰਕ-ਪੱਖੋਂ ਅਲੱਗ-ਥਲੱਗ, ਘੱਟੋ-ਘੱਟ-ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਸੈਂਡਬਾਕਸਾਂ ਵਿੱਚ ਚੱਲਦੇ ਹਨ: ਇੱਕ ਸਮਰਪਿਤ ਨੇਮਸਪੇਸ, ਮੂਲ-ਰੂਪ-ਵਿੱਚ-ਇਨਕਾਰ ਵਾਲਾ ਬਾਹਰ ਜਾਣ ਵਾਲਾ ਟਰੈਫ਼ਿਕ (egress) ਜਿਸ ਵਿੱਚ ਸਿਰਫ਼ ਪ੍ਰਵਾਨਿਤ API ਦੀ ਇਜਾਜ਼ਤ-ਸੂਚੀ ਹੋਵੇ, ਕੋਈ ਮਾਊਂਟ ਕੀਤੇ ਰਿਪੌਜ਼ਟਰੀ ਗੁਪਤ ਭੇਦ ਨਾ ਹੋਣ, ਅਤੇ ਸਿਰਫ਼ ਥੋੜ੍ਹ-ਚਿਰੇ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ ਹੋਣ। | 2 |
-| **AC.11.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਕੋਈ ਬੋਟ ਜੋ ਵੀ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਵਾਲੀ ਕਾਰਵਾਈ ਕਰ ਸਕਦਾ ਹੈ (ਕਿਸੇ PR ਨੂੰ ਮਨਜ਼ੂਰੀ ਦੇਣਾ, ਮਰਜ ਕਰਨਾ, ਲੇਬਲ ਲਾਉਣਾ, ਸਮੀਖਿਆਵਾਂ ਖ਼ਾਰਜ ਕਰਨਾ, ਆਪਣੇ ਸੈਂਡਬਾਕਸ ਤੋਂ ਬਾਹਰ ਟਿੱਪਣੀਆਂ ਪਾਉਣਾ, ਬਾਹਰੀ ਟੂਲ ਸੱਦਣਾ), ਉਹ ਇੱਕ ਵੱਖਰੇ, ਆਡਿਟ ਕੀਤੇ ਅਧਿਕਾਰੀਕਰਨ ਰਾਹ ਵਿੱਚੋਂ ਲੰਘਦੀ ਹੈ। ਉਸ ਰਾਹ ਦਾ ਨਿਬੇੜਾ ਇੱਕ ਨੀਤੀ ਇੰਜਣ ਕਰਦਾ ਹੈ, LLM ਨਹੀਂ। | 2 |
-| **AC.11.6** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਸਮੀਖਿਆ ਅਤੇ ਸਹਾਇਕ ਬੋਟ ਸਾਰੇ prompt (ਬਾਹਰੀ ਸਰੋਤ ਵਾਲੇ ਸੰਦਰਭ ਸਮੇਤ), ਟੂਲ ਸੱਦੇ, ਅਤੇ ਆਊਟਪੁੱਟ ਛੇੜਛਾੜ-ਪ੍ਰਗਟ ਭੰਡਾਰਨ ਵਿੱਚ ਲੌਗ ਕਰਦੇ ਹਨ। ਬਾਹਰ ਜਾਣ ਵਾਲੇ ਟਰੈਫ਼ਿਕ ਦੇ ਪੈਟਰਨਾਂ (URL, IP, DNS, ਪੇਲੋਡ ਆਕਾਰ) ਦੀ ਡਾਟਾ ਬਾਹਰ ਕੱਢਣ (exfiltration) ਦੇ ਸੰਕੇਤਾਂ ਲਈ ਲਗਾਤਾਰ ਨਿਗਰਾਨੀ ਕੀਤੀ ਜਾਂਦੀ ਹੈ, ਅਤੇ ਚੇਤਾਵਨੀ webhook, paste-site, ਤੇ bin-service ਟਿਕਾਣਿਆਂ ਲਈ ਸੁਰ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | 2 |
-| **AC.11.7** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਫ਼ੋਰਕ PR ਲਈ AI ਸਮੀਖਿਆ ਬੋਟ ਜ਼ੀਰੋ-ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ, ਸਿਰਫ਼-ਪੜ੍ਹਨਯੋਗ ਸ਼ੈਡੋ ਮੋਡ[^0x92-shadow-mode] (shadow mode) ਵਿੱਚ ਚੱਲਦੇ ਹਨ। ਸ਼ੈਡੋ ਮੋਡ ਵਿੱਚ, ਜਦੋਂ ਤੱਕ ਕੋਈ ਰਿਪੌਜ਼ਟਰੀ ਸੰਭਾਲਕਰਤਾ ਪਹਿਲੀ-ਵਾਰੀ-ਯੋਗਦਾਨਕਰਤਾ ਦਾ ਸ਼ੁਰੂਆਤੀ ਤਸਦੀਕ ਗੇਟ ਪਾਸ ਨਹੀਂ ਕਰਾ ਦਿੰਦਾ, ਉਦੋਂ ਤੱਕ ਇਨਲਾਈਨ ਕੋਡ-ਤਿਆਰੀ ਟਿੱਪਣੀ ਸੀਮਤ ਰਹਿੰਦੀ ਹੈ ਅਤੇ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਵਾਲਾ ਵਰਕਫ਼ਲੋ ਮੇਲ-ਜੋਲ ਵਰਜਿਤ ਹੁੰਦਾ ਹੈ। | 2 |
-| **AC.11.8** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਸਮੀਖਿਆ ਅਤੇ ਸਹਾਇਕ ਬੋਟ ਲਗਾਤਾਰ ਵਿਰੋਧੀ ਟੈਸਟਿੰਗ ਦੇ ਅਧੀਨ ਹਨ: ਅਸਿੱਧੇ-prompt-ਇੰਜੈਕਸ਼ਨ ਕਾਰਪੋਰਾ ਨੂੰ ਨਕਲੀ PR, ਮੁੱਦਿਆਂ, ਅਤੇ ਟਿੱਪਣੀਆਂ ਰਾਹੀਂ ਬੋਟ ਦੇ ਵਿਰੁੱਧ ਮੁੜ ਚਲਾਇਆ ਜਾਂਦਾ ਹੈ। ਪਛਾਣ ਦੀ ਅਸਰਦਾਰੀ ਨੂੰ ਸਮੇਂ ਦੇ ਨਾਲ ਟਰੈਕ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਅਤੇ ਕੋਈ ਰਿਗਰੈਸ਼ਨ ਉਸ ਮਾਡਲ ਜਾਂ prompt ਅੱਪਡੇਟ ਨੂੰ ਰੋਕ ਦਿੰਦਾ ਹੈ ਜਿਸ ਨੇ ਉਸ ਨੂੰ ਪੈਦਾ ਕੀਤਾ। | 3 |
+| **AC.੧੧.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਸਮੀਖਿਆ ਅਤੇ ਸਹਾਇਕ ਬੋਟ PR ਤੋਂ ਆਈ ਹਰ ਸਮੱਗਰੀ (diff, ਸਿਰਲੇਖ, ਵੇਰਵਾ, ਟਿੱਪਣੀਆਂ, ਫ਼ਾਈਲ ਸਮੱਗਰੀ, ਕਮਿਟ ਸੁਨੇਹੇ, ਲਿੰਕ ਕੀਤੇ ਬਾਹਰੀ URL) ਨੂੰ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਇਨਪੁੱਟ ਵਜੋਂ ਲੈਂਦੇ ਹਨ, ਅਤੇ AISVS C੨.੧ ਦੇ prompt ਇੰਜੈਕਸ਼ਨ ਬਚਾਅ ਲਾਗੂ ਕਰਦੇ ਹਨ: ਹਦਾਇਤ ਲੜੀ-ਕ੍ਰਮ ਦਾ ਲਾਗੂਕਰਨ, ਸਮੱਗਰੀ ਸੈਨੀਟਾਈਜ਼ੇਸ਼ਨ[^0x92-sanitization], ਅਤੇ ਅਸਿੱਧੇ-ਇੰਜੈਕਸ਼ਨ ਦੀ ਪਛਾਣ। | ੧ |
+| **AC.੧੧.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਸਮੀਖਿਆ ਅਤੇ ਸਹਾਇਕ ਬੋਟਾਂ ਦੇ ਸਿਸਟਮ prompt ਅਤੇ ਨੀਤੀ ਸੰਰਚਨਾਵਾਂ ਦੀ ਲੋਡ ਹੋਣ ਵੇਲੇ ਅਖੰਡਤਾ ਜਾਂਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ (ਦਸਤਖ਼ਤ ਕੀਤੇ, ਹੈਸ਼-ਪਿੰਨ ਕੀਤੇ), ਅਤੇ ਰਿਪੌਜ਼ਟਰੀ ਵਿਚਲੀ ਕੋਈ ਚੀਜ਼, ਬ੍ਰਾਂਚ ਦੀ ਸਮੱਗਰੀ, PR ਤੋਂ ਆਏ ਵਾਤਾਵਰਣ ਵੇਰੀਏਬਲ, ਜਾਂ ਕੋਈ ਹੋਰ ਵਰਤੋਂਕਾਰ-ਨਿਯੰਤਰਿਤ ਇਨਪੁੱਟ ਉਹਨਾਂ ਨੂੰ ਸੋਧ ਨਹੀਂ ਸਕਦਾ। | ੧ |
+| **AC.੧੧.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਸਮੀਖਿਆ ਅਤੇ ਸਹਾਇਕ ਬੋਟ ਸਿਰਫ਼ ਢਾਂਚਾਗਤ, ਸਕੀਮਾ-ਪ੍ਰਮਾਣਿਤ ਆਊਟਪੁੱਟ ਹੀ ਦਿੰਦੇ ਹਨ (ਖੇਤਰਾਂ ਅਤੇ ਕਾਰਵਾਈਆਂ ਦੀ ਇਜਾਜ਼ਤ-ਸੂਚੀ ਵਾਲਾ JSON)। ਕਿਸੇ ਵੀ ਖੁੱਲ੍ਹੇ-ਰੂਪ ਆਊਟਪੁੱਟ ਨੂੰ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਮੰਨਿਆ ਜਾਂਦਾ ਹੈ ਅਤੇ ਉਸ ਨੂੰ ਕਦੇ ਵੀ ਕਮਾਂਡ, ਕਿਊਰੀ, ਸ਼ੈੱਲ ਟੁਕੜੇ, ਜਾਂ ਵਰਕਫ਼ਲੋ ਪੜਾਅ ਵਜੋਂ ਨਹੀਂ ਚਲਾਇਆ ਜਾਂਦਾ। | ੧ |
+| **AC.੧੧.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਸਮੀਖਿਆ ਅਤੇ ਸਹਾਇਕ ਬੋਟ ਨੈੱਟਵਰਕ-ਪੱਖੋਂ ਅਲੱਗ-ਥਲੱਗ, ਘੱਟੋ-ਘੱਟ-ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਸੈਂਡਬਾਕਸਾਂ ਵਿੱਚ ਚੱਲਦੇ ਹਨ: ਇੱਕ ਸਮਰਪਿਤ ਨੇਮਸਪੇਸ, ਮੂਲ-ਰੂਪ-ਵਿੱਚ-ਇਨਕਾਰ ਵਾਲਾ ਬਾਹਰ ਜਾਣ ਵਾਲਾ ਟਰੈਫ਼ਿਕ (egress) ਜਿਸ ਵਿੱਚ ਸਿਰਫ਼ ਪ੍ਰਵਾਨਿਤ API ਦੀ ਇਜਾਜ਼ਤ-ਸੂਚੀ ਹੋਵੇ, ਕੋਈ ਮਾਊਂਟ ਕੀਤੇ ਰਿਪੌਜ਼ਟਰੀ ਗੁਪਤ ਭੇਦ ਨਾ ਹੋਣ, ਅਤੇ ਸਿਰਫ਼ ਥੋੜ੍ਹ-ਚਿਰੇ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ ਹੋਣ। | ੨ |
+| **AC.੧੧.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਕੋਈ ਬੋਟ ਜੋ ਵੀ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਵਾਲੀ ਕਾਰਵਾਈ ਕਰ ਸਕਦਾ ਹੈ (ਕਿਸੇ PR ਨੂੰ ਮਨਜ਼ੂਰੀ ਦੇਣਾ, ਮਰਜ ਕਰਨਾ, ਲੇਬਲ ਲਾਉਣਾ, ਸਮੀਖਿਆਵਾਂ ਖ਼ਾਰਜ ਕਰਨਾ, ਆਪਣੇ ਸੈਂਡਬਾਕਸ ਤੋਂ ਬਾਹਰ ਟਿੱਪਣੀਆਂ ਪਾਉਣਾ, ਬਾਹਰੀ ਟੂਲ ਸੱਦਣਾ), ਉਹ ਇੱਕ ਵੱਖਰੇ, ਆਡਿਟ ਕੀਤੇ ਅਧਿਕਾਰੀਕਰਨ ਰਾਹ ਵਿੱਚੋਂ ਲੰਘਦੀ ਹੈ। ਉਸ ਰਾਹ ਦਾ ਨਿਬੇੜਾ ਇੱਕ ਨੀਤੀ ਇੰਜਣ ਕਰਦਾ ਹੈ, LLM ਨਹੀਂ। | ੨ |
+| **AC.੧੧.੬** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਸਮੀਖਿਆ ਅਤੇ ਸਹਾਇਕ ਬੋਟ ਸਾਰੇ prompt (ਬਾਹਰੀ ਸਰੋਤ ਵਾਲੇ ਸੰਦਰਭ ਸਮੇਤ), ਟੂਲ ਸੱਦੇ, ਅਤੇ ਆਊਟਪੁੱਟ ਛੇੜਛਾੜ-ਪ੍ਰਗਟ ਭੰਡਾਰਨ ਵਿੱਚ ਲੌਗ ਕਰਦੇ ਹਨ। ਬਾਹਰ ਜਾਣ ਵਾਲੇ ਟਰੈਫ਼ਿਕ ਦੇ ਪੈਟਰਨਾਂ (URL, IP, DNS, ਪੇਲੋਡ ਆਕਾਰ) ਦੀ ਡਾਟਾ ਬਾਹਰ ਕੱਢਣ (exfiltration) ਦੇ ਸੰਕੇਤਾਂ ਲਈ ਲਗਾਤਾਰ ਨਿਗਰਾਨੀ ਕੀਤੀ ਜਾਂਦੀ ਹੈ, ਅਤੇ ਚੇਤਾਵਨੀ webhook, paste-site, ਤੇ bin-service ਟਿਕਾਣਿਆਂ ਲਈ ਸੁਰ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। | ੨ |
+| **AC.੧੧.੭** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਫ਼ੋਰਕ PR ਲਈ AI ਸਮੀਖਿਆ ਬੋਟ ਜ਼ੀਰੋ-ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ, ਸਿਰਫ਼-ਪੜ੍ਹਨਯੋਗ ਸ਼ੈਡੋ ਮੋਡ[^0x92-shadow-mode] (shadow mode) ਵਿੱਚ ਚੱਲਦੇ ਹਨ। ਸ਼ੈਡੋ ਮੋਡ ਵਿੱਚ, ਜਦੋਂ ਤੱਕ ਕੋਈ ਰਿਪੌਜ਼ਟਰੀ ਸੰਭਾਲਕਰਤਾ ਪਹਿਲੀ-ਵਾਰੀ-ਯੋਗਦਾਨਕਰਤਾ ਦਾ ਸ਼ੁਰੂਆਤੀ ਤਸਦੀਕ ਗੇਟ ਪਾਸ ਨਹੀਂ ਕਰਾ ਦਿੰਦਾ, ਉਦੋਂ ਤੱਕ ਇਨਲਾਈਨ ਕੋਡ-ਤਿਆਰੀ ਟਿੱਪਣੀ ਸੀਮਤ ਰਹਿੰਦੀ ਹੈ ਅਤੇ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਵਾਲਾ ਵਰਕਫ਼ਲੋ ਮੇਲ-ਜੋਲ ਵਰਜਿਤ ਹੁੰਦਾ ਹੈ। | ੨ |
+| **AC.੧੧.੮** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਸਮੀਖਿਆ ਅਤੇ ਸਹਾਇਕ ਬੋਟ ਲਗਾਤਾਰ ਵਿਰੋਧੀ ਟੈਸਟਿੰਗ ਦੇ ਅਧੀਨ ਹਨ: ਅਸਿੱਧੇ-prompt-ਇੰਜੈਕਸ਼ਨ ਕਾਰਪੋਰਾ ਨੂੰ ਨਕਲੀ PR, ਮੁੱਦਿਆਂ, ਅਤੇ ਟਿੱਪਣੀਆਂ ਰਾਹੀਂ ਬੋਟ ਦੇ ਵਿਰੁੱਧ ਮੁੜ ਚਲਾਇਆ ਜਾਂਦਾ ਹੈ। ਪਛਾਣ ਦੀ ਅਸਰਦਾਰੀ ਨੂੰ ਸਮੇਂ ਦੇ ਨਾਲ ਟਰੈਕ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਅਤੇ ਕੋਈ ਰਿਗਰੈਸ਼ਨ ਉਸ ਮਾਡਲ ਜਾਂ prompt ਅੱਪਡੇਟ ਨੂੰ ਰੋਕ ਦਿੰਦਾ ਹੈ ਜਿਸ ਨੇ ਉਸ ਨੂੰ ਪੈਦਾ ਕੀਤਾ। | ੩ |
 
 **Mappings & References:**
 
@@ -3589,11 +3589,11 @@ AI ਕੋਡ-ਸਮੀਖਿਆ ਬੋਟ, PR-ਟਿੱਪਣੀ ਬੋਟ, MCP-
 ---
 
 ## AC.12 CI/CD Pipeline Hardening Specific to AI Augmentation
-## AC.12 AI ਵਾਧੇ ਲਈ ਵਿਸ਼ੇਸ਼ CI/CD ਪਾਈਪਲਾਈਨ ਸਖ਼ਤੀਕਰਨ
+## AC.੧੨ AI ਵਾਧੇ ਲਈ ਵਿਸ਼ੇਸ਼ CI/CD ਪਾਈਪਲਾਈਨ ਸਖ਼ਤੀਕਰਨ
 
 Two kinds of CI/CD pipeline control are in scope for this family: those that AI augmentation _newly requires_, and those that AI augmentation _breaks_. Generic CI/CD hygiene is not in scope here; it is covered elsewhere. Short-lived credentials, immutable action pinning, branch protection, SLSA Build Track L3 provenance, and multi-party production approval are all addressed by OWASP ASVS v5 V10, the OWASP Top 10 CI/CD Security Risks (CICD-SEC-01 through CICD-SEC-10), NIST SP 800-204D, and SLSA v1.2. Adopters implement those baselines and verify them against the originating standards. We do not repeat that assessment here.
 
-ਇਸ ਪਰਿਵਾਰ ਦੇ ਦਾਇਰੇ ਵਿੱਚ ਦੋ ਕਿਸਮਾਂ ਦੇ CI/CD ਪਾਈਪਲਾਈਨ ਨਿਯੰਤਰਣ ਆਉਂਦੇ ਹਨ: ਉਹ ਜਿਹੜੇ AI ਵਾਧਾ _ਨਵੇਂ ਸਿਰਿਓਂ ਲੋੜੀਂਦੇ ਬਣਾ ਦਿੰਦਾ ਹੈ_, ਅਤੇ ਉਹ ਜਿਹੜੇ AI ਵਾਧਾ _ਤੋੜ ਦਿੰਦਾ ਹੈ_। ਆਮ CI/CD ਸਫ਼ਾਈ ਇੱਥੇ ਦਾਇਰੇ ਵਿੱਚ ਨਹੀਂ ਹੈ; ਉਸ ਨੂੰ ਹੋਰ ਥਾਂ ਢੱਕਿਆ ਗਿਆ ਹੈ। ਥੋੜ੍ਹ-ਚਿਰੇ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ, ਅਪਰਿਵਰਤਨਸ਼ੀਲ ਐਕਸ਼ਨ ਪਿੰਨਿੰਗ, ਬ੍ਰਾਂਚ ਸੁਰੱਖਿਆ, SLSA Build Track L3 ਮੂਲ-ਸਰੋਤ, ਅਤੇ ਬਹੁ-ਧਿਰੀ ਉਤਪਾਦਨ ਮਨਜ਼ੂਰੀ — ਇਹ ਸਾਰੇ OWASP ASVS v5 V10, OWASP Top 10 CI/CD Security Risks (CICD-SEC-01 ਤੋਂ CICD-SEC-10), NIST SP 800-204D, ਅਤੇ SLSA v1.2 ਦੁਆਰਾ ਸੰਬੋਧਿਤ ਕੀਤੇ ਗਏ ਹਨ। ਅਪਣਾਉਣ ਵਾਲੇ ਉਹ ਬੇਸਲਾਈਨਾਂ ਲਾਗੂ ਕਰਦੇ ਹਨ ਅਤੇ ਮੂਲ ਮਿਆਰਾਂ ਦੇ ਵਿਰੁੱਧ ਉਹਨਾਂ ਦੀ ਤਸਦੀਕ ਕਰਦੇ ਹਨ। ਅਸੀਂ ਉਹ ਮੁਲਾਂਕਣ ਇੱਥੇ ਨਹੀਂ ਦੁਹਰਾਉਂਦੇ।
+ਇਸ ਪਰਿਵਾਰ ਦੇ ਦਾਇਰੇ ਵਿੱਚ ਦੋ ਕਿਸਮਾਂ ਦੇ CI/CD ਪਾਈਪਲਾਈਨ ਨਿਯੰਤਰਣ ਆਉਂਦੇ ਹਨ: ਉਹ ਜਿਹੜੇ AI ਵਾਧਾ _ਨਵੇਂ ਸਿਰਿਓਂ ਲੋੜੀਂਦੇ ਬਣਾ ਦਿੰਦਾ ਹੈ_, ਅਤੇ ਉਹ ਜਿਹੜੇ AI ਵਾਧਾ _ਤੋੜ ਦਿੰਦਾ ਹੈ_। ਆਮ CI/CD ਸਫ਼ਾਈ ਇੱਥੇ ਦਾਇਰੇ ਵਿੱਚ ਨਹੀਂ ਹੈ; ਉਸ ਨੂੰ ਹੋਰ ਥਾਂ ਢੱਕਿਆ ਗਿਆ ਹੈ। ਥੋੜ੍ਹ-ਚਿਰੇ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ, ਅਪਰਿਵਰਤਨਸ਼ੀਲ ਐਕਸ਼ਨ ਪਿੰਨਿੰਗ, ਬ੍ਰਾਂਚ ਸੁਰੱਖਿਆ, SLSA Build Track L3 ਮੂਲ-ਸਰੋਤ, ਅਤੇ ਬਹੁ-ਧਿਰੀ ਉਤਪਾਦਨ ਮਨਜ਼ੂਰੀ — ਇਹ ਸਾਰੇ OWASP ASVS v5 V੧੦, OWASP Top 10 CI/CD Security Risks (CICD-SEC-01 ਤੋਂ CICD-SEC-10), NIST SP 800-204D, ਅਤੇ SLSA v1.2 ਦੁਆਰਾ ਸੰਬੋਧਿਤ ਕੀਤੇ ਗਏ ਹਨ। ਅਪਣਾਉਣ ਵਾਲੇ ਉਹ ਬੇਸਲਾਈਨਾਂ ਲਾਗੂ ਕਰਦੇ ਹਨ ਅਤੇ ਮੂਲ ਮਿਆਰਾਂ ਦੇ ਵਿਰੁੱਧ ਉਹਨਾਂ ਦੀ ਤਸਦੀਕ ਕਰਦੇ ਹਨ। ਅਸੀਂ ਉਹ ਮੁਲਾਂਕਣ ਇੱਥੇ ਨਹੀਂ ਦੁਹਰਾਉਂਦੇ।
 
 <!-- markdownlint-disable MD013 -->
 | # | Description | Level |
@@ -3609,14 +3609,14 @@ Two kinds of CI/CD pipeline control are in scope for this family: those that AI 
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | --- | --- | --- |
-| **AC.12.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਯੋਗਦਾਨਾਂ ਦੁਆਰਾ ਟ੍ਰਿਗਰ ਹੋਏ ਵਰਕਫ਼ਲੋ (GitHub Actions ਦੇ `pull_request_target`, `workflow_run`, ਅਤੇ ਹੋਰ CI ਸਿਸਟਮਾਂ ਵਿਚਲੇ ਬਰਾਬਰ ਦੇ ਫ਼ੋਰਕ-ਜਾਣੂ ਟ੍ਰਿਗਰ) ਕਦੇ ਵੀ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਕੋਡ ਨੂੰ ਅਜਿਹੇ ਸੰਦਰਭ ਵਿੱਚ ਚੈੱਕ-ਆਊਟ, ਬਿਲਡ, ਟੈਸਟ, ਜਾਂ ਕਿਸੇ ਹੋਰ ਢੰਗ ਨਾਲ ਨਹੀਂ ਚਲਾਉਂਦੇ ਜਿਸ ਕੋਲ ਰਿਪੌਜ਼ਟਰੀ ਲਿਖਣ ਦੀਆਂ ਇਜਾਜ਼ਤਾਂ ਹੋਣ ਜਾਂ ਰਿਪੌਜ਼ਟਰੀ, ਸੰਸਥਾ, ਪੈਕੇਜ-ਰਜਿਸਟਰੀ, ਕਲਾਊਡ, ਜਾਂ ਤੈਨਾਤੀ ਦੇ ਗੁਪਤ ਭੇਦਾਂ ਤੱਕ ਪਹੁੰਚ ਹੋਵੇ। ਜਿੱਥੇ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਵਾਲਾ ਅਗਲਾ ਕਦਮ ਲੋੜੀਂਦਾ ਹੋਵੇ, ਉੱਥੇ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਯੋਗਦਾਨ ਦੀ ਪ੍ਰਕਿਰਿਆ ਪਹਿਲਾਂ ਇੱਕ ਗ਼ੈਰ-ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਵਾਲੇ `pull_request` ਵਰਕਫ਼ਲੋ ਵਿੱਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ, ਅਤੇ ਸਿਰਫ਼ ਪ੍ਰਮਾਣਿਤ ਨਿਸ਼ਕਿਰਿਆ ਆਰਟੀਫ਼ੈਕਟ ਹੀ ਇੱਕ ਵੱਖਰੇ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਵਾਲੇ ਵਰਕਫ਼ਲੋ ਨੂੰ ਅੱਗੇ ਦਿੱਤੇ ਜਾਂਦੇ ਹਨ। | 1 |
-| **AC.12.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਗੁਪਤ ਭੇਦ, ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ, ਅਤੇ ਪਾਈਪਲਾਈਨ ਜੌਬ ਟੋਕਨ ਉਹਨਾਂ ਵਰਕਸਪੇਸਾਂ ਵਿੱਚ ਸੰਭਾਲ ਕੇ ਨਹੀਂ ਰੱਖੇ ਜਾਂਦੇ ਜਿਹੜੇ AI-ਛੂਹੇ ਜਾਂ ਫ਼ੋਰਕ ਤੋਂ ਆਏ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਕੋਡ ਦੀ ਪ੍ਰਕਿਰਿਆ ਕਰਦੇ ਹਨ। ਮਿਸਾਲ ਵਜੋਂ, ਜਿੱਥੇ ਪਲੇਟਫ਼ਾਰਮ ਸਮਰਥਨ ਕਰਦਾ ਹੈ ਉੱਥੇ ਚੈੱਕਆਊਟ ਉੱਤੇ `persist-credentials: false` ਸੈੱਟ ਕਰੋ, ਅਤੇ AI ਟੂਲਿੰਗ ਚੱਲਣ ਤੋਂ ਪਹਿਲਾਂ CI ਰਨਰਾਂ ਵਿੱਚੋਂ ਕੈਸ਼ ਕੀਤੇ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ ਸਾਫ਼ ਕਰੋ। | 1 |
-| **AC.12.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਫ਼ੋਰਕਾਂ ਜਾਂ ਪਹਿਲੀ-ਵਾਰੀ ਯੋਗਦਾਨਕਰਤਾਵਾਂ ਦਾ ਕੋਡ ਚਲਾਉਣ ਵਾਲੇ ਵਰਕਫ਼ਲੋ ਨੂੰ ਗੁਪਤ ਭੇਦ ਨਹੀਂ ਦਿਖਾਏ ਜਾਂਦੇ। ਵਾਤਾਵਰਣ-ਸੁਰੱਖਿਆ ਨਿਯਮ (ਜਾਂ ਪਲੇਟਫ਼ਾਰਮ ਦਾ ਬਰਾਬਰ ਦਾ ਪ੍ਰਬੰਧ, ਜਿਵੇਂ ਸੁਰੱਖਿਅਤ ਵੇਰੀਏਬਲ ਅਤੇ ਤੈਨਾਤੀ ਮਨਜ਼ੂਰੀਆਂ) ਇਹਨਾਂ ਯੋਗਦਾਨਾਂ ਲਈ ਕੋਈ ਵੀ ਗੁਪਤ-ਭੇਦ ਵਾਲੀ ਜੌਬ ਚੱਲਣ ਤੋਂ ਪਹਿਲਾਂ ਦਸਤੀ ਮਨਜ਼ੂਰੀ ਦੀ ਲੋੜ ਪਾਉਂਦੇ ਹਨ। ਇਹ ਨਿਯੰਤਰਣ AC.11.7 ਅਤੇ AC.13.2 ਨਾਲ ਜੋੜੀ ਬਣਾਉਂਦਾ ਹੈ। AC.11.7 ਅਧੀਨ ਬੋਟ-ਪੱਧਰੀ ਲਾਗੂਕਰਨ ਇੱਥੇ ਲੋੜੀਂਦੇ ਪਲੇਟਫ਼ਾਰਮ-ਪੱਧਰੀ ਲਾਗੂਕਰਨ ਦਾ ਬਦਲ ਨਹੀਂ ਹੈ। | 1 |
-| **AC.12.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਟੂਲਿੰਗ ਦੁਆਰਾ ਵਰਤੇ ਜਾਂਦੇ ਸਵੈ-ਹੋਸਟ ਕੀਤੇ ਜਾਂ ਸਥਾਈ ਰਨਰ ਥੋੜ੍ਹ-ਚਿਰੇ ਹਨ (ਹਰ ਜੌਬ ਤੋਂ ਬਾਅਦ ਨਸ਼ਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ), ਨੈੱਟਵਰਕ-ਪੱਖੋਂ ਵੰਡੇ ਹੋਏ ਹਨ, ਅਤੇ ਉਤਪਾਦਨ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲਾਂ ਤੋਂ ਅਲੱਗ-ਥਲੱਗ ਹਨ। ਸਥਾਈ ਜਾਂ ਲੰਮੇ ਸਮੇਂ ਵਾਲੇ ਰਨਰ ਕਿਸੇ ਵੀ ਹਾਲਤ ਵਿੱਚ ਫ਼ੋਰਕ PR ਜਾਂ AI ਦੁਆਰਾ ਤਿਆਰ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਆਰਟੀਫ਼ੈਕਟਾਂ ਦੀ ਪ੍ਰਕਿਰਿਆ ਨਹੀਂ ਕਰਦੇ। | 2 |
-| **AC.12.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਵਰਕਫ਼ਲੋ ਪਰਿਭਾਸ਼ਾ ਫ਼ਾਈਲਾਂ (`.github/workflows/*`, `.gitlab-ci.yml`, `Jenkinsfile`, Argo, Tekton, ਅਤੇ ਬਰਾਬਰ ਦੀਆਂ) ਵਿਚਲੀਆਂ ਤਬਦੀਲੀਆਂ ਹਰ PR ਉੱਤੇ ਪਛਾਣੀਆਂ ਜਾਂਦੀਆਂ ਹਨ ਅਤੇ ਇੱਕ ਉੱਚੇ ਸਮੀਖਿਆ ਰਾਹ ਵਿੱਚੋਂ ਲੰਘਦੀਆਂ ਹਨ ਜਿਸ ਵਿੱਚ ਇੱਕ ਸੁਰੱਖਿਆ ਸਮੀਖਿਅਕ ਸ਼ਾਮਲ ਹੁੰਦਾ ਹੈ — ਭਾਵੇਂ ਯੋਗਦਾਨਕਰਤਾ ਕੋਈ ਵੀ ਹੋਵੇ ਅਤੇ ਭਾਵੇਂ AI ਸ਼ਾਮਲ ਸੀ ਜਾਂ ਨਹੀਂ। AI ਏਜੰਟਾਂ ਨੂੰ ਇਸ ਸਮੀਖਿਆ ਰਾਹ ਉੱਤੇ ਬਾਈਪਾਸ ਕਰਨ ਦਾ ਅਧਿਕਾਰ ਲਾਜ਼ਮੀ ਤੌਰ 'ਤੇ ਨਹੀਂ ਦਿੱਤਾ ਜਾਣਾ ਚਾਹੀਦਾ। | 2 |
-| **AC.12.6** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਪਾਈਪਲਾਈਨ ਆਡਿਟ ਲੌਗ (ਵਰਕਫ਼ਲੋ ਰਨ, ਗੁਪਤ-ਭੇਦ ਪਹੁੰਚ, ਰਨਰ ਰਜਿਸਟਰੇਸ਼ਨ, ਇਜਾਜ਼ਤਾਂ ਦੇਣਾ, OIDC ਟੋਕਨ ਜਾਰੀ ਕਰਨਾ) ਅਸਲ ਸਮੇਂ ਵਿੱਚ ਕੇਂਦਰੀਕ੍ਰਿਤ ਸੁਰੱਖਿਆ ਨਿਗਰਾਨੀ ਨੂੰ ਭੇਜੇ ਜਾਂਦੇ ਹਨ। ਪਛਾਣ ਨਿਯਮ AI-ਵਧਾਏ ਖ਼ਤਰਾ ਪੈਟਰਨਾਂ ਲਈ ਸੁਰ ਕੀਤੇ ਜਾਂਦੇ ਹਨ: ਨਵੇਂ ਖਾਤਿਆਂ ਤੋਂ ਥੋਕ PR ਬਣਾਉਣਾ, ਫ਼ੋਰਕ PR ਵਿੱਚ ਵਰਕਫ਼ਲੋ-ਫ਼ਾਈਲ ਸੋਧਾਂ, AI-ਰਨਰ ਪੂਲਾਂ ਤੋਂ ਅਣਕਿਆਸੀ ਗੁਪਤ-ਭੇਦ ਪਹੁੰਚ, ਅਤੇ AI ਵਰਕਲੋਡਾਂ ਤੋਂ ਅਸਧਾਰਨ ਬਾਹਰ ਜਾਣ ਵਾਲਾ ਟਰੈਫ਼ਿਕ (webhook, paste site, bin service)। | 2 |
-| **AC.12.7** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਜਦੋਂ ਕੋਈ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਵਾਲਾ ਅਗਲਾ ਵਰਕਫ਼ਲੋ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ PR ਵਰਕਫ਼ਲੋ ਦੁਆਰਾ ਪੈਦਾ ਕੀਤੇ ਆਰਟੀਫ਼ੈਕਟਾਂ ਦੀ ਵਰਤੋਂ ਕਰਦਾ ਹੈ, ਤਾਂ ਉਹਨਾਂ ਨੂੰ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਨਿਸ਼ਕਿਰਿਆ ਡਾਟਾ ਮੰਨਿਆ ਜਾਂਦਾ ਹੈ। ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਵਾਲਾ ਵਰਕਫ਼ਲੋ ਕਦੇ ਵੀ ਅਜਿਹੀਆਂ ਬਾਈਨਰੀਆਂ, ਸਕ੍ਰਿਪਟਾਂ, ਪੈਕੇਜਾਂ, ਕੈਸ਼ਾਂ, ਜਾਂ ਤਿਆਰ ਕੀਤੇ ਵਰਕਫ਼ਲੋ ਟੁਕੜਿਆਂ ਨੂੰ ਨਹੀਂ ਚਲਾਉਂਦਾ ਜੋ ਕਿਸੇ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਯੋਗਦਾਨ ਵਿੱਚੋਂ ਆਏ ਹੋਣ। | 2 |
-| **AC.12.8** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਕਿਸੇ ਕਮਜ਼ੋਰ ਵਰਕਫ਼ਲੋ ਦੀ ਦਰੁਸਤੀ ਵਿੱਚ ਹਰ ਉਸ PR ਨੂੰ ਅਯੋਗ ਕਰਨਾ ਜਾਂ ਮੁੜ-ਪ੍ਰਮਾਣਿਤ ਕਰਨਾ ਸ਼ਾਮਲ ਹੈ ਜੋ ਦਰੁਸਤੀ ਲਾਗੂ ਹੋਣ ਤੋਂ ਪਹਿਲਾਂ ਖੋਲ੍ਹੀ ਗਈ ਸੀ। ਇਸ ਕਦਮ ਤੋਂ ਬਿਨਾਂ, ਉਸੇ PR ਉੱਤੇ ਬਾਅਦ ਵਿੱਚ ਕੀਤਾ ਕਮਿਟ ਪੁਰਾਣੀ ਵਰਕਫ਼ਲੋ ਪਰਿਭਾਸ਼ਾ ਚੁੱਕ ਸਕਦਾ ਹੈ ਅਤੇ ਦਰੁਸਤੀ ਦੇ ਦੁਆਲਿਓਂ ਲੰਘ ਸਕਦਾ ਹੈ। | 2 |
+| **AC.੧੨.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਯੋਗਦਾਨਾਂ ਦੁਆਰਾ ਟ੍ਰਿਗਰ ਹੋਏ ਵਰਕਫ਼ਲੋ (GitHub Actions ਦੇ `pull_request_target`, `workflow_run`, ਅਤੇ ਹੋਰ CI ਸਿਸਟਮਾਂ ਵਿਚਲੇ ਬਰਾਬਰ ਦੇ ਫ਼ੋਰਕ-ਜਾਣੂ ਟ੍ਰਿਗਰ) ਕਦੇ ਵੀ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਕੋਡ ਨੂੰ ਅਜਿਹੇ ਸੰਦਰਭ ਵਿੱਚ ਚੈੱਕ-ਆਊਟ, ਬਿਲਡ, ਟੈਸਟ, ਜਾਂ ਕਿਸੇ ਹੋਰ ਢੰਗ ਨਾਲ ਨਹੀਂ ਚਲਾਉਂਦੇ ਜਿਸ ਕੋਲ ਰਿਪੌਜ਼ਟਰੀ ਲਿਖਣ ਦੀਆਂ ਇਜਾਜ਼ਤਾਂ ਹੋਣ ਜਾਂ ਰਿਪੌਜ਼ਟਰੀ, ਸੰਸਥਾ, ਪੈਕੇਜ-ਰਜਿਸਟਰੀ, ਕਲਾਊਡ, ਜਾਂ ਤੈਨਾਤੀ ਦੇ ਗੁਪਤ ਭੇਦਾਂ ਤੱਕ ਪਹੁੰਚ ਹੋਵੇ। ਜਿੱਥੇ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਵਾਲਾ ਅਗਲਾ ਕਦਮ ਲੋੜੀਂਦਾ ਹੋਵੇ, ਉੱਥੇ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਯੋਗਦਾਨ ਦੀ ਪ੍ਰਕਿਰਿਆ ਪਹਿਲਾਂ ਇੱਕ ਗ਼ੈਰ-ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਵਾਲੇ `pull_request` ਵਰਕਫ਼ਲੋ ਵਿੱਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ, ਅਤੇ ਸਿਰਫ਼ ਪ੍ਰਮਾਣਿਤ ਨਿਸ਼ਕਿਰਿਆ ਆਰਟੀਫ਼ੈਕਟ ਹੀ ਇੱਕ ਵੱਖਰੇ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਵਾਲੇ ਵਰਕਫ਼ਲੋ ਨੂੰ ਅੱਗੇ ਦਿੱਤੇ ਜਾਂਦੇ ਹਨ। | ੧ |
+| **AC.੧੨.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਗੁਪਤ ਭੇਦ, ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ, ਅਤੇ ਪਾਈਪਲਾਈਨ ਜੌਬ ਟੋਕਨ ਉਹਨਾਂ ਵਰਕਸਪੇਸਾਂ ਵਿੱਚ ਸੰਭਾਲ ਕੇ ਨਹੀਂ ਰੱਖੇ ਜਾਂਦੇ ਜਿਹੜੇ AI-ਛੂਹੇ ਜਾਂ ਫ਼ੋਰਕ ਤੋਂ ਆਏ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਕੋਡ ਦੀ ਪ੍ਰਕਿਰਿਆ ਕਰਦੇ ਹਨ। ਮਿਸਾਲ ਵਜੋਂ, ਜਿੱਥੇ ਪਲੇਟਫ਼ਾਰਮ ਸਮਰਥਨ ਕਰਦਾ ਹੈ ਉੱਥੇ ਚੈੱਕਆਊਟ ਉੱਤੇ `persist-credentials: false` ਸੈੱਟ ਕਰੋ, ਅਤੇ AI ਟੂਲਿੰਗ ਚੱਲਣ ਤੋਂ ਪਹਿਲਾਂ CI ਰਨਰਾਂ ਵਿੱਚੋਂ ਕੈਸ਼ ਕੀਤੇ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ ਸਾਫ਼ ਕਰੋ। | ੧ |
+| **AC.੧੨.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਫ਼ੋਰਕਾਂ ਜਾਂ ਪਹਿਲੀ-ਵਾਰੀ ਯੋਗਦਾਨਕਰਤਾਵਾਂ ਦਾ ਕੋਡ ਚਲਾਉਣ ਵਾਲੇ ਵਰਕਫ਼ਲੋ ਨੂੰ ਗੁਪਤ ਭੇਦ ਨਹੀਂ ਦਿਖਾਏ ਜਾਂਦੇ। ਵਾਤਾਵਰਣ-ਸੁਰੱਖਿਆ ਨਿਯਮ (ਜਾਂ ਪਲੇਟਫ਼ਾਰਮ ਦਾ ਬਰਾਬਰ ਦਾ ਪ੍ਰਬੰਧ, ਜਿਵੇਂ ਸੁਰੱਖਿਅਤ ਵੇਰੀਏਬਲ ਅਤੇ ਤੈਨਾਤੀ ਮਨਜ਼ੂਰੀਆਂ) ਇਹਨਾਂ ਯੋਗਦਾਨਾਂ ਲਈ ਕੋਈ ਵੀ ਗੁਪਤ-ਭੇਦ ਵਾਲੀ ਜੌਬ ਚੱਲਣ ਤੋਂ ਪਹਿਲਾਂ ਦਸਤੀ ਮਨਜ਼ੂਰੀ ਦੀ ਲੋੜ ਪਾਉਂਦੇ ਹਨ। ਇਹ ਨਿਯੰਤਰਣ AC.੧੧.੭ ਅਤੇ AC.੧੩.੨ ਨਾਲ ਜੋੜੀ ਬਣਾਉਂਦਾ ਹੈ। AC.੧੧.੭ ਅਧੀਨ ਬੋਟ-ਪੱਧਰੀ ਲਾਗੂਕਰਨ ਇੱਥੇ ਲੋੜੀਂਦੇ ਪਲੇਟਫ਼ਾਰਮ-ਪੱਧਰੀ ਲਾਗੂਕਰਨ ਦਾ ਬਦਲ ਨਹੀਂ ਹੈ। | ੧ |
+| **AC.੧੨.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਟੂਲਿੰਗ ਦੁਆਰਾ ਵਰਤੇ ਜਾਂਦੇ ਸਵੈ-ਹੋਸਟ ਕੀਤੇ ਜਾਂ ਸਥਾਈ ਰਨਰ ਥੋੜ੍ਹ-ਚਿਰੇ ਹਨ (ਹਰ ਜੌਬ ਤੋਂ ਬਾਅਦ ਨਸ਼ਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ), ਨੈੱਟਵਰਕ-ਪੱਖੋਂ ਵੰਡੇ ਹੋਏ ਹਨ, ਅਤੇ ਉਤਪਾਦਨ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲਾਂ ਤੋਂ ਅਲੱਗ-ਥਲੱਗ ਹਨ। ਸਥਾਈ ਜਾਂ ਲੰਮੇ ਸਮੇਂ ਵਾਲੇ ਰਨਰ ਕਿਸੇ ਵੀ ਹਾਲਤ ਵਿੱਚ ਫ਼ੋਰਕ PR ਜਾਂ AI ਦੁਆਰਾ ਤਿਆਰ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਆਰਟੀਫ਼ੈਕਟਾਂ ਦੀ ਪ੍ਰਕਿਰਿਆ ਨਹੀਂ ਕਰਦੇ। | ੨ |
+| **AC.੧੨.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਵਰਕਫ਼ਲੋ ਪਰਿਭਾਸ਼ਾ ਫ਼ਾਈਲਾਂ (`.github/workflows/*`, `.gitlab-ci.yml`, `Jenkinsfile`, Argo, Tekton, ਅਤੇ ਬਰਾਬਰ ਦੀਆਂ) ਵਿਚਲੀਆਂ ਤਬਦੀਲੀਆਂ ਹਰ PR ਉੱਤੇ ਪਛਾਣੀਆਂ ਜਾਂਦੀਆਂ ਹਨ ਅਤੇ ਇੱਕ ਉੱਚੇ ਸਮੀਖਿਆ ਰਾਹ ਵਿੱਚੋਂ ਲੰਘਦੀਆਂ ਹਨ ਜਿਸ ਵਿੱਚ ਇੱਕ ਸੁਰੱਖਿਆ ਸਮੀਖਿਅਕ ਸ਼ਾਮਲ ਹੁੰਦਾ ਹੈ — ਭਾਵੇਂ ਯੋਗਦਾਨਕਰਤਾ ਕੋਈ ਵੀ ਹੋਵੇ ਅਤੇ ਭਾਵੇਂ AI ਸ਼ਾਮਲ ਸੀ ਜਾਂ ਨਹੀਂ। AI ਏਜੰਟਾਂ ਨੂੰ ਇਸ ਸਮੀਖਿਆ ਰਾਹ ਉੱਤੇ ਬਾਈਪਾਸ ਕਰਨ ਦਾ ਅਧਿਕਾਰ ਲਾਜ਼ਮੀ ਤੌਰ 'ਤੇ ਨਹੀਂ ਦਿੱਤਾ ਜਾਣਾ ਚਾਹੀਦਾ। | ੨ |
+| **AC.੧੨.੬** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਪਾਈਪਲਾਈਨ ਆਡਿਟ ਲੌਗ (ਵਰਕਫ਼ਲੋ ਰਨ, ਗੁਪਤ-ਭੇਦ ਪਹੁੰਚ, ਰਨਰ ਰਜਿਸਟਰੇਸ਼ਨ, ਇਜਾਜ਼ਤਾਂ ਦੇਣਾ, OIDC ਟੋਕਨ ਜਾਰੀ ਕਰਨਾ) ਅਸਲ ਸਮੇਂ ਵਿੱਚ ਕੇਂਦਰੀਕ੍ਰਿਤ ਸੁਰੱਖਿਆ ਨਿਗਰਾਨੀ ਨੂੰ ਭੇਜੇ ਜਾਂਦੇ ਹਨ। ਪਛਾਣ ਨਿਯਮ AI-ਵਧਾਏ ਖ਼ਤਰਾ ਪੈਟਰਨਾਂ ਲਈ ਸੁਰ ਕੀਤੇ ਜਾਂਦੇ ਹਨ: ਨਵੇਂ ਖਾਤਿਆਂ ਤੋਂ ਥੋਕ PR ਬਣਾਉਣਾ, ਫ਼ੋਰਕ PR ਵਿੱਚ ਵਰਕਫ਼ਲੋ-ਫ਼ਾਈਲ ਸੋਧਾਂ, AI-ਰਨਰ ਪੂਲਾਂ ਤੋਂ ਅਣਕਿਆਸੀ ਗੁਪਤ-ਭੇਦ ਪਹੁੰਚ, ਅਤੇ AI ਵਰਕਲੋਡਾਂ ਤੋਂ ਅਸਧਾਰਨ ਬਾਹਰ ਜਾਣ ਵਾਲਾ ਟਰੈਫ਼ਿਕ (webhook, paste site, bin service)। | ੨ |
+| **AC.੧੨.੭** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਜਦੋਂ ਕੋਈ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਵਾਲਾ ਅਗਲਾ ਵਰਕਫ਼ਲੋ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ PR ਵਰਕਫ਼ਲੋ ਦੁਆਰਾ ਪੈਦਾ ਕੀਤੇ ਆਰਟੀਫ਼ੈਕਟਾਂ ਦੀ ਵਰਤੋਂ ਕਰਦਾ ਹੈ, ਤਾਂ ਉਹਨਾਂ ਨੂੰ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਨਿਸ਼ਕਿਰਿਆ ਡਾਟਾ ਮੰਨਿਆ ਜਾਂਦਾ ਹੈ। ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਵਾਲਾ ਵਰਕਫ਼ਲੋ ਕਦੇ ਵੀ ਅਜਿਹੀਆਂ ਬਾਈਨਰੀਆਂ, ਸਕ੍ਰਿਪਟਾਂ, ਪੈਕੇਜਾਂ, ਕੈਸ਼ਾਂ, ਜਾਂ ਤਿਆਰ ਕੀਤੇ ਵਰਕਫ਼ਲੋ ਟੁਕੜਿਆਂ ਨੂੰ ਨਹੀਂ ਚਲਾਉਂਦਾ ਜੋ ਕਿਸੇ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਯੋਗਦਾਨ ਵਿੱਚੋਂ ਆਏ ਹੋਣ। | ੨ |
+| **AC.੧੨.੮** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਕਿਸੇ ਕਮਜ਼ੋਰ ਵਰਕਫ਼ਲੋ ਦੀ ਦਰੁਸਤੀ ਵਿੱਚ ਹਰ ਉਸ PR ਨੂੰ ਅਯੋਗ ਕਰਨਾ ਜਾਂ ਮੁੜ-ਪ੍ਰਮਾਣਿਤ ਕਰਨਾ ਸ਼ਾਮਲ ਹੈ ਜੋ ਦਰੁਸਤੀ ਲਾਗੂ ਹੋਣ ਤੋਂ ਪਹਿਲਾਂ ਖੋਲ੍ਹੀ ਗਈ ਸੀ। ਇਸ ਕਦਮ ਤੋਂ ਬਿਨਾਂ, ਉਸੇ PR ਉੱਤੇ ਬਾਅਦ ਵਿੱਚ ਕੀਤਾ ਕਮਿਟ ਪੁਰਾਣੀ ਵਰਕਫ਼ਲੋ ਪਰਿਭਾਸ਼ਾ ਚੁੱਕ ਸਕਦਾ ਹੈ ਅਤੇ ਦਰੁਸਤੀ ਦੇ ਦੁਆਲਿਓਂ ਲੰਘ ਸਕਦਾ ਹੈ। | ੨ |
 
 **Mappings & References:**
 
@@ -3634,7 +3634,7 @@ Two kinds of CI/CD pipeline control are in scope for this family: those that AI 
 ---
 
 ## AC.13 Adversarial AI Detection in Inbound Contributions
-## AC.13 ਅੰਦਰ ਆਉਣ ਵਾਲੇ ਯੋਗਦਾਨਾਂ ਵਿੱਚ ਵਿਰੋਧੀ AI ਦੀ ਪਛਾਣ
+## AC.੧੩ ਅੰਦਰ ਆਉਣ ਵਾਲੇ ਯੋਗਦਾਨਾਂ ਵਿੱਚ ਵਿਰੋਧੀ AI ਦੀ ਪਛਾਣ
 
 The previous families were about defending your own AI from misuse. This one flips the lens. Here the AI is on the attacker's side, and you are trying to spot the signal in inbound contributions and content. The scenario worth defending against is the one where an attacker uses AI to run fork-and-PR campaigns at scale, with malicious payloads tailored to the target repository.
 
@@ -3652,12 +3652,12 @@ The previous families were about defending your own AI from misuse. This one fli
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | --- | --- | --- |
-| **AC.13.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਯੋਗਦਾਨ-ਰਫ਼ਤਾਰ ਅਤੇ ਯੋਗਦਾਨਕਰਤਾ-ਸਾਖ ਦਾ ਵਿਸ਼ਲੇਸ਼ਣ ਅਸਧਾਰਨਤਾਵਾਂ ਨੂੰ ਨਿਸ਼ਾਨਬੱਧ ਕਰਦਾ ਹੈ: ਨਵੇਂ ਬਣੇ ਖਾਤਿਆਂ ਤੋਂ ਥੋਕ PR ਬਣਾਉਣਾ, PR ਤੋਂ ਐਨ ਪਹਿਲਾਂ ਤਾਲਮੇਲ ਨਾਲ ਆਈਆਂ ਫ਼ੋਰਕ ਲਹਿਰਾਂ, ਅਜਿਹੀ PR ਮਾਤਰਾ ਜੋ ਮਨੁੱਖੀ ਲੇਖਣੀ ਨਾਲ ਮੇਲ ਨਹੀਂ ਖਾਂਦੀ, ਅਤੇ ਗ਼ੈਰ-ਸੰਬੰਧਿਤ ਰਿਪੌਜ਼ਟਰੀਆਂ ਵਿੱਚ ਉਹੀ ਪੇਲੋਡ ਪੈਟਰਨ ਮੁੜ ਵਰਤੇ ਜਾਣਾ। | 1 |
-| **AC.13.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਪਹਿਲੀ-ਵਾਰੀ ਜਾਂ ਘੱਟ-ਸਾਖ ਵਾਲੇ ਯੋਗਦਾਨਕਰਤਾਵਾਂ ਦੀਆਂ PR ਲਈ ਕਿਸੇ ਵੀ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਵਾਲੇ ਵਰਕਫ਼ਲੋ ਵੱਲੋਂ ਉਹਨਾਂ ਦੀ ਪ੍ਰਕਿਰਿਆ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਸੰਭਾਲਕਰਤਾ ਦੀ ਮਨਜ਼ੂਰੀ ਲਾਜ਼ਮੀ ਹੈ। ਇੱਥੇ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਵਾਲੇ ਵਰਕਫ਼ਲੋ ਵਿੱਚ AI ਸਮੀਖਿਆ ਬੋਟ, ਗੁਪਤ-ਭੇਦ ਵਾਲੀਆਂ ਜੌਬਾਂ, ਅਤੇ ਬਾਹਰੀ-ਏਕੀਕਰਨ ਸੱਦੇ ਸ਼ਾਮਲ ਹਨ। | 1 |
-| **AC.13.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਵੈਚਾਲਿਤ PR ਪਾਈਪਲਾਈਨ ਗੇਟ LLM ਦੁਆਰਾ ਤਿਆਰ ਜਾਂ LLM-ਸਹਾਇਤ ਪ੍ਰਾਪਤ ਖ਼ਤਰਨਾਕ ਪੇਲੋਡ ਪੈਟਰਨਾਂ ਦੇ ਜਾਣੇ-ਪਛਾਣੇ ਸੰਕੇਤ ਪਛਾਣਦੇ ਹਨ: ਰਜਿਸਟਰੀ ਵਿੱਚ ਭੁਲੇਖਾ ਪਾਉਣ ਵਾਲੇ ਜਾਂ typosquatted[^0x92-typosquatted] ਡਿਪੈਂਡੈਂਸੀ ਨਾਂ, ਅਜਿਹੇ ਪੈਕੇਜ ਹਵਾਲੇ ਜੋ ਕਿਸੇ ਵੀ ਪ੍ਰਕਾਸ਼ਿਤ ਵਰਜ਼ਨ ਨਾਲ ਨਹੀਂ ਮਿਲਦੇ, ਅਤੇ ਉਹ ਡਿਪੈਂਡੈਂਸੀਆਂ ਜਿਨ੍ਹਾਂ ਦੀ ਸਿਰਜਣਾ, ਪਹਿਲੇ-ਪ੍ਰਕਾਸ਼ਨ, ਜਾਂ ਸੰਭਾਲਕਰਤਾ-ਬਦਲੀ ਦੇ ਸਮਾਂ-ਚਿੰਨ੍ਹ PR ਦੇ ਮੁਕਾਬਲੇ ਅਸਧਾਰਨ ਲੱਗਦੇ ਹਨ। | 2 |
-| **AC.13.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਪਛਾਣ ਨਿਯਮ MITRE ATT&CK (T1195 Supply Chain Compromise ਅਤੇ CI/CD ਨਾਲ ਸੰਬੰਧਿਤ ਉਪ-ਤਕਨੀਕਾਂ) ਅਤੇ MITRE ATLAS ਤਕਨੀਕਾਂ ਨਾਲ ਟੈਗ ਕੀਤੇ ਗਏ ਹਨ, ਅੰਦਰ ਆਉਣ ਵਾਲੇ ਯੋਗਦਾਨ ਦੇ ਵਿਸ਼ਲੇਸ਼ਣ ਵਾਲੇ ਵਰਤੋਂ-ਮਾਮਲੇ ਲਈ ਬਰਕਰਾਰ ਰੱਖੇ ਜਾਂਦੇ ਹਨ, ਅਤੇ ਮੌਜੂਦਾ ਖ਼ਤਰਾ ਖ਼ੁਫ਼ੀਆ ਜਾਣਕਾਰੀ ਦੇ ਵਿਰੁੱਧ ਸਮੀਖਿਆ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | 2 |
-| **AC.13.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਪੁਸ਼ਟ ਜਾਂ ਉੱਚ-ਭਰੋਸੇ ਵਾਲੇ ਵਿਰੋਧੀ ਯੋਗਦਾਨ ਸਵੈਚਾਲਿਤ ਘੇਰਾਬੰਦੀ[^0x92-containment] (containment) ਸ਼ੁਰੂ ਕਰਦੇ ਹਨ: PR ਨੂੰ ਰੋਕੋ, ਫ਼ੋਰਕ ਨੂੰ ਕੁਆਰੰਟੀਨ ਕਰੋ, ਯੋਗਦਾਨਕਰਤਾ ਨੂੰ ਮੁਅੱਤਲ ਕਰੋ, ਸੰਭਾਲਕਰਤਾਵਾਂ ਨੂੰ ਸੂਚਿਤ ਕਰੋ, ਅਤੇ ਪ੍ਰਭਾਵਿਤ ਵਰਕਫ਼ਲੋ ਫ਼ਾਈਲਾਂ ਨੂੰ ਜਮਾ ਦਿਓ। ਛਾਂਟੀ ਦੇ ਫ਼ੈਸਲੇ ਵਾਪਸ ਪਛਾਣ ਦੀ ਸੁਰ-ਸੈਟਿੰਗ ਵਿੱਚ ਜਾਂਦੇ ਹਨ। | 3 |
-| **AC.13.6** | **ਜਾਂਚ ਕਰੋ ਕਿ** PR ਵਿਸ਼ਲੇਸ਼ਣ ਵਿੱਚ ਢਾਂਚਾਗਤ AST ਪ੍ਰੋਫ਼ਾਈਲਿੰਗ ਅਤੇ LLM ਦੁਆਰਾ ਤਿਆਰ ਕੋਡ ਪੈਟਰਨ ਪਛਾਣਨ ਲਈ ਸੁਰ ਕੀਤੇ ਸਟਾਈਲੋਮੈਟ੍ਰਿਕ[^0x92-stylometric] (stylometric) ਜਾਂ ਐਂਟਰੌਪੀ-ਆਧਾਰਿਤ ਅਨੁਮਾਨ-ਨੇਮ ਸ਼ਾਮਲ ਹਨ। ਇਸ ਸ਼੍ਰੇਣੀ ਵਿੱਚ ਪਛਾਣ ਅਜੇ ਪੱਕ ਰਹੀ ਹੈ, ਇਸ ਲਈ ਉੱਚ-ਸ਼ੁੱਧਤਾ ਵਾਲੀ ਸਵੈਚਾਲਿਤ ਪਛਾਣ ਦੀ ਥਾਂ ਭਰਪਾਈ ਕਰਨ ਵਾਲੇ ਨਿਯੰਤਰਣ ਪ੍ਰਵਾਨ ਹਨ: ਨਿਸ਼ਾਨਬੱਧ PR ਉੱਤੇ ਲਾਜ਼ਮੀ ਮਨੁੱਖੀ ਸਮੀਖਿਆ, ਸ਼ੱਕੀ ਪੇਲੋਡਾਂ ਦਾ ਸੈਂਡਬਾਕਸ ਵਿੱਚ ਐਗਜ਼ੀਕਿਊਸ਼ਨ, ਅਤੇ ਹੋਰ ਸੰਕੇਤ ਇਕੱਠੇ ਹੋਣ ਤੱਕ ਮਰਜ ਨੂੰ ਟਾਲਣਾ। | 3 |
+| **AC.੧੩.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਯੋਗਦਾਨ-ਰਫ਼ਤਾਰ ਅਤੇ ਯੋਗਦਾਨਕਰਤਾ-ਸਾਖ ਦਾ ਵਿਸ਼ਲੇਸ਼ਣ ਅਸਧਾਰਨਤਾਵਾਂ ਨੂੰ ਨਿਸ਼ਾਨਬੱਧ ਕਰਦਾ ਹੈ: ਨਵੇਂ ਬਣੇ ਖਾਤਿਆਂ ਤੋਂ ਥੋਕ PR ਬਣਾਉਣਾ, PR ਤੋਂ ਐਨ ਪਹਿਲਾਂ ਤਾਲਮੇਲ ਨਾਲ ਆਈਆਂ ਫ਼ੋਰਕ ਲਹਿਰਾਂ, ਅਜਿਹੀ PR ਮਾਤਰਾ ਜੋ ਮਨੁੱਖੀ ਲੇਖਣੀ ਨਾਲ ਮੇਲ ਨਹੀਂ ਖਾਂਦੀ, ਅਤੇ ਗ਼ੈਰ-ਸੰਬੰਧਿਤ ਰਿਪੌਜ਼ਟਰੀਆਂ ਵਿੱਚ ਉਹੀ ਪੇਲੋਡ ਪੈਟਰਨ ਮੁੜ ਵਰਤੇ ਜਾਣਾ। | ੧ |
+| **AC.੧੩.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਪਹਿਲੀ-ਵਾਰੀ ਜਾਂ ਘੱਟ-ਸਾਖ ਵਾਲੇ ਯੋਗਦਾਨਕਰਤਾਵਾਂ ਦੀਆਂ PR ਲਈ ਕਿਸੇ ਵੀ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਵਾਲੇ ਵਰਕਫ਼ਲੋ ਵੱਲੋਂ ਉਹਨਾਂ ਦੀ ਪ੍ਰਕਿਰਿਆ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਸੰਭਾਲਕਰਤਾ ਦੀ ਮਨਜ਼ੂਰੀ ਲਾਜ਼ਮੀ ਹੈ। ਇੱਥੇ ਵਿਸ਼ੇਸ਼-ਅਧਿਕਾਰ ਵਾਲੇ ਵਰਕਫ਼ਲੋ ਵਿੱਚ AI ਸਮੀਖਿਆ ਬੋਟ, ਗੁਪਤ-ਭੇਦ ਵਾਲੀਆਂ ਜੌਬਾਂ, ਅਤੇ ਬਾਹਰੀ-ਏਕੀਕਰਨ ਸੱਦੇ ਸ਼ਾਮਲ ਹਨ। | ੧ |
+| **AC.੧੩.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਵੈਚਾਲਿਤ PR ਪਾਈਪਲਾਈਨ ਗੇਟ LLM ਦੁਆਰਾ ਤਿਆਰ ਜਾਂ LLM-ਸਹਾਇਤ ਪ੍ਰਾਪਤ ਖ਼ਤਰਨਾਕ ਪੇਲੋਡ ਪੈਟਰਨਾਂ ਦੇ ਜਾਣੇ-ਪਛਾਣੇ ਸੰਕੇਤ ਪਛਾਣਦੇ ਹਨ: ਰਜਿਸਟਰੀ ਵਿੱਚ ਭੁਲੇਖਾ ਪਾਉਣ ਵਾਲੇ ਜਾਂ typosquatted[^0x92-typosquatted] ਡਿਪੈਂਡੈਂਸੀ ਨਾਂ, ਅਜਿਹੇ ਪੈਕੇਜ ਹਵਾਲੇ ਜੋ ਕਿਸੇ ਵੀ ਪ੍ਰਕਾਸ਼ਿਤ ਵਰਜ਼ਨ ਨਾਲ ਨਹੀਂ ਮਿਲਦੇ, ਅਤੇ ਉਹ ਡਿਪੈਂਡੈਂਸੀਆਂ ਜਿਨ੍ਹਾਂ ਦੀ ਸਿਰਜਣਾ, ਪਹਿਲੇ-ਪ੍ਰਕਾਸ਼ਨ, ਜਾਂ ਸੰਭਾਲਕਰਤਾ-ਬਦਲੀ ਦੇ ਸਮਾਂ-ਚਿੰਨ੍ਹ PR ਦੇ ਮੁਕਾਬਲੇ ਅਸਧਾਰਨ ਲੱਗਦੇ ਹਨ। | ੨ |
+| **AC.੧੩.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਪਛਾਣ ਨਿਯਮ MITRE ATT&CK (T1195 Supply Chain Compromise ਅਤੇ CI/CD ਨਾਲ ਸੰਬੰਧਿਤ ਉਪ-ਤਕਨੀਕਾਂ) ਅਤੇ MITRE ATLAS ਤਕਨੀਕਾਂ ਨਾਲ ਟੈਗ ਕੀਤੇ ਗਏ ਹਨ, ਅੰਦਰ ਆਉਣ ਵਾਲੇ ਯੋਗਦਾਨ ਦੇ ਵਿਸ਼ਲੇਸ਼ਣ ਵਾਲੇ ਵਰਤੋਂ-ਮਾਮਲੇ ਲਈ ਬਰਕਰਾਰ ਰੱਖੇ ਜਾਂਦੇ ਹਨ, ਅਤੇ ਮੌਜੂਦਾ ਖ਼ਤਰਾ ਖ਼ੁਫ਼ੀਆ ਜਾਣਕਾਰੀ ਦੇ ਵਿਰੁੱਧ ਸਮੀਖਿਆ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | ੨ |
+| **AC.੧੩.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਪੁਸ਼ਟ ਜਾਂ ਉੱਚ-ਭਰੋਸੇ ਵਾਲੇ ਵਿਰੋਧੀ ਯੋਗਦਾਨ ਸਵੈਚਾਲਿਤ ਘੇਰਾਬੰਦੀ[^0x92-containment] (containment) ਸ਼ੁਰੂ ਕਰਦੇ ਹਨ: PR ਨੂੰ ਰੋਕੋ, ਫ਼ੋਰਕ ਨੂੰ ਕੁਆਰੰਟੀਨ ਕਰੋ, ਯੋਗਦਾਨਕਰਤਾ ਨੂੰ ਮੁਅੱਤਲ ਕਰੋ, ਸੰਭਾਲਕਰਤਾਵਾਂ ਨੂੰ ਸੂਚਿਤ ਕਰੋ, ਅਤੇ ਪ੍ਰਭਾਵਿਤ ਵਰਕਫ਼ਲੋ ਫ਼ਾਈਲਾਂ ਨੂੰ ਜਮਾ ਦਿਓ। ਛਾਂਟੀ ਦੇ ਫ਼ੈਸਲੇ ਵਾਪਸ ਪਛਾਣ ਦੀ ਸੁਰ-ਸੈਟਿੰਗ ਵਿੱਚ ਜਾਂਦੇ ਹਨ। | ੩ |
+| **AC.੧੩.੬** | **ਜਾਂਚ ਕਰੋ ਕਿ** PR ਵਿਸ਼ਲੇਸ਼ਣ ਵਿੱਚ ਢਾਂਚਾਗਤ AST ਪ੍ਰੋਫ਼ਾਈਲਿੰਗ ਅਤੇ LLM ਦੁਆਰਾ ਤਿਆਰ ਕੋਡ ਪੈਟਰਨ ਪਛਾਣਨ ਲਈ ਸੁਰ ਕੀਤੇ ਸਟਾਈਲੋਮੈਟ੍ਰਿਕ[^0x92-stylometric] (stylometric) ਜਾਂ ਐਂਟਰੌਪੀ-ਆਧਾਰਿਤ ਅਨੁਮਾਨ-ਨੇਮ ਸ਼ਾਮਲ ਹਨ। ਇਸ ਸ਼੍ਰੇਣੀ ਵਿੱਚ ਪਛਾਣ ਅਜੇ ਪੱਕ ਰਹੀ ਹੈ, ਇਸ ਲਈ ਉੱਚ-ਸ਼ੁੱਧਤਾ ਵਾਲੀ ਸਵੈਚਾਲਿਤ ਪਛਾਣ ਦੀ ਥਾਂ ਭਰਪਾਈ ਕਰਨ ਵਾਲੇ ਨਿਯੰਤਰਣ ਪ੍ਰਵਾਨ ਹਨ: ਨਿਸ਼ਾਨਬੱਧ PR ਉੱਤੇ ਲਾਜ਼ਮੀ ਮਨੁੱਖੀ ਸਮੀਖਿਆ, ਸ਼ੱਕੀ ਪੇਲੋਡਾਂ ਦਾ ਸੈਂਡਬਾਕਸ ਵਿੱਚ ਐਗਜ਼ੀਕਿਊਸ਼ਨ, ਅਤੇ ਹੋਰ ਸੰਕੇਤ ਇਕੱਠੇ ਹੋਣ ਤੱਕ ਮਰਜ ਨੂੰ ਟਾਲਣਾ। | ੩ |
 
 **Mappings & References:**
 
@@ -3673,7 +3673,7 @@ The previous families were about defending your own AI from misuse. This one fli
 ---
 
 ## AC.14 Compromise Containment & Automated Remediation
-## AC.14 ਭੇਦੀ ਹੋਣ ਦੀ ਘੇਰਾਬੰਦੀ ਅਤੇ ਸਵੈਚਾਲਿਤ ਦਰੁਸਤੀ
+## AC.੧੪ ਭੇਦੀ ਹੋਣ ਦੀ ਘੇਰਾਬੰਦੀ ਅਤੇ ਸਵੈਚਾਲਿਤ ਦਰੁਸਤੀ
 
 Things go wrong eventually. When an AI-adjacent compromise (a prompt-injected bot, a leaked CI secret, a malicious AI-generated artifact in a build) is suspected or confirmed, the goal is to contain the damage and shorten the recovery.
 
@@ -3690,11 +3690,11 @@ Things go wrong eventually. When an AI-adjacent compromise (a prompt-injected bo
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | --- | --- | --- |
-| **AC.14.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਪਾਈਪਲਾਈਨ ਵਿਚਲੇ AI ਦੇ ਭੇਦੀ ਹੋਣ ਲਈ ਇੱਕ ਘਟਨਾ-ਜਵਾਬ ਪਲੇਬੁੱਕ (incident-response playbook) ਮੌਜੂਦ ਹੈ। ਘੱਟੋ-ਘੱਟ ਇਹ ਗੱਲਾਂ ਢੱਕੀਆਂ ਹੋਣ: AI-ਏਜੰਟ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ ਰੱਦ ਕਰਨਾ, ਭੇਦੀ ਹੋਏ ਵਰਕਫ਼ਲੋ ਰਨ ਨੂੰ ਛੂਹਣ ਵਾਲਾ ਹਰ ਗੁਪਤ ਭੇਦ ਬਦਲਣਾ, ਭੇਦੀ ਹੋਏ ਆਰਟੀਫ਼ੈਕਟਾਂ ਨੂੰ ਕੁਆਰੰਟੀਨ ਕਰਨਾ, ਡਾਊਨਸਟ੍ਰੀਮ ਵਰਤੋਂਕਾਰਾਂ ਨੂੰ ਸੂਚਿਤ ਕਰਨਾ, ਜਿੱਥੇ ਲਾਗੂ ਹੋਵੇ ਉੱਥੇ ਨਿਯਾਮਕਾਂ ਨੂੰ ਸੂਚਿਤ ਕਰਨਾ, ਅਤੇ ਫ਼ੌਰੈਂਸਿਕ ਲਈ prompt, ਜਵਾਬ, ਤੇ ਆਡਿਟ ਲੌਗ ਸਾਂਭ ਕੇ ਰੱਖਣਾ। | 1 |
-| **AC.14.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਕਿਸੇ ਸ਼ੱਕੀ PR, prompt ਇੰਜੈਕਸ਼ਨ ਦੀ ਘਟਨਾ, ਜਾਂ AI-ਏਜੰਟ ਦੀ ਅਸਧਾਰਨਤਾ ਨਾਲ ਜੁੜੇ ਵਰਕਫ਼ਲੋ ਰਨ ਨੂੰ ਛੂਹਣ ਵਾਲਾ ਹਰ ਗੁਪਤ ਭੇਦ ਆਪਣੇ-ਆਪ ਬਦਲਿਆ (rotate) ਜਾਂਦਾ ਹੈ, ਅਤੇ ਡਾਊਨਸਟ੍ਰੀਮ ਜਾਰੀਕਰਤਾਵਾਂ (ਕਲਾਊਡ IAM, ਪੈਕੇਜ ਰਜਿਸਟਰੀਆਂ, ਦਸਤਖ਼ਤ-ਕੁੰਜੀ ਦੇ ਰਾਖਿਆਂ) ਨੂੰ ਇਸ ਬਦਲੀ ਬਾਰੇ ਸੂਚਿਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 1 |
-| **AC.14.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਏਜੰਟ ਪਛਾਣਾਂ (ਕੁੰਜੀਆਂ, ਟੋਕਨ, OIDC ਭਰੋਸਾ ਗ੍ਰਾਂਟਾਂ) ਨੂੰ ਤੇਜ਼ੀ ਨਾਲ ਰੱਦ ਅਤੇ ਕੁਆਰੰਟੀਨ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ, ਅਤੇ ਰੱਦ ਕਰਨ ਦਾ ਨਿਸ਼ਾਨਾ-ਸਮਾਂ ਲਿਖਤੀ ਰੂਪ ਵਿੱਚ ਦਰਜ ਹੈ ਤੇ ਸਾਲ ਵਿੱਚ ਘੱਟੋ-ਘੱਟ ਇੱਕ ਵਾਰ ਪਰਖਿਆ ਜਾਂਦਾ ਹੈ। | 2 |
-| **AC.14.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਘਟਨਾ ਜਵਾਬ ਦੌਰਾਨ ਬਿਲਡ ਮੂਲ-ਸਰੋਤ ਅਤੇ AI BOM ਰਿਕਾਰਡਾਂ ਦੀ ਵਰਤੋਂ ਸ਼ੱਕੀ AI ਏਜੰਟ ਜਾਂ ਭੇਦੀ ਹੋਏ ਪਾਈਪਲਾਈਨ ਰਨ ਅਧੀਨ ਪੈਦਾ ਹੋਏ ਹਰ ਡਾਊਨਸਟ੍ਰੀਮ ਆਰਟੀਫ਼ੈਕਟ ਦੀ ਪਛਾਣ ਕਰਨ ਲਈ ਕੀਤੀ ਜਾਂਦੀ ਹੈ, ਤਾਂ ਜੋ ਵਾਪਸੀ, ਮੁੜ-ਬਿਲਡ, ਜਾਂ ਕੁਆਰੰਟੀਨ ਨੂੰ ਨਿਸ਼ਾਨਾਬੱਧ ਕੀਤਾ ਜਾ ਸਕੇ। | 2 |
-| **AC.14.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਵੈਚਾਲਿਤ ਦਰੁਸਤੀ ਨੂੰ ਸਾਲ ਵਿੱਚ ਘੱਟੋ-ਘੱਟ ਇੱਕ ਵਾਰ ਟੇਬਲਟੌਪ ਜਾਂ ਲਾਈਵ-ਫ਼ਾਇਰ ਮਸ਼ਕਾਂ ਵਿੱਚ ਪਰਖਿਆ ਜਾਂਦਾ ਹੈ। ਇਹਨਾਂ ਦ੍ਰਿਸ਼ਾਂ ਵਿੱਚ prompt-ਇੰਜੈਕਟ ਕੀਤਾ ਸਮੀਖਿਅਕ ਬੋਟ, ਫ਼ੋਰਕ-PR ਰਾਹੀਂ ਗੁਪਤ ਭੇਦ ਬਾਹਰ ਕੱਢਣਾ, ਅਤੇ AI ਦੁਆਰਾ ਤਿਆਰ ਖ਼ਤਰਨਾਕ ਵਰਕਫ਼ਲੋ ਫ਼ਾਈਲ ਸ਼ਾਮਲ ਹਨ। | 3 |
+| **AC.੧੪.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਪਾਈਪਲਾਈਨ ਵਿਚਲੇ AI ਦੇ ਭੇਦੀ ਹੋਣ ਲਈ ਇੱਕ ਘਟਨਾ-ਜਵਾਬ ਪਲੇਬੁੱਕ (incident-response playbook) ਮੌਜੂਦ ਹੈ। ਘੱਟੋ-ਘੱਟ ਇਹ ਗੱਲਾਂ ਢੱਕੀਆਂ ਹੋਣ: AI-ਏਜੰਟ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ ਰੱਦ ਕਰਨਾ, ਭੇਦੀ ਹੋਏ ਵਰਕਫ਼ਲੋ ਰਨ ਨੂੰ ਛੂਹਣ ਵਾਲਾ ਹਰ ਗੁਪਤ ਭੇਦ ਬਦਲਣਾ, ਭੇਦੀ ਹੋਏ ਆਰਟੀਫ਼ੈਕਟਾਂ ਨੂੰ ਕੁਆਰੰਟੀਨ ਕਰਨਾ, ਡਾਊਨਸਟ੍ਰੀਮ ਵਰਤੋਂਕਾਰਾਂ ਨੂੰ ਸੂਚਿਤ ਕਰਨਾ, ਜਿੱਥੇ ਲਾਗੂ ਹੋਵੇ ਉੱਥੇ ਨਿਯਾਮਕਾਂ ਨੂੰ ਸੂਚਿਤ ਕਰਨਾ, ਅਤੇ ਫ਼ੌਰੈਂਸਿਕ ਲਈ prompt, ਜਵਾਬ, ਤੇ ਆਡਿਟ ਲੌਗ ਸਾਂਭ ਕੇ ਰੱਖਣਾ। | ੧ |
+| **AC.੧੪.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਕਿਸੇ ਸ਼ੱਕੀ PR, prompt ਇੰਜੈਕਸ਼ਨ ਦੀ ਘਟਨਾ, ਜਾਂ AI-ਏਜੰਟ ਦੀ ਅਸਧਾਰਨਤਾ ਨਾਲ ਜੁੜੇ ਵਰਕਫ਼ਲੋ ਰਨ ਨੂੰ ਛੂਹਣ ਵਾਲਾ ਹਰ ਗੁਪਤ ਭੇਦ ਆਪਣੇ-ਆਪ ਬਦਲਿਆ (rotate) ਜਾਂਦਾ ਹੈ, ਅਤੇ ਡਾਊਨਸਟ੍ਰੀਮ ਜਾਰੀਕਰਤਾਵਾਂ (ਕਲਾਊਡ IAM, ਪੈਕੇਜ ਰਜਿਸਟਰੀਆਂ, ਦਸਤਖ਼ਤ-ਕੁੰਜੀ ਦੇ ਰਾਖਿਆਂ) ਨੂੰ ਇਸ ਬਦਲੀ ਬਾਰੇ ਸੂਚਿਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੧ |
+| **AC.੧੪.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਏਜੰਟ ਪਛਾਣਾਂ (ਕੁੰਜੀਆਂ, ਟੋਕਨ, OIDC ਭਰੋਸਾ ਗ੍ਰਾਂਟਾਂ) ਨੂੰ ਤੇਜ਼ੀ ਨਾਲ ਰੱਦ ਅਤੇ ਕੁਆਰੰਟੀਨ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ, ਅਤੇ ਰੱਦ ਕਰਨ ਦਾ ਨਿਸ਼ਾਨਾ-ਸਮਾਂ ਲਿਖਤੀ ਰੂਪ ਵਿੱਚ ਦਰਜ ਹੈ ਤੇ ਸਾਲ ਵਿੱਚ ਘੱਟੋ-ਘੱਟ ਇੱਕ ਵਾਰ ਪਰਖਿਆ ਜਾਂਦਾ ਹੈ। | ੨ |
+| **AC.੧੪.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਘਟਨਾ ਜਵਾਬ ਦੌਰਾਨ ਬਿਲਡ ਮੂਲ-ਸਰੋਤ ਅਤੇ AI BOM ਰਿਕਾਰਡਾਂ ਦੀ ਵਰਤੋਂ ਸ਼ੱਕੀ AI ਏਜੰਟ ਜਾਂ ਭੇਦੀ ਹੋਏ ਪਾਈਪਲਾਈਨ ਰਨ ਅਧੀਨ ਪੈਦਾ ਹੋਏ ਹਰ ਡਾਊਨਸਟ੍ਰੀਮ ਆਰਟੀਫ਼ੈਕਟ ਦੀ ਪਛਾਣ ਕਰਨ ਲਈ ਕੀਤੀ ਜਾਂਦੀ ਹੈ, ਤਾਂ ਜੋ ਵਾਪਸੀ, ਮੁੜ-ਬਿਲਡ, ਜਾਂ ਕੁਆਰੰਟੀਨ ਨੂੰ ਨਿਸ਼ਾਨਾਬੱਧ ਕੀਤਾ ਜਾ ਸਕੇ। | ੨ |
+| **AC.੧੪.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਵੈਚਾਲਿਤ ਦਰੁਸਤੀ ਨੂੰ ਸਾਲ ਵਿੱਚ ਘੱਟੋ-ਘੱਟ ਇੱਕ ਵਾਰ ਟੇਬਲਟੌਪ ਜਾਂ ਲਾਈਵ-ਫ਼ਾਇਰ ਮਸ਼ਕਾਂ ਵਿੱਚ ਪਰਖਿਆ ਜਾਂਦਾ ਹੈ। ਇਹਨਾਂ ਦ੍ਰਿਸ਼ਾਂ ਵਿੱਚ prompt-ਇੰਜੈਕਟ ਕੀਤਾ ਸਮੀਖਿਅਕ ਬੋਟ, ਫ਼ੋਰਕ-PR ਰਾਹੀਂ ਗੁਪਤ ਭੇਦ ਬਾਹਰ ਕੱਢਣਾ, ਅਤੇ AI ਦੁਆਰਾ ਤਿਆਰ ਖ਼ਤਰਨਾਕ ਵਰਕਫ਼ਲੋ ਫ਼ਾਈਲ ਸ਼ਾਮਲ ਹਨ। | ੩ |
 
 **Mappings & References:**
 

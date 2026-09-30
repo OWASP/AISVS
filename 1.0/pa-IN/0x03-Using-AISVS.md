@@ -26,7 +26,7 @@ Each of the 12 requirement chapters follows the same format:
 * **Sections.** Requirements are grouped into related sections, each with a short description of the defense goal.
 * **Requirement Tables.** Individual requirements are presented in tables with the following columns:
 
-12 ਲੋੜ ਅਧਿਆਵਾਂ ਵਿੱਚੋਂ ਹਰ ਇੱਕ ਇੱਕੋ ਫ਼ਾਰਮੈਟ ਦੀ ਪਾਲਣਾ ਕਰਦਾ ਹੈ:
+੧੨ ਲੋੜ ਅਧਿਆਵਾਂ ਵਿੱਚੋਂ ਹਰ ਇੱਕ ਇੱਕੋ ਫ਼ਾਰਮੈਟ ਦੀ ਪਾਲਣਾ ਕਰਦਾ ਹੈ:
 
 * **ਨਿਯੰਤਰਣ ਉਦੇਸ਼।** ਅਧਿਆਇ ਲਈ ਸੁਰੱਖਿਆ ਟੀਚੇ ਦਾ ਸੰਖੇਪ ਬਿਆਨ।
 * **ਭਾਗ।** ਲੋੜਾਂ ਨੂੰ ਸੰਬੰਧਿਤ ਭਾਗਾਂ ਵਿੱਚ ਵੰਡਿਆ ਗਿਆ ਹੈ, ਹਰ ਭਾਗ ਦੇ ਨਾਲ ਬਚਾਅ ਟੀਚੇ ਦਾ ਸੰਖੇਪ ਵੇਰਵਾ ਦਿੱਤਾ ਗਿਆ ਹੈ।
@@ -40,9 +40,9 @@ Each of the 12 requirement chapters follows the same format:
 
 | ਕਾਲਮ | ਅਰਥ |
 | --- | --- |
-| **#** | ਵਿਲੱਖਣ ਲੋੜ ਪਛਾਣਕਰਤਾ (ਜਿਵੇਂ, 1.1.1, 9.3.2)। |
+| **#** | ਵਿਲੱਖਣ ਲੋੜ ਪਛਾਣਕਰਤਾ (ਜਿਵੇਂ, ੧.੧.੧, ੯.੩.੨)। |
 | **ਵੇਰਵਾ** | ਲੋੜ ਦਾ ਪਾਠ, ਜੋ ਪਰਖਯੋਗਤਾ 'ਤੇ ਜ਼ੋਰ ਦੇਣ ਲਈ ਹਮੇਸ਼ਾ "ਜਾਂਚ ਕਰੋ ਕਿ" ਨਾਲ ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ। |
-| **ਪੱਧਰ** | ਤਸਦੀਕ ਪੱਧਰ (1, 2, ਜਾਂ 3) ਜੋ ਲੋੜੀਂਦੇ ਭਰੋਸੇ (assurance) ਦੀ ਡੂੰਘਾਈ ਦਰਸਾਉਂਦਾ ਹੈ; ਹੇਠਾਂ ਦਿੱਤੇ ਤਸਦੀਕ ਪੱਧਰ ਵੇਖੋ। |
+| **ਪੱਧਰ** | ਤਸਦੀਕ ਪੱਧਰ (੧, ੨, ਜਾਂ ੩) ਜੋ ਲੋੜੀਂਦੇ ਭਰੋਸੇ (assurance) ਦੀ ਡੂੰਘਾਈ ਦਰਸਾਉਂਦਾ ਹੈ; ਹੇਠਾਂ ਦਿੱਤੇ ਤਸਦੀਕ ਪੱਧਰ ਵੇਖੋ। |
 
 ### Appendices
 ### ਅੰਤਿਕਾਵਾਂ
@@ -68,7 +68,7 @@ AISVS ਸੁਰੱਖਿਆ ਤਸਦੀਕ ਦੇ ਤਿੰਨ ਵਧਦੇ ਕ
 
 Organizations may begin at Level 1 and progressively adopt higher levels as security maturity and threat exposure increase. AISVS levels are aligned with [ASVS](https://owasp.org/www-project-application-security-verification-standard/) levels and are intended to be applied at the matching ASVS level (see Alignment with ASVS Levels below).
 
-ਸੰਸਥਾਵਾਂ ਪੱਧਰ 1 ਤੋਂ ਸ਼ੁਰੂ ਕਰ ਸਕਦੀਆਂ ਹਨ ਅਤੇ ਸੁਰੱਖਿਆ ਪਰਿਪੱਕਤਾ ਅਤੇ ਖ਼ਤਰੇ ਦੇ ਸਾਹਮਣੇ ਆਉਣ ਵਿੱਚ ਵਾਧੇ ਦੇ ਨਾਲ-ਨਾਲ ਹੌਲੀ-ਹੌਲੀ ਉੱਚੇ ਪੱਧਰ ਅਪਣਾ ਸਕਦੀਆਂ ਹਨ। AISVS ਪੱਧਰ [ASVS](https://owasp.org/www-project-application-security-verification-standard/) ਪੱਧਰਾਂ ਨਾਲ ਇਕਸਾਰ ਹਨ ਅਤੇ ਇਹਨਾਂ ਨੂੰ ਮੇਲ ਖਾਂਦੇ ASVS ਪੱਧਰ 'ਤੇ ਲਾਗੂ ਕਰਨ ਦਾ ਇਰਾਦਾ ਹੈ (ਹੇਠਾਂ "ASVS ਪੱਧਰਾਂ ਨਾਲ ਇਕਸਾਰਤਾ" ਵੇਖੋ)।
+ਸੰਸਥਾਵਾਂ ਪੱਧਰ ੧ ਤੋਂ ਸ਼ੁਰੂ ਕਰ ਸਕਦੀਆਂ ਹਨ ਅਤੇ ਸੁਰੱਖਿਆ ਪਰਿਪੱਕਤਾ ਅਤੇ ਖ਼ਤਰੇ ਦੇ ਸਾਹਮਣੇ ਆਉਣ ਵਿੱਚ ਵਾਧੇ ਦੇ ਨਾਲ-ਨਾਲ ਹੌਲੀ-ਹੌਲੀ ਉੱਚੇ ਪੱਧਰ ਅਪਣਾ ਸਕਦੀਆਂ ਹਨ। AISVS ਪੱਧਰ [ASVS](https://owasp.org/www-project-application-security-verification-standard/) ਪੱਧਰਾਂ ਨਾਲ ਇਕਸਾਰ ਹਨ ਅਤੇ ਇਹਨਾਂ ਨੂੰ ਮੇਲ ਖਾਂਦੇ ASVS ਪੱਧਰ 'ਤੇ ਲਾਗੂ ਕਰਨ ਦਾ ਇਰਾਦਾ ਹੈ (ਹੇਠਾਂ "ASVS ਪੱਧਰਾਂ ਨਾਲ ਇਕਸਾਰਤਾ" ਵੇਖੋ)।
 
 ### Definition of the Levels
 ### ਪੱਧਰਾਂ ਦੀ ਪਰਿਭਾਸ਼ਾ
@@ -78,25 +78,25 @@ Each requirement in AISVS v1.0 is assigned to one of the following levels:
 AISVS v1.0 ਵਿੱਚ ਹਰ ਲੋੜ ਨੂੰ ਹੇਠ ਲਿਖੇ ਪੱਧਰਾਂ ਵਿੱਚੋਂ ਇੱਕ ਸੌਂਪਿਆ ਗਿਆ ਹੈ:
 
 #### Level 1 requirements
-#### ਪੱਧਰ 1 ਦੀਆਂ ਲੋੜਾਂ
+#### ਪੱਧਰ ੧ ਦੀਆਂ ਲੋੜਾਂ
 
 Level 1 includes the most critical and foundational security requirements. These focus on preventing common attacks that do not rely on other preconditions or vulnerabilities. Most Level 1 controls are either straightforward to implement or essential enough to justify the effort.
 
-ਪੱਧਰ 1 ਵਿੱਚ ਸਭ ਤੋਂ ਨਾਜ਼ੁਕ ਅਤੇ ਬੁਨਿਆਦੀ ਸੁਰੱਖਿਆ ਲੋੜਾਂ ਸ਼ਾਮਲ ਹਨ। ਇਹ ਉਹਨਾਂ ਆਮ ਹਮਲਿਆਂ ਨੂੰ ਰੋਕਣ 'ਤੇ ਕੇਂਦ੍ਰਿਤ ਹਨ ਜੋ ਹੋਰ ਪੂਰਵ-ਸ਼ਰਤਾਂ ਜਾਂ ਕਮਜ਼ੋਰੀਆਂ 'ਤੇ ਨਿਰਭਰ ਨਹੀਂ ਕਰਦੇ। ਜ਼ਿਆਦਾਤਰ ਪੱਧਰ 1 ਨਿਯੰਤਰਣ ਜਾਂ ਤਾਂ ਲਾਗੂ ਕਰਨ ਵਿੱਚ ਸਿੱਧੇ-ਸਾਦੇ ਹਨ ਜਾਂ ਇੰਨੇ ਜ਼ਰੂਰੀ ਹਨ ਕਿ ਉਹ ਲੱਗਣ ਵਾਲੀ ਮਿਹਨਤ ਨੂੰ ਜਾਇਜ਼ ਠਹਿਰਾਉਂਦੇ ਹਨ।
+ਪੱਧਰ ੧ ਵਿੱਚ ਸਭ ਤੋਂ ਨਾਜ਼ੁਕ ਅਤੇ ਬੁਨਿਆਦੀ ਸੁਰੱਖਿਆ ਲੋੜਾਂ ਸ਼ਾਮਲ ਹਨ। ਇਹ ਉਹਨਾਂ ਆਮ ਹਮਲਿਆਂ ਨੂੰ ਰੋਕਣ 'ਤੇ ਕੇਂਦ੍ਰਿਤ ਹਨ ਜੋ ਹੋਰ ਪੂਰਵ-ਸ਼ਰਤਾਂ ਜਾਂ ਕਮਜ਼ੋਰੀਆਂ 'ਤੇ ਨਿਰਭਰ ਨਹੀਂ ਕਰਦੇ। ਜ਼ਿਆਦਾਤਰ ਪੱਧਰ ੧ ਨਿਯੰਤਰਣ ਜਾਂ ਤਾਂ ਲਾਗੂ ਕਰਨ ਵਿੱਚ ਸਿੱਧੇ-ਸਾਦੇ ਹਨ ਜਾਂ ਇੰਨੇ ਜ਼ਰੂਰੀ ਹਨ ਕਿ ਉਹ ਲੱਗਣ ਵਾਲੀ ਮਿਹਨਤ ਨੂੰ ਜਾਇਜ਼ ਠਹਿਰਾਉਂਦੇ ਹਨ।
 
 #### Level 2 requirements
-#### ਪੱਧਰ 2 ਦੀਆਂ ਲੋੜਾਂ
+#### ਪੱਧਰ ੨ ਦੀਆਂ ਲੋੜਾਂ
 
 Level 2 addresses more advanced or less common attacks, as well as layered defenses against widespread threats. These requirements may involve more complex logic or target specific attack prerequisites.
 
-ਪੱਧਰ 2 ਵਧੇਰੇ ਉੱਨਤ ਜਾਂ ਘੱਟ ਆਮ ਹਮਲਿਆਂ ਨੂੰ, ਨਾਲ ਹੀ ਵਿਆਪਕ ਖ਼ਤਰਿਆਂ ਵਿਰੁੱਧ ਪਰਤਦਾਰ ਬਚਾਵਾਂ ਨੂੰ ਸੰਬੋਧਿਤ ਕਰਦਾ ਹੈ। ਇਹਨਾਂ ਲੋੜਾਂ ਵਿੱਚ ਵਧੇਰੇ ਗੁੰਝਲਦਾਰ ਤਰਕ ਸ਼ਾਮਲ ਹੋ ਸਕਦਾ ਹੈ ਜਾਂ ਇਹ ਖ਼ਾਸ ਹਮਲਾ ਪੂਰਵ-ਲੋੜਾਂ ਨੂੰ ਨਿਸ਼ਾਨਾ ਬਣਾ ਸਕਦੀਆਂ ਹਨ।
+ਪੱਧਰ ੨ ਵਧੇਰੇ ਉੱਨਤ ਜਾਂ ਘੱਟ ਆਮ ਹਮਲਿਆਂ ਨੂੰ, ਨਾਲ ਹੀ ਵਿਆਪਕ ਖ਼ਤਰਿਆਂ ਵਿਰੁੱਧ ਪਰਤਦਾਰ ਬਚਾਵਾਂ ਨੂੰ ਸੰਬੋਧਿਤ ਕਰਦਾ ਹੈ। ਇਹਨਾਂ ਲੋੜਾਂ ਵਿੱਚ ਵਧੇਰੇ ਗੁੰਝਲਦਾਰ ਤਰਕ ਸ਼ਾਮਲ ਹੋ ਸਕਦਾ ਹੈ ਜਾਂ ਇਹ ਖ਼ਾਸ ਹਮਲਾ ਪੂਰਵ-ਲੋੜਾਂ ਨੂੰ ਨਿਸ਼ਾਨਾ ਬਣਾ ਸਕਦੀਆਂ ਹਨ।
 
 #### Level 3 requirements
-#### ਪੱਧਰ 3 ਦੀਆਂ ਲੋੜਾਂ
+#### ਪੱਧਰ ੩ ਦੀਆਂ ਲੋੜਾਂ
 
 Level 3 includes controls that are typically harder to implement or situational in applicability. These often represent defense-in-depth mechanisms or mitigations against niche, targeted, or high-complexity attacks.
 
-ਪੱਧਰ 3 ਵਿੱਚ ਉਹ ਨਿਯੰਤਰਣ ਸ਼ਾਮਲ ਹਨ ਜੋ ਆਮ ਤੌਰ 'ਤੇ ਲਾਗੂ ਕਰਨੇ ਔਖੇ ਹੁੰਦੇ ਹਨ ਜਾਂ ਜਿਨ੍ਹਾਂ ਦੀ ਲਾਗੂ ਹੋਣ ਦੀ ਯੋਗਤਾ ਹਾਲਾਤ 'ਤੇ ਨਿਰਭਰ ਕਰਦੀ ਹੈ। ਇਹ ਅਕਸਰ ਡੂੰਘਾਈ ਵਿੱਚ ਬਚਾਅ (defense-in-depth) ਵਿਧੀਆਂ ਜਾਂ ਸੀਮਤ-ਦਾਇਰੇ, ਨਿਸ਼ਾਨਾਬੱਧ, ਜਾਂ ਉੱਚ-ਜਟਿਲਤਾ ਵਾਲੇ ਹਮਲਿਆਂ ਵਿਰੁੱਧ ਘਟਾਉਣ ਦੇ ਉਪਾਅ ਦਰਸਾਉਂਦੇ ਹਨ।
+ਪੱਧਰ ੩ ਵਿੱਚ ਉਹ ਨਿਯੰਤਰਣ ਸ਼ਾਮਲ ਹਨ ਜੋ ਆਮ ਤੌਰ 'ਤੇ ਲਾਗੂ ਕਰਨੇ ਔਖੇ ਹੁੰਦੇ ਹਨ ਜਾਂ ਜਿਨ੍ਹਾਂ ਦੀ ਲਾਗੂ ਹੋਣ ਦੀ ਯੋਗਤਾ ਹਾਲਾਤ 'ਤੇ ਨਿਰਭਰ ਕਰਦੀ ਹੈ। ਇਹ ਅਕਸਰ ਡੂੰਘਾਈ ਵਿੱਚ ਬਚਾਅ (defense-in-depth) ਵਿਧੀਆਂ ਜਾਂ ਸੀਮਤ-ਦਾਇਰੇ, ਨਿਸ਼ਾਨਾਬੱਧ, ਜਾਂ ਉੱਚ-ਜਟਿਲਤਾ ਵਾਲੇ ਹਮਲਿਆਂ ਵਿਰੁੱਧ ਘਟਾਉਣ ਦੇ ਉਪਾਅ ਦਰਸਾਉਂਦੇ ਹਨ।
 
 ## Alignment with ASVS Levels
 ## ASVS ਪੱਧਰਾਂ ਨਾਲ ਇਕਸਾਰਤਾ
@@ -113,9 +113,9 @@ AISVS ਪੱਧਰ [ASVS](https://owasp.org/www-project-application-security-ver
 
 | AISVS ਪੱਧਰ | ਸੰਬੰਧਿਤ ASVS ਪੱਧਰ | ਆਮ ਵਰਤੋਂ |
 | :---: | :---: | --- |
-| 1 | 1 | ਕਿਸੇ ਵੀ ਅਜਿਹੀ AI ਐਪਲੀਕੇਸ਼ਨ ਲਈ ਬੁਨਿਆਦੀ ਸੁਰੱਖਿਆ ਜੋ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਇਨਪੁੱਟ ਸੰਭਾਲਦੀ ਹੈ ਜਾਂ ਕਿਸੇ ਵੀ ਸੰਵੇਦਨਸ਼ੀਲਤਾ ਵਾਲੇ ਡਾਟੇ 'ਤੇ ਕੰਮ ਕਰਦੀ ਹੈ। |
-| 2 | 2 | ਸੰਵੇਦਨਸ਼ੀਲ ਕਾਰੋਬਾਰੀ ਡਾਟਾ ਜਾਂ ਨਿਯੰਤ੍ਰਿਤ ਡਾਟਾ ਸੰਭਾਲਣ ਵਾਲੀਆਂ, ਜਾਂ ਵਿਰੋਧੀ ਸੰਦਰਭਾਂ ਵਿੱਚ ਕੰਮ ਕਰਨ ਵਾਲੀਆਂ AI ਐਪਲੀਕੇਸ਼ਨਾਂ। |
-| 3 | 3 | ਉੱਚ-ਭਰੋਸੇ ਵਾਲੀਆਂ AI ਐਪਲੀਕੇਸ਼ਨਾਂ, ਜਿਵੇਂ ਕਿ ਜੀਵਨ-ਸਲਾਮਤੀ ਦੇ ਫ਼ੈਸਲੇ, ਨਾਜ਼ੁਕ ਬੁਨਿਆਦੀ ਢਾਂਚਾ, ਜਾਂ ਬਹੁਤ ਸੰਵੇਦਨਸ਼ੀਲ ਨਿੱਜੀ ਡਾਟਾ ਸੰਭਾਲਣ ਵਾਲੀਆਂ ਐਪਲੀਕੇਸ਼ਨਾਂ। |
+| ੧ | ੧ | ਕਿਸੇ ਵੀ ਅਜਿਹੀ AI ਐਪਲੀਕੇਸ਼ਨ ਲਈ ਬੁਨਿਆਦੀ ਸੁਰੱਖਿਆ ਜੋ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਇਨਪੁੱਟ ਸੰਭਾਲਦੀ ਹੈ ਜਾਂ ਕਿਸੇ ਵੀ ਸੰਵੇਦਨਸ਼ੀਲਤਾ ਵਾਲੇ ਡਾਟੇ 'ਤੇ ਕੰਮ ਕਰਦੀ ਹੈ। |
+| ੨ | ੨ | ਸੰਵੇਦਨਸ਼ੀਲ ਕਾਰੋਬਾਰੀ ਡਾਟਾ ਜਾਂ ਨਿਯੰਤ੍ਰਿਤ ਡਾਟਾ ਸੰਭਾਲਣ ਵਾਲੀਆਂ, ਜਾਂ ਵਿਰੋਧੀ ਸੰਦਰਭਾਂ ਵਿੱਚ ਕੰਮ ਕਰਨ ਵਾਲੀਆਂ AI ਐਪਲੀਕੇਸ਼ਨਾਂ। |
+| ੩ | ੩ | ਉੱਚ-ਭਰੋਸੇ ਵਾਲੀਆਂ AI ਐਪਲੀਕੇਸ਼ਨਾਂ, ਜਿਵੇਂ ਕਿ ਜੀਵਨ-ਸਲਾਮਤੀ ਦੇ ਫ਼ੈਸਲੇ, ਨਾਜ਼ੁਕ ਬੁਨਿਆਦੀ ਢਾਂਚਾ, ਜਾਂ ਬਹੁਤ ਸੰਵੇਦਨਸ਼ੀਲ ਨਿੱਜੀ ਡਾਟਾ ਸੰਭਾਲਣ ਵਾਲੀਆਂ ਐਪਲੀਕੇਸ਼ਨਾਂ। |
 
 If an AISVS requirement appears to overlap with an ASVS requirement, the AISVS version is restated only because it has AI-specific implementation details, attack surface, or evidence that an auditor needs to evaluate differently.
 
@@ -157,7 +157,7 @@ When verifying an AI application against AISVS, the equivalent level of those un
 
 AISVS chapters are organized by control family rather than by attack or component. As a result, defending against a given AI threat usually requires applying requirements from several chapters together. For example, defending against prompt injection in an agentic application combines requirements from C2 (input validation), C7 (model behavior), C9 (orchestration and agentic security), C10 (MCP-specific controls), C11 (adversarial robustness), and C12 (detection and logging).
 
-AISVS ਅਧਿਆਇ ਹਮਲੇ ਜਾਂ ਹਿੱਸੇ ਦੀ ਬਜਾਏ ਨਿਯੰਤਰਣ ਪਰਿਵਾਰ ਅਨੁਸਾਰ ਵਿਵਸਥਿਤ ਹਨ। ਨਤੀਜੇ ਵਜੋਂ, ਕਿਸੇ ਦਿੱਤੇ AI ਖ਼ਤਰੇ ਵਿਰੁੱਧ ਬਚਾਅ ਲਈ ਆਮ ਤੌਰ 'ਤੇ ਕਈ ਅਧਿਆਵਾਂ ਦੀਆਂ ਲੋੜਾਂ ਨੂੰ ਇਕੱਠੇ ਲਾਗੂ ਕਰਨਾ ਪੈਂਦਾ ਹੈ। ਉਦਾਹਰਨ ਲਈ, ਕਿਸੇ ਏਜੰਟ-ਆਧਾਰਿਤ (agentic) ਐਪਲੀਕੇਸ਼ਨ ਵਿੱਚ prompt ਇੰਜੈਕਸ਼ਨ ਵਿਰੁੱਧ ਬਚਾਅ C2 (ਇਨਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ), C7 (ਮਾਡਲ ਵਿਵਹਾਰ), C9 (ਆਰਕੈਸਟ੍ਰੇਸ਼ਨ ਅਤੇ ਏਜੰਟ-ਆਧਾਰਿਤ ਸੁਰੱਖਿਆ), C10 (MCP-ਵਿਸ਼ੇਸ਼ ਨਿਯੰਤਰਣ), C11 (ਵਿਰੋਧੀ ਮਜ਼ਬੂਤੀ), ਅਤੇ C12 (ਪਛਾਣ ਅਤੇ ਲੌਗਿੰਗ) ਦੀਆਂ ਲੋੜਾਂ ਨੂੰ ਜੋੜਦਾ ਹੈ।
+AISVS ਅਧਿਆਇ ਹਮਲੇ ਜਾਂ ਹਿੱਸੇ ਦੀ ਬਜਾਏ ਨਿਯੰਤਰਣ ਪਰਿਵਾਰ ਅਨੁਸਾਰ ਵਿਵਸਥਿਤ ਹਨ। ਨਤੀਜੇ ਵਜੋਂ, ਕਿਸੇ ਦਿੱਤੇ AI ਖ਼ਤਰੇ ਵਿਰੁੱਧ ਬਚਾਅ ਲਈ ਆਮ ਤੌਰ 'ਤੇ ਕਈ ਅਧਿਆਵਾਂ ਦੀਆਂ ਲੋੜਾਂ ਨੂੰ ਇਕੱਠੇ ਲਾਗੂ ਕਰਨਾ ਪੈਂਦਾ ਹੈ। ਉਦਾਹਰਨ ਲਈ, ਕਿਸੇ ਏਜੰਟ-ਆਧਾਰਿਤ (agentic) ਐਪਲੀਕੇਸ਼ਨ ਵਿੱਚ prompt ਇੰਜੈਕਸ਼ਨ ਵਿਰੁੱਧ ਬਚਾਅ C੨ (ਇਨਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ), C੭ (ਮਾਡਲ ਵਿਵਹਾਰ), C੯ (ਆਰਕੈਸਟ੍ਰੇਸ਼ਨ ਅਤੇ ਏਜੰਟ-ਆਧਾਰਿਤ ਸੁਰੱਖਿਆ), C੧੦ (MCP-ਵਿਸ਼ੇਸ਼ ਨਿਯੰਤਰਣ), C੧੧ (ਵਿਰੋਧੀ ਮਜ਼ਬੂਤੀ), ਅਤੇ C੧੨ (ਪਛਾਣ ਅਤੇ ਲੌਗਿੰਗ) ਦੀਆਂ ਲੋੜਾਂ ਨੂੰ ਜੋੜਦਾ ਹੈ।
 
 When applying AISVS, treat the standard as a whole and consult Appendix B (AI Security Controls Inventory) for a cross-cutting view of where each defense technique appears.
 

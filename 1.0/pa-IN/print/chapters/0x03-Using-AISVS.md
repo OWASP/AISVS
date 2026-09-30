@@ -25,7 +25,7 @@ Each of the 12 requirement chapters follows the same format:
 * **Sections.** Requirements are grouped into related sections, each with a short description of the defense goal.
 * **Requirement Tables.** Individual requirements are presented in tables with the following columns:
 
-12 ਲੋੜ ਅਧਿਆਵਾਂ ਵਿੱਚੋਂ ਹਰ ਇੱਕ ਇੱਕੋ ਫ਼ਾਰਮੈਟ[^0x03-Using-AISVS-format] ਦੀ ਪਾਲਣਾ ਕਰਦਾ ਹੈ:
+੧੨ ਲੋੜ ਅਧਿਆਵਾਂ ਵਿੱਚੋਂ ਹਰ ਇੱਕ ਇੱਕੋ ਫ਼ਾਰਮੈਟ[^0x03-Using-AISVS-format] ਦੀ ਪਾਲਣਾ ਕਰਦਾ ਹੈ:
 
 * **ਨਿਯੰਤਰਣ ਉਦੇਸ਼।** ਅਧਿਆਇ ਲਈ ਸੁਰੱਖਿਆ ਟੀਚੇ ਦਾ ਸੰਖੇਪ ਬਿਆਨ।
 * **ਭਾਗ।** ਲੋੜਾਂ ਨੂੰ ਸੰਬੰਧਿਤ ਭਾਗਾਂ ਵਿੱਚ ਵੰਡਿਆ ਗਿਆ ਹੈ, ਹਰ ਭਾਗ ਦੇ ਨਾਲ ਬਚਾਅ ਟੀਚੇ ਦਾ ਸੰਖੇਪ ਵੇਰਵਾ ਦਿੱਤਾ ਗਿਆ ਹੈ।
@@ -39,9 +39,9 @@ Each of the 12 requirement chapters follows the same format:
 
 | ਕਾਲਮ | ਅਰਥ |
 | --- | --- |
-| **#** | ਵਿਲੱਖਣ ਲੋੜ ਪਛਾਣਕਰਤਾ (ਜਿਵੇਂ, 1.1.1, 9.3.2)। |
+| **#** | ਵਿਲੱਖਣ ਲੋੜ ਪਛਾਣਕਰਤਾ (ਜਿਵੇਂ, ੧.੧.੧, ੯.੩.੨)। |
 | **ਵੇਰਵਾ** | ਲੋੜ ਦਾ ਪਾਠ, ਜੋ ਪਰਖਯੋਗਤਾ 'ਤੇ ਜ਼ੋਰ ਦੇਣ ਲਈ ਹਮੇਸ਼ਾ "ਜਾਂਚ ਕਰੋ ਕਿ" ਨਾਲ ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ। |
-| **ਪੱਧਰ** | ਤਸਦੀਕ ਪੱਧਰ (1, 2, ਜਾਂ 3) ਜੋ ਲੋੜੀਂਦੇ ਭਰੋਸੇ (assurance) ਦੀ ਡੂੰਘਾਈ ਦਰਸਾਉਂਦਾ ਹੈ; ਹੇਠਾਂ ਦਿੱਤੇ ਤਸਦੀਕ ਪੱਧਰ ਵੇਖੋ। |
+| **ਪੱਧਰ** | ਤਸਦੀਕ ਪੱਧਰ (੧, ੨, ਜਾਂ ੩) ਜੋ ਲੋੜੀਂਦੇ ਭਰੋਸੇ (assurance) ਦੀ ਡੂੰਘਾਈ ਦਰਸਾਉਂਦਾ ਹੈ; ਹੇਠਾਂ ਦਿੱਤੇ ਤਸਦੀਕ ਪੱਧਰ ਵੇਖੋ। |
 
 ### Appendices
 ### ਅੰਤਿਕਾਵਾਂ
@@ -67,7 +67,7 @@ AISVS ਸੁਰੱਖਿਆ ਤਸਦੀਕ ਦੇ ਤਿੰਨ ਵਧਦੇ ਕ
 
 Organizations may begin at Level 1 and progressively adopt higher levels as security maturity and threat exposure increase. AISVS levels are aligned with [ASVS](https://owasp.org/www-project-application-security-verification-standard/) levels and are intended to be applied at the matching ASVS level (see Alignment with ASVS Levels below).
 
-ਸੰਸਥਾਵਾਂ ਪੱਧਰ 1 ਤੋਂ ਸ਼ੁਰੂ ਕਰ ਸਕਦੀਆਂ ਹਨ ਅਤੇ ਸੁਰੱਖਿਆ ਪਰਿਪੱਕਤਾ ਅਤੇ ਖ਼ਤਰੇ ਦੇ ਸਾਹਮਣੇ ਆਉਣ ਵਿੱਚ ਵਾਧੇ ਦੇ ਨਾਲ-ਨਾਲ ਹੌਲੀ-ਹੌਲੀ ਉੱਚੇ ਪੱਧਰ ਅਪਣਾ ਸਕਦੀਆਂ ਹਨ। AISVS ਪੱਧਰ [ASVS](https://owasp.org/www-project-application-security-verification-standard/) ਪੱਧਰਾਂ ਨਾਲ ਇਕਸਾਰ ਹਨ ਅਤੇ ਇਹਨਾਂ ਨੂੰ ਮੇਲ ਖਾਂਦੇ ASVS ਪੱਧਰ 'ਤੇ ਲਾਗੂ ਕਰਨ ਦਾ ਇਰਾਦਾ ਹੈ (ਹੇਠਾਂ "ASVS ਪੱਧਰਾਂ ਨਾਲ ਇਕਸਾਰਤਾ" ਵੇਖੋ)।
+ਸੰਸਥਾਵਾਂ ਪੱਧਰ ੧ ਤੋਂ ਸ਼ੁਰੂ ਕਰ ਸਕਦੀਆਂ ਹਨ ਅਤੇ ਸੁਰੱਖਿਆ ਪਰਿਪੱਕਤਾ ਅਤੇ ਖ਼ਤਰੇ ਦੇ ਸਾਹਮਣੇ ਆਉਣ ਵਿੱਚ ਵਾਧੇ ਦੇ ਨਾਲ-ਨਾਲ ਹੌਲੀ-ਹੌਲੀ ਉੱਚੇ ਪੱਧਰ ਅਪਣਾ ਸਕਦੀਆਂ ਹਨ। AISVS ਪੱਧਰ [ASVS](https://owasp.org/www-project-application-security-verification-standard/) ਪੱਧਰਾਂ ਨਾਲ ਇਕਸਾਰ ਹਨ ਅਤੇ ਇਹਨਾਂ ਨੂੰ ਮੇਲ ਖਾਂਦੇ ASVS ਪੱਧਰ 'ਤੇ ਲਾਗੂ ਕਰਨ ਦਾ ਇਰਾਦਾ ਹੈ (ਹੇਠਾਂ "ASVS ਪੱਧਰਾਂ ਨਾਲ ਇਕਸਾਰਤਾ" ਵੇਖੋ)।
 
 ### Definition of the Levels
 ### ਪੱਧਰਾਂ ਦੀ ਪਰਿਭਾਸ਼ਾ
@@ -77,25 +77,25 @@ Each requirement in AISVS v1.0 is assigned to one of the following levels:
 AISVS v1.0 ਵਿੱਚ ਹਰ ਲੋੜ ਨੂੰ ਹੇਠ ਲਿਖੇ ਪੱਧਰਾਂ ਵਿੱਚੋਂ ਇੱਕ ਸੌਂਪਿਆ ਗਿਆ ਹੈ:
 
 #### Level 1 requirements
-#### ਪੱਧਰ 1 ਦੀਆਂ ਲੋੜਾਂ
+#### ਪੱਧਰ ੧ ਦੀਆਂ ਲੋੜਾਂ
 
 Level 1 includes the most critical and foundational security requirements. These focus on preventing common attacks that do not rely on other preconditions or vulnerabilities. Most Level 1 controls are either straightforward to implement or essential enough to justify the effort.
 
-ਪੱਧਰ 1 ਵਿੱਚ ਸਭ ਤੋਂ ਨਾਜ਼ੁਕ ਅਤੇ ਬੁਨਿਆਦੀ ਸੁਰੱਖਿਆ ਲੋੜਾਂ ਸ਼ਾਮਲ ਹਨ। ਇਹ ਉਹਨਾਂ ਆਮ ਹਮਲਿਆਂ ਨੂੰ ਰੋਕਣ 'ਤੇ ਕੇਂਦ੍ਰਿਤ ਹਨ ਜੋ ਹੋਰ ਪੂਰਵ-ਸ਼ਰਤਾਂ ਜਾਂ ਕਮਜ਼ੋਰੀਆਂ 'ਤੇ ਨਿਰਭਰ ਨਹੀਂ ਕਰਦੇ। ਜ਼ਿਆਦਾਤਰ ਪੱਧਰ 1 ਨਿਯੰਤਰਣ ਜਾਂ ਤਾਂ ਲਾਗੂ ਕਰਨ ਵਿੱਚ ਸਿੱਧੇ-ਸਾਦੇ ਹਨ ਜਾਂ ਇੰਨੇ ਜ਼ਰੂਰੀ ਹਨ ਕਿ ਉਹ ਲੱਗਣ ਵਾਲੀ ਮਿਹਨਤ ਨੂੰ ਜਾਇਜ਼ ਠਹਿਰਾਉਂਦੇ ਹਨ।
+ਪੱਧਰ ੧ ਵਿੱਚ ਸਭ ਤੋਂ ਨਾਜ਼ੁਕ ਅਤੇ ਬੁਨਿਆਦੀ ਸੁਰੱਖਿਆ ਲੋੜਾਂ ਸ਼ਾਮਲ ਹਨ। ਇਹ ਉਹਨਾਂ ਆਮ ਹਮਲਿਆਂ ਨੂੰ ਰੋਕਣ 'ਤੇ ਕੇਂਦ੍ਰਿਤ ਹਨ ਜੋ ਹੋਰ ਪੂਰਵ-ਸ਼ਰਤਾਂ ਜਾਂ ਕਮਜ਼ੋਰੀਆਂ 'ਤੇ ਨਿਰਭਰ ਨਹੀਂ ਕਰਦੇ। ਜ਼ਿਆਦਾਤਰ ਪੱਧਰ ੧ ਨਿਯੰਤਰਣ ਜਾਂ ਤਾਂ ਲਾਗੂ ਕਰਨ ਵਿੱਚ ਸਿੱਧੇ-ਸਾਦੇ ਹਨ ਜਾਂ ਇੰਨੇ ਜ਼ਰੂਰੀ ਹਨ ਕਿ ਉਹ ਲੱਗਣ ਵਾਲੀ ਮਿਹਨਤ ਨੂੰ ਜਾਇਜ਼ ਠਹਿਰਾਉਂਦੇ ਹਨ।
 
 #### Level 2 requirements
-#### ਪੱਧਰ 2 ਦੀਆਂ ਲੋੜਾਂ
+#### ਪੱਧਰ ੨ ਦੀਆਂ ਲੋੜਾਂ
 
 Level 2 addresses more advanced or less common attacks, as well as layered defenses against widespread threats. These requirements may involve more complex logic or target specific attack prerequisites.
 
-ਪੱਧਰ 2 ਵਧੇਰੇ ਉੱਨਤ ਜਾਂ ਘੱਟ ਆਮ ਹਮਲਿਆਂ ਨੂੰ, ਨਾਲ ਹੀ ਵਿਆਪਕ ਖ਼ਤਰਿਆਂ ਵਿਰੁੱਧ ਪਰਤਦਾਰ ਬਚਾਵਾਂ ਨੂੰ ਸੰਬੋਧਿਤ ਕਰਦਾ ਹੈ। ਇਹਨਾਂ ਲੋੜਾਂ ਵਿੱਚ ਵਧੇਰੇ ਗੁੰਝਲਦਾਰ ਤਰਕ ਸ਼ਾਮਲ ਹੋ ਸਕਦਾ ਹੈ ਜਾਂ ਇਹ ਖ਼ਾਸ ਹਮਲਾ ਪੂਰਵ-ਲੋੜਾਂ ਨੂੰ ਨਿਸ਼ਾਨਾ ਬਣਾ ਸਕਦੀਆਂ ਹਨ।
+ਪੱਧਰ ੨ ਵਧੇਰੇ ਉੱਨਤ ਜਾਂ ਘੱਟ ਆਮ ਹਮਲਿਆਂ ਨੂੰ, ਨਾਲ ਹੀ ਵਿਆਪਕ ਖ਼ਤਰਿਆਂ ਵਿਰੁੱਧ ਪਰਤਦਾਰ ਬਚਾਵਾਂ ਨੂੰ ਸੰਬੋਧਿਤ ਕਰਦਾ ਹੈ। ਇਹਨਾਂ ਲੋੜਾਂ ਵਿੱਚ ਵਧੇਰੇ ਗੁੰਝਲਦਾਰ ਤਰਕ ਸ਼ਾਮਲ ਹੋ ਸਕਦਾ ਹੈ ਜਾਂ ਇਹ ਖ਼ਾਸ ਹਮਲਾ ਪੂਰਵ-ਲੋੜਾਂ ਨੂੰ ਨਿਸ਼ਾਨਾ ਬਣਾ ਸਕਦੀਆਂ ਹਨ।
 
 #### Level 3 requirements
-#### ਪੱਧਰ 3 ਦੀਆਂ ਲੋੜਾਂ
+#### ਪੱਧਰ ੩ ਦੀਆਂ ਲੋੜਾਂ
 
 Level 3 includes controls that are typically harder to implement or situational in applicability. These often represent defense-in-depth mechanisms or mitigations against niche, targeted, or high-complexity attacks.
 
-ਪੱਧਰ 3 ਵਿੱਚ ਉਹ ਨਿਯੰਤਰਣ ਸ਼ਾਮਲ ਹਨ ਜੋ ਆਮ ਤੌਰ 'ਤੇ ਲਾਗੂ ਕਰਨੇ ਔਖੇ ਹੁੰਦੇ ਹਨ ਜਾਂ ਜਿਨ੍ਹਾਂ ਦੀ ਲਾਗੂ ਹੋਣ ਦੀ ਯੋਗਤਾ ਹਾਲਾਤ 'ਤੇ ਨਿਰਭਰ ਕਰਦੀ ਹੈ। ਇਹ ਅਕਸਰ ਡੂੰਘਾਈ ਵਿੱਚ ਬਚਾਅ (defense-in-depth)[^0x03-Using-AISVS-defense-in-depth] ਵਿਧੀਆਂ ਜਾਂ ਸੀਮਤ-ਦਾਇਰੇ, ਨਿਸ਼ਾਨਾਬੱਧ, ਜਾਂ ਉੱਚ-ਜਟਿਲਤਾ ਵਾਲੇ ਹਮਲਿਆਂ ਵਿਰੁੱਧ ਘਟਾਉਣ ਦੇ ਉਪਾਅ ਦਰਸਾਉਂਦੇ ਹਨ।
+ਪੱਧਰ ੩ ਵਿੱਚ ਉਹ ਨਿਯੰਤਰਣ ਸ਼ਾਮਲ ਹਨ ਜੋ ਆਮ ਤੌਰ 'ਤੇ ਲਾਗੂ ਕਰਨੇ ਔਖੇ ਹੁੰਦੇ ਹਨ ਜਾਂ ਜਿਨ੍ਹਾਂ ਦੀ ਲਾਗੂ ਹੋਣ ਦੀ ਯੋਗਤਾ ਹਾਲਾਤ 'ਤੇ ਨਿਰਭਰ ਕਰਦੀ ਹੈ। ਇਹ ਅਕਸਰ ਡੂੰਘਾਈ ਵਿੱਚ ਬਚਾਅ (defense-in-depth)[^0x03-Using-AISVS-defense-in-depth] ਵਿਧੀਆਂ ਜਾਂ ਸੀਮਤ-ਦਾਇਰੇ, ਨਿਸ਼ਾਨਾਬੱਧ, ਜਾਂ ਉੱਚ-ਜਟਿਲਤਾ ਵਾਲੇ ਹਮਲਿਆਂ ਵਿਰੁੱਧ ਘਟਾਉਣ ਦੇ ਉਪਾਅ ਦਰਸਾਉਂਦੇ ਹਨ।
 
 ## Alignment with ASVS Levels
 ## ASVS ਪੱਧਰਾਂ ਨਾਲ ਇਕਸਾਰਤਾ
@@ -112,9 +112,9 @@ AISVS ਪੱਧਰ [ASVS](https://owasp.org/www-project-application-security-ver
 
 | AISVS ਪੱਧਰ | ਸੰਬੰਧਿਤ ASVS ਪੱਧਰ | ਆਮ ਵਰਤੋਂ |
 | :---: | :---: | --- |
-| 1 | 1 | ਕਿਸੇ ਵੀ ਅਜਿਹੀ AI ਐਪਲੀਕੇਸ਼ਨ ਲਈ ਬੁਨਿਆਦੀ ਸੁਰੱਖਿਆ ਜੋ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਇਨਪੁੱਟ ਸੰਭਾਲਦੀ ਹੈ ਜਾਂ ਕਿਸੇ ਵੀ ਸੰਵੇਦਨਸ਼ੀਲਤਾ ਵਾਲੇ ਡਾਟੇ 'ਤੇ ਕੰਮ ਕਰਦੀ ਹੈ। |
-| 2 | 2 | ਸੰਵੇਦਨਸ਼ੀਲ ਕਾਰੋਬਾਰੀ ਡਾਟਾ ਜਾਂ ਨਿਯੰਤ੍ਰਿਤ ਡਾਟਾ ਸੰਭਾਲਣ ਵਾਲੀਆਂ, ਜਾਂ ਵਿਰੋਧੀ ਸੰਦਰਭਾਂ ਵਿੱਚ ਕੰਮ ਕਰਨ ਵਾਲੀਆਂ AI ਐਪਲੀਕੇਸ਼ਨਾਂ। |
-| 3 | 3 | ਉੱਚ-ਭਰੋਸੇ ਵਾਲੀਆਂ AI ਐਪਲੀਕੇਸ਼ਨਾਂ, ਜਿਵੇਂ ਕਿ ਜੀਵਨ-ਸਲਾਮਤੀ ਦੇ ਫ਼ੈਸਲੇ, ਨਾਜ਼ੁਕ ਬੁਨਿਆਦੀ ਢਾਂਚਾ, ਜਾਂ ਬਹੁਤ ਸੰਵੇਦਨਸ਼ੀਲ ਨਿੱਜੀ ਡਾਟਾ ਸੰਭਾਲਣ ਵਾਲੀਆਂ ਐਪਲੀਕੇਸ਼ਨਾਂ। |
+| ੧ | ੧ | ਕਿਸੇ ਵੀ ਅਜਿਹੀ AI ਐਪਲੀਕੇਸ਼ਨ ਲਈ ਬੁਨਿਆਦੀ ਸੁਰੱਖਿਆ ਜੋ ਗ਼ੈਰ-ਭਰੋਸੇਯੋਗ ਇਨਪੁੱਟ ਸੰਭਾਲਦੀ ਹੈ ਜਾਂ ਕਿਸੇ ਵੀ ਸੰਵੇਦਨਸ਼ੀਲਤਾ ਵਾਲੇ ਡਾਟੇ 'ਤੇ ਕੰਮ ਕਰਦੀ ਹੈ। |
+| ੨ | ੨ | ਸੰਵੇਦਨਸ਼ੀਲ ਕਾਰੋਬਾਰੀ ਡਾਟਾ ਜਾਂ ਨਿਯੰਤ੍ਰਿਤ ਡਾਟਾ ਸੰਭਾਲਣ ਵਾਲੀਆਂ, ਜਾਂ ਵਿਰੋਧੀ ਸੰਦਰਭਾਂ ਵਿੱਚ ਕੰਮ ਕਰਨ ਵਾਲੀਆਂ AI ਐਪਲੀਕੇਸ਼ਨਾਂ। |
+| ੩ | ੩ | ਉੱਚ-ਭਰੋਸੇ ਵਾਲੀਆਂ AI ਐਪਲੀਕੇਸ਼ਨਾਂ, ਜਿਵੇਂ ਕਿ ਜੀਵਨ-ਸਲਾਮਤੀ ਦੇ ਫ਼ੈਸਲੇ, ਨਾਜ਼ੁਕ ਬੁਨਿਆਦੀ ਢਾਂਚਾ, ਜਾਂ ਬਹੁਤ ਸੰਵੇਦਨਸ਼ੀਲ ਨਿੱਜੀ ਡਾਟਾ ਸੰਭਾਲਣ ਵਾਲੀਆਂ ਐਪਲੀਕੇਸ਼ਨਾਂ। |
 
 If an AISVS requirement appears to overlap with an ASVS requirement, the AISVS version is restated only because it has AI-specific implementation details, attack surface, or evidence that an auditor needs to evaluate differently.
 
@@ -156,7 +156,7 @@ When verifying an AI application against AISVS, the equivalent level of those un
 
 AISVS chapters are organized by control family rather than by attack or component. As a result, defending against a given AI threat usually requires applying requirements from several chapters together. For example, defending against prompt injection in an agentic application combines requirements from C2 (input validation), C7 (model behavior), C9 (orchestration and agentic security), C10 (MCP-specific controls), C11 (adversarial robustness), and C12 (detection and logging).
 
-AISVS ਅਧਿਆਇ ਹਮਲੇ ਜਾਂ ਹਿੱਸੇ[^0x03-Using-AISVS-component] ਦੀ ਬਜਾਏ ਨਿਯੰਤਰਣ ਪਰਿਵਾਰ[^0x03-Using-AISVS-control-family] ਅਨੁਸਾਰ ਵਿਵਸਥਿਤ ਹਨ। ਨਤੀਜੇ ਵਜੋਂ, ਕਿਸੇ ਦਿੱਤੇ AI ਖ਼ਤਰੇ ਵਿਰੁੱਧ ਬਚਾਅ ਲਈ ਆਮ ਤੌਰ 'ਤੇ ਕਈ ਅਧਿਆਵਾਂ ਦੀਆਂ ਲੋੜਾਂ ਨੂੰ ਇਕੱਠੇ ਲਾਗੂ ਕਰਨਾ ਪੈਂਦਾ ਹੈ। ਉਦਾਹਰਨ ਲਈ, ਕਿਸੇ ਏਜੰਟ-ਆਧਾਰਿਤ (agentic)[^0x03-Using-AISVS-agent-based] ਐਪਲੀਕੇਸ਼ਨ ਵਿੱਚ prompt ਇੰਜੈਕਸ਼ਨ ਵਿਰੁੱਧ ਬਚਾਅ C2 (ਇਨਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ), C7 (ਮਾਡਲ ਵਿਵਹਾਰ), C9 (ਆਰਕੈਸਟ੍ਰੇਸ਼ਨ[^0x03-Using-AISVS-orchestration] ਅਤੇ ਏਜੰਟ-ਆਧਾਰਿਤ ਸੁਰੱਖਿਆ), C10 (MCP-ਵਿਸ਼ੇਸ਼ ਨਿਯੰਤਰਣ), C11 (ਵਿਰੋਧੀ ਮਜ਼ਬੂਤੀ[^0x03-Using-AISVS-adversarial-robustness]), ਅਤੇ C12 (ਪਛਾਣ ਅਤੇ ਲੌਗਿੰਗ) ਦੀਆਂ ਲੋੜਾਂ ਨੂੰ ਜੋੜਦਾ ਹੈ।
+AISVS ਅਧਿਆਇ ਹਮਲੇ ਜਾਂ ਹਿੱਸੇ[^0x03-Using-AISVS-component] ਦੀ ਬਜਾਏ ਨਿਯੰਤਰਣ ਪਰਿਵਾਰ[^0x03-Using-AISVS-control-family] ਅਨੁਸਾਰ ਵਿਵਸਥਿਤ ਹਨ। ਨਤੀਜੇ ਵਜੋਂ, ਕਿਸੇ ਦਿੱਤੇ AI ਖ਼ਤਰੇ ਵਿਰੁੱਧ ਬਚਾਅ ਲਈ ਆਮ ਤੌਰ 'ਤੇ ਕਈ ਅਧਿਆਵਾਂ ਦੀਆਂ ਲੋੜਾਂ ਨੂੰ ਇਕੱਠੇ ਲਾਗੂ ਕਰਨਾ ਪੈਂਦਾ ਹੈ। ਉਦਾਹਰਨ ਲਈ, ਕਿਸੇ ਏਜੰਟ-ਆਧਾਰਿਤ (agentic)[^0x03-Using-AISVS-agent-based] ਐਪਲੀਕੇਸ਼ਨ ਵਿੱਚ prompt ਇੰਜੈਕਸ਼ਨ ਵਿਰੁੱਧ ਬਚਾਅ C੨ (ਇਨਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ), C੭ (ਮਾਡਲ ਵਿਵਹਾਰ), C੯ (ਆਰਕੈਸਟ੍ਰੇਸ਼ਨ[^0x03-Using-AISVS-orchestration] ਅਤੇ ਏਜੰਟ-ਆਧਾਰਿਤ ਸੁਰੱਖਿਆ), C੧੦ (MCP-ਵਿਸ਼ੇਸ਼ ਨਿਯੰਤਰਣ), C੧੧ (ਵਿਰੋਧੀ ਮਜ਼ਬੂਤੀ[^0x03-Using-AISVS-adversarial-robustness]), ਅਤੇ C੧੨ (ਪਛਾਣ ਅਤੇ ਲੌਗਿੰਗ) ਦੀਆਂ ਲੋੜਾਂ ਨੂੰ ਜੋੜਦਾ ਹੈ।
 
 When applying AISVS, treat the standard as a whole and consult Appendix B (AI Security Controls Inventory) for a cross-cutting view of where each defense technique appears.
 
@@ -172,14 +172,14 @@ Requirements can often be assessed using a combination of technical testing and 
 [^0x03-Using-AISVS-format]: **format** (EN) -> ਫ਼ਾਰਮੈਟ — spelled with nukta (ਫ਼) for English /f/, correcting a corpus-wide split where "format" and "platform" appeared both with and without the nukta in different chapters. Full discussion: OPEN-QUESTIONS.md Q86.
 [^0x03-Using-AISVS-appendix]: **Appendix** (EN) -> ਅੰਤਿਕਾ — the settled Panjabi term for a document appendix; the division letter (A/B/C) stays Latin as a cross-reference target, matching how requirement IDs are kept unconverted. Full discussion: OPEN-QUESTIONS.md Q121.
 [^0x03-Using-AISVS-defense-in-depth]: **Defense-in-Depth** (EN, retained) -> ਡੂੰਘਾਈ ਵਿੱਚ ਬਚਾਅ — the named security doctrine keeps its fixed English name, as auditors and the NIST/CIS literature use it, with a literal Panjabi gloss; this file's hyphenation was normalised to match Appendix A after a corpus audit found it diverging. Full discussion: OPEN-QUESTIONS.md Q141.
-[^0x03-Using-AISVS-transport]: **transport security** (EN) -> ਟ੍ਰਾਂਸਪੋਰਟ ਸੁਰੱਖਿਆ — ਟ੍ਰਾਂਸਪੋਰਟ is kept a loan rather than translated (e.g. ਢੋਆ-ਢੁਆਈ, "freight," would be absurd for a protocol channel); this compound is the conformance anchor the C10 (MCP transport) chapter matches later. Full discussion: OPEN-QUESTIONS.md Q90.
+[^0x03-Using-AISVS-transport]: **transport security** (EN) -> ਟ੍ਰਾਂਸਪੋਰਟ ਸੁਰੱਖਿਆ — ਟ੍ਰਾਂਸਪੋਰਟ is kept a loan rather than translated (e.g. ਢੋਆ-ਢੁਆਈ, "freight," would be absurd for a protocol channel); this compound is the conformance anchor the C੧੦ (MCP transport) chapter matches later. Full discussion: OPEN-QUESTIONS.md Q90.
 [^0x03-Using-AISVS-provenance]: **provenance** (EN, in "build provenance") -> ਮੂਲ-ਸਰੋਤ ("root-source") — states "documented chain of origin" plainly, avoiding ਉਤਪਤੀ's creation-narrative/devotional overtone. Full discussion: OPEN-QUESTIONS.md Q73.
-[^0x03-Using-AISVS-immutable]: **immutability** (EN, "audit log immutability") -> ਅਪਰਿਵਰਤਨਸ਼ੀਲਤਾ — the settled adjective/noun form, kept consistent with C12 and Appendix C rather than paraphrased as "cannot be changed," so the term stays searchable across the corpus. Full discussion: OPEN-QUESTIONS.md Q112.
-[^0x03-Using-AISVS-consent]: **consent** (EN, "consent management platform") -> ਸਹਿਮਤੀ — fixes ਸਹਿਮਤੀ to *consent* corpus-wide, deliberately keeping ਮਨਜ਼ੂਰੀ free for *approval* so the two obligations do not collapse into one word in C10. Full discussion: OPEN-QUESTIONS.md Q93.
+[^0x03-Using-AISVS-immutable]: **immutability** (EN, "audit log immutability") -> ਅਪਰਿਵਰਤਨਸ਼ੀਲਤਾ — the settled adjective/noun form, kept consistent with C੧੨ and Appendix C rather than paraphrased as "cannot be changed," so the term stays searchable across the corpus. Full discussion: OPEN-QUESTIONS.md Q112.
+[^0x03-Using-AISVS-consent]: **consent** (EN, "consent management platform") -> ਸਹਿਮਤੀ — fixes ਸਹਿਮਤੀ to *consent* corpus-wide, deliberately keeping ਮਨਜ਼ੂਰੀ free for *approval* so the two obligations do not collapse into one word in C੧੦. Full discussion: OPEN-QUESTIONS.md Q93.
 [^0x03-Using-AISVS-model-card]: **model card** (EN) -> ਮਾਡਲ ਕਾਰਡ — kept as a loan pair rather than a descriptive phrase (e.g. "documentation") because a model card is a named artifact type with a fixed evidentiary meaning; a vaguer rendering would soften what an auditor can accept as proof. Full discussion: OPEN-QUESTIONS.md Q85.
 [^0x03-Using-AISVS-transparency]: **transparency** (EN, "public transparency reports") -> ਪਾਰਦਰਸ਼ਤਾ — reserved for *transparency* specifically so Appendix C can use a different word (ਵਿਆਖਿਆਯੋਗਤਾ) for the separate governance concept of *explainability*. Full discussion: OPEN-QUESTIONS.md Q120.
 [^0x03-Using-AISVS-component]: **component** (EN, "attack or component") -> ਹਿੱਸੇ — correct here because the source means a generic part, not a named system component; other chapters split between ਹਿੱਸਾ and the loan ਕੰਪੋਨੈਂਟ for the term-of-art sense, a corpus-wide split that is logged but not yet resolved. Full discussion: OPEN-QUESTIONS.md Q95.
 [^0x03-Using-AISVS-control-family]: **control family** (EN) -> ਨਿਯੰਤਰਣ ਪਰਿਵਾਰ — ਪਰਿਵਾਰ mirrors the English "family" metaphor and matches how NIST SP 800-53 control families are discussed in Panjabi security writing; recorded again here because the term recurs in every control chapter and must not drift. Full discussion: OPEN-QUESTIONS.md Q80.
 [^0x03-Using-AISVS-agent-based]: **agentic / agent-based** (EN) -> ਏਜੰਟ-ਆਧਾਰਿਤ — normalised to the long-vowel ਆਧਾਰਿਤ (never the short ਅਧਾਰਿਤ) after a cross-file audit found this file internally split between the two spellings for the same compound. Full discussion: OPEN-QUESTIONS.md Q71.
-[^0x03-Using-AISVS-orchestration]: **orchestration** (EN, C09 title) -> ਆਰਕੈਸਟ੍ਰੇਸ਼ਨ — kept as a loan because the nearest native word, ਤਾਲਮੇਲ ("coordination"), loses the specific sense of a control plane driving multi-step model/tool/agent execution. Full discussion: OPEN-QUESTIONS.md Q83.
-[^0x03-Using-AISVS-adversarial-robustness]: **adversarial robustness** (EN, C11 title) -> ਵਿਰੋਧੀ ਮਜ਼ਬੂਤੀ — ਮਜ਼ਬੂਤੀ ("sturdiness") was chosen over ਦ੍ਰਿੜ੍ਹਤਾ ("steadfastness/resolve"), which would ascribe an inner quality to a model. Full discussion: OPEN-QUESTIONS.md Q84.
+[^0x03-Using-AISVS-orchestration]: **orchestration** (EN, C੦੯ title) -> ਆਰਕੈਸਟ੍ਰੇਸ਼ਨ — kept as a loan because the nearest native word, ਤਾਲਮੇਲ ("coordination"), loses the specific sense of a control plane driving multi-step model/tool/agent execution. Full discussion: OPEN-QUESTIONS.md Q83.
+[^0x03-Using-AISVS-adversarial-robustness]: **adversarial robustness** (EN, C੧੧ title) -> ਵਿਰੋਧੀ ਮਜ਼ਬੂਤੀ — ਮਜ਼ਬੂਤੀ ("sturdiness") was chosen over ਦ੍ਰਿੜ੍ਹਤਾ ("steadfastness/resolve"), which would ascribe an inner quality to a model. Full discussion: OPEN-QUESTIONS.md Q84.

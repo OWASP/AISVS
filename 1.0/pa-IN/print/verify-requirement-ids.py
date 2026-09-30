@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parent.parent.parent  # .../1.0
 EN = ROOT / "en"
 PA = ROOT / "pa-IN"
 
+G2W = str.maketrans("੦੧੨੩੪੫੬੭੮੯", "0123456789")
 ID_RE = re.compile(r"\*\*(\d+\.\d+\.\d+)\*\*")
 
 CHAPTER_FILES = [
@@ -35,7 +36,10 @@ CHAPTER_FILES = [
 def ids_in(path):
     if not path.exists():
         return None
-    return Counter(ID_RE.findall(path.read_text(encoding="utf-8")))
+    # Panjabi block uses Gurmukhi numerals (2026-09-30); map back to Western
+    # digits so each ID still has to appear once per block (EN + PA).
+    text = path.read_text(encoding="utf-8").translate(G2W)
+    return Counter(ID_RE.findall(text))
 
 
 def main():

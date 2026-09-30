@@ -22,7 +22,7 @@ AISVS ਦੀ ਹਰ ਲੋੜ ਨੂੰ AI ਖ਼ਤਰਾ ਪਰਿਦ੍ਰਿ
 
 Version 1.0, 2026
 
-ਸੰਸਕਰਣ 1.0, 2026
+ਸੰਸਕਰਣ 1.0, ੨੦੨੬
 
 [![CC BY-SA 4.0](https://licensebuttons.net/l/by-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0/)
 

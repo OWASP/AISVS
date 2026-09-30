@@ -25,11 +25,13 @@ that could plausibly already exist there.
 
 1. **Sentence-end = danda `।`** for full Panjabi sentences (prose). NEVER the Western period.
    Do **not** add a danda to short UI labels, headings, or list fragments.
-2. **Numerals = Western digits** (0–9) in technical prose — years, quantities, **and version
-   numbers** (write `1.0`, not `੧.੦`). Gurmukhi numerals are reserved for traditional/decorative
-   contexts only.
-3. **Requirement IDs stay exactly as the source** (e.g. AISVS `C01.1.1` or equivalent) —
-   English digits, never converted.
+2. **Numerals = Gurmukhi (੦-੯)** in Panjabi text: requirement IDs, chapter/section refs, levels and plain
+   quantities (revised 2026-09-30, matches the ASVS styleguide). Retained (Tag R) in Western digits:
+   digits inside Latin names and versions (TLS 1.3, SHA-256, OAuth 2.1, NIST SP 800-190, ISO/IEC 27001,
+   RFC 9449, AML.T0024.001, "ਸੰਸਕਰਣ 1.0", CC BY-SA 4.0), code spans and URLs. The English block is never
+   converted. Use `python3 tools/gurmukhi-numerals.py --check`.
+3. **Requirement IDs** keep the source structure (`C1.1.1` -> `C੧.੧.੧`, `5.1.1` -> `੫.੧.੧`). The English block
+   beside each Panjabi block keeps the original Western ID, so `v1.0-Cx.y.z` citations map 1:1.
 4. **The apostrophe-clitic `'ਤੇ` is ACCEPTABLE** Panjabi orthography (attested in real academic
    text, e.g. `…ਡੀ)'ਤੇ`). It is **NOT** a translation error and must **not** be flagged by lint.
 5. **Spelling:** "Panjabi" / "Panjab" (per Sikhri.org and Panjab Digital Library), not
@@ -102,4 +104,4 @@ not silently diverged.*
 
 ---
 
-**Revision 2026-09-30:** control-head verb is now ਜਾਂਚ ਕਰੋ ਕਿ… and ਸਮਝੌਤਾ is banned for security "compromise" (use ਭੇਦੀ ਹੋ- forms), per the ASVS V6 styleguide locked 2026-09-29. Numerals (§2.2) and register (§4) are unchanged pending a decision; see REVISIONS.md.
+**Revision 2026-09-30:** control-head verb is now ਜਾਂਚ ਕਰੋ ਕਿ… and ਸਮਝੌਤਾ is banned for security "compromise" (use ਭੇਦੀ ਹੋ- forms), per the ASVS V6 styleguide locked 2026-09-29. Numerals (§2.2) revised to Gurmukhi on 2026-09-30. Register (§4) is unchanged pending a decision; see REVISIONS.md.

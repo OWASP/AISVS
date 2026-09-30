@@ -30,7 +30,7 @@ AISVS ਇਸ ਲਈ ਬਣਾਇਆ ਗਿਆ ਸੀ ਤਾਂ ਜੋ ਸੰਸ�
 
 AISVS is organized into 12 control families. Each control family is divided into focused sections that support its control objective. Each section contains verification requirements. AISVS defines three verification levels, defined under Using the AISVS; sections need not include requirements at every level.
 
-AISVS ਨੂੰ 12 ਨਿਯੰਤਰਣ ਪਰਿਵਾਰਾਂ (control families) ਵਿੱਚ ਵਿਵਸਥਿਤ ਕੀਤਾ ਗਿਆ ਹੈ। ਹਰ ਨਿਯੰਤਰਣ ਪਰਿਵਾਰ ਨੂੰ ਕੇਂਦ੍ਰਿਤ ਭਾਗਾਂ ਵਿੱਚ ਵੰਡਿਆ ਗਿਆ ਹੈ ਜੋ ਉਸ ਦੇ ਨਿਯੰਤਰਣ ਉਦੇਸ਼ ਦਾ ਸਮਰਥਨ ਕਰਦੇ ਹਨ। ਹਰ ਭਾਗ ਵਿੱਚ ਤਸਦੀਕ ਲੋੜਾਂ ਸ਼ਾਮਲ ਹਨ। AISVS ਤਿੰਨ ਤਸਦੀਕ ਪੱਧਰ ਪਰਿਭਾਸ਼ਿਤ ਕਰਦਾ ਹੈ, ਜੋ AISVS ਦੀ ਵਰਤੋਂ (Using the AISVS) ਹੇਠ ਪਰਿਭਾਸ਼ਿਤ ਕੀਤੇ ਗਏ ਹਨ; ਹਰ ਭਾਗ ਵਿੱਚ ਹਰ ਪੱਧਰ ਦੀਆਂ ਲੋੜਾਂ ਦਾ ਹੋਣਾ ਜ਼ਰੂਰੀ ਨਹੀਂ ਹੈ।
+AISVS ਨੂੰ ੧੨ ਨਿਯੰਤਰਣ ਪਰਿਵਾਰਾਂ (control families) ਵਿੱਚ ਵਿਵਸਥਿਤ ਕੀਤਾ ਗਿਆ ਹੈ। ਹਰ ਨਿਯੰਤਰਣ ਪਰਿਵਾਰ ਨੂੰ ਕੇਂਦ੍ਰਿਤ ਭਾਗਾਂ ਵਿੱਚ ਵੰਡਿਆ ਗਿਆ ਹੈ ਜੋ ਉਸ ਦੇ ਨਿਯੰਤਰਣ ਉਦੇਸ਼ ਦਾ ਸਮਰਥਨ ਕਰਦੇ ਹਨ। ਹਰ ਭਾਗ ਵਿੱਚ ਤਸਦੀਕ ਲੋੜਾਂ ਸ਼ਾਮਲ ਹਨ। AISVS ਤਿੰਨ ਤਸਦੀਕ ਪੱਧਰ ਪਰਿਭਾਸ਼ਿਤ ਕਰਦਾ ਹੈ, ਜੋ AISVS ਦੀ ਵਰਤੋਂ (Using the AISVS) ਹੇਠ ਪਰਿਭਾਸ਼ਿਤ ਕੀਤੇ ਗਏ ਹਨ; ਹਰ ਭਾਗ ਵਿੱਚ ਹਰ ਪੱਧਰ ਦੀਆਂ ਲੋੜਾਂ ਦਾ ਹੋਣਾ ਜ਼ਰੂਰੀ ਨਹੀਂ ਹੈ।
 
 Each requirement must address a single concern that can ordinarily be implemented and verified as one technical mechanism. Requirements must not duplicate controls defined elsewhere in AISVS. Higher assurance levels may introduce stricter criteria, but those criteria must be stated as separate requirements. Requirements should use clear, technology-neutral language, referencing specific technologies only as examples where they improve clarity.
 

@@ -3,7 +3,7 @@
 <!-- Translator: GeeksikhSecurity -->
 
 # C7 Model Behavior, Output Control & Safety Assurance
-# C7 ਮਾਡਲ ਵਿਵਹਾਰ[^0x10-C07-behavior], ਆਊਟਪੁੱਟ[^0x10-C07-output] ਨਿਯੰਤਰਣ ਅਤੇ ਸਲਾਮਤੀ ਭਰੋਸਾ[^0x10-C07-assurance]
+# C੭ ਮਾਡਲ ਵਿਵਹਾਰ[^0x10-C07-behavior], ਆਊਟਪੁੱਟ[^0x10-C07-output] ਨਿਯੰਤਰਣ ਅਤੇ ਸਲਾਮਤੀ ਭਰੋਸਾ[^0x10-C07-assurance]
 
 ## Control Objective
 ## ਨਿਯੰਤਰਣ ਉਦੇਸ਼
@@ -15,7 +15,7 @@ This chapter addresses constraining, validating, and monitoring model outputs so
 ---
 
 ## C7.1 Output Format Enforcement
-## C7.1 ਆਊਟਪੁੱਟ ਫ਼ਾਰਮੈਟ ਲਾਗੂਕਰਨ
+## C੭.੧ ਆਊਟਪੁੱਟ ਫ਼ਾਰਮੈਟ ਲਾਗੂਕਰਨ
 
 Model outputs must be structured and validated to reduce downstream injection risk.
 
@@ -28,13 +28,13 @@ Model outputs must be structured and validated to reduce downstream injection ri
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **7.1.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਐਪਲੀਕੇਸ਼ਨ ਸਾਰੇ ਮਾਡਲ ਆਊਟਪੁੱਟ ਨੂੰ ਇੱਕ ਪਰਿਭਾਸ਼ਿਤ ਸਕੀਮਾ ਦੇ ਵਿਰੁੱਧ ਪ੍ਰਮਾਣਿਤ ਕਰਦੀ ਹੈ ਅਤੇ ਕਿਸੇ ਵੀ ਅਜਿਹੇ ਆਊਟਪੁੱਟ ਨੂੰ ਰੱਦ ਕਰਦੀ ਹੈ ਜੋ ਮੇਲ ਨਹੀਂ ਖਾਂਦਾ। | 1 |
-| **7.1.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਦੁਆਰਾ ਤਿਆਰ ਕੀਤਾ ਆਊਟਪੁੱਟ ਲੰਬਾਈ ਸੀਮਾਵਾਂ ਅਤੇ ਸਮਾਪਤੀ ਨਿਯੰਤਰਣਾਂ[^0x10-C07-controls] ਦੁਆਰਾ ਸੀਮਿਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 1 |
+| **੭.੧.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਐਪਲੀਕੇਸ਼ਨ ਸਾਰੇ ਮਾਡਲ ਆਊਟਪੁੱਟ ਨੂੰ ਇੱਕ ਪਰਿਭਾਸ਼ਿਤ ਸਕੀਮਾ ਦੇ ਵਿਰੁੱਧ ਪ੍ਰਮਾਣਿਤ ਕਰਦੀ ਹੈ ਅਤੇ ਕਿਸੇ ਵੀ ਅਜਿਹੇ ਆਊਟਪੁੱਟ ਨੂੰ ਰੱਦ ਕਰਦੀ ਹੈ ਜੋ ਮੇਲ ਨਹੀਂ ਖਾਂਦਾ। | ੧ |
+| **੭.੧.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਦੁਆਰਾ ਤਿਆਰ ਕੀਤਾ ਆਊਟਪੁੱਟ ਲੰਬਾਈ ਸੀਮਾਵਾਂ ਅਤੇ ਸਮਾਪਤੀ ਨਿਯੰਤਰਣਾਂ[^0x10-C07-controls] ਦੁਆਰਾ ਸੀਮਿਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੧ |
 
 ---
 
 ## C7.2 Hallucination Detection & Mitigation
-## C7.2 Hallucination[^0x10-C07-hallucination] ਦੀ ਪਛਾਣ ਅਤੇ ਘਟਾਉਣਾ
+## C੭.੨ Hallucination[^0x10-C07-hallucination] ਦੀ ਪਛਾਣ ਅਤੇ ਘਟਾਉਣਾ
 
 Potentially inaccurate or fabricated content must be detected so unreliable outputs do not reach users or downstream systems.
 
@@ -48,14 +48,14 @@ Potentially inaccurate or fabricated content must be detected so unreliable outp
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **7.2.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਸਟਮ ਇੱਕ ਭਰੋਸਾ ਅਨੁਮਾਨ ਵਿਧੀ[^0x10-C07-confidence] (confidence estimation) ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਤਿਆਰ ਕੀਤੇ ਜਵਾਬਾਂ ਦੀ ਭਰੋਸੇਯੋਗਤਾ ਦਾ ਮੁਲਾਂਕਣ ਕਰਦਾ ਹੈ। | 2 |
-| **7.2.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਜੇ ਭਰੋਸਾ ਸਕੋਰ ਇੱਕ ਪਰਿਭਾਸ਼ਿਤ ਥ੍ਰੈਸ਼ਹੋਲਡ[^0x10-C07-threshold] ਤੋਂ ਹੇਠਾਂ ਡਿੱਗ ਜਾਂਦਾ ਹੈ ਤਾਂ ਐਪਲੀਕੇਸ਼ਨ ਆਪਣੇ ਆਪ ਜਵਾਬਾਂ ਨੂੰ ਰੋਕ ਦਿੰਦੀ ਹੈ ਜਾਂ ਇੱਕ ਫ਼ਾਲਬੈਕ ਸੁਨੇਹੇ[^0x10-C07-fallback] 'ਤੇ ਬਦਲ ਜਾਂਦੀ ਹੈ। | 2 |
-| **7.2.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਨੀਤੀ ਦੁਆਰਾ ਉੱਚ-ਜੋਖਮ ਵਜੋਂ ਵਰਗੀਕ੍ਰਿਤ[^0x10-C07-classified] ਕੀਤੇ ਜਵਾਬਾਂ ਲਈ, ਸਿਸਟਮ ਇੱਕ ਵਾਧੂ ਤਸਦੀਕ ਪੜਾਅ ਕਰਦਾ ਹੈ। | 3 |
+| **੭.੨.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਿਸਟਮ ਇੱਕ ਭਰੋਸਾ ਅਨੁਮਾਨ ਵਿਧੀ[^0x10-C07-confidence] (confidence estimation) ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਤਿਆਰ ਕੀਤੇ ਜਵਾਬਾਂ ਦੀ ਭਰੋਸੇਯੋਗਤਾ ਦਾ ਮੁਲਾਂਕਣ ਕਰਦਾ ਹੈ। | ੨ |
+| **੭.੨.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਜੇ ਭਰੋਸਾ ਸਕੋਰ ਇੱਕ ਪਰਿਭਾਸ਼ਿਤ ਥ੍ਰੈਸ਼ਹੋਲਡ[^0x10-C07-threshold] ਤੋਂ ਹੇਠਾਂ ਡਿੱਗ ਜਾਂਦਾ ਹੈ ਤਾਂ ਐਪਲੀਕੇਸ਼ਨ ਆਪਣੇ ਆਪ ਜਵਾਬਾਂ ਨੂੰ ਰੋਕ ਦਿੰਦੀ ਹੈ ਜਾਂ ਇੱਕ ਫ਼ਾਲਬੈਕ ਸੁਨੇਹੇ[^0x10-C07-fallback] 'ਤੇ ਬਦਲ ਜਾਂਦੀ ਹੈ। | ੨ |
+| **੭.੨.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਨੀਤੀ ਦੁਆਰਾ ਉੱਚ-ਜੋਖਮ ਵਜੋਂ ਵਰਗੀਕ੍ਰਿਤ[^0x10-C07-classified] ਕੀਤੇ ਜਵਾਬਾਂ ਲਈ, ਸਿਸਟਮ ਇੱਕ ਵਾਧੂ ਤਸਦੀਕ ਪੜਾਅ ਕਰਦਾ ਹੈ। | ੩ |
 
 ---
 
 ## C7.3 Output Safety
-## C7.3 ਆਊਟਪੁੱਟ ਸਲਾਮਤੀ
+## C੭.੩ ਆਊਟਪੁੱਟ ਸਲਾਮਤੀ
 
 Technical controls must detect and remove unsafe content before it is shown to the user.
 
@@ -70,15 +70,15 @@ Technical controls must detect and remove unsafe content before it is shown to t
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |
-| **7.3.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਵੈਚਾਲਿਤ ਵਰਗੀਕਾਰ (classifiers) ਹਰ ਜਵਾਬ ਨੂੰ ਸਕੈਨ ਕਰਦੇ ਹਨ ਅਤੇ ਉਸ ਸਮੱਗਰੀ ਨੂੰ ਰੋਕਦੇ ਹਨ ਜੋ ਪਰਿਭਾਸ਼ਿਤ ਨੁਕਸਾਨਦੇਹ ਸਮੱਗਰੀ ਸ਼੍ਰੇਣੀਆਂ ਨਾਲ ਮੇਲ ਖਾਂਦੀ ਹੈ। | 1 |
-| **7.3.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਆਊਟਪੁੱਟ ਫ਼ਿਲਟਰ ਉਹਨਾਂ ਜਵਾਬਾਂ ਦੀ ਪਛਾਣ ਕਰਦੇ ਹਨ ਅਤੇ ਉਹਨਾਂ ਨੂੰ ਰੋਕਦੇ ਹਨ ਜੋ system prompt ਦੀ ਸਮੱਗਰੀ ਜਾਂ ਬੈਕਐਂਡ ਡਾਟਾ ਦਾ ਖੁਲਾਸਾ ਕਰਦੇ ਹਨ। | 2 |
-| **7.3.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਦੁਆਰਾ ਤਿਆਰ ਕੀਤੇ ਆਊਟਪੁੱਟ ਨੂੰ ਬਾਹਰ ਜਾਣ ਵਾਲੀਆਂ ਬੇਨਤੀਆਂ ਸ਼ੁਰੂ ਕਰਨ ਤੋਂ ਰੋਕਿਆ ਜਾਂਦਾ ਹੈ। | 2 |
-| **7.3.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਆਊਟਪੁੱਟ ਦੀ ਲੁਕੀ ਹੋਈ, ਏਨਕੋਡ ਕੀਤੀ, ਜਾਂ ਗੁਮਰਾਹਕੁਨ ਸਮੱਗਰੀ ਲਈ ਜਾਂਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ ਜੋ homoglyph[^0x10-C07-homoglyph] (ਸਮਰੂਪ ਅੱਖਰ), ਫ਼ਾਰਮੈਟਿੰਗ, ਮੈਟਾਡਾਟਾ, ਜਾਂ ਢਾਂਚਾਗਤ ਖੇਤਰਾਂ ਰਾਹੀਂ ਬਣਾਈ ਗਈ ਹੋਵੇ। | 3 |
+| **੭.੩.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਵੈਚਾਲਿਤ ਵਰਗੀਕਾਰ (classifiers) ਹਰ ਜਵਾਬ ਨੂੰ ਸਕੈਨ ਕਰਦੇ ਹਨ ਅਤੇ ਉਸ ਸਮੱਗਰੀ ਨੂੰ ਰੋਕਦੇ ਹਨ ਜੋ ਪਰਿਭਾਸ਼ਿਤ ਨੁਕਸਾਨਦੇਹ ਸਮੱਗਰੀ ਸ਼੍ਰੇਣੀਆਂ ਨਾਲ ਮੇਲ ਖਾਂਦੀ ਹੈ। | ੧ |
+| **੭.੩.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਆਊਟਪੁੱਟ ਫ਼ਿਲਟਰ ਉਹਨਾਂ ਜਵਾਬਾਂ ਦੀ ਪਛਾਣ ਕਰਦੇ ਹਨ ਅਤੇ ਉਹਨਾਂ ਨੂੰ ਰੋਕਦੇ ਹਨ ਜੋ system prompt ਦੀ ਸਮੱਗਰੀ ਜਾਂ ਬੈਕਐਂਡ ਡਾਟਾ ਦਾ ਖੁਲਾਸਾ ਕਰਦੇ ਹਨ। | ੨ |
+| **੭.੩.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਦੁਆਰਾ ਤਿਆਰ ਕੀਤੇ ਆਊਟਪੁੱਟ ਨੂੰ ਬਾਹਰ ਜਾਣ ਵਾਲੀਆਂ ਬੇਨਤੀਆਂ ਸ਼ੁਰੂ ਕਰਨ ਤੋਂ ਰੋਕਿਆ ਜਾਂਦਾ ਹੈ। | ੨ |
+| **੭.੩.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਆਊਟਪੁੱਟ ਦੀ ਲੁਕੀ ਹੋਈ, ਏਨਕੋਡ ਕੀਤੀ, ਜਾਂ ਗੁਮਰਾਹਕੁਨ ਸਮੱਗਰੀ ਲਈ ਜਾਂਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ ਜੋ homoglyph[^0x10-C07-homoglyph] (ਸਮਰੂਪ ਅੱਖਰ), ਫ਼ਾਰਮੈਟਿੰਗ, ਮੈਟਾਡਾਟਾ, ਜਾਂ ਢਾਂਚਾਗਤ ਖੇਤਰਾਂ ਰਾਹੀਂ ਬਣਾਈ ਗਈ ਹੋਵੇ। | ੩ |
 
 ---
 
 ## C7.4 Source Attribution & Citation Integrity
-## C7.4 ਸਰੋਤ-ਨਿਰਧਾਰਨ[^0x10-C07-attribution] ਅਤੇ ਹਵਾਲਾ ਅਖੰਡਤਾ
+## C੭.੪ ਸਰੋਤ-ਨਿਰਧਾਰਨ[^0x10-C07-attribution] ਅਤੇ ਹਵਾਲਾ ਅਖੰਡਤਾ
 
 RAG-grounded outputs must be traceable to their source documents, with cited claims verifiably supported by retrieved content.
 
@@ -93,10 +93,10 @@ RAG-ਆਧਾਰਿਤ[^0x10-C07-grounded] ਆਊਟਪੁੱਟ ਦਾ ਆਪ�
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :-------: | -------------------------------------------------------------------------------------------------------------------------------------------- | :---: |
-| **7.4.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** retrieval-augmented generation (RAG) ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਤਿਆਰ ਕੀਤੇ ਜਵਾਬਾਂ ਵਿੱਚ ਸਰੋਤ ਦਸਤਾਵੇਜ਼ਾਂ ਦਾ ਸਰੋਤ-ਨਿਰਧਾਰਨ (attribution) ਸ਼ਾਮਲ ਹੁੰਦਾ ਹੈ। | 1 |
-| **7.4.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** RAG ਸਰੋਤ-ਨਿਰਧਾਰਨ ਪ੍ਰਾਪਤੀ ਮੈਟਾਡਾਟਾ ਤੋਂ ਲਏ ਜਾਂਦੇ ਹਨ ਅਤੇ ਮਾਡਲ ਦੁਆਰਾ ਤਿਆਰ ਨਹੀਂ ਕੀਤੇ ਜਾਂਦੇ, ਤਾਂ ਜੋ ਮੂਲ-ਸਰੋਤ[^0x10-C07-provenance] (provenance) ਘੜਿਆ ਨਾ ਜਾ ਸਕੇ। | 1 |
-| **7.4.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇੱਕ RAG ਜਵਾਬ ਵਿਚਲੇ ਦਾਅਵਿਆਂ ਨੂੰ ਪ੍ਰਾਪਤ ਕੀਤੇ ਚੰਕ[^0x10-C07-chunk] (chunk) ਤੱਕ ਟਰੇਸ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ। | 2 |
-| **7.4.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਤਿਆਰ ਕੀਤੇ ਮੀਡੀਆ ਨੂੰ ਵਾਟਰਮਾਰਕ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ਤਾਂ ਜੋ ਇਹ ਸਾਬਤ ਹੋ ਸਕੇ ਕਿ ਇਹ AI ਦੁਆਰਾ ਤਿਆਰ ਕੀਤਾ ਗਿਆ ਸੀ। | 3 |
+| **੭.੪.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** retrieval-augmented generation (RAG) ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਤਿਆਰ ਕੀਤੇ ਜਵਾਬਾਂ ਵਿੱਚ ਸਰੋਤ ਦਸਤਾਵੇਜ਼ਾਂ ਦਾ ਸਰੋਤ-ਨਿਰਧਾਰਨ (attribution) ਸ਼ਾਮਲ ਹੁੰਦਾ ਹੈ। | ੧ |
+| **੭.੪.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** RAG ਸਰੋਤ-ਨਿਰਧਾਰਨ ਪ੍ਰਾਪਤੀ ਮੈਟਾਡਾਟਾ ਤੋਂ ਲਏ ਜਾਂਦੇ ਹਨ ਅਤੇ ਮਾਡਲ ਦੁਆਰਾ ਤਿਆਰ ਨਹੀਂ ਕੀਤੇ ਜਾਂਦੇ, ਤਾਂ ਜੋ ਮੂਲ-ਸਰੋਤ[^0x10-C07-provenance] (provenance) ਘੜਿਆ ਨਾ ਜਾ ਸਕੇ। | ੧ |
+| **੭.੪.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇੱਕ RAG ਜਵਾਬ ਵਿਚਲੇ ਦਾਅਵਿਆਂ ਨੂੰ ਪ੍ਰਾਪਤ ਕੀਤੇ ਚੰਕ[^0x10-C07-chunk] (chunk) ਤੱਕ ਟਰੇਸ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ। | ੨ |
+| **੭.੪.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਤਿਆਰ ਕੀਤੇ ਮੀਡੀਆ ਨੂੰ ਵਾਟਰਮਾਰਕ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ਤਾਂ ਜੋ ਇਹ ਸਾਬਤ ਹੋ ਸਕੇ ਕਿ ਇਹ AI ਦੁਆਰਾ ਤਿਆਰ ਕੀਤਾ ਗਿਆ ਸੀ। | ੩ |
 
 ---
 
@@ -125,4 +125,4 @@ RAG-ਆਧਾਰਿਤ[^0x10-C07-grounded] ਆਊਟਪੁੱਟ ਦਾ ਆਪ�
 [^0x10-C07-attribution]: **source attribution** (EN) -> ਸਰੋਤ-ਨਿਰਧਾਰਨ — reuses the rendering already fixed for dataset-use attribution, kept distinct from ਹਵਾਲਾ (citation) because 7.4.2 depends on that difference: attributions must come from retrieval metadata, not the model, while a citation is what the reader sees. Full discussion: OPEN-QUESTIONS.md Q72.
 [^0x10-C07-grounded]: **RAG-grounded** (EN) -> RAG-ਆਧਾਰਿਤ — "grounding" is a high-risk metaphor term, so the neutral technical sense ("anchored in retrieved evidence") is rendered as ਆਧਾਰਿਤ (based on) rather than any literal earth/ground calque that would import imagery the source does not intend. Full discussion: OPEN-QUESTIONS.md Q71.
 [^0x10-C07-provenance]: **provenance** (EN) -> ਮੂਲ-ਸਰੋਤ ("root-source") — states the "documented chain of origin" sense plainly, avoiding ਉਤਪਤੀ ("origination"), which carries creation-narrative overtones in Panjabi religious register. Full discussion: OPEN-QUESTIONS.md Q73.
-[^0x10-C07-chunk]: **chunk** (EN, retrieved chunk) -> ਚੰਕ — kept as a loan because a chunk is a specific RAG-pipeline retrieval unit, not a generic piece of text; ਖੰਡ ("segment") was additionally excluded for its near-collision with ਅਖੰਡਤਾ (integrity), the locked term appearing in this same chapter's C7.4 title. Full discussion: OPEN-QUESTIONS.md Q74.
+[^0x10-C07-chunk]: **chunk** (EN, retrieved chunk) -> ਚੰਕ — kept as a loan because a chunk is a specific RAG-pipeline retrieval unit, not a generic piece of text; ਖੰਡ ("segment") was additionally excluded for its near-collision with ਅਖੰਡਤਾ (integrity), the locked term appearing in this same chapter's C੭.੪ title. Full discussion: OPEN-QUESTIONS.md Q74.

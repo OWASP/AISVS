@@ -8,7 +8,8 @@ Source of revisions: locked styleguide from the ASVS V6 manual review (Sept 28-2
 1. **Control-head verb:** `ਤਸਦੀਕ ਕਰੋ ਕਿ` -> `ਜਾਂਚ ਕਰੋ ਕਿ` (263 uses).
 2. **Security "compromise":** `ਸਮਝੌਤਾ` (primary sense "agreement", OPEN-QUESTIONS Q19) -> `ਭੇਦੀ ਹੋ-` forms (13 uses). The locked term is `ਭੇਦੀ ਹੋ ਗਿਆ` (breach). Inflected noun and adjective forms (`ਭੇਦੀ ਹੋਣ`, `ਭੇਦੀ ਹੋਏ`) are proposed and need reviewer confirmation.
 3. `GLOSSARY.md`, `TRANSLATION-RULES.md` and `tools/lint-terminology.py` updated so the old forms cannot return.
-4. Print-edition markdown mirrored with the same replacements. **The PDF must be rebuilt** with `print/build-print-pdf.sh`.
+4. **Gurmukhi numerals (added 2026-09-30):** requirement IDs, chapter/section refs (C੫.੧, AC.੧੪.੧), levels and plain quantities in the Panjabi block use ੦-੯. 560 lines changed across the 18 files, digits only, Panjabi lines only. The English block keeps Western IDs. Retained in Western digits: names and versions of standards (OAuth 2.1, ISO/IEC 27001, NIST SP 800-190, RFC 9449, "ਸੰਸਕਰਣ 1.0", CC BY-SA 4.0), code spans, URLs. Tool: `tools/gurmukhi-numerals.py --check`. ID-completeness lint now reads Gurmukhi IDs.
+5. Print-edition markdown mirrored with the same replacements. **The PDF must be rebuilt** with `print/build-print-pdf.sh`.
 
 ### Per-file counts (before revision)
 | File | ਤਸਦੀਕ ਕਰੋ -> ਜਾਂਚ ਕਰੋ | ਸਮਝੌਤ- -> ਭੇਦੀ ਹੋ- |
@@ -33,6 +34,7 @@ Source of revisions: locked styleguide from the ASVS V6 manual review (Sept 28-2
 | `0x92-Appendix-C_AI_for_Code_Generation.md` | 68 | 7 |
 
 ### Open items needing a decision (not applied)
-- **Numerals:** the locked ASVS styleguide uses Gurmukhi numerals for section and control references. AISVS rules (2.2, 2.3) keep Western digits and English requirement IDs so `v1.0-Cx.y.z` citations and the ID-completeness lint keep working.
 - **Register:** AISVS rules say formal academic Panjabi. The locked styleguide says colloquial over academic. Moving the register is a chapter-by-chapter retranslation pass, not a find-and-replace.
 - **Verb precision:** `ਜਾਂਚ ਕਰੋ` now covers "verify" and is also used for "check" in 20 places. Review those 20 uses so the two stay distinct.
+- **Ordinals in prose:** the ASVS styleguide prefers word forms (ਪਹਿਲਾ/ਦੂਜਾ/ਤੀਜਾ) in running prose. Not applied mechanically; needs a reader.
+- **Copyright line:** "2025-2026" was left in Western digits with the `&copy;` entity. Convert if you want it Gurmukhi.

@@ -3,7 +3,7 @@
 <!-- Translator: GeeksikhSecurity -->
 
 # C4 Infrastructure, Configuration & Deployment Security
-# C4 ਬੁਨਿਆਦੀ ਢਾਂਚਾ, ਸੰਰਚਨਾ ਅਤੇ ਤੈਨਾਤੀ ਸੁਰੱਖਿਆ
+# C੪ ਬੁਨਿਆਦੀ ਢਾਂਚਾ, ਸੰਰਚਨਾ ਅਤੇ ਤੈਨਾਤੀ ਸੁਰੱਖਿਆ
 
 ## Control Objective
 ## ਨਿਯੰਤਰਣ ਉਦੇਸ਼
@@ -15,7 +15,7 @@ This chapter addresses hardening AI-specific infrastructure components against m
 ---
 
 ## C4.1 AI Workload Sandboxing & Validation
-## C4.1 AI ਵਰਕਲੋਡ ਸੈਂਡਬਾਕਸਿੰਗ ਅਤੇ ਪ੍ਰਮਾਣਿਕਤਾ
+## C੪.੧ AI ਵਰਕਲੋਡ ਸੈਂਡਬਾਕਸਿੰਗ ਅਤੇ ਪ੍ਰਮਾਣਿਕਤਾ
 
 Untrusted AI models must be isolated in secure sandboxes, and sensitive AI workloads protected using trusted execution environments (TEEs) and confidential computing technologies.
 
@@ -30,15 +30,15 @@ Untrusted AI models must be isolated in secure sandboxes, and sensitive AI workl
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------ | :---: |
-| **4.1.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਮਾਡਲ ਅਲੱਗ-ਥਲੱਗ ਕੀਤੇ ਸੈਂਡਬਾਕਸਾਂ ਵਿੱਚ ਚੱਲਦੇ ਹਨ। | 1 |
-| **4.1.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਆਰਟੀਫ਼ੈਕਟ ਲੋਡਿੰਗ ਸੀਰੀਅਲਾਈਜ਼ੇਸ਼ਨ ਫ਼ਾਰਮੈਟਾਂ ਦੀ ਇੱਕ ਸਪਸ਼ਟ allow-list ਲਾਗੂ ਕਰਦੀ ਹੈ ਜੋ ਡੀਸੀਰੀਅਲਾਈਜ਼ੇਸ਼ਨ ਦੌਰਾਨ ਮਨਮਰਜ਼ੀ ਕੋਡ ਐਗਜ਼ੀਕਿਊਸ਼ਨ (arbitrary code execution) ਦੀ ਆਗਿਆ ਨਹੀਂ ਦਿੰਦੇ। | 1 |
-| **4.1.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਲੋਡ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਵਰਕਲੋਡ ਅਟੈਸਟੇਸ਼ਨ[^0x10-C04-attestation] (workload attestation) ਕੀਤੀ ਜਾਂਦੀ ਹੈ ਤਾਂ ਜੋ ਇਹ ਸਬੂਤ ਮਿਲ ਸਕੇ ਕਿ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਵਾਤਾਵਰਣ ਨਾਲ ਛੇੜਛਾੜ ਨਹੀਂ ਕੀਤੀ ਗਈ। | 3 |
-| **4.1.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਗੁਪਤ ਇਨਫ਼ਰੈਂਸ ਸੇਵਾਵਾਂ ਅਲੱਗ-ਥਲੱਗ ਕੀਤੇ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਵਾਤਾਵਰਣਾਂ ਰਾਹੀਂ ਰਨਟਾਈਮ ਦੌਰਾਨ ਮਾਡਲ ਵੇਟਸ (model weights) ਦੀ ਸੁਰੱਖਿਆ ਕਰਦੀਆਂ ਹਨ। | 3 |
+| **੪.੧.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਮਾਡਲ ਅਲੱਗ-ਥਲੱਗ ਕੀਤੇ ਸੈਂਡਬਾਕਸਾਂ ਵਿੱਚ ਚੱਲਦੇ ਹਨ। | ੧ |
+| **੪.੧.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਆਰਟੀਫ਼ੈਕਟ ਲੋਡਿੰਗ ਸੀਰੀਅਲਾਈਜ਼ੇਸ਼ਨ ਫ਼ਾਰਮੈਟਾਂ ਦੀ ਇੱਕ ਸਪਸ਼ਟ allow-list ਲਾਗੂ ਕਰਦੀ ਹੈ ਜੋ ਡੀਸੀਰੀਅਲਾਈਜ਼ੇਸ਼ਨ ਦੌਰਾਨ ਮਨਮਰਜ਼ੀ ਕੋਡ ਐਗਜ਼ੀਕਿਊਸ਼ਨ (arbitrary code execution) ਦੀ ਆਗਿਆ ਨਹੀਂ ਦਿੰਦੇ। | ੧ |
+| **੪.੧.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮਾਡਲ ਲੋਡ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਵਰਕਲੋਡ ਅਟੈਸਟੇਸ਼ਨ[^0x10-C04-attestation] (workload attestation) ਕੀਤੀ ਜਾਂਦੀ ਹੈ ਤਾਂ ਜੋ ਇਹ ਸਬੂਤ ਮਿਲ ਸਕੇ ਕਿ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਵਾਤਾਵਰਣ ਨਾਲ ਛੇੜਛਾੜ ਨਹੀਂ ਕੀਤੀ ਗਈ। | ੩ |
+| **੪.੧.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਗੁਪਤ ਇਨਫ਼ਰੈਂਸ ਸੇਵਾਵਾਂ ਅਲੱਗ-ਥਲੱਗ ਕੀਤੇ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਵਾਤਾਵਰਣਾਂ ਰਾਹੀਂ ਰਨਟਾਈਮ ਦੌਰਾਨ ਮਾਡਲ ਵੇਟਸ (model weights) ਦੀ ਸੁਰੱਖਿਆ ਕਰਦੀਆਂ ਹਨ। | ੩ |
 
 ---
 
 ## C4.2 AI Hardware Security
-## C4.2 AI ਹਾਰਡਵੇਅਰ ਸੁਰੱਖਿਆ
+## C੪.੨ AI ਹਾਰਡਵੇਅਰ ਸੁਰੱਖਿਆ
 
 AI-specific hardware components, including GPUs, TPUs, and specialized AI accelerators, must be secured.
 
@@ -54,16 +54,16 @@ AI-ਵਿਸ਼ੇਸ਼ ਹਾਰਡਵੇਅਰ ਹਿੱਸਿਆਂ ਨੂ�
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------ | :---: |
-| **4.2.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਐਕਸਲੇਰੇਟਰ (GPU) ਫ਼ਰਮਵੇਅਰ ਵਰਜ਼ਨ-ਪਿੰਨ ਕੀਤਾ, ਦਸਤਖ਼ਤ ਕੀਤਾ, ਅਤੇ ਬੂਟ ਵੇਲੇ ਅਟੈਸਟ ਕੀਤਾ ਗਿਆ ਹੈ। | 2 |
-| **4.2.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਭਰੋਸੇਯੋਗ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਵਾਤਾਵਰਣ (trusted execution environment, TEE) ਦੇ ਅੰਦਰ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਹਾਰਡਵੇਅਰ ਦੁਆਰਾ ਲਾਗੂ ਕੀਤੀ ਅਲੱਗ-ਥਲੱਗਤਾ, ਮੈਮੋਰੀ[^0x10-C04-memory] ਏਨਕ੍ਰਿਪਸ਼ਨ, ਅਤੇ ਅਖੰਡਤਾ (integrity) ਸੁਰੱਖਿਆ ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ। | 3 |
-| **4.2.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਵਰਕਲੋਡ ਦੇ ਚੱਲਣ ਤੋਂ ਪਹਿਲਾਂ AI ਐਕਸਲੇਰੇਟਰ (GPU) ਦੀ ਅਖੰਡਤਾ ਨੂੰ ਹਾਰਡਵੇਅਰ-ਆਧਾਰਿਤ ਅਟੈਸਟੇਸ਼ਨ ਵਿਧੀਆਂ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਪ੍ਰਮਾਣਿਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | 3 |
-| **4.2.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਐਕਸਲੇਰੇਟਰ (GPU) ਮੈਮੋਰੀ ਨੂੰ ਵਰਕਲੋਡਾਂ ਦੇ ਵਿਚਕਾਰ ਵਿਭਾਜਨ ਵਿਧੀਆਂ ਰਾਹੀਂ ਅਲੱਗ-ਥਲੱਗ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਜਿਸ ਵਿੱਚ ਕੰਮਾਂ ਦੇ ਵਿਚਕਾਰ ਮੈਮੋਰੀ ਸੈਨੀਟਾਈਜ਼ੇਸ਼ਨ ਸ਼ਾਮਲ ਹੈ। | 3 |
-| **4.2.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਐਕਸਲੇਰੇਟਰ ਇੰਟਰਕਨੈਕਟ ਪ੍ਰਵਾਨਿਤ ਟੋਪੋਲੋਜੀਆਂ ਅਤੇ ਪ੍ਰਮਾਣੀਕਰਨ ਕੀਤੇ ਐਂਡਪੌਇੰਟਾਂ ਤੱਕ ਸੀਮਿਤ ਹਨ। | 3 |
+| **੪.੨.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** AI ਐਕਸਲੇਰੇਟਰ (GPU) ਫ਼ਰਮਵੇਅਰ ਵਰਜ਼ਨ-ਪਿੰਨ ਕੀਤਾ, ਦਸਤਖ਼ਤ ਕੀਤਾ, ਅਤੇ ਬੂਟ ਵੇਲੇ ਅਟੈਸਟ ਕੀਤਾ ਗਿਆ ਹੈ। | ੨ |
+| **੪.੨.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਭਰੋਸੇਯੋਗ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਵਾਤਾਵਰਣ (trusted execution environment, TEE) ਦੇ ਅੰਦਰ ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਹਾਰਡਵੇਅਰ ਦੁਆਰਾ ਲਾਗੂ ਕੀਤੀ ਅਲੱਗ-ਥਲੱਗਤਾ, ਮੈਮੋਰੀ[^0x10-C04-memory] ਏਨਕ੍ਰਿਪਸ਼ਨ, ਅਤੇ ਅਖੰਡਤਾ (integrity) ਸੁਰੱਖਿਆ ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ। | ੩ |
+| **੪.੨.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਹਰ ਵਰਕਲੋਡ ਦੇ ਚੱਲਣ ਤੋਂ ਪਹਿਲਾਂ AI ਐਕਸਲੇਰੇਟਰ (GPU) ਦੀ ਅਖੰਡਤਾ ਨੂੰ ਹਾਰਡਵੇਅਰ-ਆਧਾਰਿਤ ਅਟੈਸਟੇਸ਼ਨ ਵਿਧੀਆਂ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਪ੍ਰਮਾਣਿਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। | ੩ |
+| **੪.੨.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਐਕਸਲੇਰੇਟਰ (GPU) ਮੈਮੋਰੀ ਨੂੰ ਵਰਕਲੋਡਾਂ ਦੇ ਵਿਚਕਾਰ ਵਿਭਾਜਨ ਵਿਧੀਆਂ ਰਾਹੀਂ ਅਲੱਗ-ਥਲੱਗ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਜਿਸ ਵਿੱਚ ਕੰਮਾਂ ਦੇ ਵਿਚਕਾਰ ਮੈਮੋਰੀ ਸੈਨੀਟਾਈਜ਼ੇਸ਼ਨ ਸ਼ਾਮਲ ਹੈ। | ੩ |
+| **੪.੨.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਐਕਸਲੇਰੇਟਰ ਇੰਟਰਕਨੈਕਟ ਪ੍ਰਵਾਨਿਤ ਟੋਪੋਲੋਜੀਆਂ ਅਤੇ ਪ੍ਰਮਾਣੀਕਰਨ ਕੀਤੇ ਐਂਡਪੌਇੰਟਾਂ ਤੱਕ ਸੀਮਿਤ ਹਨ। | ੩ |
 
 ---
 
 ## C4.3 Edge & Distributed AI Security
-## C4.3 ਐਜ ਅਤੇ ਵੰਡੇ ਹੋਏ AI ਦੀ ਸੁਰੱਖਿਆ
+## C੪.੩ ਐਜ ਅਤੇ ਵੰਡੇ ਹੋਏ AI ਦੀ ਸੁਰੱਖਿਆ
 
 Distributed AI deployments, including edge computing, federated learning, and multi-site architectures, must be secured.
 
@@ -79,11 +79,11 @@ Distributed AI deployments, including edge computing, federated learning, and mu
 
 | # | ਵੇਰਵਾ | ਪੱਧਰ |
 | :--------: | ------------------------------------------------------------------------------------------ | :---: |
-| **4.3.1** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਐਜ AI ਡਿਵਾਈਸ ਮਜ਼ਬੂਤ ਪ੍ਰਮਾਣੀਕਰਨ ਵਿਧੀਆਂ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਕੇਂਦਰੀ ਬੁਨਿਆਦੀ ਢਾਂਚੇ ਨਾਲ ਪ੍ਰਮਾਣੀਕਰਨ ਕਰਦੇ ਹਨ। | 1 |
-| **4.3.2** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਐਜ ਜਾਂ ਮੋਬਾਈਲ ਡਿਵਾਈਸਾਂ 'ਤੇ ਤੈਨਾਤ ਕੀਤੇ ਮਾਡਲ ਪੈਕੇਜਿੰਗ ਦੌਰਾਨ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਤੌਰ 'ਤੇ ਦਸਤਖ਼ਤ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਅਤੇ ਇਹ ਕਿ ਡਿਵਾਈਸ 'ਤੇ ਮੌਜੂਦ ਰਨਟਾਈਮ ਲੋਡਿੰਗ ਜਾਂ ਇਨਫ਼ਰੈਂਸ ਤੋਂ ਪਹਿਲਾਂ ਇਹਨਾਂ ਦਸਤਖ਼ਤਾਂ ਜਾਂ ਚੈੱਕਸਮਾਂ ਨੂੰ ਪ੍ਰਮਾਣਿਤ ਕਰਦਾ ਹੈ। | 2 |
-| **4.3.3** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇਨਫ਼ਰੈਂਸ ਰਨਟਾਈਮ ਪ੍ਰਕਿਰਿਆ, ਮੈਮੋਰੀ, ਅਤੇ ਫ਼ਾਈਲ ਪਹੁੰਚ ਦੀ ਅਲੱਗ-ਥਲੱਗਤਾ ਲਾਗੂ ਕਰਦੇ ਹਨ। | 3 |
-| **4.3.4** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਸੰਭਾਲੇ ਮਾਡਲ ਵੇਟਸ ਅਤੇ ਸੰਵੇਦਨਸ਼ੀਲ ਪੈਰਾਮੀਟਰ ਹਾਰਡਵੇਅਰ-ਸਮਰਥਿਤ ਕੁੰਜੀ ਸਟੋਰਾਂ ਜਾਂ ਸੁਰੱਖਿਅਤ ਐਨਕਲੇਵਾਂ (secure enclaves) ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਏਨਕ੍ਰਿਪਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | 3 |
-| **4.3.5** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮੋਬਾਈਲ, IoT, ਜਾਂ ਏਮਬੈਡਡ ਐਪਲੀਕੇਸ਼ਨਾਂ ਦੇ ਅੰਦਰ ਪੈਕ ਕੀਤੇ ਮਾਡਲ ਸਥਿਰ ਸਥਿਤੀ ਵਿੱਚ (at rest) ਏਨਕ੍ਰਿਪਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਅਤੇ ਸਿਰਫ਼ ਇੱਕ ਭਰੋਸੇਯੋਗ ਰਨਟਾਈਮ ਜਾਂ ਸੁਰੱਖਿਅਤ ਐਨਕਲੇਵ ਦੇ ਅੰਦਰ ਹੀ ਡੀਕ੍ਰਿਪਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਜਿਸ ਨਾਲ ਐਪ ਪੈਕੇਜ ਜਾਂ ਫ਼ਾਈਲਸਿਸਟਮ ਤੋਂ ਸਿੱਧੇ ਕੱਢਣ ਨੂੰ ਰੋਕਿਆ ਜਾਂਦਾ ਹੈ। | 3 |
+| **੪.੩.੧** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਐਜ AI ਡਿਵਾਈਸ ਮਜ਼ਬੂਤ ਪ੍ਰਮਾਣੀਕਰਨ ਵਿਧੀਆਂ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਕੇਂਦਰੀ ਬੁਨਿਆਦੀ ਢਾਂਚੇ ਨਾਲ ਪ੍ਰਮਾਣੀਕਰਨ ਕਰਦੇ ਹਨ। | ੧ |
+| **੪.੩.੨** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਐਜ ਜਾਂ ਮੋਬਾਈਲ ਡਿਵਾਈਸਾਂ 'ਤੇ ਤੈਨਾਤ ਕੀਤੇ ਮਾਡਲ ਪੈਕੇਜਿੰਗ ਦੌਰਾਨ ਕ੍ਰਿਪਟੋਗ੍ਰਾਫ਼ਿਕ ਤੌਰ 'ਤੇ ਦਸਤਖ਼ਤ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਅਤੇ ਇਹ ਕਿ ਡਿਵਾਈਸ 'ਤੇ ਮੌਜੂਦ ਰਨਟਾਈਮ ਲੋਡਿੰਗ ਜਾਂ ਇਨਫ਼ਰੈਂਸ ਤੋਂ ਪਹਿਲਾਂ ਇਹਨਾਂ ਦਸਤਖ਼ਤਾਂ ਜਾਂ ਚੈੱਕਸਮਾਂ ਨੂੰ ਪ੍ਰਮਾਣਿਤ ਕਰਦਾ ਹੈ। | ੨ |
+| **੪.੩.੩** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਇਨਫ਼ਰੈਂਸ ਰਨਟਾਈਮ ਪ੍ਰਕਿਰਿਆ, ਮੈਮੋਰੀ, ਅਤੇ ਫ਼ਾਈਲ ਪਹੁੰਚ ਦੀ ਅਲੱਗ-ਥਲੱਗਤਾ ਲਾਗੂ ਕਰਦੇ ਹਨ। | ੩ |
+| **੪.੩.੪** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਸੰਭਾਲੇ ਮਾਡਲ ਵੇਟਸ ਅਤੇ ਸੰਵੇਦਨਸ਼ੀਲ ਪੈਰਾਮੀਟਰ ਹਾਰਡਵੇਅਰ-ਸਮਰਥਿਤ ਕੁੰਜੀ ਸਟੋਰਾਂ ਜਾਂ ਸੁਰੱਖਿਅਤ ਐਨਕਲੇਵਾਂ (secure enclaves) ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਏਨਕ੍ਰਿਪਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। | ੩ |
+| **੪.੩.੫** | **ਜਾਂਚ ਕਰੋ ਕਿ** ਮੋਬਾਈਲ, IoT, ਜਾਂ ਏਮਬੈਡਡ ਐਪਲੀਕੇਸ਼ਨਾਂ ਦੇ ਅੰਦਰ ਪੈਕ ਕੀਤੇ ਮਾਡਲ ਸਥਿਰ ਸਥਿਤੀ ਵਿੱਚ (at rest) ਏਨਕ੍ਰਿਪਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਅਤੇ ਸਿਰਫ਼ ਇੱਕ ਭਰੋਸੇਯੋਗ ਰਨਟਾਈਮ ਜਾਂ ਸੁਰੱਖਿਅਤ ਐਨਕਲੇਵ ਦੇ ਅੰਦਰ ਹੀ ਡੀਕ੍ਰਿਪਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਜਿਸ ਨਾਲ ਐਪ ਪੈਕੇਜ ਜਾਂ ਫ਼ਾਈਲਸਿਸਟਮ ਤੋਂ ਸਿੱਧੇ ਕੱਢਣ ਨੂੰ ਰੋਕਿਆ ਜਾਂਦਾ ਹੈ। | ੩ |
 
 ---
 
@@ -95,7 +95,7 @@ Distributed AI deployments, including edge computing, federated learning, and mu
 * [NSA/CISA Kubernetes Hardening Guidance](https://www.cisa.gov/news-events/alerts/2022/03/15/updated-kubernetes-hardening-guide)
 * [Confidential Computing Consortium](https://confidentialcomputing.io/)
 
-[^0x10-C04-model-theft]: **model theft** (EN) -> ਮਾਡਲ ਚੋਰੀ — ਚੋਰੀ (theft) renders the source's plain harm/outcome sense directly, kept distinct from the named C11 technique "model extraction", which stays in English. Full discussion: OPEN-QUESTIONS.md Q54.
+[^0x10-C04-model-theft]: **model theft** (EN) -> ਮਾਡਲ ਚੋਰੀ — ਚੋਰੀ (theft) renders the source's plain harm/outcome sense directly, kept distinct from the named C੧੧ technique "model extraction", which stays in English. Full discussion: OPEN-QUESTIONS.md Q54.
 [^0x10-C04-contamination]: **cross-tenant contamination** (EN) -> ਟੈਨੈਂਟਾਂ ਵਿਚਕਾਰ ਦੂਸ਼ਣ — ਦੂਸ਼ਣ carries the neutral "one thing tainting another" sense used in scientific Panjabi, avoiding the moral shading of alternatives like ਮਿਲਾਵਟ. Full discussion: OPEN-QUESTIONS.md Q53.
 [^0x10-C04-component]: **components** (EN) -> ਹਿੱਸੇ — this chapter uses the native ਹਿੱਸਾ for "infrastructure/hardware components," while other AISVS chapters use the loan ਕੰਪੋਨੈਂਟ for the same term of art; the corpus audit flagged the split as unresolved rather than silently normalising it. Full discussion: OPEN-QUESTIONS.md Q95.
 [^0x10-C04-sandbox]: **sandbox, sandboxing** (EN) -> ਸੈਂਡਬਾਕਸ — kept as a loan because a sandbox is a named technical primitive (kernel-enforced process confinement), and a descriptive Panjabi rendering would leave the reader guessing at scope. Full discussion: OPEN-QUESTIONS.md Q47.

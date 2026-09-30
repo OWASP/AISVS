@@ -21,7 +21,7 @@ AISVS ਦੀ ਹਰ ਲੋੜ ਨੂੰ AI ਖ਼ਤਰਾ ਪਰਿਦ੍ਰਿ
 
 Version 1.0, 2026
 
-ਸੰਸਕਰਣ 1.0, 2026
+ਸੰਸਕਰਣ 1.0, ੨੦੨੬
 
 Copyright &copy; 2025-2026 The AISVS Project.
 
