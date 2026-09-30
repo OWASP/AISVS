@@ -29,7 +29,7 @@ PA_IN = Path(__file__).resolve().parent.parent / "pa-IN"
 
 # Only lint actual translated content — not the rulebook/glossary/log files
 # themselves, which legitimately discuss the forbidden forms by name.
-SKIP_FILES = {"CLAUDE.md", "TRANSLATION-RULES.md", "GLOSSARY.md", "OPEN-QUESTIONS.md"}
+SKIP_FILES = {"CLAUDE.md", "TRANSLATION-RULES.md", "GLOSSARY.md", "OPEN-QUESTIONS.md", "REVISIONS.md"}
 
 # Each entry: (label, forbidden_regex, correct_form, source, carve_out_regex_or_None)
 # carve_out_regex: if a forbidden match falls INSIDE an occurrence of this
@@ -148,6 +148,20 @@ PINNED_TERMS = [
         re.compile(r"ਦ੍ਰਿਸ਼ਟਾਂਤ|ਪਿਛਲਖੁਰੀ|ਵਿਸ਼ੇਸ਼-ਵੇਰਵਾ|ਮਾੜੇ ਪ੍ਰਭਾਵ"),
         "ਦ੍ਰਿਸ਼ ਪੇਸ਼ਕਾਰੀ / -ਉਪਰੰਤ / ਸਪੈਸੀਫ਼ਿਕੇਸ਼ਨ / ਸਹਿ-ਪ੍ਰਭਾਵ respectively",
         "OPEN-QUESTIONS.md Q144(b), (d), (e), (g)",
+        None,
+    ),
+    (
+        "verify (control head)",
+        re.compile(r"ਤਸਦੀਕ ਕਰੋ"),
+        "ਜਾਂਚ ਕਰੋ",
+        "ASVS V6 styleguide locked 2026-09-29",
+        None,
+    ),
+    (
+        "compromise (security)",
+        re.compile(r"ਸਮਝੌਤ"),
+        "ਭੇਦੀ ਹੋ- forms",
+        "OPEN-QUESTIONS.md Q19; ASVS V6 styleguide 2026-09-29",
         None,
     ),
 ]

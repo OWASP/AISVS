@@ -1,6 +1,7 @@
 <!-- Translation Status: ✅ Complete -->
 <!-- Original: 1.0/en/0x91-Appendix-B_AI_Security_Controls_Inventory.md -->
 <!-- Translator: GeeksikhSecurity -->
+<!-- Revision 2026-09-30: locked styleguide applied (control-head verb; breach-term forms). See pa-IN/REVISIONS.md. Status unchanged: draft v0.1 pending Sangat/academic review. -->
 
 # Appendix B: AI Security Controls Inventory
 # ਅੰਤਿਕਾ B: AI ਸੁਰੱਖਿਆ ਨਿਯੰਤਰਣ ਇਨਵੈਂਟਰੀ

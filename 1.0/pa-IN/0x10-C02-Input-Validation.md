@@ -1,6 +1,7 @@
 <!-- Translation Status: ✅ Complete -->
 <!-- Original: 1.0/en/0x10-C02-Input-Validation.md -->
 <!-- Translator: GeeksikhSecurity -->
+<!-- Revision 2026-09-30: locked styleguide applied (control-head verb; breach-term forms). See pa-IN/REVISIONS.md. Status unchanged: draft v0.1 pending Sangat/academic review. -->
 
 # C2 Input Validation
 # C2 ਇਨਪੁੱਟ ਪ੍ਰਮਾਣਿਕਤਾ

@@ -23,7 +23,7 @@ This inventory is non-normative. It reorganizes existing requirements for ease o
 
 Verify the identity of users, agents, services, edge devices, and MCP clients/servers before granting access.
 
-ਪਹੁੰਚ ਦੇਣ ਤੋਂ ਪਹਿਲਾਂ ਉਪਭੋਗਤਾਵਾਂ, ਏਜੰਟਾਂ, ਸੇਵਾਵਾਂ, ਐਜ ਡਿਵਾਈਸਾਂ, ਅਤੇ MCP ਕਲਾਇੰਟਾਂ/ਸਰਵਰਾਂ ਦੀ ਪਛਾਣ ਦੀ ਤਸਦੀਕ ਕਰੋ।
+ਪਹੁੰਚ ਦੇਣ ਤੋਂ ਪਹਿਲਾਂ ਉਪਭੋਗਤਾਵਾਂ, ਏਜੰਟਾਂ, ਸੇਵਾਵਾਂ, ਐਜ ਡਿਵਾਈਸਾਂ, ਅਤੇ MCP ਕਲਾਇੰਟਾਂ/ਸਰਵਰਾਂ ਦੀ ਪਛਾਣ ਦੀ ਜਾਂਚ ਕਰੋ।
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
@@ -55,7 +55,7 @@ Verify the identity of users, agents, services, edge devices, and MCP clients/se
 
 **Common pitfalls:** reusing end-user credentials for agent-to-agent calls; not rotating agent credentials on suspected compromise; treating transport security as a substitute for per-request token validation.
 
-**ਆਮ ਗਲਤੀਆਂ[^0x91-common-pitfalls] (common pitfalls):** ਏਜੰਟ-ਤੋਂ-ਏਜੰਟ ਕਾਲਾਂ ਲਈ ਅੰਤਮ-ਉਪਭੋਗਤਾ ਦੇ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ ਮੁੜ-ਵਰਤਣਾ; ਸ਼ੱਕੀ ਸਮਝੌਤੇ (compromise) 'ਤੇ ਏਜੰਟ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ ਨਾ ਬਦਲਣਾ; ਟ੍ਰਾਂਸਪੋਰਟ ਸੁਰੱਖਿਆ ਨੂੰ ਪ੍ਰਤੀ-ਬੇਨਤੀ ਟੋਕਨ ਪ੍ਰਮਾਣਿਕਤਾ ਦੇ ਬਦਲ ਵਜੋਂ ਲੈਣਾ।
+**ਆਮ ਗਲਤੀਆਂ[^0x91-common-pitfalls] (common pitfalls):** ਏਜੰਟ-ਤੋਂ-ਏਜੰਟ ਕਾਲਾਂ ਲਈ ਅੰਤਮ-ਉਪਭੋਗਤਾ ਦੇ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ ਮੁੜ-ਵਰਤਣਾ; ਸ਼ੱਕੀ ਭੇਦੀ ਹੋਣ (compromise) 'ਤੇ ਏਜੰਟ ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ ਨਾ ਬਦਲਣਾ; ਟ੍ਰਾਂਸਪੋਰਟ ਸੁਰੱਖਿਆ ਨੂੰ ਪ੍ਰਤੀ-ਬੇਨਤੀ ਟੋਕਨ ਪ੍ਰਮਾਣਿਕਤਾ ਦੇ ਬਦਲ ਵਜੋਂ ਲੈਣਾ।
 
 ---
 
@@ -163,7 +163,7 @@ Protect data and secrets at rest, in transit, and in the model's observable cont
 
 Verify authenticity and detect tampering of models, artifacts, messages, tool definitions, and generated media.
 
-ਮਾਡਲਾਂ, ਆਰਟੀਫ਼ੈਕਟਾਂ, ਸੁਨੇਹਿਆਂ, ਟੂਲ ਪਰਿਭਾਸ਼ਾਵਾਂ, ਅਤੇ ਤਿਆਰ ਕੀਤੇ ਮੀਡੀਆ ਦੀ ਅਸਲੀਅਤ[^0x91-authenticity] (authenticity) ਦੀ ਤਸਦੀਕ ਕਰੋ ਅਤੇ ਛੇੜਛਾੜ ਦਾ ਪਤਾ ਲਗਾਓ।
+ਮਾਡਲਾਂ, ਆਰਟੀਫ਼ੈਕਟਾਂ, ਸੁਨੇਹਿਆਂ, ਟੂਲ ਪਰਿਭਾਸ਼ਾਵਾਂ, ਅਤੇ ਤਿਆਰ ਕੀਤੇ ਮੀਡੀਆ ਦੀ ਅਸਲੀਅਤ[^0x91-authenticity] (authenticity) ਦੀ ਜਾਂਚ ਕਰੋ ਅਤੇ ਛੇੜਛਾੜ ਦਾ ਪਤਾ ਲਗਾਓ।
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
@@ -428,7 +428,7 @@ AI ਵਰਕਲੋਡਾਂ ਅਤੇ MCP ਏਕੀਕਰਨਾਂ ਲਈ ਨੈ
 
 Verify origin and authenticity of models, datasets, frameworks, and MCP components, and maintain an AI bill of materials.
 
-ਮਾਡਲਾਂ, ਡਾਟਾਸੈੱਟਾਂ, ਫ੍ਰੇਮਵਰਕਾਂ, ਅਤੇ MCP ਕੰਪੋਨੈਂਟਾਂ ਦੇ ਮੂਲ ਅਤੇ ਅਸਲੀਅਤ ਦੀ ਤਸਦੀਕ ਕਰੋ, ਅਤੇ ਇੱਕ AI ਬਿਲ ਆਫ਼ ਮਟੀਰੀਅਲਜ਼ ਬਰਕਰਾਰ ਰੱਖੋ।
+ਮਾਡਲਾਂ, ਡਾਟਾਸੈੱਟਾਂ, ਫ੍ਰੇਮਵਰਕਾਂ, ਅਤੇ MCP ਕੰਪੋਨੈਂਟਾਂ ਦੇ ਮੂਲ ਅਤੇ ਅਸਲੀਅਤ ਦੀ ਜਾਂਚ ਕਰੋ, ਅਤੇ ਇੱਕ AI ਬਿਲ ਆਫ਼ ਮਟੀਰੀਅਲਜ਼ ਬਰਕਰਾਰ ਰੱਖੋ।
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
@@ -757,7 +757,7 @@ Require human approval for high-impact actions and provide reliable, exercised s
 
 **Common pitfalls:** documenting a high-risk action policy never wired to a runtime gate; binding approval to parameters without binding to identity or context; defaulting to fail-open when the approver does not respond; assuming an in-band kill-switch will work against a compromised agent; implementing a kill-switch that is never exercised.
 
-**ਆਮ ਗਲਤੀਆਂ:** ਉੱਚ-ਜੋਖਮ ਕਾਰਵਾਈ ਨੀਤੀ ਨੂੰ ਦਸਤਾਵੇਜ਼ਬੱਧ ਕਰਨਾ ਪਰ ਉਸ ਨੂੰ ਕਦੇ ਰਨਟਾਈਮ ਗੇਟ ਨਾਲ ਨਾ ਜੋੜਨਾ; ਮਨਜ਼ੂਰੀ ਨੂੰ ਪੈਰਾਮੀਟਰਾਂ ਨਾਲ ਬੰਨ੍ਹਣਾ ਪਰ ਪਛਾਣ ਜਾਂ ਸੰਦਰਭ ਨਾਲ ਨਹੀਂ; ਮਨਜ਼ੂਰੀ ਦੇਣ ਵਾਲੇ ਦੇ ਜਵਾਬ ਨਾ ਦੇਣ 'ਤੇ ਡਿਫ਼ਾਲਟ ਰੂਪ ਵਿੱਚ ਨਾਕਾਮੀ-'ਤੇ-ਖੁੱਲ੍ਹਾ[^0x91-fail-open] (fail-open) ਰਹਿਣਾ; ਇਹ ਮੰਨ ਲੈਣਾ ਕਿ ਇਨ-ਬੈਂਡ kill-switch ਸਮਝੌਤਾ ਹੋਏ ਏਜੰਟ ਵਿਰੁੱਧ ਕੰਮ ਕਰੇਗਾ; ਅਜਿਹਾ kill-switch ਲਾਗੂ ਕਰਨਾ ਜਿਸ ਨੂੰ ਕਦੇ ਪਰਖਿਆ ਹੀ ਨਾ ਜਾਵੇ।
+**ਆਮ ਗਲਤੀਆਂ:** ਉੱਚ-ਜੋਖਮ ਕਾਰਵਾਈ ਨੀਤੀ ਨੂੰ ਦਸਤਾਵੇਜ਼ਬੱਧ ਕਰਨਾ ਪਰ ਉਸ ਨੂੰ ਕਦੇ ਰਨਟਾਈਮ ਗੇਟ ਨਾਲ ਨਾ ਜੋੜਨਾ; ਮਨਜ਼ੂਰੀ ਨੂੰ ਪੈਰਾਮੀਟਰਾਂ ਨਾਲ ਬੰਨ੍ਹਣਾ ਪਰ ਪਛਾਣ ਜਾਂ ਸੰਦਰਭ ਨਾਲ ਨਹੀਂ; ਮਨਜ਼ੂਰੀ ਦੇਣ ਵਾਲੇ ਦੇ ਜਵਾਬ ਨਾ ਦੇਣ 'ਤੇ ਡਿਫ਼ਾਲਟ ਰੂਪ ਵਿੱਚ ਨਾਕਾਮੀ-'ਤੇ-ਖੁੱਲ੍ਹਾ[^0x91-fail-open] (fail-open) ਰਹਿਣਾ; ਇਹ ਮੰਨ ਲੈਣਾ ਕਿ ਇਨ-ਬੈਂਡ kill-switch ਭੇਦੀ ਹੋ ਗਏ ਏਜੰਟ ਵਿਰੁੱਧ ਕੰਮ ਕਰੇਗਾ; ਅਜਿਹਾ kill-switch ਲਾਗੂ ਕਰਨਾ ਜਿਸ ਨੂੰ ਕਦੇ ਪਰਖਿਆ ਹੀ ਨਾ ਜਾਵੇ।
 
 ---
 

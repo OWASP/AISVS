@@ -1,6 +1,7 @@
 <!-- Translation Status: ✅ Complete -->
 <!-- Original: 1.0/en/0x10-C05-Access-Control-and-Identity.md -->
 <!-- Translator: GeeksikhSecurity -->
+<!-- Revision 2026-09-30: locked styleguide applied (control-head verb; breach-term forms). See pa-IN/REVISIONS.md. Status unchanged: draft v0.1 pending Sangat/academic review. -->
 
 # C5 Access Control & Identity for AI Components & Users
 # C5 AI ਕੰਪੋਨੈਂਟਾਂ ਅਤੇ ਉਪਭੋਗਤਾਵਾਂ ਲਈ ਪਹੁੰਚ ਕੰਟਰੋਲ ਅਤੇ ਪਛਾਣ

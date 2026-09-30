@@ -32,7 +32,7 @@ safe defaults for AISVS.
 | context | ਸੰਦਰਭ | T | locked |
 | issuer | ਜਾਰੀਕਰਤਾ | T | locked |
 | tampering | ਛੇੜਛਾੜ | T | locked |
-| verify | ਤਸਦੀਕ ਕਰੋ | T | locked |
+| verify | ਜਾਂਚ ਕਰੋ | T | locked 2026-09-29 (ASVS V6 styleguide, supersedes ਤਸਦੀਕ ਕਰੋ). Now shares ਜਾਂਚ with "check"; keep "check" wording distinct where the English does (see REVISIONS.md) |
 | validate | ਪ੍ਰਮਾਣਿਤ ਕਰਨਾ | T | locked |
 | authentication | ਪ੍ਰਮਾਣੀਕਰਨ | T | locked |
 | authorization | ਅਧਿਕਾਰੀਕਰਨ | T | locked (Q3) |
@@ -71,7 +71,7 @@ safe defaults for AISVS.
 | identifier | ਪਛਾਣਕਰਤਾ | T | corpus precedent (Q17) |
 | framework | ਫ੍ਰੇਮਵਰਕ | L | corpus precedent (Q17) |
 | architecture | ਆਰਕੀਟੈਕਚਰ | L | flagged inconsistency in ASVS itself (Q17 — README used ਢਾਂਚਾ; chapters use loan). AISVS: prefer the loan, note the ASVS split in OPEN-QUESTIONS.md if it resurfaces |
-| compromise (security, verb/noun) | ਸਮਝੌਤਾ | T | flagged, not Sangat-resolved (Q19 — primary dictionary sense is "agreement"; use with care, consider glossing on first use) |
+| compromise (security, verb/noun) | ਭੇਦੀ ਹੋ- (ਭੇਦੀ ਹੋਣ / ਭੇਦੀ ਹੋ ਗਿਆ) | T | locked 2026-09-29 (breach semantics). ਸਮਝੌਤਾ banned: primary sense is "agreement". Inflected noun/adjective forms are proposed, pending Sangat review |
 | business logic | ਕਾਰੋਬਾਰੀ ਤਰਕ | T | normalised (Q15) |
 | session hijacking | ਸੈਸ਼ਨ ਹਾਈਜੈਕਿੰਗ | L | corpus precedent (Q16) |
 | denial of service | ਸੇਵਾ-ਇਨਕਾਰ | T | normalised (Q15) |

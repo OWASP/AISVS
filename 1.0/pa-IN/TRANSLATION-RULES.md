@@ -61,7 +61,7 @@ alternatives / reasoning) — do not silently improvise.
 ### Verb precision
 Preserve "verify" / "validate" / "check" / "detect" / "monitor" as distinct — they are not
 interchangeable in a security standard. AISVS requirements typically open "Verify that…" →
-**ਤਸਦੀਕ ਕਰੋ ਕਿ…** (matches the ASVS convention).
+**ਜਾਂਚ ਕਰੋ ਕਿ…** (matches the ASVS convention).
 
 ### First-use gloss
 On first use of a translated technical concept, give the Panjabi term followed by the English
@@ -99,3 +99,7 @@ in parentheses, e.g. **ਅਖੰਡਤਾ (integrity)**. Do not repeat the gloss
 *Forked from the ASVS 5.0 pa-IN `TRANSLATION-RULES.md`. Changes here that should also apply
 to the ASVS corpus (or vice versa) get proposed as a change to `GLOSSARY.md` in both repos,
 not silently diverged.*
+
+---
+
+**Revision 2026-09-30:** control-head verb is now ਜਾਂਚ ਕਰੋ ਕਿ… and ਸਮਝੌਤਾ is banned for security "compromise" (use ਭੇਦੀ ਹੋ- forms), per the ASVS V6 styleguide locked 2026-09-29. Numerals (§2.2) and register (§4) are unchanged pending a decision; see REVISIONS.md.
