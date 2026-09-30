@@ -44,7 +44,7 @@ Training data origin and security are critical to the trustworthiness of any AI 
 
 Labeling and annotation processes must be protected against unauthorized modification, data leakage, and integrity compromise. Annotation platforms should enforce access control, preserve auditability, and protect labeling artifacts and sensitive label content throughout the training pipeline.
 
-ਲੇਬਲਿੰਗ ਅਤੇ ਐਨੋਟੇਸ਼ਨ ਪ੍ਰਕਿਰਿਆਵਾਂ ਨੂੰ ਅਣਅਧਿਕਾਰਤ ਸੋਧ, ਡਾਟਾ ਲੀਕੇਜ, ਅਤੇ ਅਖੰਡਤਾ ਦੇ ਸਮਝੌਤੇ (compromise) ਤੋਂ ਸੁਰੱਖਿਅਤ ਰੱਖਿਆ ਜਾਣਾ ਲਾਜ਼ਮੀ ਹੈ। ਐਨੋਟੇਸ਼ਨ ਪਲੇਟਫ਼ਾਰਮਾਂ ਨੂੰ ਪਹੁੰਚ ਕੰਟਰੋਲ ਲਾਗੂ ਕਰਨਾ ਚਾਹੀਦਾ ਹੈ, ਆਡਿਟਯੋਗਤਾ ਬਰਕਰਾਰ ਰੱਖਣੀ ਚਾਹੀਦੀ ਹੈ, ਅਤੇ ਪੂਰੀ ਸਿਖਲਾਈ ਪਾਈਪਲਾਈਨ ਦੌਰਾਨ ਲੇਬਲਿੰਗ ਆਰਟੀਫ਼ੈਕਟਾਂ ਅਤੇ ਸੰਵੇਦਨਸ਼ੀਲ ਲੇਬਲ ਸਮੱਗਰੀ ਦੀ ਰਾਖੀ ਕਰਨੀ ਚਾਹੀਦੀ ਹੈ।
+ਲੇਬਲਿੰਗ ਅਤੇ ਐਨੋਟੇਸ਼ਨ ਪ੍ਰਕਿਰਿਆਵਾਂ ਨੂੰ ਅਣਅਧਿਕਾਰਤ ਸੋਧ, ਡਾਟਾ ਲੀਕੇਜ, ਅਤੇ ਅਖੰਡਤਾ ਦੇ ਭੇਦੀ ਹੋਣ (compromise) ਤੋਂ ਸੁਰੱਖਿਅਤ ਰੱਖਿਆ ਜਾਣਾ ਲਾਜ਼ਮੀ ਹੈ। ਐਨੋਟੇਸ਼ਨ ਪਲੇਟਫ਼ਾਰਮਾਂ ਨੂੰ ਪਹੁੰਚ ਕੰਟਰੋਲ ਲਾਗੂ ਕਰਨਾ ਚਾਹੀਦਾ ਹੈ, ਆਡਿਟਯੋਗਤਾ ਬਰਕਰਾਰ ਰੱਖਣੀ ਚਾਹੀਦੀ ਹੈ, ਅਤੇ ਪੂਰੀ ਸਿਖਲਾਈ ਪਾਈਪਲਾਈਨ ਦੌਰਾਨ ਲੇਬਲਿੰਗ ਆਰਟੀਫ਼ੈਕਟਾਂ ਅਤੇ ਸੰਵੇਦਨਸ਼ੀਲ ਲੇਬਲ ਸਮੱਗਰੀ ਦੀ ਰਾਖੀ ਕਰਨੀ ਚਾਹੀਦੀ ਹੈ।
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------------------------------- | :---: |

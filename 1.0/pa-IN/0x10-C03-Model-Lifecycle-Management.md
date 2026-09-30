@@ -101,7 +101,7 @@ Model development environments must be separated from production environments.
 
 Fine-tuning pipelines are high-privilege operations that can alter deployed model behavior at scale. Multi-stage pipelines compound this risk because a compromise at any intermediate stage produces a subtly altered artifact that subsequent stages accept.
 
-ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਪਾਈਪਲਾਈਨਾਂ ਉੱਚ-ਵਿਸ਼ੇਸ਼ ਅਧਿਕਾਰ ਵਾਲੀਆਂ ਕਾਰਵਾਈਆਂ ਹਨ ਜੋ ਤੈਨਾਤ ਕੀਤੇ ਮਾਡਲ ਦੇ ਵਿਵਹਾਰ ਨੂੰ ਵੱਡੇ ਪੱਧਰ 'ਤੇ ਬਦਲ ਸਕਦੀਆਂ ਹਨ। ਬਹੁ-ਪੜਾਵੀ ਪਾਈਪਲਾਈਨਾਂ ਇਸ ਜੋਖਮ ਨੂੰ ਹੋਰ ਵਧਾ ਦਿੰਦੀਆਂ ਹਨ ਕਿਉਂਕਿ ਕਿਸੇ ਵੀ ਵਿਚਕਾਰਲੇ ਪੜਾਅ 'ਤੇ ਹੋਇਆ ਸਮਝੌਤਾ (compromise) ਇੱਕ ਸੂਖਮ ਢੰਗ ਨਾਲ ਬਦਲਿਆ ਹੋਇਆ ਆਰਟੀਫ਼ੈਕਟ ਪੈਦਾ ਕਰਦਾ ਹੈ ਜਿਸਨੂੰ ਅਗਲੇ ਪੜਾਅ ਸਵੀਕਾਰ ਕਰ ਲੈਂਦੇ ਹਨ।
+ਫ਼ਾਈਨ-ਟਿਊਨਿੰਗ ਪਾਈਪਲਾਈਨਾਂ ਉੱਚ-ਵਿਸ਼ੇਸ਼ ਅਧਿਕਾਰ ਵਾਲੀਆਂ ਕਾਰਵਾਈਆਂ ਹਨ ਜੋ ਤੈਨਾਤ ਕੀਤੇ ਮਾਡਲ ਦੇ ਵਿਵਹਾਰ ਨੂੰ ਵੱਡੇ ਪੱਧਰ 'ਤੇ ਬਦਲ ਸਕਦੀਆਂ ਹਨ। ਬਹੁ-ਪੜਾਵੀ ਪਾਈਪਲਾਈਨਾਂ ਇਸ ਜੋਖਮ ਨੂੰ ਹੋਰ ਵਧਾ ਦਿੰਦੀਆਂ ਹਨ ਕਿਉਂਕਿ ਕਿਸੇ ਵੀ ਵਿਚਕਾਰਲੇ ਪੜਾਅ ਦੇ ਭੇਦੀ ਹੋਣ (compromise) ਨਾਲ ਇੱਕ ਸੂਖਮ ਢੰਗ ਨਾਲ ਬਦਲਿਆ ਹੋਇਆ ਆਰਟੀਫ਼ੈਕਟ ਪੈਦਾ ਹੋ ਜਾਂਦਾ ਹੈ ਜਿਸਨੂੰ ਅਗਲੇ ਪੜਾਅ ਸਵੀਕਾਰ ਕਰ ਲੈਂਦੇ ਹਨ।
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
