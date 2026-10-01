@@ -12,21 +12,21 @@ The standard is organized into 12 chapters spanning the full AI application secu
 
 | # | Chapter | Reqs | Pages | Type | Updated |
 |---|---------|:----:|:-----:|------|:-------:|
-| C1 | Training Data Integrity & Traceability | 13 | [C01](chapters/C01-Training-Data/C01-Training-Data.md) | [3 sections](#c1-training-data-integrity-traceability) | 2026-07-14 |
-| C2 | Input Validation | 12 | [C02](chapters/C02-User-Input-Validation/C02-User-Input-Validation.md) | [2 sections](#c2-input-validation) | 2026-09-07 |
-| C3 | Model Lifecycle Management & Change Control | 15 | [C03](chapters/C03-Model-Lifecycle-Management/C03-Model-Lifecycle-Management.md) | [5 sections](#c3-model-lifecycle-management-change-control) | 2026-07-14 |
-| C4 | Infrastructure, Configuration & Deployment Security | 14 | [C04](chapters/C04-Infrastructure/C04-Infrastructure.md) | [3 sections](#c4-infrastructure-configuration-deployment-security) | 2026-07-14 |
-| C5 | Access Control & Identity for AI Components & Users | 11 | [C05](chapters/C05-Access-Control/C05-Access-Control.md) | [3 sections](#c5-access-control-identity-for-ai-components-users) | 2026-07-14 |
-| C6 | Supply Chain Security for Models | 7 | [C06](chapters/C06-Supply-Chain/C06-Supply-Chain.md) | [2 sections](#c6-supply-chain-security-for-models) | 2026-07-13 |
-| C7 | Model Behavior, Output Control & Safety Assurance | 14 | [C07](chapters/C07-Model-Behavior/C07-Model-Behavior.md) | [4 sections](#c7-model-behavior-output-control-safety-assurance) | 2026-09-07 |
-| C8 | Memory, Embeddings & Vector Database Security | 11 | [C08](chapters/C08-Memory-and-Embeddings/C08-Memory-and-Embeddings.md) | [3 sections](#c8-memory-embeddings-vector-database-security) | 2026-09-25 |
-| C9 | Orchestration & Agentic Security | 37 | [C09](chapters/C09-Orchestration-and-Agents/C09-Orchestration-and-Agents.md) | [6 sections](#c9-orchestration-agentic-security) | 2026-09-27 |
-| C10 | Model Context Protocol (MCP) Security | 39 | [C10](chapters/C10-MCP-Security/C10-MCP-Security.md) | [4 sections](#c10-model-context-protocol-mcp-security) | 2026-09-27 |
-| C11 | Adversarial Robustness | 19 | [C11](chapters/C11-Adversarial-Robustness/C11-Adversarial-Robustness.md) | [4 sections](#c11-adversarial-robustness) | 2026-09-27 |
-| C12 | Monitoring, Logging & Anomaly Detection | 21 | [C12](chapters/C12-Monitoring-and-Logging/C12-Monitoring-and-Logging.md) | [5 sections](#c12-monitoring-logging-anomaly-detection) | 2026-07-14 |
+| C1 | Training Data Integrity & Traceability | 13 | [C01](chapters/C01-Training-Data/C01-Training-Data.md) | [3 sections](#c1-training-data-integrity--traceability) | 2026-09-30 |
+| C2 | Input Validation | 12 | [C02](chapters/C02-User-Input-Validation/C02-User-Input-Validation.md) | [2 sections](#c2-input-validation) | 2026-09-30 |
+| C3 | Model Lifecycle Management & Change Control | 15 | [C03](chapters/C03-Model-Lifecycle-Management/C03-Model-Lifecycle-Management.md) | [5 sections](#c3-model-lifecycle-management--change-control) | 2026-09-30 |
+| C4 | Infrastructure, Configuration & Deployment Security | 14 | [C04](chapters/C04-Infrastructure/C04-Infrastructure.md) | [3 sections](#c4-infrastructure-configuration--deployment-security) | 2026-09-30 |
+| C5 | Access Control & Identity for AI Components & Users | 11 | [C05](chapters/C05-Access-Control/C05-Access-Control.md) | [3 sections](#c5-access-control--identity-for-ai-components--users) | 2026-09-30 |
+| C6 | Supply Chain Security for Models | 7 | [C06](chapters/C06-Supply-Chain/C06-Supply-Chain.md) | [2 sections](#c6-supply-chain-security-for-models) | 2026-09-30 |
+| C7 | Model Behavior, Output Control & Safety Assurance | 14 | [C07](chapters/C07-Model-Behavior/C07-Model-Behavior.md) | [4 sections](#c7-model-behavior-output-control--safety-assurance) | 2026-09-30 |
+| C8 | Memory, Embeddings & Vector Database Security | 11 | [C08](chapters/C08-Memory-and-Embeddings/C08-Memory-and-Embeddings.md) | [3 sections](#c8-memory-embeddings--vector-database-security) | 2026-09-30 |
+| C9 | Orchestration & Agentic Security | 37 | [C09](chapters/C09-Orchestration-and-Agents/C09-Orchestration-and-Agents.md) | [6 sections](#c9-orchestration--agentic-security) | 2026-09-30 |
+| C10 | Model Context Protocol (MCP) Security | 39 | [C10](chapters/C10-MCP-Security/C10-MCP-Security.md) | [4 sections](#c10-model-context-protocol-mcp-security) | 2026-09-30 |
+| C11 | Adversarial Robustness | 19 | [C11](chapters/C11-Adversarial-Robustness/C11-Adversarial-Robustness.md) | [4 sections](#c11-adversarial-robustness) | 2026-09-30 |
+| C12 | Monitoring, Logging & Anomaly Detection | 21 | [C12](chapters/C12-Monitoring-and-Logging/C12-Monitoring-and-Logging.md) | [5 sections](#c12-monitoring-logging--anomaly-detection) | 2026-09-30 |
 | | **Total** | **213** | **59 pages** | | |
 
-Counts reflect active requirements covered by the research pages; retired IDs are excluded. Remaining research review and synchronization with the 1.01 standard is tracked in [#1109](https://github.com/OWASP/AISVS/issues/1109) and the [review checklist](REVIEW-STATUS.md).
+Counts reflect active requirements covered by the research pages; retired IDs are excluded. The 1.01 source audit, its evidence standard, and its known limitations are recorded in the [review checklist](REVIEW-STATUS.md) for [#1109](https://github.com/OWASP/AISVS/issues/1109).
 
 ---
 
@@ -176,9 +176,9 @@ The appendices provide supporting material including a glossary of AI security t
 
 | Appendix | Page | Updated |
 |----------|------|:-------:|
-| A: Glossary | [Appendix A Glossary](appendices/Appendix-A-Glossary.md) | 2026-09-27 |
-| B: AI Security Controls Inventory | [Appendix B Controls Inventory](appendices/Appendix-B-Controls-Inventory.md) | 2026-09-27 |
-| C: AI-Assisted Secure Coding (69 reqs) | [Appendix C AI Secure Coding](appendices/Appendix-C-AI-Secure-Coding.md) | 2026-09-27 |
+| A: Glossary | [Appendix A Glossary](appendices/Appendix-A-Glossary.md) | 2026-09-30 |
+| B: AI Security Controls Inventory | [Appendix B Controls Inventory](appendices/Appendix-B-Controls-Inventory.md) | 2026-09-30 |
+| C: AI-Assisted Secure Coding (69 reqs) | [Appendix C AI Secure Coding](appendices/Appendix-C-AI-Secure-Coding.md) | 2026-09-30 |
 
 ---
 
