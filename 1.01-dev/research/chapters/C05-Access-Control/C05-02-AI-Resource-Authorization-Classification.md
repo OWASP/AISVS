@@ -101,6 +101,7 @@ Implement access controls for all AI resources with explicit permission models a
 - NCCoE concept paper, Accelerating the Adoption of Software and AI Agent Identity and Authorization (initial public draft, February 5, 2026) - https://csrc.nist.gov/pubs/other/2026/02/05/accelerating-the-adoption-of-software-and-ai-agent/ipd
 - NIST AI Agent Standards Initiative program page - https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative
 - OX Security advisory on Anthropic MCP stdio command injection (CVE-2026-30623) - https://www.ox.security/blog/the-mother-of-all-ai-supply-chains-critical-systemic-vulnerability-at-the-core-of-the-mcp/
+- OX Security MCP supply chain advisory (per-product entries for Flowise, LettaAI, LangBot and others) - https://www.ox.security/blog/mcp-supply-chain-advisory-rce-vulnerabilities-across-the-ai-ecosystem/
 - LiteLLM security update for CVE-2026-30623 (April 2026) - https://docs.litellm.ai/blog/mcp-stdio-command-injection-april-2026
 - European Commission draft guidelines on high-risk AI classification under Article 6 (May 2026) - https://iapp.org/news/a/european-commission-delivers-draft-high-risk-ai-guidelines-after-delays
 - LiteLLM CVE-2026-42271 actively exploited, CISA KEV June 8, 2026 - https://thehackernews.com/2026/06/litellm-flaw-cve-2026-42271-exploited.html
@@ -133,6 +134,7 @@ Implement access controls for all AI resources with explicit permission models a
 - MLflow CVE-2026-4035 AI Gateway environment-credential disclosure (fixed 3.11.0) - https://www.sentinelone.com/vulnerability-database/cve-2026-4035/
 - GitGuardian State of Secrets Sprawl 2026 (MCP-config secrets) - https://blog.gitguardian.com/the-state-of-secrets-sprawl-2026/
 - CyberArk study: only 1% of organizations fully adopted JIT privileged access - https://www.cyberark.com/press/new-study-only-1-of-organizations-have-fully-adopted-just-in-time-privileged-access-as-ai-driven-identities-rapidly-increase/
+- Entro Labs: Key Takeaways from the NHI & Secrets Risk Report H1 2025 (144:1 NHI-to-human ratio, 44% year-over-year NHI sprawl) - https://entro.security/blog/takeaways-nhi-secrets-risk-report/
 - Strata on zero standing privileges and agent privilege drift - https://www.strata.io/blog/zero-standing-privileges-the-only-way-to-stop-agent-privilege-drift/
 - Red Hat Kagenti: SPIFFE + RFC 8693 token exchange for AI agents - https://next.redhat.com/2026/06/10/wiring-zero-trust-identity-for-ai-agents-spiffe-token-exchange-and-kagenti/
 - NIST COSAiS SP 800-53 control overlays for securing AI systems - https://csrc.nist.gov/Projects/cosais
@@ -151,6 +153,10 @@ Implement access controls for all AI resources with explicit permission models a
 - CVE-2026-32211, Azure MCP Server missing-authentication information disclosure (MSRC) - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-32211
 - CrowdStrike unveils Continuous Identity for AI Agents (Identiverse, June 15, 2026) - https://www.crowdstrike.com/en-us/press-releases/crowdstrike-unveils-continuous-identity-for-ai-agents/
 - EU Parliament final plenary vote on the Digital Omnibus on AI (June 16, 2026) - https://www.dastra.eu/en/blog/digital-omnibus-on-ai-parliament-votes-deadlines-redrawn/60108
+- European Parliament press release on the final approval (June 16, 2026) - https://www.europarl.europa.eu/news/en/press-room/20260611IPR45207/ai-act-ep-approves-simplification-measures-and-nudifier-app-ban
+- Council final green light on the AI simplification regulation, June 29, 2026 - https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/
+- Regulation (EU) 2026/1744 (Digital Omnibus on AI), OJ L, 24.7.2026 - https://eur-lex.europa.eu/eli/reg/2026/1744/oj
+- Regulation (EU) 2024/1689 Article 101 (fines for GPAI providers, up to 3% of worldwide turnover or EUR 15 million) - https://eur-lex.europa.eu/eli/reg/2024/1689/oj
 
 ---
 
