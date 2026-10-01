@@ -119,7 +119,78 @@ These claims have been removed from the adoption snapshot pending adequate evide
 - Some claim classes were sampled rather than exhausted: vendor capability and release-date rows in tool tables, conference-venue attributions, figures that appear only in paper bodies, the C02-02 regulatory matrix, legal-sanction rows in C07-02, and standards-status rows in C04-03.
 - Where publishers disagree, the conflict is recorded rather than resolved. Most cases are CVSS scores that differ between the CNA, NVD, and GitHub advisories, plus a few incident timelines.
 - Statements dated "as of" April to June 2026, such as patch status, ATLAS technique counts, IETF draft versions, and MCP roadmap items, were not re-surveyed for September 2026.
-- About 350 claims were recorded as unresolved during the audit, mostly figures inside paywalled or blocked sources. Most remain in the text with their attribution and are candidates for post-1.01 review.
+- About 350 claims were recorded as unresolved during the audit. A follow-up review on 2026-10-01 checked each against primary sources: 112 were confirmed as written, 130 were corrected, and 48 had already been fixed in earlier passes. The 64 that remain are listed under [Unresolved claims](#unresolved-claims); their text is unchanged.
+
+## Unresolved claims
+
+These claims were left as written after the 2026-10-01 review because the primary source was blocked or gated, could not be found, only partly supported the claim, or conflicted with another primary source. They are candidates for post-1.01 review; do not treat them as checked.
+
+| Page | Claim |
+| --- | --- |
+| [C01-01-Training-Data-Origin-Traceability](chapters/C01-Training-Data/C01-01-Training-Data-Origin-Traceability.md) | WATERSHED: five schemes, two LLM families, three data domains |
+| [C01-01-Training-Data-Origin-Traceability](chapters/C01-Training-Data/C01-01-Training-Data-Origin-Traceability.md) | CVE-2026-4372 affected range 4.56.0-5.2.x |
+| [C01-02-Data-Labeling-Annotation-Security](chapters/C01-Training-Data/C01-02-Data-Labeling-Annotation-Security.md) | Scale AI customer pullback after Meta deal |
+| [C01-Training-Data](chapters/C01-Training-Data/C01-Training-Data.md) | HF Sigstore 'in development'; JFrog partnership; JFrog and Palo Alto AIBOM generators |
+| [C02-01-Prompt-Injection-Defense](chapters/C02-User-Input-Validation/C02-01-Prompt-Injection-Defense.md) | Agent systems with auto-execution: 66.9-84.1% ASR (Cisco 2026) |
+| [C02-01-Prompt-Injection-Defense](chapters/C02-User-Input-Validation/C02-01-Prompt-Injection-Defense.md) | Body-text figures for ClawGuard, DefensiveTokens, DataSentinel, PromptArmor, LlamaFirewall, Meta-SecAlign, provenance framework, Nature PromptGuard, MASpi, TensorTrust, BIPIA, PromptGame |
+| [C02-02-Content-Policy-Screening](chapters/C02-User-Input-Validation/C02-02-Content-Policy-Screening.md) | Vendor metrics: Luna-2 0.95 F1/98% vs GPT-4o; <200ms; LLM Guard 2.5M+; Pindrop 93–94%; Azure imageWithText preview Sep 2024 |
+| [C02-User-Input-Validation](chapters/C02-User-Input-Validation/C02-User-Input-Validation.md) | NIST COSAiS five overlays, drafts summer 2026; OWASP State of Agentic AI v2.01 additions |
+| [C03-01-Model-Authorization-Integrity](chapters/C03-Model-Lifecycle-Management/C03-01-Model-Authorization-Integrity.md) | NVIDIA has signed all NGC Catalog models with OMS since March 2025 (also C03-05) |
+| [C03-03-Controlled-Deployment-Rollback](chapters/C03-Model-Lifecycle-Management/C03-03-Controlled-Deployment-Rollback.md) | SafeLoRA fusion 42% harmfulness reduction; PROMPTPEEK up to 99%; LMCache v0.4.4-0.4.6 per-request hit metrics; Triton May 2026 bulletin r26.03 |
+| [C03-04-Secure-Development-Practices](chapters/C03-Model-Lifecycle-Management/C03-04-Secure-Development-Practices.md) | Trend Micro 492 unauthenticated MCP servers; AI Accelerator Institute 281 servers / 92%; Unit 42 Hydra RCE December 2025 |
+| [C03-Model-Lifecycle-Management](chapters/C03-Model-Lifecycle-Management/C03-Model-Lifecycle-Management.md) | JFrog: 6.5x increase in malicious models in 2024 |
+| [C04-02-Hardware-Security](chapters/C04-Infrastructure/C04-02-Hardware-Security.md) | Blackwell CC encrypts GPU-resident HBM |
+| [C04-02-Hardware-Security](chapters/C04-Infrastructure/C04-02-Hardware-Security.md) | Confidential AI inference with CPU+GPU TEEs in production at Alibaba, ByteDance, Google, Oracle |
+| [C04-02-Hardware-Security](chapters/C04-Infrastructure/C04-02-Hardware-Security.md) | Alpha Compute 504-chip B200 cluster CC hand-off May 8, 2026 |
+| [C04-02-Hardware-Security](chapters/C04-Infrastructure/C04-02-Hardware-Security.md) | Red Hat OSC v1.10.0 GA confidential containers on Azure; RHEL day-zero Rubin support |
+| [C04-02-Hardware-Security](chapters/C04-Infrastructure/C04-02-Hardware-Security.md) | GDDRHammer/GeForge 'tested and not reproduced on' RTX 3080, 4060/4060 Ti, RTX 6000 Ada, RTX 5050 |
+| [C04-03-Edge-Distributed-Security](chapters/C04-Infrastructure/C04-03-Edge-Distributed-Security.md) | Over 12,000 internet-facing Flowise instances (April 2026) |
+| [C04-Infrastructure](chapters/C04-Infrastructure/C04-Infrastructure.md) | 37% of cloud environments affected by NVIDIAScape (Wiz) |
+| [C04-Infrastructure](chapters/C04-Infrastructure/C04-Infrastructure.md) | Intel Trust Authority composite CPU+GPU attestation (Mar 2026); NIST AI Agent Standards Initiative (Feb 2026) and Q4 2026 interoperability profile |
+| [C05-01-Identity-Management-Authentication](chapters/C05-Access-Control/C05-01-Identity-Management-Authentication.md) | Codex payload hidden behind 94 ideographic spaces (U+3000) |
+| [C05-03-Multi-Tenant-Isolation](chapters/C05-Access-Control/C05-03-Multi-Tenant-Isolation.md) | CVE-2026-25960 CVSS 5.4 |
+| [C06-01-Model-Artifact-Integrity](chapters/C06-Supply-Chain/C06-01-Model-Artifact-Integrity.md) | Pattern Recognition 2026 backdoor defense: 100% detection on 630 models, six attack types |
+| [C06-01-Model-Artifact-Integrity](chapters/C06-Supply-Chain/C06-01-Model-Artifact-Integrity.md) | ClawHavoc delivered Atomic Stealer to ~300,000 users (line 265) |
+| [C06-02-AI-BOM-Supply-Chain-Monitoring](chapters/C06-Supply-Chain/C06-02-AI-BOM-Supply-Chain-Monitoring.md) | OpenAI, Anthropic, Google all published AB 2013 training-data summaries by Jan 1, 2026 |
+| [C06-Supply-Chain](chapters/C06-Supply-Chain/C06-Supply-Chain.md) | JFrog: 59% of serialized model files use pickle-based formats; JFrog 2025 report: 1M+ new HF models in 2024, 6.5x increase in malicious models (also C06-02) |
+| [C06-Supply-Chain](chapters/C06-Supply-Chain/C06-Supply-Chain.md) | Ultralytics library with 60M+ (PyPI) downloads |
+| [C06-Supply-Chain](chapters/C06-Supply-Chain/C06-Supply-Chain.md) | Shai-Hulud 2.0 compromised ~1,000 npm packages |
+| [C07-02-Hallucination-Detection](chapters/C07-Model-Behavior/C07-02-Hallucination-Detection.md) | MIT (Jan 2025): models 34% more likely to use confident language when false |
+| [C07-02-Hallucination-Detection](chapters/C07-Model-Behavior/C07-02-Hallucination-Detection.md) | 79% of lawyers use AI tools (ABA TechReport 2025) |
+| [C07-02-Hallucination-Detection](chapters/C07-Model-Behavior/C07-02-Hallucination-Detection.md) | AA-Omniscience Gemini 3 Pro ~half accuracy / 88% halluc.; Grok 4 64%; Opus 4.6 46.4% |
+| [C07-02-Hallucination-Detection](chapters/C07-Model-Behavior/C07-02-Hallucination-Detection.md) | May 18, 2026 Charlotin breakdown (1,005 US/451 non-US; 865 pro se/555 lawyers; Canada 152 etc.) |
+| [C07-03-Output-Safety-Privacy-Explainability](chapters/C07-Model-Behavior/C07-03-Output-Safety-Privacy-Explainability.md) | Sockpuppeting (Dotsinski & Eustratiadis, 2026): 95% ASR on Qwen-8B, 77% on Llama-3.1-8B |
+| [C07-04-Source-Attribution-Citation-Integrity](chapters/C07-Model-Behavior/C07-04-Source-Attribution-Citation-Integrity.md) | Attention-Aware RAG poisoning defenses (OpenReview PS43wqCSME, NeurIPS 2025): NPAS/AV Filter, ~20% improvement, adaptive attacks ~35% |
+| [C07-04-Source-Attribution-Citation-Integrity](chapters/C07-Model-Behavior/C07-04-Source-Attribution-Citation-Integrity.md) | Lancet: 4,046 fabricated refs across 2,810 papers; >12x rise 2023 to early 2026 |
+| [C07-04-Source-Attribution-Citation-Integrity](chapters/C07-Model-Behavior/C07-04-Source-Attribution-Citation-Integrity.md) | Over 300 federal judges have standing orders; 5-6 new cases/day |
+| [C07-Model-Behavior](chapters/C07-Model-Behavior/C07-Model-Behavior.md) | Deepfake files ~500K (2023) to 8M+ (2025) |
+| [C07-Model-Behavior](chapters/C07-Model-Behavior/C07-Model-Behavior.md) | Social platforms strip C2PA; vendor signing list |
+| [C08-03-Memory-Expiry-Revocation-Leakage-Prevention](chapters/C08-Memory-and-Embeddings/C08-03-Memory-Expiry-Revocation-Leakage-Prevention.md) | prEN 18229-1 at Enquiry stage; Help Net Security April 2026 Article 12 analysis recommending signed logs |
+| [C08-Memory-and-Embeddings](chapters/C08-Memory-and-Embeddings/C08-Memory-and-Embeddings.md) | Milvus v2.6.15 release date (Apr 24) |
+| [C09-01-Execution-Budgets](chapters/C09-Orchestration-and-Agents/C09-01-Execution-Budgets.md) | Five Eyes 'Careful adoption of agentic AI services' (May 1, 2026); NIST page updated April 20; NCCoE concept paper description |
+| [C09-01-Execution-Budgets](chapters/C09-Orchestration-and-Agents/C09-01-Execution-Budgets.md) | Uber 84%/95%/70% figures, ClawHavoc 341 skills, 82 countries, ~346K stars, Gravitee 21% runtime visibility |
+| [C09-02-High-Impact-Action-Approval](chapters/C09-Orchestration-and-Agents/C09-02-High-Impact-Action-Approval.md) | OWASP State of Agentic AI Security and Governance 2.01 quote; June 3 paper / June 4 summit |
+| [C09-02-High-Impact-Action-Approval](chapters/C09-Orchestration-and-Agents/C09-02-High-Impact-Action-Approval.md) | Prisma AIRS 3.0 AI Agent Gateway integrates with CyberArk for agent identity |
+| [C09-02-High-Impact-Action-Approval](chapters/C09-Orchestration-and-Agents/C09-02-High-Impact-Action-Approval.md) | Cisco RSAC keynote quote 'know your agents, authorize every action, and adapt to risk...' |
+| [C09-03-Tool-and-Plugin-Isolation](chapters/C09-Orchestration-and-Agents/C09-03-Tool-and-Plugin-Isolation.md) | MCP CVE count 'dozens' January-April 2026 |
+| [C09-05-Agent-Authorization-Delegation](chapters/C09-Orchestration-and-Agents/C09-05-Agent-Authorization-Delegation.md) | Proofpoint Agent Integrity Framework defines 'Mean Time to Understand (MTU)' and an Understand-Align-Authorize sequence |
+| [C09-05-Agent-Authorization-Delegation](chapters/C09-Orchestration-and-Agents/C09-05-Agent-Authorization-Delegation.md) | Kurtz RSAC keynote: two incidents at Fortune 50 companies; Sevii 'Autonomous Proactive Security' module at RSAC 2026 |
+| [C09-Orchestration-and-Agents](chapters/C09-Orchestration-and-Agents/C09-Orchestration-and-Agents.md) | Agent Governance Toolkit: authentication primitives shipped with zero production callers (hackerbot-claw coverage) |
+| [C10-MCP-Security](chapters/C10-MCP-Security/C10-MCP-Security.md) | May 19 high-risk classification draft requires composite/agentic systems to be assessed holistically |
+| [C10-MCP-Security](chapters/C10-MCP-Security/C10-MCP-Security.md) | Unnamed 2,614-implementation survey (82%/67%) and 41% of 518 registry servers with zero auth |
+| [C10-MCP-Security](chapters/C10-MCP-Security/C10-MCP-Security.md) | TS SDK 161 contributors; Uber/Amazon tens of thousands weekly executions over Thrift/Protobuf/HTTP |
+| [C11-01-Model-Alignment-Safety](chapters/C11-Adversarial-Robustness/C11-01-Model-Alignment-Safety.md) | OBLITERATUS 1,000 stars in one day; six-stage pipeline with 13 methods |
+| [C11-03-Model-Extraction-Defense](chapters/C11-Adversarial-Robustness/C11-03-Model-Extraction-Defense.md) | Gartner: through 2026, over 80% of unauthorized AI incidents will result from internal misuse |
+| [C11-04-Model-Runtime-Anomaly-Detection](chapters/C11-Adversarial-Robustness/C11-04-Model-Runtime-Anomaly-Detection.md) | ISO/IEC 27090 draft says detecting poisoning is 'often difficult' |
+| [C11-04-Model-Runtime-Anomaly-Detection](chapters/C11-Adversarial-Robustness/C11-04-Model-Runtime-Anomaly-Detection.md) | Cisco mcp-scanner, Snyk agent-scan, Backslash, Pipelock do SHA-256 tool-description pinning; mcp-scan first with rug-pull detection |
+| [C12-01-Request-Response-Logging](chapters/C12-Monitoring-and-Logging/C12-01-Request-Response-Logging.md) | prEN 18229-1 enquiry since Jan 23 2026; M/593 Q4 2026; prEN ISO/IEC 24970 formal-vote dispatch May 20 |
+| [C12-02-Abuse-Detection-Alerting](chapters/C12-Monitoring-and-Logging/C12-02-Abuse-Detection-Alerting.md) | CrowdStrike AIDR SDK languages/gateways/MCP; Cisco Identity Intelligence/Duo/Secure Access; Zenity Foundry GA; Model Armor auto-routing |
+| [C12-03-Model-Drift-Detection](chapters/C12-Monitoring-and-Logging/C12-03-Model-Drift-Detection.md) | Vendor capability claims (Galileo, Driftbase, Superwise, Evidently, Opik, Langfuse, OpenObserve, DriftWatch) |
+| [C12-05-Training-Data-Model-Lifecycle-Audit](chapters/C12-Monitoring-and-Logging/C12-05-Training-Data-Model-Lifecycle-Audit.md) | EU AI Omnibus political agreement date (7 May 2026) |
+| [Appendix-B-Controls-Inventory](appendices/Appendix-B-Controls-Inventory.md) | NVIDIA NGC, Kaggle, Hugging Face rolling out OMS signing |
+| [Appendix-B-Controls-Inventory](appendices/Appendix-B-Controls-Inventory.md) | Microsoft Zero Trust for AI 7 pillars; COSAiS IR 8605 series; AI Exchange 70 pages; AIMA Aug 2025; lakeFS acquired DVC 2025 |
+| [Appendix-C-AI-Secure-Coding](appendices/Appendix-C-AI-Secure-Coding.md) | Apiiro CLI / Guardian Agent launched April 9, 2026 with six agent skills |
+| [Appendix-C-AI-Secure-Coding](appendices/Appendix-C-AI-Secure-Coding.md) | Claude Code markdown prompt injection disclosed April 3, 2026 |
 
 ## Close-out
 
