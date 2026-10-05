@@ -84,8 +84,10 @@ Each released minor version lives in its own folder. Once a version is released 
 
 ```text
 /
-├── 1.0/         <- released (locked after release)
-├── 1.01-dev/    <- next minor release in progress
+├── 1.0/         <- released (locked)
+├── 1.01/        <- released (locked)
+├── 1.02-dev/    <- next minor release in progress
+├── 2.0-dev/     <- next major release in progress
 ```
 
 When work on a new major opens, it lives alongside the active minor line in its own `-dev` folder (for example, `2.0-dev/`) so the previous major can continue to receive minor releases during the maintenance period. This mirrors the approach used by [OWASP ASVS](https://github.com/OWASP/ASVS).
