@@ -1,0 +1,285 @@
+/* AISVS PDF stylesheet (WeasyPrint). Mirrors the layout of the AISVS 1.0 PDF. */
+
+:root {
+  --navy: #0a2540;
+  --blue: #1f6feb;
+  --ink: #1a1a1a;
+  --muted: #999999;
+  --zebra: #f5f8fc;
+  --rule: #e3e8ee;
+}
+
+@page {
+  size: A4;
+  margin: 66.9pt 57pt 56pt 57pt;
+  @bottom-left {
+    content: "OWASP AISVS";
+    font: 8pt Helvetica, "Liberation Sans", Arial, sans-serif;
+    color: #999999;
+    margin-left: -6pt;
+  }
+  @bottom-center {
+    content: "Artificial Intelligence Security Verification Standard";
+    font: 8pt Helvetica, "Liberation Sans", Arial, sans-serif;
+    color: #bbbbbb;
+  }
+  @bottom-right {
+    content: counter(page);
+    font: 8pt Helvetica, "Liberation Sans", Arial, sans-serif;
+    color: #999999;
+    margin-right: -6pt;
+  }
+}
+
+@page cover {
+  margin: 0;
+  @bottom-left { content: none; }
+  @bottom-center { content: none; }
+  @bottom-right { content: none; }
+}
+
+@page toc {
+  @bottom-left { content: none; }
+  @bottom-center { content: none; }
+  @bottom-right { content: none; }
+}
+
+html {
+  font-family: Helvetica, "Liberation Sans", Arial, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+body { margin: 0; }
+
+/* ---------- Cover ---------- */
+
+.cover {
+  page: cover;
+  position: relative;
+  width: 210mm;
+  height: 297mm;
+  box-sizing: border-box;
+  padding: 37.2pt;
+  break-after: page;
+}
+
+.cover-panel {
+  background: var(--navy);
+  height: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  padding-top: 179.6pt;
+  position: relative;
+}
+
+.cover-shield { width: 172.5pt; display: block; margin: 0 auto; }
+
+.cover-rule {
+  width: 333.4pt;
+  height: 2.2pt;
+  background: var(--blue);
+  margin: 20pt auto 0 auto;
+}
+
+.cover h1.cover-title {
+  color: #ffffff;
+  font-size: 30pt;
+  font-weight: bold;
+  line-height: 36pt;
+  margin: 20pt 40pt 0 40pt;
+  border: none;
+  padding: 0;
+  bookmark-level: 1;
+}
+
+.cover-version {
+  color: var(--blue);
+  font-size: 15pt;
+  letter-spacing: 1.2pt;
+  margin-top: 12pt;
+}
+
+.cover-date { color: #9fb3c8; font-size: 11pt; margin-top: 18pt; }
+
+.cover-owasp { width: 112.5pt; display: block; margin: 26pt auto 0 auto; }
+
+.cover-foot {
+  position: absolute;
+  bottom: 22pt;
+  left: 0;
+  right: 0;
+  color: #7e93a8;
+  font-size: 10pt;
+}
+
+/* ---------- Table of contents ---------- */
+
+nav.toc { page: toc; break-after: page; }
+
+nav.toc h1 {
+  font-weight: normal;
+  font-size: 22pt;
+  margin-bottom: 7pt;
+  bookmark-level: none;
+}
+
+nav.toc ul { list-style: none; margin: 0; padding: 0; }
+
+nav.toc li.l1 { margin-top: 6.5pt; }
+nav.toc li.l1:first-child { margin-top: 0; }
+
+nav.toc a { text-decoration: none; display: block; }
+
+nav.toc li.l1 > a {
+  font-weight: bold;
+  font-size: 10.5pt;
+  color: var(--navy);
+  line-height: 18pt;
+}
+
+nav.toc li.l2 > a {
+  font-size: 9.5pt;
+  color: #444444;
+  padding-left: 13.5pt;
+  line-height: 16.5pt;
+}
+
+nav.toc a::after {
+  content: leader(".") " " target-counter(attr(href), page);
+  font-size: 9pt;
+  color: var(--muted);
+}
+
+/* ---------- Headings ---------- */
+
+h1, h2, h3, h4 { break-after: avoid; }
+
+h1 {
+  font-size: 19pt;
+  font-weight: bold;
+  color: var(--navy);
+  line-height: 1.2;
+  margin: 0 0 16pt 0;
+  padding: 4.7pt 0 8pt 0;
+  border-bottom: 1.5pt solid var(--blue);
+}
+
+h1.chapter { break-before: page; }
+
+h2 {
+  font-size: 14pt;
+  font-weight: bold;
+  color: var(--blue);
+  line-height: 1.2;
+  margin: 16pt 0 10pt 0;
+}
+
+h3 {
+  font-size: 11.5pt;
+  font-weight: bold;
+  color: var(--navy);
+  margin: 16pt 0 8pt 0;
+}
+
+h4 {
+  font-size: 10.5pt;
+  font-weight: bold;
+  color: var(--ink);
+  margin: 12pt 0 4pt 0;
+}
+
+h2 + p, h3 + p, h4 + p { margin-top: 0; }
+
+/* ---------- Body ---------- */
+
+p { margin: 0 0 5.25pt 0; orphans: 2; widows: 2; }
+
+strong { color: var(--navy); }
+li strong, h4 strong { color: var(--ink); }
+
+a { color: var(--blue); text-decoration: underline; }
+
+ul, ol { margin: 0 0 8pt 0; padding-left: 30pt; }
+li { margin: 0; }
+
+hr {
+  border: none;
+  border-top: 1.5pt solid #020202;
+  margin: 8pt 0 16pt 0;
+}
+
+blockquote {
+  background: #f7f9fb;
+  border-left: 3pt solid var(--blue);
+  margin: 10pt 0;
+  padding: 6pt 10pt 6pt 8.3pt;
+  color: #555555;
+}
+blockquote p { margin: 0; }
+blockquote strong { color: var(--navy); }
+
+code {
+  font-family: "Andale Mono", "DejaVu Sans Mono", monospace;
+  font-size: 8.5pt;
+  background: #f0f3f7;
+  color: var(--ink);
+  padding: 0 1.5pt;
+}
+
+pre {
+  font-family: "Andale Mono", "DejaVu Sans Mono", monospace;
+  font-size: 8.5pt;
+  background: #f0f3f7;
+  padding: 6pt 8pt;
+  white-space: pre-wrap;
+}
+pre code { background: none; padding: 0; }
+
+img { max-width: 100%; }
+
+/* ---------- Tables ---------- */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6pt 0 10pt 0;
+  font-size: 9pt;
+  line-height: 1.5;
+}
+
+thead { display: table-header-group; }
+
+th {
+  background: var(--navy);
+  color: #ffffff;
+  font-weight: bold;
+  text-align: left;
+  padding: 4.5pt 6pt;
+}
+
+td {
+  padding: 4.5pt 6pt;
+  border-bottom: 0.75pt solid var(--rule);
+  vertical-align: top;
+}
+
+tr { break-inside: avoid; }
+
+tbody tr:nth-child(even) td { background: var(--zebra); }
+
+td:first-child { font-weight: bold; color: var(--navy); }
+table.req td:first-child { white-space: nowrap; }
+table.req td:last-child { text-align: center; }
+table.ids td:last-child { white-space: nowrap; }
+td:first-child strong { color: var(--navy); }
+
+td:last-child { font-weight: bold; color: var(--blue); }
+td:last-child strong { color: var(--blue); }
+
+td:only-child { color: var(--ink); font-weight: normal; }
+
+/* Requirement tables: description column is regular ink, "Verify that" stays bold. */
+td strong { color: inherit; }
+td:not(:first-child):not(:last-child) strong { color: var(--ink); }

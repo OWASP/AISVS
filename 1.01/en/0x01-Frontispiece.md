@@ -70,3 +70,6 @@ The list below reflects authored and edited content. It does not fully capture c
 * Amine Khazraj ([aminekhazraj](https://github.com/aminekhazraj))
 * Iman ([ImanSharaf](https://github.com/ImanSharaf))
 * MRX ([MRX-72](https://github.com/MRX-72))
+* Jungsoo Baek ([visker83-del](https://github.com/visker83-del))
+* Sattyam Jain ([sattyamjjain](https://github.com/sattyamjjain))
+* Zachary Satterly ([zachary-satterly](https://github.com/zachary-satterly))
