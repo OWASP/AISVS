@@ -8,7 +8,7 @@ Every requirement in AISVS has been developed from the ground up to reflect the 
 
 ## Copyright and License
 
-Version 1.01, 2026
+Version 2.0, 2026
 
 [![CC BY-SA 4.0](https://licensebuttons.net/l/by-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -19,7 +19,7 @@ For any reuse or distribution, you must clearly communicate the license terms of
 
 ## Acknowledgments
 
-AISVS v1.01 is the result of a collaborative effort by its project leads, working group members, and community contributors. We thank everyone who has contributed requirements, reviews, and feedback to make this standard possible.
+AISVS v2.0 is the result of a collaborative effort by its project leads, working group members, and community contributors. We thank everyone who has contributed requirements, reviews, and feedback to make this standard possible.
 
 ## Project Leads
 
