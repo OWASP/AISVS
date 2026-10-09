@@ -29,10 +29,12 @@ Syntactically valid prompts may still request disallowed content such as policy-
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **2.2.1** | **Verify that** every prompt is scored by a content classifier for violence, self-harm, hate, and sexual content against configurable thresholds. Prompts that exceed those thresholds are rejected or sanitized before reaching the model context. | 1 |
+| **2.2.1** | **Verify that** every prompt is scored by a content classifier covering, at minimum, violence, self-harm, hate, and sexual content. | 1 |
 | **2.2.2** | **Verify that** prompt content classification is evaluated for unsupported languages. | 1 |
-| **2.2.3** | **Verify that** non-text inputs (image/video/audio) are checked for adversarial perturbations, steganographic payloads, hidden or embedded content, or known attack patterns. | 2 |
+| **2.2.3** | **Verify that** non-text inputs (image/video/audio) are checked for adversarial perturbations and steganographic payloads, using detection methods appropriate to the input modality. | 2 |
 | **2.2.4** | **Verify that** coordinated attacks spanning multiple input types (e.g., steganographic payloads in images combined with prompt injection in text) are detected and blocked. | 3 |
+| **2.2.5** | **Verify that** content classification scores from 2.2.1 are evaluated against configurable, category-specific thresholds, and that prompts exceeding those thresholds are rejected or sanitized before reaching the model context. | 1 |
+| **2.2.6** | **Verify that** non-text inputs are scanned for hidden or embedded content and matched against known attack patterns, in addition to the perturbation and steganography checks in 2.2.3. | 2 |
 
 ---
 
