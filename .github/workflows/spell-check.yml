@@ -44,7 +44,9 @@ jobs:
         with:
           files: |
             1.0/en/**/*.md
-            1.01-dev/en/**/*.md
+            1.01/en/**/*.md
+            1.02-dev/en/**/*.md
+            2.0-dev/en/**/*.md
             *.md
           separator: '\n'
 
@@ -69,4 +71,4 @@ jobs:
       - name: Run cspell on all markdown files (push to main or manual)
         if: github.event_name != 'pull_request'
         run: |
-          cspell --config .github/workflows/config/cspell.json "1.0/en/**/*.md" "1.01-dev/en/**/*.md" "*.md"
+          cspell --config .github/workflows/config/cspell.json "1.0/en/**/*.md" "1.01/en/**/*.md" "1.02-dev/en/**/*.md" "2.0-dev/en/**/*.md" "*.md"

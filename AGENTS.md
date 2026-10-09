@@ -1,6 +1,11 @@
 # AISVS Contribution Instructions
 
-You are contributing the the OWASP Artificial Intelligence Security Verification Standard v1.01 located https://github.com/OWASP/AISVS/tree/main/1.01-dev.
+You are contributing to the OWASP Artificial Intelligence Security Verification Standard. Work happens in the in-progress version folders:
+
+* v1.02 (next minor release): https://github.com/OWASP/AISVS/tree/main/1.02-dev
+* v2.0 (next major release): https://github.com/OWASP/AISVS/tree/main/2.0-dev
+
+Released versions (`1.0/`, `1.01/`) are locked. Never edit them.
 
 ## Workflow for contributing to AISVS
 

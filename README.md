@@ -51,12 +51,12 @@ This project was founded by [Jim Manico](https://linkedin.com/in/jmanico). Curre
 
 ## Latest Stable Version
 
-The latest stable version is **AISVS 1.0**, which can be found:
+The latest stable version is **AISVS 1.01**, which can be found:
 
 | Format | Link |
 | --- | --- |
-| PDF | [AISVS 1.0 PDF](https://github.com/OWASP/AISVS/raw/main/1.0/dist/AISVS-1.0.pdf) |
-| Markdown (source) | [Browse online](https://github.com/OWASP/AISVS/tree/main/1.0/en) |
+| PDF | [AISVS 1.01 PDF](https://github.com/OWASP/AISVS/raw/main/1.01/dist/AISVS-1.01.pdf) |
+| Markdown (source) | [Browse online](https://github.com/OWASP/AISVS/tree/main/1.01/en) |
 
 ---
 
@@ -81,28 +81,28 @@ Organizations should select a target level based on the risk profile of their AI
 
 ## Requirement Chapters
 
-1. [Training Data Integrity & Traceability](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C01-Training-Data-Integrity-and-Traceability.md)
-2. [Input Validation](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C02-Input-Validation.md)
-3. [Model Lifecycle Management & Change Control](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C03-Model-Lifecycle-Management.md)
-4. [Infrastructure, Configuration & Deployment Security](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C04-Infrastructure.md)
-5. [Access Control & Identity for AI Components & Users](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C05-Access-Control-and-Identity.md)
-6. [Supply Chain Security for Models](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C06-Supply-Chain.md)
-7. [Model Behavior, Output Control & Safety Assurance](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C07-Model-Behavior.md)
-8. [Memory, Embeddings & Vector Database Security](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C08-Memory-Embeddings-and-Vector-Database.md)
-9. [Orchestration & Agentic Security](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C09-Orchestration-and-Agentic-Action.md)
-10. [Model Context Protocol (MCP) Security](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C10-MCP-Security.md)
-11. [Adversarial Robustness](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C11-Adversarial-Robustness.md)
-12. [Monitoring, Logging & Anomaly Detection](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x10-C12-Monitoring-and-Logging.md)
+1. [Training Data Integrity & Traceability](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C01-Training-Data-Integrity-and-Traceability.md)
+2. [Input Validation](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C02-Input-Validation.md)
+3. [Model Lifecycle Management & Change Control](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C03-Model-Lifecycle-Management.md)
+4. [Infrastructure, Configuration & Deployment Security](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C04-Infrastructure.md)
+5. [Access Control & Identity for AI Components & Users](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C05-Access-Control-and-Identity.md)
+6. [Supply Chain Security for Models](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C06-Supply-Chain.md)
+7. [Model Behavior, Output Control & Safety Assurance](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C07-Model-Behavior.md)
+8. [Memory, Embeddings & Vector Database Security](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C08-Memory-Embeddings-and-Vector-Database.md)
+9. [Orchestration & Agentic Security](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C09-Orchestration-and-Agentic-Action.md)
+10. [Model Context Protocol (MCP) Security](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C10-MCP-Security.md)
+11. [Adversarial Robustness](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C11-Adversarial-Robustness.md)
+12. [Monitoring, Logging & Anomaly Detection](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C12-Monitoring-and-Logging.md)
 
 ## Appendices
 
-* [Appendix A: Glossary](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x90-Appendix-A_Glossary.md)
-* [Appendix B: AI Security Controls Inventory](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x91-Appendix-B_AI_Security_Controls_Inventory.md)
-* [Appendix C: AI-Assisted Secure Coding](https://github.com/OWASP/AISVS/blob/main/1.0/en/0x92-Appendix-C_AI_for_Code_Generation.md)
+* [Appendix A: Glossary](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x90-Appendix-A_Glossary.md)
+* [Appendix B: AI Security Controls Inventory](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x91-Appendix-B_AI_Security_Controls_Inventory.md)
+* [Appendix C: AI-Assisted Secure Coding](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x92-Appendix-C_AI_for_Code_Generation.md)
 
 ## Research Wiki
 
-For every requirement in the standard, the [Research Wiki](https://github.com/OWASP/AISVS/blob/main/1.01-dev/research/README.md) provides implementation context beyond the requirement text:
+For every requirement in the standard, the [Research Wiki](https://github.com/OWASP/AISVS/blob/main/1.01/research/README.md) provides implementation context beyond the requirement text:
 
 | Column | What it tells you |
 | --- | --- |
@@ -110,7 +110,7 @@ For every requirement in the standard, the [Research Wiki](https://github.com/OW
 | **Verification Approach** | Concrete audit steps, tools, and evidence to collect |
 | **Gaps & Notes** | Tool maturity ratings, open research questions, and implementation caveats |
 
-The wiki tracks the in-progress 1.01 release and covers every requirement in it, with per-section threat landscape summaries, tooling recommendations, and references to current standards and research literature. The wiki for the released 1.0 standard is frozen under [1.0/research](https://github.com/OWASP/AISVS/blob/main/1.0/research/README.md).
+The wiki covers every requirement in the released 1.01 standard, with per-section threat landscape summaries, tooling recommendations, and references to current standards and research literature. The wiki for 1.0 is frozen under [1.0/research](https://github.com/OWASP/AISVS/blob/main/1.0/research/README.md).
 
 ---
 
@@ -140,8 +140,10 @@ Each stable release of AISVS is published as a numbered folder in this repositor
 
 ```text
 /
-├── 1.0/        <- published stable release (locked)
-├── 1.01-dev/   <- next minor release (in progress)
+├── 1.0/        <- published release (locked)
+├── 1.01/       <- latest stable release (locked)
+├── 1.02-dev/   <- next minor release (in progress)
+├── 2.0-dev/    <- next major release (in progress)
 ```
 
 ---
