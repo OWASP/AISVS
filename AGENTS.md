@@ -1,9 +1,8 @@
 # AISVS Contribution Instructions
 
-You are contributing to the OWASP Artificial Intelligence Security Verification Standard. Work happens in the in-progress version folders:
+You are contributing to the OWASP Artificial Intelligence Security Verification Standard. Work happens in the in-progress version folder:
 
 * v1.02 (next minor release): https://github.com/OWASP/AISVS/tree/main/1.02-dev
-* v2.0 (next major release): https://github.com/OWASP/AISVS/tree/main/2.0-dev
 
 Released versions (`1.0/`, `1.01/`) are locked. Never edit them.
 
@@ -13,7 +12,7 @@ IMPORTANT: you MUST follow through all steps 1.-4. below when contributing to th
 
 ### 1. Clear task
 
-* Always ensure user gives you instructions which release (1.01, 2.0 etc) you are targeting. Ask if not given instructions. Read RELEASE.md for more details.
+* All work targets the in-progress release listed above (currently 1.02 only). Read RELEASE.md for more details.
 * Ensure user gives you clear instructions what kind of review, topic or change is being considered.
 * Review from the appropriate release Using AISVS document, and ensure all work is STRICTLY within the boundaries of the standard.
 
