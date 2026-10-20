@@ -16,7 +16,7 @@ The OWASP Artificial Intelligence Security Verification Standard (AISVS) focuses
 
 ### What is the current status of AISVS development?
 
-**AISVS 1.01 is the latest stable release.** The released `1.0/` and `1.01/` folders are locked. Work now lands in `1.02-dev/` for the next minor release (patch-level fixes, new requirements, and material changes to existing requirements) or `2.0-dev/` for the next major release (chapter and section changes), according to the [release policy](RELEASE.md).
+**AISVS 1.01 is the latest stable release.** The released `1.0/` and `1.01/` folders are locked. Work now lands in `1.02-dev/` for the next minor release (patch-level fixes, new requirements, and material changes to existing requirements), according to the [release policy](RELEASE.md).
 
 ## How can I help?
 

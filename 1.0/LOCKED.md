@@ -8,10 +8,9 @@ Do not edit files under `1.0/en/`, `1.0/dist/`, or `1.0/research/`. A CI guard r
 
 The only exception is correcting the mistakes in the original `1.0/research/` folder which is AI generated. As newer models handle this type of research in a more capable way, we may update this content via automation only.
 
-Future work happens in the next version folders:
+Future work happens in the next version folder:
 
 - `1.02-dev/en/` for the next minor release.
-- `2.0-dev/en/` for the next major release.
 
 The latest stable release is [1.01](../1.01/).
 
