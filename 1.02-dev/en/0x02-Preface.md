@@ -2,6 +2,8 @@
 
 Welcome to the **Artificial Intelligence Security Verification Standard (AISVS) version 1.02**.
 
+This is the active development version. Version 2.0 is deferred. New coverage may be added in 1.02 while preserving the numbering and organization of existing requirements, as defined in the [release policy](../../RELEASE.md). The latest stable release is 1.01.
+
 By adopting AISVS, organizations can systematically evaluate and strengthen the security posture of their AI systems, building a foundation of secure AI engineering practices that evolves alongside the technology itself.
 
 ## Why AISVS Exists

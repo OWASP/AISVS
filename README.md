@@ -58,6 +58,10 @@ The latest stable version is **AISVS 1.01**, which can be found:
 | PDF | [AISVS 1.01 PDF](https://github.com/OWASP/AISVS/raw/main/1.01/dist/AISVS-1.01.pdf) |
 | Markdown (source) | [Browse online](https://github.com/OWASP/AISVS/tree/main/1.01/en) |
 
+## Current Development
+
+**AISVS 1.02 is the only active development release.** Contributions target [1.02-dev](1.02-dev/en). Version 2.0 is deferred, and `2.0-dev/` has been removed. New chapters and sections may be added in 1.02 while preserving the numbering and organization of existing requirements. See the [release policy](RELEASE.md) for the full rules.
+
 ---
 
 ## Verification Levels
@@ -134,7 +138,7 @@ Identifiers without the `v<version>` element refer to the latest released minor 
 
 ## Versioning
 
-AISVS uses a two-part version number, `v<MAJOR>.<MINOR>` (for example, `v1.0`, `v1.01`, `v2.0`). Major versions cover chapter and section changes, minor versions cover additions, removals, and material edits to requirements within the existing structure, and patch fixes ship in-branch without a separate version. The full policy is documented in [RELEASE.md](RELEASE.md).
+AISVS uses a two-part version number, `v<MAJOR>.<MINOR>` (for example, `v1.0`, `v1.01`, `v1.02`). Minor releases allow requirement changes and appended chapters or sections while preserving existing numbering, organization, and control objectives. Reorganizing existing material requires a major release. Patch fixes ship in-branch without a separate version. The full policy is documented in [RELEASE.md](RELEASE.md).
 
 Each stable release of AISVS is published as a numbered folder in this repository. Once a version is released, its folder is locked; all future work happens in a new folder. This mirrors the approach used by [OWASP ASVS](https://github.com/OWASP/ASVS).
 
