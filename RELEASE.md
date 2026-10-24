@@ -2,6 +2,12 @@
 
 AISVS addresses a fast-moving technology, so it has to update more often than most security standards. At the same time, adopters, auditors, and tooling vendors need stable identifiers they can cite. This document defines the release model that balances those two goals.
 
+## Current Release Plan
+
+**1.02 is the only active development release.** All new work targets `1.02-dev/`. Version 2.0 is deferred, and its `2.0-dev/` folder has been removed. The released `1.0/` and `1.01/` folders remain locked.
+
+Version 1.02 may add chapters, sections, and requirements while preserving the numbering and organization of existing requirements. Proposals are reviewed for scope, evidence, and testability before inclusion; targeting 1.02 does not guarantee inclusion in that release.
+
 ## Versioning Scheme
 
 AISVS uses a two-part version number:
@@ -12,8 +18,8 @@ v<MAJOR>.<MINOR>
 
 Examples: `v1.0`, `v1.01`, `v1.02`, `v2.0`, `v2.01`.
 
-- **MAJOR** changes when chapters or sections are added, removed, restructured, or when control objectives change.
-- **MINOR** changes when requirements are added, removed, or materially modified within the existing chapter and section structure.
+- **MAJOR** changes when existing chapters or sections are removed, renamed, or restructured, existing requirements are moved or renumbered, or existing control objectives change.
+- **MINOR** changes when requirements are added, retired, or materially modified, or new chapters or sections are appended without changing the numbering or organization of existing requirements.
 
 The public AISVS version that adopters, auditors, and tooling cite is always two-part. Patch-level fixes (typos, link corrections, language polish that does not change a requirement's meaning) are applied directly to the in-progress minor and do not produce a separate public version number. The next minor release rolls them up.
 
@@ -40,17 +46,20 @@ Not allowed:
 Allowed:
 
 - Adding new requirements within an existing section.
-- Removing requirements that are obsolete, duplicated, or superseded.
+- Appending new chapters and sections with new identifiers, preserving existing chapter and section names, control objectives, and requirement placement.
+- Retiring requirements that are obsolete, duplicated, or superseded, leaving their identifiers marked as removed rather than reusing them or renumbering later requirements.
 - Materially modifying requirement text, including level changes, when the change reflects evolving technology or threat landscape.
 - All patch-level changes accumulated since the previous minor.
 
 Not allowed:
 
-- Adding, removing, or renaming chapters.
-- Adding, removing, or renaming sections within a chapter.
-- Changing a chapter's control objective.
+- Removing, renaming, or reorganizing existing chapters or sections.
+- Moving or renumbering existing requirements, or reusing retired identifiers.
+- Changing an existing chapter's control objective.
 
-These limits exist because the `v<version>-Cx.y.z` referencing convention encodes chapter and section identity. If a minor release reshapes what `C9.4` means, every downstream citation against the previous minor becomes ambiguous without a major-version signal.
+Assign additions the next unused identifier at the end of the relevant chapter, section, or requirement sequence. For example, a new chapter after C12 becomes C13; existing chapters and their requirements retain their identifiers and placement.
+
+These limits preserve the chapter and section identity encoded by `v<version>-Cx.y.z`. New coverage can be added without reorganizing existing material. Requirement text and levels may still change between minor releases, so assessments must cite the version they use.
 
 ### Major release (for example, `v1.x` to `v2.0`)
 
@@ -70,7 +79,7 @@ A major release is the only release type that can break the meaning of existing 
 
 ## Parallel Maintenance
 
-When work begins on the next major version (for example, `v2.0`):
+Version 2.0 is deferred; there is no active parallel major-version development. If a future major release is opened:
 
 - The previous major line continues to receive minor releases and in-branch patch fixes for a defined maintenance period announced at the time the next major opens.
 - Adopters and auditors targeting the previous major are not forced to migrate before the maintenance period ends.
@@ -89,7 +98,7 @@ Each released minor version lives in its own folder. Once a version is released 
 ├── 1.02-dev/    <- next minor release in progress
 ```
 
-When work on a new major opens, it lives alongside the active minor line in its own `-dev` folder (for example, `2.0-dev/`) so the previous major can continue to receive minor releases during the maintenance period. This mirrors the approach used by [OWASP ASVS](https://github.com/OWASP/ASVS).
+Only `1.02-dev/` is currently open for development. A future major release may receive a separate `-dev` folder when maintainers explicitly resume that work; contributors should not create or target `2.0-dev/` while 2.0 is deferred.
 
 ## Referencing Across Versions
 
