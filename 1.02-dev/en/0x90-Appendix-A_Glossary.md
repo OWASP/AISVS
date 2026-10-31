@@ -294,6 +294,8 @@ This glossary defines key AI, ML, and security terms used throughout the AISVS t
 
 * **Tokenizer** – A component that converts raw text into a sequence of tokens (subwords, words, or characters) that a language model can process as input.
 
+* **Tool Definition** – The MCP tool object returned by tools/list, comprising its name, title, description, input schema, output schema, and annotations. It is what the model reads when deciding whether and how to call a tool. Definitions are compared in canonical form, and changes outside this set, such as `_meta`, are not definition changes.
+
 * **TPM (Trusted Platform Module)** – A dedicated hardware chip that provides cryptographic functions including secure key generation, storage, and platform integrity measurement.
 
 * **Transfer Learning** – A technique where a model developed for one task is reused as the starting point for a model on a second task.
