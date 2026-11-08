@@ -1,6 +1,6 @@
 # C05: Access Control & Identity for AI Components & Users
 
-> **Source:** [`1.02-dev/en/0x10-C05-Access-Control-and-Identity.md`](https://github.com/OWASP/AISVS/blob/main/1.02-dev/en/0x10-C05-Access-Control-and-Identity.md)
+> **Source:** [`1.01/en/0x10-C05-Access-Control-and-Identity.md`](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C05-Access-Control-and-Identity.md)
 > **Requirements:** 11 | **Sections:** 3
 
 ## Control Objective

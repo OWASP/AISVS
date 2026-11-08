@@ -20,7 +20,7 @@ Use the native Daybreak Blue entry, `gpt-daybreak-blue-latest`, from `codex debu
 
 1.02 is the only active development release; 2.0 is deferred and `2.0-dev/` has been removed. Requirement changes target `1.02-dev/en/`. `1.0/` and `1.01/` are locked; the [released research sync exception](.github/workflows/lock-released.yml) requires an internal OWASP/AISVS `wiki/sync-*` PR labeled `research-sync` from an owner, member, or collaborator.
 
-`1.02-dev/research/` is the audited 1.01 research, moved here in [#1207](https://github.com/OWASP/AISVS/pull/1207) (the released copy remains at the `v1.01` tag), and carries its unresolved claims forward. Moving it does not renew source review; [REVIEW-STATUS.md](1.02-dev/research/REVIEW-STATUS.md) records what has been synchronized for 1.02.
+`1.02-dev/research/` is the audited 1.01 research, moved here in [#1207](https://github.com/OWASP/AISVS/pull/1207) (the released copy remains at the `v1.01` tag), and carries its unresolved claims forward. It is out of date for 1.02 and will be updated before that release. Moving it does not renew source review; [REVIEW-STATUS.md](1.02-dev/research/REVIEW-STATUS.md) remains the record of the 1.01 audit.
 
 ## Review contract
 

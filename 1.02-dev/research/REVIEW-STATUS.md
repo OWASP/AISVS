@@ -1,20 +1,8 @@
-# Research Review Status
+# 1.01 Research Review Status
 
-This checklist records the review state of the research wiki for AISVS 1.02, the release in development. The 1.02 baseline is the 1.01 source audit tracked in [#1109](https://github.com/OWASP/AISVS/issues/1109), moved into `1.02-dev/` on 2026-10-27 ([#1207](https://github.com/OWASP/AISVS/pull/1207)). It is a review record, not an extension of AISVS requirements or a release announcement.
+This checklist tracks [#1109](https://github.com/OWASP/AISVS/issues/1109). It is a review record, not an extension of AISVS requirements or a release announcement.
 
-## 1.02 synchronization
-
-- [x] Requirement text and levels quoted in the research pages match `1.02-dev/en` for all 213 active core requirements and all 69 Appendix C requirements (rechecked 2026-11-08).
-- [x] 10.4.8 revision and return to Level 2 ([#1201](https://github.com/OWASP/AISVS/issues/1201), [#1204](https://github.com/OWASP/AISVS/pull/1204)) reflected in the C10.4 requirement row and verification approach, the C10 hub, Appendix B research, and Appendix A research (new Tool Definition term, 159 glossary terms).
-- [x] Attenuating Authorization Tokens references in C05 and C09.5 updated to draft -02 ([#1208](https://github.com/OWASP/AISVS/pull/1208)).
-- [x] Source links in chapter hubs and appendices point to `1.02-dev/en`.
-- [ ] Before release, re-check requirement alignment for every 1.02 change merged after this date, and source-check claims added after the 1.01 audit, including the 10.4.8 verification and gaps text synchronized with [#1204](https://github.com/OWASP/AISVS/pull/1204) and the AAT draft -02 references ([#1208](https://github.com/OWASP/AISVS/pull/1208)). Those claims are not covered by the audit figures below.
-
-## 1.01 audit baseline
-
-The rest of this page is the 1.01 audit record, kept as written. References to `1.01/en` describe the standard as it was audited.
-
-### Position at the end of the 1.01 audit
+## Current position
 
 - Requirement-text and level synchronization has been checked for all 213 active core requirements and all 69 Appendix C requirements, and rechecked after the source audit: no requirement text, ID, or level quoted in the research pages differs from `1.01/en`.
 - The source audit of all research documents was completed on 2026-09-30. About 4,900 factual claims were checked against original sources; roughly 70% matched as written, and the rest were corrected, qualified, re-sourced, or removed. Each area's changes were re-verified in a separate review pass, which also spot-checked about 400 unchanged claims. Counts are approximate tallies, not a per-claim ledger.
@@ -22,7 +10,7 @@ The rest of this page is the 1.01 audit record, kept as written. References to `
 - OWASP Top 10 for LLM Applications citations now use the 2026 edition adopted by the standard, and EU AI Act dates reflect the Digital Omnibus on AI (Regulation (EU) 2026/1744, in force 27 July 2026).
 - Known limitations are listed below. Otto owns the formal release, including final metadata, dates, and artifacts.
 
-### Completion criteria
+## Completion criteria
 
 For each retained factual claim, check the original source, publication date, population or test scope, and whether the wording follows the evidence. Distinguish forecasts, vendor claims, observed incidents, and controlled experiments. Correct or remove unsupported assertions; record unresolved source conflicts. Then check consistency with the normative standard, links, counts, and document checks.
 
@@ -30,7 +18,7 @@ General application security, infrastructure hardening, and organizational gover
 
 A checked statistic means its stated measure was matched to the publisher's material. It is not independent validation of the underlying study, an endorsement, or a completed review of every claim elsewhere citing that source.
 
-### Completed consistency work
+## Completed consistency work
 
 - [x] Core requirement text and levels aligned with research, including agent state isolation, MCP updates, and adversarial evaluation changes: [#1170](https://github.com/OWASP/AISVS/pull/1170), [#1171](https://github.com/OWASP/AISVS/pull/1171), [#1172](https://github.com/OWASP/AISVS/pull/1172).
 - [x] Appendix C requirements and ASVS references synchronized: [#1168](https://github.com/OWASP/AISVS/pull/1168), [#1169](https://github.com/OWASP/AISVS/pull/1169).
@@ -39,7 +27,7 @@ A checked statistic means its stated measure was matched to the publisher's mate
 - [x] Evidence checklist established; unsupported adoption claims held for further research: [#1180](https://github.com/OWASP/AISVS/pull/1180).
 - [x] Full source audit of chapter and appendix research, pending Appendix B statistics resolved, LLM Top 10 2026 and EU AI Act timeline consistency, and README anchor fixes (September 30, 2026).
 
-### Source audit by area
+## Source audit by area
 
 The inventory covers the 60 research documents that existed before this checklist: 56 chapter documents, three appendices, and the README. Each chapter group includes its hub and section pages. Claim counts are approximate.
 
@@ -62,7 +50,7 @@ The inventory covers the 60 research documents that existed before this checklis
 | [Appendix C](appendices/Appendix-C-AI-Secure-Coding.md) | 1 | 92 | Audited |
 | [README](README.md) | 1 | — | Navigation, counts, and anchors checked |
 
-#### Appendix B statistics
+### Appendix B statistics
 
 This is the complete row inventory for the current adoption snapshot. Update the count above and this table when a row changes or is checked. A checked or corrected row matches the publisher's material; it is not independent validation of the study.
 
@@ -110,7 +98,7 @@ This is the complete row inventory for the current adoption snapshot. Update the
 | Survey respondents highly confident current IAM systems can manage agent identities effectively (18%) | Checked | CSA report landing page; February 2026 publication. [Survey announcement](https://www.strata.io/resources/news/new-survey-from-cloud-security-alliance-strata-identity-finds-that-enterprises-are-in-a-time-to-trust-phase/) describes 285 IT/security respondents, September-October 2025 fieldwork. |
 | Analyzed non-human accounts established and managed locally, outside central IAM (67%) | Checked | Original report, finding 2; April 2025-March 2026 application telemetry. Includes non-human accounts generally, not just AI agents. |
 
-#### Held statistical claims
+### Held statistical claims
 
 These claims have been removed from the adoption snapshot pending adequate evidence. “Held” does not mean proved false. Do not restore them solely because another aggregate repeats the same number.
 
@@ -124,7 +112,7 @@ These claims have been removed from the adoption snapshot pending adequate evide
 | NHIs older than one year without credential rotation: 47%; enterprises breached via a compromised NHI: about 67% | Both figures appear only in two May 2026 One Identity vendor columns ([The Hacker News](https://thehackernews.com/expert-insights/2026/05/the-non-human-identity-crisis-why-your.html), [Infosecurity Magazine](https://www.infosecurity-magazine.com/blogs/90-days-to-full-nhi-management/)) without attribution. The cited [DoControl 2026 NHI report](https://www.docontrol.io/blog/2026-non-human-identities-nhi-report) is SaaS event telemetry and contains neither figure. | Primary study with population, credential-age definition, and breach definition. |
 | MCP-related CVEs filed in January-February 2026: 30+ | The source is a [personal blog post](https://www.heyuan110.com/posts/ai/2026-03-10-mcp-security-2026/) (March 2026) with no CVE list or counting method. An NVD keyword search for "MCP" returns 28 CVEs published in that window (6 for "Model Context Protocol"), which neither confirms nor refutes the count. | A tracked CVE list with IDs and inclusion criteria for that period, such as a dated Vulnerable MCP Project snapshot. |
 
-### Known limitations
+## Known limitations
 
 - "Checked" means a claim matched the publisher's own material: report, abstract, advisory, or CVE record. Vendor telemetry, self-reported surveys, and single-study results were not independently validated.
 - Some publishers blocked automated retrieval, including ISO, NSA, OpenAI, Gartner, OpenReview, and several journal platforms. Claims that depend only on those sources remain attributed but unverified.
@@ -133,7 +121,7 @@ These claims have been removed from the adoption snapshot pending adequate evide
 - Statements dated "as of" April to June 2026, such as patch status, ATLAS technique counts, IETF draft versions, and MCP roadmap items, were not re-surveyed for September 2026.
 - About 350 claims were recorded as unresolved during the audit. A follow-up review on 2026-10-01 checked each against primary sources: 112 were confirmed as written, 130 were corrected, and 48 had already been fixed in earlier passes. The 64 that remain are listed under [Unresolved claims](#unresolved-claims); their text is unchanged.
 
-### Unresolved claims
+## Unresolved claims
 
 These claims were left as written after the 2026-10-01 review because the primary source was blocked or gated, could not be found, only partly supported the claim, or conflicted with another primary source. They are candidates for post-1.01 review; do not treat them as checked.
 
@@ -204,7 +192,7 @@ These claims were left as written after the 2026-10-01 review because the primar
 | [Appendix-C-AI-Secure-Coding](appendices/Appendix-C-AI-Secure-Coding.md) | Apiiro CLI / Guardian Agent launched April 9, 2026 with six agent skills |
 | [Appendix-C-AI-Secure-Coding](appendices/Appendix-C-AI-Secure-Coding.md) | Claude Code markdown prompt injection disclosed April 3, 2026 |
 
-### Close-out
+## Close-out
 
 - [x] Resolve the 14 pending Appendix B statistics rows, recording evidence or moving unsupported claims to the held list.
 - [x] Check remaining Appendix B product capabilities, maturity assessments, incident descriptions, and framework/legal claims.

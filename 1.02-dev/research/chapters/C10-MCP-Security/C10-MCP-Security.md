@@ -1,9 +1,9 @@
 # C10: Model Context Protocol (MCP) Security
 
-> **Source:** [`1.02-dev/en/0x10-C10-MCP-Security.md`](https://github.com/OWASP/AISVS/blob/main/1.02-dev/en/0x10-C10-MCP-Security.md)
+> **Source:** [`1.01/en/0x10-C10-MCP-Security.md`](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C10-MCP-Security.md)
 > **Requirements:** 39 active | **Sections:** 4
 >
-> **Focused Update:** 2026-11-08 — 10.4.8 synchronized with its 1.02 revision, which returns it to Level 2 ([#1204](https://github.com/OWASP/AISVS/pull/1204)). 2026-09-27 — research synchronized with Otto Sulin's merged [MCP specification update (#1158)](https://github.com/OWASP/AISVS/pull/1158). Requirement text and levels follow the standard; this update does not change them.
+> **Focused Update:** 2026-09-27 — research synchronized with Otto Sulin's merged [MCP specification update (#1158)](https://github.com/OWASP/AISVS/pull/1158). Requirement text and levels follow the standard; this update does not change them.
 
 The baseline is [MCP revision 2026-07-28](https://modelcontextprotocol.io/specification/2026-07-28): 15 added requirements, four revised requirements, and retired ID 10.2.6. The three component-integrity requirements are unchanged. Earlier dated incident reports and implementation surveys below are historical context, not current product-support guarantees.
 

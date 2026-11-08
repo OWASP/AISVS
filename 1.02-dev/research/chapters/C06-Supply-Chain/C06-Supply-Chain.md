@@ -1,6 +1,6 @@
 # C06: Supply Chain Security for Models
 
-> **Source:** [`1.02-dev/en/0x10-C06-Supply-Chain.md`](https://github.com/OWASP/AISVS/blob/main/1.02-dev/en/0x10-C06-Supply-Chain.md)
+> **Source:** [`1.01/en/0x10-C06-Supply-Chain.md`](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C06-Supply-Chain.md)
 > **Requirements:** 7 | **Sections:** 2
 
 ## Control Objective

@@ -1,6 +1,6 @@
 # C08: Memory, Embeddings & Vector Database Security
 
-> **Source:** [`1.02-dev/en/0x10-C08-Memory-Embeddings-and-Vector-Database.md`](https://github.com/OWASP/AISVS/blob/main/1.02-dev/en/0x10-C08-Memory-Embeddings-and-Vector-Database.md)
+> **Source:** [`1.01/en/0x10-C08-Memory-Embeddings-and-Vector-Database.md`](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C08-Memory-Embeddings-and-Vector-Database.md)
 > **Requirements:** 11 | **Sections:** 3
 
 ## Control Objective

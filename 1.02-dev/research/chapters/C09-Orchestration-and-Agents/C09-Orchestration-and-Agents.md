@@ -1,6 +1,6 @@
 # C09: Orchestration & Agentic Security
 
-> **Source:** [`1.02-dev/en/0x10-C09-Orchestration-and-Agentic-Action.md`](https://github.com/OWASP/AISVS/blob/main/1.02-dev/en/0x10-C09-Orchestration-and-Agentic-Action.md)
+> **Source:** [`1.01/en/0x10-C09-Orchestration-and-Agentic-Action.md`](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C09-Orchestration-and-Agentic-Action.md)
 > **Requirements:** 37 | **Sections:** 6
 
 ## Control Objective

@@ -1,6 +1,6 @@
 # C02: User Input Validation
 
-> **Source:** [`1.02-dev/en/0x10-C02-Input-Validation.md`](https://github.com/OWASP/AISVS/blob/main/1.02-dev/en/0x10-C02-Input-Validation.md)
+> **Source:** [`1.01/en/0x10-C02-Input-Validation.md`](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C02-Input-Validation.md)
 > **Requirements:** 12 | **Sections:** 2
 
 ## Control Objective
