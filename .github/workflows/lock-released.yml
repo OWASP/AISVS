@@ -33,7 +33,6 @@ jobs:
               - 1.01/dist/**
             research:
               - 1.0/research/**
-              - 1.01/research/**
 
       - name: Enforce the released-version policy
         env:
