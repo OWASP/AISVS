@@ -1,6 +1,6 @@
 # C04: Infrastructure, Configuration & Deployment Security
 
-> **Source:** [`1.01/en/0x10-C04-Infrastructure.md`](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C04-Infrastructure.md)
+> **Source:** [`1.02-dev/en/0x10-C04-Infrastructure.md`](https://github.com/OWASP/AISVS/blob/main/1.02-dev/en/0x10-C04-Infrastructure.md)
 > **Requirements:** 14 | **Sections:** 3
 
 ## Control Objective

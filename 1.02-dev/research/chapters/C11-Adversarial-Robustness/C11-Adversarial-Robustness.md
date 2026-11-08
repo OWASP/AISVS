@@ -1,6 +1,6 @@
 # C11: Adversarial Robustness
 
-> **Source:** [`1.01/en/0x10-C11-Adversarial-Robustness.md`](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C11-Adversarial-Robustness.md)
+> **Source:** [`1.02-dev/en/0x10-C11-Adversarial-Robustness.md`](https://github.com/OWASP/AISVS/blob/main/1.02-dev/en/0x10-C11-Adversarial-Robustness.md)
 > **Requirements:** 19 | **Sections:** 4
 
 ## Control Objective

@@ -106,7 +106,7 @@ Organizations should select a target level based on the risk profile of their AI
 
 ## Research Wiki
 
-For every requirement in the standard, the [Research Wiki](https://github.com/OWASP/AISVS/blob/main/1.01/research/README.md) provides implementation context beyond the requirement text:
+For every requirement in the standard, the [Research Wiki](https://github.com/OWASP/AISVS/blob/main/1.02-dev/research/README.md) provides implementation context beyond the requirement text:
 
 | Column | What it tells you |
 | --- | --- |
@@ -114,7 +114,7 @@ For every requirement in the standard, the [Research Wiki](https://github.com/OW
 | **Verification Approach** | Concrete audit steps, tools, and evidence to collect |
 | **Gaps & Notes** | Tool maturity ratings, open research questions, and implementation caveats |
 
-The wiki covers every requirement in the released 1.01 standard, with per-section threat landscape summaries, tooling recommendations, and references to current standards and research literature. The wiki for 1.0 is frozen under [1.0/research](https://github.com/OWASP/AISVS/blob/main/1.0/research/README.md).
+The wiki covers every requirement in 1.02, the release in development, building on the audited 1.01 research, with per-section threat landscape summaries, tooling recommendations, and references to current standards and research literature. The wiki for 1.0 is frozen under [1.0/research](https://github.com/OWASP/AISVS/blob/main/1.0/research/README.md). The research as released with 1.01 is preserved at the [v1.01 tag](https://github.com/OWASP/AISVS/blob/v1.01/1.01/research/README.md).
 
 ---
 

@@ -1,6 +1,6 @@
 # C03: Model Lifecycle Management & Change Control
 
-> **Source:** [`1.01/en/0x10-C03-Model-Lifecycle-Management.md`](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C03-Model-Lifecycle-Management.md)
+> **Source:** [`1.02-dev/en/0x10-C03-Model-Lifecycle-Management.md`](https://github.com/OWASP/AISVS/blob/main/1.02-dev/en/0x10-C03-Model-Lifecycle-Management.md)
 > **Requirements:** 15 | **Sections:** 5
 
 ## Control Objective

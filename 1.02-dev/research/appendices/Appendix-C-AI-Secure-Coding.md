@@ -1,6 +1,6 @@
 # Appendix C: AI-Assisted Secure Coding
 
-> **Source:** [`1.01/en/0x92-Appendix-C_AI_for_Code_Generation.md`](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x92-Appendix-C_AI_for_Code_Generation.md)
+> **Source:** [`1.02-dev/en/0x92-Appendix-C_AI_for_Code_Generation.md`](https://github.com/OWASP/AISVS/blob/main/1.02-dev/en/0x92-Appendix-C_AI_for_Code_Generation.md)
 > **Requirements:** 69 | **Sections:** 14
 > **Last Researched:** 2026-07-13
 > **Focused Update:** 2026-09-27 — AC.3.7 and AC.14.2 synchronized with [PR #1163](https://github.com/OWASP/AISVS/pull/1163); other research unchanged.

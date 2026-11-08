@@ -1,12 +1,12 @@
 # Appendix A: Glossary — Research Notes
 
-> **Source:** [`1.01/en/0x90-Appendix-A_Glossary.md`](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x90-Appendix-A_Glossary.md)
+> **Source:** [`1.02-dev/en/0x90-Appendix-A_Glossary.md`](https://github.com/OWASP/AISVS/blob/main/1.02-dev/en/0x90-Appendix-A_Glossary.md)
 >
-> **Focused Update:** 2026-09-27 — corrected the protocol-downgrade and retired session-teardown references for [#1158](https://github.com/OWASP/AISVS/pull/1158). 2026-09-30 — source audit for [#1109](https://github.com/OWASP/AISVS/issues/1109): corrected MCPTox counts, CVE dates, ATLAS attribution, and EU Omnibus adoption status; restated NHI ratios with their sources and populations, replaced an uncited shadow-AI percentage, and added the Action Chain and Reversibility Classification cross-references.
+> **Focused Update:** 2026-11-08 — added Tool Definition, introduced in 1.02 with the 10.4.8 revision ([#1204](https://github.com/OWASP/AISVS/pull/1204)). 2026-09-27 — corrected the protocol-downgrade and retired session-teardown references for [#1158](https://github.com/OWASP/AISVS/pull/1158). 2026-09-30 — source audit for [#1109](https://github.com/OWASP/AISVS/issues/1109): corrected MCPTox counts, CVE dates, ATLAS attribution, and EU Omnibus adoption status; restated NHI ratios with their sources and populations, replaced an uncited shadow-AI percentage, and added the Action Chain and Reversibility Classification cross-references.
 
 ## Overview
 
-The glossary defines 158 terms used throughout the AISVS, covering AI/ML concepts, security terminology, and domain-specific definitions. This research page cross-references every glossary term to the chapters that use it, identifies missing terms, flags definitions that could be improved, and tracks emerging terminology from the broader AI security community. Cross-references follow the AISVS **C01–C12** chapter structure: monitoring and logging terms map to **C12 (Monitoring and Logging)**, and explainability and human-oversight terms map to **C07 (Model Behavior)** for interpretability and **C09 (Orchestration and Agentic Action)** for oversight, kill-switches, and human-in-the-loop controls.
+The glossary defines 159 terms used throughout the AISVS, covering AI/ML concepts, security terminology, and domain-specific definitions. This research page cross-references every glossary term to the chapters that use it, identifies missing terms, flags definitions that could be improved, and tracks emerging terminology from the broader AI security community. Cross-references follow the AISVS **C01–C12** chapter structure: monitoring and logging terms map to **C12 (Monitoring and Logging)**, and explainability and human-oversight terms map to **C07 (Model Behavior)** for interpretability and **C09 (Orchestration and Agentic Action)** for oversight, kill-switches, and human-in-the-loop controls.
 
 As of July 2026, the analysis identifies 49 high-priority missing terms, 12 medium-priority missing terms, 12 definitions needing improvement, and 66 emerging terms from the 2025–2026 threat landscape that may warrant future inclusion. The [June 22 glossary revision](https://github.com/OWASP/AISVS/commits/main/1.01/en/0x90-Appendix-A_Glossary.md) closed two previously tracked gaps by defining **System Prompt** and **Indirect Prompt Injection**, and added seven other security-relevant entries: **Alignment**, **DPoP**, **Excessive Agency**, **Inference**, **LLM**, **Sender-Constrained Token**, and **Trust Boundary**.
 
@@ -170,6 +170,7 @@ Every glossary term mapped to the AISVS chapters that reference or rely on it.
 | Temperature Scaling | C11 |
 | TLS | C04, C09, C10 |
 | Tokenizer | C02, C03 |
+| Tool Definition | C10 |
 | TPM | C04 |
 | Transfer Learning | C06 |
 | Trust Boundary | C02, C05, C09, C10 |

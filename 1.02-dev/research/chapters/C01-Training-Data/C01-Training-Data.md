@@ -1,6 +1,6 @@
 # C01: Training Data Integrity & Traceability
 
-> **Source:** [`1.01/en/0x10-C01-Training-Data-Integrity-and-Traceability.md`](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C01-Training-Data-Integrity-and-Traceability.md)
+> **Source:** [`1.02-dev/en/0x10-C01-Training-Data-Integrity-and-Traceability.md`](https://github.com/OWASP/AISVS/blob/main/1.02-dev/en/0x10-C01-Training-Data-Integrity-and-Traceability.md)
 > **Requirements:** 13 | **Sections:** 3
 
 ## Control Objective

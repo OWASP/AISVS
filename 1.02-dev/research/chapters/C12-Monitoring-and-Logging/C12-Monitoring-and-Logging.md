@@ -1,6 +1,6 @@
 # C12: Monitoring, Logging & Anomaly Detection
 
-> **Source:** [`1.01/en/0x10-C12-Monitoring-and-Logging.md`](https://github.com/OWASP/AISVS/blob/main/1.01/en/0x10-C12-Monitoring-and-Logging.md)
+> **Source:** [`1.02-dev/en/0x10-C12-Monitoring-and-Logging.md`](https://github.com/OWASP/AISVS/blob/main/1.02-dev/en/0x10-C12-Monitoring-and-Logging.md)
 > **Requirements:** 21 | **Sections:** 5
 
 ## Control Objective
