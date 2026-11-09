@@ -82,6 +82,8 @@ Protect data and secrets at rest, in transit, and in the model's observable cont
 | Redaction, anonymization, or encryption of sensitive information in labels before use in any labeling artifact | C1.2.3 |
 | Encryption of locally stored model weights and sensitive parameters using hardware-backed key stores or secure enclaves | C4.3.4 |
 | Encryption at rest of models packaged in mobile, IoT, or embedded apps, decrypted only inside a trusted runtime or secure enclave | C4.3.5 |
+| Secure-aggregation parameters (reconstruction threshold, expected participant count, documented collusion bound) configured within the conditions of the protocol's published security analysis for the declared adversary model | C4.3.6 |
+| Aggregation server never obtains an aggregate, even transiently, combining fewer contributions than the minimum derived from the protocol's security analysis | C4.3.7 |
 | Secrets and credentials kept out of the model's observable context (context window, system prompts, tool-call parameters) | C9.5.4 |
 | Secrets and payment credentials never requested through form-mode MCP elicitation, with the user completing a URL-mode flow verified as the user who initiated it | C10.4.18 |
 | End-user credentials and personal data excluded from URL-mode MCP elicitation URLs, and no URL pre-authenticated to a protected resource | C10.4.19 |
