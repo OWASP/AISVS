@@ -12,7 +12,7 @@ AI agents and human users accessing resources must be properly authenticated and
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
-| **5.1.1** | **Verify that** high-risk AI operations (model deployment, weight export, training data access, production configuration changes) require step-up authentication. | 3 |
+| **5.1.1** | **Verify that** high-risk AI operations (model deployment, weight export, training data access, production configuration changes) require step-up authentication. | 2 |
 | **5.1.2** | **Verify that** AI agents in federated or multi-system deployments authenticate using short-lived, minimal-scoped, cryptographically signed tokens. | 3 |
 
 ---
