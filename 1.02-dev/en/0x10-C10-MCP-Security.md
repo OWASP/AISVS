@@ -64,7 +64,7 @@ Schema, message, and input validation must be enforced in both MCP servers and c
 | **10.4.4** | **Verify that** all MCP servers enforce strict schema validation. | 2 |
 | **10.4.5** | **Verify that** all MCP transports enforce maximum payload size limits. | 2 |
 | **10.4.6** | **Verify that** MCP servers sign tool responses with a unique nonce and timestamp so MCP clients can detect replay attempts. | 2 |
-| **10.4.7** | **Verify that** MCP clients present users with explicit consent dialogue and cancellation options upon installation of a local MCP server. | 2 |
+| **10.4.7** | **Verify that** MCP clients require explicit approval before installing or launching each local MCP server, including servers declared in project or workspace configuration. Approval prompts display the command and arguments and allow cancellation. Neither workspace trust nor an approval setting supplied by the project or workspace satisfies this requirement. | 2 |
 | **10.4.8** | **Verify that** MCP clients retain, per server, the tool definition the user approved, and do not invoke a tool where the definition the client is about to use differs from it, or for which no approved definition is retained, until the user approves that definition, including after a tool list change, a reconnection, or a restart. | 2 |
 | **10.4.9** | **Verify that** MCP proxy servers using a shared upstream OAuth client identity do not allow a requesting MCP client to inherit authorization established for a different MCP client. | 2 |
 | **10.4.10** | **Verify that** MCP clients bind each approved MCP server's granted consent and authorization to the connection endpoint approved for that server, and require user re-approval before any further interaction once that endpoint changes. | 2 |
@@ -79,6 +79,7 @@ Schema, message, and input validation must be enforced in both MCP servers and c
 | **10.4.19** | **Verify that** MCP servers exclude end-user credentials and personal data from URL-mode elicitation URLs, and do not issue URLs that are pre-authenticated to a protected resource. | 1 |
 | **10.4.20** | **Verify that** MCP clients require explicit user consent and display the full URL before opening any URL-mode elicitation target, and do not pre-fetch the URL or its metadata. | 2 |
 | **10.4.21** | **Verify that** MCP clients open URL-mode elicitation targets so that neither the client nor the model can observe the page contents or the user's input. | 2 |
+| **10.4.22** | **Verify that** MCP clients bind the approval of a local MCP server to the launch configuration the client is about to use, and require re-approval before launching it where that configuration differs from the approved one. | 2 |
 
 ---
 

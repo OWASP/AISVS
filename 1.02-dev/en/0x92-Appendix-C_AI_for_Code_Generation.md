@@ -56,6 +56,8 @@ Do not adopt an AI coding tool until it has been evaluated. Three areas in parti
 Two goals in this family. First: stop secrets, proprietary code, and personal data from leaking into prompts. Second: treat any content sourced from the repository, a PR, or a third party as untrusted input. Any of it can carry a prompt-injection payload, and most of it usually does not, which is part of what makes the rare hostile case easy to miss.
 
 > **Relationship to AISVS C2.1:** AC.3.3, AC.3.4, and AC.3.5 apply AISVS C2.1 (Prompt Injection Defenses) to the secure-coding case. If a finding here is something that C2.1 verification did not already close, count it as an additional gap (specific to coding-tool prompt construction). If C2.1 already closed it, do not count it twice.
+>
+> **Relationship to AISVS C10.4.7 and C10.4.22:** A repository can also declare MCP servers in project configuration files (such as `.mcp.json` or `.vscode/mcp.json`) that a coding agent starts as local processes. AC.3.3 and AC.3.4 treat that content as prompt input; they do not govern whether the declared servers start. Verify that under C10.4.7 (approval before launching each declared server) and C10.4.22 (re-approval when its launch configuration changes).
 
 <!-- markdownlint-disable MD013 -->
 | # | Description | Level |
