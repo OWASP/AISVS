@@ -22,11 +22,10 @@ Each of the 12 requirement chapters follows the same format:
 
 ### Appendices
 
-Three appendices support the core requirements:
+Two appendices support the core requirements:
 
 * **Appendix A (Glossary)** defines key terms and acronyms used throughout the standard.
 * **Appendix B (AI Security Controls Inventory)** is a cross-reference of every defense technique in AISVS, organized by security control category (authentication, authorization, encryption, input validation, and so on) with mappings back to specific requirement identifiers.
-* **Appendix C (AI-Assisted Secure Coding)** provides controls for the safe use of AI coding tools during software development.
 
 ## Artificial Intelligence Security Verification Levels
 
