@@ -14,6 +14,8 @@ This glossary defines key AI, ML, and security terms used throughout the AISVS t
 
 * **Agent** – An AI software system that uses reasoning, planning, and memory to pursue goals and complete tasks on behalf of users, with a degree of autonomy to make decisions, learn, and adapt. Also referred to as Agentic AI.
 
+* **Aggregator** – In federated learning, the server or coordinator that selects participants, relays protocol messages, and combines participants' model updates into a global update. Under secure aggregation, it is the party from which individual updates must be hidden. Also referred to as the aggregation server. See also: Secure Aggregation.
+
 * **AI BOM (AI Bill of Materials)** – A structured record of all components in an AI system, including models, datasets, weights, hyperparameters, frameworks, and licenses. May follow SPDX or CycloneDX formats. Distinct from a traditional SBOM in that it covers model-specific artifacts beyond software dependencies. Also referred to as AIBOM or MBOM (Model Bill of Materials).
 
 * **Alignment** – The degree to which a model's behavior and outputs match human intentions, values, and safety requirements. Alignment is shaped during training through techniques such as RLHF and Constitutional AI, and is the property that adversarial attacks such as jailbreaks attempt to subvert.
@@ -49,6 +51,8 @@ This glossary defines key AI, ML, and security terms used throughout the AISVS t
 * **Circuit Breaker** – A mechanism that automatically halts AI system operations when specific risk thresholds are exceeded, such as runaway agent loops or budget exhaustion.
 
 * **CMP (Consent Management Platform)** – A system that tracks user consent preferences including opt-in status, purpose, and retention period, and enforces consent decisions across data processing pipelines.
+
+* **Collusion Bound** – In secure aggregation, the documented maximum number of participants assumed to share their inputs and protocol state with the aggregator or with each other. It is an assumption of the protocol's security analysis rather than a measured value: identity and enrollment evidence can support it but cannot prove that participants do not collude. Participant identities that the aggregator's operator controls, and multiple identities controlled by one party, count toward it. See also: Secure Aggregation.
 
 * **Concept Drift** – A change in the statistical relationship between model inputs and outputs over time, causing model predictions to become less accurate even if input distributions remain stable.
 
@@ -116,7 +120,7 @@ This glossary defines key AI, ML, and security terms used throughout the AISVS t
 
 * **Feature Attribution** – An interpretability method that assigns importance scores to individual input features indicating their contribution to a specific model prediction.
 
-* **Federated Learning** – A machine learning approach where models are trained across multiple decentralized devices holding local data samples, without exchanging the data itself.
+* **Federated Learning** – A machine learning approach in which multiple participants train a shared model on locally held data and send model updates, rather than the data itself, to an aggregator. Participants may be large numbers of end-user devices (cross-device) or a smaller number of organizations or data centers (cross-silo). See also: Aggregator, Secure Aggregation.
 
 * **Fine-tuning** – The process of continuing to train a pre-trained model on a smaller, task-specific dataset to adapt it for a particular use case.
 
@@ -222,6 +226,8 @@ This glossary defines key AI, ML, and security terms used throughout the AISVS t
 
 * **RBAC (Role-Based Access Control)** – An access control model where permissions are assigned to roles rather than individual users, and users are granted access by being assigned to appropriate roles.
 
+* **Reconstruction Threshold** – In secret-sharing-based secure aggregation, the minimum number of shares needed to reconstruct a participant's protocol secret during unmasking or dropout recovery. Its safe value depends on the protocol's security analysis, the number of participants, and the collusion bound, and it is not necessarily equal to the minimum number of contributions included in an aggregate. See also: Secure Aggregation, Collusion Bound.
+
 * **Red-Teaming** – The practice of actively testing AI systems by simulating adversarial attacks to identify vulnerabilities.
 
 * **Re-identification Risk** – The probability that an individual can be identified from a supposedly anonymized dataset, measured against defined thresholds.
@@ -245,6 +251,8 @@ This glossary defines key AI, ML, and security terms used throughout the AISVS t
 * **SCVS (Software Component Verification Standard)** – An OWASP framework for verifying the security properties of software components, referenced by AISVS for supply chain integrity controls applicable to AI frameworks, libraries, and model dependencies.
 
 * **seccomp (Secure Computing Mode)** – A Linux kernel feature that restricts the system calls a process can make, used to sandbox AI workloads and reduce attack surface.
+
+* **Secure Aggregation** – A protocol that lets a federated learning aggregator compute the sum or weighted average of participants' model updates while learning nothing about individual updates beyond that result, provided the adversary model, collusion bound, and participation conditions of the protocol's security analysis hold. It does not limit what the released aggregate itself reveals and, unlike differential privacy, places no formal bound on that leakage. See also: Aggregator, Collusion Bound, Reconstruction Threshold, Differential Privacy.
 
 * **Secure Boot** – A firmware security feature that verifies the cryptographic signature of each component in the boot chain before execution, preventing unauthorized or tampered software from loading.
 

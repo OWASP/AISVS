@@ -44,6 +44,8 @@ Distributed AI deployments, including edge computing, federated learning, and mu
 | **4.3.3** | **Verify that** inference runtimes enforce process, memory, and file access isolation. | 3 |
 | **4.3.4** | **Verify that** model weights and sensitive parameters stored locally are encrypted using hardware-backed key stores or secure enclaves. | 3 |
 | **4.3.5** | **Verify that** models packaged within mobile, IoT, or embedded applications are encrypted at rest, and decrypted only inside a trusted runtime or secure enclave, preventing direct extraction from the app package or filesystem. | 3 |
+| **4.3.6** | **Verify that** the configured secure-aggregation parameters (reconstruction threshold, expected participant count and documented collusion bound) satisfy the conditions of the protocol's published security analysis for the declared adversary model. | 3 |
+| **4.3.7** | **Verify that** the aggregation server obtains no aggregate, even transiently, that combines fewer contributions than the minimum derived from the protocol's security analysis. | 3 |
 
 ---
 
