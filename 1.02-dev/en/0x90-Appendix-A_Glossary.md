@@ -158,6 +158,8 @@ This glossary defines key AI, ML, and security terms used throughout the AISVS t
 
 * **Labeling** – The process of assigning classification tags, annotations, or ground-truth values to training data records or fields, performed by human annotators, automated systems, or a combination of both. Labeling encompasses the full annotation pipeline including annotator identity tracking, label integrity verification, and preference data collection for RLHF.
 
+* **Launch Configuration** – The declaration that determines what a local MCP server runs: the command, arguments, working directory, transport, and declared environment variables, compared as declared before interpolation. Changes to the code the command resolves to, to the contents of a referenced environment file, or to the client's sandbox policy are not launch configuration changes.
+
 * **l-diversity** – A privacy property extending k-anonymity that requires each equivalence class to contain at least l distinct values for sensitive attributes, preventing attribute disclosure.
 
 * **Least Privilege** – The security principle of granting only the minimum necessary access rights for users and processes.

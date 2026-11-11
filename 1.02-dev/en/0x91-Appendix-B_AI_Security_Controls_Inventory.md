@@ -424,9 +424,10 @@ Require human approval for high-impact actions and provide reliable, exercised s
 | Manual kill-switch to immediately halt model inference and outputs | C9.6.1 |
 | Fail-closed blocking of a pending action when a human-approval gate is not satisfied within the defined time | C9.6.2 |
 | Kill-switch commands delivered through an out-of-band channel isolated from the agent runtime | C9.6.3 |
-| Explicit consent dialogue and cancellation option on installation of a local MCP server | C10.4.7 |
+| Explicit user approval of the exact command and arguments before installing or launching a local MCP server, not satisfied by workspace or folder trust or by approval settings supplied by the project or workspace | C10.4.7 |
 | MCP client consent and authorization bound to the approved server connection endpoint, with user re-approval before further interaction after an endpoint change | C10.4.10 |
 | Explicit user consent and full-URL display before opening a URL-mode MCP elicitation target, with no pre-fetch of the URL or its metadata | C10.4.20 |
+| Local MCP server approval bound to its launch configuration, with re-approval before launch when that configuration changes | C10.4.22 |
 
 **Common pitfalls:** documenting a high-risk action policy never wired to a runtime gate; binding approval to parameters without binding to identity or context; defaulting to fail-open when the approver does not respond; assuming an in-band kill-switch will work against a compromised agent; implementing a kill-switch that is never exercised.
 
