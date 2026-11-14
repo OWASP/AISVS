@@ -40,7 +40,7 @@ Privileged, high-impact, or hard-to-reverse agent actions must require trusted a
 
 ## C9.3 Component Isolation and Tool Authorization
 
-Tool and plugin execution, loading, and outputs must be constrained to prevent unauthorized system access and unsafe side effects.
+Tool and plugin execution, loading, and outputs must be constrained to prevent unauthorized system access and unsafe side effects. This includes agent skills: a skill's name, description, and instructions are untrusted input under 2.1.3 and get no more than user-level authority under 2.1.6, unless the operator authored or approved the skill.
 
 | # | Description | Level |
 | :--: | --- | :---: |
@@ -53,6 +53,11 @@ Tool and plugin execution, loading, and outputs must be constrained to prevent u
 | **9.3.7** | **Verify that** external resources named in model output are verified against an approved allow-list or registry before the agent installs or invokes them. | 2 |
 | **9.3.8** | **Verify that** policy violations trigger automatic containment of affected tools, such as stopping their execution, isolating them, or revoking their permissions. | 3 |
 | **9.3.9** | **Verify that** services reachable from agent or tool sandboxes enforce the defined run, task, or tenant isolation policy on agent-writable state, including object names. | 2 |
+| **9.3.10** | **Verify that** agent skills are installed only from approved sources and are pinned to content that passed review by a human or an automated scanner approved by the organization, using an immutable reference such as a commit SHA or content digest rather than a branch or tag. | 2 |
+| **9.3.11** | **Verify that** the agent runtime does not load an installed skill whose instructions, scripts, or resources have changed since it was approved, until it has been approved again. | 3 |
+| **9.3.12** | **Verify that** tool permissions or approvals declared by a skill, such as `allowed-tools`, are honored only when granted by a user, an administrator, or a policy an administrator defined, and that approval settings supplied by the skill, project, or workspace, or a scanner verdict on its own, do not count as that grant. | 2 |
+| **9.3.13** | **Verify that** scripts bundled with a skill run under the same sandbox and privileges as tool execution in 9.3.1, including when the agent runs them through a general-purpose shell or code execution tool. | 2 |
+| **9.3.14** | **Verify that** skills that bundle scripts or request tool permissions are reviewed by a human before they are approved. | 3 |
 
 ---
 
@@ -103,4 +108,5 @@ Shutdown and graceful degradation paths must remain under human control, with me
 * [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026)
 * [OWASP LLM03:2026 Excessive Agency](https://github.com/GenAI-Security-Project/GenAI-LLM-Top10/blob/main/2026/final/LLM03_ExcessiveAgency.md)
 * [NIST AI 100-1: AI Risk Management Framework (AI RMF 1.0)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf)
+* [Agent Skills Specification](https://agentskills.io/specification)
 * [Regulation (EU) 2024/1689 (EU AI Act), Article 14: Human Oversight](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
