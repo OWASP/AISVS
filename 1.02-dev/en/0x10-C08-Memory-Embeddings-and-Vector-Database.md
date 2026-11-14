@@ -38,7 +38,7 @@ Retention and revocation must be explicit and enforceable for memory and RAG ind
 
 | # | Description | Level |
 | :--: | --- | :---: |
-| **8.3.1** | **Verify that** expired vectors are excluded from retrieval results. | 2 |
+| **8.3.1** | **Verify that** vectors that are expired, superseded or revoked under the system's retention or versioning policy are excluded by the vector store or retrieval layer itself, rather than by filtering results after they are returned. | 2 |
 | **8.3.2** | **Verify that** memory can be reset. | 2 |
 | **8.3.3** | **Verify that** quarantined content is retained but excluded from all retrieval results. | 3 |
 
