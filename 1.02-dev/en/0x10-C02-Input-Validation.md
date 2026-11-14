@@ -12,8 +12,8 @@ Prompt injection is one of the top risks for AI systems, and defending against i
 
 | # | Description | Level |
 | :--------: | ------------------------------------------------------------------------------------------------------------------- | :---: |
-| **2.1.1** | **Verify that** input normalization is applied before tokenization or embedding. | 1 |
-| **2.1.2** | **Verify that** encoding and representation smuggling in inputs is detected and mitigated. Approved mitigations include canonicalization, strict schema validation, policy-based rejection, or explicit marking. | 1 |
+| **2.1.1** | **Verify that** input normalization is applied before tokenization or embedding, and that any case conversion used for prompt injection screening is locale-independent, so the host or runtime locale cannot change which inputs a screening rule matches. | 1 |
+| **2.1.2** | **Verify that** encoding and representation smuggling in inputs is detected and mitigated. Approved mitigations include canonicalization, strict schema validation, policy-based rejection, or explicit marking. Where screening compares inputs in a canonical form, such as case-folded or confusable-skeleton text, the same transform is applied to the screening rules and the canonical form is used only for comparison, with the original input preserved. | 1 |
 | **2.1.3** | **Verify that** all inputs that could steer model behavior are treated as untrusted and screened by a prompt injection detection ruleset or classifier, with flagged inputs blocked. | 1 |
 | **2.1.4** | **Verify that** input length controls prevent content from exceeding the context window. The controls must reject inputs that exceed token limits rather than truncating them. | 1 |
 | **2.1.5** | **Verify that** the system implements a character set restriction for all inputs. The restriction must use an allow-list approach derived from the languages and use cases the system supports, permitting only characters that are explicitly required. | 1 |
