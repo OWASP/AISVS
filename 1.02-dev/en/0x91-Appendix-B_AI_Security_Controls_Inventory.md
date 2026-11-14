@@ -50,6 +50,7 @@ Enforce access decisions across users, agents, tools, and resources using policy
 | Scope-filtered MCP tool discovery (tools/list returns only authorized tools) | C10.2.4 |
 | Per-invocation MCP access control validating both the tool and the supplied argument values | C10.2.5 |
 | MCP proxy servers sharing an upstream OAuth client identity do not let one MCP client inherit another client's authorization | C10.4.9 |
+| Tool permissions declared by an agent skill honored only when granted by a user, administrator, or administrator-defined policy, not by skill, project, or workspace settings or a scanner verdict alone | C9.3.12 |
 
 **Common pitfalls:** relying on the service account's permissions instead of the caller's; letting model-generated output drive authorization; not re-checking authorization when context changes mid-session.
 
@@ -220,6 +221,7 @@ Isolate models, tools, agents, and hardware workloads to contain failures and pr
 | Isolation of untrusted-data processing from tool-calling capability | C9.3.5 |
 | Architectural separation of untrusted tool-output processing from agent operations | C9.3.6 |
 | Service-side enforcement of run, task, or tenant isolation on agent-writable state, including object names | C9.3.9 |
+| Skill-bundled scripts sandboxed like any other tool execution, including when run through a general-purpose shell or code execution tool | C9.3.13 |
 | Least-privilege sandbox for locally launched MCP servers (restricted file system, network, system access) | C10.1.3 |
 | URL-mode MCP elicitation targets opened so that neither the client nor the model can observe page contents or user input | C10.4.21 |
 | AI-specific runtime components not shared across environment boundaries (development, staging, production) | C3.4.1 |
@@ -262,6 +264,9 @@ Verify origin and authenticity of models, datasets, frameworks, and MCP componen
 | Build-failing AI BOM completeness checks when component metadata is missing | C6.2.3 |
 | MCP components obtained only from trusted sources and cryptographically verified | C10.1.1 |
 | Allow-listed MCP servers only | C10.1.2 |
+| Agent skills installed only from approved sources and pinned by immutable reference to reviewed content | C9.3.10 |
+| Re-approval before loading an agent skill whose content changed since approval | C9.3.11 |
+| Human review before approving agent skills that bundle scripts or request tool permissions | C9.3.14 |
 
 **Common pitfalls:** treating AI BOMs as static documents rather than signed, version-controlled artifacts; not scanning pretrained weights for backdoors; pulling models from unapproved registries.
 
