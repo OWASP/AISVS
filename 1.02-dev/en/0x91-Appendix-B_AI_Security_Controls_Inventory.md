@@ -123,8 +123,8 @@ Validate, normalize, and constrain all inputs (including tool, MCP, and retrieve
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Input normalization applied before tokenization or embedding | C2.1.1 |
-| Encoding and representation-smuggling detection and mitigation (canonicalization, strict schema validation, policy-based rejection, or explicit marking) | C2.1.2 |
+| Input normalization applied before tokenization or embedding, with locale-independent case conversion for prompt injection screening | C2.1.1 |
+| Encoding and representation-smuggling detection and mitigation (canonicalization, strict schema validation, policy-based rejection, or explicit marking), with canonical forms used only for screening comparison | C2.1.2 |
 | Untrusted-input screening by a prompt-injection detection ruleset or classifier, with blocking | C2.1.3 |
 | Input length controls that reject (not truncate) content exceeding the context window | C2.1.4 |
 | Allow-list character-set restriction on all inputs | C2.1.5 |
