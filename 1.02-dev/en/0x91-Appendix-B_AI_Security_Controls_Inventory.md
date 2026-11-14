@@ -324,7 +324,7 @@ Harden vector stores, memory pipelines, and retrieval-augmented generation again
 | Flagging and quarantine of outlier vectors before they enter production indices | C8.2.2 |
 | Source validation before agent or tool outputs are written to trusted memory | C8.2.3 |
 | Contradiction checks on new memory writes, with conflicts triggering alerts | C8.2.5 |
-| Exclusion of expired vectors from retrieval results | C8.3.1 |
+| Exclusion of expired, superseded or revoked vectors at the vector store or retrieval layer | C8.3.1 |
 | Memory reset capability | C8.3.2 |
 | Retention of quarantined content while excluding it from all retrieval results | C8.3.3 |
 | Attribution of RAG responses to their source documents | C7.4.1 |
