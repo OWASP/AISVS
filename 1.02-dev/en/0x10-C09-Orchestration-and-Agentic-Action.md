@@ -87,6 +87,7 @@ Every action must be authorized at execution time and constrained by scope.
 | **9.5.5** | **Verify that** inter-agent task delegation is restricted by an explicit authorization policy. | 2 |
 | **9.5.6** | **Verify that** long-running agent sessions re-evaluate current backend authorization policy on every privileged action. | 3 |
 | **9.5.7** | **Verify that** authority derived through delegation never exceeds the delegating agent's current authority. | 2 |
+| **9.5.8** | **Verify that** when the policy decision point for an agent action does not return a decision within the defined timeout, the runtime blocks the action. | 2 |
 
 ---
 
