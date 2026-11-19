@@ -276,6 +276,8 @@ This glossary defines key AI, ML, and security terms used throughout the AISVS t
 
 * **SIEM (Security Information and Event Management)** – A platform that aggregates, correlates, and analyzes security event data from multiple sources to detect threats, support incident response, and satisfy compliance requirements.
 
+* **Skill** – A package of natural-language instructions, optionally with scripts and resource files, that an agent discovers and loads on demand to extend its behavior for a task, for example a directory containing a `SKILL.md` file under the [Agent Skills specification](https://agentskills.io/specification). Other formats that an agent loads as instructions from a file or package, such as custom commands or rule files, are treated the same way.
+
 * **SLSA (Supply-chain Levels for Software Artifacts)** – A security framework defining incremental levels of supply chain integrity guarantees, from basic build-process documentation to fully reproducible, hermetically sealed builds with authenticated artifact provenance. Referenced by AISVS for AI model and artifact supply chain controls.
 
 * **SOC (Security Operations Center)** – A team or facility responsible for monitoring, detecting, analyzing, and responding to security incidents. In AISVS, SOC teams consume AI security event logs for correlation, triage, and incident response.
