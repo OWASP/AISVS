@@ -12,8 +12,8 @@ AI agents and human users accessing resources must be properly authenticated and
 
 | # | Description | Level |
 | :--------: | --------------------------------------------------------------------------------------------- | :---: |
-| **5.1.1** | **Verify that** high-risk AI operations (model deployment, weight export, training data access, production configuration changes) require step-up authentication. | 3 |
-| **5.1.2** | **Verify that** AI agents in federated or multi-system deployments authenticate using short-lived, minimal-scoped, cryptographically signed tokens. | 3 |
+| **5.1.1** | Requirement removed. | |
+| **5.1.2** | **Verify that** AI agents in federated or multi-system deployments authenticate using short-lived, minimal-scoped, cryptographically signed tokens. | 2 |
 
 ---
 
@@ -51,3 +51,4 @@ Cross-tenant information leakage through AI-specific shared infrastructure, such
 * [OAuth 2.1 (IETF Draft)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-11)
 * [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html)
 * [I Know What You Asked: Prompt Leakage via KV-Cache Sharing in Multi-Tenant LLM Serving (NDSS 2025)](https://www.ndss-symposium.org/ndss-paper/i-know-what-you-asked-prompt-leakage-via-kv-cache-sharing-in-multi-tenant-llm-serving/)
+* [OWASP ASVS 5.0 V7.5.3: Further authentication for highly sensitive operations](https://github.com/OWASP/ASVS/blob/master/5.0/en/0x16-V7-Session-Management.md#v75-defenses-against-session-abuse)

@@ -4,7 +4,7 @@
 
 This appendix is a consolidated, developer-facing inventory of the security controls mandated across the AISVS requirements. Controls are grouped by control family so an implementer can find all related defenses in one place, regardless of which chapter defines them, and each control links back to the AISVS requirement IDs that mandate it.
 
-This inventory is non-normative. It reorganizes existing requirements for ease of implementation and does not add, remove, or change any requirement. The requirement chapters (C1 through C12) remain the source of truth. Requirement IDs are written in canonical `C{chapter}.{section}.{requirement}` form (for example, `C5.1.1`). Every numbered requirement in the standard appears in exactly one control family below, so the inventory can be checked for completeness against the chapters.
+This inventory is non-normative. It reorganizes existing requirements for ease of implementation and does not add, remove, or change any requirement. The requirement chapters (C1 through C12) remain the source of truth. Requirement IDs are written in canonical `C{chapter}.{section}.{requirement}` form (for example, `C5.1.2`). Every numbered requirement in the standard appears in exactly one control family below, so the inventory can be checked for completeness against the chapters.
 
 ---
 
@@ -14,7 +14,6 @@ Verify the identity of users, agents, services, edge devices, and MCP clients/se
 
 | Control / Technique | Requirement IDs |
 | --- | --- |
-| Step-up authentication for high-risk AI operations (model deployment, weight export, training-data access, production configuration changes) | C5.1.1 |
 | Short-lived, minimal-scoped, cryptographically signed tokens for federated or multi-system agent authentication | C5.1.2 |
 | Strong authentication of edge AI devices to central infrastructure | C4.3.1 |
 | Unique cryptographic identity per agent instance, authenticating as a first-class principal to downstream systems | C9.4.1 |
