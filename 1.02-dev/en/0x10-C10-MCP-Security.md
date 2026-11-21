@@ -54,12 +54,12 @@ MCP communications must be secured following protocol best practices.
 
 ## C10.4 Schema, Message, and Input Validation
 
-Schema, message, and input validation must be enforced in both MCP servers and clients.
+Schema, message, and input validation must be enforced in both MCP servers and clients. Content returned in MCP tools/list and tools/call responses, including tool names, descriptions, and results, is untrusted input under 2.1.3.
 
 | # | Description | Level |
 | :--: | --- | :---: |
 | **10.4.1** | **Verify that** MCP tools/list and tools/call responses are validated against their declared schemas before being injected into the model context. | 1 |
-| **10.4.2** | **Verify that** MCP tools/list and tools/call responses are screened for indirect prompt injection before being injected into the model context. | 1 |
+| **10.4.2** | Requirement removed. | |
 | **10.4.3** | **Verify that** MCP servers reject unrecognized or oversized parameters in function calls. | 1 |
 | **10.4.4** | **Verify that** all MCP servers enforce strict schema validation. | 2 |
 | **10.4.5** | **Verify that** all MCP transports enforce maximum payload size limits. | 2 |
