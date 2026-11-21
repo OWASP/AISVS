@@ -46,6 +46,7 @@ Enforce access decisions across users, agents, tools, and resources using policy
 | Inter-agent task delegation restricted by an explicit authorization policy | C9.5.5 |
 | Re-evaluation of backend authorization on every privileged action in long-running sessions | C9.5.6 |
 | Delegated authority never exceeding the delegating agent's current authority | C9.5.7 |
+| Runtime blocks an agent action when its policy decision point does not return a decision within the defined timeout | C9.5.8 |
 | Scope-filtered MCP tool discovery (tools/list returns only authorized tools) | C10.2.4 |
 | Per-invocation MCP access control validating both the tool and the supplied argument values | C10.2.5 |
 | MCP proxy servers sharing an upstream OAuth client identity do not let one MCP client inherit another client's authorization | C10.4.9 |
