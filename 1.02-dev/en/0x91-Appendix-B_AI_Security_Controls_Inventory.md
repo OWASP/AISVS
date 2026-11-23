@@ -137,7 +137,6 @@ Validate, normalize, and constrain all inputs (including tool, MCP, and retrieve
 | Schema validation of tool outputs | C9.3.2 |
 | Verification of external resources named in model output against an approved allow-list or registry before install or invocation | C9.3.7 |
 | MCP response schema validation before injection into model context | C10.4.1 |
-| Indirect-prompt-injection screening of MCP responses before injection into model context | C10.4.2 |
 | Rejection of unrecognized or oversized MCP function-call parameters | C10.4.3 |
 | Strict MCP schema validation | C10.4.4 |
 | Maximum MCP payload size limits | C10.4.5 |
