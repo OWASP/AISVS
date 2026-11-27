@@ -80,6 +80,7 @@ Schema, message, and input validation must be enforced in both MCP servers and c
 | **10.4.20** | **Verify that** MCP clients require explicit user consent and display the full URL before opening any URL-mode elicitation target, and do not pre-fetch the URL or its metadata. | 2 |
 | **10.4.21** | **Verify that** MCP clients open URL-mode elicitation targets so that neither the client nor the model can observe the page contents or the user's input. | 2 |
 | **10.4.22** | **Verify that** MCP clients bind the approval of a local MCP server to the launch configuration the client is about to use, and require re-approval before launching it where that configuration differs from the approved one. | 2 |
+| **10.4.23** | **Verify that** MCP clients or proxies that aggregate tools from multiple servers maintain an authoritative mapping from each tool to the server that exposed it, detect tool name collisions across servers, and disambiguate them without relying on the server's self-reported name. | 2 |
 
 ---
 

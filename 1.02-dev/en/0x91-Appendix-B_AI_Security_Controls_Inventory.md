@@ -108,6 +108,7 @@ Verify authenticity and detect tampering of models, artifacts, messages, tool de
 | Integrity protection of agent state persisted between invocations | C9.4.4 |
 | Signed MCP tool responses with a unique nonce and timestamp for replay defense | C10.4.6 |
 | Approved tool definitions retained per server, with user approval required before invoking a tool whose definition changed or was never approved, including after reconnection or restart | C10.4.8 |
+| Cross-server tool name collision detection and disambiguation not based on self-reported server name | C10.4.23 |
 | Integrity protection of MCP `requestState` that influences authorization, resource access, or business logic, rejecting state that fails verification | C10.2.8 |
 | Server-side single-use enforcement for MCP `requestState` that must be consumed at most once | C10.2.10 |
 | Server-side validation that mirrored MCP request headers match the request body after decoding | C10.4.12 |
